@@ -57,6 +57,7 @@
 		<span class="arr_r"></span>
 	</div>
 	
+
 	<div class="auto_box mg_b40">			
 		<table class="tb_board">
 			<thead>
