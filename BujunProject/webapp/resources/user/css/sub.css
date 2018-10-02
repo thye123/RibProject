@@ -268,8 +268,17 @@
 
 
 
-
-
+/* 로그인 */
+.con_login .log_tit {text-align:center; line-height:73px; font-size:32px; background:url(../images/sub/log_bg1.png) no-repeat center top;}
+.con_login .log_sub {color:#888; text-align:center; line-height:20px;}
+.con_login ul {margin:20px 0 20px 0; text-align:center; font-size:0;}
+.con_login ul li { display:inline-block;}
+.con_login ul li:nth-child(1) {margin-right:10px;}
+.con_login input[type='text'], .con_login input[type='password']  {width:240px; box-sizing:border-box; display: block; border: solid 1px #ccd0d7; padding: 5px 10px; color: #575d64; line-height: 1.5em; font-size:15px;}
+.con_login a.log_btn {color:#fff; border-radius:25px; display:inline-block; padding: 13px 50px 13px 75px; background: url(../images/icon/login_btn_icon.png) #3f8af9 no-repeat; background-size: 14px 18px; background-position: 89px 13px;}
+.con_login {padding:24px 20px 50px 20px; border-top:solid 2px #2e3235; border-bottom: solid 1px #ccd0d7;}
+.con_login li:nth-child(3) {margin-top:7px; text-align: left; padding-left: 199px; display:block; }
+.con_login li:nth-child(3) span {vertical-align: middle; font-size:15px;}
 
 
 
@@ -291,6 +300,9 @@
 
 	.sub_con .sub_tit {font-size:25px; margin:20px 0 30px 0; color:#2d82b8;}
 	.tab_depth01 {margin-bottom: 30px;}
+	
+	/* 로그인 */
+	.con_login li:nth-child(3) {text-align:center; padding-left:0;}
 }
 
 
@@ -307,7 +319,12 @@
 
 
 
-/******************** mob - 500 *****************/
-@media all and (max-width:500px) {
+/******************** mob - 550 *****************/
+@media all and (max-width:550px) {
+	
+	/* 로그인 */
+	.con_login input {width:100%;}
+	.con_login ul li {width:100%;}
+	.con_login ul li:nth-child(1) {margin-right:0; margin-bottom:5px;}
 	
 }
