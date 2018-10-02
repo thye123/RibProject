@@ -9,19 +9,28 @@
     <security:http pattern="/**/*.js" security="none" />
     <security:http pattern="/**/*.css" security="none" />
     <security:http pattern="/main/**" security="none" />
+    
+    
+    <bean id="customAccessDenied" class="com.bujun.security.CustomAccessDeniedHandler"></bean> <!-- NO권한 -->
+    <bean id="customLoginSuccess" class="com.bujun.security.CustomLoginSuccessHandler"></bean> <!-- 로그인성공했을때 -->
+    <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
 
 	<security:http>
 
-		<security:intercept-url pattern="/sample/all"
-			access="permitAll" />
-
-		<security:intercept-url
-			pattern="/sample/member" access="hasRole('ROLE_MEMBER')" />
-		
+		<security:intercept-url pattern="/sample/all" access="permitAll" />
+		<security:intercept-url pattern="/sample/member" access="hasRole('ROLE_MEMBER')" />
+		<security:intercept-url pattern="/sample/admin" access="hasRole('ROLE_ADMIN')" />
+				
 		<security:csrf disabled = "true" /> 
 
-
-		<security:form-login />
+		<security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess"/> <!-- 로그인 페이지 -->
+		<security:logout logout-url="/customLogout" invalidate-session="true" delete-cookies="remember-me, JSESSION_ID" /> <!-- JSESSION_ID : 톰캣 쿠키 -->
+		
+		
+		<!-- <security:access-denied-handler error-page="/accessError" /> --> <!-- 권한없을때 이동하는 페이지 -->
+		<security:access-denied-handler ref="customAccessDenied" />
+		
+		<security:remember-me data-source-ref="dataSource" token-validity-seconds="604800" /> <!-- 로그인상태유지 -->
 
 
 	</security:http>
@@ -29,10 +38,20 @@
 	<security:authentication-manager>
 	
 		<security:authentication-provider>
-			<security:user-service>
+		
+			<security:jdbc-user-service data-source-ref="dataSource" 
+				users-by-username-query="select mem_id, mem_pass, mem_enabled from member_tbl where mem_id = ?"
+				authorities-by-username-query="select mem_id, mem_auth from member_tbl where mem_id = ? "
+			/>
+			<security:password-encoder ref="bcryptPasswordEncoder" />
+		
+		
+			<!-- <security:user-service>
 			
 				<security:user name="member" password="member" authorities="ROLE_MEMBER" />
-			</security:user-service>
+				<security:user name="admin" password="admin" authorities="ROLE_MEMBER, ROLE_ADMIN" />
+				
+			</security:user-service> -->
 		</security:authentication-provider>
 	
 	</security:authentication-manager>

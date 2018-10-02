@@ -29,7 +29,7 @@ public class BasicController {
 	
 	
 	
-	//security test ----> ³ªÁß¿¡ Áö¿ï°ÅÀÓ
+	//security test ----> ë‚˜ì¤‘ì— ì§€ìš¸ê±°ì„
 	@RequestMapping("/sample/all")
 	public String All() {
 		return "sample/all";
@@ -44,6 +44,23 @@ public class BasicController {
 	public String Admin() {
 		return "sample/admin";
 	}		
+	
+	@RequestMapping("/accessError")
+	public String AccessError() {
+		return "sample/accessError";
+	}			
+	
+
+	@RequestMapping("/customLogin")
+	public String customLogin() {
+		return "sample/customLogin";
+	}		
+
+	
+	@RequestMapping("/customLogout")
+	public String customLogout() {
+		return "sample/customLogout";
+	}	
 	
 
 	
