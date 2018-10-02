@@ -45,7 +45,7 @@ public class RFBoardController2 {
 	@RequestMapping("/bkreport02") 
 	public String Bkreport02(@RequestParam HashMap<String, Object> map, Model model, SearchCriteria cri) {
 		
-		//°Ô½Ã¹° ÃÑ °¹¼ö
+		//ê²Œì‹œë¬¼ ì´ ê°¯ìˆ˜
 		int totalCount = boardService.boardListCount(map);
 
 		
@@ -102,7 +102,7 @@ public class RFBoardController2 {
 		
 		
 		if(vo.getBd_open() == 2) {
-			model.addAttribute("msg", "ºñ°ø°³ °Ô½Ã¹°ÀÔ´Ï´Ù.");
+			model.addAttribute("msg", "ë¹„ê³µê°œ ê²Œì‹œë¬¼ì…ë‹ˆë‹¤.");
 
 			if(vo.getBd_open() == 2 && bd_pass_chk == 1 ) {
 				model.addAttribute("bd_pass_chk", 1);
@@ -120,7 +120,7 @@ public class RFBoardController2 {
 	}	
 	
 	
-	/*************************** ºñ¹Ğ¹øÈ£ ÀÔ·Â ****************************/	
+	/*************************** ë¹„ë°€ë²ˆí˜¸ ì…ë ¥ ****************************/	
 	@RequestMapping("/board_pass_chk2") 
 	public String Board_pass_chk2(@RequestParam HashMap<String, Object> map, Model model) {
 	
@@ -130,11 +130,11 @@ public class RFBoardController2 {
 		model.addAttribute("menu", map);			
 		
 		
-		//ºñ¹Ğ¹øÈ£ Ã¼Å©
+		//ë¹„ë°€ë²ˆí˜¸ ì²´í¬
 		int result = boardService.getPassChk(map);
 		
 		if(result == 0) {	
-			model.addAttribute("msg" , "ºñ¹Ğ¹øÈ£°¡ Æ²·È½À´Ï´Ù");
+			model.addAttribute("msg" , "ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë ¸ìŠµë‹ˆë‹¤");
 			return "user/sub/sub05/bkreport02/error_msg";
 			
 		} else {
@@ -165,7 +165,7 @@ public class RFBoardController2 {
 				
 				boardService.getBoardDelete(map);
 				
-				model.addAttribute("msg" , "»èÁ¦µÇ¾ú½À´Ï´Ù.");	
+				model.addAttribute("msg" , "ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");	
 				return "user/sub/sub05/bkreport02/error_msg";
 			}
 			
@@ -176,7 +176,7 @@ public class RFBoardController2 {
 	
 	
 	
-	/*************************** ¾²±â ****************************/		
+	/*************************** ì“°ê¸° ****************************/		
 	@RequestMapping("/bkreport02_write") 
 	public String Bkreport01_write(@RequestParam HashMap<String, Object> map, Model model, HttpServletRequest request) {
 		
@@ -201,15 +201,15 @@ public class RFBoardController2 {
 		}
 		
 		if(map.get("bd_gubun").equals("gubun1")) {
-			map.put("bd_gubun", "ÃÊµî ÀúÇĞ³â");
+			map.put("bd_gubun", "ì´ˆë“± ì €í•™ë…„");
 		}else if (map.get("bd_gubun").equals("gubun2")) {
-			map.put("bd_gubun", "ÃÊµî °íÇĞ³â");
+			map.put("bd_gubun", "ì´ˆë“± ê³ í•™ë…„");
 		}else if (map.get("bd_gubun").equals("gubun3")) {
-			map.put("bd_gubun", "Áßµî");
+			map.put("bd_gubun", "ì¤‘ë“±");
 		}else if (map.get("bd_gubun").equals("gubun4")) {
-			map.put("bd_gubun", "°íµî");
+			map.put("bd_gubun", "ê³ ë“±");
 		}else if (map.get("bd_gubun").equals("gubun5")) {
-			map.put("bd_gubun", "ÀÏ¹İ");
+			map.put("bd_gubun", "ì¼ë°˜");
 		}
 		
 		map.put("bd_rimemnum", "0");
@@ -236,7 +236,7 @@ public class RFBoardController2 {
 		
 	}		
 	
-	//ÆÄÀÏ ÀÌ¸§ º¯°æ
+	//íŒŒì¼ ì´ë¦„ ë³€ê²½
 	private String uploadFile(String originalFilename, byte[] fileData) throws IOException {
 		UUID uid = UUID.randomUUID();
 		String savedName = uid.toString() + "_" + originalFilename;
@@ -251,7 +251,7 @@ public class RFBoardController2 {
 	
 	
 	
-	/*************************** ¼öÁ¤ ****************************/
+	/*************************** ìˆ˜ì • ****************************/
 	@RequestMapping("/bkreport02_update") 
 	public String Bkreport02_update(@RequestParam HashMap<String, Object> map, Model model) {
 
@@ -270,7 +270,7 @@ public class RFBoardController2 {
 		model.addAttribute("flag", map.get("flag"));
 		
 
-		if(map.get("bd_pass_chk").equals("2")) { //ºñ¹øÀÔ·ÂÃ¢À¸·Î
+		if(map.get("bd_pass_chk").equals("2")) { //ë¹„ë²ˆì…ë ¥ì°½ìœ¼ë¡œ
 			return "user/sub/sub05/bkreport02/pass_chk";
 		} else {
 			return "user/sub/sub05/bkreport02/bkreport02_update";
@@ -286,14 +286,14 @@ public class RFBoardController2 {
 		
 		boardService.getUpdate(map);
 		
-		model.addAttribute("msg" , "¼öÁ¤µÇ¾ú½À´Ï´Ù.");	
+		model.addAttribute("msg" , "ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.");	
 		return "user/sub/sub05/bkreport02/error_msg";	
 		
 	}	
 	
 	
 	
-	/*************************** »èÁ¦ ****************************/
+	/*************************** ì‚­ì œ ****************************/
 	@RequestMapping("/bkreport02_delete") 
 	public String Bkreport02_delete(@RequestParam HashMap<String, Object> map, Model model) {
 		
@@ -307,13 +307,13 @@ public class RFBoardController2 {
 		model.addAttribute("flag", map.get("flag"));
 		
 		
-		if(map.get("bd_pass_chk").equals("2")) { //ºñ¹øÀÔ·ÂÃ¢À¸·Î
+		if(map.get("bd_pass_chk").equals("2")) { //ë¹„ë²ˆì…ë ¥ì°½ìœ¼ë¡œ
 			return "user/sub/sub05/bkreport02/pass_chk";
 		} else {
 			
 			boardService.getBoardDelete(map);
 			
-			model.addAttribute("msg" , "»èÁ¦µÇ¾ú½À´Ï´Ù.");	
+			model.addAttribute("msg" , "ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");	
 			return "user/sub/sub05/bkreport02/error_msg";
 		}
 		

@@ -45,7 +45,7 @@ public class RFBoardController {
 	@RequestMapping("/bkreport01") 
 	public String Bkreport01(@RequestParam HashMap<String, Object> map, Model model, SearchCriteria cri) {
 		
-		//°Ô½Ã¹° ÃÑ °¹¼ö
+		//ê²Œì‹œë¬¼ ì´ ê°¯ìˆ˜
 		int totalCount = boardService.boardListCount(map);
 
 		
@@ -76,7 +76,7 @@ public class RFBoardController {
 /*	@RequestMapping("/bkreport01") 
 	public String Bkreport01(@RequestParam HashMap<String, Object> map, Model model, Criteria cri) {
 		
-		//°Ô½Ã¹° ÃÑ °¹¼ö
+		//ê²Œì‹œë¬¼ ì´ ê°¯ìˆ˜
 		int totalCount = boardService.boardListCount(map);
 
 		
@@ -101,7 +101,7 @@ public class RFBoardController {
 	
 	
 	
-	/*************************** ¾²±â ****************************/		
+	/*************************** ì“°ê¸° ****************************/		
 	@RequestMapping("/bkreport01_write") 
 	public String Bkreport01_write(@RequestParam HashMap<String, Object> map, Model model, HttpServletRequest request) {
 		
@@ -126,15 +126,15 @@ public class RFBoardController {
 		}
 		
 		if(map.get("bd_gubun").equals("gubun1")) {
-			map.put("bd_gubun", "ÃÊµî ÀúÇĞ³â");
+			map.put("bd_gubun", "ì´ˆë“± ì €í•™ë…„");
 		}else if (map.get("bd_gubun").equals("gubun2")) {
-			map.put("bd_gubun", "ÃÊµî °íÇĞ³â");
+			map.put("bd_gubun", "ì´ˆë“± ê³ í•™ë…„");
 		}else if (map.get("bd_gubun").equals("gubun3")) {
-			map.put("bd_gubun", "Áßµî");
+			map.put("bd_gubun", "ì¤‘ë“±");
 		}else if (map.get("bd_gubun").equals("gubun4")) {
-			map.put("bd_gubun", "°íµî");
+			map.put("bd_gubun", "ê³ ë“±");
 		}else if (map.get("bd_gubun").equals("gubun5")) {
-			map.put("bd_gubun", "ÀÏ¹İ");
+			map.put("bd_gubun", "ì¼ë°˜");
 		}
 		
 		map.put("bd_rimemnum", "0");
@@ -162,7 +162,7 @@ public class RFBoardController {
 	}	
 	
 	
-	//ÆÄÀÏ ÀÌ¸§ º¯°æ
+	//íŒŒì¼ ì´ë¦„ ë³€ê²½
 	private String uploadFile(String originalFilename, byte[] fileData) throws IOException {
 		UUID uid = UUID.randomUUID();
 		String savedName = uid.toString() + "_" + originalFilename;
@@ -204,7 +204,7 @@ public class RFBoardController {
 		
 		
 		if(vo.getBd_open() == 2) {
-			model.addAttribute("msg", "ºñ°ø°³ °Ô½Ã¹°ÀÔ´Ï´Ù.");
+			model.addAttribute("msg", "ë¹„ê³µê°œ ê²Œì‹œë¬¼ì…ë‹ˆë‹¤.");
 
 			if(vo.getBd_open() == 2 && bd_pass_chk == 1 ) {
 				model.addAttribute("bd_pass_chk", 1);
@@ -222,13 +222,13 @@ public class RFBoardController {
 	}	
 	
 	
-	/*************************** ÆÄÀÏ´Ù¿î·Îµå ºÎºĞ ****************************/	
+	/*************************** íŒŒì¼ë‹¤ìš´ë¡œë“œ ë¶€ë¶„ ****************************/	
 	@RequestMapping(value="/download/{type}/{file_filename:.+}", method=RequestMethod.GET)
 	public void downloadFile(HttpServletResponse response, @PathVariable("type") String type,
 			@PathVariable("file_filename") String sfile) throws IOException {
 		
-		//{sfile:.+} : È®ÀåÀÚ¿¡ .¹®ÀÚ°¡ ÇÑ°³(+)ÀÌ»ó ÀÖÀ» ¶§
-		//{sfile} : .jpg¿Í °°ÀÌ .Æ÷ÇÔ ±ÛÀÚ´Â ¹«½ÃµÈ´Ù
+		//{sfile:.+} : í™•ì¥ìì— .ë¬¸ìê°€ í•œê°œ(+)ì´ìƒ ìˆì„ ë•Œ
+		//{sfile} : .jpgì™€ ê°™ì´ .í¬í•¨ ê¸€ìëŠ” ë¬´ì‹œëœë‹¤
 		
 		System.out.println(sfile);
 		
@@ -247,7 +247,7 @@ public class RFBoardController {
 		
 		
 		if(!file.exists()) {
-			String errorMessage = "ÆÄÀÏ Ã£À» ¼ö ¾øÀ½";
+			String errorMessage = "íŒŒì¼ ì°¾ì„ ìˆ˜ ì—†ìŒ";
 			System.out.println(errorMessage);
 			OutputStream outputStream = response.getOutputStream();
 			outputStream.write(errorMessage.getBytes(Charset.forName("UTF-8")));
@@ -274,7 +274,7 @@ public class RFBoardController {
 	}
 	
 	
-	/*************************** ºñ¹Ğ¹øÈ£ ÀÔ·Â ****************************/	
+	/*************************** ë¹„ë°€ë²ˆí˜¸ ì…ë ¥ ****************************/	
 	@RequestMapping("/board_pass_chk") 
 	public String Board_pass_chk(@RequestParam HashMap<String, Object> map, Model model) {
 	
@@ -284,11 +284,11 @@ public class RFBoardController {
 		model.addAttribute("menu", map);			
 		
 		
-		//ºñ¹Ğ¹øÈ£ Ã¼Å©
+		//ë¹„ë°€ë²ˆí˜¸ ì²´í¬
 		int result = boardService.getPassChk(map);
 		
 		if(result == 0) {	
-			model.addAttribute("msg" , "ºñ¹Ğ¹øÈ£°¡ Æ²·È½À´Ï´Ù");
+			model.addAttribute("msg" , "ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë ¸ìŠµë‹ˆë‹¤");
 			return "user/sub/sub05/bkreport01/error_msg";
 			
 		} else {
@@ -319,7 +319,7 @@ public class RFBoardController {
 				
 				boardService.getBoardDelete(map);
 				
-				model.addAttribute("msg" , "»èÁ¦µÇ¾ú½À´Ï´Ù.");	
+				model.addAttribute("msg" , "ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");	
 				return "user/sub/sub05/bkreport01/error_msg";
 			}
 			
@@ -331,7 +331,7 @@ public class RFBoardController {
 	}		
 	
 	
-	/*************************** ¼öÁ¤ ****************************/
+	/*************************** ìˆ˜ì • ****************************/
 	@RequestMapping("/bkreport01_update") 
 	public String Bkreport01_update(@RequestParam HashMap<String, Object> map, Model model) {
 
@@ -350,7 +350,7 @@ public class RFBoardController {
 		model.addAttribute("flag", map.get("flag"));
 		
 
-		if(map.get("bd_pass_chk").equals("2")) { //ºñ¹øÀÔ·ÂÃ¢À¸·Î
+		if(map.get("bd_pass_chk").equals("2")) { //ë¹„ë²ˆì…ë ¥ì°½ìœ¼ë¡œ
 			return "user/sub/sub05/bkreport01/pass_chk";
 		} else {
 			return "user/sub/sub05/bkreport01/bkreport01_update";
@@ -366,13 +366,13 @@ public class RFBoardController {
 		
 		boardService.getUpdate(map);
 		
-		model.addAttribute("msg" , "¼öÁ¤µÇ¾ú½À´Ï´Ù.");	
+		model.addAttribute("msg" , "ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.");	
 		return "user/sub/sub05/bkreport01/error_msg";	
 		
 	}	
 	
 	
-	/*************************** »èÁ¦ ****************************/
+	/*************************** ì‚­ì œ ****************************/
 	@RequestMapping("/bkreport01_delete") 
 	public String Bkreport01_delete(@RequestParam HashMap<String, Object> map, Model model) {
 		
@@ -386,13 +386,13 @@ public class RFBoardController {
 		model.addAttribute("flag", map.get("flag"));
 		
 		
-		if(map.get("bd_pass_chk").equals("2")) { //ºñ¹øÀÔ·ÂÃ¢À¸·Î
+		if(map.get("bd_pass_chk").equals("2")) { //ë¹„ë²ˆì…ë ¥ì°½ìœ¼ë¡œ
 			return "user/sub/sub05/bkreport01/pass_chk";
 		} else {
 			
 			boardService.getBoardDelete(map);
 			
-			model.addAttribute("msg" , "»èÁ¦µÇ¾ú½À´Ï´Ù.");	
+			model.addAttribute("msg" , "ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");	
 			return "user/sub/sub05/bkreport01/error_msg";
 		}
 		
