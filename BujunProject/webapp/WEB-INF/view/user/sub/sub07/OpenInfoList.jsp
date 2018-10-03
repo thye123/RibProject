@@ -19,9 +19,9 @@
 <div class="loca">
 	<ul>
 		<li><img src="${pageContext.request.contextPath}/resources/user/images/sub/loca_home.jpg" alt="" /></li>
-		<li>전자행정서비스</li>
-		<li>정보공개안내</li>
-		<li>정보공개제도안내</li>
+		<li>도서관이용</li>
+		<li>자료실소개</li>
+		<li>종합자료실</li>
 	</ul>
 </div>
 <!-- //location -->
@@ -31,20 +31,19 @@
 	
 
 	<!-- title -->
-	<div class="sub_tit">정보공개안내</div>
+	<div class="sub_tit">자료실소개</div>
 	
 	<div class="tab_depth01" >
 		<ul class="n03">
-			<li><a href="#" class="on">정보공개제도안내</a></li>
-			<li><a href="#" >사전공표대상 및 비공개대상목록</a></li>
-			<li><a href="#" >정보목록</a></li>
-			<li><a href="https://www.open.go.kr/" >정보공개청구</a></li>
-			<li><a href="#" >사전공표대상공개</a></li>
+			<li><a href="#" class="on">aaaaa</a></li>
+			<li><a href="#">bb</a></li>
+			<li><a href="#">ccc</a></li>
 		</ul>
 	</div>
 	
 	
 	<!-- content 시작 -->
+	
 	
 	<h2 class="tbul1 mg_b40">이용대상 : 중학생이상</h2>
 	
@@ -58,7 +57,6 @@
 		<span class="arr_r"></span>
 	</div>
 	
-
 	<div class="auto_box mg_b40">			
 		<table class="tb_board">
 			<thead>
