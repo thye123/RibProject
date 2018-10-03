@@ -35,7 +35,6 @@
 	
 	<!-- content 시작 -->
 	
-	
 	<div class="facilities_top bg_img1 mg_b40">
 		<div>
 			대지 및 건물

@@ -34,18 +34,40 @@
 	<div class="sub_tit">로그인</div>
 	
 
+	<script>
+		function login() {
+			
+			var id = document.getElementById("id");
+			var pw = document.getElementById("pass");
+			
+			if(id.value == "") {
+				alert("아이디를 입력하세요.");
+				id.focus();
+				return;
+			}
+			
+			if(pw.value == "") {
+				alert("비밀번호를 입력하세요.");
+				pw.focus();
+				return;
+			}
+			
+			document.loginForm.submit();
+		}
+	</script>
+
 	<div class="con_login">
 		<div class="log_tit">아이디 로그인</div> 
 		 <div class="log_sub">아이디와 비밀번호를 입력하신 후 Login 버튼을 눌러주세요.</div>
 	
-		<form method="post" action="/login">
+		<form method="post" action="/login" name="loginForm">
 			<ul>
-				<li><input type="text" name="username" placeholder="아이디를 입력하세요" /></li>
-				<li><input type="password" name="password" placeholder="비밀번호를 입력하세요" /></li>
-				<li><input type="checkbox" name="remember-me" /><span> 로그인 상태 유지</span></li>
+				<li><input id="id" type="text" name="username" placeholder="아이디를 입력하세요" /></li>
+				<li><input id="pass" type="password" name="password" placeholder="비밀번호를 입력하세요" /></li>
+				<li><label><input type="checkbox" name="remember-me" /><span> 로그인 상태 유지</span></label></li>
 			</ul>
 			
-			<p class="c"><a href="#" class="log_btn">로그인</a></p>
+			<p class="c"><a href="#" onclick="login()" class="log_btn">로그인</a></p>
 			
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />	
 			

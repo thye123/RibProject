@@ -413,28 +413,28 @@
 
 					<c:otherwise>
 						<li>
-							<div class="link">원북원부산<i class="fa fa-chevron-down"></i></div>
+							<div class="link">부산시민독후감공모<i class="fa fa-chevron-down"></i></div>
 							
 								<ul class="submenu">
 									<c:choose>
-										<c:when test="${menu.m1 eq 05 && menu.m2 eq 07 && menu.m3 eq 01}">
-											<li class="on"><a href="/obook01?m1=05&m2=07&m3=01">운영안내</a></li>
+										<c:when test="${menu.m1 eq 05 && menu.m2 eq 08 && menu.m3 eq 01}">
+											<li class="on"><a href="/bkreport01?bd_catcode=CAT0005&m1=05&m2=08&m3=01&page=1&perPageNum=10">범시민 독후감</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/obook01?m1=05&m2=07&m3=01">운영안내</a></li>
+											<li><a href="/bkreport01?bd_catcode=CAT0005&m1=05&m2=08&m3=01&page=1&perPageNum=10">범시민 독후감</a></li>
 										</c:otherwise>
 									</c:choose>
 									
 									<c:choose>
-										<c:when test="${menu.m1 eq 05 && menu.m2 eq 07 && menu.m3 eq 02}">
-											<li class="on"><a href="/obook02?m1=05&m2=07&m3=02">올해의BOOK</a></li>
+										<c:when test="${menu.m1 eq 05 && menu.m2 eq 08 && menu.m3 eq 02}">
+											<li class="on"><a href="/bkreport02?bd_catcode=CAT0006&m1=05&m2=08&m3=02&page=1&perPageNum=10">원북원부산 독후감</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/obook02?m1=05&m2=07&m3=02">올해의BOOK</a></li>
+											<li><a href="/bkreport02?bd_catcode=CAT0006&m1=05&m2=08&m3=02&page=1&perPageNum=10">원북원부산 독후감</a></li>
 										</c:otherwise>
 									</c:choose>																									
 								</ul>
-						</li>			
+						</li>		
 					</c:otherwise>
 				</c:choose>	
 
