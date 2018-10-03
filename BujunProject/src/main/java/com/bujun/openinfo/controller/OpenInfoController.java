@@ -56,4 +56,9 @@ public class OpenInfoController {
 		mv.setViewName("user/sub/sub07/OpenInfo");
 		return mv;
 	}
+	
+	@RequestMapping("/opdata")
+	public String goOPData(){
+		return "user/sub/sub07/OpenData";
+	}
 }

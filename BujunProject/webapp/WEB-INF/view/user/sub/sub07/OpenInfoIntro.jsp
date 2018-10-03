@@ -12,7 +12,7 @@
 <%@ include file="../../include/sub_visual.jsp"%>
 
 <!-- 레프트메뉴 -->
-<%@ include file="../../include/left_menu01.jsp"%>
+<%@ include file="../../include/left_menu07.jsp"%>
 
 
 

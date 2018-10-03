@@ -143,7 +143,7 @@
 					});
 					
 					e.preventDefault();
-				}
+				)}
 			});
 		</script>
 	</head>
