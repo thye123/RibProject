@@ -35,9 +35,11 @@
 	
 	<div class="tab_depth01" >
 		<ul class="n03">
-			<li><a href="#" class="on">aaaaa</a></li>
-			<li><a href="#">bb</a></li>
-			<li><a href="#">ccc</a></li>
+			<li><a href="#" class="on">정보공개제도안내</a></li>
+			<li><a href="#" class="on">사전공표대상 및 비공개대상목록</a></li>
+			<li><a href="#" class="on">정보목록</a></li>
+			<li><a href="https://www.open.go.kr/" class="on">정보공개청구</a></li>
+			<li><a href="#" class="on">사전공표대상공개</a></li>
 		</ul>
 	</div>
 	
