@@ -14,8 +14,6 @@
 <!-- 레프트메뉴 -->
 <%@ include file="../../include/left_menu01.jsp"%>
 
-
-
 <!-- location -->
 <div class="loca">
 	<ul>
@@ -40,9 +38,9 @@
 			<li><a href="/info01?m1=07&m2=01&m3=01">정보공개제도안내</a></li>
 			<li><a href="/info02?m1=07&m2=01&m3=02" class="on">사전공표대상 및
 					비공개대상목록</a></li>
-			<li><a href="#">정보목록</a></li>
-			<li><a href="https://www.open.go.kr/">정보공개청구</a></li>
-			<li><a href="#">사전공표대상공개</a></li>
+			<li><a href="/info03?m1=07&m2=01&m3=03">정보목록</a></li>
+			<li><a href="#">정보공개청구</a></li>
+			<li><a href="/info03?m1=07&m2=01&m3=05">사전공표대상공개</a></li>
 		</ul>
 	</div>
 

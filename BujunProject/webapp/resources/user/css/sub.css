@@ -174,7 +174,7 @@
 .tb_board2 tbody th {background:#f7f7f7; font-weight:400;}
 
 .board_read {border-top:2px solid #333; width:100%; border-collapse:collapse;  line-height:1.5em;}
-.board_read thead th {background:#fafafa; padding:10px 5px 8px;  border:none;  border-bottom:1px solid #e5e5e5; }
+.board_read thead th {background:#fafafa; padding:10px 5px 8px;  border:none;  border-bottom:1px solid #e5e5e5;}
 .board_read thead th.title {  text-align:center;}
 .board_read td {padding:12px 5px 10px; border:0; border-bottom:1px solid #e5e5e5;color:#555;text-align:center; font-size:13px; text-align:left;}
 .board_read thead td.rc {font-size:12px;}
