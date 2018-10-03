@@ -31,14 +31,24 @@ public class OpenInfoController {
 	@RequestMapping("/info03")
 	public ModelAndView goOpenInfo(@RequestParam HashMap<String, Object> map) {
 		System.out.println("map : " + map);
-
+		String ad_code = "";
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
 		String m3 = String.valueOf(map.get("m3"));
 		
+		if(m1=="07"&&m2=="01"&&m3=="03") {
+			ad_code = "CAT0016";
+		}else {
+			if(m1=="07"&&m2=="01"&&m3=="05") {
+				ad_code="CAT0017";
+			}
+		}
+		
+		map.put("ad_code", ad_code);
+		
 		List<OpenInfoVo> list = openInfoService.selectList(map);
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("ad_code", map.get("ad_code"));
+		mv.addObject("ad_code", ad_code);
 		mv.addObject("contentList", list);
 		mv.addObject("paging", map.get("pagingVo"));
 		mv.setViewName("openInfo");
