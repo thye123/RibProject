@@ -37,11 +37,9 @@ public class OpenInfoController {
 		String m3 = String.valueOf(map.get("m3"));
 		
 		if(m1.equals("07")&&m2.equals("01")&&m3.equals("03")) {
-			System.out.println("왔냐");
 			ad_code = "CAT0016";
 		}else {
 			if(m1.equals("07")&&m2.equals("01")&&m3.equals("05")) {
-				System.out.println("여기는왔냐");
 				ad_code="CAT0017";
 			}
 		}
@@ -50,6 +48,7 @@ public class OpenInfoController {
 		
 		List<OpenInfoVo> list = openInfoService.selectList(map);
 		System.out.println("list: " + list);
+		System.out.println("paging: " + map.get("pagingVo"));
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("ad_code", ad_code);
 		mv.addObject("contentList", list);

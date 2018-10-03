@@ -11,7 +11,7 @@
 <%@ include file="../../include/sub_visual.jsp" %>   
 
 <!-- 레프트메뉴 -->
-<%@ include file="../../include/left_menu01.jsp" %>   
+<%@ include file="../../include/left_menu07.jsp" %>   
 
 
 			
@@ -87,12 +87,12 @@
 			
 			<span class="prevblock1 hidden"><span>1 페이지</span></span>
 			<span class="beforepage1 "><span>이전페이지없음</span></span> <!-- 이전페이지 없을때 -->
-			
-			<strong><span>1</span></strong>
-			<a class="pageBtn" href="#"><span>2</span></a>
-			<a class="pageBtn" href="#"><span>3</span></a>
-			<a class="pageBtn" href="#"><span>4</span></a>
-			<a class="pageBtn" href="#"><span>5</span></a>
+			<c:set var="endnum" 	value="${paging.end_page}"></c:set>
+			<c:set var="startnum" 	value="${paging.start_page}"></c:set>
+				<c:forEach var="Paging" begin="${startnum}" end="${endnum}" step="1">
+					<a href="/info03?&page_num=${Paging}">${Paging}</a>
+				</c:forEach>
+	
 			<a class="afterpage hidden" href="#"><span>앞페이지</span></a>
 			<a class="nextblock" href="#"><span>6 페이지</span></a>
 			<a class="lastpage" href="#"><span>21 페이지</span></a>
