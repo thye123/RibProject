@@ -30,8 +30,13 @@ public class OpenInfoController {
 	
 	@RequestMapping("/info03")
 	public ModelAndView goOpenInfo(@RequestParam HashMap<String, Object> map) {
-		List<OpenInfoVo> list = openInfoService.selectList(map);
 		System.out.println("map : " + map);
+
+		String m1 = String.valueOf(map.get("m1"));		
+		String m2 = String.valueOf(map.get("m2"));		
+		String m3 = String.valueOf(map.get("m3"));
+		
+		List<OpenInfoVo> list = openInfoService.selectList(map);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("ad_code", map.get("ad_code"));
 		mv.addObject("contentList", list);
