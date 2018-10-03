@@ -29,7 +29,7 @@ public class OpenInfoController {
 	}
 	
 	@RequestMapping("/info03")
-	public ModelAndView goBoard(@RequestParam HashMap<String, Object> map) {
+	public ModelAndView goOpenInfo(@RequestParam HashMap<String, Object> map) {
 		List<OpenInfoVo> list = openInfoService.selectList(map);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("ad_code", map.get("ad_code"));
