@@ -19,9 +19,9 @@
 <div class="loca">
 	<ul>
 		<li><img src="${pageContext.request.contextPath}/resources/user/images/sub/loca_home.jpg" alt="" /></li>
-		<li>도서관이용</li>
-		<li>자료실소개</li>
-		<li>종합자료실</li>
+		<li>전자행정서비스</li>
+		<li>정보공개안내</li>
+		<li>정보공개제도안내</li>
 	</ul>
 </div>
 <!-- //location -->
@@ -31,7 +31,7 @@
 	
 
 	<!-- title -->
-	<div class="sub_tit">자료실소개</div>
+	<div class="sub_tit">정보공개안내</div>
 	
 	<div class="tab_depth01" >
 		<ul class="n03">
@@ -45,7 +45,6 @@
 	
 	
 	<!-- content 시작 -->
-	
 	
 	<h2 class="tbul1 mg_b40">이용대상 : 중학생이상</h2>
 	
