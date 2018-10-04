@@ -79,19 +79,51 @@
 	<!-- //table -->
 	
 	<!-- //게시판테이블(리스트) -->
+	  
 	
 	<!-- 페이징 -->
 	<div class="board-list-paging">
 		<div class="pagelist">
+		
+		
+		<!--  -->
+<%-- 		<c:choose>
+            <c:when test="${pageMaker.prev}">
+               <a href="/freebrd?bd_catcode=CAT0007&m1=06&m2=03&page=${pageMaker.startPage-1}&perPageNum=10&searchType=${search}&keyword=${key}"><span class="prevblock1 "><span>1 페이지</span></span></a>
+            </c:when>
+            <c:otherwise>
+               <a href="#"><span class="beforepage1 "><span>이전페이지없음</span></span></a>
+            </c:otherwise>
+         </c:choose>
+      
+      
+         <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+            <c:choose>
+               <c:when test="${pageMaker.cri.page == idx}">
+                  <strong><span>${idx}</span></strong>
+               </c:when>
+               <c:otherwise>
+                  <a class="default" href="/freebrd?bd_catcode=CAT0007&m1=06&m2=03&page=${idx}&perPageNum=10&searchType=${search}&keyword=${key}" ><span>${idx}</span></a>
+               </c:otherwise>
+            </c:choose>
+         </c:forEach>   
+         
+
+         <c:if test = "${pageMaker.next && pageMaker.endPage > 0}" >
+            <a class="nextblock" href="/freebrd?bd_catcode=CAT0007&m1=06&m2=03&page=${pageMaker.endPage + 1}&perPageNum=10&searchType=${search}&keyword=${key}"><span>다음</span></a>
+         </c:if>
+         <a class="lastpage" href="/freebrd?bd_catcode=CAT0007&m1=06&m2=03&page=${pageMaker.lastBlock}&perPageNum=10&searchType=${search}&keyword=${key}"><span>마지막</span></a> --%>
+		<!--  -->
+		
 			<span class="firstpage1"><span>처음 페이지</span></span>
 			
 			<span class="prevblock1 hidden"><span>1 페이지</span></span>
 			<span class="beforepage1 "><span>이전페이지없음</span></span> <!-- 이전페이지 없을때 -->
 			<c:set var="endnum" 	value="${paging.end_page}"></c:set>
 			<c:set var="startnum" 	value="${paging.start_page}"></c:set>
-				<c:forEach var="Paging" begin="${startnum}" end="${endnum}" step="1">
-					<a href="/info03?&page_num=${Paging}">${Paging}</a>
-				</c:forEach>
+			<c:forEach var="Paging" begin="${startnum}" end="${endnum}" step="1">
+				<a href="/info03?&ad_code=${ad_code}&page_num=${Paging}">${Paging}</a>
+			</c:forEach>
 	
 			<a class="afterpage hidden" href="#"><span>앞페이지</span></a>
 			<a class="nextblock" href="#"><span>6 페이지</span></a>
