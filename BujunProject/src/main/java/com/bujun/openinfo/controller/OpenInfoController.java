@@ -3,6 +3,8 @@ package com.bujun.openinfo.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -77,9 +79,14 @@ public class OpenInfoController {
 	}
 	
 	@RequestMapping("/info03/iCon")
-	public ModelAndView insertContent(@RequestParam HashMap<String, Object> map) {
+	public String insertContent(@RequestParam HashMap<String, Object> map, HttpServletRequest req) {
+		int ad_idx = openInfoService.insertContent(map);
+		String ad_code = (String) map.get("ad_code");
+		map.put("ad_idx", ad_idx);
 		ModelAndView mv = new ModelAndView();
-		return mv;
+		openInfoService.addFile(req, map);			
+		
+		return "redirect:/info03?ad_code="+ad_code+"&page_num=1";
 	}
 	
 	//상세 정보

@@ -26,6 +26,11 @@
 			var coment = document.createTextNode("사전공표대상공개");
 			subTitle[0].appendChild(coment);				
 		}
+		
+		var cancel = document.getElementById("cancel");
+		cancel.addEventListener("click", function(){
+			location.href="/info03?ad_code=${ad_code}&page_num=1";
+		});
 	}
 </script>
 			
@@ -48,7 +53,7 @@
 	
 	<!-- content 시작 -->
 	<div class="auto_box mg_b40">
-		<form action="/info03/iCon?ad_code=${ad_code}" method="post" enctype="multipart/form-data">
+		<form action="/info03/iCon?ad_code=${ad_code}&page_num=1" method="post" enctype="multipart/form-data">
 			<table class="tb_board" cellspacing="1" cellpadding="1">
 				<tr>
 					<td>글쓴이</td>
