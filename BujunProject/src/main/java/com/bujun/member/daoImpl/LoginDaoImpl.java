@@ -52,6 +52,27 @@ public class LoginDaoImpl implements LoginDao{
 	public void UpdatePass(HashMap<String, Object> map) {
 		sqlSession.update("memberMapper.MemberPassUpdate", map);
 	}
+
+
+	@Override
+	public int getIdChk(HashMap<String, Object> map) {
+		
+		sqlSession.selectOne("memberMapper.MemberIdChk", map);
+		int cnt = (int) map.get("result");
+		
+		return cnt;
+	}
+
+
+	@Override
+	public MemberVo getIdChkVo(HashMap<String, Object> map) {
+		sqlSession.selectOne("memberMapper.MemberIdChkVo", map);
+		List<MemberVo> list = (List<MemberVo>) map.get("result");
+		MemberVo vo = new MemberVo();
+		vo = list.get(0);
+		
+		return vo;
+	}
 	
 	
 	

@@ -54,7 +54,28 @@
 	        #{mem_id, mode=IN,  jdbcType=VARCHAR }, 
 	        #{mem_pass, mode=IN,  jdbcType=VARCHAR }
 	      )}     	
-    </update>      
+    </update>     
+    
+    
+     <select id="MemberIdChk" statementType="CALLABLE" parameterType="com.bujun.member.vo.MemberVo">   
+	     {CALL  BJL_PKG_MEMBER.id_find(   
+	        #{mem_name, mode=IN,  jdbcType=VARCHAR },
+	        #{mem_email, mode=IN,  jdbcType=VARCHAR },
+	        #{result, mode=OUT, jdbcType=INTEGER}
+	      )}        
+    </select>
+    
+    
+     <select id="MemberIdChkVo" statementType="CALLABLE" parameterType="com.bujun.member.vo.MemberVo">   
+	     {CALL  BJL_PKG_MEMBER.id_find_vo(   
+	        #{mem_name, mode=IN,  jdbcType=VARCHAR },
+	        #{mem_email, mode=IN,  jdbcType=VARCHAR },
+	        #{result,  mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap }
+	      )}        
+    </select>    
+    
+    
+     
     
     
                              

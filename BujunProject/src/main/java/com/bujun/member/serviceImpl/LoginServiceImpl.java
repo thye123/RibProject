@@ -40,6 +40,20 @@ public class LoginServiceImpl implements LoginService{
 	public void UpdatePass(HashMap<String, Object> map) {
 		loginDao.UpdatePass(map);
 	}
+
+
+	@Override
+	public int getIdChk(HashMap<String, Object> map) {
+		int cnt = loginDao.getIdChk(map);
+		return cnt;
+	}
+
+
+	@Override
+	public MemberVo getIdChkVo(HashMap<String, Object> map) {
+		MemberVo vo = loginDao.getIdChkVo(map);
+		return vo;
+	}
 	
 	
 	

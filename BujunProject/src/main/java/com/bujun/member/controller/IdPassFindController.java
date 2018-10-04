@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bujun.member.service.LoginService;
+import com.bujun.member.vo.MemberVo;
 
 @Controller
 public class IdPassFindController {
@@ -100,5 +101,29 @@ public class IdPassFindController {
 		}  
 		return ranPw;  
 	} 
+	
+	
+	
+	//아이디 찾기
+	@RequestMapping("/find01")
+	public String Find01(@RequestParam HashMap<String, Object> map, Model model) {
+		
+		int idChk = loginService.getIdChk(map);
+		MemberVo vo = new MemberVo();
+		
+		if(idChk == 0) {
+			model.addAttribute("msg", "이름과 이메일이 일치하지 않습니다.");
+			return "user/sub/sub08/error_msg";			
+		} else {
+			vo = loginService.getIdChkVo(map);
+			
+			
+			model.addAttribute("mem_name", vo.getMem_name());
+			model.addAttribute("mem_id", vo.getMem_id());
+			
+			return "user/sub/sub08/idcheck";		
+		}
+		
+	}
 	
 }
