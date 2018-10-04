@@ -81,7 +81,7 @@ public class IdPassFindController {
 		
 		
 	}
-	
+	 
 	
 	//임시 비밀번호 생성
 	private static String randomPw(){ 

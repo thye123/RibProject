@@ -38,8 +38,8 @@
                <prop key="mail.smtp.starttls.enable">true</prop>
                <prop key="mail.debug">true</prop>
          </props>
-      </property>
- 
+      </property> 
+  
    </bean>
    
     
