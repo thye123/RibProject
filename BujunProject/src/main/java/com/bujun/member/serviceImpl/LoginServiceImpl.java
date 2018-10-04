@@ -34,6 +34,12 @@ public class LoginServiceImpl implements LoginService{
 		String res = loginDao.getPassChkEmail(map);
 		return res;
 	}
+
+
+	@Override
+	public void UpdatePass(HashMap<String, Object> map) {
+		loginDao.UpdatePass(map);
+	}
 	
 	
 	

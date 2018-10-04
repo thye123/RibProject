@@ -7,13 +7,13 @@ import javax.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bujun.member.service.LoginService;
-import com.bujun.member.vo.MemberVo;
 
 @Controller
 public class IdPassFindController {
@@ -39,9 +39,6 @@ public class IdPassFindController {
 		
 		int passChk = loginService.getPassChk(map);
 
-		
-		//MemberVo vo = loginService.getPassChk(map);
-		
 		System.out.println(passChk);
 		
 		if(passChk == 0) {
@@ -51,10 +48,13 @@ public class IdPassFindController {
 			
 			String ranpw = randomPw();
 			
-			String email = loginService.getPassChkEmail(map);
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(); //암호화
+			String Password = passwordEncoder.encode(ranpw); //암호화된 패스워드
 			
-			System.out.println("email : " + email);
+			map.put("mem_pass", Password); //암호화된 패스워드로 DB수정
+			loginService.UpdatePass(map);
 			
+			String email = loginService.getPassChkEmail(map);			
 		    String setfrom = "bjlibrary01@gmail.com";         
 		    String tomail  = email;     							// 받는 사람 이메일
 		    String title   = "부전도서관 임시비밀번호입니다.";      // 제목
@@ -74,6 +74,7 @@ public class IdPassFindController {
 		    } catch(Exception e){
 		      System.out.println(e);
 		    }
+		    
 		    
 			model.addAttribute("msg", "메일 발송됨");
 			return "user/sub/sub08/error_msg";

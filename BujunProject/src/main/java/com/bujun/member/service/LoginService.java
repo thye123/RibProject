@@ -9,5 +9,6 @@ public interface LoginService {
 	MemberVo getMember(HashMap<String, Object> map);
 	int getPassChk(HashMap<String, Object> map);
 	String getPassChkEmail(HashMap<String, Object> map);
+	void UpdatePass(HashMap<String, Object> map);
 
 }

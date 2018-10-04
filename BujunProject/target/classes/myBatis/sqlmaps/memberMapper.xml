@@ -48,5 +48,14 @@
 	      )}        
     </select>
     
+    
+    <update id="MemberPassUpdate" parameterType="hashmap" statementType="CALLABLE">
+ 	     {CALL  BJL_PKG_MEMBER.pass_update(   
+	        #{mem_id, mode=IN,  jdbcType=VARCHAR }, 
+	        #{mem_pass, mode=IN,  jdbcType=VARCHAR }
+	      )}     	
+    </update>      
+    
+    
                              
 </mapper>

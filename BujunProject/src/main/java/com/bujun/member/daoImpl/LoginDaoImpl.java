@@ -46,6 +46,12 @@ public class LoginDaoImpl implements LoginDao{
 
 		return res;
 	}
+
+
+	@Override
+	public void UpdatePass(HashMap<String, Object> map) {
+		sqlSession.update("memberMapper.MemberPassUpdate", map);
+	}
 	
 	
 	
