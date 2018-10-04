@@ -56,9 +56,9 @@ public class IdPassFindController {
 			System.out.println("email : " + email);
 			
 		    String setfrom = "bjlibrary01@gmail.com";         
-		    String tomail  = email;     // 받는 사람 이메일
+		    String tomail  = email;     							// 받는 사람 이메일
 		    String title   = "부전도서관 임시비밀번호입니다.";      // 제목
-		    String content = "임시비밀번호 : " + ranpw;    // 내용
+		    String content = "임시비밀번호 : " + ranpw;    			// 내용
 		   
 		    try {
 		      MimeMessage message = mailSender.createMimeMessage();
@@ -81,7 +81,7 @@ public class IdPassFindController {
 		
 		
 	}
-	 
+	
 	
 	//임시 비밀번호 생성
 	private static String randomPw(){ 
