@@ -6,15 +6,23 @@
 <mapper namespace="OpenInfo">
 
 	<resultMap type="com.bujun.openinfo.vo.OpenInfoVo" id="selOpenInfo">
-		<result property="idx"		  	column="AD_IDX"			javaType="int"/>
-		<result property="ad_code" 		column="AD_CODE" 		javaType="String"/>
-		<result property="ad_writer" 	column="AD_WRITER" 		javaType="String"/>
-		<result property="ad_rimemnum" 	column="AD_RIMEMNUM"	javaType="String"/>
-		<result property="ad_title" 	column="AD_TITLE" 		javaType="String"/>
-		<result property="ad_content" 	column="AD_CONTENT" 	javaType="String"/>
-		<result property="ad_regdate" 	column="AD_REGDATE" 	javaType="String"/>
-		<result property="ad_count" 	column="AD_COUNT" 		javaType="int"/>
-		<result property="ad_memname"	column="MEM_NAME"		javaType="String"/>
+		<result property="idx"		  		column="AD_IDX"				javaType="int"/>
+		<result property="ad_code" 			column="AD_CODE" 			javaType="String"/>
+		<result property="ad_writer" 		column="AD_WRITER" 			javaType="String"/>
+		<result property="ad_rimemnum" 		column="AD_RIMEMNUM"		javaType="String"/>
+		<result property="ad_title" 		column="AD_TITLE" 			javaType="String"/>
+		<result property="ad_content" 		column="AD_CONTENT" 		javaType="String"/>
+		<result property="ad_regdate" 		column="AD_REGDATE" 		javaType="String"/>
+		<result property="ad_count" 		column="AD_COUNT" 			javaType="int"/>
+		<result property="ad_memname"		column="MEM_NAME"			javaType="String"/>
+		<result property="file_idx"			column="FILE_IDX"			javaType="int"/>
+		<result property="file_board_idx"	column="FILE_BOARDIDX"		javaType="int"/>
+		<result property="file_board_code"	column="FILE_BOARDCODE"		javaType="String"/>
+		<result property="file_name"		column="FILE_FILENAME"		javaType="String"/>
+		<result property="file_size"		column="FILE_SIZE"			javaType="String"/>
+		<result property="file_real_name"	column="FILE_FILEREALNAME"	javaType="String"/>
+		<result property="file_ext"			column="FILE_EXT"			javaType="String"/>
+		<result property="file_regdate"		column="FILE_REGDATE"		javaType="String"/>
 	</resultMap>
 	
 	<insert id="insertContent" statementType="CALLABLE" parameterType="hashmap">
@@ -51,4 +59,15 @@
 		)}
 	</insert>
 	
+	<select id="detail" 
+			statementType="CALLABLE"
+			parameterType="hashmap"
+			resultType="com.bujun.openinfo.vo.OpenInfoVo">
+		{CALL PKG_OPENINFO.PROC_GET_DETAIL(
+		#{ad_idx, mode=IN, jdbcType=NUMERIC},
+		#{ad_code, mode=IN, jdbcType=VARCHAR},
+		#{ad_writer, mode=OUT, jdbcType=VARCHAR},
+		#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=selOpenInfo}		
+		)}
+	</select>
 </mapper>

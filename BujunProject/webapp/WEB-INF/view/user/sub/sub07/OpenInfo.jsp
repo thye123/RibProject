@@ -97,7 +97,7 @@
 				<c:forEach var="cList" items="${contentList}">
 					<tr>
 						<td>${cList.idx}</td>
-						<td style="text-align:left;"><a href="/">${cList.ad_title}</a></td>
+						<td style="text-align:left;"><a href="/info03/dCon?ad_code=${ad_code}&ad_idx=${cList.idx}">${cList.ad_title}</a></td>
 						<td>${cList.ad_memname}</td>
 						<td>${cList.ad_regdate}</td>
 						<td>${cList.ad_count}</td>
@@ -105,8 +105,8 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<div>
-			<button id="newContent">새글쓰기</button>
+		<div class="r mg_t20 btns">
+			<button class="btns_black" id="newContent">새글쓰기</button>
 		</div>	
 	</div>
 	<!-- //table -->

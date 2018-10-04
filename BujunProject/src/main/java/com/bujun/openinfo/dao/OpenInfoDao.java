@@ -15,4 +15,6 @@ public interface OpenInfoDao {
 
 	public void addFile(HttpServletRequest req, HashMap<String, Object> map);
 
+	public OpenInfoVo detail(HashMap<String, Object> map);
+
 }

@@ -22,6 +22,7 @@ public class OpenInfoServiceImpl implements OpenInfoService {
 	@Autowired
 	OpenInfoDao openInfoDao;
 	
+	//리스트
 	@Override
 	public List<OpenInfoVo> selectList(HashMap<String, Object> map) {
 		List<OpenInfoVo> list = openInfoDao.selectList(map);
@@ -35,12 +36,14 @@ public class OpenInfoServiceImpl implements OpenInfoService {
 		return list;
 	}
 
+	//인서트
 	@Override
 	public int insertContent(HashMap<String, Object> map) {
 		int ad_idx = openInfoDao.insertContent(map);
 		return ad_idx;
 	}
 
+	//파일 인서트
 	@Override
 	public void addFile(HttpServletRequest req, HashMap<String, Object> map) {
 		CheckFile fileCheck = new CheckFile();
@@ -76,7 +79,7 @@ public class OpenInfoServiceImpl implements OpenInfoService {
 				
 				// 중복파일이 존재하면 번호추가 후 실제 파일명 처리
 				sFileName   = fileCheck.getCheckFileName(
-					filePath, file_fileRealName, file_ext ); //"테풍1";
+					filePath, file_fileName, file_ext ); //"테풍1";
 				
 				// 저장
 				File file = new File(filePath + sFileName);
@@ -99,6 +102,12 @@ public class OpenInfoServiceImpl implements OpenInfoService {
 				}				
 			}
 		}
+	}
+
+	@Override
+	public OpenInfoVo detail(HashMap<String, Object> map) {
+		OpenInfoVo vo = openInfoDao.detail(map);
+		return vo;
 	}
 
 }
