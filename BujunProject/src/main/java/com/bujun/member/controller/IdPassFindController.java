@@ -1,7 +1,6 @@
 package com.bujun.member.controller;
 
 import java.util.HashMap;
-
 import javax.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;

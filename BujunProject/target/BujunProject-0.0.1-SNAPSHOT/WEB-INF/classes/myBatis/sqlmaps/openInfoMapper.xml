@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="OpenInfo">
+
+	<resultMap type="com.bujun.openinfo.vo.OpenInfoVo" id="selOpenInfo">
+		<result property="idx"		  	column="AD_IDX"			javaType="int"/>
+		<result property="ad_code" 		column="AD_CODE" 		javaType="String"/>
+		<result property="ad_writer" 	column="AD_WRITER" 		javaType="String"/>
+		<result property="ad_rimemnum" 	column="AD_RIMEMNUM"	javaType="String"/>
+		<result property="ad_title" 	column="AD_TITLE" 		javaType="String"/>
+		<result property="ad_content" 	column="AD_CONTENT" 	javaType="String"/>
+		<result property="ad_regdate" 	column="AD_REGDATE" 	javaType="String"/>
+		<result property="ad_count" 	column="AD_COUNT" 		javaType="int"/>
+		<result property="ad_memname"	column="MEM_NAME"		javaType="String"/>
+	</resultMap>
+	
+	<insert id="insertContent" statementType="CALLABLE" parameterType="hashmap">
+		{CALL PKG_OPENINFO.PROC_INSERT_DATA(
+		#{ad_code, mode=IN, jdbcType=VARCHAR},
+		#{ad_writer, mode=IN, jdbcType=VARCHAR},
+		#{ad_title, mode=IN, jdbcType=VARCHAR},
+		#{ad_content, mode=IN, jdbcType=VARCHAR},
+		#{ad_idx, mode=OUT, jdbcType=NUMERIC}
+		)}
+	</insert>
+	
+	<select id="selectCList"
+			statementType="CALLABLE"
+			parameterType="hashmap"
+			resultType="com.bujun.openinfo.vo.OpenInfoVo"
+	>
+		{CALL PKG_OPENINFO.PROC_SELECT_LIST(
+		#{ad_code, mode=IN, jdbcType=VARCHAR},
+		#{page_num, mode=IN, jdbcType=VARCHAR},
+		#{tot_cnt, mode=OUT, jdbcType=NUMERIC},
+		#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=selOpenInfo}
+		)}
+	</select>
+
+	<insert id="insertFile" statementType="CALLABLE" parameterType="hashmap">
+		{CALL PKG_OPENINFO.PROC_INSERT_FILE(
+		#{ad_idx, mode=IN, jdbcType=NUMERIC},
+		#{ad_code, mode=IN, jdbcType=VARCHAR},
+		#{file_fileName, mode=IN, jdbcType=VARCHAR},
+		#{file_size, mode=IN, jdbcType=NUMERIC},
+		#{file_fileRealName, mode=IN, jdbcType=VARCHAR},
+		#{file_ext, mode=IN, jdbcType=VARCHAR}
+		)}
+	</insert>
+	
+</mapper>

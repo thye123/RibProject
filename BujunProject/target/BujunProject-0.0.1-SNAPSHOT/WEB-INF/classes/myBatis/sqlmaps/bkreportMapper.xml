@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- dtd선언 - 필수임 -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="BkReport">
+
+    <resultMap id="BkReportMap" type="com.bujun.bookReport.vo.BkReportVo">
+      <result property="bd_idx" column="bd_idx" javaType="int" />
+      <result property="bd_catcode" column="bd_catcode" javaType="string" />
+      <result property="bd_writer" column="bd_writer" javaType="string" />
+      <result property="bd_rimemnum" column="bd_rimemnum" javaType="string" />
+      <result property="bd_email" column="bd_email" javaType="string" />
+      <result property="bd_phone" column="bd_phone" javaType="string" />
+      <result property="bd_pass" column="bd_pass" javaType="string" />
+      <result property="bd_open" column="bd_open" javaType="int" />
+      <result property="bd_title" column="bd_title" javaType="string" />
+      <result property="bd_content" column="bd_content" javaType="string" />
+      <result property="bd_regdate" column="bd_regdate" javaType="string" />
+      <result property="bd_count" column="bd_count" javaType="int" />
+      <result property="bd_gubun" column="bd_gubun" javaType="string" /> 
+      <result property="bd_grp" column="bd_grp" javaType="int" />
+      <result property="bd_step" column="bd_step" javaType="int" />
+    </resultMap>  
+    
+        
+    <select id="BkReportList" statementType="CALLABLE" parameterType="com.bujun.bookReport.vo.BkReportVo">   
+	     {CALL  BJL_PKG_REPORT.report_list(   
+	        #{bd_catcode, mode=IN,  jdbcType=VARCHAR },
+	        #{page, mode=IN,  jdbcType=INTEGER },
+	        #{perPageNum, mode=IN,  jdbcType=INTEGER },
+	        #{searchType, mode=IN,  jdbcType=VARCHAR },
+	        #{keyword, mode=IN,  jdbcType=VARCHAR },
+	        #{result,  mode=OUT, jdbcType=CURSOR, javaType=ResultSet,
+	             resultMap=BkReportMap }
+	      )}        
+    </select>
+    
+        
+    <select id="BkReportTotalCount" statementType="CALLABLE" parameterType="com.bujun.bookReport.vo.BkReportVo">   
+	     {CALL  BJL_PKG_REPORT.report_totalcount(   
+	        #{bd_catcode, mode=IN,  jdbcType=VARCHAR },
+	        #{searchType, mode=IN,  jdbcType=VARCHAR },
+	        #{keyword, mode=IN,  jdbcType=VARCHAR },
+	        #{result,  mode=OUT, jdbcType=INTEGER}
+	      )}        
+    </select>
+  
+   
+    <insert id="BkReportInsert" parameterType="hashmap" statementType="CALLABLE">
+ 	     {CALL  BJL_PKG_REPORT.report_write(   
+	        #{bd_writer, mode=IN,  jdbcType=VARCHAR },
+	        #{bd_email, mode=IN,  jdbcType=VARCHAR },
+	        #{bd_gubun, mode=IN,  jdbcType=VARCHAR },
+	        #{bd_open, mode=IN,  jdbcType=INTEGER },
+	        #{bd_phone, mode=IN,  jdbcType=VARCHAR },
+	        #{bd_pass, mode=IN,  jdbcType=VARCHAR },
+	        #{bd_title, mode=IN,  jdbcType=VARCHAR },
+	        #{bd_content, mode=IN,  jdbcType=VARCHAR },
+	        #{bd_rimemnum, mode=IN,  jdbcType=VARCHAR },
+	        #{filename, mode=IN,  jdbcType=VARCHAR },
+	        #{file_size, mode=IN,  jdbcType=VARCHAR },
+	        #{file_filerealname, mode=IN,  jdbcType=VARCHAR },
+	        #{file_ext, mode=IN,  jdbcType=VARCHAR },
+	        #{bd_catcode, mode=IN,  jdbcType=VARCHAR }       
+	      )}     	
+    </insert>
+    
+        
+	<insert id="BkReportRead" parameterType="hashmap" statementType="CALLABLE">
+	   {CALL BJL_PKG_REPORT.report_read(   
+		#{bd_idx, mode=IN,  jdbcType=INTEGER },
+		#{bd_catcode, mode=IN,  jdbcType=VARCHAR },
+		#{result,  mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=BkReportMap }	     
+	   )}     	
+	</insert>
+               
+
+    <select id="BkReportPassChk" statementType="CALLABLE" parameterType="com.bujun.bookReport.vo.BkReportVo">   
+	     {CALL  BJL_PKG_REPORT.report_pass_chk(   
+	        #{bd_catcode, mode=IN,  jdbcType=VARCHAR },
+	        #{bd_idx, mode=IN,  jdbcType=INTEGER },
+	        #{bd_pass, mode=IN,  jdbcType=VARCHAR },
+	        #{result,  mode=OUT, jdbcType=INTEGER}
+	      )}        
+    </select>       
+        
+    <update id="BkReportUpdate" parameterType="hashmap" statementType="CALLABLE">
+ 	     {CALL  BJL_PKG_REPORT.report_update(   
+	        #{bd_catcode, mode=IN,  jdbcType=VARCHAR }, 
+	        #{bd_idx, mode=IN,  jdbcType=INTEGER }, 
+	        #{bd_content, mode=IN,  jdbcType=VARCHAR } 
+	      )}     	
+    </update>                   
+           
+    <delete id="BkReportDelete" parameterType="hashmap" statementType="CALLABLE">
+ 	     {CALL  BJL_PKG_REPORT.report_delete(   
+	        #{bd_catcode, mode=IN,  jdbcType=VARCHAR }, 
+	        #{bd_idx, mode=IN,  jdbcType=INTEGER }
+	      )}     	
+    </delete>  
+    
+      
+        
+    <!-- 자유게시판 -->
+     <select id="FreeBrdList" statementType="CALLABLE" parameterType="com.bujun.bookReport.vo.BkReportVo">   
+	     {CALL  BJL_PKG_FREEBRD.freebrd_list(   
+	        #{bd_catcode, mode=IN,  jdbcType=VARCHAR },
+	        #{page, mode=IN,  jdbcType=INTEGER },
+	        #{perPageNum, mode=IN,  jdbcType=INTEGER },
+	        #{searchType, mode=IN,  jdbcType=VARCHAR },
+	        #{keyword, mode=IN,  jdbcType=VARCHAR },
+	        #{result,  mode=OUT, jdbcType=CURSOR, javaType=ResultSet,
+	             resultMap=BkReportMap }
+	      )}        
+    </select>
+    
+
+    <insert id="FreeBrdInsert" parameterType="hashmap" statementType="CALLABLE">
+ 	     {CALL  BJL_PKG_FREEBRD.freebrd_write(   
+	        #{bd_writer, mode=IN,  jdbcType=VARCHAR },
+	        #{bd_email, mode=IN,  jdbcType=VARCHAR },
+	        #{bd_open, mode=IN,  jdbcType=INTEGER },
+	        #{bd_rimemnum, mode=IN,  jdbcType=VARCHAR },
+	        #{bd_pass, mode=IN,  jdbcType=VARCHAR },
+	        #{bd_title, mode=IN,  jdbcType=VARCHAR },
+	        #{bd_content, mode=IN,  jdbcType=VARCHAR },
+	        #{bd_catcode, mode=IN,  jdbcType=VARCHAR },
+	        #{bd_grp, mode=IN,  jdbcType=INTEGER },
+	        #{bd_step, mode=IN,  jdbcType=INTEGER }
+	      )}     	
+    </insert>  
+    
+         
+    <update id="FreeBrdUpdate" parameterType="hashmap" statementType="CALLABLE">
+ 	     {CALL  BJL_PKG_FREEBRD.freebrd_update(   
+	        #{bd_title, mode=IN,  jdbcType=VARCHAR },
+	        #{bd_content, mode=IN,  jdbcType=VARCHAR },
+	        #{bd_catcode, mode=IN,  jdbcType=VARCHAR },
+	        #{bd_idx, mode=IN,  jdbcType=INTEGER }
+	      )}      
+    </update>  
+                  
+</mapper>
