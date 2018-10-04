@@ -14,16 +14,31 @@
 
 <script>
 	onload = function(){
+		var subTitle = document.getElementsByClassName("subTitle");
+		var m1 = ${m1};
+		var m2 = ${m2};
+		var m3 = ${m3};
+		var code = "${ad_code}";
+		if(code=="CAT0016"||(m1==07&&m2==01&&m3==03)){
+			subTitle[0].removeChild(subTitle[0].childNodes[0]);
+			var coment = document.createTextNode("정보목록");
+			subTitle[0].appendChild(coment);
+		}else{
+			subTitle[0].removeChild(subTitle[0].childNodes[0]);
+			var coment = document.createTextNode("사전공표대상공개");
+			subTitle[0].appendChild(coment);
+		}
+		
 		var newContent = document.getElementById("newContent");
-		var ad_code = ${ad_code};
+		var ad_code = "${ad_code}";
 		newContent.addEventListener("click", function(){
 			switch (ad_code) {
 			case "CAT0016":
-				location.href="/info03/newContentForm?ad_code=" + ad_code;
+				location.href="/info03/CForm?ad_code=" + ad_code;
 				break;
 				
 			case "CAT0017":
-				location.href="/info03/newContentForm?ad_code=" + ad_code;
+				location.href="/info03/CForm?ad_code=" + ad_code;
 				break;
 			}
 		});
@@ -35,7 +50,7 @@
 	<ul>
 		<li><img src="${pageContext.request.contextPath}/resources/user/images/sub/loca_home.jpg" alt="" /></li>
 		<li>정보공개</li>
-		<li>정보목록</li>
+		<li class="subTitle">정보목록</li>
 	</ul>
 </div>
 <!-- //location -->

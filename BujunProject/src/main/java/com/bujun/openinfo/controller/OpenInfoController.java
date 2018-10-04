@@ -52,6 +52,9 @@ public class OpenInfoController {
 		System.out.println("list: " + list);
 		System.out.println("paging: " + map.get("pagingVo"));
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("m1",map.get("m1"));
+		mv.addObject("m2",map.get("m2"));
+		mv.addObject("m3",map.get("m3"));
 		mv.addObject("ad_code", map.get("ad_code"));
 		mv.addObject("contentList", list);
 		mv.addObject("paging", map.get("pagingVo"));
@@ -64,10 +67,18 @@ public class OpenInfoController {
 		return "user/sub/sub07/OpenData";
 	}
 	
-	@RequestMapping("/info03/newContentForm")
+	//새글작성
+	@RequestMapping("/info03/CForm")
 	public ModelAndView insertForm(@RequestParam HashMap<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
-		
+		mv.addObject("ad_code", map.get("ad_code"));
+		mv.setViewName("user/sub/sub07/OpenInfoInsert");
+		return mv;
+	}
+	
+	@RequestMapping("/info03/iCon")
+	public ModelAndView insertContent(@RequestParam HashMap<String, Object> map) {
+		ModelAndView mv = new ModelAndView();
 		return mv;
 	}
 	
