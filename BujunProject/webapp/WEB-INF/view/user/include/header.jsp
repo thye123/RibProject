@@ -4,6 +4,7 @@
 <html>
 <head>
 	<%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 	
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/user/css/base.css" />
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/user/css/layout.css" />
@@ -79,7 +80,16 @@
 	<div class="lnb_menu">
 		<div class="lnb_wrap">
 			<ul class="lnb_con">
-				<li><a href="#">로그인</a></li>
+
+				<c:choose>
+					<c:when test="${sessionScope.mem_name eq null}">
+						<li><a href="/bjLogin">로그인</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="/logout">로그아웃</a></li>
+					</c:otherwise>
+				</c:choose>
+			
 				<li><a href="#">회원가입</a></li>
 				<li><a href="#">마이페이지</a></li>
 			</ul>

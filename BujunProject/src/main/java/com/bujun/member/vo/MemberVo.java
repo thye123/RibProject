@@ -14,6 +14,7 @@ public class MemberVo {
 	private String mem_regdate;
 	private String mem_enabled;
 	private String mem_auth;
+	private int cnt;
 	
 	public String getMem_id() {
 		return mem_id;
@@ -93,6 +94,13 @@ public class MemberVo {
 	public void setMem_auth(String mem_auth) {
 		this.mem_auth = mem_auth;
 	}
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+	
 	
 
 }

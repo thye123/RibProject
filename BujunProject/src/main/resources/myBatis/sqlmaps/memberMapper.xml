@@ -30,5 +30,23 @@
 	        #{result,  mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap }
 	      )}        
     </select>
-                     
+
+    
+     <select id="MemberPassChk" statementType="CALLABLE" parameterType="com.bujun.member.vo.MemberVo">   
+	     {CALL  BJL_PKG_MEMBER.pass_find(   
+	        #{mem_id, mode=IN,  jdbcType=VARCHAR },
+	        #{mem_email, mode=IN,  jdbcType=VARCHAR },
+	        #{result, mode=OUT, jdbcType=INTEGER}
+	      )}        
+    </select>
+    
+     <select id="MemberPassChk2" statementType="CALLABLE" parameterType="com.bujun.member.vo.MemberVo">   
+	     {CALL  BJL_PKG_MEMBER.pass_find_email(   
+	        #{mem_id, mode=IN,  jdbcType=VARCHAR },
+	        #{mem_email, mode=IN,  jdbcType=VARCHAR },
+	        #{result, mode=OUT, jdbcType=VARCHAR}
+	      )}        
+    </select>
+    
+                             
 </mapper>

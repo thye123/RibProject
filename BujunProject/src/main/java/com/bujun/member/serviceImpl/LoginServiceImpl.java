@@ -20,6 +20,20 @@ public class LoginServiceImpl implements LoginService{
 		MemberVo vo = loginDao.getMember(map);
 		return vo;
 	}
+
+	
+	@Override
+	public int getPassChk(HashMap<String, Object> map) {
+		int res = loginDao.getPassChk(map);
+		return res;
+	}
+
+
+	@Override
+	public String getPassChkEmail(HashMap<String, Object> map) {
+		String res = loginDao.getPassChkEmail(map);
+		return res;
+	}
 	
 	
 	

@@ -28,6 +28,24 @@ public class LoginDaoImpl implements LoginDao{
 		
 		return vo;
 	}
+
+	
+	@Override
+	public int getPassChk(HashMap<String, Object> map) {
+		sqlSession.selectOne("memberMapper.MemberPassChk", map);
+		int res = (int) map.get("result");
+
+		return res;
+	}
+
+
+	@Override
+	public String getPassChkEmail(HashMap<String, Object> map) {
+		sqlSession.selectOne("memberMapper.MemberPassChk2", map);
+		String res = (String) map.get("result");
+
+		return res;
+	}
 	
 	
 	
