@@ -38,19 +38,21 @@ public class OpenInfoController {
 		
 		if(m1.equals("07")&&m2.equals("01")&&m3.equals("03")) {
 			ad_code = "CAT0016";
+			System.out.println("ad_code: " + ad_code);
+			map.put("ad_code", ad_code);
 		}else {
 			if(m1.equals("07")&&m2.equals("01")&&m3.equals("05")) {
 				ad_code="CAT0017";
+				System.out.println("ad_code: " + ad_code);
+				map.put("ad_code", ad_code);
 			}
 		}
-		System.out.println("ad_code: " + ad_code);
-		map.put("ad_code", ad_code);
 		
 		List<OpenInfoVo> list = openInfoService.selectList(map);
 		System.out.println("list: " + list);
 		System.out.println("paging: " + map.get("pagingVo"));
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("ad_code", ad_code);
+		mv.addObject("ad_code", map.get("ad_code"));
 		mv.addObject("contentList", list);
 		mv.addObject("paging", map.get("pagingVo"));
 		mv.setViewName("user/sub/sub07/OpenInfo");
@@ -60,5 +62,19 @@ public class OpenInfoController {
 	@RequestMapping("/opdata")
 	public String goOPData(){
 		return "user/sub/sub07/OpenData";
+	}
+	
+	@RequestMapping("/info03/newContentForm")
+	public ModelAndView insertForm(@RequestParam HashMap<String, Object> map) {
+		ModelAndView mv = new ModelAndView();
+		
+		return mv;
+	}
+	
+	//상세 정보
+	@RequestMapping("/h")
+	public ModelAndView goContent(@RequestParam HashMap<String, Object> map) {
+		ModelAndView mv = new ModelAndView();		
+		return mv;
 	}
 }

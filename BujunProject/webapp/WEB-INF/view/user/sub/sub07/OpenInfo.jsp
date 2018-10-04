@@ -12,7 +12,23 @@
 <!-- 레프트메뉴 -->
 <%@ include file="../../include/left_menu07.jsp" %>   
 
-
+<script>
+	onload = function(){
+		var newContent = document.getElementById("newContent");
+		var ad_code = ${ad_code};
+		newContent.addEventListener("click", function(){
+			switch (ad_code) {
+			case "CAT0016":
+				location.href="/info03/newContentForm?ad_code=" + ad_code;
+				break;
+				
+			case "CAT0017":
+				location.href="/info03/newContentForm?ad_code=" + ad_code;
+				break;
+			}
+		});
+	}
+</script>
 			
 <!-- location -->
 <div class="loca">
@@ -66,7 +82,7 @@
 				<c:forEach var="cList" items="${contentList}">
 					<tr>
 						<td>${cList.idx}</td>
-						<td style="text-align:left;">${cList.ad_title}</td>
+						<td style="text-align:left;"><a href="/">${cList.ad_title}</a></td>
 						<td>${cList.ad_memname}</td>
 						<td>${cList.ad_regdate}</td>
 						<td>${cList.ad_count}</td>
@@ -74,7 +90,9 @@
 				</c:forEach>
 			</tbody>
 		</table>
-			
+		<div>
+			<button id="newContent">새글쓰기</button>
+		</div>	
 	</div>
 	<!-- //table -->
 	
@@ -115,19 +133,20 @@
          <a class="lastpage" href="/freebrd?bd_catcode=CAT0007&m1=06&m2=03&page=${pageMaker.lastBlock}&perPageNum=10&searchType=${search}&keyword=${key}"><span>마지막</span></a> --%>
 		<!--  -->
 		
-			<span class="firstpage1"><span>처음 페이지</span></span>
+			<!-- <span class="firstpage1"><span>처음 페이지</span></span>
 			
 			<span class="prevblock1 hidden"><span>1 페이지</span></span>
-			<span class="beforepage1 "><span>이전페이지없음</span></span> <!-- 이전페이지 없을때 -->
+			<span class="beforepage1 "><span>이전페이지없음</span></span> --> <!-- 이전페이지 없을때 -->
+			
 			<c:set var="endnum" 	value="${paging.end_page}"></c:set>
 			<c:set var="startnum" 	value="${paging.start_page}"></c:set>
 			<c:forEach var="Paging" begin="${startnum}" end="${endnum}" step="1">
-				<a href="/info03?&ad_code=${ad_code}&page_num=${Paging}">${Paging}</a>
+				<a class="default" href="/info03?&ad_code=${ad_code}&page_num=${Paging}"><span>${Paging}</span></a>
 			</c:forEach>
 	
-			<a class="afterpage hidden" href="#"><span>앞페이지</span></a>
+			<!-- <a class="afterpage hidden" href="#"><span>앞페이지</span></a>
 			<a class="nextblock" href="#"><span>6 페이지</span></a>
-			<a class="lastpage" href="#"><span>21 페이지</span></a>
+			<a class="lastpage" href="#"><span>21 페이지</span></a> -->
 		</div>
 	</div>
 	<!-- //페이징 -->	
