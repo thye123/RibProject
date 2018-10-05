@@ -186,7 +186,6 @@
 
 		<div class="r mg_t20 btns">
 			<a class="btns_blue" href="#" onclick="repo1Write()">확인하기</a>
-			<a class="btns_black" href="#">다시쓰기</a>
 			<a class="btns_black" href="/bkreport01?bd_catcode=CAT0005&m1=05&m2=08&m3=01&page=1&perPageNum=10">목록</a>
 		</div>
 		
