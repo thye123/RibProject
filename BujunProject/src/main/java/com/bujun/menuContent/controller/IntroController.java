@@ -17,4 +17,11 @@ public class IntroController {
 		model.addAttribute("menu", map);
 		return "user/sub/sub01/bjldata";
 	}
+	
+	@RequestMapping("/org")
+	public String org(@RequestParam HashMap<String, Object> map, Model model) {
+	
+		model.addAttribute("menu", map);
+		return "user/sub/sub01/org";
+	}
 }

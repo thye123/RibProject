@@ -17,5 +17,11 @@ public class EduController {
 		return "user/sub/sub04/support";
 	}
 	
+	@RequestMapping("/opguide")
+	public String opguide(@RequestParam HashMap<String, Object> map, Model model) {
+		
+		model.addAttribute("menu", map);
+		return "user/sub/sub04/operatingguide";
+	}
 	
 }

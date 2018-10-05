@@ -60,8 +60,31 @@ public class ReadCultureController {
 	}		
 		
 	
+	@RequestMapping("/bkcare")
+	public String bibliotherapy(@RequestParam HashMap<String, Object> map, Model model) {
+		
+		model.addAttribute("menu", map);
+		return "user/sub/sub05/bibliotherapy";
+	}
 	
+	@RequestMapping("/caresite")
+	public String bibliotherapySite(@RequestParam HashMap<String, Object> map, Model model) {
+		
+		model.addAttribute("menu", map);
+		return "user/sub/sub05/bibliotherapySite";
+	}
 	
+	@RequestMapping("/libweek")
+	public String libweek(@RequestParam HashMap<String, Object> map, Model model) {
+		
+		model.addAttribute("menu", map);
+		return "user/sub/sub05/libweek";
+	}
 	
-	
+	@RequestMapping("/moreading")
+	public String readingMonth(@RequestParam HashMap<String, Object> map, Model model) {
+		
+		model.addAttribute("menu", map);
+		return "user/sub/sub05/readingmonth";		
+	}
 }

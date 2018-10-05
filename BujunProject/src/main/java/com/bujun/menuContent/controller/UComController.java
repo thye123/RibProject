@@ -40,6 +40,17 @@ public class UComController {
 		return "user/sub/sub06/charter03";
 	}	
 	
+	@RequestMapping("/qna")
+	public String qna(@RequestParam HashMap<String, Object> map, Model model) {
+		
+		model.addAttribute("menu", map);
+		return "user/sub/sub06/qna";
+	}
 	
-	
+	@RequestMapping("/law")
+	public String liblaw(@RequestParam HashMap<String, Object> map, Model model) {
+		
+		model.addAttribute("menu", map);
+		return "user/sub/sub06/liblaw";
+	}
 }
