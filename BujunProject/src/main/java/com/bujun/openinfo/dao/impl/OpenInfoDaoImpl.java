@@ -49,5 +49,12 @@ public class OpenInfoDaoImpl implements OpenInfoDao {
 		OpenInfoVo vo = list.get(0);
 		return vo;
 	}
+
+	@Override
+	public List<OpenInfoVo> search(HashMap<String, Object> map) {
+		sqlSession.selectList("OpenInfo.search", map);
+		List<OpenInfoVo> list = (List<OpenInfoVo>) map.get("result");
+		return list;
+	}
 	
 }

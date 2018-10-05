@@ -95,7 +95,6 @@
 					<option value="content">내용</option>
 				</select> 
 				<input type="text" name="keyword" id="keyword" title="검색어 입력" value="" placeholder="검색어를 입력하세요" /> 
-				<input type="text" name="srchhidden" title="검색어 입력체크" style="display: none;" /> 
 				<a href="#" class="searchBtn" onclick="document.search.submit(); return false;">검색</a>
 			</div>
 		</form>

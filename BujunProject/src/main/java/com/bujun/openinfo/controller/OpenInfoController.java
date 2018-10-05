@@ -106,9 +106,28 @@ public class OpenInfoController {
 	@RequestMapping("/info03/search")
 	public ModelAndView search(@RequestParam HashMap<String, Object> map, Model model) {
 		model.addAttribute("menu", map);
+		String ad_code = "";
+		String m1 = String.valueOf(map.get("m1"));		
+		String m2 = String.valueOf(map.get("m2"));		
+		String m3 = String.valueOf(map.get("m3"));
+		
+		//게시판 코드 확인
+		if(m1.equals("07")&&m2.equals("01")&&m3.equals("03")) {
+			ad_code = "CAT0016";
+			//System.out.println("ad_code: " + ad_code);
+			map.put("ad_code", ad_code);
+		}else {
+			if(m1.equals("07")&&m2.equals("01")&&m3.equals("05")) {
+				ad_code="CAT0017";
+				//System.out.println("ad_code: " + ad_code);
+				map.put("ad_code", ad_code);
+			}
+		}
+		
 		List<OpenInfoVo> list = openInfoService.search(map);
 		System.out.println("map search: " + map);
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("searchList", list);
 		mv.setViewName("user/sub/sub07/OpenInfo");
 		return mv;
 	}

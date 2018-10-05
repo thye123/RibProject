@@ -70,4 +70,18 @@
 		#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=selOpenInfo}		
 		)}
 	</select>
+
+	<select id="search"
+			statementType="CALLABLE"
+			parameterType="hashmap"
+			resultType="com.bujun.openinfo.vo.OpenInfoVo">
+		{CALL PKG_OPENINFO.PROC_SEARCH(
+		#{keyword,  mode=IN,  jdbcType=VARCHAR},
+		#{keyfeild, mode=IN,  jdbcType=VARCHAR},
+		#{ad_code,  mode=IN,  jdbcType=VARCHAR},
+		#{page_num, mode=IN,  jdbcType=NUMERIC},
+		#{tot_cnt,  mode=OUT, jdbcType=NUMERIC},
+		#{result,   mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=selOpenInfo}
+		)}
+	</select>
 </mapper>
