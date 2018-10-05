@@ -3,6 +3,8 @@ package com.bujun.openinfo.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +32,7 @@ public class OpenInfoController {
 	
 	@RequestMapping("/info03")
 	public ModelAndView goOpenInfo(@RequestParam HashMap<String, Object> map) {
-		System.out.println("map : " + map);
+		//System.out.println("map : " + map);
 		String ad_code = "";
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
@@ -38,19 +40,19 @@ public class OpenInfoController {
 		
 		if(m1.equals("07")&&m2.equals("01")&&m3.equals("03")) {
 			ad_code = "CAT0016";
-			System.out.println("ad_code: " + ad_code);
+			//System.out.println("ad_code: " + ad_code);
 			map.put("ad_code", ad_code);
 		}else {
 			if(m1.equals("07")&&m2.equals("01")&&m3.equals("05")) {
 				ad_code="CAT0017";
-				System.out.println("ad_code: " + ad_code);
+				//System.out.println("ad_code: " + ad_code);
 				map.put("ad_code", ad_code);
 			}
 		}
 		
 		List<OpenInfoVo> list = openInfoService.selectList(map);
-		System.out.println("list: " + list);
-		System.out.println("paging: " + map.get("pagingVo"));
+		/*System.out.println("list: " + list);
+		System.out.println("paging: " + map.get("pagingVo"));*/
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("m1",map.get("m1"));
 		mv.addObject("m2",map.get("m2"));
@@ -77,15 +79,25 @@ public class OpenInfoController {
 	}
 	
 	@RequestMapping("/info03/iCon")
-	public ModelAndView insertContent(@RequestParam HashMap<String, Object> map) {
+	public String insertContent(@RequestParam HashMap<String, Object> map, HttpServletRequest req) {
+		int ad_idx = openInfoService.insertContent(map);
+		String ad_code = (String) map.get("ad_code");
+		map.put("ad_idx", ad_idx);
 		ModelAndView mv = new ModelAndView();
-		return mv;
+		openInfoService.addFile(req, map);			
+		
+		return "redirect:/info03?ad_code="+ad_code+"&page_num=1";
 	}
 	
 	//상세 정보
-	@RequestMapping("/h")
+	@RequestMapping("/info03/dCon")
 	public ModelAndView goContent(@RequestParam HashMap<String, Object> map) {
-		ModelAndView mv = new ModelAndView();		
+		OpenInfoVo vo = openInfoService.detail(map);
+		ModelAndView mv = new ModelAndView();
+		System.out.println("vo : " + vo.toString());
+		mv.addObject("openInfoVo", vo);
+		mv.addObject("writer", map.get("ad_writer"));
+		mv.setViewName("user/sub/sub07/OpenInfoDetail");
 		return mv;
 	}
 }

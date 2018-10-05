@@ -28,4 +28,7 @@
 		<constructor-arg value="D:\\upload" />
 	</bean>
     
+    <!-- 파일 다운로드 -->
+    
+    
 </beans>
