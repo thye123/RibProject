@@ -32,4 +32,13 @@ public class EtcDataController {
 		model.addAttribute("menu", map);
 		return "user/sub/sub08/login";
 	}
+	
+	@RequestMapping("/videoinfo") 
+	public String Videoinfo(@RequestParam HashMap<String, Object> map, Model model) {
+		
+		model.addAttribute("menu", map);
+		return "user/sub/sub08/videoinfo";
+	}	
+	
+	
 }
