@@ -70,12 +70,7 @@ public class OpenInfoController {
 		mv.setViewName("user/sub/sub07/OpenInfo");
 		return mv;
 	}
-	
-	@RequestMapping("/opdata")
-	public String goOPData(){
-		return "user/sub/sub07/OpenData";
-	}
-	
+		
 	//새글작성
 	@RequestMapping("/info03/CForm")
 	public ModelAndView insertForm(@RequestParam HashMap<String, Object> map) {

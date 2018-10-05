@@ -14,7 +14,7 @@ public class ReleaseInfoController {
 	public String Opdata(@RequestParam HashMap<String, Object> map, Model model) {
 		
 		model.addAttribute("menu", map);
-		return "user/sub/sub07/opdata";
+		return "user/sub/sub07/OpenData";
 	}
 	
 }
