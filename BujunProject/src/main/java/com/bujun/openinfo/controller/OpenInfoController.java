@@ -36,13 +36,13 @@ public class OpenInfoController {
 	@RequestMapping("/info03")
 	public ModelAndView goOpenInfo(@RequestParam HashMap<String, Object> map, Model model) {
 		model.addAttribute("menu", map);
-		
 		//System.out.println("map : " + map);
 		String ad_code = "";
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
 		String m3 = String.valueOf(map.get("m3"));
-		
+			
+		//게시판 코드 확인
 		if(m1.equals("07")&&m2.equals("01")&&m3.equals("03")) {
 			ad_code = "CAT0016";
 			//System.out.println("ad_code: " + ad_code);
@@ -56,8 +56,8 @@ public class OpenInfoController {
 		}
 		
 		List<OpenInfoVo> list = openInfoService.selectList(map);
-		/*System.out.println("list: " + list);
-		System.out.println("paging: " + map.get("pagingVo"));*/
+		//System.out.println("list: " + list);
+		//System.out.println("paging: " + map);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("m1",map.get("m1"));
 		mv.addObject("m2",map.get("m2"));
@@ -65,6 +65,8 @@ public class OpenInfoController {
 		mv.addObject("ad_code", map.get("ad_code"));
 		mv.addObject("contentList", list);
 		mv.addObject("paging", map.get("pagingVo"));
+		mv.addObject("page_num", map.get("page_num"));
+		mv.addObject("tot_cnt", map.get("tot_cnt"));
 		mv.setViewName("user/sub/sub07/OpenInfo");
 		return mv;
 	}
@@ -99,10 +101,20 @@ public class OpenInfoController {
 	public ModelAndView goContent(@RequestParam HashMap<String, Object> map) {
 		OpenInfoVo vo = openInfoService.detail(map);
 		ModelAndView mv = new ModelAndView();
-		System.out.println("vo : " + vo.toString());
 		mv.addObject("openInfoVo", vo);
 		mv.addObject("writer", map.get("ad_writer"));
 		mv.setViewName("user/sub/sub07/OpenInfoDetail");
+		return mv;
+	}
+	
+	//검색
+	@RequestMapping("/info03/search")
+	public ModelAndView search(@RequestParam HashMap<String, Object> map, Model model) {
+		model.addAttribute("menu", map);
+		List<OpenInfoVo> list = openInfoService.search(map);
+		System.out.println("map search: " + map);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("user/sub/sub07/OpenInfo");
 		return mv;
 	}
 }

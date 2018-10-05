@@ -110,4 +110,10 @@ public class OpenInfoServiceImpl implements OpenInfoService {
 		return vo;
 	}
 
+	@Override
+	public List<OpenInfoVo> search(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
