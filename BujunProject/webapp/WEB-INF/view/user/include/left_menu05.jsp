@@ -71,19 +71,19 @@
 									
 									<c:choose>
 										<c:when test="${menu.m1 eq 05 && menu.m2 eq 01 && menu.m3 eq 03}">
-											<li class="on"><a href="/etcbk?m1=05&m2=01&m3=03">기타추천도서</a></li>
+											<li class="on"><a href="http://www.nl.go.kr/ask/recommend/recommend_nl/list1.jsp" target="_blank">기타추천도서</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/etcbk?m1=05&m2=01&m3=03">기타추천도서</a></li>
+											<li><a href="http://www.nl.go.kr/ask/recommend/recommend_nl/list1.jsp" target="_blank">기타추천도서</a></li>
 										</c:otherwise>
 									</c:choose>	
 																		
 									<c:choose>
 										<c:when test="${menu.m1 eq 05 && menu.m2 eq 01 && menu.m3 eq 04}">
-											<li class="on"><a href="/bksite?m1=05&m2=01&m3=04">독서관련사이트</a></li>
+											<li class="on"><a href="http://www.nl.go.kr/ask/readSite/list.jsp" target="_blank">독서관련사이트</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/bksite?m1=05&m2=01&m3=04">독서관련사이트</a></li>
+											<li><a href="http://www.nl.go.kr/ask/readSite/list.jsp" target="_blank">독서관련사이트</a></li>
 										</c:otherwise>
 									</c:choose>											
 								</ul>
@@ -116,19 +116,19 @@
 									
 									<c:choose>
 										<c:when test="${menu.m1 eq 05 && menu.m2 eq 01 && menu.m3 eq 03}">
-											<li class="on"><a href="/etcbk?m1=05&m2=01&m3=03">기타추천도서</a></li>
+											<li class="on"><a href="http://www.nl.go.kr/ask/recommend/recommend_nl/list1.jsp" target="_blank">기타추천도서</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/etcbk?m1=05&m2=01&m3=03">기타추천도서</a></li>
+											<li><a href="http://www.nl.go.kr/ask/recommend/recommend_nl/list1.jsp" target="_blank">기타추천도서</a></li>
 										</c:otherwise>
 									</c:choose>	
 																		
 									<c:choose>
 										<c:when test="${menu.m1 eq 05 && menu.m2 eq 01 && menu.m3 eq 04}">
-											<li class="on"><a href="/bksite?m1=05&m2=01&m3=04">독서관련사이트</a></li>
+											<li class="on"><a href="http://www.nl.go.kr/ask/readSite/list.jsp" target="_blank">독서관련사이트</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/bksite?m1=05&m2=01&m3=04">독서관련사이트</a></li>
+											<li><a href="http://www.nl.go.kr/ask/readSite/list.jsp" target="_blank">독서관련사이트</a></li>
 										</c:otherwise>
 									</c:choose>											
 								</ul>
