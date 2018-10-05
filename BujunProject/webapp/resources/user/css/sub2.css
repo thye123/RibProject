@@ -220,7 +220,9 @@
 
 
 .sub_con .bul_none {position:relative;}
-.sub_con .bul_none li {padding-left:30px;}
+.sub_con .bul_none li {padding-left:30px; }
+.sub_con .bul_none2 li{line-height: 23px; position:relative; margin-bottom: 5px;}
+
 .sub_con .bul_none li:after {display:none !important;}
 .sub_con .bul_none li ul li {padding-left:0;}
 .bul_cir {border-radius:50%; color:#fff; text-align:center; background:#636b72; display:inline-block; position:absolute; left:0; top:2px; margin:0 0 0 0; width:22px;height:22px;line-height:22px; }

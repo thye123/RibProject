@@ -62,17 +62,6 @@
 	<!-- title -->
 	<div class="sub_tit">정보공개</div>
 	
-	<div class="tab_depth01">
-		<ul class="n03">
-			<li><a href="/info01?m1=07&m2=01&m3=01" class="on">정보공개제도안내</a></li>
-			<li><a href="/info02?m1=07&m2=01&m3=02">사전공표대상 및 비공개대상목록</a></li>
-			<li><a href="/info03?m1=07&m2=01&m3=03&page_num=1">정보목록</a></li>
-			<li><a href="#">정보공개청구</a></li>
-			<li><a href="/info03?m1=07&m2=01&m3=05&page_num=1">사전공표대상공개</a></li>
-		</ul>
-	</div>
-	
-	
 	<!-- content 시작 -->
 	<!-- table -->
 	<div class="scroll_info">
@@ -82,15 +71,15 @@
 		<span class="arr_r"></span>
 	</div>
 	
-	<div class="auto_box mg_b40">			
+		
 		<table class="tb_board">
 			<thead>
 				<tr>
-					<td width="80px">번호</td>
-					<td width="538px">제목</td>
-					<td	width="100px">글쓴이</td>
-					<td width="170px">작성일자</td>
-					<td width="100px">조회수</td>
+					<th width="80px">번호</th>
+					<th width="538px">제목</th>
+					<th	width="100px">글쓴이</th>
+					<th width="170px">작성일자</th>
+					<th width="100px" class="bnon">조회수</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -100,7 +89,7 @@
 						<td style="text-align:left;"><a href="/info03/dCon?ad_code=${ad_code}&ad_idx=${cList.idx}">${cList.ad_title}</a></td>
 						<td>${cList.ad_memname}</td>
 						<td>${cList.ad_regdate}</td>
-						<td>${cList.ad_count}</td>
+						<td class="bnon">${cList.ad_count}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -108,7 +97,7 @@
 		<div class="r mg_t20 btns">
 			<button class="btns_black" id="newContent">새글쓰기</button>
 		</div>	
-	</div>
+
 	<!-- //table -->
 	
 	<!-- //게시판테이블(리스트) -->

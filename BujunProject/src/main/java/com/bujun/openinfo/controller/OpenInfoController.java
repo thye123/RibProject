@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,17 +22,21 @@ public class OpenInfoController {
 	OpenInfoService openInfoService;
 	
 	@RequestMapping("/info01")
-	public String openInfoIntro() {
+	public String openInfoIntro(@RequestParam HashMap<String, Object> map, Model model) {
+		model.addAttribute("menu", map);
 		return "user/sub/sub07/OpenInfoIntro";
 	}
 	
 	@RequestMapping("/info02")
-	public String openInfoList() {
+	public String openInfoList(@RequestParam HashMap<String, Object> map, Model model) {
+		model.addAttribute("menu", map);
 		return "user/sub/sub07/OpenInfoList";
 	}
 	
 	@RequestMapping("/info03")
-	public ModelAndView goOpenInfo(@RequestParam HashMap<String, Object> map) {
+	public ModelAndView goOpenInfo(@RequestParam HashMap<String, Object> map, Model model) {
+		model.addAttribute("menu", map);
+		
 		//System.out.println("map : " + map);
 		String ad_code = "";
 		String m1 = String.valueOf(map.get("m1"));		
