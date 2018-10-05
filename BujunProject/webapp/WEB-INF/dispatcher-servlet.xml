@@ -28,10 +28,5 @@
 	<bean id="uploadPath" class="java.lang.String">
 		<constructor-arg value="D:\\upload" />
 	</bean>
-    
-    <!-- 파일 다운로드 -->    
-    <bean id="fileViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
-    	<property name="order" value="0"/>
-    </bean>
-    
+        
 </beans>
