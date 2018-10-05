@@ -88,7 +88,7 @@
 							
 						</c:when>
 						<c:otherwise>
-							<a href="#this" name="file">${openInfoVo.file_real_name}</a>  <span>( ${openInfoVo.file_size} <b>Kbyte</b>)</span>
+							<a href="#this">${openInfoVo.file_real_name}</a>  <span>( ${openInfoVo.file_size} <b>Kbyte</b>)</span>
 						</c:otherwise>
 					</c:choose>
 				</td>
