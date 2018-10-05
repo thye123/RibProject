@@ -141,8 +141,22 @@
 .icon10{background:url("../images/sub/icon10.png") no-repeat 60% 50%;}
 .icon13{background:url("../images/sub/icon13.png") no-repeat 60% 50%;}
 .icon23{background:url("../images/sub/icon23.png") no-repeat 60% 50%;}
+.icon16{background:url("../images/sub/icon16.png") no-repeat 60% 50%;}
 
 
+/* qna */
+.qnafirst {padding:0 0 15px 0 !important;}
+.qna { border-bottom:1px dotted #ccc; padding:15px 0 15px 0; position:relative;}
+.qna dt {margin-bottom:18px; margin-left:57px; line-height:29px; font-size:16px; font-weight:400;}
+.qna dd {margin-left:57px; line-height:29px;}
+.qna dt img {vertical-align:middle; position:absolute; left:0;}
+.qna dd img {vertical-align:top; position:absolute; left:0;}
+.qna dt .qna_img {float:left;}
+.qna dt .qna_con {float:left;} 
+.qna dt:after {display:block; content:""; clear:both;}
+.qna .qna_ul {width:90%; display:inline-block;}
+.qna .qna_table {width:90%; display:inline-block;}
+.qnalast {border-bottom:0 !important;}
 
 
 
@@ -236,8 +250,11 @@
 
 /******************** pad *****************/
 @media all and (max-width:1000px) {
-
-
+	
+	/* qna */
+	.qna .qna_table {width:100%; margin-top:7px;} 
+	.qna dd.tdd {margin-left:0 !important;}
+	.scroll_info {margin-top:33px;}
 }
 
 
@@ -251,5 +268,9 @@
 	.freebrd_box {margin-bottom:40px; position:relative; background: #fafafa; border: 1px solid #ccc;}
 	.freebrd_box .inner {padding:20px;}
 	.freebrd_box .inner span.icon {display:none;}
+	
+	/* qna */	
+	.qna dt {line-height:24px;}
+	.qna dd {line-height:23px;}
 }
 
