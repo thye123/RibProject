@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Bugin">
 
-<resultMap id="clboadr" type="com.bugin.vo.SearchVo">
+<resultMap id="clboadr" type="com.bujun.club.vo.SearchVo">
 <result property="clb_idx" column="CLB_IDX" javaType="java.lang.Integer"/>
 <result property="clb_clucode" column="CLB_CLUCODE" javaType="java.lang.String"/>
 <result property="clb_writer" column="CLB_WRITER" javaType="java.lang.String"/>
@@ -17,7 +17,7 @@
 </resultMap>
 
 
-<resultMap id="oneso" type="com.bugin.vo.ClubVo">
+<resultMap id="oneso" type="com.bujun.club.vo.ClubVo">
 <result property="clb_idx" column="CLB_IDX" javaType="java.lang.Integer"/>
 <result property="clb_clucode" column="CLB_CLUCODE" javaType="java.lang.String"/>
 <result property="clb_writer" column="CLB_WRITER" javaType="java.lang.String"/>
@@ -34,7 +34,7 @@
 
 
 
-<select id="paging" statementType="CALLABLE" parameterType="hashmap" resultType="com.bugin.vo.SearchVo">
+<select id="paging" statementType="CALLABLE" parameterType="hashmap" resultType="com.bujun.club.vo.SearchVo">
 
 {CALL PKG_BUG_LIB.PKG_PAGING_TEST(
 #{keyfield,mode=IN,jdbcType=VARCHAR}
@@ -44,7 +44,7 @@
 )}
 </select>
 
-<select id="Ajax" statementType="CALLABLE" parameterType="hashmap" resultType="com.bugin.vo.SearchVo">
+<select id="Ajax" statementType="CALLABLE" parameterType="hashmap" resultType="com.bujun.club.vo.SearchVo">
 
 {CALL PKG_BUG_LIB.PKG_AJAX_TEST(
 #{keyfield,mode=IN,jdbcType=VARCHAR}
@@ -58,7 +58,7 @@
 )}
 </select>
 
-<select id="CluBoard" statementType="CALLABLE" resultType="com.bugin.vo.ClubVo" parameterType="hashmap">
+<select id="CluBoard" statementType="CALLABLE" resultType="com.bujun.club.vo.ClubVo" parameterType="hashmap">
 {CALL PKG_BUG_LIB.PKG_CLUB_LIST(
 #{clb_clucode, mode=IN, jdbcType=VARCHAR}
 ,#{page, mode=IN, jdbcType=VARCHAR}
@@ -68,21 +68,21 @@
 )}
 </select>
 
-<select id="CluView" resultType="com.bugin.vo.ClubMember">
+<select id="CluView" resultType="com.bujun.club.vo.ClubMember">
 select  clu_name ,clu_qualifi ,clu_date ,clu_location ,clu_person ,clu_content
 ,clu_regdate , clu_code, clu_name from club_tbl
 </select>
 
-<select id="CodeView" resultType="com.bugin.vo.ClubMember">
+<select id="CodeView" resultType="com.bujun.club.vo.ClubMember">
 	select clu_code , clu_name from club_tbl 
 </select>
 
-<select id="memberName" resultType="com.bugin.vo.ClubMember">
+<select id="memberName" resultType="com.bujun.club.vo.ClubMember">
 	select clu_name from club_tbl where clu_code= #{clu_code}
 </select>
 
 
-<resultMap id="memboard" type="com.bugin.vo.ClubMember">
+<resultMap id="memboard" type="com.bujun.club.vo.ClubMember">
 <result property="clu_code" column="CLU_CODE" javaType="java.lang.String"/>
 <result property="clu_writer" column="CLU_WRITER" javaType="java.lang.String"/>
 <result property="clu_name" column="CLU_NAME" javaType="java.lang.String"/>
@@ -94,7 +94,7 @@ select  clu_name ,clu_qualifi ,clu_date ,clu_location ,clu_person ,clu_content
 <result property="clu_regdate" column="CLU_REGDATE" javaType="java.lang.String"/>
 </resultMap>
 
-<select id="BoardList" statementType="CALLABLE" resultType="com.bugin.vo.ClubMember" parameterType="hashmap">
+<select id="BoardList" statementType="CALLABLE" resultType="com.bujun.club.vo.ClubMember" parameterType="hashmap">
 {CALL PKG_BUG_LIB.PKG_CLUB_VIEW(
 #{clu_code,mode=IN,jdbcType=VARCHAR},
 #{result ,mode=OUT,jdbcType=CURSOR,javaType=RESULTSET,resultMap=memboard}
