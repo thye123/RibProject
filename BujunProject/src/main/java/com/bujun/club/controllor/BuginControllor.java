@@ -34,7 +34,7 @@ public class BuginControllor {
 	@Autowired
 	private BuginService buginservice;
 
-	@RequestMapping("/club07")
+/*	@RequestMapping("/club07")
 	public String clubidx(@RequestParam HashMap<String, Object> map, Model model) {
 		System.out.println("map" + map);
 		model.addAttribute("menu", map);
@@ -61,9 +61,15 @@ public class BuginControllor {
 		}
 		
 		return link;
+	}*/
+	
+	
+	@RequestMapping("/club01")
+	public String clubidx(@RequestParam HashMap<String, Object> map, Model model) {
+		System.out.println("map" + map);
+		model.addAttribute("menu", map);
+		return "user/sub/sub05/club01";
 	}
-	
-	
 	//게시판 항목 보여주는 부분 
 	@RequestMapping("/Club")
 	public ModelAndView Club(@RequestParam HashMap<String, Object> map) {
