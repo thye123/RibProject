@@ -407,6 +407,28 @@ a.btn_board {
 	</div>
 	<!-- //페이징 -->
 
+<!-- 만개 페이징 다시 들고와서 붙임(구만개) (내꺼랑 합쳐야 함 ) -->
+
+	<!-- 페이징 -->
+	<div class="board-list-paging">
+		<div class="pagelist">
+			<span class="firstpage1"><span>처음 페이지</span></span>
+			
+			<span class="prevblock1 hidden"><span>1 페이지</span></span>
+			<span class="beforepage1 "><span>이전페이지없음</span></span> <!-- 이전페이지 없을때 -->
+			
+			<strong><span>1</span></strong>
+			<a class="pageBtn" href="#"><span>2</span></a>
+			<a class="pageBtn" href="#"><span>3</span></a>
+			<a class="pageBtn" href="#"><span>4</span></a>
+			<a class="pageBtn" href="#"><span>5</span></a>
+			<a class="afterpage hidden" href="#"><span>앞페이지</span></a>
+			<a class="nextblock" href="#"><span>6 페이지</span></a>
+			<a class="lastpage" href="#"><span>21 페이지</span></a>
+		</div>
+	</div>
+	<!-- //페이징 -->	
+<!--  -->
 	<!-- 글쓰기 버튼 -->
 		
 	<div class="btn_set r">
