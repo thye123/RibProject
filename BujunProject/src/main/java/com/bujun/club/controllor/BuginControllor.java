@@ -34,12 +34,13 @@ public class BuginControllor {
 	private BuginService buginservice;
 	
 	//기초 처음에 들어갔을때 화면 
-	@RequestMapping("/")
+/*	@RequestMapping("/")
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("user/main/index");
+		//mv.setViewName("user/main/index");
+		mv.setViewName("user/sub/sub05/club01");
 		return mv;
-	}
+	}*/
 	
 	//게시판 항목 보여주는 부분 
 	@RequestMapping("/Club")
