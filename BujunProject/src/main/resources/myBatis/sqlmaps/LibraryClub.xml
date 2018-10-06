@@ -138,13 +138,13 @@ select  clu_name ,clu_qualifi ,clu_date ,clu_location ,clu_person ,clu_content
 ,#{clb_content,mode=IN,jdbcType=VARCHAR}
 ,#{file_boardcode,mode=IN ,jdbcType=VARCHAR}
 ,#{file_filename, mode=IN, javaType=Object, jdbcType=ARRAY, jdbcTypeName=FILE_ARRAY, 
-typeHandler=com.bugin.service.TypeHandler.ListMapTypeHandler}
+typeHandler=com.bujun.club.service.TypeHandler.ListMapTypeHandler}
 ,#{fileext, mode=IN, javaType=Object, jdbcType=ARRAY, jdbcTypeName=FILE_ARRAY, 
-typeHandler=com.bugin.service.TypeHandler.ListMapTypeHandler}
+typeHandler=com.bujun.club.service.TypeHandler.ListMapTypeHandler}
 ,#{file_size, mode=IN, javaType=Object, jdbcType=ARRAY, jdbcTypeName=FILE_ARRAY, 
-typeHandler=com.bugin.service.TypeHandler.ListMapTypeHandler}
+typeHandler=com.bujun.club.service.TypeHandler.ListMapTypeHandler}
 ,#{file_filerealname, mode=IN, javaType=Object, jdbcType=ARRAY, jdbcTypeName=FILE_ARRAY, 
-typeHandler=com.bugin.service.TypeHandler.ListMapTypeHandler})}
+typeHandler=com.bujun.club.service.TypeHandler.ListMapTypeHandler})}
 
 </insert>
 
