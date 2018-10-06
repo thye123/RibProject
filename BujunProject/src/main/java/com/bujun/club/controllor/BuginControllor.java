@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,21 +33,42 @@ public class BuginControllor {
 
 	@Autowired
 	private BuginService buginservice;
+
+	@RequestMapping("/club01")
+	public String index(@RequestParam HashMap<String, Object> map, Model model) {
+		model.addAttribute("menu", map);
+		String m1 = String.valueOf(map.get("m1"));		
+		String m2 = String.valueOf(map.get("m2"));		
+		String m3 = String.valueOf(map.get("m3"));
+		
+		String link ="";
+		
+		if(m1.equals("05")&&m2.equals("03")&&m3.equals("01")) {
+			link = "user/sub/sub05/club01";
+		}else {
+			if(m1.equals("05")&&m2.equals("03")&&m3.equals("02")) {
+				link = "user/sub/sub05/club02";
+			}else {
+				if(m1.equals("05")&&m2.equals("03")&&m3.equals("03")) {
+					link = "user/sub/sub05/club03";
+				}else {
+					if(m1.equals("05")&&m2.equals("03")&&m3.equals("04")) {
+						link = "user/sub/sub05/club04";
+					}
+				}
+			}
+		}
+		return link;
+	}
 	
-	//기초 처음에 들어갔을때 화면 
-/*	@RequestMapping("/")
-	public ModelAndView index() {
-		ModelAndView mv = new ModelAndView();
-		//mv.setViewName("user/main/index");
-		mv.setViewName("user/sub/sub05/club01");
-		return mv;
-	}*/
 	
 	//게시판 항목 보여주는 부분 
 	@RequestMapping("/Club")
 	public ModelAndView Club(@RequestParam HashMap<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
-
+/*		/Club?clu_code=CUS0001
+		/club01?m1=05&m2=03&m3=01
+		*/
 		String clu_code = (String) map.get("clu_code");
 	
 		List<ClubVo> clist = buginservice.getBoardList(map); //리스트 보여줄려고 
@@ -59,7 +81,7 @@ public class BuginControllor {
 		mv.addObject("clu_code", clu_code);
 		
 		//페이지 이동하는 부분 
-		mv.setViewName("user/sub/sub05/club01");
+		mv.setViewName("user/sub/sub05/c01");
 		return mv;
 	}
 
