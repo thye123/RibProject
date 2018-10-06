@@ -158,6 +158,9 @@
 .qna .qna_table {width:90%; display:inline-block;}
 .qnalast {border-bottom:0 !important;}
 
+.book_red .color {margin-bottom:10px; font-size:30px; color:#ff7200; line-height:30px !important;}
+.book_red .con {line-height:23px;}
+
 
 
 @media only screen and (max-width: 580px) {
@@ -245,6 +248,135 @@
 .basic_box {line-height:23px; position:relative; background: #fafafa; border:1px solid #ccc; padding:15px;}
 .basic_box_tit {color: #d0463b; font-size:20px; font-weight:400; margin-bottom:10px;}
 .bul_type1 li.btn_set:after {display:none;}
+
+
+
+/* 독서치료 관련 사이트 */
+ul.com_info > li {
+    float: left;
+    margin-bottom: 20px;
+    width: 49%;
+}
+
+ul.com_info > li:nth-child(2n) {
+	float:right;
+}
+
+ul.com_info > li:nth-child(2n) {
+	margin-left:2%;
+}
+
+ul.com_info > li > div {
+    position: relative;
+    border: 1px solid #dedede;
+    padding: 20px;
+    height: 150px;
+    box-sizing: border-box;
+}
+ul.com_info > li > div li span.ic1 {
+	background: url(/img/sub/sub09/ic1.png) no-repeat 0 0;
+	padding-left:30px;
+	color:#000;
+}
+ul.com_info > li > div li span.ic2 {
+	background: url(/img/sub/sub09/ic2.png) no-repeat 0 0;
+	padding-left:30px;
+	color:#000;
+	line-height:40px;
+}
+ul.com_info > li a {
+    float: left;
+    position: relative;
+}
+
+ul.com_info > li dt {
+	font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+    line-height: 30px;
+    color: #333;
+}
+ul.com_info > li dd {
+    font-weight: 400;
+    font-size: 14px;
+    line-height:20px;
+    color:#666;
+}
+
+ul.com_info > li > div img.home {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    display: none;
+}
+ul.com_info > li > div:hover {
+    background: #fafafa;
+    border: 3px solid #0098ff;
+    padding: 18px;
+}
+ul.com_info > li > div:hover img.home {
+    position: absolute;
+    display: block;
+}
+
+
+@media all and (max-width:1000px){
+	ul.com_info > li > div {height : 190px;}
+}
+
+
+@media all and (max-width:640px){
+	ul.com_info > li {width:100%;}
+	ul.com_info > li a{float: none;}
+
+}
+
+/* 조직도 */
+.org_bg{background:url('../images/sub/org_bg.jpg')no-repeat 50% 53px; width:100%; padding-top:27px; height:645px;}
+
+.org_bg .n01 { margin:0 auto; width:30%; text-align:center; border:1px solid #3465aa; background:#fff;  line-height:50px; margin-bottom:50px;}
+.org_bg .n01 span {display:block; background:#3465aa; color:#fff;display:block; }
+.org_bg .n02 {float:left; margin:0 auto; width:30%; text-align:center; border:1px solid #00a58f; background:#fff;  line-height:50px; margin-top:40px; margin-bottom:30px;}
+.org_bg .n02 span {display:block; background:#00a58f; color:#fff;display:block;}
+
+.org_bg .n04 {float:right; margin:0 auto; width:30%; text-align:center; border:1px solid #00a58f; background:#fff;  line-height:50px; margin-top:40px; margin-bottom:30px;}
+.org_bg .n04 span {display:block; background:#00a58f; color:#fff;display:block;}
+
+.f_l li { float:left; }
+.f_l li span {display:block; margin:0 0px; background:#ccc;}
+
+.f_l li.org_left{background: url(../images/sub/org_left.png)no-repeat 50% 0;  height:77px; padding:70px 0% 0px 0%; width:40%; box-sizing:border-box; margin-right:20%;}
+.f_l li.org_right{background: url(../images/sub/org_right.png)no-repeat 50% 0;  height:77px; padding-top:70px; width:40%; box-sizing:border-box;} 
+
+
+.org_left div.n03 {background:#fff; height:48px; font-weight:bold; text-align:center; padding-top:14px; border:3px solid #f26c4f; box-sizing:border-box;}
+.org_left div.n03 ul{ text-align:left; display:block;  background:#fff; margin-top:28px; font-weight:normal; min-height:150px; box-sizing:border-box;}
+.org_left div.n03 ul li{ float:none !important; width:100%; background:#f3f3f3; box-sizing:border-box; margin-bottom:5px;    color:#333; padding:6px 10px;}
+.org_left div.n03 ul li span {background:url(/img/agri/new_common/bul_dot.gif) no-repeat 0px 10px; padding-left:10px; display:inline-block; width:110px; font-weight:400; color:#666; }
+
+.org_right div.n03 {background:#fff; height:48px; font-weight:bold; text-align:center; padding-top:14px; border:3px solid #f26c4f; box-sizing:border-box;}
+.org_right div.n03 ul{position:relative; text-align:left; display:block;  background:#fff; margin-top:28px; font-weight:normal; min-height:150px; box-sizing:border-box;}
+.org_right div.n03 ul li{ float:none !important; width:100%; background:#f3f3f3; box-sizing:border-box; margin-bottom:5px; color:#333; padding:6px 10px;}
+.org_right div.n03 ul li span {background:url(/img/agri/new_common/bul_dot.gif) no-repeat 0px 10px; padding-left:10px; display:inline-block; width:110px; font-weight:400; color:#666;}
+
+@media all and (max-width:613px){ 
+	.org_bg{background:url('../images/sub/org_bg1.jpg')no-repeat 50% 45px;}
+	.org_bg .n01 {margin-bottom:20px; width:40%;}
+	.org_bg .n02 {float:none; margin-top:20px; margin-bottom:20px; width:40%;}
+	.org_bg .n04 {float:none; margin-top:20px; margin-bottom:20px; width:40%;}
+}
+
+@media all and (max-width:520px){ 
+	.org_bg{height:700px}
+}
+
+@media all and (max-width:400px){ 
+	.org_bg{height:730px}
+}
+
+.new_btn {position: relative; display: inline-block; cursor: pointer; line-height: 1em; height: 14px; padding: 13px 40px 13px 15px; font-size: 12px; margin: 1px; background: #878f9a url(../images/sub/newbtn.png)no-repeat 70px center; color:#fff !important;}
+.new_btn:hover {background-color:#727b87;}
+
 
 
 
