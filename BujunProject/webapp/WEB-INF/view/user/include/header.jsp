@@ -147,7 +147,7 @@
                         <ul class="sub">
                             <li><a href="/monthbk?m1=05&m2=01&m3=01">추천도서</a></li>
                             <li><a href="/bkcare?m1=05&m2=02&m3=01">독서치료</a></li>
-                            <li><a href="/club01?m1=05&m2=03&m3=01">독서동아리</a></li>
+                            <li><a href="/club07?m1=05&m2=03&m3=01">독서동아리</a></li>
                             <li><a href="/bookclass?m1=05&m2=04">독서교실</a></li>
                             <li><a href="/libweek?m1=05&m2=05">도서관주간</a></li>
                             <li><a href="/moreading?m1=05&m2=06">독서의달</a></li>

@@ -34,8 +34,9 @@ public class BuginControllor {
 	@Autowired
 	private BuginService buginservice;
 
-	@RequestMapping("/club01")
-	public String index(@RequestParam HashMap<String, Object> map, Model model) {
+	@RequestMapping("/club07")
+	public String clubidx(@RequestParam HashMap<String, Object> map, Model model) {
+		System.out.println("map" + map);
 		model.addAttribute("menu", map);
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
@@ -58,6 +59,7 @@ public class BuginControllor {
 				}
 			}
 		}
+		
 		return link;
 	}
 	
