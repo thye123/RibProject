@@ -77,7 +77,7 @@
 			resultType="com.bujun.openinfo.vo.OpenInfoVo">
 		{CALL PKG_OPENINFO.PROC_SEARCH(
 		#{keyword,  mode=IN,  jdbcType=VARCHAR},
-		#{keyfeild, mode=IN,  jdbcType=VARCHAR},
+		#{keyfield, mode=IN,  jdbcType=VARCHAR},
 		#{ad_code,  mode=IN,  jdbcType=VARCHAR},
 		#{page_num, mode=IN,  jdbcType=NUMERIC},
 		#{tot_cnt,  mode=OUT, jdbcType=NUMERIC},

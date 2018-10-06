@@ -112,7 +112,6 @@ public class OpenInfoServiceImpl implements OpenInfoService {
 
 	@Override
 	public List<OpenInfoVo> search(HashMap<String, Object> map) {
-		System.out.println("map search service: " + map);
 		List<OpenInfoVo> list = openInfoDao.search(map);
 		int page_num 	= Integer.parseInt(String.valueOf(map.get("page_num")));
 		String ad_code 	= String.valueOf(map.get("ad_code"));

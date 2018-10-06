@@ -127,7 +127,16 @@ public class OpenInfoController {
 		List<OpenInfoVo> list = openInfoService.search(map);
 		System.out.println("map search: " + map);
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("m1", map.get("m1"));
+		mv.addObject("m2", map.get("m2"));
+		mv.addObject("m3", map.get("m3"));
+		mv.addObject("ad_code", map.get("ad_code"));
 		mv.addObject("searchList", list);
+		mv.addObject("paging", map.get("pagingVo"));
+		mv.addObject("page_num", map.get("page_num"));
+		mv.addObject("tot_cnt", map.get("tot_cnt"));
+		mv.addObject("keyfield", map.get("keyfield"));
+		mv.addObject("keyword", map.get("keyword"));
 		mv.setViewName("user/sub/sub07/OpenInfo");
 		return mv;
 	}
