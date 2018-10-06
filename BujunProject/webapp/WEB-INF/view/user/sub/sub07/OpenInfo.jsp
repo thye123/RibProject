@@ -157,8 +157,6 @@
 	<!-- 페이징 -->
 	<div class="board-list-paging">
 		<div class="pagelist">
-
-
 			<!--  -->
 			<%-- 		<c:choose>
             <c:when test="${pageMaker.prev}">
