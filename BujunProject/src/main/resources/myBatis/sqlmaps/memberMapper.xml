@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- dtd선언 - 필수임 -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="memberMapper">
+
+    <resultMap id="memberMap" type="com.bujun.member.vo.MemberVo">
+      <result property="mem_idx" column="mem_idx" javaType="string" />
+      <result property="rimem_num" column="rimem_num" javaType="string" />
+      <result property="mem_pass" column="mem_pass" javaType="string" />
+      <result property="mem_name" column="mem_name" javaType="string" />
+      <result property="mem_birth" column="mem_birth" javaType="int" />
+      <result property="mem_email" column="mem_email" javaType="string" />
+      <result property="mem_phone" column="mem_phone" javaType="string" />
+      <result property="zipcode" column="zipcode" javaType="string" />
+      <result property="mem_adress" column="mem_adress" javaType="string" />
+      <result property="mem_deadress" column="mem_deadress" javaType="string" />
+      <result property="mem_regdate" column="mem_regdate" javaType="string" />
+      <result property="mem_enabled" column="mem_enabled" javaType="string" />
+      <result property="mem_auth" column="mem_auth" javaType="string" />
+    </resultMap>  
+    
+    
+     <select id="MemberLogin" statementType="CALLABLE" parameterType="com.bujun.member.vo.MemberVo">   
+	     {CALL  BJL_PKG_MEMBER.login_member(   
+	        #{mem_id, mode=IN,  jdbcType=VARCHAR },
+	        #{result,  mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap }
+	      )}        
+    </select>
+
+    
+     <select id="MemberPassChk" statementType="CALLABLE" parameterType="com.bujun.member.vo.MemberVo">   
+	     {CALL  BJL_PKG_MEMBER.pass_find(   
+	        #{mem_id, mode=IN,  jdbcType=VARCHAR },
+	        #{mem_email, mode=IN,  jdbcType=VARCHAR },
+	        #{result, mode=OUT, jdbcType=INTEGER}
+	      )}        
+    </select>
+    
+     <select id="MemberPassChk2" statementType="CALLABLE" parameterType="com.bujun.member.vo.MemberVo">   
+	     {CALL  BJL_PKG_MEMBER.pass_find_email(   
+	        #{mem_id, mode=IN,  jdbcType=VARCHAR },
+	        #{mem_email, mode=IN,  jdbcType=VARCHAR },
+	        #{result, mode=OUT, jdbcType=VARCHAR}
+	      )}        
+    </select>
+    
+    
+    <update id="MemberPassUpdate" parameterType="hashmap" statementType="CALLABLE">
+ 	     {CALL  BJL_PKG_MEMBER.pass_update(   
+	        #{mem_id, mode=IN,  jdbcType=VARCHAR }, 
+	        #{mem_pass, mode=IN,  jdbcType=VARCHAR }
+	      )}     	
+    </update>     
+    
+    
+     <select id="MemberIdChk" statementType="CALLABLE" parameterType="com.bujun.member.vo.MemberVo">   
+	     {CALL  BJL_PKG_MEMBER.id_find(   
+	        #{mem_name, mode=IN,  jdbcType=VARCHAR },
+	        #{mem_email, mode=IN,  jdbcType=VARCHAR },
+	        #{result, mode=OUT, jdbcType=INTEGER}
+	      )}        
+    </select>
+    
+    
+     <select id="MemberIdChkVo" statementType="CALLABLE" parameterType="com.bujun.member.vo.MemberVo">   
+	     {CALL  BJL_PKG_MEMBER.id_find_vo(   
+	        #{mem_name, mode=IN,  jdbcType=VARCHAR },
+	        #{mem_email, mode=IN,  jdbcType=VARCHAR },
+	        #{result,  mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap }
+	      )}        
+    </select>    
+    
+    
+     
+    
+    
+                             
+</mapper>

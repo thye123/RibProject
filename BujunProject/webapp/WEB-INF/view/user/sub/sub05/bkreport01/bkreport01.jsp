@@ -119,8 +119,7 @@
 				<input name="keyword" id="keyword" title="검색어 입력"  value="${keyVal}" placeholder="검색어를 입력하세요" type="text">
 				<!-- <input name="srchhidden" title="검색어 입력체크" style="display:none;" type="text"> -->
 				
-				<a href="#" class="searchBtn" onclick="document.search.submit(); return false;">검색</a>
-				<a href="#" class="searchBtn mob" onclick="PrintList(document.search)">인쇄</a> 		
+				<a href="#" class="searchBtn" onclick="document.search.submit(); return false;">검색</a>		
 			</div>
 		</div>
 	</form>
@@ -135,10 +134,9 @@
 	
 	<div class="auto_box mg_b40">			
 		<table class="tb_board">
-			<colgroup><col style="width:5%;" /><col style="width:10%;" /><col/><col style="width:20%;"/><col style="width:15%;" /><col style="width:8%;" /></colgroup>
+			<colgroup><col style="width:10%;" /><col/><col style="width:20%;"/><col style="width:15%;" /><col style="width:8%;" /></colgroup>
 			<thead>
 				<tr>
-					<th scope="col"><input type="checkbox" /></th>
 					<th scope="col">번호</th>
 					<th scope="col">제목</th>
 					<th scope="col">글쓴이</th>
@@ -148,19 +146,24 @@
 			</thead>
 			<tbody>
 			
-			
-
-			<c:forEach var="brd"  items="${ boardList }">	
-				<tr>
-					<td><input type="checkbox" /></td>
-					<td>${brd.bd_idx}</td>
-					<td class="l"><a href="/bkreport01_read?bd_catcode=CAT0005&m1=05&m2=08&m3=01&page=${pageMaker.endPage}&perPageNum=10&searchType=${search}&keyword=${key}&bd_idx=${brd.bd_idx}&flag=1">${brd.bd_title}</a></td>
-					<td>${brd.bd_writer}</td>
-					<td>${brd.bd_regdate}</td>
-					<td class="bnon ">${brd.bd_count}</td>
-				</tr>
-			</c:forEach>
-			
+				<c:choose>
+					<c:when test="${boardList == null || BoardList.size() == 0 or pageMaker.totalCount == 0}">
+						<td colspan="5" class="bnon">게시물이 없습니다</td>
+					</c:when>
+					
+					<c:otherwise>
+						<c:forEach var="brd"  items="${ boardList }">	
+							<tr>
+								<td>${brd.bd_idx}</td>
+								<td class="l"><a href="/bkreport01_read?bd_catcode=CAT0005&m1=05&m2=08&m3=01&page=${pageMaker.endPage}&perPageNum=10&searchType=${search}&keyword=${key}&bd_idx=${brd.bd_idx}&flag=1">${brd.bd_title}</a></td>
+								<td>${brd.bd_writer}</td>
+								<td>${brd.bd_regdate}</td>
+								<td class="bnon ">${brd.bd_count}</td>
+							</tr>
+						</c:forEach>					
+					</c:otherwise>
+				</c:choose>
+					
 			</tbody>
 		</table>
 	</div>	

@@ -83,7 +83,6 @@
 				<!-- <input name="srchhidden" title="검색어 입력체크" style="display:none;" type="text"> -->
 				
 				<a href="#" class="searchBtn" onclick="document.search.submit(); return false;">검색</a>
-				<a href="#" class="searchBtn mob" onclick="PrintList(document.search)">인쇄</a> 		
 			</div>
 		</div>
 	</form>
@@ -98,10 +97,9 @@
 	
 	<div class="auto_box mg_b40">			
 		<table class="tb_board">
-			<colgroup><col style="width:5%;" /><col style="width:10%;" /><col/><col style="width:15%;"/><col /><col style="width:15%;" /><col style="width:8%;" /></colgroup>
+			<colgroup><col style="width:10%;" /><col/><col style="width:15%;"/><col /><col style="width:15%;" /><col style="width:8%;" /></colgroup>
 			<thead>
 				<tr>
-					<th scope="col"><input type="checkbox" /></th>
 					<th scope="col">번호</th>
 					<th scope="col">제목</th>
 					<th scope="col">글쓴이</th>
@@ -113,42 +111,48 @@
 			<tbody>
 			
 			
-
-			<c:forEach var="brd"  items="${ boardList }">	
-				<tr>
-					<td><input type="checkbox" /></td>
-					<td>${brd.bd_idx}</td>
+				<c:choose>
+					<c:when test="${boardList == null || BoardList.size() == 0 or pageMaker.totalCount == 0}">
+						<td colspan="6" class="bnon">게시물이 없습니다</td>
+					</c:when>
 					
-					<td class="l" >
-						<c:choose>
-							<c:when test="${brd.bd_step eq 0}">
-								<a href="/freebrd_read?bd_catcode=CAT0007&m1=06&m2=03&page=${pageMaker.endPage}&perPageNum=10&searchType=${search}&keyword=${key}&bd_idx=${brd.bd_idx}&flag=1">${brd.bd_title}</a>	
-							</c:when>
-							<c:otherwise>
-								<span style="padding-left:${brd.bd_step * 20}px">[답변] <a href="/freebrd_read?bd_catcode=CAT0007&m1=06&m2=03&page=${pageMaker.endPage}&perPageNum=10&searchType=${search}&keyword=${key}&bd_idx=${brd.bd_idx}&flag=1">${brd.bd_title}</a></span>
-							</c:otherwise>
-						</c:choose>
-					</td>
+					<c:otherwise>
+						<c:forEach var="brd"  items="${ boardList }">	
+							<tr>
+								<td>${brd.bd_idx}</td>
+								
+								<td class="l" >
+									<c:choose>
+										<c:when test="${brd.bd_step eq 0}">
+											<a href="/freebrd_read?bd_catcode=CAT0007&m1=06&m2=03&page=${pageMaker.endPage}&perPageNum=10&searchType=${search}&keyword=${key}&bd_idx=${brd.bd_idx}&flag=1">${brd.bd_title}</a>	
+										</c:when>
+										<c:otherwise>
+											<span style="padding-left:${brd.bd_step * 20}px">[답변] <a href="/freebrd_read?bd_catcode=CAT0007&m1=06&m2=03&page=${pageMaker.endPage}&perPageNum=10&searchType=${search}&keyword=${key}&bd_idx=${brd.bd_idx}&flag=1">${brd.bd_title}</a></span>
+										</c:otherwise>
+									</c:choose>
+								</td>
+								
+								
+								<td>${brd.bd_writer}</td>
+								
+								<td>
+									<c:choose>
+										<c:when test="${brd.bd_open eq 1}">
+											공개
+										</c:when>
+										<c:otherwise>
+											비공개
+										</c:otherwise>
+									</c:choose> 
+								</td>
+								
+								<td>${brd.bd_regdate}</td>
+								<td class="bnon ">${brd.bd_count}</td>
+							</tr>
+						</c:forEach>					
+					</c:otherwise>
+				</c:choose>
 					
-					
-					<td>${brd.bd_writer}</td>
-					
-					<td>
-						<c:choose>
-							<c:when test="${brd.bd_open eq 1}">
-								공개
-							</c:when>
-							<c:otherwise>
-								비공개
-							</c:otherwise>
-						</c:choose> 
-					</td>
-					
-					<td>${brd.bd_regdate}</td>
-					<td class="bnon ">${brd.bd_count}</td>
-				</tr>
-			</c:forEach>
-			
 			</tbody>
 		</table>
 	</div>	

@@ -14,6 +14,8 @@
     <bean id="customAccessDenied" class="com.bujun.security.CustomAccessDeniedHandler"></bean> <!-- NO권한 -->
     <bean id="customLoginSuccess" class="com.bujun.security.CustomLoginSuccessHandler"></bean> <!-- 로그인성공했을때 -->
     <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+	<bean id="customAuthenticationFailHandler" class="com.bujun.security.CustomAuthenticationFailHandler"></bean> <!-- 로그인 실패 -->
+
 
 	<security:http>
 
@@ -23,9 +25,12 @@
 				
 		<security:csrf disabled = "true" /> 
 
-		<security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess"/> <!-- 로그인 페이지 -->
-		<security:logout logout-url="/customLogout" invalidate-session="true" delete-cookies="remember-me, JSESSION_ID" /> <!-- JSESSION_ID : 톰캣 쿠키 -->
+		<security:form-login login-page="/bjLogin" 
+			authentication-success-handler-ref="customLoginSuccess"  
+			authentication-failure-handler-ref="customAuthenticationFailHandler"
+		/> 
 		
+		<security:logout logout-url="/logout" invalidate-session="true" delete-cookies="remember-me, JSESSION_ID" /> <!-- JSESSION_ID : 톰캣 쿠키 -->
 		
 		<!-- <security:access-denied-handler error-page="/accessError" /> --> <!-- 권한없을때 이동하는 페이지 -->
 		<security:access-denied-handler ref="customAccessDenied" />

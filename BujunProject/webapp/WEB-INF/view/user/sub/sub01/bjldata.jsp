@@ -35,7 +35,6 @@
 	
 	<!-- content 시작 -->
 	
-	
 	<div class="facilities_top bg_img1 mg_b40">
 		<div>
 			대지 및 건물
@@ -57,20 +56,18 @@
 	</div>	
 	
 	<h2 class="tbul1">층별배치도</h2>		
-	<div class="img_original mg_b40">
+	<div class="img_original mg_b20">
 	  <img src="${pageContext.request.contextPath}/resources/user/images/sub/map_01.jpg">
 	  <a href="${pageContext.request.contextPath}/resources/user/images/sub/map_01.jpg">원본 이미지 보기</a>
 	</div>
 	
 	
-	<h2 class="tbul1">층별배치도</h2>		
 	<div class="img_original mg_b40">
 	  <img src="${pageContext.request.contextPath}/resources/user/images/sub/map_02.jpg">
 	  <a href="${pageContext.request.contextPath}/resources/user/images/sub/map_02.jpg">원본 이미지 보기</a>
 	</div>
 	
 	
-
 	<div class="scroll_info">
 		<span class="arr_l"></span>
 		<span class="scroll_icon"></span>
@@ -159,6 +156,156 @@
 		</table>
 			
 	</div>
+	
+	
+	<h2 class="tbul1">소장자료현황</h2>
+	<h3 class="tbul2">소장자료현황</h3>
+	<p>2018년 7월 1일 현재</p>
+	
+	<div class="scroll_info">
+		<span class="arr_l"></span>
+		<span class="scroll_icon"></span>
+		<p class="pinfo">좌우로 스크롤 하시면 전체 내용을 확인하실 수 있습니다.</p>
+		<span class="arr_r"></span>
+	</div>
+	
+	<div class="auto_box mg_b40">			
+		<table class="tb_board">	
+			<caption>도서 총장서수(2018년 7월 1일 현재)안내</caption>
+			<thead>
+				<tr>
+					<th scope="col">구분</th>
+					<th scope="col">총류</th>
+					<th scope="col">철학</th>
+					<th scope="col">종교</th>
+					<th scope="col">사회과학</th>
+					<th scope="col">자연과학</th>
+					<th scope="col">기술과학</th>
+					<th scope="col">예술</th>
+					<th scope="col">언어</th>
+					<th scope="col">문학</th>
+					<th scope="col">역사</th>
+					<th scope="col" class="bnon">계</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>자료수</td>
+					<td>13,148</td>
+					<td>15,839</td>
+					<td>9,715</td>
+					<td>56,095</td>
+					<td>12,248</td>
+					<td>22,939</td>
+					<td>14,238</td>
+					<td>11,507</td>
+					<td>97,867</td>
+					<td>25,937</td>
+					<td class="bnon">279,533</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>	
+	
+	
+	<h3 class="tbul2">비도서</h3>
+	<p>2018년 7월 1일 현재</p>	
+	<div class="scroll_info">
+		<span class="arr_l"></span>
+		<span class="scroll_icon"></span>
+		<p class="pinfo">좌우로 스크롤 하시면 전체 내용을 확인하실 수 있습니다.</p>
+		<span class="arr_r"></span>
+	</div>
+	
+	<div class="auto_box mg_b40">			
+		<table class="tb_board">		
+			<caption>비도서 총장서수(2018년 7월 1일 현재)안내</caption>
+			<thead>
+				<tr>
+					<th scope="col">구분</th>
+					<th scope="col">총류</th>
+					<th scope="col">철학</th>
+					<th scope="col">종교</th>
+					<th scope="col">사회과학</th>
+					<th scope="col">자연과학</th>
+					<th scope="col">기술과학</th>
+					<th scope="col">예술</th>
+					<th scope="col">언어</th>
+					<th scope="col">문학</th>
+					<th scope="col">역사</th>
+					<th scope="col" class="bnon">계</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>자료수</td>
+					<td>397</td>
+					<td>140</td>
+					<td>113</td>
+					<td>1,098</td>
+					<td>479</td>
+					<td>611</td>
+					<td>7,766</td>
+					<td>701</td>
+					<td>903</td>
+					<td>860</td>
+					<td class="bnon">13,068</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>	
+	
+	
+	<h3 class="tbul2">작은도서관</h3>
+	<p>2018년 7월 1일 현재</p>	
+	<div class="scroll_info">
+		<span class="arr_l"></span>
+		<span class="scroll_icon"></span>
+		<p class="pinfo">좌우로 스크롤 하시면 전체 내용을 확인하실 수 있습니다.</p>
+		<span class="arr_r"></span>
+	</div>
+	
+	<div class="auto_box">			
+		<table class="tb_board">		
+			<caption>작은도서관 총장서수(2018년 7월 1일 현재)안내</caption>
+			<thead>
+				<tr>
+					<th scope="col">구분</th>
+					<th scope="col">총류</th>
+					<th scope="col">철학</th>
+					<th scope="col">종교</th>
+					<th scope="col">사회과학</th>
+					<th scope="col">자연과학</th>
+					<th scope="col">기술과학</th>
+					<th scope="col">예술</th>
+					<th scope="col">언어</th>
+					<th scope="col">문학</th>
+					<th scope="col">역사</th>
+					<th scope="col" class="bnon">계</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>자료수</td>
+					<td>379</td>
+					<td>778</td>
+					<td>327</td>
+					<td>1,629</td>
+					<td>1,075</td>
+					<td>949</td>
+					<td>411</td>
+					<td>261</td>
+					<td>7,652</td>
+					<td>1,356</td>
+					<td class="bnon">14,817</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>	
+	
+		
+	
+	
 
 
 

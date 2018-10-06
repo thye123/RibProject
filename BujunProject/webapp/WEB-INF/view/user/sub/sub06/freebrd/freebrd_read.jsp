@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 
 
 <!-- header -->
@@ -62,7 +64,11 @@
 	
 	
 	<div class="r mg_t20 btns">
-		<a class="btns_black" href="/freebrd_write?bd_catcode=CAT0007&m1=06&m2=03&bd_grp=${boardRead.bd_grp}&bd_step=0">관리자답변</a>
+	
+		<sec:authorize access="hasRole('ROLE_ADMIN')">
+			<a class="btns_black" href="/freebrd_write?bd_catcode=CAT0007&m1=06&m2=03&bd_grp=${boardRead.bd_grp}&bd_step=0">관리자답변</a>
+		</sec:authorize>
+		
 		<a class="btns_blue" href="/freebrd_update?bd_catcode=${bd_catcode}&m1=06&m2=03&page=${page}&perPageNum=${perPageNum}&flag=2&bd_pass_chk=${bd_pass_chk}&bd_idx=${bd_idx}">수정</a>
 		<a class="btns_black" href="/freebrd_delete?bd_catcode=${bd_catcode}&m1=06&m2=03&page=${page}&perPageNum=${perPageNum}&flag=3&bd_pass_chk=${bd_pass_chk}&bd_idx=${bd_idx}">삭제</a>
 		<a class="btns_black" href="/freebrd?bd_catcode=${bd_catcode}&m1=06&m2=03&page=1&perPageNum=${perPageNum}&searchType=${searchType}&keyword=${keyword}">목록</a>

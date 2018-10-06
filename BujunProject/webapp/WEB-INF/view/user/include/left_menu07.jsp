@@ -71,28 +71,28 @@
 									
 									<c:choose>
 										<c:when test="${menu.m1 eq 07 && menu.m2 eq 01 && menu.m3 eq 03}">
-											<li class="on"><a href="/info03?m1=07&m2=01&m3=03">정보목록</a></li>
+											<li class="on"><a href="/info03?m1=07&m2=01&m3=03&page_num=1">정보목록</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/info03?m1=07&m2=01&m3=03">정보목록</a></li>
+											<li><a href="/info03?m1=07&m2=01&m3=03&page_num=1">정보목록</a></li>
 										</c:otherwise>
 									</c:choose>		
 									
 									<c:choose>
 										<c:when test="${menu.m1 eq 07 && menu.m2 eq 01 && menu.m3 eq 04}">
-											<li class="on"><a href="/info04?m1=07&m2=01&m3=04">정보공개청구</a></li>
+											<li class="on"><a href="https://www.open.go.kr/" target="_blank">정보공개청구</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/info04?m1=07&m2=01&m3=04">정보공개청구</a></li>
+											<li><a href="https://www.open.go.kr/" target="_blank">정보공개청구</a></li>
 										</c:otherwise>
 									</c:choose>		
 									
 									<c:choose>
 										<c:when test="${menu.m1 eq 07 && menu.m2 eq 01 && menu.m3 eq 05}">
-											<li class="on"><a href="/info05?m1=07&m2=01&m3=05">사전공표대상공개</a></li>
+											<li class="on"><a href="/info03?m1=07&m2=01&m3=05&page_num=1">사전공표대상공개</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/info05?m1=07&m2=01&m3=05">사전공표대상공개</a></li>
+											<li><a href="/info03?m1=07&m2=01&m3=05&page_num=1">사전공표대상공개</a></li>
 										</c:otherwise>
 									</c:choose>																																																			
 								</ul>
@@ -125,28 +125,28 @@
 									
 									<c:choose>
 										<c:when test="${menu.m1 eq 07 && menu.m2 eq 01 && menu.m3 eq 03}">
-											<li class="on"><a href="/info03?m1=07&m2=01&m3=03">정보목록</a></li>
+											<li class="on"><a href="/info03?m1=07&m2=01&m3=03&page_num=1">정보목록</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/info03?m1=07&m2=01&m3=03">정보목록</a></li>
+											<li><a href="/info03?m1=07&m2=01&m3=03&page_num=1">정보목록</a></li>
 										</c:otherwise>
 									</c:choose>		
 									
 									<c:choose>
 										<c:when test="${menu.m1 eq 07 && menu.m2 eq 01 && menu.m3 eq 04}">
-											<li class="on"><a href="/info04?m1=07&m2=01&m3=04">정보공개청구</a></li>
+											<li class="on"><a href="https://www.open.go.kr/" target="_blank">정보공개청구</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/info04?m1=07&m2=01&m3=04">정보공개청구</a></li>
+											<li><a href="https://www.open.go.kr/" target="_blank">정보공개청구</a></li>
 										</c:otherwise>
 									</c:choose>		
 									
 									<c:choose>
 										<c:when test="${menu.m1 eq 07 && menu.m2 eq 01 && menu.m3 eq 05}">
-											<li class="on"><a href="/info05?m1=07&m2=01&m3=05">사전공표대상공개</a></li>
+											<li class="on"><a href="/info03?m1=07&m2=01&m3=05&page_num=1">사전공표대상공개</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/info05?m1=07&m2=01&m3=05">사전공표대상공개</a></li>
+											<li><a href="/info03?m1=07&m2=01&m3=05&page_num=1">사전공표대상공개</a></li>
 										</c:otherwise>
 									</c:choose>																																																			
 								</ul>

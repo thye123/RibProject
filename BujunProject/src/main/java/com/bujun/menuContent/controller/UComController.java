@@ -17,6 +17,22 @@ public class UComController {
 	}
 	
 	
+	@RequestMapping("/charter01") 
+	public String Charter01(@RequestParam HashMap<String, Object> map, Model model) {
+		
+		model.addAttribute("menu", map);
+		return "user/sub/sub06/charter01";
+	}	
+	
+	
+	@RequestMapping("/charter02") 
+	public String Charter02(@RequestParam HashMap<String, Object> map, Model model) {
+		
+		model.addAttribute("menu", map);
+		return "user/sub/sub06/charter02";
+	}
+	
+	
 	@RequestMapping("/charter03") 
 	public String Charter03(@RequestParam HashMap<String, Object> map, Model model) {
 		
@@ -24,6 +40,17 @@ public class UComController {
 		return "user/sub/sub06/charter03";
 	}	
 	
+	@RequestMapping("/qna")
+	public String qna(@RequestParam HashMap<String, Object> map, Model model) {
+		
+		model.addAttribute("menu", map);
+		return "user/sub/sub06/qna";
+	}
 	
-	
+	@RequestMapping("/law")
+	public String liblaw(@RequestParam HashMap<String, Object> map, Model model) {
+		
+		model.addAttribute("menu", map);
+		return "user/sub/sub06/liblaw";
+	}
 }

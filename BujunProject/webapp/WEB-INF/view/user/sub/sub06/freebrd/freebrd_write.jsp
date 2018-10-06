@@ -204,7 +204,6 @@
 
 		<div class="r mg_t20 btns">
 			<a class="btns_blue" href="#" onclick="freeWrite()">확인하기</a>
-			<a class="btns_black" href="#">다시쓰기</a>
 			<a class="btns_black" href="/freebrd?bd_catcode=CAT0007&m1=06&m2=03&page=1&perPageNum=10">목록</a>
 		</div>
 		
