@@ -13,7 +13,7 @@
 <%@ include file="../../include/left_menu05.jsp"%>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
+<!-- <script>
  window.onload= function(){
 	var pageBtn = document.getElementsByClassName('pageBtn');
 	var nextblock = document.getElementsByClassName('nextblock');
@@ -260,7 +260,7 @@
 
 
 </script>
-
+ -->
 
 <!-- location -->
 <div class="loca">
