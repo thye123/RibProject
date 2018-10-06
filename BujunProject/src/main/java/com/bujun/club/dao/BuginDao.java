@@ -38,6 +38,6 @@ public interface BuginDao {
 	//ÆäÀÌÂ¡ ajax
 	public void pagingajax(HashMap<String, Object> map);
 
-	public ClubMember getName(HashMap<String, Object> map);
+	public ClubMember getName(String clu_code);
 
 }

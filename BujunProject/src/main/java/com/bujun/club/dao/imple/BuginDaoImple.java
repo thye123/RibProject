@@ -108,8 +108,8 @@ public class BuginDaoImple implements BuginDao {
 	}
 
 	@Override
-	public ClubMember getName(HashMap<String, Object> map) {
-		ClubMember member = sqlsession.selectOne("Bugin.memberName",map);
+	public ClubMember getName(String clu_code) {
+		ClubMember member = sqlsession.selectOne("Bugin.memberName",clu_code);
 		return member;
 	}
 

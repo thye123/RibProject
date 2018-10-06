@@ -147,7 +147,7 @@
 .tab_depth01 ul li a:hover {background:#636b72; color:#fff;}
 .tab_depth01 ul li a.on {background:#636b72; color:#fff;}
 
-.tab_depth01 ul.n03 li {width:33.33%;}
+.tab_depth01 ul.n03 li {width:25.00%;} /*민짐 수정 4개라 깨짐 33.33 ->25 */
 
 
 

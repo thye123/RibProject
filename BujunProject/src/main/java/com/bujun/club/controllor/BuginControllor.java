@@ -37,7 +37,7 @@ public class BuginControllor {
 	@RequestMapping("/club01")
 	public String clubidx(@RequestParam HashMap<String, Object> map, Model model) {
 		//메인 페이지에서 독서 동아리 클릭 했을때 페이지를 넘겨주는 컨트롤러 
-		System.out.println("map" + map);
+		//System.out.println("map" + map);
 		model.addAttribute("menu", map);
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
@@ -76,10 +76,6 @@ public class BuginControllor {
 	
 		List<ClubVo> clist = buginservice.getBoardList(map); //리스트 보여줄려고 
 		List<ClubMember> mem = buginservice.getCode(); //게시판 각 코드 들고오려고 
-		ClubMember clu = buginservice.getName(map); //게시판 각 이름 들고오려고 
-
-		mv.addObject("mem", mem);
-		mv.addObject("clu_name", clu.getClu_name());
 		mv.addObject("clist", clist);
 		mv.addObject("clu_code", clu_code);
 		
@@ -92,8 +88,12 @@ public class BuginControllor {
 	@RequestMapping("/club01/CluBoard")
 	public ModelAndView clublist(@RequestParam HashMap<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
+
 		System.out.println("넘겨오는 데이터 값입니다. " + map);
-		String clb_clucode = (String) map.get("clb_clucode");
+		//이름 가지고 오는 값을 맵에서 건져서 
+		String clu_code  = (String)map.get("clb_clucode");
+		ClubMember clu = buginservice.getName(clu_code); //게시판 각 이름 들고오려고 
+		System.out.println("clugetName" + clu.getClu_name());
 		List<ClubVo> clubList = buginservice.getClub(map);
 		
 		//각종 데이터 받은곳은 pagingData 에 있음 
@@ -101,10 +101,11 @@ public class BuginControllor {
 		PagingData pg = new PagingData();
 		ClubVo pageMaker = pg.pagdata(map);
 		// 값을 내려 보내줄때
+		mv.addObject("clu_name", clu.getClu_name());
 		//pageMaker 에서 내려보내줄 데이터 값들을 vo 타입으로 받아준다 
 		mv.addObject("pageMaker", pageMaker);
 		mv.addObject("clubList", clubList);
-		mv.addObject("clb_clucode", clb_clucode);
+		//mv.addObject("clb_clucode", clb_clucode);
 	
 		mv.setViewName("user/sub/sub05/clublist");
 

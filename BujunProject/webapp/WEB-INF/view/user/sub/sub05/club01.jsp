@@ -33,7 +33,6 @@
 	<!-- title -->
 	<div class="sub_tit">찬우물</div>
 	
-	
 	<!-- content 시작 -->
 	<div class="basic_box type1">
 		<div class="inner">
@@ -41,7 +40,7 @@
 			<b>부전도서관 독서동아리</b>
 			<p>책읽기와 글쓰기에 관심이 있는 어린이, 청소년, 일반인들이 모여 읽은 책에 대해여 함께 이야기하고 서로의 생각과 의견을 나누는 모임으로 친목도모와 더불어 보다 지속적이고 체계적인 독서활동을 통하여 폭넓은 사고와 창의력을 키울 수 있으며, 책과 보다 친해질 수 있는 기회를 제공합니다.</p>
 			<div class="l mg_t10">
-		<a href="/club01/CluBoard?clu_code=CUS0001&page=1&pagecount=10&pagegrp=1" class="btn_con btn_link">독서동아리게시판</a>
+		<a href="/club01/CluBoard?clb_clucode=CUS0001&page=1&pagecount=10&pagegrp=1" class="btn_con btn_link">독서동아리게시판</a>
 		<a href="${pageContext.request.contextPath}/resources/user/file/join_student_01.hwp" title="새창으로 열림" target="_blank" class="btn_con btn_down">신청서 다운로드</a>
 	</div>	
 		</div>

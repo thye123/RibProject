@@ -41,7 +41,7 @@ public interface BuginService {
 	//페이징 관련 ajax
 	public void pagingajax(HashMap<String, Object> map);
 
-	public ClubMember getName(HashMap<String, Object> map);
+	public ClubMember getName(String clu_code);
 
 	//public Filedownload filedown(HashMap<String, Object> map, HttpServletResponse res);
 
