@@ -64,7 +64,7 @@ public class BuginControllor {
 	}*/
 	
 	
-	@RequestMapping("/club01")
+	@RequestMapping("/BuginProject/club01")
 	public String clubidx(@RequestParam HashMap<String, Object> map, Model model) {
 		System.out.println("map" + map);
 		model.addAttribute("menu", map);
