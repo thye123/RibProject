@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Bugin">
+
+<resultMap id="clboadr" type="com.bugin.vo.SearchVo">
+<result property="clb_idx" column="CLB_IDX" javaType="java.lang.Integer"/>
+<result property="clb_clucode" column="CLB_CLUCODE" javaType="java.lang.String"/>
+<result property="clb_writer" column="CLB_WRITER" javaType="java.lang.String"/>
+<result property="clb_title" column="CLB_TITLE" javaType="java.lang.String"/>
+<result property="clb_regdate" column="CLB_REGDATE" javaType="java.lang.String"/>
+<result property="clb_content" column="CLB_CONTENT" javaType="java.lang.String"/>
+<result property="clb_count" column="CLB_COUNT" javaType="java.lang.Integer"/>
+<result property="page"  column="PAGE" javaType="java.lang.Integer"/>
+<result property="count"  column="COUNT" javaType="java.lang.Integer"/>
+<result property="start"  column="START" javaType="java.lang.Integer"/>
+<result property="end"  column="END" javaType="java.lang.Integer"/>
+</resultMap>
+
+
+<resultMap id="oneso" type="com.bugin.vo.ClubVo">
+<result property="clb_idx" column="CLB_IDX" javaType="java.lang.Integer"/>
+<result property="clb_clucode" column="CLB_CLUCODE" javaType="java.lang.String"/>
+<result property="clb_writer" column="CLB_WRITER" javaType="java.lang.String"/>
+<result property="clb_title" column="CLB_TITLE" javaType="java.lang.String"/>
+<result property="clb_regdate" column="CLB_REGDATE" javaType="java.lang.String"/>
+<result property="clb_content" column="CLB_CONTENT" javaType="java.lang.String"/>
+<result property="clb_count" column="CLB_COUNT" javaType="java.lang.Integer"/>
+<result property="page"  column="PAGE" javaType="java.lang.Integer"/>
+<result property="count"  column="COUNT" javaType="java.lang.Integer"/>
+<result property="start"  column="START" javaType="java.lang.Integer"/>
+<result property="end"  column="END" javaType="java.lang.Integer"/>
+<result property="file_filename"  column="FILE_FILENAME" javaType="java.lang.String"/>
+</resultMap>
+
+
+
+<select id="paging" statementType="CALLABLE" parameterType="hashmap" resultType="com.bugin.vo.SearchVo">
+
+{CALL PKG_BUG_LIB.PKG_PAGING_TEST(
+#{keyfield,mode=IN,jdbcType=VARCHAR}
+,#{keyword,mode=IN,jdbcType=VARCHAR}
+,#{clb_clucode,mode=IN,jdbcType=VARCHAR}
+,#{count ,mode=OUT,jdbcType=INTEGER}
+)}
+</select>
+
+<select id="Ajax" statementType="CALLABLE" parameterType="hashmap" resultType="com.bugin.vo.SearchVo">
+
+{CALL PKG_BUG_LIB.PKG_AJAX_TEST(
+#{keyfield,mode=IN,jdbcType=VARCHAR}
+,#{keyword,mode=IN,jdbcType=VARCHAR}
+,#{clb_clucode,mode=IN,jdbcType=VARCHAR}
+,#{page,mode=IN,jdbcType=VARCHAR}
+,#{pagecount ,mode=IN,jdbcType=VARCHAR}
+,#{pagegrp ,mode=IN,jdbcType=INTEGER}
+,#{count ,mode=OUT,jdbcType=INTEGER}
+,#{result, mode=OUT,jdbcType=CURSOR,javaType=RESULTSET,resultMap=clboadr}
+)}
+</select>
+
+<select id="CluBoard" statementType="CALLABLE" resultType="com.bugin.vo.ClubVo" parameterType="hashmap">
+{CALL PKG_BUG_LIB.PKG_CLUB_LIST(
+#{clb_clucode, mode=IN, jdbcType=VARCHAR}
+,#{page, mode=IN, jdbcType=VARCHAR}
+,#{pagecount, mode=IN,  jdbcType=VARCHAR}
+,#{count, mode=OUT, jdbcType=INTEGER}
+,#{result ,mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=clboadr}
+)}
+</select>
+
+<select id="CluView" resultType="com.bugin.vo.ClubMember">
+select  clu_name ,clu_qualifi ,clu_date ,clu_location ,clu_person ,clu_content
+,clu_regdate , clu_code, clu_name from club_tbl
+</select>
+
+<select id="CodeView" resultType="com.bugin.vo.ClubMember">
+	select clu_code , clu_name from club_tbl 
+</select>
+
+<select id="memberName" resultType="com.bugin.vo.ClubMember">
+	select clu_name from club_tbl where clu_code= #{clu_code}
+</select>
+
+
+<resultMap id="memboard" type="com.bugin.vo.ClubMember">
+<result property="clu_code" column="CLU_CODE" javaType="java.lang.String"/>
+<result property="clu_writer" column="CLU_WRITER" javaType="java.lang.String"/>
+<result property="clu_name" column="CLU_NAME" javaType="java.lang.String"/>
+<result property="clu_qualifi" column="CLU_QUALIFI" javaType="java.lang.String"/>
+<result property="clu_date" column="CLU_DATE" javaType="java.lang.String"/>
+<result property="clu_location" column="CLU_LOCATION" javaType="java.lang.String"/>
+<result property="clu_person" column="CLU_PERSON" javaType="java.lang.Integer"/>
+<result property="clu_content" column="CLU_CONTENT" javaType="java.lang.String"/>
+<result property="clu_regdate" column="CLU_REGDATE" javaType="java.lang.String"/>
+</resultMap>
+
+<select id="BoardList" statementType="CALLABLE" resultType="com.bugin.vo.ClubMember" parameterType="hashmap">
+{CALL PKG_BUG_LIB.PKG_CLUB_VIEW(
+#{clu_code,mode=IN,jdbcType=VARCHAR},
+#{result ,mode=OUT,jdbcType=CURSOR,javaType=RESULTSET,resultMap=memboard}
+)}
+</select>
+
+<insert id="InsertJoin" statementType="CALLABLE" parameterType="hashmap">
+{CALL PKG_BUG_LIB.PKG_APPLY_INSERT (#{cluapp_appmemid,mode=IN,jdbcType=VARCHAR}
+,#{cluapp_code,mode=IN,jdbcType=VARCHAR}
+,#{cluapp_rimemnum,mode=IN,jdbcType=INTEGER}
+,#{cluapp_appname,mode=IN,jdbcType=VARCHAR}
+,#{cluapp_appphone,mode=IN,jdbcType=VARCHAR})}
+</insert>
+
+<select id="Onedata" statementType="CALLABLE" parameterType="hashmap">
+{CALL PKG_BUG_LIB.PKG_CLUB_DETEAL(
+#{clb_idx,mode=IN,jdbcType=INTEGER}
+,#{clb_clucode,mode=IN,jdbcType=VARCHAR}
+,#{result, mode=OUT,jdbcType=CURSOR,javaType=RESULTSET,resultMap=oneso})}
+</select>
+
+<delete id="dataDel" statementType="CALLABLE" parameterType="hashmap">
+{CALL PKG_BUG_LIB.PKG_CLUB_DELET(#{clb_idx,mode=IN,jdbcType=INTEGER})}
+</delete>
+
+<update id="Uptdata" statementType="CALLABLE" parameterType="hashmap">
+{CALL PKG_BUG_LIB.PKG_CLUB_UPDATE(#{clb_idx,mode=IN,jdbcType=INTEGER}
+,#{clb_email,mode=IN,jdbcType=VARCHAR},#{clb_open,mode=IN,jdbcType=INTEGER}
+,#{clb_title,mode=IN,jdbcType=VARCHAR},#{clb_content,mode=IN,jdbcType=VARCHAR})}
+</update>
+
+<insert id="Indata" statementType="CALLABLE" parameterType="hashmap">
+{CALL PKG_BUG_LIB.PKG_CLUB_INSERT(
+#{clb_writer,mode=IN,jdbcType=VARCHAR}
+,#{clb_clucode,mode=IN,jdbcType=VARCHAR}
+,#{clb_rimemnum,mode=IN,jdbcType=INTEGER}
+,#{clb_email,mode=IN,jdbcType=VARCHAR}
+,#{clb_open,mode=IN,jdbcType=INTEGER}
+,#{clb_pass,mode=IN,jdbcType=VARCHAR}
+,#{clb_title,mode=IN,jdbcType=VARCHAR}
+,#{clb_content,mode=IN,jdbcType=VARCHAR}
+,#{file_boardcode,mode=IN ,jdbcType=VARCHAR}
+,#{file_filename, mode=IN, javaType=Object, jdbcType=ARRAY, jdbcTypeName=FILE_ARRAY, 
+typeHandler=com.bugin.service.TypeHandler.ListMapTypeHandler}
+,#{fileext, mode=IN, javaType=Object, jdbcType=ARRAY, jdbcTypeName=FILE_ARRAY, 
+typeHandler=com.bugin.service.TypeHandler.ListMapTypeHandler}
+,#{file_size, mode=IN, javaType=Object, jdbcType=ARRAY, jdbcTypeName=FILE_ARRAY, 
+typeHandler=com.bugin.service.TypeHandler.ListMapTypeHandler}
+,#{file_filerealname, mode=IN, javaType=Object, jdbcType=ARRAY, jdbcTypeName=FILE_ARRAY, 
+typeHandler=com.bugin.service.TypeHandler.ListMapTypeHandler})}
+
+</insert>
+
+</mapper>
