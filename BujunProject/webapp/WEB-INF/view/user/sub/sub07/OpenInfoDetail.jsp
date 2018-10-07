@@ -28,10 +28,35 @@
 		}
 		
 		var list = document.getElementById("list");
-		list.addEventListener("click", function(){
-			location.href="/info03?ad_code=${openInfoVo.ad_code}&page_num=1";
-		});
-	
+		var ad_code = "${openInfoVo.ad_code}";
+		
+		
+		<c:choose>
+			<c:when test="${keyword != null && keyfield != null}">
+				list.addEventListener("click", function(){
+					switch (ad_code) {
+					case "CAT0016":
+						location.href="/info03/search?m1=07&m2=01&m3=03&keyword=${keyword}&keyfield=${keyfield}&page_num=1&page_grp=1";
+						break;
+					case "CAT0017":
+						location.href="/info03/search?m1=07&m2=01&m3=05&keyword=${keyword}&keyfield=${keyfield}&page_num=1&page_grp=1";
+						break;
+					}
+				});
+			</c:when>
+			<c:otherwise>
+				list.addEventListener("click", function(){
+					switch (ad_code) {
+					case "CAT0016":
+						location.href="/info03?m1=07&m2=01&m3=03&page_num=1&page_grp=1";
+						break;
+					case "CAT0017":
+						location.href="/info03?m1=07&m2=01&m3=05&page_num=1&page_grp=1";
+						break;
+					}
+				});
+			</c:otherwise>
+		</c:choose>
 	}
 </script>
 			

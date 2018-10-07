@@ -8,6 +8,7 @@ public class PagingVo {
 	private int 	start_page;	//시작 페이지
 	private int		end_page;	//끝 페이지
 	private int 	page_group;	//페이지 그룹
+	private int 	page_cnt;   //하단에 뿌려줄 페이지 갯수
 	
 	public int getPage_num() {
 		return page_num;
@@ -51,11 +52,17 @@ public class PagingVo {
 	public void setEnd_page(int end_page) {
 		this.end_page = end_page;
 	}
+	public int getPage_cnt() {
+		return page_cnt;
+	}
+	public void setPage_cnt(int page_cnt) {
+		this.page_cnt = page_cnt;
+	}
 	
 	@Override
 	public String toString() {
 		return "PagingVo [page_num=" + page_num + ", ad_code=" + ad_code + ", tot_cnt=" + tot_cnt + ", tot_btcnt="
 				+ tot_btcnt + ", start_page=" + start_page + ", end_page=" + end_page + ", page_group=" + page_group
-				+ "]";
+				+ ", page_cnt=" + page_cnt + "]";
 	}
 }
