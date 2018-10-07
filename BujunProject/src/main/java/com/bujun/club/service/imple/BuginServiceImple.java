@@ -155,8 +155,8 @@ public class BuginServiceImple implements BuginService {
 	}
 
 	@Override
-	public ClubMember getName(HashMap<String, Object> map) {
-		ClubMember member= bugindao.getName(map);
+	public ClubMember getName(String clu_code) {
+		ClubMember member= bugindao.getName(clu_code);
 		return member;
 	}
 

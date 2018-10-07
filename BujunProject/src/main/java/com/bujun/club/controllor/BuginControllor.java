@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,42 +34,66 @@ public class BuginControllor {
 	@Autowired
 	private BuginService buginservice;
 	
-	//기초 처음에 들어갔을때 화면 
-/*	@RequestMapping("/")
-	public ModelAndView index() {
-		ModelAndView mv = new ModelAndView();
-		//mv.setViewName("user/main/index");
-		mv.setViewName("user/sub/sub05/club01");
-		return mv;
-	}*/
+	@RequestMapping("/club01")
+	public String clubidx(@RequestParam HashMap<String, Object> map, Model model) {
+		//메인 페이지에서 독서 동아리 클릭 했을때 페이지를 넘겨주는 컨트롤러 
+		//System.out.println("map" + map);
+		model.addAttribute("menu", map);
+		String m1 = String.valueOf(map.get("m1"));		
+		String m2 = String.valueOf(map.get("m2"));		
+		String m3 = String.valueOf(map.get("m3"));
+		
+		String link ="";
+		
+		if(m1.equals("05")&&m2.equals("03")&&m3.equals("01")) {
+			link = "user/sub/sub05/club01";
+		}else {
+			if(m1.equals("05")&&m2.equals("03")&&m3.equals("02")) {
+				link = "user/sub/sub05/club02";
+			}else {
+				if(m1.equals("05")&&m2.equals("03")&&m3.equals("03")) {
+					link = "user/sub/sub05/club03";
+				}else {
+					if(m1.equals("05")&&m2.equals("03")&&m3.equals("04")) {
+						link = "user/sub/sub05/club04";
+					}
+				}
+			}
+		}
+		
+		return link;
+	}
 	
+
 	//게시판 항목 보여주는 부분 
-	@RequestMapping("/Club")
+/*	@RequestMapping("/club01/Club")
 	public ModelAndView Club(@RequestParam HashMap<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
-
+		/Club?clu_code=CUS0001
+		/club01?m1=05&m2=03&m3=01
+		
 		String clu_code = (String) map.get("clu_code");
 	
 		List<ClubVo> clist = buginservice.getBoardList(map); //리스트 보여줄려고 
 		List<ClubMember> mem = buginservice.getCode(); //게시판 각 코드 들고오려고 
-		ClubMember clu = buginservice.getName(map); //게시판 각 이름 들고오려고 
-
-		mv.addObject("mem", mem);
-		mv.addObject("clu_name", clu.getClu_name());
 		mv.addObject("clist", clist);
 		mv.addObject("clu_code", clu_code);
 		
 		//페이지 이동하는 부분 
-		mv.setViewName("user/sub/sub05/club01");
+		mv.setViewName("user/sub/sub05/c01");
 		return mv;
-	}
+	}*/
 
 	// 동아리 게시판 클릭시 게시판 리스트로 가는 list
-	@RequestMapping("/CluBoard")
+	@RequestMapping("/club01/CluBoard")
 	public ModelAndView clublist(@RequestParam HashMap<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
 
-		String clb_clucode = (String) map.get("clb_clucode");
+		System.out.println("넘겨오는 데이터 값입니다. " + map);
+		//이름 가지고 오는 값을 맵에서 건져서 
+		String clu_code  = (String)map.get("clb_clucode");
+		ClubMember clu = buginservice.getName(clu_code); //게시판 각 이름 들고오려고 
+		System.out.println("clugetName" + clu.getClu_name());
 		List<ClubVo> clubList = buginservice.getClub(map);
 		
 		//각종 데이터 받은곳은 pagingData 에 있음 
@@ -76,10 +101,11 @@ public class BuginControllor {
 		PagingData pg = new PagingData();
 		ClubVo pageMaker = pg.pagdata(map);
 		// 값을 내려 보내줄때
+		mv.addObject("clu_name", clu.getClu_name());
 		//pageMaker 에서 내려보내줄 데이터 값들을 vo 타입으로 받아준다 
 		mv.addObject("pageMaker", pageMaker);
 		mv.addObject("clubList", clubList);
-		mv.addObject("clb_clucode", clb_clucode);
+		//mv.addObject("clb_clucode", clb_clucode);
 	
 		mv.setViewName("user/sub/sub05/clublist");
 

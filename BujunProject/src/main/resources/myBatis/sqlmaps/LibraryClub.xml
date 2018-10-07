@@ -36,7 +36,7 @@
 
 <select id="paging" statementType="CALLABLE" parameterType="hashmap" resultType="com.bujun.club.vo.SearchVo">
 
-{CALL PKG_BUG_LIB.PKG_PAGING_TEST(
+{CALL BJL_PKG_CLUB.PKG_PAGING_TEST(
 #{keyfield,mode=IN,jdbcType=VARCHAR}
 ,#{keyword,mode=IN,jdbcType=VARCHAR}
 ,#{clb_clucode,mode=IN,jdbcType=VARCHAR}
@@ -46,7 +46,7 @@
 
 <select id="Ajax" statementType="CALLABLE" parameterType="hashmap" resultType="com.bujun.club.vo.SearchVo">
 
-{CALL PKG_BUG_LIB.PKG_AJAX_TEST(
+{CALL BJL_PKG_CLUB.PKG_AJAX_TEST(
 #{keyfield,mode=IN,jdbcType=VARCHAR}
 ,#{keyword,mode=IN,jdbcType=VARCHAR}
 ,#{clb_clucode,mode=IN,jdbcType=VARCHAR}
@@ -59,7 +59,7 @@
 </select>
 
 <select id="CluBoard" statementType="CALLABLE" resultType="com.bujun.club.vo.ClubVo" parameterType="hashmap">
-{CALL PKG_BUG_LIB.PKG_CLUB_LIST(
+{CALL BJL_PKG_CLUB.PKG_CLUB_LIST(
 #{clb_clucode, mode=IN, jdbcType=VARCHAR}
 ,#{page, mode=IN, jdbcType=VARCHAR}
 ,#{pagecount, mode=IN,  jdbcType=VARCHAR}
@@ -95,14 +95,14 @@ select  clu_name ,clu_qualifi ,clu_date ,clu_location ,clu_person ,clu_content
 </resultMap>
 
 <select id="BoardList" statementType="CALLABLE" resultType="com.bujun.club.vo.ClubMember" parameterType="hashmap">
-{CALL PKG_BUG_LIB.PKG_CLUB_VIEW(
+{CALL BJL_PKG_CLUB.PKG_CLUB_VIEW(
 #{clu_code,mode=IN,jdbcType=VARCHAR},
 #{result ,mode=OUT,jdbcType=CURSOR,javaType=RESULTSET,resultMap=memboard}
 )}
 </select>
 
 <insert id="InsertJoin" statementType="CALLABLE" parameterType="hashmap">
-{CALL PKG_BUG_LIB.PKG_APPLY_INSERT (#{cluapp_appmemid,mode=IN,jdbcType=VARCHAR}
+{CALL BJL_PKG_CLUB.PKG_APPLY_INSERT (#{cluapp_appmemid,mode=IN,jdbcType=VARCHAR}
 ,#{cluapp_code,mode=IN,jdbcType=VARCHAR}
 ,#{cluapp_rimemnum,mode=IN,jdbcType=INTEGER}
 ,#{cluapp_appname,mode=IN,jdbcType=VARCHAR}
@@ -110,24 +110,24 @@ select  clu_name ,clu_qualifi ,clu_date ,clu_location ,clu_person ,clu_content
 </insert>
 
 <select id="Onedata" statementType="CALLABLE" parameterType="hashmap">
-{CALL PKG_BUG_LIB.PKG_CLUB_DETEAL(
+{CALL BJL_PKG_CLUB.PKG_CLUB_DETEAL(
 #{clb_idx,mode=IN,jdbcType=INTEGER}
 ,#{clb_clucode,mode=IN,jdbcType=VARCHAR}
 ,#{result, mode=OUT,jdbcType=CURSOR,javaType=RESULTSET,resultMap=oneso})}
 </select>
 
 <delete id="dataDel" statementType="CALLABLE" parameterType="hashmap">
-{CALL PKG_BUG_LIB.PKG_CLUB_DELET(#{clb_idx,mode=IN,jdbcType=INTEGER})}
+{CALL BJL_PKG_CLUB.PKG_CLUB_DELET(#{clb_idx,mode=IN,jdbcType=INTEGER})}
 </delete>
 
 <update id="Uptdata" statementType="CALLABLE" parameterType="hashmap">
-{CALL PKG_BUG_LIB.PKG_CLUB_UPDATE(#{clb_idx,mode=IN,jdbcType=INTEGER}
+{CALL BJL_PKG_CLUB.PKG_CLUB_UPDATE(#{clb_idx,mode=IN,jdbcType=INTEGER}
 ,#{clb_email,mode=IN,jdbcType=VARCHAR},#{clb_open,mode=IN,jdbcType=INTEGER}
 ,#{clb_title,mode=IN,jdbcType=VARCHAR},#{clb_content,mode=IN,jdbcType=VARCHAR})}
 </update>
 
 <insert id="Indata" statementType="CALLABLE" parameterType="hashmap">
-{CALL PKG_BUG_LIB.PKG_CLUB_INSERT(
+{CALL BJL_PKG_CLUB.PKG_CLUB_INSERT(
 #{clb_writer,mode=IN,jdbcType=VARCHAR}
 ,#{clb_clucode,mode=IN,jdbcType=VARCHAR}
 ,#{clb_rimemnum,mode=IN,jdbcType=INTEGER}
