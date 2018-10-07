@@ -28,7 +28,7 @@ public interface BuginDao {
 
 	public void dataDel(HashMap<String, Object> map);
 
-	public void uptproc(HashMap<String, Object> map);
+	public void uptproc(MultipartFile file, HashMap<String, Object> map,HttpServletRequest req);
 
 	public void insertdata(MultipartFile file, HashMap<String, Object> map, HttpServletRequest req);
 	
@@ -36,7 +36,7 @@ public interface BuginDao {
 	public List<SearchVo> AjaxkeyList(HashMap<String, Object> map);
 	
 	//∆‰¿Ã¬° ajax
-	public void pagingajax(HashMap<String, Object> map);
+	public SearchVo pagingajax(HashMap<String, Object> map);
 
 	public ClubMember getName(String clu_code);
 

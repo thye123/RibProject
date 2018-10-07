@@ -77,7 +77,7 @@ public class BuginDaoImple implements BuginDao {
 	}
 
 	@Override
-	public void uptproc(HashMap<String, Object> map) {
+	public void uptproc(MultipartFile file, HashMap<String, Object> map,HttpServletRequest req) {
 		
 		sqlsession.update("Bugin.Uptdata",map);
 	}
@@ -101,10 +101,12 @@ public class BuginDaoImple implements BuginDao {
 
 	//검색 해서 페이징 뿌려주는건데
 	@Override
-	public void pagingajax(HashMap<String, Object> map) {
+	public SearchVo pagingajax(HashMap<String, Object> map) {
 
 		sqlsession.selectOne("Bugin.paging",map);
-
+		SearchVo vo = new SearchVo();
+		System.out.println("DaoImpl" + map.get("count"));
+		return vo;
 	}
 
 	@Override

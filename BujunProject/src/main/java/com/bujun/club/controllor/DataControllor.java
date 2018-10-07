@@ -22,8 +22,10 @@ public class DataControllor {
 	// 여긴 ajax 검색해서 리스트 보여줄때 (작업을 2 분류로 나눴음 )
 	@RequestMapping(value = "/CluBoard/view/", method = RequestMethod.GET, headers = "Accept=application/json")
 	public List<SearchVo> getClublist(@RequestParam HashMap<String, Object> map) {
-
+		
+		//System.out.println("ajaxList" + map);
 		List<SearchVo> club = buginservice.AjaxkeyList(map);
+		//System.out.println("ajaxclub" + club);
 		return club;
 	}
 
@@ -35,17 +37,22 @@ public class DataControllor {
 		ClubVo vod = new ClubVo();
 		PagingData pg = new PagingData();
 		//검색 조회수 값 조회 
-		buginservice.pagingajax(map);
+		SearchVo  vo = buginservice.pagingajax(map);
+		System.out.println("vo." + vo.toString());
 		String reCnt = String.valueOf(map.get("count"));
+		System.out.println("map cent" +reCnt);
 		//조회값이 없을 경우 0 으로 셋팅해서 처리 
 		if(reCnt.equals("null")) {
 			vod.setCount(0);
 			map.put("count", vod.getCount());
 			vod = pg.pagdata(map);
+			System.out.println("값이 없을때 vod" + vod.toString());
+		}else {
+			vod = pg.pagdata(map);
+			System.out.println("값이 있을때 vod" + vod.toString());
+			
 		}
 		//조회값이 있을경우는 그냥 map 받아서 실행 
-		vod = pg.pagdata(map);
-	
 		return vod;
 	}
 

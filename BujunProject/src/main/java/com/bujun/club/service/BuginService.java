@@ -30,7 +30,7 @@ public interface BuginService {
 
 	public void dataDel(HashMap<String, Object> map);
 
-	public void uptproc(HashMap<String, Object> map);
+	public void uptproc(MultipartFile file, HashMap<String, Object> map, HttpServletRequest req);
 
 	//파일
 	public void insertdata(MultipartFile file, HashMap<String, Object> map, HttpServletRequest req);
@@ -39,7 +39,7 @@ public interface BuginService {
 	public List<SearchVo> AjaxkeyList(HashMap<String, Object> map);
 	
 	//페이징 관련 ajax
-	public void pagingajax(HashMap<String, Object> map);
+	public SearchVo pagingajax(HashMap<String, Object> map);
 
 	public ClubMember getName(String clu_code);
 

@@ -253,13 +253,27 @@ public class ClubVo {
 				int temp =  (count/10)+1;
 				vo.setEnd(temp);
 			}
-
-			this.prev = this.start != 1;
+			
+			
+			/*this.prev = this.start != 1;*/
+			if(page!=1) {
+/*				//
+				현재 있는 페이지가 1이 아니면 
+				시작이 1 이 아니면 이전으로 돌릴수 있도록 */
+				this.prev= true;
+				vo.setPrev(true);
+			}else {
+				if(page==1) {
+					//1이면 이전버튼이 활성화 못되게 
+					this.prev=false;
+					vo.setPrev(false);
+				}
+			}
 			this.next = this.end * 10 < this.count; 
 			
 			vo.setTempEnd(tempEnd);
 			vo.setPage(page);
-			vo.setPrev(prev);
+	
 			vo.setNext(next);
 			vo.setCount(count);
 			vo.setPagecount(pagecount);
