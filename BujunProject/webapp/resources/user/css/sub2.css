@@ -460,8 +460,10 @@ div.greeting div { color:#777;
 /* join */
 .in_addr1 {width:35%;} 
 .in_addr2 {width:30%;}
-
-
+.in_mem_num {width:30%;}
+.in_tel {width:80px;}
+.in_email {width:130px;}
+.in_tel2 {width:100px;}
 .file_del {display:inline-block; color:#fff; cursor:pointer; margin-left:10px; padding:0 6px; background:#e10000; line-height:20px;}
 .file_del:hover {color:#fff; background:#c40c0c;}
 
@@ -486,6 +488,7 @@ div.greeting div { color:#777;
 	/* join */
 	.in_addr1 {width:100%;} 
 	.in_addr2 {width:100%;}
+	.in_mem_num {width:50%;}
 }
 
 
@@ -503,5 +506,12 @@ div.greeting div { color:#777;
 	/* qna */	
 	.qna dt {line-height:24px;}
 	.qna dd {line-height:23px;}
+	
+
 }
 
+
+@media all and (max-width:500px) {
+	/* join */
+	.in_mem_num {width:100%;}
+}

@@ -187,9 +187,9 @@
 .board_read thead td.attach_list img {margin-top:2px;}
 .board_read tbody th {padding:12px 5px 10px; border:0; border-bottom:1px solid #e5e5e5; color:#555;text-align:center; font-size:13px; text-align:left; background:#fbfbfb;}
 .board_read th span.txtc_inreq {color:#ff6600;}
-.board_read tbody td input{ border:1px solid #d4d4d4; padding:2px 3px; }
+.board_read tbody td input{ border:1px solid #d4d4d4; padding:0 3px; height:23px; }
 .board_read tbody td textarea{ border:1px solid #d4d4d4; padding:2px 3px; }
-.board_read tbody td select {border:1px solid #d4d4d4; padding:2px 3px; }
+.board_read tbody td select {height:25px; border:1px solid #d4d4d4;  }
 .board_read tbody td select option {padding:3px 5px; }
 
 
