@@ -381,7 +381,7 @@ a.btn_board {
 	    </c:when>
 	
 	    <c:otherwise>
-	     	<a class="nextblock" href="/club01/CluBoard?clb_clucode=CUS0001&page=${pageMaker.page+1}&pagecount=10&pagegrp=1"><span>6 페이지</span></a>
+	     	<a class="nextblock" href="/club01/CluBoard?clb_clucode=CUS0001&page=${pageMaker.page+1}&pagecount=10&pagegrp=${pageMaker.pagegrp}"><span>6 페이지</span></a>
 	    </c:otherwise>
 
 	</c:choose>
@@ -390,7 +390,17 @@ a.btn_board {
 	<!-- 하고 싶은 기능 : 하단에 뿌려지는 페이지갯수를 5개로 하고 마지막 페이지 넘길때 6페이지가 
 	6~부터 끝 페이지가 나오도록 기능을 만들고싶은 lastpage경로위치 잡을거1
 	 -->
-			<a class="lastpage" href="/club01/CluBoard?clb_clucode=CUS0001&page=${pageMaker.end}&pagecount=10&pagegrp=1"><span>21 페이지</span></a>
+		<!-- pagegrp = 1 어떤 조건일떄 막아야하는데  -->
+	<!-- 예를 들어 end 11 tempEnd = 20  -->
+	<c:choose>
+		<c:when test="${pageMaker.end >= pageMaker.tempEnd}">
+					<a class="lastpage" href="/club01/CluBoard?clb_clucode=CUS0001&page=${pageMaker.end+1}&pagecount=10&pagegrp=${pageMaker.pagegrp+1}"><span>21 페이지</span></a>
+		</c:when>
+		
+		<c:otherwise>
+			<a class="lastpage" href="#"></a>
+		</c:otherwise>
+	</c:choose>
 		</div>
 	</div>
 	<!-- //페이징 -->	

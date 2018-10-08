@@ -85,6 +85,8 @@ public class BuginControllor {
 		ClubVo pageMaker = pg.pagdata(map);
 		//System.out.println("pageMAker" + pageMaker.toString());
 		// 값을 내려 보내줄때
+		System.out.println("pageMaker"  + pageMaker.toString());
+	
 		mv.addObject("clu_name", clu.getClu_name());
 		//pageMaker 에서 내려보내줄 데이터 값들을 vo 타입으로 받아준다 
 		mv.addObject("pageMaker", pageMaker);
