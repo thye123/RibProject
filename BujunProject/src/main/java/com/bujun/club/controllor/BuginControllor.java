@@ -64,26 +64,7 @@ public class BuginControllor {
 		return link;
 	}
 	
-
-	//게시판 항목 보여주는 부분 
-/*	@RequestMapping("/club01/Club")
-	public ModelAndView Club(@RequestParam HashMap<String, Object> map) {
-		ModelAndView mv = new ModelAndView();
-		/Club?clu_code=CUS0001
-		/club01?m1=05&m2=03&m3=01
-		
-		String clu_code = (String) map.get("clu_code");
 	
-		List<ClubVo> clist = buginservice.getBoardList(map); //리스트 보여줄려고 
-		List<ClubMember> mem = buginservice.getCode(); //게시판 각 코드 들고오려고 
-		mv.addObject("clist", clist);
-		mv.addObject("clu_code", clu_code);
-		
-		//페이지 이동하는 부분 
-		mv.setViewName("user/sub/sub05/c01");
-		return mv;
-	}*/
-
 	// 동아리 게시판 클릭시 게시판 리스트로 가는 list
 	@RequestMapping("/club01/CluBoard")
 	public ModelAndView clublist(@RequestParam HashMap<String, Object> map) {
@@ -100,6 +81,7 @@ public class BuginControllor {
 		//그걸 가지고 계산한 타입을 ClubVo로 받았음 미안 내능력은 .. 
 		PagingData pg = new PagingData();
 		ClubVo pageMaker = pg.pagdata(map);
+		System.out.println("pageMAker" + pageMaker.toString());
 		// 값을 내려 보내줄때
 		mv.addObject("clu_name", clu.getClu_name());
 		//pageMaker 에서 내려보내줄 데이터 값들을 vo 타입으로 받아준다 
@@ -113,7 +95,7 @@ public class BuginControllor {
 	}
 
 	// 세부 정보 
-	@RequestMapping("/CluBoard/OneView")
+	@RequestMapping("/club01/CluBoard/OneView")
 	public ModelAndView OneView(@RequestParam HashMap<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
 		ClubVo club = buginservice.getOnedata(map);
@@ -131,7 +113,7 @@ public class BuginControllor {
 
 
 	/// CluBoard/WriteForm form 영역으로 갑니다 .
-	@RequestMapping("/CluBoard/WriteForm")
+	@RequestMapping("/club01/CluBoard/WriteForm")
 	public ModelAndView WriteForm(@RequestParam HashMap<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
 		String clb_clucode = (String) map.get("clb_clucode");
@@ -168,7 +150,7 @@ public class BuginControllor {
 	}
 
 	// 하나의 데이터 에서 목록으로 돌아갈떄
-	@RequestMapping("/CluBoard/Goboard")
+	@RequestMapping("/club01/CluBoard/Goboard")
 	public ModelAndView Goboard(@RequestParam HashMap<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
 		String clb_clucode = (String) map.get("clb_clucode");
@@ -179,7 +161,7 @@ public class BuginControllor {
 
 	// 삭제 부분입니다
 
-	@RequestMapping("/CluBoard/Delboard")
+	@RequestMapping("/club01/CluBoard/Delboard")
 	public ModelAndView dataDel(@RequestParam HashMap<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
 		buginservice.dataDel(map);
@@ -190,24 +172,46 @@ public class BuginControllor {
 
 	// 수정 :
 
-	@RequestMapping("/CluBoard/Uptboard")
+	@RequestMapping("/club01/CluBoard/Uptboard")
 	public ModelAndView Uptboard(@RequestParam HashMap<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
+		System.out.println("수정 map " + map);
 		String clb_clucode = (String) map.get("clb_clucode");
 		ClubVo vo = buginservice.getOnedata(map);
 		mv.addObject("vo", vo);
 		mv.addObject("clb_clucode", clb_clucode);
+		mv.addObject("clb_idx", map.get("clb_idx"));
 		mv.setViewName("user/sub/sub05/uptForm");
 		return mv;
 	}
 	
 	//update  다되고 처리 되는 부분 
-	@RequestMapping("/CluBoard/UptProc")
-	public ModelAndView UptProc(@RequestParam HashMap<String, Object> map) {
+	@RequestMapping("/club01/CluBoard/UptProc")
+	public ModelAndView UptProc(@RequestParam HashMap<String, Object> map
+			 ,MultipartFile file, HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
+		
+		
 		String clb_clucode = (String) map.get("clb_clucode");
-		buginservice.uptproc(map);
-		mv.setViewName("redirect:/CluBoard?clb_clucode=" + clb_clucode+"&page=1&pagecount=10&pagegrp=1");
+		
+		String file_filename = file.getOriginalFilename();
+		String filePath = "c:\\aaa\\";
+		System.out.println("saveName : " + file_filename);
+		map.put("file_filename", file_filename);
+		System.out.println("map업로드1111 " + map);
+
+		File target = new File(filePath+file_filename);
+		System.out.println("target" + target.getName());
+		try {
+			FileCopyUtils.copy(file.getBytes(), target);
+			buginservice.uptproc(file, map, req);
+			mv.setViewName("redirect:/club01/CluBoard?clb_clucode=" + clb_clucode+"&page=1&pagecount=10&pagegrp=1");
+
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
 		return mv;
 	}
 

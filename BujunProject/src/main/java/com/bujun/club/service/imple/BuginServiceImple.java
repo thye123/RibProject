@@ -69,9 +69,15 @@ public class BuginServiceImple implements BuginService {
 	}
 
 	@Override
-	public void uptproc(HashMap<String, Object> map) {
-		bugindao.uptproc(map);
-
+	public void uptproc(MultipartFile file, HashMap<String, Object> map,HttpServletRequest req) {
+		Uploading upload = new Uploading();
+		if (map.get("file_filename") != null) {
+			upload.addFile(file, map, req);
+			bugindao.uptproc(file, map, req);
+		} else {
+			bugindao.uptproc(file, map, req);
+		}
+		
 	}
 
 	@Override
@@ -149,9 +155,9 @@ public class BuginServiceImple implements BuginService {
 	}
 
 	@Override
-	public void pagingajax(HashMap<String, Object> map) {
-	 bugindao.pagingajax(map);
-		/*return vo;*/
+	public SearchVo pagingajax(HashMap<String, Object> map) {
+		SearchVo vo= bugindao.pagingajax(map);
+		return vo;
 	}
 
 	@Override

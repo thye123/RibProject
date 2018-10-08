@@ -45,17 +45,6 @@
 	<!-- title -->
 	<div class="sub_tit">자료실소개</div>
 
-	<div class="tab_depth01">
-		<ul class="n03">
-			<!-- 나중에 붙이자 -->
-			<li><a href="/CluBoard?clb_clucode=CUS0001&page=1&pagecount=10"
-				class="on">수학동아리</a></li>
-			<li><a href="/CluBoard?clb_clucode=CUS0002&page=1&pagecount=10">영어동아리</a></li>
-			<li><a href="/CluBoard?clb_clucode=CUS0003&page=1&pagecount=10">국어동아리</a></li>
-			<li><a href="/CluBoard?clb_clucode=CUS0004&page=1&pagecount=10">과학동아리</a></li>
-		</ul>
-	</div>
-
 	<!-- content 시작 -->
 
 	<h2 class="tbul1 mg_b40">이용대상 : 중학생이상</h2>
@@ -74,13 +63,15 @@
  	<!-- class : mob_none -> 모바일일때 display:none  -->
  	
  	<h2 class="tbul1 mg_b20">게시판테이블(Update)</h2>	
- 	<form action="/CluBoard/UptProc" method="POST">	 	 	 		
+ 	<form action="/club01/CluBoard/UptProc" method="POST" enctype="multipart/form-data">	 	 	 		
+		
 		<input type="hidden" name="clb_idx" value="${vo.clb_idx}">
 		<input type="hidden" name="clb_clucode" value="${clb_clucode}">
 		<input type="hidden" name="page" value="1" />
 		<input type="hidden" name="pagecount" value="10" />
 		<input type="hidden" name="pagegrp" value="1" />
-	
+		<input type="hidden" name=file_boardcode value="${clb_clucode}">
+		
 	<table class="board_read">
 		<colgroup><col style="width:20%;"><col style="width:55%;"><col></colgroup>		
 		<tbody>
@@ -111,16 +102,15 @@
 					${club.clb_content}
 				</td>
 			</tr>
-			<tr>
-				<th class="c">첨부파일</th>
-				<td colspan="2">
-					<input type="submit" value="제출" /> 
-					<input type="reset" value="초기화" />
-				</td>
-			</tr>
 			
+			<tr>
+				<th class="c">파일</th>
+				<td><input class="mg_b5" type="file" name="file" id="orgFile" /></td>
+			</tr>
 		</tbody>
 	</table>
+					<input type="submit" value="제출" /> 
+					<input type="reset" value="초기화" />
 	</form>
 	</div>
 	<!-- //table -->

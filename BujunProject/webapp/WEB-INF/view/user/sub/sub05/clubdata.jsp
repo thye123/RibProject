@@ -14,26 +14,32 @@
 
 <!-- 레프트메뉴 -->
 <%@ include file="../../include/left_menu05.jsp"%>
+<style>
+/*부전도서관 글쓰기 긁어옴 (게시판 하단 글쓰기 버튼)*/
+.btn_set {
+    padding: 10px 0;
+    overflow: hidden;
+}
+a.btn_board {
+    background: #696969;
+    color: #fff;
+    padding: 8px 25px;
+}
+
+</style>
+
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript">
-	window.onload=function(){
-		var listBtn = document.getElementsByClassName('listBtn');
-		listBtn[0].onclick=function(){
-			location.href="/CluBoard/Goboard?clb_clucode=${clb_clucode}&page=1&pagecount=10&pagegrp=1";
-		}
-	}
 
-</script>
 <!-- location -->
 <div class="loca">
 	<ul>
 		<li><img
 			src="${pageContext.request.contextPath}/resources/user/images/sub/loca_home.jpg"
 			alt="" /></li>
-		<li>도서관이용</li>
-		<li>자료실소개</li>
-		<li>종합자료실</li>
+		<li>독서문화</li>
+		<li>독서동아리</li>
+		<li>찬우물</li>
 	</ul>
 </div>
 <!-- //location -->
@@ -43,22 +49,9 @@
 
 
 	<!-- title -->
-	<div class="sub_tit">자료실소개</div>
-
-	<div class="tab_depth01">
-		<ul class="n03">
-			<!-- 나중에 붙이자 -->
-			<li><a href="/CluBoard?clb_clucode=CUS0001&page=1&pagecount=10"
-				class="on">수학동아리</a></li>
-			<li><a href="/CluBoard?clb_clucode=CUS0002&page=1&pagecount=10">영어동아리</a></li>
-			<li><a href="/CluBoard?clb_clucode=CUS0003&page=1&pagecount=10">국어동아리</a></li>
-			<li><a href="/CluBoard?clb_clucode=CUS0004&page=1&pagecount=10">과학동아리</a></li>
-		</ul>
-	</div>
+	<div class="sub_tit"><h2 class="tbul1 mg_b20">찬우물</h2></div>
 
 	<!-- content 시작 -->
-
-	<h2 class="tbul1 mg_b40">이용대상 : 중학생이상</h2>
 
 	<!-- table -->
 	<div class="scroll_info">
@@ -73,7 +66,7 @@
  	<!-- 게시판테이블(read) -->	
  	<!-- class : mob_none -> 모바일일때 display:none  -->
  	
- 	<h2 class="tbul1 mg_b20">게시판테이블(read)</h2>	
+ <!-- 	<h2 class="tbul1 mg_b20">게시판테이블(read)</h2>	 -->
  		 	 	 		
 	<table class="board_read">
 		<colgroup><col style="width:20%;"><col style="width:55%;"></colgroup>		
@@ -103,11 +96,13 @@
 	</table>
 	</div>
 	<!-- //table -->
-		<div class="data_btn">
-			<button><a href="/CluBoard/Uptboard?clb_idx=${clb_idx}&clb_clucode=${clb_clucode}&page=1&pagecount=10">수정</a></button>
-			<button><a href="/CluBoard/Delboard?clb_idx=${clb_idx}&clb_clucode=${clb_clucode}&page=1&pagecount=10">삭제</a></button>
-			<button class="listBtn">목록으로</button>
-		</div>
+	
+	<div class="btn_set r">
+		<a class="btn btn_board" href="/club01/CluBoard/Uptboard?clb_idx=${clb_idx}&clb_clucode=${clb_clucode}&page=1&pagecount=10">수정</a>
+		<a class="btn btn_board" href="/club01/CluBoard/Delboard?clb_idx=${clb_idx}&clb_clucode=${clb_clucode}&page=1&pagecount=10">삭제</a>
+		<a class="btn btn_board" href="/club01/CluBoard/Goboard?clb_clucode=${clb_clucode}&page=1&pagecount=10&pagegrp=1">목록으로</a>
+	</div>
+
 </div>
 <!-- //content 끝 -->
 
