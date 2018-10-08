@@ -24,6 +24,99 @@
 		}
 	}
 </script>
+<style>
+.content{
+	width:100%;
+	height: 250px;
+	resize: none;
+}
+
+input[type="text"]{
+	width: 50%;
+	height: 22px;
+}
+/*부전도서관 글쓰기 긁어옴 (게시판 하단 글쓰기 버튼)*/
+.btn_set {
+    padding: 10px 0;
+    overflow: hidden;
+}
+.btn_board {
+    background: #696969;
+    color: #fff;
+    padding: 6px 25px;
+   	cursor:pointer;
+ 	
+ }
+</style>
+<script>
+//비공개선택을 하면 
+
+function aaa(check){
+ 	var clb_open		= document.getElementsByName('clb_open');
+ 	var clb_pass 		= document.getElementsByName('clb_pass');
+
+ 	if((clb_open[1].checked)==true){
+		alert('비공개를 선택했습니다.')
+		clb_open[0].checked=false;
+		if(clb_pass[0].value==''){
+			alert('입력해주세요 비밀번호');
+			clb_pass[0].focus();
+			return false;
+		}
+	}
+}
+</script>
+
+<script>
+	window.onload= function(){
+
+		var processing  	= document.getElementById('processing');
+		var clb_writer		= document.getElementsByName('clb_writer');
+	 	var clb_rimemnum 	= document.getElementsByName('clb_rimemnum');
+	 	var clb_pass 		= document.getElementsByName('clb_pass');
+	 	var clb_email 		= document.getElementsByName('clb_email');
+	 	var clb_title 		= document.getElementsByName('clb_title');
+	 	var file 			= document.getElementsByName('file');
+	 	var clb_content 	= document.getElementsByName('clb_content');
+		var clb_open		= document.getElementsByName('clb_open');
+		 
+	 	processing.onsubmit = function(){
+			
+			if(clb_writer[0].value==''){
+				alert('입력해주세요 글쓴이');
+				clb_writer[0].focus();
+				return false;
+			}
+			
+			if(clb_rimemnum[0].value==''){
+				alert('입력해주세요 도서번호');
+				clb_rimemnum[0].focus();
+				return false;
+			}
+			
+			if(clb_email[0].value==''){
+				alert('입력해주세요 이메일');
+				clb_email[0].focus();
+				return false;
+			}
+			
+			if(clb_title[0].value==''){
+				alert('입력해주세요 내용');
+				clb_title[0].focus();
+				return false;
+			}
+			
+			if(clb_content[0].value==''){
+				alert('입력해주세요 내용');
+				clb_content[0].focus();
+				return false;
+			}
+			
+			
+		}
+	}
+
+</script>
 <!-- location -->
 <div class="loca">
 	<ul>
@@ -62,7 +155,7 @@
 		<!-- class : mob_none -> 모바일일때 display:none  -->
 
 		<form action="/CluBoard/processing" method="post"
-			enctype="multipart/form-data">
+			enctype="multipart/form-data" id="processing">
 			<input type="hidden" name="clb_clucode" value="${clb_clucode}">
 
 			<table class="board_read">
@@ -84,14 +177,24 @@
 
 					<tr>
 						<th class="c">공개여부</th>
-						<td colspan="2"><label>공개</<label> <input
-									type="checkbox" name="clb_open" value="1"> <label>비공개</<label>
-											<input type="checkbox" name="clb_open" value="2"></td>
+						<td colspan="2">
+						<label>공개</<label> 
+						<input type="checkbox" name="clb_open" value="1" checked="checked"
+						onclick="aaa(this)"> 
+						<label>비공개</<label>
+						<input type="checkbox" name="clb_open" value="2" onclick="aaa(this)"></td>
+						
 					</tr>
 
 					<tr>
 						<th class="c">비밀번호</th>
 						<td colspan="2"><input type="text" name="clb_pass" /></td>
+					</tr>
+					
+					<tr>
+						<th class="c">이메일</th>
+						<td colspan="3" class="contents"><input type="text"
+							name="clb_email"  class="email"/></td>
 					</tr>
 
 					<tr>
@@ -106,25 +209,16 @@
 
 					<tr>
 						<th class="c">내용</th>
-						<td colspan="2"><textarea cols="10" name="clb_content"></textarea>
+						<td colspan="2"><textarea cols="10" name="clb_content" class="content"></textarea>
 						</td>
 					</tr>
-
-					<tr>
-						<th class="c">이메일</th>
-						<td colspan="3" class="contents"><input type="text"
-							name="clb_email" /></td>
-					</tr>
-
-
-					<tr>
-						<th class="c"></th>
-						<td colspan="2"><input type="submit" value="제출" /> <input
-							type="reset" value="초기화" /></td>
-					</tr>
-
 				</tbody>
 			</table>
+			
+			<div class="btn_set r">
+				<input class="btn btn_board" type="submit" value="제출" /> 
+				<input class="btn btn_board" type="reset" value="초기화" />
+	 		</div>
 		</form>
 	</div>
 	<!-- //table -->

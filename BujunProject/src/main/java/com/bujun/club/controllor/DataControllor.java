@@ -22,10 +22,11 @@ public class DataControllor {
 	// 여긴 ajax 검색해서 리스트 보여줄때 (작업을 2 분류로 나눴음 )
 	@RequestMapping(value = "/CluBoard/view/", method = RequestMethod.GET, headers = "Accept=application/json")
 	public List<SearchVo> getClublist(@RequestParam HashMap<String, Object> map) {
+		System.out.println("page: " + map.get("page"));
 		
-		//System.out.println("ajaxList" + map);
 		List<SearchVo> club = buginservice.AjaxkeyList(map);
-		//System.out.println("ajaxclub" + club);
+		System.out.println("ajaxList" + map);
+		System.out.println("ajaxclub" + club);
 		return club;
 	}
 

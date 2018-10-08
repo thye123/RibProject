@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bujun.club.service.BuginService;
 import com.bujun.club.service.imple.Filedownload;
 import com.bujun.club.service.imple.PagingData;
+import com.bujun.club.service.imple.Uploading;
 import com.bujun.club.vo.ClubMember;
 import com.bujun.club.vo.ClubVo;
 import com.bujun.club.vo.SearchVo;
@@ -70,18 +71,19 @@ public class BuginControllor {
 	public ModelAndView clublist(@RequestParam HashMap<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
 
-		System.out.println("넘겨오는 데이터 값입니다. " + map);
+		//System.out.println("넘겨오는 데이터 값입니다. " + map);
 		//이름 가지고 오는 값을 맵에서 건져서 
 		String clu_code  = (String)map.get("clb_clucode");
+		
 		ClubMember clu = buginservice.getName(clu_code); //게시판 각 이름 들고오려고 
-		System.out.println("clugetName" + clu.getClu_name());
+		//System.out.println("clugetName" + clu.getClu_name());
 		List<ClubVo> clubList = buginservice.getClub(map);
 		
 		//각종 데이터 받은곳은 pagingData 에 있음 
 		//그걸 가지고 계산한 타입을 ClubVo로 받았음 미안 내능력은 .. 
 		PagingData pg = new PagingData();
 		ClubVo pageMaker = pg.pagdata(map);
-		System.out.println("pageMAker" + pageMaker.toString());
+		//System.out.println("pageMAker" + pageMaker.toString());
 		// 값을 내려 보내줄때
 		mv.addObject("clu_name", clu.getClu_name());
 		//pageMaker 에서 내려보내줄 데이터 값들을 vo 타입으로 받아준다 
@@ -97,8 +99,13 @@ public class BuginControllor {
 	// 세부 정보 
 	@RequestMapping("/club01/CluBoard/OneView")
 	public ModelAndView OneView(@RequestParam HashMap<String, Object> map) {
+		
+		//System.out.println("세부정보에 담기느map" + map);
+
 		ModelAndView mv = new ModelAndView();
+		
 		ClubVo club = buginservice.getOnedata(map);
+		//System.out.println("club.toString" +club.toString());
 		
 		String clb_clucode = (String) map.get("clb_clucode");
 		String clb_idx = (String) map.get("clb_idx");
@@ -106,7 +113,7 @@ public class BuginControllor {
 		mv.addObject("club", club);
 		mv.addObject("clb_idx", clb_idx);
 		mv.addObject("clb_clucode", clb_clucode);
-
+		
 		mv.setViewName("user/sub/sub05/clubdata");
 		return mv;
 	}
@@ -128,20 +135,25 @@ public class BuginControllor {
 	public ModelAndView clubwrite(@RequestParam HashMap<String, Object> map, MultipartFile file,
 			HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
+		System.out.println("담겨져온 map " + map);
+		
 		String clb_clucode = (String) map.get("clb_clucode");
-
+		
+		System.out.println("clb_clucode" + clb_clucode);
+		
 		// 파일 시작
 		String file_filename = file.getOriginalFilename();
-
-		System.out.println("saveName : " + file_filename);
-
 		map.put("file_filename", file_filename);
-		File target = new File(file_filename);
+		System.out.println("map : " + map);
+		String filePath = "c:\\aaa\\";
+
+		File target = new File(filePath+file_filename);
 		try {
 			FileCopyUtils.copy(file.getBytes(), target);
+			Uploading upload= new Uploading();
+			upload.addFile(file, map, req);
 			buginservice.insertdata(file, map, req);
-			mv.setViewName("redirect:/CluBoard?clb_clucode=" + clb_clucode);
-
+			mv.setViewName("redirect:/club01/CluBoard?clb_clucode="+clb_clucode+"&page=1&pagecount=10&pagegrp=1");
 		} catch (IOException e) {
 			
 			e.printStackTrace();
@@ -175,7 +187,7 @@ public class BuginControllor {
 	@RequestMapping("/club01/CluBoard/Uptboard")
 	public ModelAndView Uptboard(@RequestParam HashMap<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("수정 map " + map);
+		//System.out.println("수정 map " + map);
 		String clb_clucode = (String) map.get("clb_clucode");
 		ClubVo vo = buginservice.getOnedata(map);
 		mv.addObject("vo", vo);
@@ -190,23 +202,27 @@ public class BuginControllor {
 	public ModelAndView UptProc(@RequestParam HashMap<String, Object> map
 			 ,MultipartFile file, HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		
-		
+	
 		String clb_clucode = (String) map.get("clb_clucode");
 		
 		String file_filename = file.getOriginalFilename();
+		
 		String filePath = "c:\\aaa\\";
-		System.out.println("saveName : " + file_filename);
+		//System.out.println("saveName : " + file_filename);
 		map.put("file_filename", file_filename);
-		System.out.println("map업로드1111 " + map);
-
+		System.out.println("map.putf" + map);
+		
 		File target = new File(filePath+file_filename);
-		System.out.println("target" + target.getName());
+		
+		//System.out.println("target" + target.getName());
 		try {
 			FileCopyUtils.copy(file.getBytes(), target);
+			Uploading upload= new Uploading();
+			upload.addFile(file, map, req);
 			buginservice.uptproc(file, map, req);
+			//System.out.println("map.putf123123" + map);
 			mv.setViewName("redirect:/club01/CluBoard?clb_clucode=" + clb_clucode+"&page=1&pagecount=10&pagegrp=1");
-
+			
 		} catch (IOException e) {
 			
 			e.printStackTrace();

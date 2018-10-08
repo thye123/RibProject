@@ -29,9 +29,9 @@ public class BuginDaoImple implements BuginDao {
 		String clb_clucode = (String)map.get("clb_clucode");
 
 		sqlsession.selectList("Bugin.CluBoard" , map);
-		System.out.println("map : "  + map);
+		//System.out.println("map : "  + map);
 		List<ClubVo> clublist  = (List<ClubVo>) map.get("result");
-		System.out.println("Daoimpl List : " + clublist.toString()  ) ;
+		//System.out.println("Daoimpl List : " + clublist.toString()  ) ;
 		return clublist;
 	}
 	
@@ -62,7 +62,9 @@ public class BuginDaoImple implements BuginDao {
 	@Override
 	public ClubVo getOnedata(HashMap<String, Object> map) {
 		 sqlsession.selectOne("Bugin.Onedata",map);
+		 
 		 List<ClubVo> cl =  (List<ClubVo>) map.get("result");
+		// System.out.println("Onedata" + cl.toString());
 		 ClubVo club = cl.get(0);
 		 return club;
 	}
@@ -78,17 +80,26 @@ public class BuginDaoImple implements BuginDao {
 
 	@Override
 	public void uptproc(MultipartFile file, HashMap<String, Object> map,HttpServletRequest req) {
-		
 		sqlsession.update("Bugin.Uptdata",map);
 	}
 
 	@Override //검색 관련 ajax 리스트 보여주는 부분 
 	public List<SearchVo> AjaxkeyList(HashMap<String, Object> map) {
-
+		//System.out.println("DaoImpl "+ map);
+		
 		sqlsession.selectList("Bugin.Ajax",map);
 
+		int page = Integer.parseInt(String.valueOf(map.get("page")));
+		if(page > 1) {
+			map.put("page", "1");
+		}
+		
+		//System.out.println("map의 윛 "+ map);
+		
 		List<SearchVo> clist  
 		= (List<SearchVo>) map.get("result");
+		
+		//System.out.println("Daoimple에서 적용되는ㄱ ㅏㅄ " + clist.toString());
 		return clist;
 	}
 
@@ -105,13 +116,16 @@ public class BuginDaoImple implements BuginDao {
 
 		sqlsession.selectOne("Bugin.paging",map);
 		SearchVo vo = new SearchVo();
-		System.out.println("DaoImpl" + map.get("count"));
+		//System.out.println("DaoImpl" + map.get("count"));
 		return vo;
 	}
 
 	@Override
 	public ClubMember getName(String clu_code) {
+		System.out.println("getName" + clu_code);
+		
 		ClubMember member = sqlsession.selectOne("Bugin.memberName",clu_code);
+		System.out.println(member.toString());
 		return member;
 	}
 

@@ -177,7 +177,8 @@ a.btn_board {
 			var keyword= $("#keyword").val();
 			var clb_clucode= "CUS0001";
 			var keyfield = $("select[name=keyfield]").val();
-			var page  = "${pageMaker.page}";
+			var page  = "1";
+			alert("넘겨주는 페이지" + page);
 			var pagecount  = "${pageMaker.pagecount}";
 			var pagegrp= "${pageMaker.pagegrp}";
 			e.preventDefault();
@@ -188,7 +189,7 @@ a.btn_board {
 				data : { 
 					keyfield : keyfield,
 					keyword  : keyword,
-					clb_clucode : "CUS0001",
+					clb_clucode : clb_clucode,
 					page : page,
 					pagecount  : pagecount,
 					pagegrp : pagegrp
@@ -218,7 +219,7 @@ a.btn_board {
 					    tag+="<tbody>";
 					    
 						$.each(club,function(key,search){ 
-							
+							console.log("검색 idx"  + search.clb_idx);
 							tag+="<tr>";
 						 	tag+="<td>"+search.clb_idx+"</td>"; 
 							tag+="<td>"+search.clb_writer+"</td>";
@@ -233,6 +234,7 @@ a.btn_board {
 						 
 						 
 						$(".tb_board").html(tag);
+						
 						 pagemaker(keyword,clb_clucode,keyfield,pagecount,pagegrp);
 				
 					

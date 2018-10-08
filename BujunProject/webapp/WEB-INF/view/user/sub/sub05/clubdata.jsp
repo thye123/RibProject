@@ -82,7 +82,7 @@ a.btn_board {
 			</tr>
 			<tr>
 				<th class="c">첨부파일</th>
-				<td colspan="2">
+				<td colspan="2"><!-- file_filename filename -->
 					<a href="/download?filename=${club.file_filename}">${club.file_filename}</a>
 				</td>
 			</tr>
