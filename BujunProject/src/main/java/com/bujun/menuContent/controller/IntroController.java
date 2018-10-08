@@ -10,6 +10,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class IntroController {
 
+
+	@RequestMapping("/history") 
+	public String History(@RequestParam HashMap<String, Object> map, Model model) {
+		
+		model.addAttribute("menu", map);
+		return "user/sub/sub01/history";
+	}
+	
 	
 	@RequestMapping("/bjldata") 
 	public String Bjldata(@RequestParam HashMap<String, Object> map, Model model) {
