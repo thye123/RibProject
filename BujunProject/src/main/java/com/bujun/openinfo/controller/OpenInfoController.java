@@ -36,7 +36,6 @@ public class OpenInfoController {
 	@RequestMapping("/info03")
 	public ModelAndView goOpenInfo(@RequestParam HashMap<String, Object> map, Model model) {
 		model.addAttribute("menu", map);
-		//System.out.println("map : " + map);
 		String ad_code = "";
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
@@ -55,9 +54,10 @@ public class OpenInfoController {
 			}
 		}
 		
+		//System.out.println("map : " + map);
 		List<OpenInfoVo> list = openInfoService.selectList(map);
 		//System.out.println("list: " + list);
-		//System.out.println("paging: " + map);
+		System.out.println("paging: " + map.get("pagingVo"));
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("m1",map.get("m1"));
 		mv.addObject("m2",map.get("m2"));
@@ -75,7 +75,27 @@ public class OpenInfoController {
 	@RequestMapping("/info03/CForm")
 	public ModelAndView insertForm(@RequestParam HashMap<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("ad_code", map.get("ad_code"));
+		String ad_code = String.valueOf(map.get("ad_code"));
+		
+		String m1 = "";		
+		String m2 = "";		
+		String m3 = "";
+		//ad_code 변환
+		if(ad_code.equals("CAT0016")) {
+			m1 = "07";
+			m2 = "01";
+			m3 = "03";
+		}else {
+			if(ad_code.equals("CAT0017")) {
+				m1 = "07";
+				m2 = "01";
+				m3 = "05";
+			}
+		}
+		mv.addObject("ad_code", ad_code);
+		mv.addObject("m1", m1);
+		mv.addObject("m2", m2);
+		mv.addObject("m3", m3);
 		mv.setViewName("user/sub/sub07/OpenInfoInsert");
 		return mv;
 	}
@@ -83,12 +103,27 @@ public class OpenInfoController {
 	@RequestMapping("/info03/iCon")
 	public String insertContent(@RequestParam HashMap<String, Object> map, HttpServletRequest req) {
 		int ad_idx = openInfoService.insertContent(map);
-		String ad_code = (String) map.get("ad_code");
-		map.put("ad_idx", ad_idx);
-		ModelAndView mv = new ModelAndView();
-		openInfoService.addFile(req, map);			
+		String ad_code = String.valueOf(map.get("ad_code"));
 		
-		return "redirect:/info03?ad_code="+ad_code+"&page_num=1";
+		String m1 = "";		
+		String m2 = "";		
+		String m3 = "";
+		//ad_code 변환
+		if(ad_code.equals("CAT0016")) {
+			m1 = "07";
+			m2 = "01";
+			m3 = "03";
+		}else {
+			if(ad_code.equals("CAT0017")) {
+				m1 = "07";
+				m2 = "01";
+				m3 = "05";
+			}
+		}
+		
+		map.put("ad_idx", ad_idx);
+		openInfoService.addFile(req, map);			
+		return "redirect:/info03?m1="+m1+"&m2="+m2+"&m3="+m3+"&page_num=1";
 	}
 	
 	//상세 정보
@@ -98,6 +133,8 @@ public class OpenInfoController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("openInfoVo", vo);
 		mv.addObject("writer", map.get("ad_writer"));
+		mv.addObject("keyword", map.get("keyword"));
+		mv.addObject("keyfield", map.get("keyfield"));
 		mv.setViewName("user/sub/sub07/OpenInfoDetail");
 		return mv;
 	}

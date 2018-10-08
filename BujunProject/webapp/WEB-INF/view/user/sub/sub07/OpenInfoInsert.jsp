@@ -29,7 +29,7 @@
 		
 		var cancel = document.getElementById("cancel");
 		cancel.addEventListener("click", function(){
-			location.href="/info03?ad_code=${ad_code}&page_num=1";
+			location.href="/info03?m1=${m1}&m2=${m2}&m3=${m3}&page_num=1&page_grp=1";
 		});
 	}
 </script>
