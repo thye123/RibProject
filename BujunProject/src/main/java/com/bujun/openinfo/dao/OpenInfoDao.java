@@ -19,4 +19,6 @@ public interface OpenInfoDao {
 
 	public List<OpenInfoVo> search(HashMap<String, Object> map);
 
+	public void update(HashMap<String, Object> map);
+
 }

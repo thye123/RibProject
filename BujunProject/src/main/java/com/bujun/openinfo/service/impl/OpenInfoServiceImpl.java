@@ -30,7 +30,7 @@ public class OpenInfoServiceImpl implements OpenInfoService {
 		String ad_code 	= String.valueOf(map.get("ad_code"));
 		int tot_cnt		= Integer.parseInt(String.valueOf(map.get("tot_cnt")));
 		int page_grp    = Integer.parseInt(String.valueOf(map.get("page_grp")));
-		System.out.println("map service:" + map);
+		//System.out.println("map service:" + map);
 		Paging pg = new Paging(page_num, ad_code, tot_cnt, page_grp);
 		PagingVo pv = pg.paging();
 		map.put("pagingVo", pv);
@@ -68,19 +68,19 @@ public class OpenInfoServiceImpl implements OpenInfoService {
 			HashMap<String, String> hashMap = new HashMap<String, String>();
 			
 			if( !multiFile.isEmpty() ) {
-				file_fileRealName = multiFile.getOriginalFilename();
+				file_fileName = multiFile.getOriginalFilename();
 				file_size     = (int) multiFile.getSize();
 				// upload 된 파일명
 				
 				//             0 1 23 4 5678
 				// fileName = "테풍.솔릭.jpg"
-				int dotIdx  		= file_fileRealName.lastIndexOf('.');
-				file_fileName 		= file_fileRealName.substring( 0, dotIdx ); // "테풍.솔릭"
-				file_ext     		= file_fileRealName.substring( dotIdx  );   // ".jpg";
+				int dotIdx  		= file_fileName.lastIndexOf('.');
+				file_fileRealName 	= file_fileName.substring( 0, dotIdx ); // "테풍.솔릭"
+				file_ext     		= file_fileName.substring( dotIdx  );   // ".jpg";
 				
 				// 중복파일이 존재하면 번호추가 후 실제 파일명 처리
 				sFileName   = fileCheck.getCheckFileName(
-					filePath, file_fileName, file_ext ); //"테풍1";
+					filePath, file_fileRealName, file_ext ); //"테풍1";
 				
 				// 저장
 				File file = new File(filePath + sFileName);
@@ -123,6 +123,11 @@ public class OpenInfoServiceImpl implements OpenInfoService {
 		PagingVo pv = pg.paging();
 		map.put("pagingVo", pv);
 		return list;
+	}
+
+	@Override
+	public void update(HashMap<String, Object> map) {
+		openInfoDao.update(map);
 	}
 
 }
