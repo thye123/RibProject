@@ -424,7 +424,7 @@ div.greeting div { color:#777;
 .history_area ol li.hist_l dl dd {position:relative; margin:3px 0; padding-right:80px; line-height:1.6;  font-size:14px; color:#222;}
 .history_area ol li.hist_l dl dd span {position:absolute; right:0; top:0; width:70px; line-height:1.6; color:#009cff;}
 .history_area ol li.hist_point {background-image:url("../images/sub/history_point2.png");}
-
+ 
 
 @media only screen and (max-width: 1000px) {
 
@@ -457,11 +457,13 @@ div.greeting div { color:#777;
 }
 
 
+/* join */
+.in_addr1 {width:35%;} 
+.in_addr2 {width:30%;}
 
 
-
-
-
+.file_del {display:inline-block; color:#fff; cursor:pointer; margin-left:10px; padding:0 6px; background:#e10000; line-height:20px;}
+.file_del:hover {color:#fff; background:#c40c0c;}
 
 
 
@@ -480,6 +482,10 @@ div.greeting div { color:#777;
 	.qna .qna_table {width:100%; margin-top:7px;} 
 	.qna dd.tdd {margin-left:0 !important;}
 	.scroll_info {margin-top:33px;}
+	
+	/* join */
+	.in_addr1 {width:100%;} 
+	.in_addr2 {width:100%;}
 }
 
 

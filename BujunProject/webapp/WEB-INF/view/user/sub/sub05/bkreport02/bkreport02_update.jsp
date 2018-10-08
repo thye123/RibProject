@@ -34,6 +34,41 @@
 	<div class="sub_tit">원북원부산 독후감</div>
 	
 	<script>
+	$(function(){
+		$("#file_del").on("click", function(){
+			
+			alert("클릭");	
+			
+			var file_del = document.getElementById("file_del");
+			var file_content = document.getElementById("file_con");
+			
+			$.ajax({
+				url : "/fileDelete",
+				data : {
+					bd_catcode : '${bd_catcode}',
+					bd_idx : '${bd_idx}'
+				},
+				type : "GET",
+				datatype : "json",
+				success : function() {
+											
+					
+					alert("삭제됨");
+					
+					file_content.innerHTML = "";
+					file_del.innerHTML = "";
+					file_content.innerHTML = "<input type='file' name='file' />";
+					
+				},
+				
+				error : function(xhr) {
+					alert(xhr.status + " : " + xhr.statusText);
+				}					
+			})	//ajax 
+			
+		});
+	});
+	
 		function update() {
 			
 			document.updateFrm2.submit();
@@ -43,7 +78,7 @@
 	<!-- content 시작 -->
 	
 	
-	 <form action="/bkreport02_updateForm" name="updateFrm2">	 	 		
+	 <form action="/bkreport02_updateForm" enctype="multipart/form-data" method="post" name="updateFrm2">	 	 		
 		<table class="board_read">
 			<tbody>
 				<tr>
@@ -52,15 +87,21 @@
 				</tr>		
 				<tr>
 					<th class="c">첨부파일</th>
-					<td>
-						<a href="<c:out value='/download/external/${boardRead.file_filename}' />">
-							${boardRead.file_filerealname}
-						</a>
+					<td> 					
+						<c:choose>
+							<c:when test="${boardRead.file_filerealname == ' '}">
+								<input type="file" name="file" />
+							</c:when>
+							<c:otherwise>
+								<span id="file_con">${boardRead.file_filerealname}</span> 
+								<a id="file_del" class="file_del">x</a> 					
+							</c:otherwise>
+						</c:choose>
 					</td>
 				</tr>	
 				<tr>
 					<th class="c">내용</th>
-					<td><textarea name="bd_content" id="content" style="width: 100%; height: 300px;"></textarea></td>
+					<td><textarea name="bd_content" id="content" style="width: 100%; height: 300px;">${boardRead.bd_content}</textarea></td>
 				</tr>										
 			</tbody>
 		</table>	

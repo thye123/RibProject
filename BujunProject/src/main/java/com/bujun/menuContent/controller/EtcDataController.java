@@ -40,5 +40,12 @@ public class EtcDataController {
 		return "user/sub/sub08/videoinfo";
 	}	
 	
+
+	@RequestMapping("/join") 
+	public String Mypage(@RequestParam HashMap<String, Object> map, Model model) {
+		
+		model.addAttribute("menu", map);
+		return "user/sub/sub08/join";
+	}	
 	
 }
