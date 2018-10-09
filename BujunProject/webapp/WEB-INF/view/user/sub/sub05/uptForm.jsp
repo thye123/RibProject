@@ -43,12 +43,12 @@
 
 
 	<!-- title -->
-	<div class="sub_tit">자료실소개</div>
+	<div class="sub_tit">시작</div>
 
 	<!-- content 시작 -->
 
-	<h2 class="tbul1 mg_b40">이용대상 : 중학생이상</h2>
-
+<!-- 	<h2 class="tbul1 mg_b40">이용대상 : 중학생이상</h2>
+ -->
 	<!-- table -->
 	<div class="scroll_info">
 		<span class="arr_l"></span> <span class="scroll_icon"></span>

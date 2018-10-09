@@ -85,7 +85,7 @@ public class BuginControllor {
 		ClubVo pageMaker = pg.pagdata(map);
 		//System.out.println("pageMAker" + pageMaker.toString());
 		// 값을 내려 보내줄때
-		System.out.println("pageMaker"  + pageMaker.toString());
+		//System.out.println("pageMaker"  + pageMaker.toString());
 	
 		mv.addObject("clu_name", clu.getClu_name());
 		//pageMaker 에서 내려보내줄 데이터 값들을 vo 타입으로 받아준다 
@@ -137,16 +137,16 @@ public class BuginControllor {
 	public ModelAndView clubwrite(@RequestParam HashMap<String, Object> map, MultipartFile file,
 			HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("담겨져온 map " + map);
+		//System.out.println("담겨져온 map " + map);
 		
 		String clb_clucode = (String) map.get("clb_clucode");
 		
-		System.out.println("clb_clucode" + clb_clucode);
+		//System.out.println("clb_clucode" + clb_clucode);
 		
 		// 파일 시작
 		String file_filename = file.getOriginalFilename();
 		map.put("file_filename", file_filename);
-		System.out.println("map : " + map);
+		//System.out.println("map : " + map);
 		String filePath = "c:\\aaa\\";
 
 		File target = new File(filePath+file_filename);
@@ -201,9 +201,9 @@ public class BuginControllor {
 	
 	//update  다되고 처리 되는 부분 
 	@RequestMapping("/club01/CluBoard/UptProc")
-	public ModelAndView UptProc(@RequestParam HashMap<String, Object> map
+	public String UptProc(@RequestParam HashMap<String, Object> map
 			 ,MultipartFile file, HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
+		//ModelAndView mv = new ModelAndView();
 	
 		String clb_clucode = (String) map.get("clb_clucode");
 		
@@ -212,7 +212,7 @@ public class BuginControllor {
 		String filePath = "c:\\aaa\\";
 		//System.out.println("saveName : " + file_filename);
 		map.put("file_filename", file_filename);
-		System.out.println("map.putf" + map);
+		//System.out.println("map.putf" + map);
 		
 		File target = new File(filePath+file_filename);
 		
@@ -223,19 +223,19 @@ public class BuginControllor {
 			upload.addFile(file, map, req);
 			buginservice.uptproc(file, map, req);
 			//System.out.println("map.putf123123" + map);
-			mv.setViewName("redirect:/club01/CluBoard?clb_clucode=" + clb_clucode+"&page=1&pagecount=10&pagegrp=1");
+			//mv.setViewName("redirect:/club01/CluBoard?clb_clucode=" + clb_clucode+"&page=1&pagecount=10&pagegrp=1");
 			
 		} catch (IOException e) {
 			
 			e.printStackTrace();
 		}
 		
-		return mv;
+		return "redirect:/club01/CluBoard?clb_clucode=" + clb_clucode + "&page=1&pagecount=10&pagegrp=1";
 	}
 
 	
 	// 동아리정보 보는 게시판
-	@RequestMapping("/joinClub")
+	@RequestMapping("/club01/joinClub")
 	public ModelAndView joinClub(@RequestParam String cluapp_code) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("cluapp_code", cluapp_code);

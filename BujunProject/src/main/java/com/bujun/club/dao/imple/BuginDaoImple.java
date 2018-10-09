@@ -80,6 +80,7 @@ public class BuginDaoImple implements BuginDao {
 
 	@Override
 	public void uptproc(MultipartFile file, HashMap<String, Object> map,HttpServletRequest req) {
+		System.out.println("mapUpdate" + map);
 		sqlsession.update("Bugin.Uptdata",map);
 	}
 
@@ -122,10 +123,9 @@ public class BuginDaoImple implements BuginDao {
 
 	@Override
 	public ClubMember getName(String clu_code) {
-		System.out.println("getName" + clu_code);
-		
+		//System.out.println("getName" + clu_code);
 		ClubMember member = sqlsession.selectOne("Bugin.memberName",clu_code);
-		System.out.println(member.toString());
+		//System.out.println(member.toString());
 		return member;
 	}
 
