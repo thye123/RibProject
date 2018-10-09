@@ -31,10 +31,10 @@ public class Filedownload extends AbstractView {
 			HttpServletResponse response) throws Exception {
 		  File file = (File)model.get("downloadFile");
 		 //File file = new File(pathname);   
-		  	System.out.println("moidel" + model.toString());
-	        System.out.println("파일의 실제이름"+ file.getName());
-		    System.out.println("DownloadView --> file.getPath() : " + file.getPath());
-	        System.out.println("DownloadView --> file.getName() : " + file.getName());
+		  	//System.out.println("moidel" + model.toString());
+	        //System.out.println("파일의 실제이름"+ file.getName());
+		   // System.out.println("DownloadView --> file.getPath() : " + file.getPath());
+	       // System.out.println("DownloadView --> file.getName() : " + file.getName());
 	         
 	       response.setContentType(getContentType());
 	        response.setContentLength((int)file.length());

@@ -177,7 +177,8 @@ a.btn_board {
 			var keyword= $("#keyword").val();
 			var clb_clucode= "CUS0001";
 			var keyfield = $("select[name=keyfield]").val();
-			var page  = "${pageMaker.page}";
+			var page  = "1";
+			alert("넘겨주는 페이지" + page);
 			var pagecount  = "${pageMaker.pagecount}";
 			var pagegrp= "${pageMaker.pagegrp}";
 			e.preventDefault();
@@ -188,7 +189,7 @@ a.btn_board {
 				data : { 
 					keyfield : keyfield,
 					keyword  : keyword,
-					clb_clucode : "CUS0001",
+					clb_clucode : clb_clucode,
 					page : page,
 					pagecount  : pagecount,
 					pagegrp : pagegrp
@@ -218,7 +219,7 @@ a.btn_board {
 					    tag+="<tbody>";
 					    
 						$.each(club,function(key,search){ 
-							
+							console.log("검색 idx"  + search.clb_idx);
 							tag+="<tr>";
 						 	tag+="<td>"+search.clb_idx+"</td>"; 
 							tag+="<td>"+search.clb_writer+"</td>";
@@ -233,6 +234,7 @@ a.btn_board {
 						 
 						 
 						$(".tb_board").html(tag);
+						
 						 pagemaker(keyword,clb_clucode,keyfield,pagecount,pagegrp);
 				
 					
@@ -379,7 +381,7 @@ a.btn_board {
 	    </c:when>
 	
 	    <c:otherwise>
-	     	<a class="nextblock" href="/club01/CluBoard?clb_clucode=CUS0001&page=${pageMaker.page+1}&pagecount=10&pagegrp=1"><span>6 페이지</span></a>
+	     	<a class="nextblock" href="/club01/CluBoard?clb_clucode=CUS0001&page=${pageMaker.page+1}&pagecount=10&pagegrp=${pageMaker.pagegrp}"><span>6 페이지</span></a>
 	    </c:otherwise>
 
 	</c:choose>
@@ -388,7 +390,17 @@ a.btn_board {
 	<!-- 하고 싶은 기능 : 하단에 뿌려지는 페이지갯수를 5개로 하고 마지막 페이지 넘길때 6페이지가 
 	6~부터 끝 페이지가 나오도록 기능을 만들고싶은 lastpage경로위치 잡을거1
 	 -->
-			<a class="lastpage" href="/club01/CluBoard?clb_clucode=CUS0001&page=${pageMaker.end}&pagecount=10&pagegrp=1"><span>21 페이지</span></a>
+		<!-- pagegrp = 1 어떤 조건일떄 막아야하는데  -->
+	<!-- 예를 들어 end 11 tempEnd = 20  -->
+	<c:choose>
+		<c:when test="${pageMaker.end >= pageMaker.tempEnd}">
+					<a class="lastpage" href="/club01/CluBoard?clb_clucode=CUS0001&page=${pageMaker.end+1}&pagecount=10&pagegrp=${pageMaker.pagegrp+1}"><span>21 페이지</span></a>
+		</c:when>
+		
+		<c:otherwise>
+			<a class="lastpage" href="#"></a>
+		</c:otherwise>
+	</c:choose>
 		</div>
 	</div>
 	<!-- //페이징 -->	

@@ -238,7 +238,9 @@ public class SearchVo {
 			//시작페이지 
 			int startemp = ( (pagegrp-1) * pagecount) +1;
 			vo.setStart(startemp);
-			
+			//끝페이지 
+	/*		int temp = pagecount * pagegrp;
+			vo.setEnd(temp);*/
 			//끝 번호 구하기 입니다 
 			int temps = count % 10;
 			if(temps==0) {

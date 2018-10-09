@@ -121,18 +121,22 @@ select  clu_name ,clu_qualifi ,clu_date ,clu_location ,clu_person ,clu_content
 </delete>
 
 <update id="Uptdata" statementType="CALLABLE" parameterType="hashmap">
-{CALL BJL_PKG_CLUB.PKG_CLUB_UPDATE(#{clb_idx,mode=IN,jdbcType=INTEGER}
-,#{clb_email,mode=IN,jdbcType=VARCHAR},#{clb_open,mode=IN,jdbcType=INTEGER}
-,#{clb_title,mode=IN,jdbcType=VARCHAR},#{clb_content,mode=IN,jdbcType=VARCHAR}
-,#{file_boardcode,mode=IN ,jdbcType=VARCHAR}
+{CALL BJL_PKG_CLUB.PKG_CLUB_UPDATE(
+#{clb_idx,        mode=IN, jdbcType=INTEGER}
+,#{clb_email,     mode=IN, jdbcType=VARCHAR}
+,#{clb_open,      mode=IN, jdbcType=INTEGER}
+,#{clb_title,     mode=IN, jdbcType=VARCHAR}
+,#{clb_content,   mode=IN, jdbcType=VARCHAR}
+,#{file_boardcode,mode=IN, jdbcType=VARCHAR}
 ,#{file_filename, mode=IN, javaType=Object, jdbcType=ARRAY, jdbcTypeName=FILE_ARRAY, 
 typeHandler=com.bujun.club.service.TypeHandler.ListMapTypeHandler}
-,#{fileext, mode=IN, javaType=Object, jdbcType=ARRAY, jdbcTypeName=FILE_ARRAY, 
+,#{fileext,       mode=IN, javaType=Object, jdbcType=ARRAY, jdbcTypeName=FILE_ARRAY, 
 typeHandler=com.bujun.club.service.TypeHandler.ListMapTypeHandler}
-,#{file_size, mode=IN, javaType=Object, jdbcType=ARRAY, jdbcTypeName=FILE_ARRAY, 
+,#{file_size,     mode=IN, javaType=Object, jdbcType=ARRAY, jdbcTypeName=FILE_ARRAY, 
 typeHandler=com.bujun.club.service.TypeHandler.ListMapTypeHandler}
 ,#{file_filerealname, mode=IN, javaType=Object, jdbcType=ARRAY, jdbcTypeName=FILE_ARRAY, 
-typeHandler=com.bujun.club.service.TypeHandler.ListMapTypeHandler})}
+typeHandler=com.bujun.club.service.TypeHandler.ListMapTypeHandler}
+)}
 </update>
 
 <insert id="Indata" statementType="CALLABLE" parameterType="hashmap">

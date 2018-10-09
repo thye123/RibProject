@@ -239,19 +239,30 @@ public class ClubVo {
 			ClubVo vo = new ClubVo();
 			//끝번호 
 			int tempEnd = (int)(Math.ceil(page / 10.0) * 10); 
+			//끝번호 구하기래 
+			
 			int end  = (pagegrp * pagecount);
 			vo.setEnd(end);
 			//시작페이지 
 			int startemp = ( (pagegrp-1) * pagecount) +1;
 			vo.setStart(startemp);
 			//끝 번호 구하기 입니다 
+		
 			int temps = count % 10;
 			if(temps==0) {
 				int temp = (count/10);
-				vo.setEnd(temp);
+				vo.setEnd(end);
+				System.out.println("temps1" + temp);
+				vo.setTmep(temp);
 			}else {
+				
 				int temp =  (count/10)+1;
-				vo.setEnd(temp);
+				
+				if(temp<end) {
+					vo.setEnd(temp);
+					System.out.println("temps2" + temp);
+					vo.setTmep(temp);
+				}
 			}
 			
 			
@@ -273,8 +284,8 @@ public class ClubVo {
 			
 			vo.setTempEnd(tempEnd);
 			vo.setPage(page);
-	
 			vo.setNext(next);
+			vo.setTmep(temps);
 			vo.setCount(count);
 			vo.setPagecount(pagecount);
 			vo.setPagegrp(pagegrp);
@@ -284,14 +295,12 @@ public class ClubVo {
 
 		@Override
 		public String toString() {
-			return "ClubVo [clb_idx=" + clb_idx + ", clb_clucode=" + clb_clucode + ", clb_writer=" + clb_writer
-					+ ", clb_rimemnum=" + clb_rimemnum + ", clb_email=" + clb_email + ", clb_open=" + clb_open
-					+ ", clb_pass=" + clb_pass + ", clb_title=" + clb_title + ", clb_content=" + clb_content
-					+ ", clb_regdate=" + clb_regdate + ", clb_count=" + clb_count + ", keyfield=" + keyfield
-					+ ", keyword=" + keyword + ", file_filename=" + file_filename + ", count=" + count + ", start="
-					+ start + ", end=" + end + ", prev=" + prev + ", next=" + next + ", pagegrp=" + pagegrp + ", page="
-					+ page + ", pagecount=" + pagecount + ", tempEnd=" + tempEnd + "]";
+			return "ClubVo [count=" + count + ", start=" + start + ", end=" + end + ", prev=" + prev + ", next=" + next
+					+ ", pagegrp=" + pagegrp + ", page=" + page + ", pagecount=" + pagecount + ", tempEnd=" + tempEnd
+					+ ", tmep=" + tmep + "]";
 		}
+
+
 
 
 
