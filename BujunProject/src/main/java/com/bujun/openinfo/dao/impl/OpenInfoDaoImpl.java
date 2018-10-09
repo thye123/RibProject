@@ -56,5 +56,25 @@ public class OpenInfoDaoImpl implements OpenInfoDao {
 		List<OpenInfoVo> list = (List<OpenInfoVo>) map.get("result");
 		return list;
 	}
+
+	@Override
+	public void update(HashMap<String, Object> map) {
+		sqlSession.update("OpenInfo.updateContent", map);
+	}
+
+	@Override
+	public void upFile(HttpServletRequest req, HashMap<String, Object> map) {
+		sqlSession.update("OpenInfo.updateFile",map);
+	}
+
+	@Override
+	public void delete(HashMap<String, Object> map) {
+		sqlSession.delete("OpenInfo.delete", map);
+	}
+
+	@Override
+	public void delfile(HashMap<String, Object> map) {
+		sqlSession.delete("OpenInfo.delfile", map);
+	}
 	
 }

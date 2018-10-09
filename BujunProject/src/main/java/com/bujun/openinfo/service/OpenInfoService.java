@@ -19,4 +19,12 @@ public interface OpenInfoService {
 
 	public List<OpenInfoVo> search(HashMap<String, Object> map);
 
+	public void update(HashMap<String, Object> map);
+
+	public void upFile(HttpServletRequest req, HashMap<String, Object> map);
+
+	public void delete(HashMap<String, Object> map);
+
+	public void delfile(HashMap<String, Object> map);
+
 }
