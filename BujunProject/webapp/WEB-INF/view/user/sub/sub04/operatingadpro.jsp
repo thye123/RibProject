@@ -39,21 +39,22 @@
 
 <div class="con_mob_pad">
 
-
 	<!-- title -->
 	<div class="sub_tit">운영프로그램</div>
-
-	<div id="tab_depth01" class="w50">
-		<ul>
-			<li class="active"><a href="/opprogram01?m1=04&m2=01&m3=02"> 일반프로그램</a></li>
-			<li class=""><a href="/opprogram01?m1=04&m2=01&m3=03"> 초등(유아)프로그램</a></li>
-		</ul>
-	</div>
 	
 	<!-- content 시작 -->
+	<table class="tb_board">
+		<tbody>
+			<tr>
+				<td>강좌명</td>
+				<td colspan="3"><input type="text" name="listu_name"/></td>
+			</tr>
+		</tbody>
+	</table>
 	
 	<div class="r mg_t20 btns">
-		<input type="button" class="btns_black" id="newEdu" value="새글쓰기" style="border:0;"/>
+		<input type="button" class="btns_black" id="insert" value="등록" style="border:0;"/>
+		<input type="button" class="btns_black" id="cancel" value="취소" style="border:0;"/>
 	</div>
 	<!-- //content 끝 -->
 </div>
