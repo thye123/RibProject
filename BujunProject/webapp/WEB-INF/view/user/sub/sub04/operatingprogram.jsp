@@ -18,7 +18,7 @@
 	onload = function(){
 		var newEdu = document.getElementById("newEdu");
 		newEdu.addEventListener("click", function(){
-			location.href="/opprogram01/adprof?m1=${m1}&m2=${m2}&m3&=${m3}";
+			location.href="/opprogram01/adprof?m1=${m1}&m2=${m2}&m3=${m3}";
 		});
 	}
 </script>
@@ -51,7 +51,18 @@
 	</div>
 	
 	<!-- content 시작 -->
-	
+	<div class="prolistarea">
+		<ul>
+			<c:forEach var="proList" items="${pro_list}">
+				<li >
+					<a class="prolist" href="/opprogram01/dCon?m1=${m1}&m2=${m2}&m3=${m3}&listu_code=${proList.listu_code}">
+						<span><strong>${proList.listu_name}</strong></span>
+						<span><b>${proList.listu_recruit}</b></span>
+					</a>
+				</li>
+			</c:forEach>
+		</ul>
+	<div>
 	<div class="r mg_t20 btns">
 		<input type="button" class="btns_black" id="newEdu" value="새글쓰기" style="border:0;"/>
 	</div>
