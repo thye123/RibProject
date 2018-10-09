@@ -265,7 +265,6 @@ public class OpenInfoController {
 	
 	@RequestMapping("/info03/delFile")
 	public String delFile(@RequestParam HashMap<String, Object> map) {
-		System.out.println("map file del : " + map);
 		String ad_code = "";
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
