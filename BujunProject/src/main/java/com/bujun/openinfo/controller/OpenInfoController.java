@@ -33,7 +33,7 @@ public class OpenInfoController {
 	
 	@RequestMapping("/info03")
 	public ModelAndView goOpenInfo(@RequestParam HashMap<String, Object> map, Model model) {
-		System.out.println("map: " + map);
+		//System.out.println("map: " + map);
 		model.addAttribute("menu", map);
 		String ad_code = "";
 		String m1 = String.valueOf(map.get("m1"));		
@@ -197,7 +197,7 @@ public class OpenInfoController {
 		return mv;
 	}
 	
-	//업데이트
+	//수정
 	@RequestMapping("/info03/updateform")
 	public ModelAndView updateForm(@RequestParam HashMap<String, Object> map) {
 		String ad_code = "";
@@ -219,7 +219,6 @@ public class OpenInfoController {
 		}
 		
 		OpenInfoVo vo = openInfoService.detail(map);
-		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("OpenInfoVo", vo);
 		mv.addObject("ad_idx", map.get("ad_idx"));
@@ -234,8 +233,59 @@ public class OpenInfoController {
 	@RequestMapping("/info03/update")
 	public String update(@RequestParam HashMap<String, Object> map, HttpServletRequest req) {
 		openInfoService.update(map);
-		System.out.println("map up:" + map);
-		return "redirect:/info03?m1=07&m2=01&m3=03&page_num=1&page_grp=1";
+		openInfoService.upFile(req,map);
+		return "redirect:/info03/dCon?ad_code="+map.get("ad_code")+"&ad_idx="+map.get("ad_idx");
+	}
+	
+	//삭제
+	@RequestMapping("/info03/delete")
+	public String delCon(@RequestParam HashMap<String, Object> map) {
+		String ad_code = "";
+		String m1 = String.valueOf(map.get("m1"));		
+		String m2 = String.valueOf(map.get("m2"));		
+		String m3 = String.valueOf(map.get("m3"));
+		
+		//게시판 코드 확인
+		if(m1.equals("07")&&m2.equals("01")&&m3.equals("03")) {
+			ad_code = "CAT0016";
+			//System.out.println("ad_code: " + ad_code);
+			map.put("ad_code", ad_code);
+		}else {
+			if(m1.equals("07")&&m2.equals("01")&&m3.equals("05")) {
+				ad_code="CAT0017";
+				//System.out.println("ad_code: " + ad_code);
+				map.put("ad_code", ad_code);
+			}
+		}
+		
+		openInfoService.delete(map);
+		
+		return "redirect:/info03?m1="+m1+"&m2="+m2+"&m3="+m3+"&page_num=1&page_grp=1";
+	}
+	
+	@RequestMapping("/info03/delFile")
+	public String delFile(@RequestParam HashMap<String, Object> map) {
+		System.out.println("map file del : " + map);
+		String ad_code = "";
+		String m1 = String.valueOf(map.get("m1"));		
+		String m2 = String.valueOf(map.get("m2"));		
+		String m3 = String.valueOf(map.get("m3"));
+		
+		//게시판 코드 확인
+		if(m1.equals("07")&&m2.equals("01")&&m3.equals("03")) {
+			ad_code = "CAT0016";
+			//System.out.println("ad_code: " + ad_code);
+			map.put("ad_code", ad_code);
+		}else {
+			if(m1.equals("07")&&m2.equals("01")&&m3.equals("05")) {
+				ad_code="CAT0017";
+				//System.out.println("ad_code: " + ad_code);
+				map.put("ad_code", ad_code);
+			}
+		}
+		
+		openInfoService.delfile(map);
+		return "redirect:/info03/updateform?m1="+m1+"&m2="+m2+"&m3="+m3+"&ad_idx="+map.get("ad_idx");
 	}
 }
 

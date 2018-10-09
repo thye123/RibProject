@@ -31,6 +31,15 @@
 		cancel.addEventListener("click", function(){
 			location.href="/info03/dCon?m1=${m1}&m2=${m2}&m3=${m3}&ad_idx=${ad_idx}";
 		});
+		
+		var farea = document.getElementById("farea");
+		farea.addEventListener("click", function(){
+			var conf = confirm("해당 파일을 삭제하시겠습니까?");
+			
+			if(conf==true){
+				location.href="/info03/delFile?m1=${m1}&m2=${m2}&m3=${m3}&ad_idx=${ad_idx}";
+			}
+		});
 	}
 </script>
 			
@@ -62,12 +71,27 @@
 						<input type="hidden" name="ad_writer" value="ADMIN">
 					</td>
 				</tr>
-				<tr>
-					<td>첨부파일</td>
-					<td style="text-align:left;">
-						<input type="file" name="filename">
-					</td>					
-				</tr>
+				<c:choose>
+					<c:when test="${OpenInfoVo.file_name == null}">
+						<tr>
+							<td>첨부파일</td>
+							<td style="text-align:left;">
+								<input type="file" name="filename">
+							</td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<td>첨부파일</td>
+							<td style="text-align:left;">
+								<label id="farea">
+									<span>${OpenInfoVo.file_name}</span>
+									<img src="/resources/user/images/sub/delete.png" style="width:20px; height:20px;">
+								</label>
+							</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>					
 				<tr>
 					<td>제목</td>
 					<td style="text-align:left;">

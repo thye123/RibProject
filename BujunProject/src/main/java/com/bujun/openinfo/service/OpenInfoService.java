@@ -21,4 +21,10 @@ public interface OpenInfoService {
 
 	public void update(HashMap<String, Object> map);
 
+	public void upFile(HttpServletRequest req, HashMap<String, Object> map);
+
+	public void delete(HashMap<String, Object> map);
+
+	public void delfile(HashMap<String, Object> map);
+
 }

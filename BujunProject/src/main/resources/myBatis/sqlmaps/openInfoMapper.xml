@@ -87,12 +87,35 @@
 	
 	<update id="updateContent">
 		{CALL PKG_OPENINFO.PROC_UPDATE(
-		#{in_ad_idx, mode=IN, jdbcType=NUMERIC},     
-        #{in_ad_code, mode=IN, jdbcType=VARCHAR},    
-        #{in_ad_title, mode=IN, jdbcType=VARCHAR},   
-        #{in_ad_content, mode=IN, jdbcType=VARVCHAR}, 
-        #{out_ad_idx, mode=OUT, jdbcType=NUMERIC},
-        #{out_ad_code, mode=OUT, jdbcType=VARCHAR}   
+		#{ad_idx,     mode=IN,  jdbcType=NUMERIC},     
+        #{ad_code,    mode=IN,  jdbcType=VARCHAR},    
+        #{ad_title,   mode=IN,  jdbcType=VARCHAR},   
+        #{ad_content, mode=IN,  jdbcType=VARCHAR}   
 		)}
 	</update>
+	
+	<update id="updateFile">
+		{CALL PKG_OPENINFO.PROC_UPFILE(
+		#{ad_idx, mode=IN, jdbcType=NUMERIC},            
+        #{ad_code, mode=IN, jdbcType=VARCHAR},           
+        #{file_filename, mode=IN, jdbcType=VARCHAR},     
+        #{file_size, mode=IN, jdbcType=NUMERIC},         
+        #{file_filerealname, mode=IN, jdbcType=VARCHAR}, 
+        #{file_ext, mode=IN, jdbcType=VARCHAR}          		
+		)}
+	</update>
+	
+	<delete id="delete">
+		{CALL PKG_OPENINFO.PROC_DELETE(
+		#{ad_idx, mode=IN, jdbcType=NUMERIC},
+		#{ad_code, mode=IN, jdbcType=VARCHAR}
+		)}
+	</delete>
+	
+	<delete id="delfile">
+		{CALL PKG_OPENINFO.PROC_DEL_FILE(
+		#{ad_idx, mode=IN, jdbcType=NUMERIC},
+		#{ad_code, mode=IN, jdbcType=VARCHAR}
+		)}
+	</delete>
 </mapper>

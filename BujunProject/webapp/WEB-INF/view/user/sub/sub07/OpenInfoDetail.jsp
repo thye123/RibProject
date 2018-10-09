@@ -30,7 +30,21 @@
 		var list = document.getElementById("list");
 		var ad_code = "${openInfoVo.ad_code}";
 		
+		var delCon = document.getElementById("delete");
+		
+		delCon.addEventListener("click", function(){
+			switch (ad_code) {
+			case "CAT0016":
+				location.href= "/info03/delete?m1=07&m2=01&m3=03&ad_idx=${ad_idx}";
+				break;
+			case "CAT0017":
+				location.href= "/info03/delete?m1=07&m2=01&m3=05&ad_idx=${ad_idx}";
+				break;
+			}
+		});
+		
 		var update = document.getElementById("update");
+		
 		update.addEventListener("click", function(){
 			switch (ad_code) {
 				case "CAT0016":
@@ -39,7 +53,6 @@
 				case "CAT0017":
 					location.href= "/info03/updateform?m1=07&m2=01&m3=05&ad_idx=${ad_idx}";
 					break;
-
 			}
 		});
 		
