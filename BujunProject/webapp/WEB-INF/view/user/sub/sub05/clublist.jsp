@@ -353,7 +353,7 @@ a.btn_board {
 	
 	<c:choose>
 	    <c:when test="${pageMaker.prev == true}">
-			<a class="firstpage1" href="/club01/CluBoard?clb_clucode=CUS0001&page=${pageMaker.page-1}&pagecount=10&pagegrp=1"><</a>
+			<a class="firstpage1" href="/club01/CluBoard?clb_clucode=${clu_code}&page=${pageMaker.page-1}&pagecount=10&pagegrp=1"><</a>
 	    </c:when>
 	
 	    <c:otherwise>
@@ -367,7 +367,7 @@ a.btn_board {
 			<c:forEach begin="${pageMaker.start}" end="${pageMaker.end}" var="idx">
 				
 					<a class="pageBtn"
-					href='/club01/CluBoard?clb_clucode=CUS0001&page=${idx}
+					href='/club01/CluBoard?clb_clucode=${clu_code}&page=${idx}
 					&pagecount=${pageMaker.pagecount}&pagegrp=1'><span>${idx}</span></a>
 			</c:forEach>
 				
@@ -381,7 +381,7 @@ a.btn_board {
 	    </c:when>
 	
 	    <c:otherwise>
-	     	<a class="nextblock" href="/club01/CluBoard?clb_clucode=CUS0001&page=${pageMaker.page+1}&pagecount=10&pagegrp=${pageMaker.pagegrp}"><span>6 페이지</span></a>
+	     	<a class="nextblock" href="/club01/CluBoard?clb_clucode=${clu_code}&page=${pageMaker.page+1}&pagecount=10&pagegrp=${pageMaker.pagegrp}"><span>6 페이지</span></a>
 	    </c:otherwise>
 
 	</c:choose>

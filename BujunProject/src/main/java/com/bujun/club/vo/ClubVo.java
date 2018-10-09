@@ -238,6 +238,7 @@ public class ClubVo {
 				,int pagegrp) { // page변수는 현재 페이지번호 
 			ClubVo vo = new ClubVo();
 			//끝번호 
+			
 			int tempEnd = (int)(Math.ceil(page / 10.0) * 10); 
 			//끝번호 구하기래 
 			
@@ -247,10 +248,12 @@ public class ClubVo {
 			int startemp = ( (pagegrp-1) * pagecount) +1;
 			vo.setStart(startemp);
 			//끝 번호 구하기 입니다 
-		
+			
 			int temps = count % 10;
+			
 			if(temps==0) {
 				int temp = (count/10);
+				
 				vo.setEnd(end);
 				System.out.println("temps1" + temp);
 				vo.setTmep(temp);

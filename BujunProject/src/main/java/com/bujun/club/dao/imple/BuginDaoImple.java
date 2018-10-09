@@ -29,7 +29,7 @@ public class BuginDaoImple implements BuginDao {
 		String clb_clucode = (String)map.get("clb_clucode");
 
 		sqlsession.selectList("Bugin.CluBoard" , map);
-		//System.out.println("map : "  + map);
+		System.out.println("map : "  + map);
 		List<ClubVo> clublist  = (List<ClubVo>) map.get("result");
 		//System.out.println("Daoimpl List : " + clublist.toString()  ) ;
 		return clublist;
