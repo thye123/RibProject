@@ -100,7 +100,7 @@
 	<div class="gnb_menu_pc">
 		<div class="header">
             <div class="gnb_wrap">
-            	<h1><a href="#"><img src="${pageContext.request.contextPath}/resources/user/images/common/logo.png" alt="부전도서관 로고" /></a></h1>
+            	<h1><a href="/"><img src="${pageContext.request.contextPath}/resources/user/images/common/logo.png" alt="부전도서관 로고" /></a></h1>
             	
                 <ul class="gnb">
                     <li>
