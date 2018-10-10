@@ -31,7 +31,7 @@ public class ReadCultureController {
 		return "user/sub/sub05/obook02";
 	}
 	
-	@RequestMapping("/club01") 
+	/*@RequestMapping("/club01") 
 	public String Club01(@RequestParam HashMap<String, Object> map, Model model) {
 		
 		model.addAttribute("menu", map);
@@ -57,7 +57,7 @@ public class ReadCultureController {
 		
 		model.addAttribute("menu", map);
 		return "user/sub/sub05/club04";
-	}		
+	}		*/
 		
 	
 	@RequestMapping("/bkcare")

@@ -28,10 +28,60 @@
 		}
 		
 		var list = document.getElementById("list");
-		list.addEventListener("click", function(){
-			location.href="/info03?ad_code=${openInfoVo.ad_code}&page_num=1";
+		var ad_code = "${openInfoVo.ad_code}";
+		
+		var delCon = document.getElementById("delete");
+		
+		delCon.addEventListener("click", function(){
+			switch (ad_code) {
+			case "CAT0016":
+				location.href= "/info03/delete?m1=07&m2=01&m3=03&ad_idx=${ad_idx}";
+				break;
+			case "CAT0017":
+				location.href= "/info03/delete?m1=07&m2=01&m3=05&ad_idx=${ad_idx}";
+				break;
+			}
 		});
-	
+		
+		var update = document.getElementById("update");
+		
+		update.addEventListener("click", function(){
+			switch (ad_code) {
+				case "CAT0016":
+					location.href= "/info03/updateform?m1=07&m2=01&m3=03&ad_idx=${ad_idx}";
+					break;
+				case "CAT0017":
+					location.href= "/info03/updateform?m1=07&m2=01&m3=05&ad_idx=${ad_idx}";
+					break;
+			}
+		});
+		
+		<c:choose>
+			<c:when test="${keyword != null && keyfield != null}">
+				list.addEventListener("click", function(){
+					switch (ad_code) {
+					case "CAT0016":
+						location.href="/info03/search?m1=07&m2=01&m3=03&keyword=${keyword}&keyfield=${keyfield}&page_num=1&page_grp=1";
+						break;
+					case "CAT0017":
+						location.href="/info03/search?m1=07&m2=01&m3=05&keyword=${keyword}&keyfield=${keyfield}&page_num=1&page_grp=1";
+						break;
+					}
+				});
+			</c:when>
+			<c:otherwise>
+				list.addEventListener("click", function(){
+					switch (ad_code) {
+					case "CAT0016":
+						location.href="/info03?m1=07&m2=01&m3=03&page_num=1&page_grp=1";
+						break;
+					case "CAT0017":
+						location.href="/info03?m1=07&m2=01&m3=05&page_num=1&page_grp=1";
+						break;
+					}
+				});
+			</c:otherwise>
+		</c:choose>
 	}
 </script>
 			
@@ -73,11 +123,11 @@
 				<th class="c">첨부파일</th>
 				<td colspan="2">
 					<c:choose>
-						<c:when test="${openInfoVo.file_real_name == null}">
+						<c:when test="${openInfoVo.file_name == null}">
 							
 						</c:when>
 						<c:otherwise>
-							<a href="#this">${openInfoVo.file_real_name}</a>  <span>( ${openInfoVo.file_size} <b>Kbyte</b>)</span>
+							<a href="<c:out value="/download/external/${openInfoVo.file_name}"/>">${openInfoVo.file_name}</a>  <span>( ${openInfoVo.file_size} <b>Kbyte</b>)</span>
 						</c:otherwise>
 					</c:choose>
 				</td>
@@ -88,6 +138,8 @@
 		</tbody>
 	</table>
 	<div class="r mg_t20 btns">
+		<input type="button" class="btns_black" id="update" value="수정" style="border:0;"/>
+		<input type="button" class="btns_black" id="delete" value="삭제" style="border:0;"/>
 		<input type="button" class="btns_black" id="list" value="목록" style="border:0;"/>
 	</div>	
 	<!-- //게시판테이블(리스트) -->

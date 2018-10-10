@@ -8,6 +8,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.bujun.openinfo.dao.OpenInfoDao;
@@ -29,8 +31,9 @@ public class OpenInfoServiceImpl implements OpenInfoService {
 		int page_num 	= Integer.parseInt(String.valueOf(map.get("page_num")));
 		String ad_code 	= String.valueOf(map.get("ad_code"));
 		int tot_cnt		= Integer.parseInt(String.valueOf(map.get("tot_cnt")));
-		
-		Paging pg = new Paging(page_num, ad_code, tot_cnt);
+		int page_grp    = Integer.parseInt(String.valueOf(map.get("page_grp")));
+		//System.out.println("map service:" + map);
+		Paging pg = new Paging(page_num, ad_code, tot_cnt, page_grp);
 		PagingVo pv = pg.paging();
 		map.put("pagingVo", pv);
 		return list;
@@ -67,19 +70,19 @@ public class OpenInfoServiceImpl implements OpenInfoService {
 			HashMap<String, String> hashMap = new HashMap<String, String>();
 			
 			if( !multiFile.isEmpty() ) {
-				file_fileRealName = multiFile.getOriginalFilename();
+				file_fileName = multiFile.getOriginalFilename();
 				file_size     = (int) multiFile.getSize();
 				// upload 된 파일명
 				
 				//             0 1 23 4 5678
 				// fileName = "테풍.솔릭.jpg"
-				int dotIdx  		= file_fileRealName.lastIndexOf('.');
-				file_fileName 		= file_fileRealName.substring( 0, dotIdx ); // "테풍.솔릭"
-				file_ext     		= file_fileRealName.substring( dotIdx  );   // ".jpg";
+				int dotIdx  		= file_fileName.lastIndexOf('.');
+				file_fileRealName 	= file_fileName.substring( 0, dotIdx ); // "테풍.솔릭"
+				file_ext     		= file_fileName.substring( dotIdx  );   // ".jpg";
 				
 				// 중복파일이 존재하면 번호추가 후 실제 파일명 처리
 				sFileName   = fileCheck.getCheckFileName(
-					filePath, file_fileName, file_ext ); //"테풍1";
+					filePath, file_fileRealName, file_ext ); //"테풍1";
 				
 				// 저장
 				File file = new File(filePath + sFileName);
@@ -112,16 +115,91 @@ public class OpenInfoServiceImpl implements OpenInfoService {
 
 	@Override
 	public List<OpenInfoVo> search(HashMap<String, Object> map) {
-		System.out.println("map search service: " + map);
 		List<OpenInfoVo> list = openInfoDao.search(map);
 		int page_num 	= Integer.parseInt(String.valueOf(map.get("page_num")));
 		String ad_code 	= String.valueOf(map.get("ad_code"));
 		int tot_cnt		= Integer.parseInt(String.valueOf(map.get("tot_cnt")));
+		int page_grp    = Integer.parseInt(String.valueOf(map.get("page_grp")));
 		
-		Paging pg = new Paging(page_num, ad_code, tot_cnt);
+		Paging pg = new Paging(page_num, ad_code, tot_cnt, page_grp);
 		PagingVo pv = pg.paging();
 		map.put("pagingVo", pv);
 		return list;
 	}
 
+	@Override
+	public void update(HashMap<String, Object> map) {
+		openInfoDao.update(map);
+	}
+
+	@Override
+	public void upFile(HttpServletRequest req, HashMap<String, Object> map) {
+		CheckFile fileCheck = new CheckFile();
+		
+		String filePath = "d:\\upload\\";
+		MultipartHttpServletRequest multi = (MultipartHttpServletRequest) req;
+		
+		Iterator<String> iterator = multi.getFileNames();
+		MultipartFile  multiFile = null; 
+
+		String file_fileName    	= null;
+		String file_fileRealName 	= null;
+		String file_ext     		= null;
+		String sFileName   			= null;
+		int    file_size			= 0;
+		
+		int i = 0;
+		while ( iterator.hasNext()) {
+			multiFile = multi.getFile(iterator.next());
+			
+			HashMap<String, String> hashMap = new HashMap<String, String>();
+			
+			if( !multiFile.isEmpty() ) {
+				file_fileName = multiFile.getOriginalFilename();
+				file_size     = (int) multiFile.getSize();
+				// upload 된 파일명
+				
+				//             0 1 23 4 5678
+				// fileName = "테풍.솔릭.jpg"
+				int dotIdx  		= file_fileName.lastIndexOf('.');
+				file_fileRealName 	= file_fileName.substring( 0, dotIdx ); // "테풍.솔릭"
+				file_ext     		= file_fileName.substring( dotIdx  );   // ".jpg";
+				
+				// 중복파일이 존재하면 번호추가 후 실제 파일명 처리
+				sFileName   = fileCheck.getCheckFileName(
+					filePath, file_fileRealName, file_ext ); //"테풍1";
+				
+				// 저장
+				File file = new File(filePath + sFileName);
+				i += 1;
+				
+				//저장
+				map.put("file_size", file_size);
+				map.put("file_filename", file_fileName);
+				map.put("file_filerealname", file_fileRealName);
+				map.put("file_ext", file_ext);
+				
+
+				openInfoDao.upFile(req, map);		
+				
+				try {
+					multiFile.transferTo( file ); // 실제파일명으로 저장
+				} catch(IOException e) {
+					System.out.println("오류:" + e.getMessage()); 
+					e.printStackTrace();
+				}				
+			}
+		}	
+	}
+
+	@Override
+	public void delete(HashMap<String, Object> map) {
+		openInfoDao.delete(map);
+	}
+
+	@Override
+	public void delfile(HashMap<String, Object> map) {
+		openInfoDao.delfile(map);
+	}
+	
 }

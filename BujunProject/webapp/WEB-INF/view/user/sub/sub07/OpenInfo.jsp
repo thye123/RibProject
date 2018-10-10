@@ -49,10 +49,10 @@
 		
 		switch (ad_code) {
 		case "CAT0016":
-			searchForm.setAttribute("action", "/info03/search?m1=07&m2=01&m3=03&page_num=1");
+			searchForm.setAttribute("action", "/info03/search?m1=07&m2=01&m3=03&page_num=1&page_grp=1");
 			break;
 		case "CAT0017":
-			searchForm.setAttribute("action", "/info03/search?m1=07&m2=01&m3=05&page_num=1");			
+			searchForm.setAttribute("action", "/info03/search?m1=07&m2=01&m3=05&page_num=1&page_grp=1");			
 			break;
 		}
 	}
@@ -74,6 +74,8 @@
 <div class="con_mob_pad">
 	<c:set var="endnum" value="${paging.end_page}"></c:set>
 	<c:set var="startnum" value="${paging.start_page}"></c:set>
+	<c:set var="page_grp" value="${paging.page_group}"></c:set>
+	<c:set var="tot_btcnt" value="${paging.tot_btcnt}"></c:set>
 
 	<!-- title -->
 	<div class="sub_tit">정보공개</div>
@@ -119,15 +121,30 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="cList" items="${contentList}">
-				<tr>
-					<td>${cList.idx}</td>
-					<td style="text-align: left;"><a href="/info03/dCon?ad_code=${ad_code}&ad_idx=${cList.idx}">${cList.ad_title}</a></td>
-					<td>${cList.ad_memname}</td>
-					<td>${cList.ad_regdate}</td>
-					<td class="bnon">${cList.ad_count}</td>
-				</tr>
-			</c:forEach>
+			<c:choose>
+				<c:when test="${keyword != null && keyfield != null}">
+					<c:forEach var="sList" items="${searchList}">
+						<tr>
+							<td>${sList.idx}</td>
+							<td style="text-align: left;"><a href="/info03/dCon?keyword=${keyword}&keyfield=${keyfield}&ad_code=${ad_code}&ad_idx=${sList.idx}">${sList.ad_title}</a></td>
+							<td>${sList.ad_memname}</td>
+							<td>${sList.ad_regdate}</td>
+							<td class="bnon">${sList.ad_count}</td>
+						</tr>
+					</c:forEach>		
+				</c:when>
+				<c:otherwise>
+					<c:forEach var="cList" items="${contentList}">
+						<tr>
+							<td>${cList.idx}</td>
+							<td style="text-align: left;"><a href="/info03/dCon?ad_code=${ad_code}&ad_idx=${cList.idx}">${cList.ad_title}</a></td>
+							<td>${cList.ad_memname}</td>
+							<td>${cList.ad_regdate}</td>
+							<td class="bnon">${cList.ad_count}</td>
+						</tr>
+					</c:forEach>		
+				</c:otherwise>
+			</c:choose>
 		</tbody>
 	</table>
 	<div class="r mg_t20 btns">
@@ -141,52 +158,50 @@
 
 	<!-- 페이징 -->
 	<div class="board-list-paging">
-		<div class="pagelist">
-
-
-			<!--  -->
-			<%-- 		<c:choose>
-            <c:when test="${pageMaker.prev}">
-               <a href="/freebrd?bd_catcode=CAT0007&m1=06&m2=03&page=${pageMaker.startPage-1}&perPageNum=10&searchType=${search}&keyword=${key}"><span class="prevblock1 "><span>1 페이지</span></span></a>
-            </c:when>
-            <c:otherwise>
-               <a href="#"><span class="beforepage1 "><span>이전페이지없음</span></span></a>
-            </c:otherwise>
-         </c:choose>
-      
-      
-         <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-            <c:choose>
-               <c:when test="${pageMaker.cri.page == idx}">
-                  <strong><span>${idx}</span></strong>
-               </c:when>
-               <c:otherwise>
-                  <a class="default" href="/freebrd?bd_catcode=CAT0007&m1=06&m2=03&page=${idx}&perPageNum=10&searchType=${search}&keyword=${key}" ><span>${idx}</span></a>
-               </c:otherwise>
-            </c:choose>
-         </c:forEach>   
-         
-
-         <c:if test = "${pageMaker.next && pageMaker.endPage > 0}" >
-            <a class="nextblock" href="/freebrd?bd_catcode=CAT0007&m1=06&m2=03&page=${pageMaker.endPage + 1}&perPageNum=10&searchType=${search}&keyword=${key}"><span>다음</span></a>
-         </c:if>
-         <a class="lastpage" href="/freebrd?bd_catcode=CAT0007&m1=06&m2=03&page=${pageMaker.lastBlock}&perPageNum=10&searchType=${search}&keyword=${key}"><span>마지막</span></a> --%>
-			<!--  -->
-
-			<!-- <span class="firstpage1"><span>처음 페이지</span></span>
+		<div class="pagelist">			
+			<!-- 이전 10개 -->
+			<c:choose>
+				<c:when test="${keyword != null && keyfield != null}">
+					<c:if test="${startnum > 10}">
+						<a class="prevblock" href="/info03/search?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&m3=${m3}&page_num=${page_num}&page_grp=${page_grp-1}"><span>이전</span></a>
+					</c:if>
+				</c:when>
+				<c:otherwise>
+					<c:if test="${startnum > 10}">
+						<a class="prevblock" href="/info03?m1=${m1}&m2=${m2}&m3=${m3}&page_num=${page_num}&page_grp=${page_grp-1}"><span>이전</span></a>
+					</c:if>
+				</c:otherwise>
+			</c:choose>		
 			
-			<span class="prevblock1 hidden"><span>1 페이지</span></span>
-			<span class="beforepage1 "><span>이전페이지없음</span></span> -->
-			<!-- 이전페이지 없을때 -->
-
-			<c:forEach var="Paging" begin="${startnum}" end="${endnum}" step="1">
-				<a class="default"
-					href="/info03?&ad_code=${ad_code}&page_num=${Paging}"><span>${Paging}</span></a>
-			</c:forEach>
-
-			<!-- <a class="afterpage hidden" href="#"><span>앞페이지</span></a>
-			<a class="nextblock" href="#"><span>6 페이지</span></a>
-			<a class="lastpage" href="#"><span>21 페이지</span></a> -->
+			<!-- 페이징 -->	
+			<c:choose>
+				<c:when test="${keyword != null && keyfield != null}">
+					<c:forEach var="Paging" begin="${startnum}" end="${endnum}" step="1">
+						<a class="default"
+							href="/info03/search?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&m3=${m3}&page_num=${Paging}&page_grp=${page_grp}"><span>${Paging}</span></a>
+					</c:forEach>		
+				</c:when>
+				<c:otherwise>
+					<c:forEach var="Paging" begin="${startnum}" end="${endnum}" step="1">
+						<a class="default"
+							href="/info03?m1=${m1}&m2=${m2}&m3=${m3}&page_num=${Paging}&page_grp=${page_grp}"><span>${Paging}</span></a>
+					</c:forEach>		
+				</c:otherwise>
+			</c:choose>
+			
+			<!-- 다음 10개 -->
+			<c:choose>
+				<c:when test="${keyword != null && keyfield != null}">
+					<c:if test="${startnum <= (tot_btcnt-10) && startnum > 0}">
+						<a class="nextblock" href="/info03/search?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&m3=${m3}&page_num=${page_num}&page_grp=${page_grp+1}"><span>이전</span></a>
+					</c:if>
+				</c:when>
+				<c:otherwise>
+					<c:if test="${startnum <= (tot_btcnt-10) && startnum > 0}">
+						<a class="nextblock" href="/info03?m1=${m1}&m2=${m2}&m3=${m3}&page_num=${page_num}&page_grp=${page_grp+1}"><span>이전</span></a>
+					</c:if>
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 	<!-- //페이징 -->

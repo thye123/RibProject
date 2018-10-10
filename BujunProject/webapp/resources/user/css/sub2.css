@@ -377,6 +377,10 @@ ul.com_info > li > div:hover img.home {
 .new_btn {position: relative; display: inline-block; cursor: pointer; line-height: 1em; height: 14px; padding: 13px 40px 13px 15px; font-size: 12px; margin: 1px; background: #878f9a url(../images/sub/newbtn.png)no-repeat 70px center; color:#fff !important;}
 .new_btn:hover {background-color:#727b87;}
 
+.prolistarea{
+	width:100%;
+	overflow: hidden;
+}
 
 /* 인사말/연혁 */
 div.greeting p {background:url(../images/sub/gr_bg.jpg) no-repeat right 0;  padding:100px 0px 50px 0px;}
@@ -468,14 +472,13 @@ div.greeting div { color:#777;
 .file_del:hover {color:#fff; background:#c40c0c;}
 
 
-
-
-
-
-
-
-
-
+.prolist{
+	display:inline-block;
+	width:40%;
+	height:200px;
+	margin-left: 5%;
+	border:1px solid black;
+}
 
 /******************** pad *****************/
 @media all and (max-width:1000px) {

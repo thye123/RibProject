@@ -10,6 +10,7 @@ public class Paging {
 	private int 	start_page;	//시작 페이지
 	private int     end_page;	//끝 페이지
 	private int 	page_group;	//페이지 그룹
+	private int 	page_cnt;	//하단에 뿌려줄 페이지 갯수
 	
 	//Getter&Setter
 	public int getPage_num() {
@@ -54,20 +55,27 @@ public class Paging {
 	public void setEnd_page(int end_page) {
 		this.end_page = end_page;
 	}
+	public int getPage_cnt() {
+		return page_cnt;
+	}
+	public void setPage_cnt(int page_cnt) {
+		this.page_cnt = page_cnt;
+	}
 	
 	//Constructor
 	public Paging() {};
 
-	public Paging(int page_num, String ad_code, int tot_cnt) {
-		this.page_num = page_num;
-		this.ad_code  = ad_code;
-		this.tot_cnt  = tot_cnt;
+	public Paging(int page_num, String ad_code, int tot_cnt, int page_grp) {
+		this.page_num 	= page_num;
+		this.ad_code  	= ad_code;
+		this.tot_cnt  	= tot_cnt;
+		this.page_group = page_grp;
 	};
 	
 	//Method
 	public PagingVo paging() {
-		int pageCnt = 10; //하단에 보여줄 페이지 수
-		this.page_group 	= 1;
+		this.page_cnt = 10; //하단에 보여줄 페이지 수
+	
 		PagingVo vo 	= new PagingVo();
 	
 		if(tot_cnt % 10 == 0) {
@@ -76,8 +84,23 @@ public class Paging {
 			this.tot_btcnt 	=  (tot_cnt / 10) + 1; 
 		}
 		
-		this.start_page = (page_group - 1) * pageCnt + 1;
-		this.end_page   = tot_btcnt * page_group;
+		this.start_page = (page_group - 1) * page_cnt + 1;
+		
+		if(this.tot_btcnt <= page_cnt) {
+			this.end_page = tot_btcnt * page_group;
+		}else {
+			if(this.tot_btcnt > page_cnt && tot_btcnt%10 == 0) {
+				this.end_page = page_group * page_cnt;
+			}else {
+				if(this.tot_btcnt > page_cnt && page_group == 1) {
+					this.end_page = page_group * page_cnt;
+				}else {
+					if(this.tot_btcnt > page_cnt && page_group > 1) {
+						this.end_page =  (page_group * page_cnt) - (page_cnt-(tot_btcnt/page_cnt));
+					}
+				}
+			}
+		}
 		
 		vo.setStart_page(this.start_page);
 		vo.setEnd_page(this.end_page);
@@ -85,6 +108,7 @@ public class Paging {
 		vo.setPage_num(this.page_num);
 		vo.setTot_cnt(this.tot_cnt);
 		vo.setTot_btcnt(this.tot_btcnt);
+		vo.setPage_group(this.page_group);
 		return vo;
 	}
 }

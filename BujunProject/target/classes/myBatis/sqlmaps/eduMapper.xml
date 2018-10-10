@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Education">
+	<resultMap type="com.bujun.education.vo.EduVo" id="selEdu">
+		<result property="listu_code"		column="LISTU_CODE"				javaType="String"/>
+		<result property="listu_catcode" 	column="LISTU_CATCODE" 			javaType="String"/>
+		<result property="listu_name" 		column="LISTU_NAME" 			javaType="String"/>
+		<result property="listu_target" 	column="LISTU_TARGET" 			javaType="String"/>
+		<result property="listu_location" 	column="LISTU_LOCATION" 		javaType="String"/>
+		<result property="listu_studate" 	column="LISTU_STUDATE" 			javaType="String"/>
+		<result property="listu_content"	column="LISTU_CONTENT"			javaType="String"/>
+		<result property="listu_person"		column="LISTU_PERSON"			javaType="int"/>
+		<result property="listu_regdate"	column="LISTU_REGDATE"			javaType="String"/>
+		<result property="listu_end"		column="LISTU_END"				javaType="int"/>
+		<result property="listu_teacher"	column="LISTU_TEACHER"			javaType="String"/>
+		<result property="listu_gubun"		column="LISTU_GUBUN"			javaType="String"/>
+		<result property="listu_recruit"	column="LISTU_RECRUIT"			javaType="String"/>
+		<result property="file_idx"			column="FILE_IDX"				javaType="int"/>
+		<result property="file_board_idx"	column="FILE_BOARDIDX"			javaType="int"/>
+		<result property="file_board_code"	column="FILE_BOARDCODE"			javaType="String"/>
+		<result property="file_name"		column="FILE_FILENAME"			javaType="String"/>
+		<result property="file_size"		column="FILE_SIZE"				javaType="String"/>
+		<result property="file_real_name"	column="FILE_FILEREALNAME"		javaType="String"/>
+		<result property="file_ext"			column="FILE_EXT"				javaType="String"/>
+		<result property="file_regdate"		column="FILE_REGDATE"			javaType="String"/>
+	</resultMap>
+	
+	<insert id="insertPro">
+	{CALL PKG_EDUCATION.PROC_INSERT_PRO(
+	#{listu_catcode,  mode=IN, jdbcType=VARCHAR},  
+    #{listu_name,     mode=IN, jdbcType=VARCHAR},
+    #{listu_target,   mode=IN, jdbcType=VARCHAR},
+    #{listu_location, mode=IN, jdbcType=VARCHAR},
+    #{listu_studate,  mode=IN, jdbcType=VARCHAR},
+    #{listu_content,  mode=IN, jdbcType=VARCHAR},
+    #{listu_person,   mode=IN, jdbcType=NUMERIC},
+    #{listu_end,      mode=IN, jdbcType=NUMERIC},
+    #{listu_teacher,  mode=IN, jdbcType=VARCHAR},
+    #{listu_gubun,    mode=IN, jdbcType=VARCHAR},
+    #{listu_recruit,  mode=IN, jdbcType=VARCHAR}
+	)}
+	</insert>
+	
+	<select id="selPro"
+			statementType="CALLABLE"
+			parameterType="hashmap"
+			resultType="com.bujun.education.vo.EduVo">
+	{CALL PKG_EDUCATION.PROC_SELECT_LIST(
+	#{listu_catcode,  mode=IN, jdbcType=VARCHAR},
+	#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=selEdu}
+	)}
+	</select>
+	
+</mapper>

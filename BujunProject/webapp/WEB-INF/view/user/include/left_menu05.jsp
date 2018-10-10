@@ -211,28 +211,28 @@
 									
 									<c:choose>
 										<c:when test="${menu.m1 eq 05 && menu.m2 eq 03 && menu.m3 eq 02}">
-											<li class="on"><a href="/club02?m1=05&m2=03&m3=02">책넝쿨</a></li>
+											<li class="on"><a href="/club01?m1=05&m2=03&m3=02">책넝쿨</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/club02?m1=05&m2=03&m3=02">책넝쿨</a></li>
+											<li><a href="/club01?m1=05&m2=03&m3=02">책넝쿨</a></li>
 										</c:otherwise>
 									</c:choose>		
 									
 									<c:choose>
 										<c:when test="${menu.m1 eq 05 && menu.m2 eq 03 && menu.m3 eq 03}">
-											<li class="on"><a href="/club03?m1=05&m2=03&m3=03">이목</a></li>
+											<li class="on"><a href="/club01?m1=05&m2=03&m3=03">이목</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/club03?m1=05&m2=03&m3=03">이목</a></li>
+											<li><a href="/club01?m1=05&m2=03&m3=03">이목</a></li>
 										</c:otherwise>
 									</c:choose>		
 									
 									<c:choose>
 										<c:when test="${menu.m1 eq 05 && menu.m2 eq 03 && menu.m3 eq 04}">
-											<li class="on"><a href="/club04?m1=05&m2=03&m3=04">책마중</a></li>
+											<li class="on"><a href="/club01?m1=05&m2=03&m3=04">책마중</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/club04?m1=05&m2=03&m3=04">책마중</a></li>
+											<li><a href="/club01?m1=05&m2=03&m3=04">책마중</a></li>
 										</c:otherwise>
 									</c:choose>																											
 								</ul>
@@ -256,28 +256,28 @@
 									
 									<c:choose>
 										<c:when test="${menu.m1 eq 05 && menu.m2 eq 03 && menu.m3 eq 02}">
-											<li class="on"><a href="/club02?m1=05&m2=03&m3=02">책넝쿨</a></li>
+											<li class="on"><a href="/club01?m1=05&m2=03&m3=02">책넝쿨</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/club02?m1=05&m2=03&m3=02">책넝쿨</a></li>
+											<li><a href="/club01?m1=05&m2=03&m3=02">책넝쿨</a></li>
 										</c:otherwise>
 									</c:choose>		
 									
 									<c:choose>
 										<c:when test="${menu.m1 eq 05 && menu.m2 eq 03 && menu.m3 eq 03}">
-											<li class="on"><a href="/club03?m1=05&m2=03&m3=03">이목</a></li>
+											<li class="on"><a href="/club01?m1=05&m2=03&m3=03">이목</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/club03?m1=05&m2=03&m3=03">이목</a></li>
+											<li><a href="/club01?m1=05&m2=03&m3=03">이목</a></li>
 										</c:otherwise>
 									</c:choose>		
 									
 									<c:choose>
 										<c:when test="${menu.m1 eq 05 && menu.m2 eq 03 && menu.m3 eq 04}">
-											<li class="on"><a href="/club04?m1=05&m2=03&m3=04">책마중</a></li>
+											<li class="on"><a href="/club01?m1=05&m2=03&m3=04">책마중</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/club04?m1=05&m2=03&m3=04">책마중</a></li>
+											<li><a href="/club01?m1=05&m2=03&m3=04">책마중</a></li>
 										</c:otherwise>
 									</c:choose>																											
 								</ul>
