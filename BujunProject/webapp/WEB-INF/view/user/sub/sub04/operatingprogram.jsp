@@ -54,8 +54,8 @@
 	<div class="prolistarea">
 		<ul>
 			<c:forEach var="proList" items="${pro_list}">
-				<li >
-					<a class="prolist" href="/opprogram01/dCon?m1=${m1}&m2=${m2}&m3=${m3}&listu_code=${proList.listu_code}">
+				<li class="prolist">
+					<a class="proa" href="/opprogram01/dCon?m1=${m1}&m2=${m2}&m3=${m3}&listu_code=${proList.listu_code}">
 						<span><strong>${proList.listu_name}</strong></span>
 						<span><b>${proList.listu_recruit}</b></span>
 					</a>
