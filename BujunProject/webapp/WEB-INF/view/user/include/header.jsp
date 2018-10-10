@@ -90,7 +90,7 @@
 					</c:otherwise>
 				</c:choose>
 			
-				<li><a href="#">회원가입</a></li>
+				<li><a href="/join">회원가입</a></li>
 				<li><a href="#">마이페이지</a></li>
 			</ul>
 		</div>
@@ -191,7 +191,7 @@
 
 			<div id="menu">
 				 <a class="menu-icon" href="#">메뉴</a>
-				 <a class="m_search" href="#">로그인</a>
+				 <a class="m_search" href="/bjLogin">로그인</a>
 				
 				<div class="black"></div>
 				<div class="white"></div>

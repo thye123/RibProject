@@ -309,7 +309,9 @@
 .btn_login:hover {background:#252f49;}
 .btn_password {-webkit-transition:background 0.4s ease; width:250px; display:inline-block; color:#fff !important; padding:11px 0; margin-top:4px; background:#b24e61;}
 .btn_password:hover {background:#99142e;}
-    
+   
+.inpbtn01 {padding:0 10px !important; cursor:pointer; color:#fff; height:25px !important; background:#d01212; border:0 !important;}  
+.inpbtn01:hover {background:#b70c0c;}   
 
 /******************** pad *****************/
 @media all and (max-width:1000px) {

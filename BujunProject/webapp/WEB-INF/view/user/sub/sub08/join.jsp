@@ -115,13 +115,101 @@
     
 	function join() {
 		
+		var mem_id = document.getElementById("mem_id");
+		if(mem_id.value == "") {
+			alert("아이디를 입력해주세요.");
+			mem_id.focus();
+			return;
+		}
+		
+		var rimem_num = document.getElementById("rimem_num");
+		if(rimem_num.value == "") {
+			alert("도서관 회원 번호를 입력해주세요.")
+			rimem_num.focus();
+			return;
+		}
+		
+		var user_pass = document.getElementById("user_pass");
+		var chpass = document.getElementById("chpass");
+		
+		if(user_pass.value == "") {
+			alert("비밀번호를 입력해주세요.")
+			user_pass.focus();
+			return;
+		}	
+		
+		var mem_name = document.getElementById("mem_name");
+		if(mem_name.value == "") {
+			alert("이름을 입력해주세요.");
+			mem_name.focus();
+			return;
+		}
+		
+		var mem_birth = document.getElementById("mem_birth");
+		if(mem_birth.value == "") {
+			alert("생년월일을 입력해주세요.");
+			mem_birth.focus();
+			return;
+		}
+		
+		var email1 = document.getElementById("email1");
+		if(email1.value == "") {
+			alert("이메일을 입력해주세요.");
+			email1.focus();
+			return;
+		}	
+		
+		var email = document.getElementById("email");
+		if(email.value == "") {
+			alert("이메일을 입력해주세요.");
+			email.focus();
+			return;
+		}			
 		
 		
-				
+		var tel2 = document.getElementById("tel2");
+		if(tel2.value == "") {
+			alert("핸드폰번호를 입력해주세요.");
+			tel2.focus();
+			return;
+		}	
+		
+		var tel3 = document.getElementById("tel3");
+		if(tel3.value == "") {
+			alert("핸드폰번호를 입력해주세요.");
+			tel3.focus();
+			return;
+		}	
+		
+		var sample6_postcode = document.getElementById("sample6_postcode");
+		if(sample6_postcode.value == "") {
+			alert("우편번호를 입력해주세요.");
+			sample6_postcode.focus();
+			return;
+		}			
+		
+		var sample6_address = document.getElementById("sample6_address");
+		if(sample6_address.value == "") {
+			alert("주소를 입력해주세요.");
+			sample6_address.focus();
+			return;
+		}			
+		
+		var sample6_address2 = document.getElementById("sample6_address2");
+		if(sample6_address2.value == "") {
+			alert("상세주소를 입력해주세요.");
+			sample6_address2.focus();
+			return;
+		}	
+		
+
+		
+		//체크****/
 		var passRule = /^[A-Za-z0-9]{6,12}$/; //숫자와 문자 포함 형태의 6~12자리 이내의 암호 정규식
 
  		if(duplIdChk == 0) {
 			alert("아이디 중복체크 해주세요.");
+			return;
 		}
 		
 		if(!passRule.test($("#user_pass").val())) {
@@ -131,13 +219,23 @@
 		} 
 		
 		
+		if(user_pass.value != chpass.value) {
+			alert("비밀번호 확인해주세요.")
+			chpass.focus();
+			return;
+		}	
+		
+		if(mem_birth.value.length != 8) {
+			alert("생년월일을 확인해주세요. 8자리로 입력하세요.");
+			mem_birth.focus();
+			return;
+		}
+		
+		
 		document.mem_join.submit();		
 
 		
 	} 
-	
-	
-	
 	
 	
 </script>
@@ -157,11 +255,11 @@
 		<tbody>
 			<tr>
 				<th scope="row" class="c">아이디</th>
-				<td><input type="text" id="mem_id" name="mem_id" /> <input type="button" id="idchk" value="중복체크" /></td>
+				<td><input type="text" id="mem_id" name="mem_id" /> <input class="inpbtn01" type="button" id="idchk" value="중복체크" /></td>
 			</tr>
 			<tr>
 				<th scope="row" class="c">도서관 회원 번호</th>
-				<td><input type="text" class="in_mem_num" name="rimem_num"/></td>
+				<td><input type="text" class="in_mem_num" id="rimem_num" name="rimem_num"/></td>
 			</tr>	
 			<tr>
 				<th scope="row" class="c">비밀번호</th>
@@ -176,16 +274,16 @@
 			</tr>		
 			<tr>
 				<th scope="row" class="c">이름</th>
-				<td><input type="text" name="mem_name" /></td>
+				<td><input type="text" name="mem_name" id="mem_name" /></td>
 			</tr>	
 			<tr>
 				<th scope="row" class="c">생년월일(19890623)</th>
-				<td><input type="text" name="mem_birth" /></td>
+				<td><input type="text" id="mem_birth" name="mem_birth" /></td>
 			</tr>
 			<tr>
 				<th scope="row" class="c">이메일</th>
 				<td>
-					<input type="text" name="email1" /> @ 
+					<input type="text" name="email1" id="email1" /> @ 
 					<input type="text" id="email" name="email2" />
 					
 					<select class="in_email" id="email2" >
@@ -205,15 +303,15 @@
 						<option value="011">011</option>
 						<option value="016">016</option>
 					</select>
-					<input type="text" class="in_tel2" name="tel2" /> -
-					<input type="text" class="in_tel2" name="tel3" />
+					<input type="text" class="in_tel2" name="tel2" id="tel2" /> -
+					<input type="text" class="in_tel2" name="tel3" id="tel3" />
 				</td>
 			</tr>					
 			<tr>
 				<th class="c">우편번호 </th>
 				<td class="l non_line">
 					<input type="text" id="sample6_postcode" name="post" placeholder="우편번호"> 
-					<input type="button" class="btn02" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"> <br />
+					<input class="inpbtn01" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"> <br />
 					<input type="text" name="addr1" id="sample6_address" class="in_addr1 mg_t5" placeholder="주소"> 
 					<input type="text"  name="addr2" id="sample6_address2" placeholder="상세주소" class="in_addr2 mg_t5" >
 				</td>
@@ -221,8 +319,8 @@
 		</tbody>
 	</table>
 	
-		<div class="btns">
-			<a href="#" onclick="join()" class="bnts_black">submit</a>
+		<div class="btns c mg_t30">
+			<a href="#" onclick="join()" class="btns_black">회원가입하기</a>
 		</div>
 	</form>
 	
