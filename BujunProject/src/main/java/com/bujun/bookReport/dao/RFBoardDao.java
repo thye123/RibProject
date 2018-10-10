@@ -8,7 +8,7 @@ import com.bujun.bookReport.vo.BkReportVo;
 public interface RFBoardDao {
 	
 	
-    // °Ô½Ã±Û ÀüÃ¼ ¸ñ·Ï º¸±â
+    // ï¿½Ô½Ã±ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public List<BkReportVo> getList(HashMap<String, Object> map);
 	public int boardListCount(HashMap<String, Object> map);
 	public void setWrite(HashMap<String, Object> map);
@@ -17,10 +17,11 @@ public interface RFBoardDao {
 	public void getUpdate(HashMap<String, Object> map);
 	public void getBoardDelete(HashMap<String, Object> map);
 	
-	//ÀÚÀ¯°Ô½ÃÆÇ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½
 	public List<BkReportVo> freeBoardList(HashMap<String, Object> map);
 	public void freeBoardWrite(HashMap<String, Object> map);
 	public void freeBoardUpdate(HashMap<String, Object> map);
+	public void getBoardFileDelete(HashMap<String, Object> map);
 	
 
 

@@ -377,8 +377,108 @@ ul.com_info > li > div:hover img.home {
 .new_btn {position: relative; display: inline-block; cursor: pointer; line-height: 1em; height: 14px; padding: 13px 40px 13px 15px; font-size: 12px; margin: 1px; background: #878f9a url(../images/sub/newbtn.png)no-repeat 70px center; color:#fff !important;}
 .new_btn:hover {background-color:#727b87;}
 
+.prolistarea{
+	width:100%;
+	overflow: hidden;
+}
+
+/* 인사말/연혁 */
+div.greeting p {background:url(../images/sub/gr_bg.jpg) no-repeat right 0;  padding:100px 0px 50px 0px;}
+div.greeting div { color:#777; 
+-webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+
+    -webkit-column-gap: 40px; /* Chrome, Safari, Opera */
+    -moz-column-gap: 40px; /* Firefox */
+    column-gap: 40px;
+    line-height: 26px;
+}
 
 
+@media all and (max-width:550px){
+
+	div.greeting p {background:none;  padding:10px 0px 50px 0px; background-size:50%;}
+	div.greeting div { -webkit-column-count:1; /* Chrome, Safari, Opera */
+		-moz-column-count:1; /* Firefox */
+		column-count:1;
+
+		-webkit-column-gap: 0px; /* Chrome, Safari, Opera */
+		-moz-column-gap: 0px; /* Firefox */
+		column-gap:0px;
+	}
+	div.greeting p img{width:100%;}
+}
+
+/* 인사말/연혁 */
+.history_area box_st {font-size:16px;}
+.history_area h4 {width:159px; height:59px; line-height:59px; margin:30px auto 0; padding:50px 0; font-size:30px; color:#fff; text-align:center; background:url("../images/sub/history_tit.png") no-repeat center top;}
+.history_area h4 span {display:block; background:url("../images/sub/bu_history_tit.gif") no-repeat center top;}
+.history_area ol {padding-top:100px; background:url("../images/sub/history_line.gif") repeat-y center top;}
+.history_area ol li.hist_r {position:relative;  margin:-200px 0 0 440px; padding-left:85px; overflow:hidden; background:url("../images/sub/history_point.png") no-repeat left 30px;}
+.history_area ol li.hist_r .bg_list {position:absolute; left:66px; top:45px; width:20px; height:23px; background:url("../images/sub/bg_history_list_r.png") no-repeat left top;}
+.history_area ol li.hist_r dl {position:relative;width:83%; padding:30px; border:1px solid #c7c7c7; border-radius:5px;}
+.history_area ol li.hist_r dl dt {margin-bottom:20px; font-size:26px; color:#0091ed; }
+.history_area ol li.hist_r dl dd {position:relative; margin:3px 0; padding-left:80px; line-height:1.6;  font-size:14px; color:#222;}
+.history_area ol li.hist_r dl dd span {position:absolute; left:0; top:0; width:700px; line-height:1.6; color:#009cff;}
+.history_area ol li.hist_l {position:relative; margin:-60px 442px 0 0; padding-right:85px; overflow:hidden; background:url("../images/sub/history_point.png") no-repeat right 30px;}
+.history_area ol li.hist_l .bg_list {position:absolute; right:66px; top:45px; width:20px; height:23px; background:url("../images/sub/bg_history_list_l.png") no-repeat left top;}
+.history_area ol li.hist_l dl {position:relative;width:80%; padding:30px; float:right; text-align:right; border:1px solid #c7c7c7; border-radius:5px;}
+.history_area ol li.hist_l dl dt {margin-bottom:20px;  font-size:26px; color:#0091ed; }
+.history_area ol li.hist_l dl dd {position:relative; margin:3px 0; padding-right:80px; line-height:1.6;  font-size:14px; color:#222;}
+.history_area ol li.hist_l dl dd span {position:absolute; right:0; top:0; width:70px; line-height:1.6; color:#009cff;}
+.history_area ol li.hist_point {background-image:url("../images/sub/history_point2.png");}
+ 
+
+@media only screen and (max-width: 1000px) {
+
+	/* 연혁 */
+	.history_area .box_st br {display:none;}
+	.history_area h4 {margin:30px 0 0;}
+	.history_area ol {padding-top:20px; background-position:79px top;}
+	.history_area ol li.hist_r {margin:20px 0 0 57px;}
+	.history_area ol li.hist_l {margin:20px 0 0 57px; padding:0 0 0 85px; background-position:left 30px;}
+	.history_area ol li.hist_l .bg_list {left:66px; right:auto; background:url("../images/sub/bg_history_list_r.png") no-repeat left top;}
+	.history_area ol li.hist_r dl {width:100%; padding:30px; float:none; text-align:left; -webkit-box-sizing:border-box; , -moz-box-sizing:border-box; box-sizing:border-box;}
+	.history_area ol li.hist_l dl {width:100%; padding:30px; float:none; text-align:left; -webkit-box-sizing:border-box; , -moz-box-sizing:border-box; box-sizing:border-box;}
+	.history_area ol li.hist_l dl dd {padding:0 0 0 80px;}
+	.history_area ol li.hist_l dl dd span {left:0; right:auto;}
+}
+
+@media only screen and (max-width: 580px) {
+
+/* 연혁 */
+	.history_area h4 {display:none;}
+	.history_area ol {padding-top:20px; background-position:15px 100px;}
+	.history_area ol li.hist_r, .history_area ol li.hist_l {margin:10px 0 0 0px; padding-left:40px; background-size:30px;}
+	.history_area ol li.hist_r dl dt {margin-bottom:10px; font-size:22px;}
+	.history_area ol li.hist_l dl dt {margin-bottom:10px; font-size:22px;}
+	.history_area ol li.hist_r dl dd, .history_area ol li.hist_l dl dd {margin:5px 0; padding:0;}
+	.history_area ol li.hist_r dl dd span {position:relative; left:auto; top:auto; display:block; }
+	.history_area ol li.hist_l dl dd span {position:relative; right:auto; top:auto; display:block;}
+	.history_area ol li.hist_r .bg_list, .history_area ol li.hist_l .bg_list {left:35px; top:33px; width:15px;}
+
+}
+
+
+/* join */
+.in_addr1 {width:35%;} 
+.in_addr2 {width:30%;}
+.in_mem_num {width:30%;}
+.in_tel {width:80px;}
+.in_email {width:130px;}
+.in_tel2 {width:100px;}
+.file_del {display:inline-block; color:#fff; cursor:pointer; margin-left:10px; padding:0 6px; background:#e10000; line-height:20px;}
+.file_del:hover {color:#fff; background:#c40c0c;}
+
+
+.prolist{
+	display:inline-block;
+	width:40%;
+	height:200px;
+	margin-left: 5%;
+	border:1px solid black;
+}
 
 /******************** pad *****************/
 @media all and (max-width:1000px) {
@@ -387,6 +487,11 @@ ul.com_info > li > div:hover img.home {
 	.qna .qna_table {width:100%; margin-top:7px;} 
 	.qna dd.tdd {margin-left:0 !important;}
 	.scroll_info {margin-top:33px;}
+	
+	/* join */
+	.in_addr1 {width:100%;} 
+	.in_addr2 {width:100%;}
+	.in_mem_num {width:50%;}
 }
 
 
@@ -404,5 +509,12 @@ ul.com_info > li > div:hover img.home {
 	/* qna */	
 	.qna dt {line-height:24px;}
 	.qna dd {line-height:23px;}
+	
+
 }
 
+
+@media all and (max-width:500px) {
+	/* join */
+	.in_mem_num {width:100%;}
+}

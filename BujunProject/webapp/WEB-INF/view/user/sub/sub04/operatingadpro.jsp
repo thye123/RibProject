@@ -99,7 +99,8 @@
 				<tr>
 					<td>상태</td>
 					<td colspan="3" style="text-align:left;">
-						<input type="text" name="listu_end">
+						<input type="hidden" name="listu_end" value="1">
+						<span>모집중</span>
 					</td>
 				</tr>
 				<tr>
