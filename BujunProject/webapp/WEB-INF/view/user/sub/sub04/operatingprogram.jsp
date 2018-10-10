@@ -23,6 +23,49 @@
 	}
 </script>
 
+<style>
+.prolist{ 
+	display: block;
+    height: 200px;
+    border: 1px solid black;
+}
+
+.ulPro > li{
+	float: left;  
+	width: 48.3%;
+	margin: 20px 0 0 1.666666666%;
+}
+.ulPro{
+    margin: -20px 0 0 -1.666666666%;
+}
+.pointName{
+    display: block;
+    margin: 0 0 15px;
+    height: 50px;
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+
+}
+
+.bottom{
+    display: block;
+      
+}
+
+.bottom > span{
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.top{
+	display:block;
+    margin: 0 0 15px;
+    height: 43px;
+}
+</style>
 <!-- location -->
 <div class="loca">
 	<ul>
@@ -52,17 +95,37 @@
 	
 	<!-- content 시작 -->
 	<div class="prolistarea">
-		<ul>
+		<ul class="ulPro">
 			<c:forEach var="proList" items="${pro_list}">
-				<li >
-					<a class="prolist" href="/opprogram01/dCon?m1=${m1}&m2=${m2}&m3=${m3}&listu_code=${proList.listu_code}">
-						<span><strong>${proList.listu_name}</strong></span>
-						<span><b>${proList.listu_recruit}</b></span>
+				<li>
+					<a class="prolist" href="/opprogram01/dCon?m1=${m1}&m2=${m2}&m3=${m3}&listu_catcode=${proList.listu_code}">
+						<span class="top">
+							<b>모집중</b>
+							<strong class="pointName">${proList.listu_name}</strong>
+						</span>
+						
+						<span class="bottom">
+							<span>
+								<b>모집기간</b>
+								${proList.listu_recruit}<br/>
+							</span>
+							<span>
+								<b>교육대상</b>
+								${proList.listu_target}<br/>
+							</span>
+							<span>
+								<b>교육장소</b>
+								${proList.listu_location}<br/>
+							</span>
+						
+						</span>
 					</a>
 				</li>
+
 			</c:forEach>
 		</ul>
-	<div>
+	<!-- <div> -->
+	
 	<div class="r mg_t20 btns">
 		<input type="button" class="btns_black" id="newEdu" value="새글쓰기" style="border:0;"/>
 	</div>

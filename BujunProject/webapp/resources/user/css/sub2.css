@@ -472,14 +472,6 @@ div.greeting div { color:#777;
 .file_del:hover {color:#fff; background:#c40c0c;}
 
 
-.prolist{
-	display:inline-block;
-	width:40%;
-	height:200px;
-	margin-left: 5%;
-	border:1px solid black;
-}
-
 /******************** pad *****************/
 @media all and (max-width:1000px) {
 	

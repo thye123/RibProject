@@ -27,4 +27,19 @@ public class EduDaoImpl implements EduDao{
 		List<EduVo> list = (List<EduVo>) map.get("result");
 		return list;
 	}
+
+	@Override //상세보기 평생학습
+	public EduVo getdetail(HashMap<String, Object> map) {
+		sqlSession.selectOne("Education.dePro",map);
+		List<EduVo> elist= (List<EduVo>) map.get("result");
+		EduVo vo = new EduVo();
+		vo = elist.get(0);
+		return vo;
+	}
+
+	@Override //평생학습 수강신청
+	public void getInApply(HashMap<String, Object> map) {
+		sqlSession.insert("Education.inApply", map);
+	}
+
 }

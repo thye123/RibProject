@@ -67,71 +67,66 @@ a.btn_board {
 			</colgroup>
 
 			<tbody>
+				<!-- 			
+CAT_NAME,  일반 프로그램 / 초딩 유아 -->
 
 				<tr>
 					<th class="c">프로그램 구분</th>
-					<td>문화강좌</td>
+					<td>${edu.listu_gubun}</td>
 				</tr>
 
 				<tr>
 					<th class="c">강좌명</th>
-					<td colspan="2">금융 경제 A에서 Z까지 Ⅱ</td>
+					<td colspan="2">${edu.listu_name}</td>
 				</tr>
 				<tr>
 					<th class="c">강사명</th>
-					<td>한국예탁결제원 지원 금융전문강사</td>
+					<td>${edu.listu_teacher}</td>
 				</tr>
 
 				<tr>
 					<th class="c">강의실</th>
-					<td>2층 문화교실</td>
+					<td>${edu.listu_location}</td>
 				</tr>
 
 				<tr>
 					<th class="c">강의대상</th>
-					<td>재테크에 관심있는 성인 30명</td>
+					<td>${edu.listu_target}</td>
 				</tr>
-
 
 				<tr>
 					<th class="c">강의일시</th>
-					<td colspan="2">10~12월(10/25시작) 2,4주 목요일 총5회 (10/25, 11/8,
-						11/22, 12/13, 12/27)</td>
+					<td colspan="2">${edu.listu_studate}</td>
 				</tr>
-
+				<!-- 신청했을때 카운트  -->
 				<tr>
 					<th class="c">모집현황</th>
 					<td>0명</td>
 				</tr>
 				<tr>
 					<th class="c">모집정원</th>
-					<td>30명</td>
+					<td>${edu.listu_person}</td>
 				</tr>
 				<tr>
 					<th class="c">모집기간</th>
-					<td colspan="2">2018. 10 . 10 09시 ~ 2018. 10 . 18 18시</td>
-				</tr>
-				<tr>
-					<th class="c">수강료</th>
-					<td colspan="2">0원</td>
+					<td colspan="2">${edu.listu_regdate}</td>
 				</tr>
 
 				<tr>
 					<th class="c">내용</th>
-					<td colspan="2">부전도서관 특성화 사업의 일환으로 부산국제금융센터에 위치한 한국예탁결제원에서
-						지원하는 금융 경제 프로그램입니다.<br /> 많은 신청바랍니다.<br /> 1. 프로그램명 : (부전도서관과
-						한국예탁결제원이 함께하는) 금융 경제 A에서 Z까지 Ⅱ<br /> 2. 운영대상 : 재테크에 관심있는 성인 30명<br />
-						3. 운영일시 : 2018년 10~12월 2, 4주 목요일 10:00~12:00<br /> 총 5회(10월 25일,
-						11월 8일, 11월 22일, 12월 13일, 12월 27일)<br /> 4. 프로그램 개요 : 한국예탁결제원과
-						연계하여 금융독서 모임과 금융특강을 결합한 형태로 운영<br /> 5. 강사: 한국예탁결제원 지원 금융교육전문강사
-						(강사프로필 참조)<br /> 6. 장소 : 부전도서관 2층 문화교실<br /> 7. 신청기간 : 2018. 10.
-						10.(수)~10. 18.(목)<br /> 8. 신청방법 : 부전도서관 홈페이지 접수<br />
-					</td>
+					<td colspan="2">${edu.listu_content}</td>
 				</tr>
-
 				<tr>
 					<th class="c">상태</th>
-					<td colspan="2">준비중</td>
+					<c:choose>
+						<c:when test="${edu.listu_end eq '1'}">
+							<td colspan="2">진행중</td>
+						</c:when>
+						<c:otherwise>
+							<td colspan="2">종료</td>
+						</c:otherwise>
+					</c:choose>
+
 				</tr>
 				<tr>
 					<th class="c">첨부파일</th>
@@ -142,15 +137,15 @@ a.btn_board {
 		<!-- //게시판테이블(리스트) -->
 		<!-- 버튼 들어간다 (수강 신청  / 목록으로 ) -->
 		<div class="btn_set r">
-			<a href="#" class="btn btn_board">수강신청</a> <a href="#"
-				class="btn btn_board">목록으로</a>
+			<a href="/opprogram01/apply?m1=${m1}&m2=${m2}&m3=${m3}&listu_idx=${edu.listu_idx}&listu_code=${edu.listu_code}
+			&listu_catcode=${edu.listu_catcode}" class="btn btn_board">수강신청</a> <a 
+			href="/opprogram01?m1=${m1}&m2=${m2}&m3=${m3}"
+			class="btn btn_board">목록으로</a>
 		</div>
 
 		<!-- //content 끝 -->
 	</div>
-
 </div>
-
 </div>
 </div>
 </div>
