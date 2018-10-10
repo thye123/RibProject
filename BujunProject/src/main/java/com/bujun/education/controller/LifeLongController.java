@@ -95,7 +95,7 @@ public class LifeLongController {
 	//회원이 평생 교육프로그램을 보고 수강신청을 할때 
 	public ModelAndView approc(@RequestParam HashMap<String, Object> map , Model model) {
 		model.addAttribute("menu", map);
-		//System.out.println("map 11: " + map);
+		System.out.println("map 11: " + map);
 		ModelAndView mv = new ModelAndView();
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
@@ -113,9 +113,9 @@ public class LifeLongController {
 		map.remove("stel3");
 		//휴대폰 잘라서 붙여넣은 객체를 담는다 
 		map.put("liap_apphone", liap_apphone);
-
+		System.out.println("map2 " + map);
 		eduService.getInApply(map);
-
+		System.out.println("여기서 map " + map);
 		mv.addObject("m1",m1);
 		mv.addObject("m2",m2);
 		mv.addObject("m3",m3);

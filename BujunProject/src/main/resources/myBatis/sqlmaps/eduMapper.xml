@@ -62,19 +62,19 @@
 	#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=selEdu}
 	)}
 	</select>
-		
+            
 	<insert id="inApply" statementType="CALLABLE">
      {CALL PKG_EDUCATION.PROC_APPLY_EDU(
      #{liap_code,      mode=IN, jdbcType=VARCHAR},  
-     #{liap_apname,    mode=IN, jdbcType=VARCHAR},
-     #{liap_grade,     mode=IN, jdbcType=NUMERIC},
      #{liap_appliyer,  mode=IN, jdbcType=VARCHAR},
      #{liap_aprimemnum,mode=IN, jdbcType=VARCHAR},
-     #{liap_pass,      mode=IN, jdbcType=VARCHAR},
+     #{liap_apname,    mode=IN, jdbcType=VARCHAR},
+     #{liap_apphone,   mode=IN, jdbcType=VARCHAR},
      #{liap_zipcode,   mode=IN, jdbcType=VARCHAR},
      #{liap_adress,    mode=IN, jdbcType=VARCHAR},
      #{liap_detailad,  mode=IN, jdbcType=VARCHAR},
-     #{liap_apphone,   mode=IN, jdbcType=VARCHAR}
+     #{liap_pass,      mode=IN, jdbcType=VARCHAR},
+     #{liap_grade,     mode=IN, jdbcType=NUMERIC}
 	)}
 	</insert>
 </mapper>

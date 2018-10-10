@@ -65,6 +65,25 @@
     margin: 0 0 15px;
     height: 43px;
 }
+
+a.prolist:hover {
+    background-color: #2f868a;
+    border-color: #2f868a;
+    color: black;
+}
+
+.tab_mev {
+   overflow : hidden;
+    margin: 30px 0 40px;
+    text-align: center;
+}
+
+.tab_mev p {
+    float: left;
+    color: #767676;
+    font-size: 16px;
+}
+
 </style>
 <!-- location -->
 <div class="loca">
@@ -91,15 +110,22 @@
 			<li class="active"><a href="/opprogram01?m1=04&m2=01&m3=02"> 일반프로그램</a></li>
 			<li class=""><a href="/opprogram01?m1=04&m2=01&m3=03"> 초등(유아)프로그램</a></li>
 		</ul>
+	
 	</div>
 	
 	<!-- content 시작 -->
 	<div class="prolistarea">
+		
+		<div class="tab_mev">
+			<p>총 10개의  프로그램이 있습니다</p>
+		</div>
+		
 		<ul class="ulPro">
 			<c:forEach var="proList" items="${pro_list}">
-<<<<<<< HEAD
 				<li>
 					<a class="prolist" href="/opprogram01/dCon?m1=${m1}&m2=${m2}&m3=${m3}&listu_catcode=${proList.listu_code}">
+					
+					
 						<span class="top">
 							<b>모집중</b>
 							<strong class="pointName">${proList.listu_name}</strong>
@@ -120,18 +146,10 @@
 							</span>
 						
 						</span>
-=======
-				<li class="prolist">
-					<a class="proa" href="/opprogram01/dCon?m1=${m1}&m2=${m2}&m3=${m3}&listu_code=${proList.listu_code}">
-						<span><strong>${proList.listu_name}</strong></span>
-						<span><b>${proList.listu_recruit}</b></span>
->>>>>>> branch 'master' of https://github.com/thye123/RibProject.git
+					
 					</a>
-				</li>
-
 			</c:forEach>
 		</ul>
-	<!-- <div> -->
 	
 	<div class="r mg_t20 btns">
 		<input type="button" class="btns_black" id="newEdu" value="새글쓰기" style="border:0;"/>
