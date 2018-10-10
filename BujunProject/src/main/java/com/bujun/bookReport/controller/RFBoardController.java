@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bujun.bookReport.paging.PageMaker;
@@ -308,10 +309,11 @@ public class RFBoardController {
 				
 				BkReportVo vo = new BkReportVo();
 				vo = boardService.getBoardRead(map);
+								
 				model.addAttribute("boardRead", vo);
 				
-				return "redirect:/bkreport01_update?bd_catcode=CAT0005&m1=05&m2=08&m3=01&page"+map.get("page")+
-						"&perPageNum=" + map.get("perPageNum") + "&bd_idx=" + map.get("bd_idx")+"&bd_pass_chk=1";				
+				return "redirect:/bkreport01_update?m1=05&m2=08&m3=01&page"+map.get("page")+
+						"&perPageNum=" + map.get("perPageNum") +"&bd_pass_chk=1";				
 			}
 			
 			/* delete */
@@ -360,9 +362,20 @@ public class RFBoardController {
 	
 	
 	@RequestMapping("/bkreport01_updateForm") 
-	public String Bkreport01_updateForm(@RequestParam HashMap<String, Object> map, Model model) {
+	public String Bkreport01_updateForm(@RequestParam HashMap<String, Object> map, Model model,  MultipartFile file,
+			HttpServletRequest request) throws IOException {
 
 		map.put("bd_content", ((String)map.get("bd_content")).replaceAll("\n", "<br />"));
+		
+	
+		
+		if(file != null && file.getSize() != 0) {
+			String filename = uploadFile(file.getOriginalFilename(), file.getBytes());
+			map.put("filename", filename);
+			map.put("file_size", file.getSize());
+			map.put("file_filerealname", file.getOriginalFilename());
+			map.put("file_ext", ".");
+		}
 		
 		boardService.getUpdate(map);
 		
@@ -386,6 +399,7 @@ public class RFBoardController {
 		model.addAttribute("flag", map.get("flag"));
 		
 		
+		
 		if(map.get("bd_pass_chk").equals("2")) { //비번입력창으로
 			return "user/sub/sub05/bkreport01/pass_chk";
 		} else {
@@ -397,6 +411,20 @@ public class RFBoardController {
 		}
 		
 	}	
+	
+	
+	 
+
+	
+	@RequestMapping("/fileDelete")
+	@ResponseBody
+	public void FileDelete(@RequestParam HashMap<String, Object> map) {
+		
+		boardService.getBoardFileDelete(map);
+		/*System.out.println("bd_catcode : " + map.get("bd_catcode"));
+		System.out.println("bd_idx : " + map.get("bd_idx"));*/
+		
+	}
 	
 	
 	

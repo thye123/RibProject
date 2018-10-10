@@ -77,7 +77,7 @@ public class RFBoardDaoImpl implements RFBoardDao {
 
 
 	
-	//ÀÚÀ¯°Ô½ÃÆÇ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½
 	@Override
 	public List<BkReportVo> freeBoardList(HashMap<String, Object> map) {
 		
@@ -97,6 +97,12 @@ public class RFBoardDaoImpl implements RFBoardDao {
 	@Override
 	public void freeBoardUpdate(HashMap<String, Object> map) {
 		sqlSession.update("BkReport.FreeBrdUpdate", map);
+	}
+
+
+	@Override
+	public void getBoardFileDelete(HashMap<String, Object> map) {
+		sqlSession.delete("BkReport.BkReportFileDelete", map);
 	}
 
 

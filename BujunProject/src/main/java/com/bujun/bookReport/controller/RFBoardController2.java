@@ -11,6 +11,7 @@ import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
+import java.util.regex.PatternSyntaxException;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -156,8 +157,8 @@ public class RFBoardController2 {
 				vo = boardService.getBoardRead(map);
 				model.addAttribute("boardRead", vo);
 				
-				return "redirect:/bkreport02_update?bd_catcode=CAT0006&m1=05&m2=08&m3=02&page"+map.get("page")+
-						"&perPageNum=" + map.get("perPageNum") + "&bd_idx=" + map.get("bd_idx")+"&bd_pass_chk=1";				
+				return "redirect:/bkreport02_update?&m1=05&m2=08&m3=02&page"+map.get("page")+
+						"&perPageNum=" + map.get("perPageNum") +"&bd_pass_chk=1";				
 			}
 			
 			/* delete */
@@ -258,6 +259,33 @@ public class RFBoardController2 {
 		
 		BkReportVo vo = new BkReportVo();
 		vo = boardService.getBoardRead(map);
+		
+/*		
+ 		if (  ((String)map.get("bd_content")).matches(".*<br />.*")   ) {
+			System.out.println("있음");
+		} else {
+			System.out.println("없음");
+		} 
+			*/
+			
+			
+		/*if (       )    {
+			System.out.println("있음123123123");
+			//map.put("bd_content", ((String)map.get("bd_content")).replaceAll("<br />", "\n"));
+		}*/
+		
+/*	    try {
+	        if (  ((String)map.get("bd_content")).matches("<br />")   )
+	          System.out.format("매치되었습니다.%n");
+	        else
+	          System.out.format("그런 문자열이 없습니다.%n");
+
+	      } catch (PatternSyntaxException e) { // 정규식에 에러가 있다면
+	          System.err.println(e);
+	          System.exit(1);
+	      }*/
+	    
+		
 		model.addAttribute("boardRead", vo);
 		
 		model.addAttribute("menu", map);
@@ -280,9 +308,18 @@ public class RFBoardController2 {
 	
 	
 	@RequestMapping("/bkreport02_updateForm") 
-	public String Bkreport02_updateForm(@RequestParam HashMap<String, Object> map, Model model) {
+	public String Bkreport02_updateForm(@RequestParam HashMap<String, Object> map, Model model, MultipartFile file,
+			HttpServletRequest request) throws IOException {
 
 		map.put("bd_content", ((String)map.get("bd_content")).replaceAll("\n", "<br />"));
+		
+		if(file != null && file.getSize() != 0) {
+			String filename = uploadFile(file.getOriginalFilename(), file.getBytes());
+			map.put("filename", filename);
+			map.put("file_size", file.getSize());
+			map.put("file_filerealname", file.getOriginalFilename());
+			map.put("file_ext", ".");
+		}
 		
 		boardService.getUpdate(map);
 		

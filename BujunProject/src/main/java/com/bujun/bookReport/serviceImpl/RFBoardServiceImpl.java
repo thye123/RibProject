@@ -62,7 +62,7 @@ public class RFBoardServiceImpl implements RFBoardService{
 
 	
 	
-	//ÀÚÀ¯°Ô½ÃÆÇ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½
 	@Override
 	public List<BkReportVo> freeBoardList(HashMap<String, Object> map) {
 		List<BkReportVo> list = boardDao.freeBoardList(map);
@@ -77,6 +77,11 @@ public class RFBoardServiceImpl implements RFBoardService{
 	@Override
 	public void freeBoardUpdate(HashMap<String, Object> map) {
 		boardDao.freeBoardUpdate(map);
+	}
+
+	@Override
+	public void getBoardFileDelete(HashMap<String, Object> map) {
+		boardDao.getBoardFileDelete(map);
 	}
 
 

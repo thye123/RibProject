@@ -20,5 +20,6 @@ public interface RFBoardService {
 	List<BkReportVo> freeBoardList(HashMap<String, Object> map);
 	void freeBoardWrite(HashMap<String, Object> map);
 	void freeBoardUpdate(HashMap<String, Object> map);
+	void getBoardFileDelete(HashMap<String, Object> map);
 
 }

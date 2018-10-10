@@ -91,7 +91,12 @@
  	     {CALL  BJL_PKG_REPORT.report_update(   
 	        #{bd_catcode, mode=IN,  jdbcType=VARCHAR }, 
 	        #{bd_idx, mode=IN,  jdbcType=INTEGER }, 
-	        #{bd_content, mode=IN,  jdbcType=VARCHAR } 
+	        #{bd_content, mode=IN,  jdbcType=VARCHAR }, 
+	        
+	        #{filename, mode=IN,  jdbcType=VARCHAR },
+	        #{file_size, mode=IN,  jdbcType=VARCHAR },
+	        #{file_filerealname, mode=IN,  jdbcType=VARCHAR },
+	        #{file_ext, mode=IN,  jdbcType=VARCHAR }
 	      )}     	
     </update>                   
            
@@ -101,6 +106,15 @@
 	        #{bd_idx, mode=IN,  jdbcType=INTEGER }
 	      )}     	
     </delete>  
+    
+    
+     <delete id="BkReportFileDelete" parameterType="hashmap" statementType="CALLABLE">
+ 	     {CALL  BJL_PKG_REPORT.report_file_delete(   
+	        #{bd_catcode, mode=IN,  jdbcType=VARCHAR }, 
+	        #{bd_idx, mode=IN,  jdbcType=INTEGER }
+	      )}     	
+    </delete>    
+    
     
       
         
@@ -142,5 +156,8 @@
 	        #{bd_idx, mode=IN,  jdbcType=INTEGER }
 	      )}      
     </update>  
-                  
+
+
+
+                      
 </mapper>
