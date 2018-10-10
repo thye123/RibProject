@@ -212,6 +212,13 @@
 			return;
 		}
 		
+		if(rimem_num.value.length != 10) {
+			alert("도서관 회원 번호를 확인해주세요. 10자리로 입력하세요.")
+			rimem_num.focus();
+			return;
+		}
+		
+		
 		if(!passRule.test($("#user_pass").val())) {
 			
 			alert("숫자와 문자 포함 형태의 6~12자리로 입력하세요.");

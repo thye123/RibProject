@@ -49,8 +49,18 @@ public class JoinController {
 		
 		Joinservice.UpdateJoin(map);
 		
-		return "";
+		model.addAttribute("msg", "회원가입 완료 되었습니다.");
+		return "user/sub/sub08/join_msg";
 	}
+	
+	
+	@RequestMapping("/mypage")
+	public String Mypage(@RequestParam HashMap<String, Object> map, Model model) {
+		
+		return "user/sub/sub08/mypage";
+	}	
+	
+	
 	
 	
 }
