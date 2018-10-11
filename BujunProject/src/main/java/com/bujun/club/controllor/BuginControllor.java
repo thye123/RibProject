@@ -71,10 +71,10 @@ public class BuginControllor {
 	public ModelAndView clublist(@RequestParam HashMap<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
 
-		//System.out.println("넘겨오는 데이터 값입니다. " + map);
+		System.out.println("넘겨오는 데이터 값입니다. " + map);
 		//이름 가지고 오는 값을 맵에서 건져서 
 		String clu_code  = (String)map.get("clb_clucode");
-		
+		System.out.println("clb_clucode" + clu_code);
 		ClubMember clu = buginservice.getName(clu_code); //게시판 각 이름 들고오려고 
 		//System.out.println("clugetName" + clu.getClu_name());
 		List<ClubVo> clubList = buginservice.getClub(map);
@@ -91,7 +91,7 @@ public class BuginControllor {
 		//pageMaker 에서 내려보내줄 데이터 값들을 vo 타입으로 받아준다 
 		mv.addObject("pageMaker", pageMaker);
 		mv.addObject("clubList", clubList);
-		//mv.addObject("clb_clucode", clb_clucode);
+		mv.addObject("clu_code", clu_code);
 	
 		mv.setViewName("user/sub/sub05/clublist");
 
@@ -150,6 +150,7 @@ public class BuginControllor {
 		String filePath = "c:\\aaa\\";
 
 		File target = new File(filePath+file_filename);
+		System.out.println("filetarget" + target.toString());
 		try {
 			FileCopyUtils.copy(file.getBytes(), target);
 			Uploading upload= new Uploading();
@@ -203,31 +204,18 @@ public class BuginControllor {
 	@RequestMapping("/club01/CluBoard/UptProc")
 	public String UptProc(@RequestParam HashMap<String, Object> map
 			 ,MultipartFile file, HttpServletRequest req) {
-		//ModelAndView mv = new ModelAndView();
 	
+		System.out.println("업데이트 이후 처리1 " + map);
 		String clb_clucode = (String) map.get("clb_clucode");
-		
 		String file_filename = file.getOriginalFilename();
 		
-		String filePath = "c:\\aaa\\";
-		//System.out.println("saveName : " + file_filename);
-		map.put("file_filename", file_filename);
-		//System.out.println("map.putf" + map);
-		
-		File target = new File(filePath+file_filename);
-		
-		//System.out.println("target" + target.getName());
-		try {
-			FileCopyUtils.copy(file.getBytes(), target);
+		if(file_filename!=null) {
+			map.put("file_filename", file_filename);
 			Uploading upload= new Uploading();
 			upload.addFile(file, map, req);
 			buginservice.uptproc(file, map, req);
-			//System.out.println("map.putf123123" + map);
-			//mv.setViewName("redirect:/club01/CluBoard?clb_clucode=" + clb_clucode+"&page=1&pagecount=10&pagegrp=1");
-			
-		} catch (IOException e) {
-			
-			e.printStackTrace();
+		}else { 
+			buginservice.uptproc(file, map, req);
 		}
 		
 		return "redirect:/club01/CluBoard?clb_clucode=" + clb_clucode + "&page=1&pagecount=10&pagegrp=1";

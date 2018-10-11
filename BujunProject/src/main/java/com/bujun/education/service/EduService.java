@@ -10,5 +10,10 @@ public interface EduService {
 	public void insertPro(HashMap<String, Object> map);
 
 	public List<EduVo> edulist(HashMap<String, Object> map);
+	
+	//상세보기 정보 (평생학습)
+	public EduVo getdetail(HashMap<String, Object> map);
+	//수강신청 isnert 
+	public void getInApply(HashMap<String, Object> map);
 
 }
