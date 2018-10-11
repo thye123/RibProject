@@ -2,6 +2,9 @@ package com.bujun.education.vo;
 
 public class EduVo {
 	//게시판 내용
+	
+	
+	
 	private int listu_idx;
 	private String listu_code;
 	private String listu_catcode;

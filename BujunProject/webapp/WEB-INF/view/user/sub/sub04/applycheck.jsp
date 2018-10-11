@@ -83,9 +83,41 @@ a.btn_boards {
 	var educheck = document.getElementsByClassName('btn_boards');
 	
 	function mysubmit(){
-		alert('aa')
-		var Ok =document.getElementsByClassName('Ok');
+
+		var Ok 				=document.getElementsByClassName('Ok');
+		var liap_apname 	=document.getElementsByClassName('liap_apname');
+		var liap_appliyer 	=document.getElementsByClassName('liap_appliyer');
+		var liap_aprimemnum =document.getElementsByClassName('liap_aprimemnum');
+		var grade			=document.getElementsByClassName('grade');
+		var val = grade[0].options[grade[0].selectedIndex].value;
+		alert(val);
 		alert(Ok[0].value);
+		
+		if(Ok[0].checked ==false){
+			alert('개인정보 수집에 동의해주세요');
+			return false;
+		}
+		if(liap_apname[0].value==''){
+			alert('이름을 적어주세요');
+			liap_apname[0].focus();
+			return false;
+		}
+		if(liap_appliyer[0].value==''){
+			alert('아이디입력을 해주세요');
+			liap_appliyer[0].focus();
+			return false;
+		}
+		if(liap_aprimemnum[0].value==''){
+			alert('도서번호 입력을 해주세요');
+			liap_aprimemnum[0].focus();
+			return false;
+		}
+		
+		if(val==''){
+			alert('학년선택을 해주세요');
+			grade[0].focus();
+			return false;
+		}
 	}
 	
 	 function sample4_execDaumPostcode() {
@@ -195,7 +227,8 @@ a.btn_boards {
 			<tbody>
 				<tr>
 
-					<td><input type="checkbox" name="check" value="1"></td>
+					<td><input type="checkbox" name="check" value="1"
+						checked="checked"></td>
 					<td><h2>금니피셜에 대한 이야기</h2></td>
 					<td>2018.10.10 18:00~20:00</td>
 					<td class="bnon">금니하우스</td>
@@ -221,74 +254,98 @@ a.btn_boards {
 		</div>
 
 		<div class="checkperson">
-			<input type="checkbox" name="OK" value="1" class="Ok"> 개인정보 수집에 동의합니다.
-			(단,14세 미만은 보호자 동의)
+			<input type="checkbox" name="OK" value="1" class="Ok"> 개인정보
+			수집에 동의합니다. (단,14세 미만은 보호자 동의)
 		</div>
-
-
-		<form action="#" method="GET" name = "educheck" onsubmit='return mysubmit()'>
+		<form action="/opprogram01/approc?m1=${m1}&m2=${m2}&m3=${m3}"
+			method="POST" name="educheck" onsubmit='return mysubmit()'>
+			<input type="hidden" name="liap_code" value="${liap_code}" /> <input
+				type="hidden" name="listu_catcode" value="${listu_catcode}" />
 
 			<div class="board_readWrap">
 				<table class="board_read">
+
+
+
 					<colgroup>
 						<col style="width: 20%;">
 						<col style="width: 55%;">
 					</colgroup>
 					<tbody>
+					
 						<tr>
-							<th class="c">성명</th>
-							<td><input type="text" name="sname" placeholder="이름입력" /></td>
-							<td class="mob_none">성별 <label>남자</label><input type="radio"
-								name="gender" value="1"> <label>여자</label><input
-								type="radio" name="gender" value="2">
-							</td>
+							<th class="c">아이디</th>
+							<td><input type="text" name="liap_appliyer"
+								class="liap_apname" placeholder="이름입력" /></td>
+							<td colspan="2"><b>도서번호</b> <input type="text"
+								name="liap_aprimemnum" class="liap_appliyer" /></td>
+						</tr>
+						
+						
+						
+					<tr>
+							<th class="c">이름</th>
+							<td><input type="text" name="liap_apname"
+								class="liap_appliyer" /></td>
 
 						</tr>
-						<tr>
-							<th class="c">비밀번호</th>
-							<td colspan="2"><input type="text" name="spass" /></td>
-						</tr>
-						<tr>
-							<th class="c">주소</th>
-							<td colspan="2"><input type="text" id="sample4_postcode"
-								placeholder="우편번호"> <input type="button"
-								onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-								<input type="text" id="sample4_roadAddress" placeholder="도로명주소">
-								<input type="text" id="sample4_jibunAddress" placeholder="지번주소">
-								<span id="guide" style="color: #999"></span></td>
-						</tr>
-
-						<tr>
+						
+							<tr>
 							<th class="c">휴대전화</th>
-							<td><select name="stel">
+							<td colspan="2"><select name="stel">
 									<option>전체선택</option>
 									<option>010</option>
 									<option>011</option>
 									<option>016</option>
 									<option>017</option>
-							</select> - <input type="text" name="stel2" class="stel2" /> - <input
+							</select> <input type="text" name="stel2" class="stel2" /> <input
 								type="text" name="stel3" class="stel3" /></td>
-
-							<td class="mob_none">학년 <select name="grade">
-									<option value="mid1">중1</option>
-									<option value="mid2">중2</option>
-									<option value="mid3">중3</option>
-									<option value="hig1">고1</option>
-									<option value="hig2">고2</option>
-									<option value="0">일반인</option>
-							</select>
-							</td>
-
 						</tr>
+						
+				
+					
+
+						<tr>
+							<th class="c">주소</th>
+							<td colspan="2"><input type="text" id="sample4_postcode"
+								name="liap_zipcode" placeholder="우편번호"> <input
+								type="button" onclick="sample4_execDaumPostcode()"
+								value="우편번호 찾기"><br> <input type="text"
+								id="sample4_roadAddress" name="liap_adress" placeholder="도로명주소">
+								<input type="text" id="sample4_jibunAddress"
+								name="liap_detailad" placeholder="지번주소"> <span
+								id="guide" style="color: #999"></span></td>
+						</tr>
+				
+					
+							
+						
+					
+						<tr>
+							<th class="c">비밀번호</th>
+							<td colspan="2"><input type="text" name="liap_pass" /></td>
+						</tr>
+						
+									<tr>
+							<td><select name="liap_grade" class="grade">
+									<option value="">전체선택</option>
+									<option value="1">중1</option>
+									<option value="2">중2</option>
+									<option value="3">중3</option>
+									<option value="4">고1</option>
+									<option value="5">고2</option>
+									<option value="6">일반인</option>
+							</select></td>
+						</tr>
+						
+						
 					</tbody>
 				</table>
 
 				<div class="btn_gowrap">
 					<div class="btn_gr">
-					 	<input type="submit" class="btn_boards"
-							value="프로그램신청"
-						> 
-					 <!-- <a class="btn_boards" href="asdasd">프로그램신청</a> -->
+						<input type="submit" class="btn_boards" value="프로그램신청">
+						<!-- <a class="btn_boards" href="asdasd">프로그램신청</a> -->
 					</div>
 				</div>
 

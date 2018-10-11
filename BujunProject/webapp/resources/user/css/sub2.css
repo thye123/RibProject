@@ -472,6 +472,8 @@ div.greeting div { color:#777;
 .file_del:hover {color:#fff; background:#c40c0c;}
 
 
+<<<<<<< HEAD
+=======
 .prolist{
 	display:inline-block;
 	width: 40%;
@@ -486,6 +488,7 @@ div.greeting div { color:#777;
 	height: 100%;
 }
 
+>>>>>>> branch 'master' of https://github.com/thye123/RibProject.git
 /******************** pad *****************/
 @media all and (max-width:1000px) {
 	
