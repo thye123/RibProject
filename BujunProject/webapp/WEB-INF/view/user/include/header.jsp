@@ -150,7 +150,7 @@
                     <li>
                         <a href="#">독서문화</a>
                         <ul class="sub">
-                            <li><a href="/monthbk?m1=05&m2=01&m3=01">추천도서</a></li>
+                            <li><a href="/monthbk?rec_code=CAT0031&m1=05&m2=01&m3=01&page=1&perPageNum=12">추천도서</a></li>
                             <li><a href="/bkcare?m1=05&m2=02&m3=01">독서치료</a></li>
                             <li><a href="/club01?m1=05&m2=03&m3=01">독서동아리</a></li>
                             <li><a href="/bookclass?m1=05&m2=04">독서교실</a></li>
@@ -285,7 +285,7 @@
 							<ul>
 								<li class="depth2"><a href="/monthbk?m1=05&m2=01&m3=01" class="off">추천도서</a>
 									<ul>
-										<li class="depth3"><a href="/monthbk?m1=05&m2=01&m3=01" class="off">이달의 책</a></li> 
+										<li class="depth3"><a href="/monthbk?rec_code=CAT0031&m1=05&m2=01&m3=01&page=1&perPageNum=12" class="off">이달의 책</a></li> 
 										<li class="depth3"><a href="/bujunbk?m1=05&m2=01&m3=02" class="off">부전추천도서</a></li> 
 										<li class="depth3"><a href="http://www.nl.go.kr/ask/recommend/recommend_nl/list1.jsp" target="_blank" class="off">기타추천도서</a></li> 
 										<li class="depth3"><a href="http://www.nl.go.kr/ask/readSite/list.jsp" target="_blank" class="off">독서관련사이트</a></li> 
