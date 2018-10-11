@@ -21,9 +21,92 @@
     	<result property="rec_regdate" column="rec_regdate" javaType="string" />
     	<result property="rec_count" column="rec_count" javaType="int" />
     </resultMap>  
-  
-
-
-
+    
+    <!-- totalcount -->
+	<select id="MonthBookTotalCount" statementType="CALLABLE" parameterType="com.bujun.monthbook.vo.MonthbookVo">   
+	     {CALL  BJL_PKG_RECOMENDBOOK.recomend_totalcount(   
+	        #{rec_code, mode=IN,  jdbcType=VARCHAR },
+	        #{searchType, mode=IN,  jdbcType=VARCHAR },
+	        #{keyword, mode=IN,  jdbcType=VARCHAR },
+	        #{result,  mode=OUT, jdbcType=INTEGER}
+	      )}        
+    </select>
+    
+    
+	<!-- list -->
+	<select id="MonthBookList" statementType="CALLABLE" parameterType="com.bujun.monthbook.vo.MonthbookVo">   
+	     {CALL  BJL_PKG_RECOMENDBOOK.recomend_list(   
+	        #{rec_code, mode=IN,  jdbcType=VARCHAR },
+	        #{page, mode=IN,  jdbcType=INTEGER },
+	        #{perPageNum, mode=IN,  jdbcType=INTEGER },
+	        #{searchType, mode=IN,  jdbcType=VARCHAR },
+	        #{keyword, mode=IN,  jdbcType=VARCHAR },
+	        #{result,  mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=MonthBookMap }
+	      )}        
+    </select>
+    
+    <!-- write -->
+    <insert id="MonthBookWrite" parameterType="hashmap" statementType="CALLABLE">
+ 	     {CALL  BJL_PKG_RECOMENDBOOK.recomend_write(   
+	        #{rec_title, mode=IN,  jdbcType=VARCHAR }, 
+	        #{rec_bname, mode=IN,  jdbcType=VARCHAR },
+	        #{rec_author, mode=IN,  jdbcType=VARCHAR },
+	        #{rec_publisher, mode=IN,  jdbcType=VARCHAR },
+	        #{rec_date, mode=IN,  jdbcType=VARCHAR },
+	        #{rec_code, mode=IN,  jdbcType=VARCHAR },
+	        #{rec_writer, mode=IN,  jdbcType=VARCHAR },
+	        #{rec_rimemnum, mode=IN,  jdbcType=INTEGER },
+	        #{rec_content, mode=IN,  jdbcType=VARCHAR },
+	        #{filename, mode=IN,  jdbcType=VARCHAR },
+	        #{file_size, mode=IN,  jdbcType=VARCHAR },
+	        #{file_filerealname, mode=IN,  jdbcType=VARCHAR },
+	        #{file_ext, mode=IN,  jdbcType=VARCHAR }
+	      )}     	
+    </insert> 
+    
+    <!-- read -->
+	<select id="MonthBookRead" statementType="CALLABLE" parameterType="com.bujun.monthbook.vo.MonthbookVo">   
+	     {CALL  BJL_PKG_RECOMENDBOOK.recomend_read(   
+	        #{rec_idx, mode=IN,  jdbcType=INTEGER },
+	        #{rec_code, mode=IN,  jdbcType=VARCHAR },
+	        #{result,  mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=MonthBookMap }
+	      )}        
+    </select>    
+    
+    <!-- file_delete -->
+    <delete id="MonthBookFileDelete" parameterType="hashmap" statementType="CALLABLE">
+ 	     {CALL  BJL_PKG_RECOMENDBOOK.recomend_file_delete(   
+	        #{rec_idx, mode=IN,  jdbcType=INTEGER }, 
+	        #{rec_code, mode=IN,  jdbcType=VARCHAR }
+	      )}     	
+    </delete> 
+    
+    <!-- update -->
+    <update id="MonthBookUpdate" parameterType="hashmap" statementType="CALLABLE">
+	     {CALL  BJL_PKG_RECOMENDBOOK.recomend_update(   
+        #{rec_title, mode=IN,  jdbcType=VARCHAR }, 
+        #{rec_bname, mode=IN,  jdbcType=VARCHAR },
+        #{rec_author, mode=IN,  jdbcType=VARCHAR },
+        #{rec_publisher, mode=IN,  jdbcType=VARCHAR },
+        #{rec_date, mode=IN,  jdbcType=VARCHAR },
+        #{rec_code, mode=IN,  jdbcType=VARCHAR },
+        #{rec_content, mode=IN,  jdbcType=VARCHAR },
+        #{rec_idx, mode=IN,  jdbcType=INTEGER },
+        #{filename, mode=IN,  jdbcType=VARCHAR },
+        #{file_size, mode=IN,  jdbcType=VARCHAR },
+        #{file_filerealname, mode=IN,  jdbcType=VARCHAR },
+        #{file_ext, mode=IN,  jdbcType=VARCHAR }
+      )}     	
+   </update>  
+   
+    <delete id="MonthBookDelete" parameterType="hashmap" statementType="CALLABLE">
+	     {CALL  BJL_PKG_RECOMENDBOOK.recomend_delete(   
+        #{rec_idx, mode=IN,  jdbcType=INTEGER }, 
+        #{rec_code, mode=IN,  jdbcType=VARCHAR }
+      )}     	
+   </delete>  
+   
+   
+   
                       
 </mapper>

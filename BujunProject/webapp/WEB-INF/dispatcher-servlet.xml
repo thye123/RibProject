@@ -11,6 +11,8 @@
 	<mvc:annotation-driven/>
 	
 	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:resources mapping="/img/**" location="D:\\upload" />
+	
   
    <!-- 파일 다운로드 하려고 붙였음 민짐 -->
     <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
