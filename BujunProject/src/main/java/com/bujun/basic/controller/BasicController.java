@@ -39,6 +39,7 @@ public class BasicController {
 			map.put("mem_id", login_name);
 			memberVo = loginService.getMember(map);		
 			session.setAttribute("mem_name", memberVo.getMem_name());
+			session.setAttribute("mem_id", memberVo.getMem_id());
 			session.setAttribute("rimem_num", memberVo.getRimem_num());
 			
 			System.out.println("로그인됨:::::::::::::::::::: "+ login_name);

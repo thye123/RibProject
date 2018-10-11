@@ -91,7 +91,12 @@
 				</c:choose>
 			
 				<li><a href="/join">회원가입</a></li>
-				<li><a href="#">마이페이지</a></li>
+				
+				
+				<c:if test="${sessionScope.mem_id ne null}">
+					<li><a href="/mypage?mem_id=${sessionScope.mem_id}">마이페이지</a></li>
+				</c:if>
+				
 			</ul>
 		</div>
 	</div>
@@ -165,6 +170,7 @@
                             <li><a href="/charter01?m1=06&m2=05&m3=01">서비스헌장</a></li>
                             <li><a href="/law?m1=06&m2=06">도서관관계법령</a></li>
                             <li><a target="_blank" title="새창으로열림" href="http://www.law.go.kr/ordinInfoP.do?urlMode=ordinScJoRltInfoR&viewCls=ordinInfoP&ordinSeq=545520&chrClsCd=010202&gubun=null">공무원행동강령</a></li>
+                            <li><a href="/study?m1=06&m2=07">스터디모집</a></li>
                         </ul>
                     </li>    
                     <li>
@@ -332,6 +338,7 @@
 								</li>
 								<li class="depth2"><a href="/law?m1=06&m2=06" class="off">도서관관계법령</a></li>
 								<li class="depth2"><a target="_blank" title="새창으로열림" href="http://www.law.go.kr/ordinInfoP.do?urlMode=ordinScJoRltInfoR&viewCls=ordinInfoP&ordinSeq=545520&chrClsCd=010202&gubun=null" class="off">공무원행동강령</a></li>
+								<li class="depth2"><a href="/study?m1=06&m2=07" class="off">스터디모집</a></li>
 							</ul>						
 						</li>	
 						

@@ -27,6 +27,14 @@
 </div>
 <!-- //location -->
 
+	<script>
+		function del() {
+	
+			if(confirm("탈퇴하시겠습니까?") == true ) {
+				document.location.href = '/mypageDelete?mem_id=${user.mem_id}';
+			}
+		}
+	</script>
 	
 	<!-- content 시작 -->
 	
@@ -38,42 +46,46 @@
 		<tbody>
 			<tr>
 				<th scope="row" class="c">아이디</th>
-				<td></td>
+				<td>${user.mem_id}</td>
 			</tr>
 			<tr>
 				<th scope="row" class="c">도서관 회원 번호</th>
-				<td></td>
+				<td>${user.rimem_num}</td>
 			</tr>	
 			<tr>
 				<th scope="row" class="c">이름</th>
-				<td></td>
+				<td>${user.mem_name}</td>
 			</tr>	
 			<tr>
 				<th scope="row" class="c">생년월일(19890623)</th>
-				<td></td>
+				<td>${user.mem_birth}</td>
 			</tr>
 			<tr>
 				<th scope="row" class="c">이메일</th>
-				<td></td>
+				<td>${user.mem_email}</td>
 			</tr>
 			<tr>
 				<th scope="row" class="c">연락처</th>
-				<td></td>
+				<td>${user.mem_phone}</td>
 			</tr>					
 			<tr>
-				<th class="c">우편번호 </th>
-				<td class="l non_line"></td>
+				<th class="c">주소</th>
+				<td class="l non_line">
+					(${user.zipcode}) 
+					${user.mem_adress}
+					${user.mem_deadress}
+				</td>
 			</tr>																															
 		</tbody>
 	</table>
 	
 	<div class="btns c mg_t30">
-		<a href="#" onclick="join()" class="btns_blue">내정보수정하기</a>
-		<a href="#" onclick="join()" class="btns_black">비밀번호수정</a>
+		<a href="/mypageUpdate?mem_id=${user.mem_id}" class="btns_blue">수정</a>
+		<a href="#" class="btns_black" onclick="del()">회원탈퇴</a>
 	</div>
 	
 	
-	
+	<!-- /mypageDelete?mem_id=${user.mem_id} -->
 
 
 

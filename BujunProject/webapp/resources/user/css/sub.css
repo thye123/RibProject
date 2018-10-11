@@ -313,6 +313,39 @@
 .inpbtn01 {padding:0 10px !important; cursor:pointer; color:#fff; height:25px !important; background:#d01212; border:0 !important;}  
 .inpbtn01:hover {background:#b70c0c;}   
 
+/* 이달의 책 */
+.month_book > li {margin-bottom:5px; position:relative; float:left; width:32.66%; border:1px solid #ccc; box-sizing:border-box; margin-right:1%;}
+.month_book > li:hover {border:1px solid #4c4c4c;}
+.month_book > li a {color:#333; display:block;  padding:20px 20px 33px 20px;}
+.month_book > li:nth-child(3n) {margin-right:0;}
+.month_book  div.f_l {margin-right:10px; float:left; border:1px solid #ccc; max-height:150px; width:90px;}
+.month_book  div.f_l img{width:100%;}
+.month_book  div.f_r {float:left; width:55%; line-height:23px; color:#666;}
+.month_book  div.f_r ul li {white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.month_book > li a:after {content:""; display:block; clear:both;}
+.month_book  .more {position:absolute; right:10px; bottom:10px; color:#fff; background:#346ec2; padding:5px 10px;}
+.month_book .tit {text-align:center; font-size: 18px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #990000; margin-bottom:16px;}
+.icon2{background:url("../images/sub/icon2.png") no-repeat 60% 50%;}
+
+
+@media all and (max-width:870px) {
+	.month_book  div.f_r {width:50%;}
+}
+@media all and (max-width:795px) {
+	.month_book > li {width:49.5%;}
+	.month_book > li:nth-child(3n) {margin-right:1%;}
+	.month_book > li:nth-child(2n) {margin-right:0;}
+	.month_book  div.f_r {width: 58%;}
+}
+@media all and (max-width:620px) {
+	.month_book > li {width:100%;}
+	.month_book > li:nth-child(3n) {margin-right:0;}
+	.month_book  div.f_r {width: 63%;}
+}
+@media all and (max-width:355px) {
+	.month_book  div.f_r {width: 54%;}
+}
+
 /******************** pad *****************/
 @media all and (max-width:1000px) {
 
