@@ -12,7 +12,7 @@
 <%@ include file="../../include/sub_visual.jsp"%>
 
 <!-- 레프트메뉴 -->
-<%@ include file="../../include/left_menu05.jsp"%>
+<%@ include file="../../include/left_menu04.jsp"%>
 <style>
 .personInfor {
 	margin-top: 6px;
@@ -181,9 +181,9 @@ a.btn_boards {
 		<li><img
 			src="${pageContext.request.contextPath}/resources/user/images/sub/loca_home.jpg"
 			alt="" /></li>
-		<li>독서문화</li>
-		<li>독서동아리</li>
-		<li>찬우물</li>
+		<li>평생교육</li>
+		<li>수강신청</li>
+		<li>신청서 작성</li>
 	</ul>
 </div>
 <!-- //location -->
@@ -191,15 +191,7 @@ a.btn_boards {
 
 <div class="con_mob_pad">
 
-	<div class="sub_tit">${clu_name}</div>
-
-	<div class="tab_depth01">
-		<ul class="temp03">
-			<li><a href="#">일반프로그램</a></li>
-
-			<li><a href="#">초등(유아)프로그램</a></li>
-		</ul>
-	</div>
+	<div class="sub_tit">신청서작성</div>
 
 	<!-- content 시작 -->
 
@@ -229,9 +221,10 @@ a.btn_boards {
 
 					<td><input type="checkbox" name="check" value="1"
 						checked="checked"></td>
-					<td><h2>금니피셜에 대한 이야기</h2></td>
-					<td>2018.10.10 18:00~20:00</td>
-					<td class="bnon">금니하우스</td>
+					
+					<td><h2>${vo.listu_name}</h2></td>
+					<td><h2>${vo.listu_studate}</h2></td>
+					<td class="bnon"><h2>${vo.listu_location}</h2></td>
 				</tr>
 			</tbody>
 		</table>
@@ -257,7 +250,7 @@ a.btn_boards {
 			<input type="checkbox" name="OK" value="1" class="Ok"> 개인정보
 			수집에 동의합니다. (단,14세 미만은 보호자 동의)
 		</div>
-		<form action="/opprogram01/approc?m1=${m1}&m2=${m2}&m3=${m3}"
+		<form action="/opprogram01/approc?m1=${m1}&m2=${m2}&m3=${m3}&page=${page}&pagecount=${pagecount}&pagegrp=${pagegrp}"
 			method="POST" name="educheck" onsubmit='return mysubmit()'>
 			<input type="hidden" name="liap_code" value="${liap_code}" /> <input
 				type="hidden" name="listu_catcode" value="${listu_catcode}" />
@@ -326,7 +319,8 @@ a.btn_boards {
 							<td colspan="2"><input type="text" name="liap_pass" /></td>
 						</tr>
 						
-									<tr>
+						<tr>
+						<th class="c">학년선택</th>
 							<td><select name="liap_grade" class="grade">
 									<option value="">전체선택</option>
 									<option value="1">중1</option>

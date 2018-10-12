@@ -18,7 +18,7 @@
 	onload = function(){
 		var newEdu = document.getElementById("newEdu");
 		newEdu.addEventListener("click", function(){
-			location.href="/opprogram01/adprof?m1=${m1}&m2=${m2}&m3=${m3}";
+			location.href="/opprogram01/adprof?m1=${m1}&m2=${m2}&m3=${m3}&page=${ed.page}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}";
 		});
 	}
 </script>
@@ -84,6 +84,51 @@ a.prolist:hover {
     font-size: 16px;
 }
 
+#min_depth01{
+	width: 100%;
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 50px;
+    overflow: hidden;
+}
+
+
+#min_depth01 ul li.blgo {
+    width: 50%;
+    display: inline-block;
+    float: left;
+    background: #ff4f4e;
+    border-top: 1px solid #ff4f4e;
+    border-left: 1px solid #ff4f4e;
+    border-bottom: 1px solid #ff4f4e;
+}
+
+#min_depth01.w50 ul li {
+    display: inline-block;
+    width: 49%;
+    height: 48px;
+}
+
+.toblgo {
+    border: 1px solid #e9e9e9;
+}
+
+.blgo > a {
+	width: 100%;
+	text-align:  center;
+	color: #fff;
+
+	display: block;
+	line-height: 42px;
+}
+
+.toblgo > a{
+	width: 100%;
+	text-align:  center;
+	
+	display: block;
+	line-height: 42px;
+}
 </style>
 <!-- location -->
 <div class="loca">
@@ -105,10 +150,26 @@ a.prolist:hover {
 	<!-- title -->
 	<div class="sub_tit">운영프로그램</div>
 
-	<div id="tab_depth01" class="w50">
+	<div id="min_depth01" class="w50">
 		<ul>
-			<li class="active"><a href="/opprogram01?m1=04&m2=01&m3=02"> 일반프로그램</a></li>
-			<li class=""><a href="/opprogram01?m1=04&m2=01&m3=03"> 초등(유아)프로그램</a></li>
+		
+			<c:choose>
+				<c:when test="${m3 eq '02'}">
+				<li class="blgo"><a href="/opprogram01?m1=04&m2=01&m3=02&page=${ed.page}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}"> 일반프로그램</a></li>
+					<li class="toblgo">
+						<a href="/opprogram01?m1=04&m2=01&m3=03&page=${ed.page}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}"> 초등(유아)프로그램</a>
+					</li>
+				
+				</c:when>
+				
+				<c:when test="${m3 eq '03'}">
+					<li class="toblgo"><a href="/opprogram01?m1=04&m2=01&m3=02&page=${ed.page}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}"> 일반프로그램</a></li>
+					<li class="blgo" style="float: right;">
+					<a href="/opprogram01?m1=04&m2=01&m3=03&page=${ed.page}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}"> 초등(유아)프로그램</a></li>
+				</c:when>
+				
+			</c:choose>	
+		
 		</ul>
 	
 	</div>
@@ -117,14 +178,16 @@ a.prolist:hover {
 	<div class="prolistarea">
 		
 		<div class="tab_mev">
-			<p>총 10개의  프로그램이 있습니다</p>
+			<p>총 ${cnt} 개의  프로그램이 있습니다</p>
 		</div>
+	
+		<div class="ProWrap">
+		
 		
 		<ul class="ulPro">
 			<c:forEach var="proList" items="${pro_list}">
 				<li>
-					<a class="prolist" href="/opprogram01/dCon?m1=${m1}&m2=${m2}&m3=${m3}&listu_catcode=${proList.listu_code}">
-					
+					<a class="prolist" href="/opprogram01/dCon?m1=${m1}&m2=${m2}&m3=${m3}&listu_catcode=${proList.listu_code}&page=${ed.page}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}">
 					
 						<span class="top">
 							<b>모집중</b>
@@ -151,18 +214,49 @@ a.prolist:hover {
 			</c:forEach>
 		</ul>
 	
+		</div>
+
 	<div class="r mg_t20 btns">
 		<input type="button" class="btns_black" id="newEdu" value="새글쓰기" style="border:0;"/>
 	</div>
+	
+		<div class="board-list-paging">
+		<div class="pagelist">
+			<span class="firstpage1"><span>처음 페이지</span></span>
+			
+			<span class="prevblock1 hidden"><span>1 페이지</span></span>
+			<span class="beforepage1 "><span>이전페이지없음</span></span> <!-- 이전페이지 없을때 -->
+			
+		
+		 	<c:set var="startpage" value="${ed.statrpage}"></c:set>
+		 	<c:set var="endpage" value="${ed.endpage}"></c:set>
+		
+			<c:forEach var="i"  begin="${startpage}" end="${endpage}">
+				<a class="pageBtn" 
+				href="/opprogram01?m1=${m1}&m2=${m2}&m3=${m3}&page=${i}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}">
+				<span>${i}</span></a>
+			</c:forEach>
+		
+			<a class="afterpage hidden" href="#"><span>앞페이지</span></a>
+			<c:choose>
+		 
+	    <c:when test="${ed.page >= ed.endpage}">
+	      <a class="nextblock" href="#"></a>	
+	    </c:when>
+
+	    <c:otherwise>
+	    	<a class="nextblock" href="/opprogram01?m1=${m1}&m2=${m2}&m3=${m3}&page=${ed.page+1}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}"><span>6 페이지</span></a>
+	    </c:otherwise>
+	</c:choose>
+	
+			<a class="lastpage" href="#"><span>21 페이지</span></a>
+		</div>
+	</div>
+	
 	<!-- //content 끝 -->
 </div>
 
-
-
-
 </div>
-
-
 </div>
 </div>
 </div>

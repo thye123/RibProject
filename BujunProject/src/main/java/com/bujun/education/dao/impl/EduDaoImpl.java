@@ -42,4 +42,23 @@ public class EduDaoImpl implements EduDao{
 		sqlSession.insert("Education.inApply", map);
 	}
 
+	@Override
+	public EduVo getData(HashMap<String, Object> map) {
+		sqlSession.selectOne("Education.getData", map);
+		List<EduVo> em = (List<EduVo>) map.get("result");
+		EduVo vo = em.get(0);
+		return vo;
+	}
+
+	@Override
+	public List<EduVo> getcheckData(HashMap<String, Object> map) {
+		sqlSession.selectList("Education.ckeckdata", map);
+		
+		List<EduVo> vo = (List<EduVo>) map.get("result");
+		map.put("cnt", map.get("cnt"));
+		System.out.println("map" + map);
+		//System.out.println("elist" + vo);
+		return vo;
+	}
+
 }
