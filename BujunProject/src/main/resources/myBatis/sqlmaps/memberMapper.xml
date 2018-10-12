@@ -83,7 +83,6 @@
 	      )}        
     </select>      
     
-    
     <insert id="MemberJoin" parameterType="hashmap" statementType="CALLABLE">
 	     {CALL  BJL_PKG_MEMBER.member_join(   
 	        #{mem_id, mode=IN,  jdbcType=VARCHAR },
@@ -99,6 +98,52 @@
 	        #{mem_auth,  mode=IN, jdbcType=VARCHAR }
 	      )}        
     </insert>         
+    
+    <select id="MemberUserInfo" statementType="CALLABLE" parameterType="com.bujun.member.vo.MemberVo">   
+	     {CALL  BJL_PKG_MEMBER.member_user(   
+	        #{mem_id, mode=IN,  jdbcType=VARCHAR },
+	        #{result,  mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap }
+	      )}        
+    </select>    
+    
+    
+    <!-- 마이페이지 수정 // 비밀번호 변경 x --> 
+    <update id="MemberUpdate" parameterType="hashmap" statementType="CALLABLE">
+ 	     {CALL  BJL_PKG_MEMBER.member_update(   
+	        #{mem_id, mode=IN,  jdbcType=VARCHAR }, 
+	        #{rimem_num, mode=IN,  jdbcType=VARCHAR },
+	        #{mem_name, mode=IN,  jdbcType=VARCHAR },
+	        #{mem_birth, mode=IN,  jdbcType=VARCHAR },
+	        #{mem_email, mode=IN,  jdbcType=VARCHAR },
+	        #{mem_phone, mode=IN,  jdbcType=VARCHAR },
+	        #{zipcode, mode=IN,  jdbcType=VARCHAR },
+	        #{mem_adress, mode=IN,  jdbcType=VARCHAR },
+	        #{mem_deadress, mode=IN,  jdbcType=VARCHAR }
+	      )}     	
+    </update>  
+    
+    <update id="MemberUpdatePass" parameterType="hashmap" statementType="CALLABLE">
+ 	     {CALL  BJL_PKG_MEMBER.member_update(   
+	        #{mem_id, mode=IN,  jdbcType=VARCHAR }, 
+	        #{rimem_num, mode=IN,  jdbcType=VARCHAR },
+	        #{mem_name, mode=IN,  jdbcType=VARCHAR },
+	        #{mem_birth, mode=IN,  jdbcType=VARCHAR },
+	        #{mem_email, mode=IN,  jdbcType=VARCHAR },
+	        #{mem_phone, mode=IN,  jdbcType=VARCHAR },
+	        #{zipcode, mode=IN,  jdbcType=VARCHAR },
+	        #{mem_adress, mode=IN,  jdbcType=VARCHAR },
+	        #{mem_deadress, mode=IN,  jdbcType=VARCHAR },
+	        #{mem_pass, mode=IN,  jdbcType=VARCHAR }
+	      )}     	
+    </update>  
+    
+    
+    <!-- 회원 탈퇴 -->
+    <delete id="MemberUserDelete" parameterType="hashmap" statementType="CALLABLE">
+ 	     {CALL  BJL_PKG_MEMBER.member_delete(   
+	        #{mem_id, mode=IN,  jdbcType=VARCHAR }
+	      )}     	
+    </delete>  
     
     
                              

@@ -16,6 +16,12 @@ public class MemberVo {
 	private String mem_auth;
 	private int cnt;
 	
+	private String tel1;
+	private String tel2;
+	private String tel3;
+	private String email1;
+	private String email2;
+	
 	public String getMem_id() {
 		return mem_id;
 	}
@@ -100,6 +106,37 @@ public class MemberVo {
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
+	public String getTel1() {
+		return tel1;
+	}
+	public void setTel1(String tel1) {
+		this.tel1 = tel1;
+	}
+	public String getTel2() {
+		return tel2;
+	}
+	public void setTel2(String tel2) {
+		this.tel2 = tel2;
+	}
+	public String getTel3() {
+		return tel3;
+	}
+	public void setTel3(String tel3) {
+		this.tel3 = tel3;
+	}
+	public String getEmail1() {
+		return email1;
+	}
+	public void setEmail1(String email1) {
+		this.email1 = email1;
+	}
+	public String getEmail2() {
+		return email2;
+	}
+	public void setEmail2(String email2) {
+		this.email2 = email2;
+	}
+	
 	
 	
 

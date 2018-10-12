@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- dtd선언 - 필수임 -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="MonthBook">
+
+    <resultMap id="MonthBookMap" type="com.bujun.monthbook.vo.MonthbookVo">
+    	<result property="rec_idx" column="rec_idx" javaType="int" />
+    	<result property="rec_title" column="rec_title" javaType="string" />
+    	<result property="rec_bname" column="rec_bname" javaType="string" />
+    	<result property="rec_author" column="rec_author" javaType="string" />
+    	<result property="rec_publisher" column="rec_publisher" javaType="string" />
+    	<result property="rec_date" column="rec_date" javaType="string" />
+    	<result property="rec_code" column="rec_code" javaType="string" />
+    	<result property="rec_writer" column="rec_writer" javaType="string" />
+    	<result property="rec_rimemnum" column="rec_rimemnum" javaType="int" />
+    	<result property="rec_content" column="rec_content" javaType="string" />
+    	<result property="rec_regdate" column="rec_regdate" javaType="string" />
+    	<result property="rec_count" column="rec_count" javaType="int" />
+    </resultMap>  
+  
+
+
+
+                      
+</mapper>

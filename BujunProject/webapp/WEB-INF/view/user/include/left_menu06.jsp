@@ -187,20 +187,21 @@
 					</c:otherwise>
 				</c:choose>		
 				
+				<li><a target="_blank" title="새창으로 열림" href="http://www.law.go.kr/ordinInfoP.do?urlMode=ordinScJoRltInfoR&viewCls=ordinInfoP&ordinSeq=545520&chrClsCd=010202&gubun=null"><div class="link">공무원행동강령<i class="fa fa-chevron-down"></i></div></a></li>
 				
 				<c:choose>
 					<c:when test="${menu.m1 eq 06 && menu.m2 eq 07}">
 						<li class="default open">
-							<a target="_blank" title="새창으로 열림" href="http://www.law.go.kr/ordinInfoP.do?urlMode=ordinScJoRltInfoR&viewCls=ordinInfoP&ordinSeq=545520&chrClsCd=010202&gubun=null"><div class="link">공무원행동강령<i class="fa fa-chevron-down"></i></div></a>
+							<a href="/study?m1=06&m2=07"><div class="link">스터디모집<i class="fa fa-chevron-down"></i></div></a>
 						</li>
 					</c:when>
 					<c:otherwise>
 						<li>
-							<a target="_blank" title="새창으로 열림" href="http://www.law.go.kr/ordinInfoP.do?urlMode=ordinScJoRltInfoR&viewCls=ordinInfoP&ordinSeq=545520&chrClsCd=010202&gubun=null"><div class="link">공무원행동강령<i class="fa fa-chevron-down"></i></div></a>
+							<a href="/study?m1=06&m2=07"><div class="link">스터디모집<i class="fa fa-chevron-down"></i></div></a>
 						</li>					
 					</c:otherwise>
-				</c:choose>						
-				
+				</c:choose>		
+								
 
 			</ul>			
 				
