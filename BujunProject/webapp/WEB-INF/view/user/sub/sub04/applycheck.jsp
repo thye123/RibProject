@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -714,5 +714,4 @@ a.btn_boards {
 </div>
 
 <!-- footer -->
->>>>>>> branch 'master' of https://github.com/thye123/RibProject.git
 <%@ include file="../../include/footer.jsp"%>
