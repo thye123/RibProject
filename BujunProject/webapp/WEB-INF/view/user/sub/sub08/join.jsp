@@ -122,12 +122,12 @@
 			return;
 		}
 		
-		var rimem_num = document.getElementById("rimem_num");
+/* 		var rimem_num = document.getElementById("rimem_num");
 		if(rimem_num.value == "") {
 			alert("도서관 회원 번호를 입력해주세요.")
 			rimem_num.focus();
 			return;
-		}
+		} */
 		
 		var user_pass = document.getElementById("user_pass");
 		var chpass = document.getElementById("chpass");
@@ -212,11 +212,11 @@
 			return;
 		}
 		
-		if(rimem_num.value.length != 10) {
+		/* if(rimem_num.value.length != 10) {
 			alert("도서관 회원 번호를 확인해주세요. 10자리로 입력하세요.")
 			rimem_num.focus();
 			return;
-		}
+		} */
 		
 		
 		if(!passRule.test($("#user_pass").val())) {
@@ -264,10 +264,10 @@
 				<th scope="row" class="c">아이디</th>
 				<td><input type="text" id="mem_id" name="mem_id" /> <input class="inpbtn01" type="button" id="idchk" value="중복체크" /></td>
 			</tr>
-			<tr>
+			<!-- <tr>
 				<th scope="row" class="c">도서관 회원 번호</th>
 				<td><input type="text" class="in_mem_num" id="rimem_num" name="rimem_num"/></td>
-			</tr>	
+			</tr> -->	
 			<tr>
 				<th scope="row" class="c">비밀번호</th>
 				<td><input type="password" class="in_mem_num" name="mem_pass" id="user_pass" /></td>
