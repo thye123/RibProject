@@ -1,5 +1,6 @@
 package com.bujun.education.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bujun.club.service.imple.PagingData;
 import com.bujun.education.service.EduService;
+import com.bujun.education.service.impl.Pgdata;
 import com.bujun.education.vo.EduVo;
 
 @Controller
@@ -24,25 +27,35 @@ public class LifeLongController {
 	@RequestMapping("/opprogram01")
 	public ModelAndView operatingProgram(@RequestParam HashMap<String, Object> map, Model model) {
 		model.addAttribute("menu", map);
+		
 		String listu_catcode = "";
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
 		String m3 = String.valueOf(map.get("m3"));
+		//PagingData data = new PagingData();
+		Pgdata data= new Pgdata();
 		//게시판 코드 확인
 		if(m1.equals("04")&&m2.equals("01")&&m3.equals("02")) {
 			listu_catcode = "CAT0023";
 			map.put("listu_catcode", listu_catcode);
+
 		}else {
 			if(m1.equals("04")&&m2.equals("01")&&m3.equals("03")) {
 				listu_catcode="CAT0024";
 				map.put("listu_catcode", listu_catcode);
 			}
 		}
+		
 		List<EduVo> list = eduService.edulist(map);
+		map.put("cnt", map.get("cnt"));
+		EduVo  ed  = data.getPaging(map);
+		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("m1",m1);
 		mv.addObject("m2",m2);
 		mv.addObject("m3",m3);
+		mv.addObject("ed",ed);
+		mv.addObject("cnt",map.get("cnt"));
 		mv.addObject("pro_list", list);
 		mv.setViewName("user/sub/sub04/operatingprogram");
 		return mv;
@@ -53,6 +66,7 @@ public class LifeLongController {
 	public ModelAndView dCon(@RequestParam HashMap<String, Object>map , Model model) {
 		model.addAttribute("menu", map);
 		
+		System.out.println("mapdetail" + map);
 		ModelAndView mv = new ModelAndView();
 				
 		String m1 = String.valueOf(map.get("m1"));		
@@ -64,7 +78,11 @@ public class LifeLongController {
 		mv.addObject("m1",m1);
 		mv.addObject("m2",m2);
 		mv.addObject("m3",m3);
+		mv.addObject("page",map.get("page"));
+		mv.addObject("pagegrp",map.get("pagegrp"));
+		mv.addObject("pagecount",map.get("pagecount"));
 		mv.addObject("edu",edu);
+		
 		mv.setViewName("user/sub/sub04/applydetail");
 		return mv;
 	}
@@ -73,7 +91,8 @@ public class LifeLongController {
 	@RequestMapping("/opprogram01/apply")
 	public ModelAndView applyGo(@RequestParam HashMap<String, Object>map ,Model model) {
 		ModelAndView mv = new ModelAndView();
-		
+		System.out.println("map");
+		//listu_idx=1, listu_code=LISTU0001
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
 		String m3 = String.valueOf(map.get("m3"));
@@ -81,12 +100,16 @@ public class LifeLongController {
 		mv.addObject("m1",m1);
 		mv.addObject("m2",m2);
 		mv.addObject("m3",m3);
+		//프로그램명 시간 / 요일 장소
 		
-		//System.out.println("map 상세 "  + map);
+		EduVo vo = eduService.getData(map);
+		
 		mv.addObject("liap_code",map.get("listu_code"));
-		//redirect 값으로 받기 위해서 
 		mv.addObject("listu_catcode",map.get("listu_catcode"));
-		
+		mv.addObject("page",map.get("page"));
+		mv.addObject("pagegrp",map.get("pagegrp"));
+		mv.addObject("pagecount",map.get("pagecount"));
+		mv.addObject("vo",vo);
 		mv.setViewName("user/sub/sub04/applycheck");
 		return mv;
 	}
@@ -119,8 +142,7 @@ public class LifeLongController {
 		mv.addObject("m1",m1);
 		mv.addObject("m2",m2);
 		mv.addObject("m3",m3);
-		
-		mv.setViewName("redirect:/opprogram01?m1="+m1+"&m2="+m2+"&m3="+m3);
+		mv.setViewName("redirect:/opprogram01?m1="+m1+"&m2="+m2+"&m3="+m3+"&page="+map.get("page")+"&pagecount="+map.get("pagecount")+"&pagegrp="+map.get("pagegrp"));
 		return mv;
 	}
 	
@@ -132,9 +154,15 @@ public class LifeLongController {
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
 		String m3 = String.valueOf(map.get("m3"));
+		
 		mv.addObject("m1",m1);
 		mv.addObject("m2",m2);
 		mv.addObject("m3",m3);
+		
+		mv.addObject("page",map.get("page"));
+		mv.addObject("pagegrp",map.get("pagegrp"));
+		mv.addObject("pagecount",map.get("pagecount"));
+		
 		mv.setViewName("user/sub/sub04/operatingadpro");
 		return mv;
 	}
@@ -161,6 +189,49 @@ public class LifeLongController {
 		}
 		eduService.insertPro(map);
 		
-		return "redirect:/opprogram01?m1="+m1+"&m2="+m2+"&m3="+m3;
+		return "redirect:/opprogram01?m1="+m1+"&m2="+m2+"&m3="+m3+"&page="+map.get("page")+"&pagecount="+map.get("pagecount")+"&pagegrp="+map.get("pagegrp");
 	}
+	
+	@RequestMapping("/pgcheck")
+	public ModelAndView checkprog(@RequestParam
+			HashMap<String, Object> map, Model model) {
+
+		String m1 = String.valueOf(map.get("m1"));		
+		String m2 = String.valueOf(map.get("m2"));		
+		String m3 = String.valueOf(map.get("m3"));
+		
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("m1",m1);
+		mv.addObject("m2",m2);
+		mv.addObject("m3",m3);
+		
+		mv.setViewName("user/sub/sub04/checkprogrm");
+		return mv;
+	}
+	
+	@RequestMapping("/pgcheck/proc")
+	public ModelAndView checkproc(@RequestParam
+			HashMap<String, Object> map, Model model) {
+		//System.out.println("map 처리 " + map);
+		String m1 = String.valueOf(map.get("m1"));		
+		String m2 = String.valueOf(map.get("m2"));		
+		String m3 = String.valueOf(map.get("m3"));
+		
+		ModelAndView mv = new ModelAndView();
+		
+		List<EduVo> vo = eduService.getcheckData(map);
+		
+		//System.out.println("돌아오는 결과 값 " +vo);
+		mv.addObject("liap_apname",map.get("liap_apname"));
+		mv.addObject("m1",m1);
+		mv.addObject("m2",m2);
+		mv.addObject("m3",m3);
+		mv.addObject("vo",vo);
+		mv.setViewName("user/sub/sub04/checkview");
+		return mv;
+	}
+	
+	
+	
 }

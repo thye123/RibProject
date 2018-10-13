@@ -14,5 +14,8 @@ public interface EduDao {
 	public EduVo getdetail(HashMap<String, Object> map);
 	//수강신청 할때 
 	public void getInApply(HashMap<String, Object> map);
-
+	//수강신청 들어갈때 상세 정보 보여주기
+	public EduVo getData(HashMap<String, Object> map);
+	//로그인 하면 수강신청 확인 
+	public List<EduVo> getcheckData(HashMap<String, Object> map);
 }
