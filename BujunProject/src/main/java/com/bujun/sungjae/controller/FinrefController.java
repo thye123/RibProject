@@ -22,16 +22,16 @@ public class FinrefController {
 	@Autowired
 	private BankService bankService;
 	
-	@RequestMapping("/synref")
+	/*@RequestMapping("/synref")
 	public String synref() {
 		return "user/sub/sub02/synref";
 		
-	}
-	@RequestMapping("/finref01")
+	}*/
+	/*@RequestMapping("/finref01")
 	public String finref01() {
 		return "user/sub/sub02/finref01";
 		
-	}
+	}*/
 	
 	//04
 	@RequestMapping("/finref04")

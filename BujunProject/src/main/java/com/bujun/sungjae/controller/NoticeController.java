@@ -39,10 +39,10 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
-	@RequestMapping("/")
+	/*@RequestMapping("/")
 	public String Main() {
 		return "user/main/index";
-	}
+	}*/
 	
 	/*@RequestMapping("/test")
 	public String Test(@RequestParam HashMap<String, Object> map,
