@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+    <!-- 공지사항 목록 리스트 resultMap -->
+    <mapper namespace="App">
+    
+	    <resultMap id="AppListMap" type="com.bujun.notice.vo.AppVo">
+		    <result property="sc_idx" column="SC_IDX" javaType="int" />
+		    <result property="sc_memid" column="SC_MEMID" javaType="String" />
+			<result property="sc_rimemnum" column="SC_RIMEMNUM" javaType="String" />
+			<result property="sc_phone" column="SC_PHONE" javaType="String" />
+			<result property="sc_email" column="SC_EMAIL" javaType="String" />
+			<result property="sc_bookname" column="SC_BOOKNAME" javaType="String" />
+			<result property="sc_author" column="SC_AUTHOR" javaType="String" />
+			<result property="sc_publisher" column="SC_PUBLISHER" javaType="String" />
+			<result property="sc_publishdate" column="SC_PUBLISHDATE" javaType="String" />
+			<result property="sc_content" column="SC_CONTENT" javaType="String" />
+			<result property="sc_during" column="SC_DURING" javaType="int" />
+			<result property="sc_regdate" column="SC_REGDATE" javaType="String" />
+			<result property="sc_cancel" column="SC_CANCEL" javaType="String" />
+		</resultMap>
+		
+		<select id="AppList" statementType="CALLABLE" parameterType="hashmap"
+			resultType="com.bujun.notice.vo.AppVo">
+			{CALL PKG_SUBCRIPTION.PROC_SC_LIST(
+				#{nowpage, mode=IN, jdbcType=INTEGER},
+				#{searchType, mode=IN, jdbcType=VARCHAR},
+				#{keyWord, mode=IN, jdbcType=VARCHAR},
+				#{total, mode=OUT, jdbcType=INTEGER},
+				#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=AppListMap}
+			)}
+		</select>
+		
+		<select id="AppView" statementType="CALLABLE" parameterType="hashmap"
+			resultType="com.bujun.notice.vo.AppVo">
+			{CALL PKG_SUBCRIPTION.PROC_SC_VIEW(
+				#{sc_idx, mode=IN, jdbcType=INTEGER},
+				#{sc_writer, mode=OUT, jdbcType=VARCHAR},
+				#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=AppListMap}
+			)}
+		</select>
+		
+		<insert id="AppInsert" statementType="CALLABLE" parameterType="hashmap">
+		{CALL PKG_SUBCRIPTION.PROC_SC_INSERT(
+		#{sc_memid,       mode=IN, jdbcType=VARCHAR},
+		#{sc_rimemnum,    mode=IN, jdbcType=VARCHAR},
+		#{sc_phone,       mode=IN, jdbcType=VARCHAR},
+		#{sc_email,       mode=IN, jdbcType=VARCHAR},
+		#{sc_bookname,    mode=IN, jdbcType=VARCHAR},
+		#{sc_author,      mode=IN, jdbcType=VARCHAR},
+		#{sc_publisher,   mode=IN, jdbcType=VARCHAR},
+		#{sc_publishdate, mode=IN, jdbcType=VARCHAR},
+		#{sc_content,     mode=IN, jdbcType=VARCHAR},
+		#{sc_during,      mode=IN, jdbcType=INTEGER},
+		#{sc_idx,         mode=OUT, jdbcType=INTEGER}
+		)}
+		</insert>
+		
+	
+		
+		<update id="AppUpdate" statementType="CALLABLE" parameterType="hashmap">
+			{CALL PKG_SUBCRIPTION.PROC_SC_UPDATE(
+			#{sc_idx, mode=IN, jdbcType=INTEGER},			
+			#{sc_during, mode=IN, jdbcType=INTEGER},
+			#{sc_cancel, mode=IN, jdbcType=VARCHAR}
+			)}
+		</update>
+		
+	
+		
+		
+    </mapper>
