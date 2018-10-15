@@ -173,6 +173,8 @@ span.text {word-break: keep-all; display: block; overflow: hidden; width:100%; h
 @media all and (max-width:1000px) {
 	.visual {display:none;}
 	
+	.book_con .book_title {margin-top:10px;}
+	
 	/* 소식 */
 	.bujun_news_wrap {overflow: visible;}
 	.bujun_news_wrap .bujun_news {width:100%;}

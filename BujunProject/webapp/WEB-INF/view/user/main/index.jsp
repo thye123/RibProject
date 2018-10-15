@@ -109,39 +109,39 @@
 							<ul>
 								<li>
 									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										11								
+										test1_공지사항								
 									</a>
-									<span class="main_date">2018.03.20</span>
+									<span class="main_date">2018.10.01</span>
 								</li>
 								<li>
 									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										제8회 &#40;재&#41;동래장학회 장학생 선발자 명단									
+										test2_공지사항							
 									</a>
-									<span class="main_date">2018.03.20</span>
+									<span class="main_date">2018.10.01</span>
 								</li>
 								<li>
 									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										제8회 &#40;재&#41;동래장학회 장학생 선발자 명단									
+										test3_공지사항							
 									</a>
-									<span class="main_date">2018.03.20</span>
+									<span class="main_date">2018.10.01</span>
 								</li>
 								<li>
 									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										제8회 &#40;재&#41;동래장학회 장학생 선발자 명단									
+										test4_공지사항							
 									</a>
-									<span class="main_date">2018.03.20</span>
+									<span class="main_date">2018.10.01</span>
 								</li>
 								<li>
 									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										제8회 &#40;재&#41;동래장학회 장학생 선발자 명단									
+										test5_공지사항						
 									</a>
-									<span class="main_date">2018.03.20</span>
+									<span class="main_date">2018.10.01</span>
 								</li>
 								<li>
 									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										제8회 &#40;재&#41;동래장학회 장학생 선발자 명단									
+										test6_공지사항						
 									</a>
-									<span class="main_date">2018.03.20</span>
+									<span class="main_date">2018.10.01</span>
 								</li>																								
 							</ul>
 							<a href="/index.php?pagecode=P000000026" class="more" title="공지사항 목록 더보기로 이동합니다."><img src="${pageContext.request.contextPath}/resources/user/images/main/m_more.png" alt="공지사항 더보기" /></a>
@@ -231,7 +231,7 @@
 			<div class="ybook">
 				<a href="#">
 					<div class="book_img"><img src="${pageContext.request.contextPath}/resources/user/images/main/book01.jpg" /></div>
-					<div class="book_title">dddsssssssssssssssssssssssssssssssssssssssd</div>
+					<div class="book_title">아몬드</div>
 				</a>
 			</div>
 		</div>
@@ -242,20 +242,20 @@
 				<ul class="book_list">
 					<li>
 						<a href="#">
-							<div class="book_img"><img src="${pageContext.request.contextPath}/resources/user/images/main/book02.jpg" /></div>
-							<div class="book_title">dddd</div>
+							<div class="book_img"><img src="/img/7b24d786-1e5d-49b9-9db9-4f2894714220_20181001094821.jpg" /></div>
+							<div class="book_title">박완서의 말</div>
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							<div class="book_img"><img src="${pageContext.request.contextPath}/resources/user/images/main/book03.jpg" /></div>
-							<div class="book_title">dddd</div>
+							<div class="book_img"><img src="/img/48664928-e884-46df-8801-d00faad70146_20181001094739.jpg" /></div>
+							<div class="book_title">열두 발자국</div>
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							<div class="book_img"><img src="${pageContext.request.contextPath}/resources/user/images/main/book04.jpg" /></div>
-							<div class="book_title">dddd</div>
+							<div class="book_img"><img src="/img/443c947e-fa0b-4578-9297-9f85b2408800_20181001094645.jpg" /></div>
+							<div class="book_title">지느러미 달린 책</div>
 						</a>
 					</li>
 				</ul>
@@ -345,7 +345,7 @@
 				</ul>
 			</div>
 			
-			<div class="more"><a href="#">more +</a></div>
+			<!-- <div class="more"><a href="#">more +</a></div> -->
 		</div>
 		
 	</div>
@@ -383,7 +383,7 @@
 	<div id="foot_banner"><!-- (s)banner -->
 		<div class="dv_wrap">
 			<div class="banner_title">배너모음</div>
-				<script type="text/javascript" language="javascript" src="http://www.dongnaesf.kr/common/js/jquery.carouFredSel-6.2.1-packed.js"></script>
+				<script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/resources/user/js/jquery.carouFredSel-6.2.1-packed.js"></script>
 				<script type="text/javascript">
 					$(document).ready(function(){
 					function adPlay(){
