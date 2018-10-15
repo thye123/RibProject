@@ -31,7 +31,7 @@
 	<script src="${pageContext.request.contextPath}/resources/user/js/script.js"></script>
  --%>
 
-	<title>부전도서관</title>
+	<title>희망과 꿈이 있는 부전도서관</title>
 	
 	
 	<!-- 메뉴 -->
@@ -59,7 +59,7 @@
 	            windowSt = windowObj.scrollTop();
 	            console.log(windowSt);
 	
-	            if (windowSt > 0) {
+	            if (windowSt > 206) {
 	                header.addClass('on');
 	            } else {
 	                header.removeClass('on');
@@ -131,8 +131,8 @@
                         <ul class="sub">
                             <li><a href="/bjsearch?m1=03&m2=01">자료찾기</a></li>
                             <li><a href="http://search.siminlib.go.kr/search/search.jsp?logo=4&mcode=110" target="_blank">타도서관 자료찾기</a></li>
-                            <li><a href="/nbook?m1=03&m2=03">새로들어온책</a></li>
-                            <li><a href="/mbinfo?m1=03&m2=04">나의도서대출정보</a></li>
+                            <!-- <li><a href="/nbook?m1=03&m2=03">새로들어온책</a></li> -->
+                            <li><a href="/mbinfo?m1=03&m2=04&page=1&perPageNum=10">나의도서대출정보</a></li>
                             <li><a href="/wishbk?m1=03&m2=05">비치희망자료신청</a></li>
                             <li><a href="/wishres?m1=03&m2=06">비치희망자료결과</a></li>
                             <li><a href="/datalist?m1=03&m2=07">연속간행물목록</a></li>
@@ -150,7 +150,7 @@
                     <li>
                         <a href="#">독서문화</a>
                         <ul class="sub">
-                            <li><a href="/monthbk?m1=05&m2=01&m3=01">추천도서</a></li>
+                            <li><a href="/monthbk?rec_code=CAT0031&m1=05&m2=01&m3=01&page=1&perPageNum=12">추천도서</a></li>
                             <li><a href="/bkcare?m1=05&m2=02&m3=01">독서치료</a></li>
                             <li><a href="/club01?m1=05&m2=03&m3=01">독서동아리</a></li>
                             <li><a href="/bookclass?m1=05&m2=04">독서교실</a></li>
@@ -170,7 +170,7 @@
                             <li><a href="/charter01?m1=06&m2=05&m3=01">서비스헌장</a></li>
                             <li><a href="/law?m1=06&m2=06">도서관관계법령</a></li>
                             <li><a target="_blank" title="새창으로열림" href="http://www.law.go.kr/ordinInfoP.do?urlMode=ordinScJoRltInfoR&viewCls=ordinInfoP&ordinSeq=545520&chrClsCd=010202&gubun=null">공무원행동강령</a></li>
-                            <li><a href="/study?m1=06&m2=07">스터디모집</a></li>
+                            <li><a href="/study?m1=06&m2=07&page_num=1&page_grp=1">스터디모집</a></li>
                         </ul>
                     </li>    
                     <li>
@@ -203,15 +203,39 @@
 				<div class="white"></div>
 				<div class="Mob_navigation">
 					
-					
+				<script>
+					function mob_search() {
+						
+						var key = document.getElementById("key2");
+						
+						if(key.value == "") {
+							alert("검색어를 입력하세요.");
+							key.focus();
+							return;
+						}
+							
+						document.formMobSearch.submit();
+					}
+				</script>
+			
 					<ul class="side-menu">
 						<li>
 							<div class="mob_search">								
-								<form class="mob_search_frm">
-									<input type="text" />
-									<button type="button">
+								<form class="mob_search_frm" action="/bjsearch" name="formMobSearch">
+									<input type="text" id="key2" name="kwd" class="textnon" />
+									<button type="button" onclick="mob_search()">
 										<img src="/resources/user/images/main/v_search.png" alt="검색">
 									</button>
+									
+									<input type="hidden" name="m1" value="03" />
+									<input type="hidden" name="m2" value="01" />
+									<input type="hidden" name="page" value="1" />
+									<input type="hidden" name="chk" value="1" />
+									<input type="hidden" name="sort_select5" value="" />
+									<input type="hidden" name="sort_select3" value="" />
+									<input type="hidden" name="startDate" value="" />
+									<input type="hidden" name="endDate" value="" />
+									<input type="hidden" name="sort_select1" value="" />
 								</form>
 							</div>
 						</li>
@@ -250,8 +274,8 @@
 							<ul>
 								<li class="depth2"><a href="/bjsearch?m1=03&m2=01" class="off">자료찾기</a></li>
 								<li class="depth2"><a href="http://search.siminlib.go.kr/search/search.jsp?logo=4&mcode=110" target="_blank" class="off">타도서관 자료찾기</a></li>
-								<li class="depth2"><a href="/nbook?m1=03&m2=03" class="off">새로들어온책</a></li>
-								<li class="depth2"><a href="/mbinfo?m1=03&m2=04" class="off">나의도서대출정보</a></li>
+								<!-- <li class="depth2"><a href="/nbook?m1=03&m2=03" class="off">새로들어온책</a></li> -->
+								<li class="depth2"><a href="/mbinfo?m1=03&m2=04&page=1&perPageNum=10" class="off">나의도서대출정보</a></li>
 								<li class="depth2"><a href="/wishbk?m1=03&m2=05" class="off">비치희망자료신청</a></li>
 								<li class="depth2"><a href="/wishres?m1=03&m2=06" class="off">비치희망자료결과</a></li>
 								<li class="depth2"><a href="/datalist?m1=03&m2=07" class="off">연속간행물목록</a></li>
@@ -285,7 +309,7 @@
 							<ul>
 								<li class="depth2"><a href="/monthbk?m1=05&m2=01&m3=01" class="off">추천도서</a>
 									<ul>
-										<li class="depth3"><a href="/monthbk?m1=05&m2=01&m3=01" class="off">이달의 책</a></li> 
+										<li class="depth3"><a href="/monthbk?rec_code=CAT0031&m1=05&m2=01&m3=01&page=1&perPageNum=12" class="off">이달의 책</a></li> 
 										<li class="depth3"><a href="/bujunbk?m1=05&m2=01&m3=02" class="off">부전추천도서</a></li> 
 										<li class="depth3"><a href="http://www.nl.go.kr/ask/recommend/recommend_nl/list1.jsp" target="_blank" class="off">기타추천도서</a></li> 
 										<li class="depth3"><a href="http://www.nl.go.kr/ask/readSite/list.jsp" target="_blank" class="off">독서관련사이트</a></li> 
@@ -338,7 +362,7 @@
 								</li>
 								<li class="depth2"><a href="/law?m1=06&m2=06" class="off">도서관관계법령</a></li>
 								<li class="depth2"><a target="_blank" title="새창으로열림" href="http://www.law.go.kr/ordinInfoP.do?urlMode=ordinScJoRltInfoR&viewCls=ordinInfoP&ordinSeq=545520&chrClsCd=010202&gubun=null" class="off">공무원행동강령</a></li>
-								<li class="depth2"><a href="/study?m1=06&m2=07" class="off">스터디모집</a></li>
+								<li class="depth2"><a href="/study?m1=06&m2=07&page_num=1&page_grp=1" class="off">스터디모집</a></li>
 							</ul>						
 						</li>	
 						

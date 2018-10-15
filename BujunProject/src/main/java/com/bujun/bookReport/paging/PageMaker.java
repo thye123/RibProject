@@ -5,21 +5,19 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 public class PageMaker {
 
-	private int totalCount;     // °Ô½ÃÆÇ ÀüÃ¼ µ¥ÀÌÅÍ °³¼ö
-	private int displayPageNum = 10;   // °Ô½ÃÆÇ È­¸é¿¡¼­ ÇÑ¹ø¿¡ º¸¿©Áú ÆäÀÌÁö ¹øÈ£ÀÇ °³¼ö ( 1,2,3,4,5,6,7,9,10)
+	private int totalCount;     // ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	private int displayPageNum = 10;   // ï¿½Ô½ï¿½ï¿½ï¿½ È­ï¿½é¿¡ï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ( 1,2,3,4,5,6,7,9,10)
 	
-	private int startPage;      // ÇöÀç È­¸é¿¡¼­ º¸ÀÌ´Â startPage ¹øÈ£
-	private int endPage;        // ÇöÀç È­¸é¿¡ º¸ÀÌ´Â endPage ¹øÈ£
-	private boolean prev;       // ÆäÀÌÂ¡ ÀÌÀü ¹öÆ° È°¼ºÈ­ ¿©ºÎ
-	private boolean next;       // ÆäÀÌÂ¡ ´ÙÀ½ ¹öÆ° È°¼­È­ ¿©ºÎ
+	private int startPage;      // ï¿½ï¿½ï¿½ï¿½ È­ï¿½é¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ startPage ï¿½ï¿½È£
+	private int endPage;        // ï¿½ï¿½ï¿½ï¿½ È­ï¿½é¿¡ ï¿½ï¿½ï¿½Ì´ï¿½ endPage ï¿½ï¿½È£
+	private boolean prev;       // ï¿½ï¿½ï¿½ï¿½Â¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° È°ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½
+	private boolean next;       // ï¿½ï¿½ï¿½ï¿½Â¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° È°ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½
 	
-	private Criteria cri;       // ¾Õ¼­ »ý¼ºÇÑ Criteria¸¦ ÁÖÀÔ¹Þ´Â´Ù.
+	private Criteria cri;       // ï¿½Õ¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Criteriaï¿½ï¿½ ï¿½ï¿½ï¿½Ô¹Þ´Â´ï¿½.
 
 	
-	//¸¶Áö¸· ÆäÀÌÁö block
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ block
 	private int lastBlock;
-
-	
 	
 	public int getTotalCount() {
 		return totalCount;

@@ -192,12 +192,12 @@
 				<c:choose>
 					<c:when test="${menu.m1 eq 06 && menu.m2 eq 07}">
 						<li class="default open">
-							<a href="/study?m1=06&m2=07"><div class="link">스터디모집<i class="fa fa-chevron-down"></i></div></a>
+							<a href="/study?m1=06&m2=07&page_num=1&page_grp=1"><div class="link">스터디모집<i class="fa fa-chevron-down"></i></div></a>
 						</li>
 					</c:when>
 					<c:otherwise>
 						<li>
-							<a href="/study?m1=06&m2=07"><div class="link">스터디모집<i class="fa fa-chevron-down"></i></div></a>
+							<a href="/study?m1=06&m2=07&page_num=1&page_grp=1"><div class="link">스터디모집<i class="fa fa-chevron-down"></i></div></a>
 						</li>					
 					</c:otherwise>
 				</c:choose>		

@@ -53,10 +53,10 @@
 								<ul class="submenu">
 									<c:choose>
 										<c:when test="${menu.m1 eq 05 && menu.m2 eq 01 && menu.m3 eq 01}">
-											<li class="on"><a href="/monthbk?m1=05&m2=01&m3=01">이달의 책</a></li>
+											<li class="on"><a href="/monthbk?rec_code=CAT0031&m1=05&m2=01&m3=01&page=1&perPageNum=12">이달의 책</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/monthbk?m1=05&m2=01&m3=01">이달의 책</a></li>
+											<li><a href="/monthbk?rec_code=CAT0031&m1=05&m2=01&m3=01&page=1&perPageNum=12">이달의 책</a></li>
 										</c:otherwise>
 									</c:choose>
 									
@@ -98,10 +98,10 @@
 								<ul class="submenu">
 									<c:choose>
 										<c:when test="${menu.m1 eq 05 && menu.m2 eq 01 && menu.m3 eq 01}">
-											<li class="on"><a href="/monthbk?m1=05&m2=01&m3=01">이달의 책</a></li>
+											<li class="on"><a href="/monthbk?rec_code=CAT0031&m1=05&m2=01&m3=01&page=1&perPageNum=12">이달의 책</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/monthbk?m1=05&m2=01&m3=01">이달의 책</a></li>
+											<li><a href="/monthbk?rec_code=CAT0031&m1=05&m2=01&m3=01&page=1&perPageNum=12">이달의 책</a></li>
 										</c:otherwise>
 									</c:choose>
 									

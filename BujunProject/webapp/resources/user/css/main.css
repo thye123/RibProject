@@ -44,9 +44,9 @@
 
 /*공지사항*/
 #main_notice {background:#fff; width:715px; height:331px; z-index:100; position:relative; margin-left:12px;}
-#main_notice .main_notice_line{border:1px solid #c5c5c5; height:330px; margin:0; background:url(/common/images/main/main_notice_bg.jpg)repeat-x;} 
+#main_notice .main_notice_line{border:1px solid #c5c5c5; height:330px; margin:0; background:url(../images/main/main_notice_bg.jpg)repeat-x;} 
 /*#main_notice_div {margin:20px; position:relative; }*/
-#main_notice > div h3 a {width: 218px; padding:17px 0 16px 0; text-align:center; font-size:16px; font-weight:400; color:#333;}
+#main_notice > div h3 a {background:#fff; width: 218px; padding:17px 0 16px 0; text-align:center; font-size:16px; font-weight:400; color:#333;}
 #main_notice > div h3 a.on, #main_notice > div h3 a:hover {background:#0067d4; color:#fff;}
 
 #main_notice > div h3.nt_01 {position:absolute; top:0; left:1px;}
@@ -57,13 +57,13 @@
 #main_notice > div h3.nt_03 a{margin-top:1px; display:block; border-right: 1px solid #c5c5c5;}
 
 #main_notice > div div.ncons {border-top:1px solid #c5c5c5; position:absolute; top:50px; width:100%; display:none;}
-#main_notice > div div.ncons ul {padding:18px 25px;}
+#main_notice > div div.ncons ul {padding:25px;}
 span.first_title{padding-top:12px; display:block; margin-bottom:2px;}
 span.text {word-break: keep-all; display: block; overflow: hidden; width:100%; height:17px; font-size:13px; color: #707070; line-height: 18px; font-weight:normal;}
-#main_notice > div div.ncons ul li {clear:both; background: url(/common/images/main/bul_notice.png) no-repeat 0 45%; padding-left:12px; height:24px; line-height:24px; margin-bottom:5px;}
-#main_notice > div div.ncons ul li a {overflow: hidden; white-space: nowrap; text-overflow: ellipsis; word-wrap: normal; float:left; font-size:14px; width:83%; height:24px; line-height:24px; }
-#main_notice > div div.ncons ul li span.main_date {float:right; font-size:13px; color:#999;}
-#main_notice > div div.ncons a.more {position:absolute; top:-39px; right:16px;}
+#main_notice > div div.ncons ul li {clear:both; background: url(../images/main/bul_notice.png) no-repeat 0 50%; padding-left:12px; height:30px; line-height:36px; margin-bottom:5px;}
+#main_notice > div div.ncons ul li a {overflow: hidden; white-space: nowrap; text-overflow: ellipsis; word-wrap: normal; float:left; font-size:15px; width:83%; height:30px; line-height:33px; }
+#main_notice > div div.ncons ul li span.main_date {float:right; font-size:14px; color:#999;}
+#main_notice > div div.ncons a.more {position:absolute; top:-50px; right:2px;}
 
 
 /* book */
@@ -150,7 +150,7 @@ span.text {word-break: keep-all; display: block; overflow: hidden; width:100%; h
 .banner{height:79px; position:relative;}
 .banner #foot_banner {width:1200px; margin:0 auto;}
 .banner_control button {margin-left:-3px; cursor:pointer;}
-.banner_title{font-size:17px; padding:20px 15px 0 0; float:left;  margin-top: 15px;}
+.banner_title{font-size:17px; padding:15px 15px 0 0; float:left;  margin-top: 15px;}
 
 .caroufredsel_wrapper{margin-top:-36px; margin-right:-15px;}
 
@@ -158,7 +158,7 @@ span.text {word-break: keep-all; display: block; overflow: hidden; width:100%; h
 .banner ul li{float:left; margin-right:10px;}
 .banner ul li:last-child{margin-right:0 !important;}
 
-.banner_control{padding-top:36px;}
+.banner_control{padding-top:29px;}
 .banner_control a{float:left; margin-right:7px;}
 .banner_control a:last-child{margin-right:0 !important;}
 
@@ -237,15 +237,25 @@ span.text {word-break: keep-all; display: block; overflow: hidden; width:100%; h
 	/* 팝업/공지사항 */
 	.bujun_wl_bg {padding:15px 10px;}
 	.bujun_news_wrap .bujun_wr {padding:25px 10px;}
-	#main_notice > div h3 a {width:auto; padding: 17px 30px 16px 30px;}
-	#main_notice > div h3.nt_02 {left: 121px;}
+	#main_notice > div h3 a {width:auto; padding:18px 20px 16px 20px; font-size:15px;}
+	#main_notice > div h3.nt_02 {left:97px;}
 	#main_notice > div h3.nt_03 {display:none;}
+	#main_notice {height: 250px;}
+	#main_notice .main_notice_line {height:250px;}
+	#main_notice > div div.ncons ul li:last-child {display:none;}	
+	#main_notice > div div.ncons ul li:nth-child(5) {display:none;}		
+	#main_notice > div div.ncons ul li span.main_date {font-size:13px;}
 	
 	/* 퀵메뉴 */
 	.quick .quick_wrap {padding:15px 10px 6px 15px;}
 	.quick .quick_menu li {width: 32.60%; }
 	.quick .quick_menu li:nth-child(4n) {margin-right: 1%;}
 	.quick .quick_menu li:nth-child(3n) {margin-right:0;}
+	
+	/**/
+	#popup {height:250px;}
+	#popup span img {height:250px;}
+
 
 }
 
@@ -259,3 +269,15 @@ span.text {word-break: keep-all; display: block; overflow: hidden; width:100%; h
 	.quick .quick_menu li:nth-child(2n) {margin-right:0 !important;}
 	.quick .quick_menu li:nth-child(3n) {margin-right:1%;}
 }
+
+
+/******************** mob - 480 *****************/
+@media all and (max-width:480px) {
+	#main_notice > div div.ncons ul li a {width:70%;}
+}
+
+
+
+
+
+

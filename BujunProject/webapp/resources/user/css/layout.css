@@ -136,7 +136,7 @@ h1 {position:absolute; left:0; top:25px;}
 	#menu .mob_search p.txt {padding-top:25px; color:#fff; text-align:center;} 
 	#menu .mob_search .mob_search_frm {text-align:center;}
 	#menu .mob_search .mob_search_frm input[type='text'] {position: absolute; left:31px; top:24px; color:#fff; border:0; border-bottom:1px solid #fff !important; background:#2d82b8; width:143px; font-size:13px; padding:2px 5px 2px 5px;}	
-	#menu .mob_search .mob_search_frm button {position:absolute; right:37px; top:22px;  cursor:pointer; background:none; border:0;}
+	#menu .mob_search .mob_search_frm button {position:absolute; right:37px; top:21px;  cursor:pointer; background:none; border:0;}
 	#menu .mob_search .mob_search_frm button img {width:19px; padding-bottom:3px; border-bottom:1px solid #fff;}
 
 	/* footer */
@@ -166,3 +166,15 @@ h1 {position:absolute; left:0; top:25px;}
 	.topBt {width:50px; height:50px;}
 	.topBt:before {margin: 15px auto 8px; background: url("../images/common/arr_top.png") no-repeat center 0; background-size: 19px;}
 }
+
+/******************** 700px *****************/
+@media all and (max-width:700px) {
+	.textnon {height:auto !important;}
+}
+
+
+
+
+
+
+
