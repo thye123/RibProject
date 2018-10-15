@@ -52,9 +52,9 @@
 
 	<div class="auto_box mg_b40">
 		<form action="/study/update?m1=${m1}&m2=${m2}&stu_code=${detail.stu_code}&stu_idx=${detail.stu_idx}" method="post">
-			<table class="tb_board" cellspacing="1" cellpadding="1">
+			<table class="board_read" cellspacing="1" cellpadding="1">
 				<tr>
-					<td>작성자</td>
+					<th class="c">작성자</th>
 					<td style="text-align:left;">
 						<input type="text" name="mem_name" value="${sessionScope.mem_name}" readonly="readonly"/>
 						<input type="hidden" name="stu_writer" value="${detail.stu_writer}">
@@ -62,19 +62,19 @@
 					</td>
 				</tr>
 				<tr>
-					<td>스터디명</td>
+					<th class="c">스터디명</th>
 					<td style="text-align:left;">
 						<input type="text" name="stu_title" style="width:70%;" value="${detail.stu_title}">
 					</td>					
 				</tr>
 				<tr>
-					<td>장소</td>
+					<th class="c">장소</th>
 					<td style="text-align:left;">
 						<input type="text" name="stu_location" style="width:70%;" value="${detail.stu_location}">
 					</td>					
 				</tr>
 				<tr>
-					<td>모집인원</td>
+					<th class="c">모집인원</th>
 					<td style="text-align:left;">
 						<select name="stu_person">
 							<option class="person_cnt" value="">선택</option>
@@ -92,13 +92,13 @@
 					</td>					
 				</tr>
 				<tr>
-					<td>스터디일정</td>
+					<th class="c">스터디일정</th>
 					<td style="text-align:left;">
 						<input type="text" name="stu_date" style="width:70%;" value="${detail.stu_date}">
 					</td>					
 				</tr>
 				<tr>
-					<td>상세내용</td>
+					<th class="c">상세내용</th>
 					<td style="text-align:left;">
 						<textarea name="stu_content" rows="20" style="resize: none; warp:virtual; width:100%;">${detail.stu_content}</textarea>
 					</td>					

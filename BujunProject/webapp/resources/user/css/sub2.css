@@ -518,6 +518,34 @@ div.greeting div { color:#777;
 	font-size: 18px;
 }
 
+.studyJoinIntro{
+	border: 1px solid lightgray;
+	width: 96%;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	padding-left: 2%;
+	padding-top: 2%;
+	padding-right: 2%;
+	font-size: 15px;
+}
+
+.studyJoinIntro li{
+	margin-bottom: 2%;	
+}
+
+.joinphone{
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.studydangerarea{
+	margin-top: 2%;
+}
+
+.studydanger{
+	font-size: 18px;
+}
+
 /******************** pad *****************/
 @media all and (max-width:1000px) {
 	

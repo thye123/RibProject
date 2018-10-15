@@ -56,6 +56,13 @@
 		</div>
 	</div>
 	
+	<div class="tab_depth01" >
+		<ul class="n03">
+			<li style="width:50%;"><a href="/study?m1=${m1}&m2=${m2}&page_num=1&page_grp=1" class="on">스터디모집</a></li>
+			<li style="width:50%;"><a href="/study/appList?m1=${m1}&m2=${m2}&page_num=1&page_grp=1&mem=${sessionScope.rimem_num}">나의 스터디 신청현황</a></li>
+		</ul>
+	</div>
+	
 	<!-- 검색 -->
 	<div class="boardSearch">
 		<div class="board_page">
@@ -89,7 +96,15 @@
 							<span><b>작성자:</b>${slist.mem_name}</span><br>
 							<span><b>일정:</b>${slist.stu_date}</span><br>
 							<span><b>인원:</b>${slist.stu_person}</span><br>
-							<span><b>장소:</b>${slist.stu_location}</span>
+							<span><b>장소:</b>${slist.stu_location}</span><br>
+							<c:choose>
+								<c:when test="${slist.stu_end eq 1}">
+									<span><b>모집중</b></span>
+								</c:when>
+								<c:otherwise>
+									<span><b>모집종료</b></span>
+								</c:otherwise>
+							</c:choose>
 						</a>
 					</div>
 				</c:forEach>
@@ -102,7 +117,15 @@
 							<span><b>작성자:</b>${slist.mem_name}</span><br>
 							<span><b>일정:</b>${slist.stu_date}</span><br>
 							<span><b>인원:</b>${slist.stu_person}</span><br>
-							<span><b>장소:</b>${slist.stu_location}</span>
+							<span><b>장소:</b>${slist.stu_location}</span><br>
+							<c:choose>
+								<c:when test="${slist.stu_end eq 1}">
+									<span><b>모집중</b></span>
+								</c:when>
+								<c:otherwise>
+									<span><b>모집종료</b></span>
+								</c:otherwise>
+							</c:choose>
 						</a>
 					</div>
 				</c:forEach>

@@ -84,5 +84,16 @@
 	#{tot_cnt, mode=OUT, jdbcType=VARCHAR},
 	#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=selStudy}
 	)}
-	</select>	
+	</select>
+
+	<insert id="stuAppliy">
+	{CALL PKG_STUDY.PROC_STU_APPLIY(
+	#{stu_code, mode=IN, jdbcType=VARCHAR},
+	#{stu_writer, mode=IN, jdbcType=VARCHAR},
+	#{stu_rimemnum, mode=IN, jdbcType=VARCHAR},
+	#{stuap_name, mode=IN, jdbcType=VARCHAR},
+	#{stuap_phone, mode=IN, jdbcType=VARCHAR}
+	)}
+	</insert>	
+	
 </mapper>

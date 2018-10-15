@@ -12,30 +12,6 @@
 
 <!-- 레프트메뉴 -->
 <%@ include file="../../include/left_menu06.jsp" %>   
-
-<script>
-	onload = function(){
-		var cancel = document.getElementById("list");
-		cancel.addEventListener("click", function(){
-			location.href="/study?m1=${m1}&m2=${m2}&page_num=1&page_grp=1";
-		});
-		
-		var update = document.getElementById("update");
-		update.addEventListener("click", function(){
-			location.href = "/study/updateForm?m1=${m1}&m2=${m2}&stu_code=${detail.stu_code}&stu_idx=${detail.stu_idx}";
-		});
-		
-		var del = document.getElementById("delete");
-		del.addEventListener("click", function(){
-			location.href = "/study/delete?m1=${m1}&m2=${m2}&stu_code=${detail.stu_code}&stu_idx=${detail.stu_idx}";
-		});
-		
-		var join = document.getElementById("join");
-		join.addEventListener("click", function(){
-			location.href = "/study/joinForm?m1=${m1}&m2=${m2}&stu_code=${detail.stu_code}&stu_idx=${detail.stu_idx}";
-		});
-	}
-</script>
 			
 <!-- location -->
 <div class="loca">
@@ -107,10 +83,56 @@
 		</tbody>
 	</table>
 	<div class="r mg_t20 btns">
-		<input type="button" class="btns_black" id="join" value="신청" style="border:0;"/>
-		<input type="button" class="btns_black" id="update" value="수정" style="border:0;"/>
-		<input type="button" class="btns_black" id="delete" value="삭제" style="border:0;"/>
-		<input type="button" class="btns_black" id="list" value="목록" style="border:0;"/>
+		<c:choose>
+			<c:when test="${detail.stu_writer eq sessionScope.mem_id && detail.stu_rimemnum eq sessionScope.rimem_num}">
+				<script>
+					onload = function(){
+						var cancel = document.getElementById("list");
+						cancel.addEventListener("click", function(){
+							location.href="/study?m1=${m1}&m2=${m2}&page_num=1&page_grp=1";
+						});	
+						
+						var update = document.getElementById("update");
+						update.addEventListener("click", function(){
+							location.href = "/study/updateForm?m1=${m1}&m2=${m2}&stu_code=${detail.stu_code}&stu_idx=${detail.stu_idx}";
+						});
+						
+						var del = document.getElementById("delete");
+						del.addEventListener("click", function(){
+							location.href = "/study/delete?m1=${m1}&m2=${m2}&stu_code=${detail.stu_code}&stu_idx=${detail.stu_idx}";
+						});
+						
+						var appliCondition = document.getElementById("appliCondition");
+						appliCondition.addEventListener("click", function(){
+							location.href = "/study/prcondition?m1=${m1}&m2=${m2}&stu_code=${detail.stu_code}&page_num=1&page_grp=1";
+						});
+					}
+				</script>
+				<input type="button" class="btns_black" id="appliCondition" value="신청현황" style="border:0;"/>
+				<input type="button" class="btns_black" id="update" value="수정" style="border:0;"/>
+				<input type="button" class="btns_black" id="delete" value="삭제" style="border:0;"/>
+				<input type="button" class="btns_black" id="list" value="목록" style="border:0;"/>			
+			</c:when>
+			<c:otherwise>
+				<script>
+					onload = function(){
+						var cancel = document.getElementById("list");
+						cancel.addEventListener("click", function(){
+							location.href="/study?m1=${m1}&m2=${m2}&page_num=1&page_grp=1";
+						});	
+						
+						var join = document.getElementById("join");
+						join.addEventListener("click", function(){
+							location.href = "/study/joinForm?m1=${m1}&m2=${m2}&stu_code=${detail.stu_code}&stu_idx=${detail.stu_idx}";
+						});
+					}
+				</script>
+				<c:if test="${detail.stu_end eq 1}">
+					<input type="button" class="btns_black" id="join" value="신청" style="border:0;"/>
+				</c:if>
+				<input type="button" class="btns_black" id="list" value="목록" style="border:0;"/>			
+			</c:otherwise>
+		</c:choose>
 	</div>	
 <!-- //content 끝 -->
 </div>

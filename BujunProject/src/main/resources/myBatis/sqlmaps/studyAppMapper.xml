@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="StudyApp">
+	<resultMap type="com.bujun.study.vo.StudyAppVo" id="stuAppList">
+		<result property="stuap_idx"		column="STUAP_IDX" 		javaType="int"/>
+		<result property="stuap_code"		column="STUAP_CODE" 	javaType="String"/>
+		<result property="stuap_memid"		column="STUAP_MEMID" 	javaType="String"/>
+		<result property="stuap_rimemnum"	column="STUAP_RIMEMNUM" javaType="String"/>
+		<result property="stuap_name"		column="STUAP_NAME" 	javaType="String"/>
+		<result property="stuap_phone"		column="STUAP_PHONE" 	javaType="String"/>
+		<result property="stuap_regdate"	column="STUAP_REGDATE" 	javaType="String"/>
+		<result property="stuap_fix"		column="STUAP_FIX"		javaType="int"/>
+		<result property="stu_idx"			column="STU_IDX"		javaType="int"/>
+		<result property="stu_code"			column="STU_CODE" 		javaType="String"/>
+		<result property="stu_writer" 		column="STU_WRITER" 	javaType="String"/>
+		<result property="stu_rimemnum"		column="STU_RIMEMNUM" 	javaType="String"/>
+		<result property="stu_title"		column="STU_TITLE" 		javaType="String"/>
+		<result property="stu_location"		column="STU_LOCATION" 	javaType="String"/>
+		<result property="stu_content"		column="STU_CONTENT" 	javaType="String"/>
+		<result property="stu_person"		column="STU_PERSON" 	javaType="int"/>
+		<result property="stu_date"			column="STU_DATE" 		javaType="String"/>
+		<result property="stu_regdate"		column="STU_REGDATE" 	javaType="String"/>		
+		<result property="stu_count"		column="STU_COUNT" 		javaType="int"/>		
+		<result property="stu_end"			column="STU_END" 		javaType="int"/>
+		<result property="mem_name"			column="MEM_NAME"		javaType="String"/>		
+	</resultMap>
+
+	<select id="appList"
+			statementType="CALLABLE"
+			parameterType="hashmap"
+			resultType="com.bujun.study.vo.StudyAppVo">
+    {CALL PKG_STUDY.PROC_STU_APP_LIST(
+    #{mem, mode=IN, jdbcType=VARCHAR},
+    #{page_num, mode=IN, jdbcType=NUMERIC},
+    #{tot_cnt, mode=OUT, jdbcType=NUMERIC},
+    #{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=stuAppList}
+    )}
+	</select>
+	
+	<select id="appSearch"
+			statementType="CALLABLE"
+			parameterType="hashmap"
+			resultType="com.bujun.study.vo.StudyAppVo"
+	>
+	{CALL PKG_STUDY.PROC_STUAP_APP_SEARCH(
+	#{mem, mode=IN, jdbcType=VARCHAR},
+	#{keyword, mode=IN, jdbcType=VARCHAR},
+	#{keyfield, mode=IN, jdbcType=VARCHAR},
+	#{page_num, mode=IN, jdbcType=NUMERIC},
+	#{tot_cnt, mode=OUT, jdbcType=VARCHAR},
+	#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=stuAppList}
+	)}
+	</select>
+
+	<select id="stuAppList"
+			statementType="CALLABLE"
+			parameterType="hashmap"
+			resultType="com.bujun.study.vo.StudyAppVo"
+	>
+	{CALL PKG_STUDY.PROC_STU_APPLY_LIST(
+	#{stu_code, mode=IN, jdbcType=VARCHAR},
+	#{page_num, mode=IN, jdbcType=NUMERIC},
+	#{tot_cnt, mode=OUT, jdbcType=NUMERIC},
+	#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=stuAppList}
+	)}
+	</select>
+	
+	<select id="stuApplySearch"
+			statementType="CALLABLE"
+			parameterType="hashmap"
+			resultType="com.bujun.study.vo.StudyAppVo"
+	>
+	{CALL PKG_STUDY.PROC_STU_APPLY_SEARCH(
+	#{stuap_code, mode=IN, jdbcType=VARCHAR},
+	#{keyfield, mode=IN, jdbcType=VARCHAR},
+	#{page_num, mode=IN, jdbcType=NUMERIC},
+	#{tot_cnt, mode=OUT, jdbcType=VARCHAR},
+	#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=stuAppList}
+	)}
+	</select>
+
+	<update id="stuApplyUpdate">
+	{CALL PKG_STUDY.PROC_STU_APPLY_UPDATE(
+	#{stuap_idx, mode=IN, jdbcType=NUMERIC},
+	#{stuap_code, mode=IN, jdbcType=VARCHAR}
+	)}
+	</update>
+	
+	<update id="stuEnd">
+	{CALL PKG_STUDY.PROC_STU_END(
+	#{stuap_code, mode=IN, jdbcType=VARCHAR}
+	)}
+	</update>
+</mapper>
