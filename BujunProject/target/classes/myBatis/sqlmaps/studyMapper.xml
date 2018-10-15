@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Study">
+	<resultMap type="com.bujun.study.vo.StudyVo" id="selStudy">
+		<result property="stu_idx"		column="STU_IDX"		javaType="int"/>
+		<result property="stu_code"		column="STU_CODE" 		javaType="String"/>
+		<result property="stu_writer" 	column="STU_WRITER" 	javaType="String"/>
+		<result property="stu_rimemnum"	column="STU_RIMEMNUM" 	javaType="String"/>
+		<result property="stu_title"	column="STU_TITLE" 		javaType="String"/>
+		<result property="stu_location"	column="STU_LOCATION" 	javaType="String"/>
+		<result property="stu_content"	column="STU_CONTENT" 	javaType="String"/>
+		<result property="stu_person"	column="STU_PERSON" 	javaType="int"/>
+		<result property="stu_date"		column="STU_DATE" 		javaType="String"/>
+		<result property="stu_regdate"	column="STU_REGDATE" 	javaType="String"/>		
+		<result property="stu_count"	column="STU_COUNT" 		javaType="int"/>		
+		<result property="stu_end"		column="STU_END" 		javaType="int"/>
+		<result property="mem_name"		column="MEM_NAME"		javaType="String"/>		
+	</resultMap>
+         
+    <select id="getStudy"
+    		statementType="CALLABLE"
+			parameterType="hashmap"
+			resultType="com.bujun.study.vo.StudyVo">
+    	{CALL PKG_STUDY.PROC_SELECT_LIST(
+    	#{page_num, mode=IN, jdbcType=NUMERIC},
+    	#{tot_cnt, mode=OUT, jdbcType=NUMERIC},
+    	#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=selStudy}
+    	)}
+    </select>     
+         
+	<insert id="addStudy">
+		{CALL PKG_STUDY.PROC_ADD_STUDY(
+		#{stu_writer, mode=IN, jdbcType=VARCHAR},
+		#{stu_rimemnum, mode=IN, jdbcType=VARCHAR},
+		#{stu_title, mode=IN, jdbcType=VARCHAR},
+		#{stu_location, mode=IN, jdbcType=VARCHAR},
+		#{stu_content, mode=IN, jdbcType=VARCHAR},
+		#{stu_person, mode=IN, jdbcType=NUMERIC},
+		#{stu_date, mode=IN, jdbcType=VARCHAR}
+		)}
+	</insert>
+	
+	<select id="getDetail"
+			statementType="CALLABLE"
+			parameterType="hashmap"
+			resultType="com.bujun.study.vo.StudyVo">
+		{CALL PKG_STUDY.PROC_DETAIL(
+		#{stu_idx, mode=IN, jdbcType=NUMERIC},
+		#{stu_code, mode=IN, jdbcType=VARCHAR},
+		#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=selStudy}
+		)}
+	</select>
+	
+	<update id="update">
+	{CALL PKG_STUDY.PROC_UPDATE(
+	#{stu_idx, mode=IN, jdbcType=NUMERIC},
+	#{stu_code, mode=IN, jdbcType=VARCHAR},
+	#{stu_title, mode=IN, jdbcType=VARCHAR},
+	#{stu_location, mode=IN, jdbcType=VARCHAR},
+	#{stu_content, mode=IN, jdbcType=VARCHAR},
+	#{stu_person, mode=IN, jdbcType=NUMERIC},
+	#{stu_date, mode=IN, jdbcType=VARCHAR}
+	)}
+	</update>
+	
+	<delete id="delete">
+	{CALL PKG_STUDY.PROC_DELETE(
+	#{stu_idx, mode=IN, jdbcType=NUMERIC},
+	#{stu_code, mode=IN, jdbcType=VARCHAR}
+	)}
+	</delete>
+
+	<select id="search"
+			statementType="CALLABLE"
+			parameterType="hashmap"
+			resultType="com.bujun.study.vo.StudyVo">
+	{CALL PKG_STUDY.PROC_SEARCH(
+	#{keyword, mode=IN, jdbcType=VARCHAR},
+	#{keyfield, mode=IN, jdbcType=VARCHAR},
+	#{page_num, mode=IN, jdbcType=NUMERIC},
+	#{tot_cnt, mode=OUT, jdbcType=VARCHAR},
+	#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=selStudy}
+	)}
+	</select>
+
+	<insert id="stuAppliy">
+	{CALL PKG_STUDY.PROC_STU_APPLIY(
+	#{stu_code, mode=IN, jdbcType=VARCHAR},
+	#{stu_writer, mode=IN, jdbcType=VARCHAR},
+	#{stu_rimemnum, mode=IN, jdbcType=VARCHAR},
+	#{stuap_name, mode=IN, jdbcType=VARCHAR},
+	#{stuap_phone, mode=IN, jdbcType=VARCHAR}
+	)}
+	</insert>	
+	
+</mapper>

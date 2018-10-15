@@ -86,7 +86,6 @@
     <insert id="MemberJoin" parameterType="hashmap" statementType="CALLABLE">
 	     {CALL  BJL_PKG_MEMBER.member_join(   
 	        #{mem_id, mode=IN,  jdbcType=VARCHAR },
-	        #{rimem_num,  mode=IN, jdbcType=VARCHAR },
 	        #{mem_pass,  mode=IN, jdbcType=VARCHAR },
 	        #{mem_name,  mode=IN, jdbcType=VARCHAR },
 	        #{mem_birth,  mode=IN, jdbcType=INTEGER },
