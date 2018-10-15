@@ -1,9 +1,10 @@
 package com.bujun.openinfo.controller;
 
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +33,7 @@ public class OpenInfoController {
 	}
 	
 	@RequestMapping("/info03")
-	public ModelAndView goOpenInfo(@RequestParam HashMap<String, Object> map, Model model) {
+	public ModelAndView goOpenInfo(@RequestParam HashMap<String, Object> map, Model model, HttpSession session) {
 		//System.out.println("map: " + map);
 		model.addAttribute("menu", map);
 		String ad_code = "";
@@ -61,7 +62,7 @@ public class OpenInfoController {
 		mv.addObject("m1",map.get("m1"));
 		mv.addObject("m2",map.get("m2"));
 		mv.addObject("m3",map.get("m3"));
-		mv.addObject("ad_code", map.get("ad_code"));
+		mv.addObject("ad_code", ad_code);
 		mv.addObject("contentList", list);
 		mv.addObject("paging", map.get("pagingVo"));
 		mv.addObject("page_num", map.get("page_num"));
@@ -72,7 +73,8 @@ public class OpenInfoController {
 		
 	//새글작성
 	@RequestMapping("/info03/CForm")
-	public ModelAndView insertForm(@RequestParam HashMap<String, Object> map) {
+	public ModelAndView insertForm(@RequestParam HashMap<String, Object> map, Model model) {
+		model.addAttribute("menu", map);
 		ModelAndView mv = new ModelAndView();
 		String ad_code = String.valueOf(map.get("ad_code"));
 		
@@ -100,7 +102,8 @@ public class OpenInfoController {
 	}
 	
 	@RequestMapping("/info03/iCon")
-	public String insertContent(@RequestParam HashMap<String, Object> map, HttpServletRequest req) {
+	public String insertContent(@RequestParam HashMap<String, Object> map, Model model, HttpServletRequest req) {
+		model.addAttribute("menu", map);
 		int ad_idx = openInfoService.insertContent(map);
 		String ad_code = String.valueOf(map.get("ad_code"));
 		
@@ -128,7 +131,8 @@ public class OpenInfoController {
 	
 	//상세 정보
 	@RequestMapping("/info03/dCon")
-	public ModelAndView goContent(@RequestParam HashMap<String, Object> map) {
+	public ModelAndView goContent(@RequestParam HashMap<String, Object> map, Model model, HttpSession session) {
+		model.addAttribute("menu", map);
 		String ad_code = "";
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
@@ -160,7 +164,7 @@ public class OpenInfoController {
 	
 	//검색
 	@RequestMapping("/info03/search")
-	public ModelAndView search(@RequestParam HashMap<String, Object> map, Model model) {
+	public ModelAndView search(@RequestParam HashMap<String, Object> map, Model model, HttpSession session) {
 		model.addAttribute("menu", map);
 		String ad_code = "";
 		String m1 = String.valueOf(map.get("m1"));		
@@ -199,7 +203,8 @@ public class OpenInfoController {
 	
 	//수정
 	@RequestMapping("/info03/updateform")
-	public ModelAndView updateForm(@RequestParam HashMap<String, Object> map) {
+	public ModelAndView updateForm(@RequestParam HashMap<String, Object> map, Model model, HttpSession session) {
+		model.addAttribute("menu", map);
 		String ad_code = "";
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
@@ -231,7 +236,8 @@ public class OpenInfoController {
 	}
 	
 	@RequestMapping("/info03/update")
-	public String update(@RequestParam HashMap<String, Object> map, HttpServletRequest req) {
+	public String update(@RequestParam HashMap<String, Object> map, HttpServletRequest req, Model model, HttpSession session) {
+		model.addAttribute("menu", map);
 		openInfoService.update(map);
 		openInfoService.upFile(req,map);
 		return "redirect:/info03/dCon?ad_code="+map.get("ad_code")+"&ad_idx="+map.get("ad_idx");
@@ -239,7 +245,8 @@ public class OpenInfoController {
 	
 	//삭제
 	@RequestMapping("/info03/delete")
-	public String delCon(@RequestParam HashMap<String, Object> map) {
+	public String delCon(@RequestParam HashMap<String, Object> map, Model model, HttpSession session) {
+		model.addAttribute("menu", map);
 		String ad_code = "";
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
@@ -264,7 +271,8 @@ public class OpenInfoController {
 	}
 	
 	@RequestMapping("/info03/delFile")
-	public String delFile(@RequestParam HashMap<String, Object> map) {
+	public String delFile(@RequestParam HashMap<String, Object> map, Model model, HttpSession session) {
+		model.addAttribute("menu", map);
 		String ad_code = "";
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
