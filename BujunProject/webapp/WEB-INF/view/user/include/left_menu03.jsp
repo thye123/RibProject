@@ -73,7 +73,7 @@
 				</c:choose>
 				
 				
-				<c:choose>
+<%-- 				<c:choose>
 					<c:when test="${menu.m1 eq 03 && menu.m2 eq 03}">
 						<li class="default open">
 							<a href="/nbook?m1=03&m2=03"><div class="link">새로들어온책<i class="fa fa-chevron-down"></i></div></a>
@@ -84,19 +84,19 @@
 							<a href="/nbook?m1=03&m2=03"><div class="link">새로들어온책<i class="fa fa-chevron-down"></i></div></a>
 						</li>					
 					</c:otherwise>
-				</c:choose>	
+				</c:choose>	 --%>
 				
 				
 				
 				<c:choose>
 					<c:when test="${menu.m1 eq 03 && menu.m2 eq 04}">
 						<li class="default open">
-							<a href="/mbinfo?m1=03&m2=04"><div class="link">나의도서대출정보<i class="fa fa-chevron-down"></i></div></a>
+							<a href="/mbinfo?m1=03&m2=04&page=1&perPageNum=10"><div class="link">나의도서대출정보<i class="fa fa-chevron-down"></i></div></a>
 						</li>
 					</c:when>
 					<c:otherwise>
 						<li>
-							<a href="/mbinfo?m1=03&m2=04"><div class="link">나의도서대출정보<i class="fa fa-chevron-down"></i></div></a>
+							<a href="/mbinfo?m1=03&m2=04&page=1&perPageNum=10"><div class="link">나의도서대출정보<i class="fa fa-chevron-down"></i></div></a>
 						</li>					
 					</c:otherwise>
 				</c:choose>					

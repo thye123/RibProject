@@ -9,6 +9,21 @@
 <div class="visual">
 	<div class="visual_wrap">
 	
+		<script>
+			function m_search() {
+				
+				var key = document.getElementById("key");
+				
+				if(key.value == "") {
+					alert("검색어를 입력하세요.");
+					key.focus();
+					return;
+				}
+					
+				document.formSearch.submit();
+			}
+		</script>
+	
 		<div class="visual_title c">
 			<img src="${pageContext.request.contextPath}/resources/user/images/main/visual_title.png" alt="지식과 문화의 길, 따스한 삶이 있는 부전도서관" />
 		</div>
@@ -16,11 +31,21 @@
 		<div class="search_bg">
 			<div class="search_title">소장자료 검색</div>
 			
-			<form class="search_form">
-				<input type="text" />
-				<button type="button" class="m_search">
-					<img src="${pageContext.request.contextPath}/resources/user/images/main/v_search.png" alt="검색">
+			<form class="search_form" name="formSearch" action="/bjsearch">
+				<input type="text" id="key" name="kwd" />
+				<button type="button" class="m_search" onclick="m_search()">
+					<img src="${pageContext.request.contextPath}/resources/user/images/main/v_search2.png" alt="검색">
 				</button>
+				
+				<input type="hidden" name="m1" value="03" />
+				<input type="hidden" name="m2" value="01" />
+				<input type="hidden" name="page" value="1" />
+				<input type="hidden" name="chk" value="1" />
+				<input type="hidden" name="sort_select5" value="" />
+				<input type="hidden" name="sort_select3" value="" />
+				<input type="hidden" name="startDate" value="" />
+				<input type="hidden" name="endDate" value="" />
+				<input type="hidden" name="sort_select1" value="" />
 			</form>
 		</div>
 
@@ -100,14 +125,32 @@
 									</a>
 									<span class="main_date">2018.03.20</span>
 								</li>
+								<li>
+									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
+										제8회 &#40;재&#41;동래장학회 장학생 선발자 명단									
+									</a>
+									<span class="main_date">2018.03.20</span>
+								</li>
+								<li>
+									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
+										제8회 &#40;재&#41;동래장학회 장학생 선발자 명단									
+									</a>
+									<span class="main_date">2018.03.20</span>
+								</li>
+								<li>
+									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
+										제8회 &#40;재&#41;동래장학회 장학생 선발자 명단									
+									</a>
+									<span class="main_date">2018.03.20</span>
+								</li>																								
 							</ul>
-							<a href="/index.php?pagecode=P000000026" class="more" title="공지사항 목록 더보기로 이동합니다."><img src="/common/images/main/plus_blk.png" alt="공지사항 더보기" /></a>
+							<a href="/index.php?pagecode=P000000026" class="more" title="공지사항 목록 더보기로 이동합니다."><img src="${pageContext.request.contextPath}/resources/user/images/main/m_more.png" alt="공지사항 더보기" /></a>
 						</div>
 						<!-- //1 -->
 
 
 						<!-- 2 -->
-						<h3 class="nt_02"><a href="#" >보도자료</a></h3>
+						<h3 class="nt_02"><a href="#" >평생교육프로그램</a></h3>
 						<div class="ncons" >
 
 							<ul>
@@ -130,13 +173,13 @@
 									<span class="main_date">2018.03.20</span>
 								</li>
 							</ul>
-							<a href="/index.php?pagecode=P000000028" class="more" title="보도자료 목록 더보기로 이동합니다."><img src="/common/images/main/plus_blk.png" alt="보도자료 더보기" /></a>						
+							<a href="/index.php?pagecode=P000000028" class="more" title="보도자료 목록 더보기로 이동합니다."><img src="${pageContext.request.contextPath}/resources/user/images/main/m_more.png" alt="보도자료 더보기" /></a>						
 						</div>
 						<!-- //2 -->
 					
 					
 						<!-- 3 -->
-						<h3 class="nt_03"><a href="#" >보도자료</a></h3>
+						<h3 class="nt_03"><a href="#" >스터디 커뮤니티</a></h3>
 						<div class="ncons" >
 
 							<ul>
@@ -159,7 +202,7 @@
 									<span class="main_date">2018.03.20</span>
 								</li>
 							</ul>
-							<a href="/index.php?pagecode=P000000028" class="more" title="보도자료 목록 더보기로 이동합니다."><img src="/common/images/main/plus_blk.png" alt="보도자료 더보기" /></a>						
+							<a href="/index.php?pagecode=P000000028" class="more" title="보도자료 목록 더보기로 이동합니다."><img src="${pageContext.request.contextPath}/resources/user/images/main/m_more.png" alt="보도자료 더보기" /></a>						
 						</div>
 						<!-- //3 -->						
 					
@@ -318,15 +361,15 @@
 		<div class="tit">QUICK <span>SERVICE</span></div>
 		<ul class="quick_menu">
 			<li><a href="#"><span class="txt">비치희망자료</span></a></li>
-			<li><a href="#"><span class="txt">나의 대출정보</span></a></li>
-			<li><a href="#"><span class="txt">자원봉사신청</span></a></li>
-			<li><a href="#"><span class="txt">전자책e-book</span></a></li>
+			<li><a href="/mbinfo?m1=03&m2=04&page=1&perPageNum=10"><span class="txt">나의 대출정보</span></a></li>
+			<li><a href="/volunteer?m1=06&m2=04"><span class="txt">자원봉사신청</span></a></li>
+			<li><a href="http://contents.siminlib.go.kr/FxLibrary/" title="새창으로 열림" target="_blank"><span class="txt">전자책e-book</span></a></li>
 			<li><a href="#"><span class="txt">자리 예약</span></a></li>
-			<li><a href="#"><span class="txt">새로들어온책</span></a></li>
-			<li><a href="#"><span class="txt">공공도서관 통합검색</span></a></li>
-			<li><a href="#"><span class="txt">특성화 금융정보자료실</span></a></li>
-			<li><a href="#"><span class="txt">특성화 문화강좌신청</span></a></li>
-			<li><a href="#"><span class="txt">편의시설</span></a></li>
+			<li><a href="/monthbk?rec_code=CAT0031&m1=05&m2=01&m3=01&page=1&perPageNum=12"><span class="txt">추천도서</span></a></li>
+			<li><a href="http://search.siminlib.go.kr/search/search.jsp?logo=4&mcode=110" target="_blank" title="새창으로 열림"><span class="txt">공공도서관 통합검색</span></a></li>
+			<li><a href="/finref01?m1=02&m2=02&m3=05"><span class="txt">특성화 금융정보자료실</span></a></li>
+			<li><a href="#"><span class="txt">프로그램신청</span></a></li>
+			<li><a href="/facility?m1=02&m2=05"><span class="txt">편의시설</span></a></li>
 			
 		</ul>
 		

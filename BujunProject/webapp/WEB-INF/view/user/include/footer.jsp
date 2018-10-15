@@ -9,7 +9,7 @@
 				<li><a href="#">사이트맵</a></li>
 				<li><a href="/videoinfo?m1=08&m2=03">영상처리정보기기</a></li>
 				<li><a href="/location?m1=08&m2=04">찾아오시는길</a></li>
-				<li><a href="#">자주하는 질문</a></li>
+				<li><a href="/qna?m1=06&m2=02">자주하는 질문</a></li>
 			</ul>	
 			
 			<div class="fot_addr">

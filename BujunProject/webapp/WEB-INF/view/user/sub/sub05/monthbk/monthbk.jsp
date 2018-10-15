@@ -33,7 +33,7 @@
 	<!-- title -->
 	<div class="sub_tit">공공도서관이 추천하는 이달의 책</div>
 	
-	
+	<!--  -->
 	
 	<!-- content 시작 -->
 	<div class="basic_box type1">
@@ -46,8 +46,18 @@
 			</ul>
 		</div>
 	</div>
+	
+	
+	<div id="book_list">
+		<div class="title"><span>이달의 책</span></div>
+		<ul class="book_list">
+			 <li><span><img src="${pageContext.request.contextPath}/resources/user/images/sub/book_level01.png" alt="문학"></span> <a href="/monthbk_read?rec_idx=15&rec_code=CAT0031&searchType=&keyword=&page=1&perPageNum=12&m1=05&m2=01&m3=01"><img src = "/img/7b24d786-1e5d-49b9-9db9-4f2894714220_20181001094821.jpg" /></a></li>
+			 <li><span><img src="${pageContext.request.contextPath}/resources/user/images/sub/book_level02.png" alt="비문학"></span> <a href="/monthbk_read?rec_idx=14&rec_code=CAT0031&searchType=&keyword=&page=1&perPageNum=12&m1=05&m2=01&m3=01"><img src="/img/48664928-e884-46df-8801-d00faad70146_20181001094739.jpg" alt="2018년 10월 이달의 책(문학)"></a></li>
+			 <li><span><img src="${pageContext.request.contextPath}/resources/user/images/sub/book_level03.png" alt="어린이"></span> <a href="/monthbk_read?rec_idx=13&rec_code=CAT0031&searchType=&keyword=&page=1&perPageNum=12&m1=05&m2=01&m3=01"><img src="/img/443c947e-fa0b-4578-9297-9f85b2408800_20181001094645.jpg" alt="2018년 10월 이달의 책(어린이)"></a></li>
+		</ul>
+	</div>
 
-	<form action="/bkreport01" method="get" name="search">
+	<form action="/monthbk" method="get" name="search">
 			<div class="boardSearch">
 				<div class="board_page">
 					<span class="p02">Total</span><span class="p01"> : ${pageMaker.totalCount}</span> (<span class="p01">${pageMaker.cri.page}</span>/${pageMaker.lastBlock}페이지)
@@ -65,13 +75,12 @@
 					</select>
 					
 		
-				<input type="hidden" value="CAT0005" name="bd_catcode"/>
+				<input type="hidden" value="CAT0031" name="rec_code"/>
 				<input type="hidden" value="05" name="m1"/>
-				<input type="hidden" value="08" name="m2"/>
-				<input type="hidden" value="01" name="m3"/>
+				<input type="hidden" value="01" name="m2"/>
 				<input type="hidden" value="01" name="m3"/>
 				<input type="hidden" value="1" name="page"/>
-				<input type="hidden" value="10" name="perPageNum"/>
+				<input type="hidden" value="12" name="perPageNum"/>
 				
 		 
 				<input name="keyword" id="keyword" title="검색어 입력"  value="${keyVal}" placeholder="검색어를 입력하세요" type="text">
@@ -85,72 +94,39 @@
 
 
 	<ul class="month_book">
-		<li>
-			<a href="#">
-				<div class="tit">2018년 10월 이달의 책(문학)</div>
-				<div class="f_l">
-					<img src="${pageContext.request.contextPath}/resources/user/images/sub/20181001094821.jpg" alt="" />
-				</div>
-				<div class="f_r">
-					<ul class="con">
-						<li>서명 : 박완서의 말</li>
-						<li>저자 : 박완서</li>
-						<li>발행자 : 마음산책</li>
-						<li>발행자 : 마음산책</li>
-					</ul>
-				</div>
-				<div class="more">상세보기</div>
-			</a>
-		</li>
-		
-		<li>
-			<a href="#">
-				<div class="tit">2018년 10월 이달의 책(문학)</div>
-				<div class="f_l">
-					<img src="${pageContext.request.contextPath}/resources/user/images/sub/20181001094821.jpg" alt="" />
-				</div>
-				<div class="f_r">
-					<ul class="con">
-						<li>서명 : 박완서의 말</li>
-						<li>저자 : 박완서</li>
-						<li>발행자 : 마음산책</li>
-						<li>발행자 : 마음산책</li>
-					</ul>
-				</div>
-				<div class="more">상세보기</div>
-			</a>
-		</li>
-		
-		<li>
-			<a href="#">
-				<div class="tit">2018년 10월 이달의 책(문학)</div>
-				<div class="f_l">
-					<img src="${pageContext.request.contextPath}/resources/user/images/sub/20181001094821.jpg" alt="" />
-				</div>
-				<div class="f_r">
-					<ul class="con">
-						<li>서명 : 박완서의 말</li>
-						<li>저자 : 박완서</li>
-						<li>발행자 : 마음산책</li>
-						<li>발행자 : 마음산책</li>
-					</ul>
-				</div>
-				<div class="more">상세보기</div>
-			</a>
-		</li>			
+	
+		<c:forEach var="brd"  items="${ boardList }">
+			<li>
+				<a href="/monthbk_read?rec_idx=${brd.rec_idx}&rec_code=CAT0031&searchType=${search}&keyword=${key}&page=${pageMaker.cri.page}&perPageNum=12&m1=05&m2=01&m3=01">
+					<div class="tit">${brd.rec_title}</div>
+					<div class="f_l">
+						<img src = "/img/${brd.file_filename}" />
+					</div>
+					<div class="f_r">
+						<ul class="con">
+							<li>서명 : ${brd.rec_bname}</li>
+							<li>저자 : ${brd.rec_author}</li>
+							<li>발행자 : ${brd.rec_publisher}</li>
+							<li>발행년도 : ${brd.rec_date}</li>
+						</ul>
+					</div>
+					<div class="more">상세보기</div>
+				</a>
+			</li>
+		</c:forEach>
 	</ul>
-
-
-
+	
+	
+	
 	<!-- 페이징 -->
-<%-- 	<div class="board-list-paging">
+	<div class="board-list-paging">
 		<div class="pagelist">
-			<a href="/bkreport01?bd_catcode=CAT0005&m1=05&m2=08&m3=01&page=1&perPageNum=10"><span class="firstpage1"><span>처음 페이지</span></span></a>
+			<a href="/monthbk?rec_code=CAT0031&m1=05&m2=01&m3=01&page=1&perPageNum=12"><span class="firstpage1"><span>처음 페이지</span></span></a>
 			
 			
 			<c:choose>
 				<c:when test="${pageMaker.prev}">
-					<a href="/bkreport01?bd_catcode=CAT0005&m1=05&m2=08&m3=01&page=${pageMaker.startPage-1}&perPageNum=10&searchType=${search}&keyword=${key}"><span class="prevblock1 "><span>1 페이지</span></span></a>
+					<a href="/monthbk?rec_code=CAT0031&m1=05&m2=01&m3=01&page=${pageMaker.startPage-1}&perPageNum=12&searchType=${search}&keyword=${key}"><span class="prevblock1 "><span>1 페이지</span></span></a>
 				</c:when>
 				<c:otherwise>
 					<a href="#"><span class="beforepage1 "><span>이전페이지없음</span></span></a>
@@ -164,28 +140,27 @@
 						<strong><span>${idx}</span></strong>
 					</c:when>
 					<c:otherwise>
-						<a class="default" href="/bkreport01?bd_catcode=CAT0005&m1=05&m2=08&m3=01&page=${idx}&perPageNum=10&searchType=${search}&keyword=${key}" ><span>${idx}</span></a>
+						<a class="default" href="/monthbk?rec_code=CAT0031&m1=05&m2=01&m3=01&page=${idx}&perPageNum=12&searchType=${search}&keyword=${key}" ><span>${idx}</span></a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>	
 			
 
 			<c:if test = "${pageMaker.next && pageMaker.endPage > 0}" >
-				<a class="nextblock" href="/bkreport01?bd_catcode=CAT0005&m1=05&m2=08&m3=01&page=${pageMaker.endPage + 1}&perPageNum=10&searchType=${search}&keyword=${key}"><span>다음</span></a>
+				<a class="nextblock" href="/monthbk?rec_code=CAT0031&m1=05&m2=01&m3=01&page=${pageMaker.endPage + 1}&perPageNum=12&searchType=${search}&keyword=${key}"><span>다음</span></a>
 			</c:if>
-			<a class="lastpage" href="/bkreport01?bd_catcode=CAT0005&m1=05&m2=08&m3=01&page=${pageMaker.lastBlock}&perPageNum=10&searchType=${search}&keyword=${key}"><span>마지막</span></a>
+			<a class="lastpage" href="/monthbk?rec_code=CAT0031&m1=05&m2=01&m3=01&page=${pageMaker.lastBlock}&perPageNum=12&searchType=${search}&keyword=${key}"><span>마지막</span></a>
 			
 			
 			
 		</div>
-	</div> --%>
+	</div>
 	<!-- //페이징 -->	
-
 	
-<!-- 	<div class="r mg_t20 btns">
-		<a class="btns_black" href="/bkreport01_write?bd_catcode=CAT0005&m1=05&m2=08&m3=01">글쓰기</a>
-	</div> -->
 	
+	<div class="r mg_t20 btns">
+		<a class="btns_black" href="/monthbk_write?rec_code=CAT0031&m1=05&m2=01&m3=01">글쓰기</a>
+	</div>
 	
 	
 

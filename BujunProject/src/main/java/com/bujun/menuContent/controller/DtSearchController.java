@@ -31,5 +31,31 @@ public class DtSearchController {
 		
 		model.addAttribute("menu", map);
 		return "user/sub/sub03/origserv02";
+	}	
+	
+	
+	@RequestMapping("/origserv03") 
+	public String Origserv03(@RequestParam HashMap<String, Object> map, Model model) {
+		
+		model.addAttribute("menu", map);
+		return "user/sub/sub03/origserv03";
 	}		
+	
+	
+	@RequestMapping("/origserv04") 
+	public String Origserv04(@RequestParam HashMap<String, Object> map, Model model) {
+		
+		model.addAttribute("menu", map);
+		return "user/sub/sub03/origserv04";
+	}	
+	
+	
+	@RequestMapping("/searchgove") 
+	public String Searchgove(@RequestParam HashMap<String, Object> map, Model model) {
+		
+		model.addAttribute("menu", map);
+		return "user/sub/sub03/searchgove";
+	}	
+	
+	
 }
