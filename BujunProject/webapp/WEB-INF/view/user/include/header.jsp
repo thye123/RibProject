@@ -206,7 +206,7 @@
 				<script>
 					function mob_search() {
 						
-						var key = document.getElementById("key");
+						var key = document.getElementById("key2");
 						
 						if(key.value == "") {
 							alert("검색어를 입력하세요.");
@@ -222,7 +222,7 @@
 						<li>
 							<div class="mob_search">								
 								<form class="mob_search_frm" action="/bjsearch" name="formMobSearch">
-									<input type="text" id="key" name="kwd" class="textnon" />
+									<input type="text" id="key2" name="kwd" class="textnon" />
 									<button type="button" onclick="mob_search()">
 										<img src="/resources/user/images/main/v_search.png" alt="검색">
 									</button>
