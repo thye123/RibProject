@@ -3,7 +3,6 @@
 
 <%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
 <!-- header -->
 <%@ include file="../../include/header.jsp" %>
 
@@ -12,6 +11,8 @@
 
 <!-- sub_visual -->
 <%@ include file="../../include/left_menu03.jsp" %>   
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
 			
 <!-- location -->
@@ -32,6 +33,41 @@
 	<!-- title -->
 	<div class="sub_tit">자료찾기</div>
 
+<script>
+	function search() {
+		
+		var search_text = document.getElementById("search_text");
+		if(search_text.value == "") {
+			alert("검색어를 입력하세요.");	
+			search_text.focus();
+			return;
+		}
+		
+	   var number = /^[0-9]{4}/; 
+	   
+	   var startyear = document.getElementById("startyear");
+	   var endyear = document.getElementById("endyear");
+	   
+	   if(startyear.value.length != 0) {
+
+		   if(!number.test($("#startyear").val())) {
+			   alert("숫자만 입력해 주세요.");
+			   startyear.focus();
+			   return;
+		   }
+		   
+		   if(!number.test($("#endyear").val())) {
+			   alert("숫자만 입력해 주세요.");
+			   endyear.focus();
+			   return;
+		   }		   
+
+	   }
+	   
+		document.formSearchSt.submit();
+		
+	}
+</script>
 
 
 <div class="booksch">
@@ -41,7 +77,7 @@
 
 	<div class="top_sch">
 		<input type="text" name="kwd" id="search_text" title="검색어 입력" value="${kwd}" placeholder="검색어를 입력하세요">		
-		<input type="submit" class="searchBtn" value="검색">
+		<input type="button" onclick="search()" class="searchBtn" value="검색">
 		
 		<input type="hidden" name="page" value="1" />
 		<input type="hidden" name="m1" value="03" />
@@ -129,7 +165,6 @@
 
 			
 	<c:if test="${list ne null}">
-		<div class="mg_b10"><span class="red">${kwd}</span> 검색 결과 (${total} 종)</div>
 	
 		<ul class="bj_search_wrap">
 			<c:forEach var="lis"  items="${ list }">

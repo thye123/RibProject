@@ -26,6 +26,12 @@
 		<result property="file_real_name"	column="FILE_FILEREALNAME"		javaType="String"/>
 		<result property="file_ext"			column="FILE_EXT"				javaType="String"/>
 		<result property="file_regdate"		column="FILE_REGDATE"			javaType="String"/>
+		<result property="liap_apname"		column="LIAP_APNAME"			javaType="String"/>
+		<result property="liap_regdate"	    column="LIAP_REGDATE"			javaType="String"/>
+		<result property="page"	    		column="PAGE"					javaType="String"/>
+		<result property="pagecount"	 	column="PAGECOUNT"				javaType="String"/>
+		<result property="pagegrp"	    	column="PAGEGRP"				javaType="String"/>
+
 	</resultMap>
 	
 	<insert id="insertPro">
@@ -49,7 +55,10 @@
 			parameterType="hashmap"
 			resultType="com.bujun.education.vo.EduVo">
 	{CALL PKG_EDUCATION.PROC_SELECT_LIST(
-	#{listu_catcode,  mode=IN, jdbcType=VARCHAR},
+	#{listu_catcode,  mode=IN,  jdbcType=VARCHAR},
+	#{page,  mode=IN,  jdbcType=NUMERIC},
+	#{pagecount,  mode=IN,  jdbcType=NUMERIC},
+	#{cnt,  mode=OUT,  jdbcType=NUMERIC},
 	#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=selEdu}
 	)}
 	</select>
@@ -77,4 +86,20 @@
      #{liap_grade,     mode=IN, jdbcType=NUMERIC}
 	)}
 	</insert>
-</mapper>
+ 
+ <select id="ckeckdata" statementType="CALLABLE" parameterType="hashmap"
+ resultType="com.bujun.education.vo.EduVo">
+ {CALL PKG_EDUCATION.PROC_APPLY_CHECK(#{liap_apname, mode=IN, jdbcType=VARCHAR},#{liap_pass, mode=IN, jdbcType=VARCHAR},
+ #{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=selEdu}
+ )}
+ </select>
+ <select id="getData" statementType="CALLABLE" parameterType="hashmap"
+ resultType="com.bujun.education.vo.EduVo"
+ >
+ {CALL PKG_EDUCATION.PROC_APPLY_DATA(#{listu_code, mode=IN, jdbcType=VARCHAR}
+ ,#{listu_catcode, mode=IN, jdbcType=VARCHAR}
+ ,#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=selEdu}
+ )}
+ </select>
+ 
+ </mapper>

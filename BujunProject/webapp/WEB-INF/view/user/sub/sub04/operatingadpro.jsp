@@ -22,7 +22,12 @@
 		});
 	}
 </script>
-
+<style>
+input[type="text"] {
+    height: 28px;
+    width: 50%;
+}
+</style>
 <!-- location -->
 <div class="loca">
 	<ul>
@@ -43,7 +48,9 @@
 	<div class="sub_tit">운영프로그램</div>
 	
 	<!-- content 시작 -->
-	<form action="/opprogram01/adpro?m1=${m1}&m2=${m2}&m3=${m3}" method="post" enctype="multipart/form-data">
+	<form action="/opprogram01/adpro?m1=${m1}&m2=${m2}&m3=${m3}&page=${page}&pagecount=${pagecount}&pagegrp=${pagegrp}" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="listu_end" value="1"/>
+		
 		<table class="tb_board">
 			<tbody>
 				<tr>
@@ -59,7 +66,13 @@
 					</td>
 					<td>프로그램 구분</td>
 					<td style="text-align:left;">
-						<input type="text" name="listu_gubun">
+						
+						<select name="listu_gubun">
+							<option value="일반프로그램">일반프로그램</option>
+							<option value="초등(유아)프로그램">초등 유아 프로그램</option>
+						</select>
+						
+						<!-- <input type="text" name="listu_gubun"> -->
 					</td>
 				</tr>
 				<tr>
@@ -90,19 +103,14 @@
 						<input type="text" name="listu_studate"/>
 					</td>
 				</tr>
+							
 				<tr>
 					<td>내용</td>
 					<td colspan="3" style="text-align:left;">
 						<textarea name="listu_content" rows="20" style="resize: none; warp:virtual; width:100%;"></textarea>
 					</td>
 				</tr>
-				<tr>
-					<td>상태</td>
-					<td colspan="3" style="text-align:left;">
-						<input type="hidden" name="listu_end" value="1">
-						<span>모집중</span>
-					</td>
-				</tr>
+		
 				<tr>
 					<td>첨부파일</td>
 					<td colspan="3" style="text-align:left;">

@@ -15,5 +15,10 @@ public interface EduService {
 	public EduVo getdetail(HashMap<String, Object> map);
 	//수강신청 isnert 
 	public void getInApply(HashMap<String, Object> map);
+	
+	//수강신청 화면 돌릴때 간단히 보여주는 곳 
+	public EduVo getData(HashMap<String, Object> map);
+
+	public List<EduVo> getcheckData(HashMap<String, Object> map);
 
 }

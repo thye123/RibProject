@@ -124,7 +124,7 @@
 .sub_con .loca ul:after {display:block; content:""; clear:both;}
 .sub_con .loca ul li {float:left; position:relative; margin-right:40px;}
 .sub_con .loca ul li:nth-child(1) img {margin-top:2px;}
-.sub_con .loca ul li:after {right: -23px; top: 3px; position:absolute; display:block; content:""; background:url(../images/sub/loca_arr.jpg) no-repeat; width:6px; height:9px; }
+.sub_con .loca ul li:after {right: -23px; top: 3px; position:absolute; display:block; content:""; background:url(../images/sub/loca_arr.png) no-repeat; width:6px; height:9px; }
 .sub_con .loca ul li:last-child:after {display:none;} 
 .sub_con .loca ul li:last-chlid {margin-right:0; }
 .sub_con .sub_tit {font-size:32px; margin:20px 0 40px 0; color:#222;}
@@ -270,11 +270,11 @@
 
 
 /* 자료검색 */
-.booksch{position: relative; border:3px solid #b26c00; font-family:'Nanum Gothic'; margin-bottom:40px;}
-.booksch .top_sch {background:#b26c00; padding:20px;}
+.booksch{position: relative; border:3px solid #636b72; font-family:'Nanum Gothic'; margin-bottom:20px;}
+.booksch .top_sch {background:#636b72; padding:20px;}
 .booksch select {margin-right:3px;padding:5px; height:35px;border:1px solid #d8d8d8;font-size:14px;vertical-align:middle;  box-sizing:border-box; font-family:'Nanum Gothic';}
 .booksch input[type=text] {padding:7px; width:91.8%; height:35px; border:none;background:#fff;font-size:14px;vertical-align:middle; color:#333; box-sizing:border-box; font-family:'Nanum Gothic';}
-.booksch .searchBtn {display:inline-block;padding:0px 12px; font-family:'Nanum Gothic'; line-height:35px; background:#fff; font-weight:400; color:#333; vertical-align:middle; box-sizing:border-box; border:1px solid #676767;  transition: all 0.3s ease-out;}
+.booksch .searchBtn {cursor:pointer; display:inline-block;padding:0px 12px; font-family:'Nanum Gothic'; line-height:35px; background:#fff; font-weight:400; color:#333; vertical-align:middle; box-sizing:border-box; border:1px solid #676767;  transition: all 0.3s ease-out;}
 .booksch .searchBtn:hover{background:#ff4f4e; font-weight:400; font-family:'Nanum Gothic'; color:#fff; border:1px solid #ce3231;}
 .booksch .sch_con{padding:20px;}
 
@@ -459,6 +459,50 @@
 @media all and (max-width:355px) {
 	.month_book  div.f_r {width: 54%;}
 }
+
+
+.ui.uilnk .box_col:after{content:"";clear:both;display:block;visibility:hidden}
+.ui.uilnk .box_col *{margin-top:0;}
+.ui.uilnk .box_col .col{display:inline-block;float:left;}
+.ui.uilnk .box_col.col1 .col{display:block;float:none;width:100%;}
+.ui.uilnk .box_col.col2 .col,
+.ui.uilnk .box_col.col4 .col,
+.ui.uilnk .box_col.col3 .col{margin-left:1%; width:49.5%;}
+.ui.uilnk .box_col.col2 .col:first-child,
+.ui.uilnk .box_col.col4 .col:first-child,
+.ui.uilnk .box_col.col3 .col:first-child{margin-left:0;}
+.ui.uilnk .box_col .col .item{margin:0 auto 10px;padding:25px 10px;border:1px solid #d2d2d2}
+.ui.uilnk .box_col.col4 .col .item{padding:25px 0;}
+.ui.uilnk.type2 .box_col .col .item{padding:10px;}
+.ui.uilnk .box_col.col1 .col .item{width:auto}
+.ui.uilnk.type1 .box_col .col .bico .icow{display:block;margin: auto;width:130px;height:130px;background:url('../images/sub/sub01_02_img.png');}
+.ui.uilnk.type1 .box_col .col .bico .icow.i_icon4{background-position:-390px 0;}
+.ui.uilnk.type1 .box_col .col .bico .icow.i_icon5{background-position:-520px 0;}
+
+.ui.uilnk.type1 .box_col .col .bico b{display:block;margin:10px 0 20px;color:#121212;font-size:14px;text-align:center}
+.ui.uilnk.type1 .box_col .col ul{overflow:hidden;padding:0 6px 6px;}
+.ui.uilnk.type1 .box_col .col ul li{display:inline-block;float:left;width:50%;}
+.ui.uilnk.type1 .box_col .col ul li.ltx{width:100%}
+.ui.uilnk.type1 .box_col .col ul li a,
+.ui.uilnk.type1 .box_col .col ul li span{display:block;margin:6px 3px 0;height:43px;font-size:14px;line-height:43px;text-align:center;background:#f0f0f0;border:1px dotted #d2d2d2;color:#545454;}
+.ui.uilnk.type1 .box_col .col ul li.ltx{margin-right:0;}
+.ui.uilnk.type1 .box_col .col ul li.ltx a{margin-top:6px;}
+.ui.uilnk .box_col.col1 .col ul li{display:inline-block;float:left;margin-top:3px;width:50%;}
+
+@media all and (max-width:640px){
+	.ui.uilnk .box_col.col2 .col,
+	.ui.uilnk .box_col.col4 .col,
+	.ui.uilnk .box_col.col3 .col{margin-left:0; width:100%;}
+}
+
+
+
+
+
+
+
+
+
 
 /******************** pad *****************/
 @media all and (max-width:1000px) {

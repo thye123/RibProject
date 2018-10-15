@@ -38,5 +38,17 @@ public class EduServiceImpl implements EduService{
 		eduDao.getInApply(map);
 		
 	}
+
+	@Override
+	public EduVo getData(HashMap<String, Object> map) {
+		EduVo vo = eduDao.getData(map);
+		return vo;
+	}
+
+	@Override
+	public List<EduVo> getcheckData(HashMap<String, Object> map) {
+		List<EduVo> vo = eduDao.getcheckData(map);
+		return vo;
+	}
 	
 }

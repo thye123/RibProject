@@ -20,6 +20,10 @@ public class EduVo {
 	private String listu_gubun;
 	private String listu_recruit;
 	
+	//PROC_APPLY_CHECK --> vo 타입 추가 
+	private String liap_apname;
+	private String liap_regdate;
+	
 	//파일 내용
 	private int 	file_idx;
 	private int 	file_board_idx;
@@ -30,6 +34,56 @@ public class EduVo {
 	private String	file_ext;
 	private String	file_regdate;
 	
+	
+	private int page;
+	private int pagecount;
+	private int pagegrp;
+	private int endpage;
+	private int statrpage;
+	
+
+	public int getStatrpage() {
+		return statrpage;
+	}
+	public void setStatrpage(int statrpage) {
+		this.statrpage = statrpage;
+	}
+	public int getEndpage() {
+		return endpage;
+	}
+	public void setEndpage(int endpage) {
+		this.endpage = endpage;
+	}
+	public int getPage() {
+		return page;
+	}
+	public void setPage(int page) {
+		this.page = page;
+	}
+	public int getPagecount() {
+		return pagecount;
+	}
+	public void setPagecount(int pagecount) {
+		this.pagecount = pagecount;
+	}
+	public int getPagegrp() {
+		return pagegrp;
+	}
+	public void setPagegrp(int pagegrp) {
+		this.pagegrp = pagegrp;
+	}
+	public String getLiap_apname() {
+		return liap_apname;
+	}
+	public void setLiap_apname(String liap_apname) {
+		this.liap_apname = liap_apname;
+	}
+	public String getLiap_regdate() {
+		return liap_regdate;
+	}
+	public void setLiap_regdate(String liap_regdate) {
+		this.liap_regdate = liap_regdate;
+	}
 	public int getListu_idx() {
 		return listu_idx;
 	}
@@ -168,16 +222,9 @@ public class EduVo {
 	public void setListu_recruit(String listu_recruit) {
 		this.listu_recruit = listu_recruit;
 	}
-	
 	@Override
 	public String toString() {
-		return "EduVo [listu_idx=" + listu_idx + ", listu_code=" + listu_code + ", listu_catcode=" + listu_catcode
-				+ ", listu_name=" + listu_name + ", listu_target=" + listu_target + ", listu_location=" + listu_location
-				+ ", listu_studate=" + listu_studate + ", listu_content=" + listu_content + ", listu_person="
-				+ listu_person + ", listu_regdate=" + listu_regdate + ", listu_end=" + listu_end + ", listu_teacher="
-				+ listu_teacher + ", listu_gubun=" + listu_gubun + ", listu_recruit=" + listu_recruit + ", file_idx="
-				+ file_idx + ", file_board_idx=" + file_board_idx + ", file_board_code=" + file_board_code
-				+ ", file_name=" + file_name + ", file_size=" + file_size + ", file_real_name=" + file_real_name
-				+ ", file_ext=" + file_ext + ", file_regdate=" + file_regdate + "]";
+		return "EduVo [page=" + page + ", pagecount=" + pagecount + ", pagegrp=" + pagegrp + ", endpage=" + endpage
+				+ ", statrpage=" + statrpage + "]";
 	}
 }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- dtd선언 - 필수임 -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="BookRental">
+
+    <resultMap id="BookRentalMap" type="com.bujun.bookrental.vo.BookrentalVo">
+      <result property="brt_idx" column="brt_idx" javaType="int" />
+      <result property="brt_memid" column="brt_memid" javaType="string" />
+      <result property="brt_rimemnum" column="brt_rimemnum" javaType="string" />
+      <result property="brt_title" column="brt_title" javaType="string" />
+      <result property="brt_gubun" column="brt_gubun" javaType="int" />
+      <result property="brt_rdate" column="brt_rdate" javaType="string" />
+      <result property="brt_redate" column="brt_redate" javaType="string" />
+    </resultMap>  
+    
+     <select id="BookRentalList" statementType="CALLABLE" parameterType="com.bujun.bookrental.vo.BookrentalVo">   
+	     {CALL  BJL_PKG_BOOKRENTAL.bookrental_list(   
+	        #{brt_memid, mode=IN,  jdbcType=VARCHAR },
+	        #{brt_gubun, mode=IN,  jdbcType=INTEGER },
+	        #{page, mode=IN,  jdbcType=INTEGER },
+	        #{perPageNum, mode=IN,  jdbcType=INTEGER },
+	        #{result,  mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=BookRentalMap }
+	      )}        
+    </select>     
+    
+     <select id="BookRentalTotalCount" statementType="CALLABLE" parameterType="com.bujun.bookrental.vo.BookrentalVo">   
+	     {CALL  BJL_PKG_BOOKRENTAL.bookrental_totalcount(   
+	        #{brt_memid, mode=IN,  jdbcType=VARCHAR },
+	        #{brt_gubun, mode=IN,  jdbcType=INTEGER },
+	        #{result,  mode=OUT, jdbcType=INTEGER }
+	      )}        
+    </select>   
+    
+                          
+</mapper>
