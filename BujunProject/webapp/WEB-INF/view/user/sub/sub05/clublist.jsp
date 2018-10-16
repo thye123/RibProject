@@ -140,7 +140,7 @@ a.btn_board {
 						tag+="<tr>";
 					 	tag+="<td>"+data.clb_idx+"</td>"; 
 						tag+="<td>"+data.clb_writer+"</td>";
-						tag+="<td>"+data.clb_title+"</td>";
+						tag+="<td><a href='#'>"+data.clb_title+"<a></td>";
 						tag+="<td>"+data.clb_regdate+"</td>";
 						tag+="<td>"+data.clb_count+"</td>";
 						tag+="</tr>";
@@ -176,6 +176,7 @@ a.btn_board {
 		$("#serForm").on('submit',function(e) {
 			var keyword= $("#keyword").val();
 			var clb_clucode= "CUS0001";
+			
 			var keyfield = $("select[name=keyfield]").val();
 			var page  = "1";
 			alert("넘겨주는 페이지" + page);
@@ -223,7 +224,7 @@ a.btn_board {
 							tag+="<tr>";
 						 	tag+="<td>"+search.clb_idx+"</td>"; 
 							tag+="<td>"+search.clb_writer+"</td>";
-							tag+="<td>"+search.clb_title+"</td>";
+							tag+="<td><a href='#'>"+search.clb_title+"<a></td>";
 							tag+="<td>"+search.clb_regdate+"</td>";
 							tag+="<td>"+search.clb_count+"</td>";
 							tag+="</tr>" 
@@ -256,8 +257,8 @@ a.btn_board {
 		<li><img
 			src="${pageContext.request.contextPath}/resources/user/images/sub/loca_home.jpg"
 			alt="" /></li>
-		<li>도서관이용</li>
-		<li>독서동아리</li>
+		<li>독서 동아리</li>
+		<li>독서 게시판</li>
 		<li>${clu_name}</li>
 	</ul>
 </div>
@@ -268,7 +269,7 @@ a.btn_board {
 
 
 	<!-- title -->
-	<div class="sub_tit"><h2 class="tbul1 mg_b40">${clu_name}동아리</h2></div>
+	<div class="sub_tit">${clu_name}동아리</div>
 
 	<!-- content 시작 -->
 
@@ -334,7 +335,7 @@ a.btn_board {
 						<td>${club.clb_idx}</td>
 						<td>${club.clb_writer}</td>
 						<td><a
-							href="/club01/CluBoard/OneView?clb_idx=${club.clb_idx}&clb_clucode=CUS0001">${club.clb_title}</a></td>
+							href="/club01/CluBoard/OneView?clb_idx=${club.clb_idx}&clb_clucode=${clu_code}&page=1&pagecount=10&pagegrp=1">${club.clb_title}</a></td>
 						<td>${club.clb_regdate}</td>
 						<td class="bnon">${club.clb_count}</td>
 					</tr>
