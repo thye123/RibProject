@@ -229,7 +229,7 @@
 		<div class="book_con01">
 			<div class="tit">올해의BOOK</div>
 			<div class="ybook">
-				<a href="#">
+				<a href="/obook02?m1=05&m2=07&m3=02">
 					<div class="book_img"><img src="${pageContext.request.contextPath}/resources/user/images/main/book01.jpg" /></div>
 					<div class="book_title">아몬드</div>
 				</a>
@@ -240,26 +240,18 @@
 			<div class="con02_mob">
 				<div class="tit">이달의 책</div>
 				<ul class="book_list">
-					<li>
-						<a href="#">
-							<div class="book_img"><img src="/img/7b24d786-1e5d-49b9-9db9-4f2894714220_20181001094821.jpg" /></div>
-							<div class="book_title">박완서의 말</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="book_img"><img src="/img/48664928-e884-46df-8801-d00faad70146_20181001094739.jpg" /></div>
-							<div class="book_title">열두 발자국</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="book_img"><img src="/img/443c947e-fa0b-4578-9297-9f85b2408800_20181001094645.jpg" /></div>
-							<div class="book_title">지느러미 달린 책</div>
-						</a>
-					</li>
+				
+					<c:forEach var="book" items="${bookList}">
+						<li>
+							<a href="/monthbk_read?rec_idx=${book.rec_idx}&rec_code=${book.rec_code}&m1=05&m2=01&m3=01&page=1">
+								<div class="book_img"><img src="/img/${book.file_filename}" /></div>
+								<div class="book_title">${book.rec_bname}</div>
+							</a>
+						</li>						
+					</c:forEach>
+					
 				</ul>
-				<div class="more"><a href="#">more +</a></div>
+				<div class="more"><a href="/monthbk?rec_code=CAT0031&m1=05&m2=01&m3=01&page=1&perPageNum=12">more +</a></div>
 			</div>
 		</div>
 		
