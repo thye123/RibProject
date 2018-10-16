@@ -501,11 +501,11 @@ div.greeting div { color:#777;
 .studyArea .studyProgram  > li a.link ul {padding:40px 20px 20px 20px;}
 .studyArea .studyProgram:after {display:block; content:""; clear:both;}
 
-.studyArea .studyProgram  > li a.link ul > li:nth-child(1) {text-align: center; padding-left: 0; margin-bottom:20px; font-size:18px;}
-.studyArea .studyProgram  > li a.link ul > li:nth-child(2) { background:url(../images/sub/scon02.jpg) no-repeat 0 center;}
-.studyArea .studyProgram  > li a.link ul > li:nth-child(3) { background:url(../images/sub/scon03.jpg) no-repeat 0 center;}
-.studyArea .studyProgram  > li a.link ul > li:nth-child(4) { background:url(../images/sub/scon04.jpg) no-repeat 0 center;}
-.studyArea .studyProgram  > li a.link ul > li:nth-child(5) { background:url(../images/sub/scon05.jpg) no-repeat 0 center;}
+.studyArea .studyProgram  > li a.link ul > li.title {text-align: center; padding-left: 0; margin-bottom:20px; font-size:18px;}
+.studyArea .studyProgram  > li a.link ul > li.n01 { background:url(../images/sub/scon02.jpg) no-repeat 0 center;}
+.studyArea .studyProgram  > li a.link ul > li.n02 { background:url(../images/sub/scon03.jpg) no-repeat 0 center;}
+.studyArea .studyProgram  > li a.link ul > li.n03 { background:url(../images/sub/scon04.jpg) no-repeat 0 center;}
+.studyArea .studyProgram  > li a.link ul > li.n04 { background:url(../images/sub/scon05.jpg) no-repeat 0 center;}
 .studyArea .studyProgram  > li a.link ul > li span {color:#333; font-weight:500;}
 
 .studyArea .studyProgram > li {position:relative;}

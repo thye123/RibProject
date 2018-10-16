@@ -13,74 +13,6 @@
 <!-- 레프트메뉴 -->
 <%@ include file="../../include/left_menu04.jsp"%>
 
-<style>
-.logUl > li {
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
-
-.bname {
-    width: 52px;
-    display: inline-block;
-}
-.autowrap{
-	border-top: 2px solid #0e6bc1;
-    border-bottom: 1px solid #e4e4e4;
-    background: #fbfbfb;
-}
-
-input[type="text"] {
-    height: 30px;
-    width: 32%;
-}
-
-ul.logUl {
-    margin: 0 auto;
-    text-align: center;
-}
-
-.loginbtn {
-    position: relative;
-    width: 100%;
-    height: 79px;
-    left: 643px;
-    top: -89px;
-}
-
-.log{
-    float: left;
-    margin-top: 0px;
-    margin-left: 7px;
-    width: 95px;
-    background: #005baf;
-    border: 1px solid #003b71;
-    height: 80px;
-    line-height: 69px;
-    color: #fff;
-    text-align: center;
-}
-
-.logapply{
-	position: relative;
-}
-
-/*패드부터 시작 max 버젼을 줄일때 가능 */
-@media only screen and (max-width:800px) {
-
-	.loginbtn{
-		position: static;
-		
-	}
-	
-	.logapply{
-	padding: 0 138px;
-	}
-	
-	.log{
-	    width: 347px;
-	}
-}
-</style>
 	<script type="text/javascript">
 	//이름이랑 비밀번호 입력 못하면 못들어 가게 막는 script	
 	window.onload= function(){
@@ -127,25 +59,30 @@ ul.logUl {
 	
 	<!-- table -->
 	
+	
+	
+	
+	
+	<div class="con_login">
+		<div class="log_tit2">로그인</div> 
+		 <div class="log_sub">이름과 비밀번호를 입력하신 후 Login 버튼을 눌러주세요.</div>
+	
 		<form action="/pgcheck/proc" method="POST" class="logapply">
-		
-			<ul class="logUl">
-				<li>
-					<b class="bname">이름</b>
-					<input type="text" name="liap_apname"/>
-				</li>
-				
-				<li>
-					<b>비밀번호</b>
-					<input type="text" name="liap_pass"/>
-				</li>
+			<ul class="text_form">
+				<li><input type="text" name="liap_apname" placeholder="이름을 입력하세요"/></li>
+				<li><input type="password" name="liap_pass" placeholder="비밀번호를 입력하세요" /></li>
 			</ul>
-			<div class="loginbtn">
-				<input type="submit" value="로그인" class="log"/>
-			</div>
+						
+			<p class="c mg_b5"><input type="submit" value="로그인" class="log_btn" />
+			
 			
 		</form>
+	</div>
+	
 
+
+ 
+ 
 </div>
 <!-- //content 끝 -->
 

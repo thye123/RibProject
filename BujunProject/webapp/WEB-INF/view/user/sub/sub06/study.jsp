@@ -94,11 +94,11 @@
 						<li>
 							<a class="link" href="/study/dCon?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&stu_code=${slist.stu_code}&stu_idx=${slist.stu_idx}">
 								<ul>
-									<li>${slist.stu_title}</li>
-									<li><span>작성자</span> : ${slist.mem_name}</li>
-									<li><span>일정</span> : ${slist.stu_date}</li>
-									<li><span>인원</span> : ${slist.stu_person}</li>
-									<li><span>장소</span> : ${slist.stu_location}</li>
+									<li class="title">${slist.stu_title}</li>
+									<li class="n01"><span>작성자</span> : ${slist.mem_name}</li>
+									<li class="n02"><span>일정</span> : ${slist.stu_date}</li>
+									<li class="n03"><span>인원</span> : ${slist.stu_person}</li>
+									<li class="n04"><span>장소</span> : ${slist.stu_location}</li>
 								</ul>
 							</a>
 							
@@ -122,11 +122,11 @@
 						<li>
 							<a class="link" href="/study/dCon?m1=${m1}&m2=${m2}&stu_code=${slist.stu_code}&stu_idx=${slist.stu_idx}">
 								<ul>
-									<li>${slist.stu_title}</li>
-									<li><span>작성자</span> : ${slist.mem_name}</li>
-									<li><span>일정</span> : ${slist.stu_date}</li>
-									<li><span>인원</span> : ${slist.stu_person}</li>
-									<li><span>장소</span> : ${slist.stu_location}</li>
+									<li class="title">${slist.stu_title}</li>
+									<li class="n01"><span>작성자</span> : ${slist.mem_name}</li>
+									<li class="n02"><span>일정</span> : ${slist.stu_date}</li>
+									<li class="n03"><span>인원</span> : ${slist.stu_person}</li>
+									<li class="n04"><span>장소</span> : ${slist.stu_location}</li>
 								</ul>
 							</a>
 							
