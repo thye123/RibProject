@@ -47,12 +47,12 @@
 				<c:choose>
 					<c:when test="${menu.m1 eq 06 && menu.m2 eq 01}">
 						<li class="default open">
-							<a href="/notice?m1=06&m2=01"><div class="link">공지사항<i class="fa fa-chevron-down"></i></div></a>
+							<a href="/notice?m1=06&m2=01&nowpage=1&pagecount=10&grpnum=1"><div class="link">공지사항<i class="fa fa-chevron-down"></i></div></a>
 						</li>
 					</c:when>
 					<c:otherwise>
 						<li>
-							<a href="/notice?m1=06&m2=01"><div class="link">공지사항<i class="fa fa-chevron-down"></i></div></a>
+							<a href="/notice?m1=06&m2=01&nowpage=1&pagecount=10&grpnum=1"><div class="link">공지사항<i class="fa fa-chevron-down"></i></div></a>
 						</li>					
 					</c:otherwise>
 				</c:choose>

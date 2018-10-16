@@ -18,18 +18,31 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
 	window.onload = function() {
-		var listBtn = document.getElementsByClassName('listBtn');
-		listBtn[0].onclick = function() {
-			location.href = "/CluBoard/Goboard?clb_clucode=${clb_clucode}";
+
+		var obj = document.getElementsByName('clb_open');
+		var pdata = document.getElementsByClassName('pdata');
+		//alert(pdata[0].getAttribute('class'));
+
+		pdata[0].style.display = 'none';
+		for (var i = 0; i < obj.length; i++) {
+			obj[i].onclick = function() {
+				if (obj[1].checked == true) {
+					obj[0].checked = false;
+					var str = "<td><input type=text/><td>";
+					//alert(str);
+					pdata[0].style.display = 'block';
+					//putData[0].innerHTML(str);
+				}
+
+				if (obj[0].checked == true) {
+					obj[1].checked = false;
+					pdata[0].style.display = 'none';
+
+				}
+
+			}
 		}
-		
-	
-		var clb_open = document.getElementsByName('clb_open');
-	
-		for (var i = 0; i < clb_open.length; i++) {
-			alert("clb_open" + clb_open.length)
-		}
-		
+
 	}
 </script>
 <style>
@@ -130,6 +143,14 @@
 								<input type="radio" name="clb_open" value="${vo.clb_open}"/>
 						</td>
 					</tr>
+
+					<tr>
+						<th class="c">비밀번호여부</th>
+						<td class="putData">
+							<input type="text" class="pdata"/>
+						</td>
+					</tr>
+
 
 					<tr>
 						<th class="c">내용</th>

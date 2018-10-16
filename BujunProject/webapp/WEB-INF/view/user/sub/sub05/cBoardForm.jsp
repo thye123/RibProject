@@ -123,9 +123,10 @@ function aaa(check){
 		<li><img
 			src="${pageContext.request.contextPath}/resources/user/images/sub/loca_home.jpg"
 			alt="" /></li>
-		<li>도서관이용</li>
-		<li>자료실소개</li>
-		<li>종합자료실</li>
+		<li>독서 동아리</li>
+		<li>독서 게시판</li>
+		<li>찬우물</li>
+	
 	</ul>
 </div>
 <!-- //location -->
@@ -135,11 +136,11 @@ function aaa(check){
 
 
 	<!-- title -->
-	<div class="sub_tit">글쓰기</div>
+	<div class="sub_tit"></div>
 
 	<!-- content 시작 -->
 
-	<h2 class="tbul1 mg_b40">이용대상 : 중학생이상</h2>
+	<h2 class="tbul1 mg_b40">찬우물</h2>
 
 	<!-- table -->
 	<div class="scroll_info">

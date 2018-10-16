@@ -26,62 +26,6 @@
 			var coment = document.createTextNode("사전공표대상공개");
 			subTitle[0].appendChild(coment);				
 		}
-		
-		var list = document.getElementById("list");
-		var ad_code = "${openInfoVo.ad_code}";
-		
-		var delCon = document.getElementById("delete");
-		
-		delCon.addEventListener("click", function(){
-			switch (ad_code) {
-			case "CAT0016":
-				location.href= "/info03/delete?m1=07&m2=01&m3=03&ad_idx=${ad_idx}";
-				break;
-			case "CAT0017":
-				location.href= "/info03/delete?m1=07&m2=01&m3=05&ad_idx=${ad_idx}";
-				break;
-			}
-		});
-		
-		var update = document.getElementById("update");
-		
-		update.addEventListener("click", function(){
-			switch (ad_code) {
-				case "CAT0016":
-					location.href= "/info03/updateform?m1=07&m2=01&m3=03&ad_idx=${ad_idx}";
-					break;
-				case "CAT0017":
-					location.href= "/info03/updateform?m1=07&m2=01&m3=05&ad_idx=${ad_idx}";
-					break;
-			}
-		});
-		
-		<c:choose>
-			<c:when test="${keyword != null && keyfield != null}">
-				list.addEventListener("click", function(){
-					switch (ad_code) {
-					case "CAT0016":
-						location.href="/info03/search?m1=07&m2=01&m3=03&keyword=${keyword}&keyfield=${keyfield}&page_num=1&page_grp=1";
-						break;
-					case "CAT0017":
-						location.href="/info03/search?m1=07&m2=01&m3=05&keyword=${keyword}&keyfield=${keyfield}&page_num=1&page_grp=1";
-						break;
-					}
-				});
-			</c:when>
-			<c:otherwise>
-				list.addEventListener("click", function(){
-					switch (ad_code) {
-					case "CAT0016":
-						location.href="/info03?m1=07&m2=01&m3=03&page_num=1&page_grp=1";
-						break;
-					case "CAT0017":
-						location.href="/info03?m1=07&m2=01&m3=05&page_num=1&page_grp=1";
-						break;
-					}
-				});
-			</c:otherwise>
-		</c:choose>
 	}
 </script>
 			
@@ -137,11 +81,112 @@
 			</tr>
 		</tbody>
 	</table>
-	<div class="r mg_t20 btns">
-		<input type="button" class="btns_black" id="update" value="수정" style="border:0;"/>
-		<input type="button" class="btns_black" id="delete" value="삭제" style="border:0;"/>
-		<input type="button" class="btns_black" id="list" value="목록" style="border:0;"/>
-	</div>	
+	<c:choose>
+		<c:when test="${sessionScope.mem_id eq 'ADMIN'}">
+			<script>
+				onload = function(){
+					var list = document.getElementById("list");
+					var ad_code = "${openInfoVo.ad_code}";
+					
+					var delCon = document.getElementById("delete");
+					
+					delCon.addEventListener("click", function(){
+						switch (ad_code) {
+						case "CAT0016":
+							location.href= "/info03/delete?m1=07&m2=01&m3=03&ad_idx=${ad_idx}";
+							break;
+						case "CAT0017":
+							location.href= "/info03/delete?m1=07&m2=01&m3=05&ad_idx=${ad_idx}";
+							break;
+						}
+					});
+					
+					var update = document.getElementById("update");
+					
+					update.addEventListener("click", function(){
+						switch (ad_code) {
+							case "CAT0016":
+								location.href= "/info03/updateform?m1=07&m2=01&m3=03&ad_idx=${ad_idx}";
+								break;
+							case "CAT0017":
+								location.href= "/info03/updateform?m1=07&m2=01&m3=05&ad_idx=${ad_idx}";
+								break;
+						}
+					});
+					
+					<c:choose>
+						<c:when test="${keyword != null && keyfield != null}">
+							list.addEventListener("click", function(){
+								switch (ad_code) {
+								case "CAT0016":
+									location.href="/info03/search?m1=07&m2=01&m3=03&keyword=${keyword}&keyfield=${keyfield}&page_num=1&page_grp=1";
+									break;
+								case "CAT0017":
+									location.href="/info03/search?m1=07&m2=01&m3=05&keyword=${keyword}&keyfield=${keyfield}&page_num=1&page_grp=1";
+									break;
+								}
+							});
+						</c:when>
+						<c:otherwise>
+							list.addEventListener("click", function(){
+								switch (ad_code) {
+								case "CAT0016":
+									location.href="/info03?m1=07&m2=01&m3=03&page_num=1&page_grp=1";
+									break;
+								case "CAT0017":
+									location.href="/info03?m1=07&m2=01&m3=05&page_num=1&page_grp=1";
+									break;
+								}
+							});
+						</c:otherwise>
+					</c:choose>
+				}
+			</script>
+			<div class="r mg_t20 btns">
+				<input type="button" class="btns_black" id="update" value="수정" style="border:0;"/>
+				<input type="button" class="btns_black" id="delete" value="삭제" style="border:0;"/>
+				<input type="button" class="btns_black" id="list" value="목록" style="border:0;"/>
+			</div>	
+		</c:when>
+		<c:otherwise>
+			<script>
+				onload = function(){
+					var list = document.getElementById("list");
+					var ad_code = "${openInfoVo.ad_code}";
+					
+					<c:choose>
+						<c:when test="${keyword != null && keyfield != null}">
+							list.addEventListener("click", function(){
+								switch (ad_code) {
+								case "CAT0016":
+									location.href="/info03/search?m1=07&m2=01&m3=03&keyword=${keyword}&keyfield=${keyfield}&page_num=1&page_grp=1";
+									break;
+								case "CAT0017":
+									location.href="/info03/search?m1=07&m2=01&m3=05&keyword=${keyword}&keyfield=${keyfield}&page_num=1&page_grp=1";
+									break;
+								}
+							});
+						</c:when>
+						<c:otherwise>
+							list.addEventListener("click", function(){
+								switch (ad_code) {
+								case "CAT0016":
+									location.href="/info03?m1=07&m2=01&m3=03&page_num=1&page_grp=1";
+									break;
+								case "CAT0017":
+									location.href="/info03?m1=07&m2=01&m3=05&page_num=1&page_grp=1";
+									break;
+								}
+							});
+						</c:otherwise>
+					</c:choose>
+				}
+			</script>
+			<div class="r mg_t20 btns">
+				<input type="button" class="btns_black" id="list" value="목록" style="border:0;"/>
+			</div>
+		</c:otherwise>
+	</c:choose>
 	<!-- //게시판테이블(리스트) -->
 <!-- //content 끝 -->
 </div>

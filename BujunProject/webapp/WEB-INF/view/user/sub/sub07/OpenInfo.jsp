@@ -30,20 +30,6 @@
 			var coment = document.createTextNode("사전공표대상공개");
 			subTitle[0].appendChild(coment);
 		}
-
-		var newContent = document.getElementById("newContent");
-		var ad_code = "${ad_code}";
-		newContent.addEventListener("click", function() {
-			switch (ad_code) {
-			case "CAT0016":
-				location.href = "/info03/CForm?ad_code=" + ad_code;
-				break;
-
-			case "CAT0017":
-				location.href = "/info03/CForm?ad_code=" + ad_code;
-				break;
-			}
-		});
 		
 		var searchForm = document.getElementById("searchForm");
 		
@@ -147,9 +133,33 @@
 			</c:choose>
 		</tbody>
 	</table>
-	<div class="r mg_t20 btns">
-		<input type="button" class="btns_black" id="newContent" value="새글쓰기" style="border:0;">
-	</div>
+	<c:choose>
+		<c:when test="${sessionScope.mem_id == 'ADMIN'}">
+			<script>
+				onload = function(){
+					var newContent = document.getElementById("newContent");
+					var ad_code = "${ad_code}";
+					newContent.addEventListener("click", function() {
+						switch (ad_code) {
+						case "CAT0016":
+							location.href = "/info03/CForm?ad_code=" + ad_code;
+							break;
+
+						case "CAT0017":
+							location.href = "/info03/CForm?ad_code=" + ad_code;
+							break;
+						}
+					});
+				}
+			</script>
+			<div class="r mg_t20 btns">
+				<input type="button" class="btns_black" id="newContent" value="새글쓰기" style="border:0;">
+			</div>		
+		</c:when>
+		<c:otherwise>
+		
+		</c:otherwise>
+	</c:choose>
 
 	<!-- //table -->
 

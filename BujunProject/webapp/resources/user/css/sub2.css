@@ -15,7 +15,7 @@
 .boardSearch a.searchBtn {display:inline-block;padding:0px 15px; line-height:35px; background:#777; font-weight:400; color:#fff; vertical-align:middle; box-sizing:border-box; border:1px solid #676767;  transition: all 0.3s ease-out;}
 .boardSearch input[type='submit'] {width:auto; display:inline-block;padding:0px 10px; line-height:35px; background:#777; font-weight:400; color:#fff; vertical-align:middle; box-sizing:border-box; border:1px solid #676767;  transition: all 0.3s ease-out;}
 .boardSearch input[type='checkbox'] {width:20px; height:20px;}
-.boardSearch a.searchBtn:hover{background:#ff4f4e; font-weight:400; color:#fff; border:1px solid #ce3231;}
+.boardSearch a.searchBtn:hover{background:#4d4d4d; font-weight:400; color:#fff; border:1px solid #4d4d4d;}
 .boardBtn {display:inline-block;width:88px;padding:12px 5px 10px; text-align:center; background:#717171; color:#fff; font-weight:400; border-radius:5px; overflow:hidden; transition: all 0.3s ease-out;}
 /*notice btn*/
 .board_sch button{display:inline-block; padding:0px 15px; line-height:35px;background:#777;font-weight:400;color:#fff;vertical-align:middle;box-sizing:border-box;  border-radius:0px; border:1px solid #676767; transition: all 0.3s ease-out;}
@@ -98,6 +98,7 @@
 .bestcont .conts {height: 87px; padding: 10px; box-sizing: border-box;}
 .btnst button {display:inline-block; padding:0px 15px; line-height:35px; background:#777; font-weight:400;vertical-align:middle; box-sizing:border-box; border:1px solid #676767; transition: all 0.3s ease-out; color: #fff;}
 .btnst button:hover { background:#4d4d4d; font-weight:400; border:1px solid #4d4d4d;}
+
 
 @media only screen and (max-width:960px) {
 
@@ -649,6 +650,14 @@ div.greeting div { color:#777;
 .studydanger{
 	font-size: 18px;
 } */
+
+
+
+
+
+
+
+
 
 
 

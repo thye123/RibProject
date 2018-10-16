@@ -37,9 +37,9 @@ a.btn_board {
 		<li><img
 			src="${pageContext.request.contextPath}/resources/user/images/sub/loca_home.jpg"
 			alt="" /></li>
-		<li>독서문화</li>
-		<li>독서동아리</li>
-		<li>찬우물</li>
+		<li>독서 동아리</li>
+		<li>독서 게시판</li>
+		<li>${memberName}</li> <!-- 디비 조회해서 각 동아리 이름 들고옴 -->
 	</ul>
 </div>
 <!-- //location -->
