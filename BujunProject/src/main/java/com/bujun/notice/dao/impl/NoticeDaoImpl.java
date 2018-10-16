@@ -20,7 +20,6 @@ public class NoticeDaoImpl implements NoticeDao {
 	
 	@Override
 	public List<NoticeVo> getList(HashMap<String, Object> map) {
-		System.out.println("다우" + map);
 		sqlSession.selectList("Notice.NoticeList", map);
 		List<NoticeVo> noticeList = (List<NoticeVo>) map.get("result");		
 		return noticeList;
@@ -28,7 +27,6 @@ public class NoticeDaoImpl implements NoticeDao {
 
 	@Override
 	public NoticeVo content(HashMap<String, Object> map) {
-		//System.out.println("뷰즈" + map);
 		sqlSession.selectOne("Notice.NoticeView", map);
 		List<NoticeVo> list = (List<NoticeVo>) map.get("result");
 		NoticeVo vo = list.get(0); 
@@ -45,7 +43,6 @@ public class NoticeDaoImpl implements NoticeDao {
 
 	@Override
 	public void addFile(HttpServletRequest req, HashMap<String, Object> map) {
-		//System.out.println("filename" + map);
 		sqlSession.insert("Notice.insertFile",map);
 		
 	}
@@ -54,13 +51,11 @@ public class NoticeDaoImpl implements NoticeDao {
 	public void Update(HashMap<String, Object> map) {
 		
 		sqlSession.update("Notice.noticeUpdate", map);
-		System.out.println("업뎃" + map);
 		
 	}
 
 	@Override
 	public void upFile(HttpServletRequest req, HashMap<String, Object> map) {
-		System.out.println("던질까" + map);
 		sqlSession.update("Notice.updateFile", map);
 		
 	}

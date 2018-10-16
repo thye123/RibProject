@@ -19,9 +19,9 @@
 <div class="loca">
 	<ul>
 		<li><img src="${pageContext.request.contextPath}/resources/user/images/sub/loca_home.jpg" alt="" /></li>
-		<li>열린마당</li>
-		<li>공지사항</li>
-		<!-- <li>종합자료실</li> -->
+		<li>도서관이용</li>
+		<li>자료실소개</li>
+		<li>특성화(금융정보)자료실</li>
 	</ul>
 </div>
 <!-- //location -->
@@ -32,7 +32,7 @@
 	
 	
 	<!-- title -->
-	<div class="sub_tit">공지사항</div>
+	<div class="sub_tit">특성화행사</div>
 	
 	
 	
@@ -68,7 +68,7 @@
 		</div>			
 		<div class="btnst">
 			<div class="btns_1">
-				<a href="/finref04/UpdateForm?ad_idx=${content.ad_idx}&ad_code=${ad_code}">수정</a>
+				<a href="/finref04/UpdateForm?m1=02&m2=02&m3=05&ad_idx=${content.ad_idx}&ad_code=${ad_code}">수정</a>
 			</div>
 			<div class="btns_2">
 				<a href="/finref04?m1=02&m2=02&m3=05&nowpage=1&pagecount=10&grpnum=1">목록</a>

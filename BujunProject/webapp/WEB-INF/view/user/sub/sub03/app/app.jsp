@@ -120,7 +120,7 @@
 	</ul>
 	
 	<form action="/wishbk02/Write" method="POST" id="memGrgForm" onsubmit="return inputCheck()">
-		<input type="hidden" name="sc_rimemnum" value="0000000002"/>
+		<input type="hidden" name="sc_rimemnum" value="${sessionScope.rimem_num}"/>
 		<input type="hidden" name="sc_during" value="1"/>
 		<div class="applyboard">
 			<div class="a_name">
@@ -202,9 +202,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="buttons">
+		<div class="btnst">
 			<button>등록</button>
-    		<a href="/wishbk?m1=03&m2=05&nowpage=1&pagecount=10&grpnum=1">취소</a>
+			<div class="btns_1">
+				<a href="/wishbk?m1=03&m2=05&nowpage=1&pagecount=10&grpnum=1">취소</a>
+			</div>
+    		
 		</div>
 	</form>
 	

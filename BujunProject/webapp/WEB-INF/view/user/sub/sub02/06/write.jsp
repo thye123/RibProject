@@ -49,17 +49,17 @@
 	<div class="auto_box mg_b40">		
 		<form action="/finref06/Write" method="POST" enctype="multipart/form-data">
 		<input type="hidden" value="CAT0013" name="ad_code">	
-			<div class="tb_boards">
+			<div class="tb_boardss">
 				<div class="top">
 					<div class="n_writer">
 						<div class="n_left">작성자</div>
-						<div class="n_right"><input type="text" size="40" value="관리자">
+						<div class="n_right"><input type="text" value="관리자">
 						<input type="hidden" value="ADMIN" name="ad_writer">
 					</div>
 				</div>
 				<div class="n_title">
 					<div class="n_left">제 목</div>
-					<div class="n_right"><input type="text" size="40" name="ad_title"></div>
+					<div class="n_right"><input type="text" name="ad_title"></div>
 				</div>
 				</div>
 				<div class="n_file">
@@ -69,10 +69,11 @@
 				<div class="n_cont">
 					<div class="n_left">내 용</div>
 					<div class="n_right">
-						<textarea rows="5" cols="108" style="resize:none;" name="ad_content" ></textarea>
+						<textarea style="resize:none;" name="ad_content" ></textarea>
 					</div>
 				</div>
 				<button>글쓰기</button>
+				<a href="/finref06?m1=02&m2=02&m3=05&nowpage=1&pagecount=10&grpnum=1" class="btn_01">취소</a>
 			</div>
 		</form>	
 	</div>

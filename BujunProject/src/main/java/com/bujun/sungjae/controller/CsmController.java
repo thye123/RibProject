@@ -38,7 +38,6 @@ public class CsmController {
 	
 	@RequestMapping("/personalinfo02")
 	public ModelAndView list(@RequestParam HashMap<String, Object> map) {
-		//System.out.println("컨트롤러" + map);
 		String ad_code="";
 		String m1 = String.valueOf(map.get("m1"));
 		String m2 = String.valueOf(map.get("m2"));
@@ -55,6 +54,7 @@ public class CsmController {
 		int grpnum  = Integer.parseInt(String.valueOf(map.get("grpnum")));
 		int pagecount = Integer.parseInt(String.valueOf(map.get("pagecount")));
 		
+		mv.addObject("menu", map);
 		mv.addObject("ad_code",ad_code);
 		mv.addObject("noticeList", noticeList);
 		mv.addObject("pageVo", pageVo);
@@ -70,9 +70,9 @@ public class CsmController {
 	
 	@RequestMapping("/personalinfo02/view")
 	public ModelAndView Conentet(@RequestParam HashMap<String, Object> map) {
-		System.out.println("뷰" + map);
 		NoticeVo vo = noticeService.content(map);
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("menu", map);
 		mv.addObject("content", vo);
 		mv.addObject("writer",map.get("ad_writer"));
 		mv.addObject("ad_code", map.get("ad_code"));
@@ -91,6 +91,7 @@ public class CsmController {
 		}
 		
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("menu", map);
 		mv.addObject("ad_code", ad_code);
 		mv.setViewName("user/sub/sub08/consignment/consignmentwrite");
 		return mv;
@@ -98,7 +99,6 @@ public class CsmController {
 	
 	@RequestMapping("/personalinfo02/Write")
 	public String Write(@RequestParam HashMap<String, Object> map) {
-		//System.out.println("651" + map);
 		int ad_idx = noticeService.getWrite(map);
 		String ad_code = (String) map.get("ad_code");
 		map.put("ad_idx", ad_idx);
@@ -107,23 +107,20 @@ public class CsmController {
 	
 	@RequestMapping("/personalinfo02/UpdateForm")
 	public ModelAndView UpdateForm(@RequestParam HashMap<String, Object> map) {
-		System.out.println("업데이트"+ map);
 		NoticeVo vo = noticeService.content(map);
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("menu", map);
 		mv.addObject("board", vo);
 		mv.addObject("ad_idx", map.get("ad_idx"));
 		mv.addObject("ad_code", map.get("ad_code"));
-		//System.out.println("던짐" + map);
 		mv.setViewName("user/sub/sub08/consignment/consignmentupdate");
 		return mv;
 	}
 	
 	@RequestMapping("/personalinfo02/Update")
 	public String Update(@RequestParam HashMap<String, Object> map) {
-		//System.out.println("업데이트" + map);
 		noticeService.Update(map);
-		//System.out.println("뷰로 넘김" + map);
-		return "redirect:/personalinfo02/view?ad_idx="+ map.get("ad_idx")+"&ad_code="+map.get("ad_code");
+		return "redirect:/personalinfo02/view?m1=08&m2=01&m3=02&ad_idx="+ map.get("ad_idx")+"&ad_code="+map.get("ad_code");
 	}
 	
 	

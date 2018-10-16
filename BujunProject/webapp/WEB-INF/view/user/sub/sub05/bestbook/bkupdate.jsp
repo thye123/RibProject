@@ -19,7 +19,7 @@
 			var conf = confirm("파일을 삭제하시겠습니까?");
 			//alert("느아~" + conf);
 			if(conf==true) {
-				location.href="/bujunbk/delFile?ad_idx=${ad_idx}&ad_code=${ad_code}";
+				location.href="/bujunbk/delFile?m1=05&m2=01&m3=02&ad_idx=${ad_idx}&ad_code=${ad_code}";
 				//loaction.href="/notice/delFile";
 			}
 		});
@@ -29,9 +29,9 @@
 <div class="loca">
 	<ul>
 		<li><img src="${pageContext.request.contextPath}/resources/user/images/sub/loca_home.jpg" alt="" /></li>
-		<li>열린마당</li>
-		<li>공지사항</li>
-		<!-- <li>종합자료실</li> -->
+		<li>독서문화</li>
+		<li>추천도서</li>
+		<li>부전추천도서</li>
 	</ul>
 </div>
 <!-- //location -->
@@ -42,7 +42,7 @@
 	
 	
 	<!-- title -->
-	<div class="sub_tit">공지사항</div>
+	<div class="sub_tit">부전추천도서</div>
 	
 		
 	<!-- content 시작 -->
@@ -60,17 +60,17 @@
 		<form action="/bujunbk/Update" method="POST" enctype="multipart/form-data">
 			<input type="hidden" value="CAT0032" name="ad_code">	
 			<input type="hidden" name="ad_idx" value="${ad_idx}">
-			<div class="tb_boards">
+			<div class="tb_boardss">
 				<div class="top">
 					<div class="n_writer">
 						<div class="n_left">작성자</div>
-						<div class="n_right"><input type="text" size="40" value="관리자">
+						<div class="n_right"><input type="text" value="관리자">
 						<input type="hidden" value="ADMIN" name="ad_writer">
 						</div>
 					</div>
 					<div class="n_title">
 						<div class="n_left">제 목</div>
-						<div class="n_right"><input type="text" size="40" name="ad_title" value="${board.ad_title}"></div>
+						<div class="n_right"><input type="text" name="ad_title" value="${board.ad_title}"></div>
 					</div>
 				</div>
 				<div class="n_file">
@@ -93,10 +93,11 @@
 				<div class="n_cont">
 					<div class="n_left">내 용</div>
 					<div class="n_right">
-						<textarea rows="5" cols="108" style="resize:none; warp:virtual" name="ad_content" >${board.ad_content}</textarea>
+						<textarea style="resize:none; warp:virtual" name="ad_content" >${board.ad_content}</textarea>
 					</div>
 				</div>
 				<button>수정</button>
+				<a href="/bujunbk/view?m1=05&m2=01&m3=02&ad_idx=${board.ad_idx}&ad_code=${ad_code}" class="btn_01">취소</a>
 			</div>
 		</form>	
 	</div>

@@ -36,7 +36,6 @@ public class FinrefController {
 	//04
 	@RequestMapping("/finref04")
 	public ModelAndView list(@RequestParam HashMap<String, Object> map) {
-		//System.out.println("컨트롤러" + map);
 		String ad_code="CAT0011";
 		map.put("ad_code", ad_code);
 		List<NoticeVo> bankList = bankService.getList(map) ;
@@ -46,7 +45,8 @@ public class FinrefController {
 		int nowpage = Integer.parseInt(String.valueOf(map.get("nowpage")));
 		int grpnum  = Integer.parseInt(String.valueOf(map.get("grpnum")));
 		int pagecount = Integer.parseInt(String.valueOf(map.get("pagecount")));
-		//System.out.println("뱅크" + bankList);
+
+		mv.addObject("menu", map);
 		mv.addObject("ad_code",ad_code);
 		mv.addObject("bankBoardList", bankList);
 		mv.addObject("pageVo", pageVo);
@@ -62,9 +62,9 @@ public class FinrefController {
 	
 	@RequestMapping("/finref04/view")
 	public ModelAndView Conentet(@RequestParam HashMap<String, Object> map) {
-		System.out.println("04 view : " + map);
 		NoticeVo vo = bankService.content(map);
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("menu", map);
 		mv.addObject("content", vo);
 		mv.addObject("writer",map.get("ad_writer"));
 		mv.addObject("ad_code", map.get("ad_code"));
@@ -76,6 +76,7 @@ public class FinrefController {
 		String ad_code="CAT0011";
 		map.put("ad_code", ad_code);
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("menu", map);
 		mv.addObject("ad_code", ad_code);
 		mv.setViewName("user/sub/sub02/04/write");
 		return mv;
@@ -94,24 +95,24 @@ public class FinrefController {
 	
 	@RequestMapping("/finref04/UpdateForm")
 	public ModelAndView UpdateForm(@RequestParam HashMap<String, Object> map) {
-		System.out.println("업데이트"+ map);
+		//System.out.println("업데이트"+ map);
 		NoticeVo vo = bankService.content(map);
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("menu", map);
 		mv.addObject("board", vo);
 		mv.addObject("ad_idx", map.get("ad_idx"));
 		mv.addObject("ad_code", map.get("ad_code"));
-		//System.out.println("던짐" + map);
 		mv.setViewName("user/sub/sub02/04/update");
 		return mv;
 	}
 	
 	@RequestMapping("/finref04/Update")
 	public String Update(@RequestParam HashMap<String, Object> map, HttpServletRequest req) {
-		System.out.println("업데이트" + map);
+		//System.out.println("업데이트" + map);
 		bankService.Update(map);
 		bankService.upFile(req, map);
 		//System.out.println("뷰로 넘김" + map);
-		return "redirect:/finref04/view?ad_idx="+ map.get("ad_idx")+"&ad_code="+map.get("ad_code");
+		return "redirect:/finref04/view?m1=02&m2=02&m3=05&ad_idx="+ map.get("ad_idx")+"&ad_code="+map.get("ad_code");
 	}
 	
 	@RequestMapping("/finref04/delFile")
@@ -122,13 +123,12 @@ public class FinrefController {
 		map.put("ad_code", ad_code);
 
 		bankService.delFile(map);
-		return "redirect:/finref04/UpdateForm?ad_idx="+ map.get("ad_idx") +"&ad_code="+ map.get("ad_code");
+		return "redirect:/finref04/UpdateForm?m1=02&m2=02&m3=05&ad_idx="+ map.get("ad_idx") +"&ad_code="+ map.get("ad_code");
 	}
 	
 	//05
 		@RequestMapping("/finref05")
 		public ModelAndView list2(@RequestParam HashMap<String, Object> map) {
-			//System.out.println("컨트롤러" + map);
 			String ad_code="CAT0012";
 			map.put("ad_code", ad_code);
 		
@@ -139,7 +139,7 @@ public class FinrefController {
 			int nowpage = Integer.parseInt(String.valueOf(map.get("nowpage")));
 			int grpnum  = Integer.parseInt(String.valueOf(map.get("grpnum")));
 			int pagecount = Integer.parseInt(String.valueOf(map.get("pagecount")));
-			//System.out.println("뱅크" + bankList);
+			mv.addObject("menu", map);
 			mv.addObject("ad_code",ad_code);
 			mv.addObject("bankBoardList", bankList);
 			mv.addObject("pageVo", pageVo);
@@ -155,9 +155,9 @@ public class FinrefController {
 		
 		@RequestMapping("/finref05/view")
 		public ModelAndView Conentet2(@RequestParam HashMap<String, Object> map) {
-			System.out.println("05 view: " + map);
 			NoticeVo vo = bankService.content(map);
 			ModelAndView mv = new ModelAndView();
+			mv.addObject("menu", map);
 			mv.addObject("content", vo);
 			mv.addObject("writer",map.get("ad_writer"));
 			mv.addObject("ad_code", map.get("ad_code"));
@@ -169,6 +169,7 @@ public class FinrefController {
 			String ad_code="CAT0012";
 			map.put("ad_code", ad_code);
 			ModelAndView mv = new ModelAndView();
+			mv.addObject("menu", map);
 			mv.addObject("ad_code", ad_code);
 			mv.setViewName("user/sub/sub02/05/write");
 			return mv;
@@ -176,7 +177,6 @@ public class FinrefController {
 		
 		@RequestMapping("/finref05/Write")
 		public String Write2(@RequestParam HashMap<String, Object> map, HttpServletRequest req) {
-			//System.out.println("651" + map);
 			int ad_idx = bankService.getWrite(map);
 			String ad_code = (String) map.get("ad_code");
 			map.put("ad_idx", ad_idx);
@@ -189,21 +189,20 @@ public class FinrefController {
 		public ModelAndView UpdateForm2(@RequestParam HashMap<String, Object> map) {
 			NoticeVo vo = bankService.content(map);
 			ModelAndView mv = new ModelAndView();
+			mv.addObject("menu", map);
 			mv.addObject("board", vo);
 			mv.addObject("ad_idx", map.get("ad_idx"));
 			mv.addObject("ad_code", map.get("ad_code"));
-			//System.out.println("던짐" + map);
 			mv.setViewName("user/sub/sub02/05/update");
 			return mv;
 		}
 		
 		@RequestMapping("/finref05/Update")
 		public String Update2(@RequestParam HashMap<String, Object> map, HttpServletRequest req) {
-			System.out.println("업데이트" + map);
 			bankService.Update(map);
 			bankService.upFile(req, map);
 			//System.out.println("뷰로 넘김" + map);
-			return "redirect:/finref05/view?ad_idx="+ map.get("ad_idx")+"&ad_code="+map.get("ad_code");
+			return "redirect:/finref05/view?m1=02&m2=02&m3=05&ad_idx="+ map.get("ad_idx")+"&ad_code="+map.get("ad_code");
 		}
 		
 		@RequestMapping("/finref05/delFile")
@@ -213,7 +212,7 @@ public class FinrefController {
 			String ad_code = "CAT0012";
 			map.put("ad_code", ad_code);
 			bankService.delFile(map);
-			return "redirect:/finref05/UpdateForm?ad_idx="+ map.get("ad_idx") +"&ad_code="+ map.get("ad_code");
+			return "redirect:/finref05/UpdateForm?m1=02&m2=02&m3=05&ad_idx="+ map.get("ad_idx") +"&ad_code="+ map.get("ad_code");
 		}
 		
 		//06
@@ -228,6 +227,8 @@ public class FinrefController {
 			int nowpage = Integer.parseInt(String.valueOf(map.get("nowpage")));
 			int grpnum  = Integer.parseInt(String.valueOf(map.get("grpnum")));
 			int pagecount = Integer.parseInt(String.valueOf(map.get("pagecount")));
+			mv.addObject("menu", map);
+			mv.addObject("menu", map);
 			mv.addObject("ad_code",ad_code);
 			mv.addObject("bankBoardList", bankList);
 			mv.addObject("pageVo", pageVo);
@@ -243,9 +244,9 @@ public class FinrefController {
 			
 		@RequestMapping("/finref06/view")
 		public ModelAndView Conentet3(@RequestParam HashMap<String, Object> map) {
-			System.out.println("06 view: " + map);
 			NoticeVo vo = bankService.content(map);
 			ModelAndView mv = new ModelAndView();
+			mv.addObject("menu", map);
 			mv.addObject("content", vo);
 			mv.addObject("writer",map.get("ad_writer"));
 			mv.addObject("ad_code", map.get("ad_code"));
@@ -257,6 +258,7 @@ public class FinrefController {
 			String ad_code="CAT0013";
 			map.put("ad_code", ad_code);
 			ModelAndView mv = new ModelAndView();
+			mv.addObject("menu", map);
 			mv.addObject("ad_code", ad_code);
 			mv.setViewName("user/sub/sub02/06/write");
 			return mv;
@@ -276,6 +278,7 @@ public class FinrefController {
 		public ModelAndView UpdateForm3(@RequestParam HashMap<String, Object> map) {
 			NoticeVo vo = bankService.content(map);
 			ModelAndView mv = new ModelAndView();
+			mv.addObject("menu", map);
 			mv.addObject("board", vo);
 			mv.addObject("ad_idx", map.get("ad_idx"));
 			mv.addObject("ad_code", map.get("ad_code"));
@@ -287,7 +290,7 @@ public class FinrefController {
 		public String Update3(@RequestParam HashMap<String, Object> map, HttpServletRequest req) {
 			bankService.Update(map);
 			bankService.upFile(req, map);
-			return "redirect:/finref06/view?ad_idx="+ map.get("ad_idx")+"&ad_code="+map.get("ad_code");
+			return "redirect:/finref06/view?m1=02&m2=02&m3=05&ad_idx="+ map.get("ad_idx")+"&ad_code="+map.get("ad_code");
 		}
 			
 		@RequestMapping("/finref06/delFile")
@@ -296,7 +299,7 @@ public class FinrefController {
 			String ad_code = "CAT0013";
 			map.put("ad_code", ad_code);
 			bankService.delFile(map);
-			return "redirect:/finref06/UpdateForm?ad_idx="+ map.get("ad_idx") +"&ad_code="+ map.get("ad_code");
+			return "redirect:/finref06/UpdateForm?m1=02&m2=02&m3=05&ad_idx="+ map.get("ad_idx") +"&ad_code="+ map.get("ad_code");
 		}	
 		
 		//07
@@ -311,6 +314,8 @@ public class FinrefController {
 			int nowpage = Integer.parseInt(String.valueOf(map.get("nowpage")));
 			int grpnum  = Integer.parseInt(String.valueOf(map.get("grpnum")));
 			int pagecount = Integer.parseInt(String.valueOf(map.get("pagecount")));
+			mv.addObject("menu", map);
+			mv.addObject("menu", map);
 			mv.addObject("ad_code",ad_code);
 			mv.addObject("bankBoardList", bankList);
 			mv.addObject("pageVo", pageVo);
@@ -326,9 +331,9 @@ public class FinrefController {
 			
 		@RequestMapping("/finref07/view")
 		public ModelAndView Conentet4(@RequestParam HashMap<String, Object> map) {
-			System.out.println("07 view: " + map);
 			NoticeVo vo = bankService.content(map);
 			ModelAndView mv = new ModelAndView();
+			mv.addObject("menu", map);
 			mv.addObject("content", vo);
 			mv.addObject("writer",map.get("ad_writer"));
 			mv.addObject("ad_code", map.get("ad_code"));
@@ -340,6 +345,7 @@ public class FinrefController {
 			String ad_code="CAT0014";
 			map.put("ad_code", ad_code);
 			ModelAndView mv = new ModelAndView();
+			mv.addObject("menu", map);
 			mv.addObject("ad_code", ad_code);
 			mv.setViewName("user/sub/sub02/07/write");
 			return mv;
@@ -359,6 +365,7 @@ public class FinrefController {
 		public ModelAndView UpdateForm4(@RequestParam HashMap<String, Object> map) {
 			NoticeVo vo = bankService.content(map);
 			ModelAndView mv = new ModelAndView();
+			mv.addObject("menu", map);
 			mv.addObject("board", vo);
 			mv.addObject("ad_idx", map.get("ad_idx"));
 			mv.addObject("ad_code", map.get("ad_code"));
@@ -370,7 +377,7 @@ public class FinrefController {
 		public String Update4(@RequestParam HashMap<String, Object> map, HttpServletRequest req) {
 			bankService.Update(map);
 			bankService.upFile(req, map);
-			return "redirect:/finref07/view?ad_idx="+ map.get("ad_idx")+"&ad_code="+map.get("ad_code");
+			return "redirect:/finref07/view?m1=02&m2=02&m3=05&ad_idx="+ map.get("ad_idx")+"&ad_code="+map.get("ad_code");
 		}
 			
 		@RequestMapping("/finref07/delFile")
@@ -379,7 +386,7 @@ public class FinrefController {
 			String ad_code = "CAT0014";
 			map.put("ad_code", ad_code);
 			bankService.delFile(map);
-			return "redirect:/finref07/UpdateForm?ad_idx="+ map.get("ad_idx") +"&ad_code="+ map.get("ad_code");
+			return "redirect:/finref07/UpdateForm?m1=02&m2=02&m3=05&ad_idx="+ map.get("ad_idx") +"&ad_code="+ map.get("ad_code");
 		}		
 	
 }

@@ -36,8 +36,8 @@
 	
 	<div class="tab_depth01" >
 		<form action="/bujunbk" method="GET">
-			<div class="search">
-				<div class="search_sch">
+			<div class="boardSearch">
+				<div class="board_sch">
 					<input type="hidden" value="05" name="m1">
 					<input type="hidden" value="01" name="m2">
 					<input type="hidden" value="02" name="m3">
@@ -54,7 +54,7 @@
 						
 					</select>
 					<input type="text" size="10" name="keyWord" placeholder="검색어를 입력하세요" />
-					<button value="검색" class="btn1">검색</button>
+					<button value="검색" class="boardBtn">검색</button>
 				</div>
 			</div>
 		</form>
@@ -88,7 +88,7 @@
 						<c:forEach var="bk" items="${noticeList}">
 							<tr>
 								<td>${bk.ad_idx}</td>
-								<td><a href="/bujunbk/view?ad_idx=${bk.ad_idx}&ad_code=${ad_code}">${bk.ad_title}</a></td>
+								<td><a href="/bujunbk/view?m1=05&m2=01&m3=02&ad_idx=${bk.ad_idx}&ad_code=${ad_code}">${bk.ad_title}</a></td>
 								<td>${bk.ad_writer}</td>
 								<td>${bk.ad_regdate}</td>
 							</tr>

@@ -42,7 +42,6 @@ public class BestPickController {
 
 	@RequestMapping("/bujunbk")
 	public ModelAndView list(@RequestParam HashMap<String, Object> map) {
-		//System.out.println("컨트롤러" + map);
 		String ad_code="";
 		String m1 = String.valueOf(map.get("m1"));
 		String m2 = String.valueOf(map.get("m2"));
@@ -59,6 +58,7 @@ public class BestPickController {
 		int grpnum  = Integer.parseInt(String.valueOf(map.get("grpnum")));
 		int pagecount = Integer.parseInt(String.valueOf(map.get("pagecount")));
 		
+		mv.addObject("menu", map);
 		mv.addObject("ad_code",ad_code);
 		mv.addObject("noticeList", noticeList);
 		mv.addObject("pageVo", pageVo);
@@ -74,9 +74,9 @@ public class BestPickController {
 	
 	@RequestMapping("/bujunbk/view")
 	public ModelAndView Conentet(@RequestParam HashMap<String, Object> map) {
-		System.out.println("뷰" + map);
 		NoticeVo vo = noticeService.content(map);
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("menu", map);
 		mv.addObject("content", vo);
 		mv.addObject("writer",map.get("ad_writer"));
 		mv.addObject("ad_code", map.get("ad_code"));
@@ -102,9 +102,9 @@ public class BestPickController {
 	
 	@RequestMapping("/bujunbk/Write")
 	public String Write(@RequestParam HashMap<String, Object> map, HttpServletRequest req) {
-		//System.out.println("651" + map);
 		int ad_idx = noticeService.getWrite(map);
 		String ad_code = (String) map.get("ad_code");
+		
 		map.put("ad_idx", ad_idx);
 		noticeService.addFile(req, map);
 		
@@ -113,74 +113,28 @@ public class BestPickController {
 	
 	@RequestMapping("/bujunbk/UpdateForm")
 	public ModelAndView UpdateForm(@RequestParam HashMap<String, Object> map) {
-		System.out.println("업데이트"+ map);
 		NoticeVo vo = noticeService.content(map);
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("menu", map);
 		mv.addObject("board", vo);
 		mv.addObject("ad_idx", map.get("ad_idx"));
 		mv.addObject("ad_code", map.get("ad_code"));
-		//System.out.println("던짐" + map);
 		mv.setViewName("user/sub/sub05/bestbook/bkupdate");
 		return mv;
 	}
 	
 	@RequestMapping("/bujunbk/Update")
 	public String Update(@RequestParam HashMap<String, Object> map, HttpServletRequest req) {
-		System.out.println("업데이트" + map);
 		noticeService.Update(map);
 		noticeService.upFile(req, map);
-		//System.out.println("뷰로 넘김" + map);
-		return "redirect:/bujunbk/view?ad_idx="+ map.get("ad_idx")+"&ad_code="+map.get("ad_code");
+		return "redirect:/bujunbk/view?m1=05&m2=01&m3=02&ad_idx="+ map.get("ad_idx")+"&ad_code="+map.get("ad_code");
 	}
 	
 	@RequestMapping("/bujunbk/delFile")
 	public String delFile(@RequestParam HashMap<String, Object> map) {
 		System.out.println("파일삭제" + map);
-		/*int ad_idx = Integer.parseInt(String.valueOf(map.get("ad_idx")));
-		String ad_code = "";
-		
-		String m1 = String.valueOf(map.get("m1"));
-		String m2 = String.valueOf(map.get("m2"));
-		if(m1.equals("m1") && m2.equals("m2")) {
-			ad_code="CAT0009";
-			map.put("ad_code", ad_code);
-		}*/
 		noticeService.delFile(map);
-		return "redirect:/bujunbk/UpdateForm?ad_idx="+ map.get("ad_idx") +"&ad_code="+ map.get("ad_code");
+		return "redirect:/bujunbk/UpdateForm?m1=05&m2=01&m3=02&ad_idx="+ map.get("ad_idx") +"&ad_code="+ map.get("ad_code");
 	}
-	
-	// 파일 다운로드
-	/*@RequestMapping(value="/download/{type}/{sfile:.+}", method=RequestMethod.GET)
-	public	void downloadFile(HttpServletResponse response, @PathVariable("type") String type,
-			@PathVariable("sfile") String sfile) throws IOException {
-		String INTERNAl_FILE     = sfile;
-		String EXTERNAL_FILE_PATH = "d:\\upload\\" + sfile;
-		
-		File file = null;
-		if(type.equalsIgnoreCase("internal")) {
-			ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-			file = new File(classLoader.getResource(INTERNAl_FILE).getFile());
-		}else {
-			file = new File(EXTERNAL_FILE_PATH);
-		}
-		if(!file.exists()) {
-			String errorMessage = "파일놉";
-			System.out.println(errorMessage);
-			OutputStream outputStream = response.getOutputStream();
-			outputStream.write(errorMessage.getBytes(Charset.forName("UTF-8")));
-			outputStream.close();
-			return;
-		}
-		String mimeType = URLConnection.guessContentTypeFromName(file.getName());
-		mimeType = "application/octet-stream"; 
-		System.out.println("mimeType:" + mimeType);
-		
-		response.setContentType(mimeType);
-		response.setHeader("Content-Dispostition", 
-				String.format("inline; filename=\""+file.getName()+ "\""));
-		response.setContentLengthLong((int)file.length());
-		InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
-		FileCopyUtils.copy(inputStream, response.getOutputStream());
-	}*/
 	
 }

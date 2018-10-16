@@ -67,7 +67,7 @@
 		</div>			
 		<div class="btnst">
 			<div class="btns_1">
-				<a href="/wishres/UpdateForm?ad_idx=${content.ad_idx}&ad_code=${ad_code}">수정</a>
+				<a href="/wishres/UpdateForm?m1=03&m2=06&ad_idx=${content.ad_idx}&ad_code=${ad_code}">수정</a>
 			</div>
 			<div class="btns_2">
 				<a href="/wishres?m1=03&m2=06&nowpage=1&pagecount=10&grpnum=1">목록</a>

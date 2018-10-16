@@ -68,10 +68,11 @@
 		</div>			
 		<div class="btnst">
 			<div class="btns_1">
-				<a href="/notice/UpdateForm?ad_idx=${content.ad_idx}&ad_code=${ad_code}">수정</a>
+				<a href="/notice/UpdateForm?ad_idx=${content.ad_idx}&ad_code=${ad_code}&m1=06&m2=01">수정</a>
 			</div>
 			<div class="btns_2">
 				<a href="/notice?m1=06&m2=01&nowpage=1&pagecount=10&grpnum=1">목록</a>
+				
 			</div>
 		</div>
 		

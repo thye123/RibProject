@@ -68,7 +68,7 @@
 		</div>			
 		<div class="btnst">
 			<div class="btns_1">
-				<a href="/finref06/UpdateForm?ad_idx=${content.ad_idx}&ad_code=${ad_code}">수정</a>
+				<a href="/finref06/UpdateForm?m1=02&m2=02&m3=05&ad_idx=${content.ad_idx}&ad_code=${ad_code}">수정</a>
 			</div>
 			<div class="btns_2">
 				<a href="/finref06?m1=02&m2=02&m3=05&nowpage=1&pagecount=10&grpnum=1">목록</a>

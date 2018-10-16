@@ -55,7 +55,7 @@ public class NoticeController {
 	
 	@RequestMapping("/notice")
 	public ModelAndView list(@RequestParam HashMap<String, Object> map) {
-		System.out.println("컨트롤러" + map);
+		//System.out.println("컨트롤러" + map);
 		String ad_code="";
 		
 		if(Integer.parseInt(String.valueOf(map.get("m1")))==06 && Integer.parseInt(String.valueOf(map.get("m2")))==01  ) {
@@ -69,7 +69,7 @@ public class NoticeController {
 		int nowpage = Integer.parseInt(String.valueOf(map.get("nowpage")));
 		int grpnum  = Integer.parseInt(String.valueOf(map.get("grpnum")));
 		int pagecount = Integer.parseInt(String.valueOf(map.get("pagecount")));
-		
+		mv.addObject("menu", map);
 		mv.addObject("ad_code",ad_code);
 		mv.addObject("noticeList", noticeList);
 		mv.addObject("pageVo", pageVo);
@@ -86,8 +86,8 @@ public class NoticeController {
 	@RequestMapping("/notice/view")
 	public ModelAndView Conentet(@RequestParam HashMap<String, Object> map) {
 		NoticeVo vo = noticeService.content(map);
-		//System.out.println("뷰" + vo);
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("menu", map);
 		mv.addObject("content", vo);
 		mv.addObject("writer",map.get("ad_writer"));
 		mv.addObject("ad_code", map.get("ad_code"));
@@ -102,6 +102,7 @@ public class NoticeController {
 			ad_code = "CAT0009";
 		}
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("menu", map);
 		mv.addObject("ad_code", ad_code);
 		mv.setViewName("user/sub/sub06/notice/noticewrite");
 		return mv;
@@ -120,9 +121,10 @@ public class NoticeController {
 	
 	@RequestMapping("/notice/UpdateForm")
 	public ModelAndView UpdateForm(@RequestParam HashMap<String, Object> map) {
-		System.out.println("업데이트"+ map);
+		//System.out.println("업데이트"+ map);
 		NoticeVo vo = noticeService.content(map);
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("menu", map);
 		mv.addObject("board", vo);
 		mv.addObject("ad_idx", map.get("ad_idx"));
 		mv.addObject("ad_code", map.get("ad_code"));
@@ -133,16 +135,16 @@ public class NoticeController {
 	
 	@RequestMapping("/notice/Update")
 	public String Update(@RequestParam HashMap<String, Object> map, HttpServletRequest req) {
-		System.out.println("업데이트" + map);
+		//System.out.println("업데이트" + map);
 		noticeService.Update(map);
 		noticeService.upFile(req, map);
 		//System.out.println("뷰로 넘김" + map);
-		return "redirect:/notice/view?ad_idx="+ map.get("ad_idx")+"&ad_code="+map.get("ad_code");
+		return "redirect:/notice/view?m1=06&m2=01&ad_idx="+ map.get("ad_idx")+"&ad_code="+map.get("ad_code");
 	}
 	
 	@RequestMapping("/notice/delFile")
 	public String delFile(@RequestParam HashMap<String, Object> map) {
-		System.out.println("파일삭제" + map);
+		//System.out.println("파일삭제" + map);
 		/*int ad_idx = Integer.parseInt(String.valueOf(map.get("ad_idx")));
 		String ad_code = "";
 		
@@ -153,10 +155,10 @@ public class NoticeController {
 			map.put("ad_code", ad_code);
 		}*/
 		noticeService.delFile(map);
-		return "redirect:/notice/UpdateForm?ad_idx="+ map.get("ad_idx") +"&ad_code="+ map.get("ad_code");
+		return "redirect:/notice/UpdateForm?m1=06&m2=01&ad_idx="+ map.get("ad_idx") +"&ad_code="+ map.get("ad_code");
 	}
 	
-	// 파일 다운로드
+	/*// 파일 다운로드
 	@RequestMapping(value="/download/{type}/{sfile:.+}", method=RequestMethod.GET)
 	public	void downloadFile(HttpServletResponse response, @PathVariable("type") String type,
 			@PathVariable("sfile") String sfile) throws IOException {
@@ -189,5 +191,5 @@ public class NoticeController {
 		InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
 		FileCopyUtils.copy(inputStream, response.getOutputStream());
 	}
-	
+	*/
 }

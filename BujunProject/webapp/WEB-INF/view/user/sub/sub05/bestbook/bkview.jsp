@@ -19,9 +19,9 @@
 <div class="loca">
 	<ul>
 		<li><img src="${pageContext.request.contextPath}/resources/user/images/sub/loca_home.jpg" alt="" /></li>
-		<li>열린마당</li>
-		<li>공지사항</li>
-		<!-- <li>종합자료실</li> -->
+		<li>독서문화</li>
+		<li>추천도서</li>
+		<li>부전추천도서</li>
 	</ul>
 </div>
 <!-- //location -->
@@ -32,7 +32,7 @@
 	
 	
 	<!-- title -->
-	<div class="sub_tit">공지사항</div>
+	<div class="sub_tit">부전추천도서</div>
 	
 	
 	
@@ -68,7 +68,7 @@
 		</div>			
 		<div class="btnst">
 			<div class="btns_1">
-				<a href="/bujunbk/UpdateForm?ad_idx=${content.ad_idx}&ad_code=${ad_code}">수정</a>
+				<a href="/bujunbk/UpdateForm?m1=05&m2=01&m3=02&ad_idx=${content.ad_idx}&ad_code=${ad_code}">수정</a>
 			</div>
 			<div class="btns_2">
 				<a href="/bujunbk?m1=05&m2=01&m3=02&nowpage=1&pagecount=10&grpnum=1">목록</a>

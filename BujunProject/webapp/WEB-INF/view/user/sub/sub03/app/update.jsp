@@ -14,8 +14,6 @@
 <%@ include file="../../../include/left_menu03.jsp" %>   
 <script>
 	function rabtn() {
-		//alert("씨발");
-		//var cansel = document.getElementById('cansel');
 		var div = document.createElement('div');
 		div.setAttribute('class','a_right')
 		var txt = document.createElement('input');
@@ -174,9 +172,11 @@
 			</div>
 			
 		</div>
-		<div class="buttons">
+		<div class="btnst">
 			<button>저장</button>
-    		<a href="/wishbk/view?sc_idx=${update.sc_idx}">취소</a>
+			<div class="btns_1">
+    			<a href="/wishbk/view?m1=03&m2=05&sc_idx=${update.sc_idx}">취소</a>
+    		</div>
 		</div>
 	</form>
 	

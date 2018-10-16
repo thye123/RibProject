@@ -19,9 +19,10 @@
 <div class="loca">
 	<ul>
 		<li><img src="${pageContext.request.contextPath}/resources/user/images/sub/loca_home.jpg" alt="" /></li>
-		<li>열린마당</li>
-		<li>공지사항</li>
-		<!-- <li>종합자료실</li> -->
+		<li>도서관이용</li>
+		<li>자료실소개</li>
+		<li>특성화(금융정보)자료실</li>
+		
 	</ul>
 </div>
 <!-- //location -->
@@ -32,7 +33,7 @@
 	
 	
 	<!-- title -->
-	<div class="sub_tit">공지사항</div>
+	<div class="sub_tit">특성화행사</div>
 	
 		
 	<!-- content 시작 -->
@@ -49,7 +50,7 @@
 	<div class="auto_box mg_b40">		
 		<form action="/finref04/Write" method="POST" enctype="multipart/form-data">
 		<input type="hidden" value="CAT0011" name="ad_code">	
-			<div class="tb_boards">
+			<div class="tb_boardss">
 				<div class="top">
 					<div class="n_writer">
 						<div class="n_left">작성자</div>
@@ -73,6 +74,7 @@
 					</div>
 				</div>
 				<button>글쓰기</button>
+				<a href="/finref04?m1=02&m2=02&m3=05&nowpage=1&pagecount=10&grpnum=1" class="btn_01">취소</a>
 			</div>
 		</form>	
 	</div>

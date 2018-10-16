@@ -36,24 +36,23 @@
 	
 	<div class="tab_depth01" >
 		<form action="/notice" method="GET">
-			<div class="search">
-				<div class="search_sch">
+			<div class="boardSearch">
+				<div class="board_sch">
 					<input type="hidden" value="06" name="m1">
 					<input type="hidden" value="01" name="m2">
 					<input type="hidden" value="1" name="nowpage">
 					<input type="hidden" value="10" name="pagecount">
 					<input type="hidden" value="1" name="grpnum">
-					<select autofocus name="searchType">
+					<select autofocus name="searchType" id="keyfield">
 						<option	value=""<c:out value="${searchType == null? 'selected':''}"/>>검색대상</option>
 						<option value="title"<c:out value="${searchType eq 'title'?'selected':'' }"/>>제목</option>
 						<option value="content"<c:out value="${searchType eq 'content'?'selected':'' }"/>>내용</option>
 						<option value="write"<c:out value="${searchType eq 'write'?'selected':'' }"/>>작성자</option>
 						<option value="title+content"<c:out value="${searchType eq 'title+content'?'selected':'' }"/>>제목+내용</option>
 						
-						
 					</select>
 					<input type="text" size="10" name="keyWord" placeholder="검색어를 입력하세요" />
-					<button value="검색" class="btn1">검색</button>
+					<button value="검색" class="boardBtn">검색</button>
 				</div>
 			</div>
 		</form>
@@ -88,7 +87,7 @@
 						<c:forEach var="notice" items="${noticeList}">
 							<tr>
 								<td>${notice.ad_idx}</td>
-								<td><a href="/notice/view?ad_idx=${notice.ad_idx}&ad_code=${ad_code}">${notice.ad_title}</a></td>
+								<td><a href="/notice/view?ad_idx=${notice.ad_idx}&ad_code=${ad_code}&m1=06&m2=01">${notice.ad_title}</a></td>
 								<td>${notice.ad_writer}</td>
 								<td>${notice.ad_regdate}</td>
 								<td class="bnon">${notice.ad_count}</td>

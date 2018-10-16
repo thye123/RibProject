@@ -36,8 +36,8 @@
 	
 	<div class="tab_depth01" >
 		<form action="/personalinfo02" method="GET">
-			<div class="search">
-				<div class="search_sch">
+			<div class="boardSearch">
+				<div class="board_sch">
 					<input type="hidden" value="08" name="m1">
 					<input type="hidden" value="01" name="m2">
 					<input type="hidden" value="02" name="m3">
@@ -54,7 +54,7 @@
 						
 					</select>
 					<input type="text" size="10" name="keyWord" placeholder="검색어를 입력하세요" />
-					<button value="검색" class="btn1">검색</button>
+					<button value="검색" class="boardBtn">검색</button>
 				</div>
 			</div>
 		</form>
@@ -88,7 +88,7 @@
 						<c:forEach var="csm" items="${noticeList}">
 							<tr>
 								<td>${csm.ad_idx}</td>
-								<td><a href="/personalinfo02/view?ad_idx=${csm.ad_idx}&ad_code=${ad_code}">${csm.ad_title}</a></td>
+								<td><a href="/personalinfo02/view?m1=08&m2=01&m3=02&ad_idx=${csm.ad_idx}&ad_code=${ad_code}">${csm.ad_title}</a></td>
 								<td>${csm.ad_writer}</td>
 								<td>${csm.ad_regdate}</td>
 							</tr>

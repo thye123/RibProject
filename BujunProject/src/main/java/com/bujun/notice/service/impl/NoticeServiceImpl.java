@@ -26,7 +26,6 @@ public class NoticeServiceImpl implements NoticeService {
 	
 	@Override
 	public List<NoticeVo> getList(HashMap<String, Object> map) {
-		//System.out.println("서비스" + map);
 		int totalcount = 10;
 		int pagecount = 10;
 		map.put("pagecount", pagecount);

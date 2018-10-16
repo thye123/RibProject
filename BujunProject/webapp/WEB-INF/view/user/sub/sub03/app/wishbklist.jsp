@@ -63,8 +63,8 @@
 	
 	<div class="tab_depth01" >
 		<form action="/wishbk" method="GET">
-			<div class="search">
-				<div class="search_sch">
+			<div class="boardSearch">
+				<div class="board_sch">
 					<input type="hidden" value="03" name="m1">
 					<input type="hidden" value="05" name="m2">
 					<input type="hidden" value="1" name="nowpage">
@@ -80,7 +80,7 @@
 						
 					</select>
 					<input type="text" size="10" name="keyWord" placeholder="검색어를 입력하세요" />
-					<button value="검색" class="btn1">검색</button>
+					<button value="검색" class="boardBtn">검색</button>
 				</div>
 			</div>
 		</form>
@@ -117,7 +117,7 @@
 							<tr>
 								<td>${app.sc_idx}</td>
 								<td>${app.sc_memid}</td>
-								<td><a href="/wishbk/view?sc_idx=${app.sc_idx}">${app.sc_bookname}</a></td>
+								<td><a href="/wishbk/view?m1=03&m2=05&sc_idx=${app.sc_idx}">${app.sc_bookname}</a></td>
 								<td>${app.sc_author}</td>
 								<td>${app.sc_regdate}</td>
 								<c:choose>

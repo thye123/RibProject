@@ -35,8 +35,8 @@
 	
 	<div class="tab_depth01" >
 		<form action="/wishres" method="GET">
-			<div class="search">
-				<div class="search_sch">
+			<div class="boardSearch">
+				<div class="board_sch">
 					<input type="hidden" value="03" name="m1">
 					<input type="hidden" value="06" name="m2">
 					<input type="hidden" value="1" name="nowpage">
@@ -52,7 +52,7 @@
 						
 					</select>
 					<input type="text" size="10" name="keyWord" placeholder="검색어를 입력하세요" />
-					<button value="검색" class="btn1">검색</button>
+					<button value="검색" class="boardBtn">검색</button>
 				</div>
 			</div>
 		</form>
@@ -86,7 +86,7 @@
 						<c:forEach var="result" items="${resultList}">
 							<tr>
 								<td>${result.ad_idx}</td>
-								<td><a href="/wishres/view?ad_idx=${result.ad_idx}&ad_code=${ad_code}">${result.ad_title}</a></td>
+								<td><a href="/wishres/view?m1=03&m2=06&ad_idx=${result.ad_idx}&ad_code=${ad_code}">${result.ad_title}</a></td>
 								<td>${result.ad_writer}</td>
 								<td>${result.ad_regdate}</td>
 							</tr>

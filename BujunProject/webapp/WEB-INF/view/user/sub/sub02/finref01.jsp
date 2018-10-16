@@ -51,10 +51,10 @@
 			<li class="active"><a href="/finref01?m1=02&m2=02&m3=05">특성화(금융정보)자료실</a></li>
 			<li><a href="/finref02?m1=02&m2=02&m3=05">부산시공공도서관특성화</a></li>
 			<li><a href="/finref03?m1=02&m2=02&m3=05">금융관련사이트</a></li>
-			<li><a href="/finref04?m1=02&m2=02&m3=05">특성화행사</a></li>
-			<li><a href="/finref05?m1=02&m2=02&m3=05">서평목록</a></li>
-			<li><a href="/finref06?m1=02&m2=02&m3=05">신문기사색인</a></li>
-			<li><a href="/finref07?m1=02&m2=02&m3=05">알짜·경제금융상식</a></li>
+			<li><a href="/finref04?m1=02&m2=02&m3=05&nowpage=1&pagecount=10&grpnum=1">특성화행사</a></li>
+			<li><a href="/finref05?m1=02&m2=02&m3=05&nowpage=1&pagecount=10&grpnum=1">서평목록</a></li>
+			<li><a href="/finref06?m1=02&m2=02&m3=05&nowpage=1&pagecount=10&grpnum=1">신문기사색인</a></li>
+			<li><a href="/finref07?m1=02&m2=02&m3=05&nowpage=1&pagecount=10&grpnum=1">알짜·경제금융상식</a></li>
 		</ul>
 	</div>
 	

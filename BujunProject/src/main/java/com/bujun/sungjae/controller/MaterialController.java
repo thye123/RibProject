@@ -50,6 +50,7 @@ public class MaterialController {
 		int nowpage = Integer.parseInt(String.valueOf(map.get("nowpage")));
 		int grpnum  = Integer.parseInt(String.valueOf(map.get("grpnum")));
 		int pagecount = Integer.parseInt(String.valueOf(map.get("pagecount")));
+		mv.addObject("menu", map);
 		mv.addObject("ad_code",ad_code);
 		mv.addObject("resultList", resultList);
 		mv.addObject("pageVo", pageVo);
@@ -67,6 +68,7 @@ public class MaterialController {
 	public ModelAndView Conentet(@RequestParam HashMap<String, Object> map) {
 		NoticeVo vo = materialService.content(map);
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("menu", map);
 		mv.addObject("content", vo);
 		mv.addObject("writer",map.get("ad_writer"));
 		mv.addObject("ad_code", map.get("ad_code"));
@@ -84,6 +86,7 @@ public class MaterialController {
 			map.put("ad_code", ad_code);
 		}
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("menu", map);
 		mv.addObject("ad_code", ad_code);
 		mv.setViewName("user/sub/sub03/appresult/write");
 		return mv;
@@ -102,6 +105,7 @@ public class MaterialController {
 	public ModelAndView UpdateForm(@RequestParam HashMap<String, Object> map) {
 		NoticeVo vo = materialService.content(map);
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("menu", map);
 		mv.addObject("board", vo);
 		mv.addObject("ad_idx", map.get("ad_idx"));
 		mv.addObject("ad_code", map.get("ad_code"));
@@ -113,7 +117,7 @@ public class MaterialController {
 	public String Update(@RequestParam HashMap<String, Object> map, HttpServletRequest req) {
 		materialService.Update(map);
 		materialService.upFile(req, map);
-		return "redirect:/wishres/view?ad_idx="+ map.get("ad_idx")+"&ad_code="+map.get("ad_code");
+		return "redirect:/wishres/view?m1=03&m2=06&ad_idx="+ map.get("ad_idx")+"&ad_code="+map.get("ad_code");
 	}
 	
 	@RequestMapping("/wishres/delFile")
@@ -129,7 +133,7 @@ public class MaterialController {
 		}
 
 		materialService.delFile(map);
-		return "redirect:/wishres/UpdateForm?ad_idx="+ map.get("ad_idx") +"&ad_code="+ map.get("ad_code");
+		return "redirect:/wishres/UpdateForm?m1=03&m2=06&ad_idx="+ map.get("ad_idx") +"&ad_code="+ map.get("ad_code");
 	}
 	
 	  
@@ -145,6 +149,7 @@ public class MaterialController {
 		int grpnum  = Integer.parseInt(String.valueOf(map.get("grpnum")));
 		int pagecount = Integer.parseInt(String.valueOf(map.get("pagecount")));
 		
+		mv.addObject("menu", map);
 		mv.addObject("appList", appList);
 		mv.addObject("pageVo", pageVo);
 		mv.addObject("nowpage", nowpage);
@@ -161,8 +166,8 @@ public class MaterialController {
 	@RequestMapping("/wishbk/view")
 	public ModelAndView conentet(@RequestParam HashMap<String, Object> map) {
 		AppVo appVo = appService.content(map);
-		System.out.println("몇개 받냐" + appVo);
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("menu", map);
 		mv.addObject("app", appVo);
 		mv.addObject("sc_idx", map.get("sc_idx"));
 		mv.addObject("write", map.get("sc_memid"));
@@ -170,11 +175,10 @@ public class MaterialController {
 		return mv;
 	}
 	
-	
-	
 	@RequestMapping("/wishbk02/WriteForm")
 	public ModelAndView writeform(@RequestParam HashMap<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("menu", map);
 		mv.addObject("sc_memid", map.get("sc_memid"));
 		mv.setViewName("user/sub/sub03/app/app");
 		return mv;
@@ -191,9 +195,9 @@ public class MaterialController {
 	
 	@RequestMapping("/wishbk02/UpdateForm")
 	public ModelAndView updateForm(@RequestParam HashMap<String, Object> map) {
-		System.out.println("업데이트"+ map);
 		AppVo vo = appService.content(map);
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("menu", map);
 		mv.addObject("update", vo);
 		mv.addObject("sc_email", map.get("sc_email"));
 		mv.addObject("sc_idx", map.get("sc_idx"));
@@ -203,8 +207,8 @@ public class MaterialController {
 	
 	@RequestMapping("/wishbk02/Update")
 	public String update(@RequestParam HashMap<String, Object> map, HttpServletRequest req) {
-		System.out.println("뷰로 넘김" + map);
+		//System.out.println("뷰로 넘김" + map);
 		appService.Update(map);
-		return "redirect:/wishbk/view?sc_idx="+ map.get("sc_idx");
+		return "redirect:/wishbk/view?m1=03&m2=05&sc_idx="+ map.get("sc_idx");
 	}
 }

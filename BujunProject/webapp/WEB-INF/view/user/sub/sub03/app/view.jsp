@@ -74,7 +74,7 @@
 	</div>
 	
 	<div class="auto_box mg_b40">
-		<div class="tb_boardss">
+		<div class="tb_book">
 			<div class="memname"> 
 				<div class="v_left">
 					<Strong>신청자</Strong>
@@ -173,7 +173,9 @@
 			
 		</div>			
 		<div class="btnst">
-			<a href="/wishbk02/UpdateForm?sc_idx=${app.sc_idx}">수정</a>
+			<div class="btns_1">
+				<a href="/wishbk02/UpdateForm?m1=03&m2=05&sc_idx=${app.sc_idx}">수정</a>
+			</div>
 			<div class="btns_2">
 				<a href="/wishbk?m1=03&m2=05&nowpage=1&pagecount=10&grpnum=1">목록</a>
 			</div>
