@@ -101,6 +101,9 @@ select  clu_name ,clu_qualifi ,clu_date ,clu_location ,clu_person ,clu_content
 )}
 </select>
 
+<select id="Clbclucode" resultType="com.bujun.club.vo.ClubVo">
+select clb_clucode from clubaord_tbl where clb_clucode=#{clb_clucode}
+</select>
 <insert id="InsertJoin" statementType="CALLABLE" parameterType="hashmap">
 {CALL BJL_PKG_CLUB.PKG_APPLY_INSERT (#{cluapp_appmemid,mode=IN,jdbcType=VARCHAR}
 ,#{cluapp_code,mode=IN,jdbcType=VARCHAR}
