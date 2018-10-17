@@ -64,7 +64,7 @@
 		<form action="/info03/update?ad_code=${ad_code}&ad_idx=${ad_idx}" method="post" enctype="multipart/form-data">
 			<table class="board_read">
 				<tr>
-					<th>글쓴이</th>
+					<th class="c">글쓴이</th>
 					<td style="text-align:left;">
 						<input type="text" name="wname" value="관리자" readonly="readonly" style="border:0px;">
 						<input type="hidden" name="ad_writer" value="ADMIN">
@@ -73,7 +73,7 @@
 				<c:choose>
 					<c:when test="${OpenInfoVo.file_name == null}">
 						<tr>
-							<th>첨부파일</th>
+							<th class="c">첨부파일</th>
 							<td style="text-align:left;">
 								<input type="file" name="filename">
 							</td>
@@ -81,7 +81,7 @@
 					</c:when>
 					<c:otherwise>
 						<tr>
-							<th>첨부파일</th>
+							<th class="c">첨부파일</th>
 							<td style="text-align:left;">
 								<label id="farea">
 									<span>${OpenInfoVo.file_name}</span>
@@ -92,13 +92,13 @@
 					</c:otherwise>
 				</c:choose>					
 				<tr>
-					<th>제목</th>
+					<th class="c">제목</th>
 					<td style="text-align:left;">
 						<input type="text" name="ad_title" style="width:70%;" value="${OpenInfoVo.ad_title}">
 					</td>					
 				</tr>
 				<tr>
-					<th>내용</th>
+					<th class="c">내용</th>
 					<td style="text-align:left;">
 						<textarea name="ad_content" rows="20" style="resize: none; warp:virtual; width:100%;">${OpenInfoVo.ad_content}</textarea>
 					</td>					
