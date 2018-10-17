@@ -270,12 +270,12 @@
 
 
 /* 자료검색 */
-.booksch{position: relative; border:3px solid #636b72; font-family:'Nanum Gothic'; margin-bottom:20px;}
+.booksch{position: relative; border:3px solid #636b72;  margin-bottom:20px;}
 .booksch .top_sch {background:#636b72; padding:20px;}
-.booksch select {margin-right:3px;padding:5px; height:35px;border:1px solid #d8d8d8;font-size:14px;vertical-align:middle;  box-sizing:border-box; font-family:'Nanum Gothic';}
-.booksch input[type=text] {padding:7px; width:91.8%; height:35px; border:none;background:#fff;font-size:14px;vertical-align:middle; color:#333; box-sizing:border-box; font-family:'Nanum Gothic';}
-.booksch .searchBtn {cursor:pointer; display:inline-block;padding:0px 12px; font-family:'Nanum Gothic'; line-height:35px; background:#fff; font-weight:400; color:#333; vertical-align:middle; box-sizing:border-box; border:1px solid #676767;  transition: all 0.3s ease-out;}
-.booksch .searchBtn:hover{background:#ff4f4e; font-weight:400; font-family:'Nanum Gothic'; color:#fff; border:1px solid #ce3231;}
+.booksch select {margin-right:3px;padding:5px; height:35px;border:1px solid #d8d8d8;font-size:14px;vertical-align:middle;  box-sizing:border-box; }
+.booksch input[type=text] {padding:7px; width:91.8%; height:35px; border:none;background:#fff;font-size:14px;vertical-align:middle; color:#333; box-sizing:border-box; }
+.booksch .searchBtn {cursor:pointer; display:inline-block;padding:0px 12px; line-height:35px; background:#fff; font-weight:400; color:#333; vertical-align:middle; box-sizing:border-box; border:1px solid #676767;  transition: all 0.3s ease-out;}
+.booksch .searchBtn:hover{background:#ff4f4e; font-weight:400; color:#fff; border:1px solid #ce3231;}
 .booksch .sch_con{padding:20px;}
 
 .boxlist{overflow:hidden; min-height:137px; padding-bottom:14px; padding-top:20px;}
@@ -361,12 +361,16 @@
 /* 로그인 */
 .con_login form {padding: 0 200px;}
 .con_login .log_tit {text-align:center; line-height:73px; font-size:32px; background:url(../images/sub/log_bg1.png) no-repeat center top;}
+.con_login .log_tit2 {text-align:center; line-height:73px; font-size:32px; background:url(../images/sub/log_bg2.png) no-repeat center top;}
+
 .con_login .log_sub {color:#888; text-align:center; line-height:20px;}
 .con_login ul.text_form {margin:20px 0 10px 0; text-align:center; font-size:0;}
 .con_login ul.text_form li { display:inline-block;}
 .con_login ul.text_form li:nth-child(1) {margin-right:10px;}
 .con_login input[type='text'], .con_login input[type='password']  {width:240px; box-sizing:border-box; display: block; border: solid 1px #ccd0d7; padding: 5px 10px; color: #575d64; line-height: 1.5em; font-size:15px;}
-.con_login a.log_btn {color:#fff; display:inline-block; padding:7px 0; width:100%; background: url(../images/icon/login_btn_icon.png) #3f8af9 no-repeat; background-size: 14px 18px; background-position: 89px 13px;}
+.con_login a.log_btn {color:#fff; display:inline-block; padding:7px 0; width:100%; background:#3f8af9;}
+.con_login input[type='submit'].log_btn {cursor:pointer; border:0; color:#fff; display:inline-block; padding:7px 0; width:100%; background:#79bd8f; }
+
 .con_login {padding:24px 20px 50px 20px; border-top:solid 2px #2e3235; border-bottom: solid 1px #ccd0d7;}
 .con_login .log_chk li{font-size:13px; line-height:20px; display:inline-block; position:relative;}
 .con_login .log_chk li input {vertical-align:initial;}
@@ -412,7 +416,7 @@
 .month_book  div.f_r ul li {white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
 .month_book > li a:after {content:""; display:block; clear:both;}
 .month_book  .more {position:absolute; right:10px; bottom:10px; color:#fff; background:#346ec2; padding:5px 10px;}
-.month_book .tit {text-align:center; font-size: 18px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #990000; margin-bottom:16px;}
+.month_book .tit {padding-bottom:2px; text-align:center; font-size: 18px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #990000; margin-bottom:16px;}
 .month_book > li:last-child {margin-bottom:30px;}
 .icon2{background:url("../images/sub/icon2.png") no-repeat 60% 50%;}
 

@@ -13,7 +13,7 @@ body {line-height: 1; position: relative; left: 0; -webkit-transition: left .3s;
 /* lnb_menu */
 .lnb_menu {width:100%; background:#454545; height:28px;}
 .lnb_menu .lnb_wrap {width:1200px; margin:0 auto; position:relative;}
-.lnb_menu .lnb_wrap ul.lnb_con {font-family:'Nanum Gothic', 'Noto Sans KR'; font-size:12px; position:absolute; right:0; padding-top:8px;}
+.lnb_menu .lnb_wrap ul.lnb_con {font-family: "Nanum Gothic", sans-serif, dotum, Helvetica; font-size:12px; position:absolute; right:0; padding-top:8px;}
 .lnb_menu .lnb_wrap ul.lnb_con li {position:relative; float:left; margin-left:15px;}
 .lnb_menu .lnb_wrap ul.lnb_con li:after {display:block; content:""; position:absolute; right:0; top:2px; background:#fff; margin-right:-7px; width:1px; height:9px;}
 .lnb_menu .lnb_wrap ul.lnb_con li:last-child:after {display:none;}
@@ -27,7 +27,7 @@ h1 {position:absolute; left:0; top:25px;}
 .header .gnb_wrap {width:1200px; height: 100%; margin: 0 auto; z-index: 100;position: relative;}
 .gnb {position: absolute; right:0; top:37px;}
 .gnb:after {content: ""; display: block; clear: both;}
-.gnb li {font-family:'Nanum Gothic', 'Noto Sans KR'; font-size:18px; color:#333;}
+.gnb li {font-family: "Nanum Gothic", sans-serif, dotum, Helvetica; font-size:18px; color:#333;}
 
 .gnb > li {float: left;}
 .gnb > li:nth-child(1) {width:144px}

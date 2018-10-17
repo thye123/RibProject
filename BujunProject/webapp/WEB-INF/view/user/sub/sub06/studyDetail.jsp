@@ -43,7 +43,7 @@
 			</tr>
 			<tr>
 				<th class="c">작성자</th>
-				<td>
+				<td colspan="2">
 					${detail.mem_name}
 					<input type="hidden" name="stu_writer" value="${detail.stu_writer}"/>
 					<input type="hidden" name="stu_rimemnum" value="${detail.stu_rimemnum}"/>

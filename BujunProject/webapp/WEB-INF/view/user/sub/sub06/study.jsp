@@ -86,52 +86,69 @@
 	</div>
 	<!-- 검색 -->
 	
-	<div class="studyArea">
-		<c:choose>
-			<c:when test="${keyword != null && keyfield != null}">
-				<c:forEach var="slist" items="${sList}">
-					<div class="studyProgram">
-						<a href="/study/dCon?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&stu_code=${slist.stu_code}&stu_idx=${slist.stu_idx}">
-							<span><b>제목:</b>${slist.stu_title}</span><br>
-							<span><b>작성자:</b>${slist.mem_name}</span><br>
-							<span><b>일정:</b>${slist.stu_date}</span><br>
-							<span><b>인원:</b>${slist.stu_person}</span><br>
-							<span><b>장소:</b>${slist.stu_location}</span><br>
-							<c:choose>
-								<c:when test="${slist.stu_end eq 1}">
-									<span><b>모집중</b></span>
-								</c:when>
-								<c:otherwise>
-									<span><b>모집종료</b></span>
-								</c:otherwise>
-							</c:choose>
-						</a>
-					</div>
-				</c:forEach>
-			</c:when>
-			<c:otherwise>
-				<c:forEach var="slist" items="${sList}">
-					<div class="studyProgram">
-						<a href="/study/dCon?m1=${m1}&m2=${m2}&stu_code=${slist.stu_code}&stu_idx=${slist.stu_idx}">
-							<span><b>제목:</b>${slist.stu_title}</span><br>
-							<span><b>작성자:</b>${slist.mem_name}</span><br>
-							<span><b>일정:</b>${slist.stu_date}</span><br>
-							<span><b>인원:</b>${slist.stu_person}</span><br>
-							<span><b>장소:</b>${slist.stu_location}</span><br>
-							<c:choose>
-								<c:when test="${slist.stu_end eq 1}">
-									<span><b>모집중</b></span>
-								</c:when>
-								<c:otherwise>
-									<span><b>모집종료</b></span>
-								</c:otherwise>
-							</c:choose>
-						</a>
-					</div>
-				</c:forEach>
-			</c:otherwise>
-		</c:choose>
+ 	<div class="studyArea">
+ 		<ul class="studyProgram">
+			<c:choose>
+				<c:when test="${keyword != null && keyfield != null}">
+					<c:forEach var="slist" items="${sList}">
+						<li>
+							<a class="link" href="/study/dCon?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&stu_code=${slist.stu_code}&stu_idx=${slist.stu_idx}">
+								<ul>
+									<li class="title">${slist.stu_title}</li>
+									<li class="n01"><span>작성자</span> : ${slist.mem_name}</li>
+									<li class="n02"><span>일정</span> : ${slist.stu_date}</li>
+									<li class="n03"><span>인원</span> : ${slist.stu_person}</li>
+									<li class="n04"><span>장소</span> : ${slist.stu_location}</li>
+								</ul>
+							</a>
+							
+							<div class="studyNotice">
+								<c:choose>
+									<c:when test="${slist.stu_end eq 1}">
+										<span>모집중</span>
+									</c:when>
+									<c:otherwise>
+										<span>모집종료</span>
+									</c:otherwise>
+								</c:choose>							
+							</div>
+						</li>
+					</c:forEach>
+				</c:when>
+				
+				
+				<c:otherwise>
+					<c:forEach var="slist" items="${sList}">
+						<li>
+							<a class="link" href="/study/dCon?m1=${m1}&m2=${m2}&stu_code=${slist.stu_code}&stu_idx=${slist.stu_idx}">
+								<ul>
+									<li class="title">${slist.stu_title}</li>
+									<li class="n01"><span>작성자</span> : ${slist.mem_name}</li>
+									<li class="n02"><span>일정</span> : ${slist.stu_date}</li>
+									<li class="n03"><span>인원</span> : ${slist.stu_person}</li>
+									<li class="n04"><span>장소</span> : ${slist.stu_location}</li>
+								</ul>
+							</a>
+							
+							<div class="studyNotice">
+								<c:choose>
+									<c:when test="${slist.stu_end eq 1}">
+										<span>모집중</span>
+									</c:when>
+									<c:otherwise>
+										<span>모집종료</span>
+									</c:otherwise>
+								</c:choose>							
+							</div>
+						</li>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
+		</ul>
 	</div>
+	
+	
+	
 	<div class="r mg_t20 btns">
 		<input type="button" class="btns_black" id="newStudy" value="스터디등록" style="border:0;">
 	</div>

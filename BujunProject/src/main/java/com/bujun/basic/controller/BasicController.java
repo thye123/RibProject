@@ -1,6 +1,7 @@
 package com.bujun.basic.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bujun.member.service.LoginService;
 import com.bujun.member.vo.MemberVo;
+import com.bujun.monthbook.service.MonthbookService;
+import com.bujun.monthbook.vo.MonthbookVo;
 
 @Controller
 public class BasicController {
@@ -22,8 +25,12 @@ public class BasicController {
 	@Autowired
 	private LoginService loginService; 
 	
+	@Autowired
+	private  MonthbookService monthBookService; 
+	
+	
 	@RequestMapping("/")
-	public String Main(HttpSession session) {
+	public String Main(HttpSession session, Model model) {
 		
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -32,6 +39,10 @@ public class BasicController {
 		MemberVo memberVo = new MemberVo();
 		HashMap<String, Object> map = new HashMap<>();
 		
+		
+		/* 이달의 책 */
+		List<MonthbookVo> monthBookList = monthBookService.getMainBookList(map);
+		model.addAttribute("bookList", monthBookList);
 		
 		
 		if(!login_name.equals("anonymousUser")) {
@@ -47,8 +58,8 @@ public class BasicController {
 		} else {
 			System.out.println("로그인안됨:::::::::::::::::::: "+ login_name);						
 		}
+		
 
-			
 		return "user/main/index";
 	}
 

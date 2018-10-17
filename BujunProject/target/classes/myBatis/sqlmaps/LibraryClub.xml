@@ -130,6 +130,7 @@ select clb_clucode from clubaord_tbl where clb_clucode=#{clb_clucode}
 ,#{clb_open,      mode=IN, jdbcType=INTEGER}
 ,#{clb_title,     mode=IN, jdbcType=VARCHAR}
 ,#{clb_content,   mode=IN, jdbcType=VARCHAR}
+,#{clb_pass,   mode=IN, jdbcType=VARCHAR}
 ,#{file_boardcode,mode=IN, jdbcType=VARCHAR}
 ,#{file_filename, mode=IN, javaType=Object, jdbcType=ARRAY, jdbcTypeName=FILE_ARRAY, 
 typeHandler=com.bujun.club.service.TypeHandler.ListMapTypeHandler}

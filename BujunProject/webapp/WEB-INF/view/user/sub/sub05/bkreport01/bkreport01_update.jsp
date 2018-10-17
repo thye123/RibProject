@@ -37,7 +37,6 @@
 	$(function(){
 		$("#file_del").on("click", function(){
 			
-			alert("클릭");	
 			
 			var file_del = document.getElementById("file_del");
 			var file_content = document.getElementById("file_con");
@@ -53,7 +52,7 @@
 				success : function() {
 											
 					
-					alert("삭제됨");
+					alert("삭제되었습니다.");
 					
 					file_content.innerHTML = "";
 					file_del.innerHTML = "";

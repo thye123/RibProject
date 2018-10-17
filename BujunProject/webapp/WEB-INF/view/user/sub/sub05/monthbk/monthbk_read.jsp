@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 
 <!-- header -->
@@ -73,8 +74,11 @@
 	
 	
 	<div class="r mg_t20 btns">
-		<a class="btns_blue" href="/monthbk_update?rec_code=${rec_code}&m1=05&m2=01&m3=01&page=${page}&perPageNum=12&searchType=${searchType}&keyword=${keyword}&rec_idx=${boardRead.rec_idx}">수정</a>
-		<a class="btns_black" href="/monthbk_delete?rec_code=${boardRead.rec_code}&rec_idx=${boardRead.rec_idx}">삭제</a>
+		<sec:authorize access="hasRole('ROLE_ADMIN')">
+			<a class="btns_blue" href="/monthbk_update?rec_code=${rec_code}&m1=05&m2=01&m3=01&page=${page}&perPageNum=12&searchType=${searchType}&keyword=${keyword}&rec_idx=${boardRead.rec_idx}">수정</a>
+			<a class="btns_black" href="/monthbk_delete?rec_code=${boardRead.rec_code}&rec_idx=${boardRead.rec_idx}">삭제</a>
+		</sec:authorize>
+		
 		<a class="btns_black" href="/monthbk?rec_code=${rec_code}&m1=05&m2=01&m3=01&page=${page}&perPageNum=12&searchType=${searchType}&keyword=${keyword}">목록</a>
 	</div>
 	

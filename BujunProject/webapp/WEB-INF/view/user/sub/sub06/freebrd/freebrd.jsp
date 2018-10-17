@@ -97,7 +97,7 @@
 	
 	<div class="auto_box mg_b40">			
 		<table class="tb_board">
-			<colgroup><col style="width:10%;" /><col/><col style="width:15%;"/><col /><col style="width:15%;" /><col style="width:8%;" /></colgroup>
+			<colgroup><col style="width:10%;" /><col/><col style="width:15%;"/><col style="width:10%;" /><col style="width:15%;" /><col style="width:8%;" /></colgroup>
 			<thead>
 				<tr>
 					<th scope="col">번호</th>
