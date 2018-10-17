@@ -54,7 +54,7 @@ public class FinrefController {
 		
 		mv.addObject("menu", map);
 		mv.addObject("ad_code",ad_code);
-		mv.addObject("Encoding", keyword);
+		mv.addObject("keyWord", keyword);
 		mv.addObject("bankBoardList", bankList);
 		mv.addObject("pageVo", pageVo);
 		mv.addObject("nowpage", nowpage);

@@ -57,7 +57,7 @@ public class MaterialController {
 		int grpnum  = Integer.parseInt(String.valueOf(map.get("grpnum")));
 		int pagecount = Integer.parseInt(String.valueOf(map.get("pagecount")));
 		mv.addObject("menu", map);
-		mv.addObject("Encoding", keyword);
+		mv.addObject("keyWord", keyword);
 		mv.addObject("ad_code",ad_code);
 		mv.addObject("resultList", resultList);
 		mv.addObject("pageVo", pageVo);
