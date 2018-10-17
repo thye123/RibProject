@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.bujun.openinfo.vo.Encoding;
 import com.bujun.study.service.StudyService;
 import com.bujun.study.vo.StudyAppVo;
 import com.bujun.study.vo.StudyVo;
@@ -129,6 +131,10 @@ public class StudyController {
 		ModelAndView mv = new ModelAndView();
 		String m1 = String.valueOf(map.get("m1"));
 		String m2 = String.valueOf(map.get("m2"));
+		
+		Encoding ed = new Encoding();
+		String keyWord = ed.encoding(String.valueOf(map.get("keyword")));
+		
 		mv.addObject("m1", m1);
 		mv.addObject("m2", m2);
 		mv.addObject("sList", list);
@@ -136,7 +142,7 @@ public class StudyController {
 		mv.addObject("page_num", map.get("page_num"));
 		mv.addObject("tot_cnt", map.get("tot_cnt"));
 		mv.addObject("keyfield", map.get("keyfield"));
-		mv.addObject("keyword", map.get("keyword"));
+		mv.addObject("keyword", keyWord);
 		mv.setViewName("user/sub/sub06/study");
 		return mv;
 	}
@@ -206,6 +212,10 @@ public class StudyController {
 		ModelAndView mv = new ModelAndView();
 		String m1 = String.valueOf(map.get("m1"));
 		String m2 = String.valueOf(map.get("m2"));
+		
+		Encoding ed = new Encoding();
+		String keyWord = ed.encoding(String.valueOf(map.get("keyword")));
+		
 		mv.addObject("m1", m1);
 		mv.addObject("m2", m2);
 		mv.addObject("AppList", list);
@@ -213,7 +223,7 @@ public class StudyController {
 		mv.addObject("page_num", map.get("page_num"));
 		mv.addObject("tot_cnt", map.get("tot_cnt"));
 		mv.addObject("keyfield", map.get("keyfield"));
-		mv.addObject("keyword", map.get("keyword"));
+		mv.addObject("keyword", keyWord);
 		mv.setViewName("user/sub/sub06/studyApplyList");
 		return mv;
 	}
@@ -248,6 +258,7 @@ public class StudyController {
 		List<StudyAppVo> list = studyService.stuApplySearch(map);
 		String m1 = String.valueOf(map.get("m1"));
 		String m2 = String.valueOf(map.get("m2"));
+		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("m1", m1);
 		mv.addObject("m2", m2);
