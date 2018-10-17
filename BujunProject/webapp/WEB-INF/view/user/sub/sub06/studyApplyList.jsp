@@ -27,7 +27,7 @@
 			subTitle[0].appendChild(stu_li_coment);
 			sub_tit[0].appendChild(stu_coment);
 		} else {			
-			alert("s");
+			//alert("s");
 			subTitle[0].removeChild(subTitle[0].childNodes[0]);
 			sub_tit[0].removeChild(sub_tit[0].childNodes[0]);
 			var my_coment = document.createTextNode("나의 스터디 신청현황");
