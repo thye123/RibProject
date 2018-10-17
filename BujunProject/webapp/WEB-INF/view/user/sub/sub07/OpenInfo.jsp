@@ -33,7 +33,7 @@
 		
 		var searchForm = document.getElementById("searchForm");
 		
-		switch (ad_code) {
+		switch (code) {
 		case "CAT0016":
 			searchForm.setAttribute("action", "/info03/search?m1=07&m2=01&m3=03&page_num=1&page_grp=1");
 			break;

@@ -55,26 +55,26 @@
 		<form action="/info03/iCon?ad_code=${ad_code}&page_num=1" method="post" enctype="multipart/form-data">
 			<table class="board_read" cellspacing="1" cellpadding="1">
 				<tr>
-					<th>글쓴이</th>
+					<th class="c">글쓴이</th>
 					<td style="text-align:left;">
 						<input type="text" name="wname" value="관리자">
 						<input type="hidden" name="ad_writer" value="ADMIN">
 					</td>
 				</tr>
 				<tr>
-					<th>첨부파일</th>
+					<th class="c">첨부파일</th>
 					<td style="text-align:left;">
 						<input type="file" name="filename">
 					</td>					
 				</tr>
 				<tr>
-					<th>제목</th>
+					<th class="c">제목</th>
 					<td style="text-align:left;">
 						<input type="text" name="ad_title" style="width:70%;">
 					</td>					
 				</tr>
 				<tr>
-					<th>내용</th>
+					<th class="c">내용</th>
 					<td style="text-align:left;">
 						<textarea name="ad_content" rows="20" style="resize: none; warp:virtual; width:100%;" ></textarea>
 					</td>					
