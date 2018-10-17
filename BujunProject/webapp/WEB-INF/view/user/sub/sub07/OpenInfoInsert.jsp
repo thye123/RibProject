@@ -52,30 +52,29 @@
 	<div class="sub_tit">정보공개</div>	
 	
 	<!-- content 시작 -->
-	<div class="auto_box mg_b40">
 		<form action="/info03/iCon?ad_code=${ad_code}&page_num=1" method="post" enctype="multipart/form-data">
-			<table class="tb_board" cellspacing="1" cellpadding="1">
+			<table class="board_read" cellspacing="1" cellpadding="1">
 				<tr>
-					<td>글쓴이</td>
+					<th>글쓴이</th>
 					<td style="text-align:left;">
 						<input type="text" name="wname" value="관리자">
 						<input type="hidden" name="ad_writer" value="ADMIN">
 					</td>
 				</tr>
 				<tr>
-					<td>첨부파일</td>
+					<th>첨부파일</th>
 					<td style="text-align:left;">
 						<input type="file" name="filename">
 					</td>					
 				</tr>
 				<tr>
-					<td>제목</td>
+					<th>제목</th>
 					<td style="text-align:left;">
 						<input type="text" name="ad_title" style="width:70%;">
 					</td>					
 				</tr>
 				<tr>
-					<td>내용</td>
+					<th>내용</th>
 					<td style="text-align:left;">
 						<textarea name="ad_content" rows="20" style="resize: none; warp:virtual; width:100%;" ></textarea>
 					</td>					
@@ -86,7 +85,6 @@
 				<input type="button" class="btns_black" id="cancel" value="취소" style="border:0;"/>
 			</div>
 		</form>
-	</div>
 <!-- //content 끝 -->
 </div>
 

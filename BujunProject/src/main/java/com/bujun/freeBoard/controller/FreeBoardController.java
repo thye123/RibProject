@@ -29,7 +29,7 @@ public class FreeBoardController {
 	public String Freebrd(@RequestParam HashMap<String, Object> map, Model model, SearchCriteria cri) {
 		
 		
-		//°Ô½Ã¹° ÃÑ °¹¼ö
+		//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		int totalCount = boardService.boardListCount(map);
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
@@ -42,7 +42,7 @@ public class FreeBoardController {
 		model.addAttribute("menu", map);
 		model.addAttribute("boardList", list);
 		model.addAttribute("pageMaker", pageMaker);
-		String keyword = cri.encoding((String) map.get("keyword")); //ÀÎÄÚµù
+		String keyword = cri.encoding((String) map.get("keyword")); //ï¿½ï¿½ï¿½Úµï¿½
 		model.addAttribute("search", map.get("searchType"));
 		model.addAttribute("key", keyword);
 		model.addAttribute("keyVal", map.get("keyword"));		
@@ -82,7 +82,7 @@ public class FreeBoardController {
 		
 		
 		if(vo.getBd_open() == 2) {
-			model.addAttribute("msg", "ºñ°ø°³ °Ô½Ã¹°ÀÔ´Ï´Ù.");
+			model.addAttribute("msg", "ë¹„ê³µê°œ ê²Œì‹œë¬¼ì…ë‹ˆë‹¤.");
 
 			if(vo.getBd_open() == 2 && bd_pass_chk == 1 ) {
 				model.addAttribute("bd_pass_chk", 1);
@@ -101,7 +101,7 @@ public class FreeBoardController {
 	
 	
 	
-	/*************************** ºñ¹Ğ¹øÈ£ ÀÔ·Â ****************************/	
+	/*************************** ï¿½ï¿½Ğ¹ï¿½È£ ï¿½Ô·ï¿½ ****************************/	
 	@RequestMapping("/free_pass_chk") 
 	public String Free_pass_chk(@RequestParam HashMap<String, Object> map, Model model) {
 	
@@ -111,11 +111,11 @@ public class FreeBoardController {
 		model.addAttribute("menu", map);			
 		
 		
-		//ºñ¹Ğ¹øÈ£ Ã¼Å©
+		//ï¿½ï¿½Ğ¹ï¿½È£ Ã¼Å©
 		int result = boardService.getPassChk(map);
 		
 		if(result == 0) {	
-			model.addAttribute("msg" , "ºñ¹Ğ¹øÈ£°¡ Æ²·È½À´Ï´Ù");
+			model.addAttribute("msg" , "ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë ¸ìŠµë‹ˆë‹¤.");
 			return "user/sub/sub06/freebrd/error_msg";
 			
 		} else {
@@ -147,7 +147,7 @@ public class FreeBoardController {
 				
 				boardService.getBoardDelete(map);
 				
-				model.addAttribute("msg" , "»èÁ¦µÇ¾ú½À´Ï´Ù.");	
+				model.addAttribute("msg" , "ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");	
 				return "user/sub/sub06/freebrd/error_msg";
 			}
 			
@@ -166,6 +166,14 @@ public class FreeBoardController {
 		model.addAttribute("bd_grp", map.get("bd_grp"));
 		model.addAttribute("bd_step", map.get("bd_step"));
 
+		
+		if(map.get("reply") != null ) {
+			if(map.get("reply").equals("1")) {
+				BkReportVo vo = new BkReportVo();
+				vo = boardService.getBoardRead(map);
+				model.addAttribute("boardRead", vo);				
+			}
+		}
 		
 		return "user/sub/sub06/freebrd/freebrd_write";
 	}	
@@ -208,7 +216,7 @@ public class FreeBoardController {
 		model.addAttribute("menu", map);
 		
 		
-		if(map.get("bd_pass_chk").equals("2")) { //ºñ¹øÀÔ·ÂÃ¢À¸·Î
+		if(map.get("bd_pass_chk").equals("2")) { //ï¿½ï¿½ï¿½ï¿½Ô·ï¿½Ã¢ï¿½ï¿½ï¿½ï¿½
 			return "user/sub/sub06/freebrd/pass_chk";
 		} else {
 			return "user/sub/sub06/freebrd/freebrd_update";
@@ -225,14 +233,14 @@ public class FreeBoardController {
 		
 		boardService.freeBoardUpdate(map);
 		
-		model.addAttribute("msg" , "¼öÁ¤µÇ¾ú½À´Ï´Ù.");	
+		model.addAttribute("msg" , "ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.");	
 		return "user/sub/sub06/freebrd/error_msg";	
 		
 	}		
 	
 	
 	
-	/*************************** »èÁ¦ ****************************/
+	/*************************** ï¿½ï¿½ï¿½ï¿½ ****************************/
 	@RequestMapping("/freebrd_delete") 
 	public String Bkreport01_delete(@RequestParam HashMap<String, Object> map, Model model) {
 		
@@ -246,13 +254,13 @@ public class FreeBoardController {
 		model.addAttribute("flag", map.get("flag"));
 		
 		
-		if(map.get("bd_pass_chk").equals("2")) { //ºñ¹øÀÔ·ÂÃ¢À¸·Î
+		if(map.get("bd_pass_chk").equals("2")) { //ï¿½ï¿½ï¿½ï¿½Ô·ï¿½Ã¢ï¿½ï¿½ï¿½ï¿½
 			return "user/sub/sub06/freebrd/pass_chk";
 		} else {
 			
 			boardService.getBoardDelete(map);
 			
-			model.addAttribute("msg" , "»èÁ¦µÇ¾ú½À´Ï´Ù.");	
+			model.addAttribute("msg" , "ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");	
 			return "user/sub/sub06/freebrd/error_msg";
 		}
 		

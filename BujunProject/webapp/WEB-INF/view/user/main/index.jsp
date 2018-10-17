@@ -352,7 +352,7 @@
 		
 		<div class="tit">QUICK <span>SERVICE</span></div>
 		<ul class="quick_menu">
-			<li><a href="#"><span class="txt">비치희망자료</span></a></li>
+			<li><a href="/wishbk?m1=03&m2=05&nowpage=1&pagecount=10&grpnum=1"><span class="txt">비치희망자료</span></a></li>
 			<li><a href="/mbinfo?m1=03&m2=04&page=1&perPageNum=10"><span class="txt">나의 대출정보</span></a></li>
 			<li><a href="/volunteer?m1=06&m2=04"><span class="txt">자원봉사신청</span></a></li>
 			<li><a href="http://contents.siminlib.go.kr/FxLibrary/" title="새창으로 열림" target="_blank"><span class="txt">전자책e-book</span></a></li>
