@@ -171,15 +171,26 @@
 				</div>
 			</div>	
 			
-		</div>			
-		<div class="btnst">
-			<div class="btns_1">
-				<a href="/wishbk02/UpdateForm?m1=03&m2=05&sc_idx=${app.sc_idx}">수정</a>
-			</div>
-			<div class="btns_2">
-				<a href="/wishbk?m1=03&m2=05&nowpage=1&pagecount=10&grpnum=1">목록</a>
-			</div>
 		</div>
+		<c:choose>	
+		<c:when test="${sessionScope.mem_id =='ADMIN'}">		
+			<div class="btnst">
+				<div class="btns_1">
+					<a href="/wishbk02/UpdateForm?m1=03&m2=05&sc_idx=${app.sc_idx}">수정</a>
+				</div>
+				<div class="btns_2">
+					<a href="/wishbk?m1=03&m2=05&nowpage=1&pagecount=10&grpnum=1">목록</a>
+				</div>
+			</div>
+		</c:when>
+		<c:otherwise>
+			<div class="btnst">
+				<div class="btns_2">
+					<a href="/wishbk?m1=03&m2=05&nowpage=1&pagecount=10&grpnum=1">목록</a>
+				</div>
+			</div>	
+		</c:otherwise>
+		</c:choose>
 		
 	</div>
 	

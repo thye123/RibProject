@@ -43,7 +43,7 @@
 					<input type="hidden" value="10" name="pagecount">
 					<input type="hidden" value="1" name="grpnum">
 					<select autofocus name="searchType">
-						<option	value=""<c:out value="${searchType == null? 'selected':''}"/>>검색대상</option>
+						<option	value="nodate"<c:out value="${searchType == null? 'selected':''}"/>>검색대상</option>
 						<option value="title"<c:out value="${searchType eq 'title'?'selected':'' }"/>>제목</option>
 						<option value="content"<c:out value="${searchType eq 'content'?'selected':'' }"/>>내용</option>
 						<option value="write"<c:out value="${searchType eq 'write'?'selected':'' }"/>>작성자</option>
@@ -101,7 +101,14 @@
 				<%@include file="/WEB-INF/view/user/include/resultpaging.jspf" %>
 			</div>
 			<div class="insertbtn">	
-				<button class="btn_1"><a href="/wishres/WriteForm?m1=03&m2=06">글쓰기</a></button>
+				<c:choose>
+					<c:when test="${sessionScope.mem_id == 'ADMIN'}">
+						<div class="btn_1"><a href="/wishres/WriteForm?m1=03&m2=06">글쓰기</a></div>
+					</c:when>
+					<c:otherwise>
+					
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</div>

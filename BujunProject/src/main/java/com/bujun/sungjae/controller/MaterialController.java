@@ -4,8 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bujun.app.service.AppService;
 import com.bujun.material.service.MaterialService;
 import com.bujun.notice.vo.AppVo;
+import com.bujun.notice.vo.Encodings;
 import com.bujun.notice.vo.NoticeVo;
 import com.bujun.notice.vo.PagingVo;
 import com.bujun.notice.vo.SearchVo;
@@ -43,6 +47,8 @@ public class MaterialController {
 			ad_code = "CAT0033";
 			map.put("ad_code", ad_code);
 		}
+		Encodings enc= new Encodings();
+		String keyword = enc.encoding((String) map.get("keyword"));
 		List<NoticeVo> resultList = materialService.getList(map) ;
 		PagingVo pageVo = (PagingVo) map.get("pagingVo");
 		SearchVo searchVo = (SearchVo) map.get("searchVo");
@@ -51,6 +57,7 @@ public class MaterialController {
 		int grpnum  = Integer.parseInt(String.valueOf(map.get("grpnum")));
 		int pagecount = Integer.parseInt(String.valueOf(map.get("pagecount")));
 		mv.addObject("menu", map);
+		mv.addObject("Encoding", keyword);
 		mv.addObject("ad_code",ad_code);
 		mv.addObject("resultList", resultList);
 		mv.addObject("pageVo", pageVo);
@@ -77,19 +84,30 @@ public class MaterialController {
 	}
 	
 	@RequestMapping("/wishres/WriteForm")
-	public ModelAndView WriteForm(@RequestParam HashMap<String, Object> map) {
-		String ad_code="";
-		String m1 = String.valueOf(map.get("m1"));
-		String m2 = String.valueOf(map.get("m2"));
-		if(m1.equals("03") && m2.equals("06")) {
-			ad_code = "CAT0033";
-			map.put("ad_code", ad_code);
+	public ModelAndView WriteForm(@RequestParam HashMap<String, Object> map, HttpSession session,
+			PagingVo vo) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String login_name = authentication.getName();
+		if(login_name.equals("ADMIN")) {
+			map.put("brt_memid", session.getAttribute("mem_id"));
+			String ad_code="";
+			String m1 = String.valueOf(map.get("m1"));
+			String m2 = String.valueOf(map.get("m2"));
+			if(m1.equals("03") && m2.equals("06")) {
+				ad_code = "CAT0033";
+				map.put("ad_code", ad_code);
+			}
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("menu", map);
+			mv.addObject("ad_code", ad_code);
+			mv.setViewName("user/sub/sub03/appresult/write");
+			return mv;
+		} else {
+			ModelAndView mv1 = new ModelAndView();
+			mv1.setViewName("user/sub/sub08/login");
+			return mv1;
 		}
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("menu", map);
-		mv.addObject("ad_code", ad_code);
-		mv.setViewName("user/sub/sub03/appresult/write");
-		return mv;
+		
 	}
 	
 	@RequestMapping("/wishres/Write")
@@ -176,12 +194,23 @@ public class MaterialController {
 	}
 	
 	@RequestMapping("/wishbk02/WriteForm")
-	public ModelAndView writeform(@RequestParam HashMap<String, Object> map) {
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("menu", map);
-		mv.addObject("sc_memid", map.get("sc_memid"));
-		mv.setViewName("user/sub/sub03/app/app");
-		return mv;
+	public ModelAndView writeform(@RequestParam HashMap<String, Object> map, HttpSession session,
+			PagingVo vo) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String login_name = authentication.getName();
+		if(!login_name.equals("anonymousUser")) {
+			map.put("brt_memid", session.getAttribute("mem_id"));
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("menu", map);
+			mv.addObject("sc_memid", map.get("sc_memid"));
+			mv.setViewName("user/sub/sub03/app/app");
+			return mv;
+		} else {
+			ModelAndView mv1 = new ModelAndView();
+			mv1.setViewName("user/sub/sub08/login");
+			return mv1;
+		}
+		
 		
 	}
 	

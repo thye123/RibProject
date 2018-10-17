@@ -20,7 +20,6 @@
 		<li><img src="${pageContext.request.contextPath}/resources/user/images/sub/loca_home.jpg" alt="" /></li>
 		<li>자료찾기</li>
 		<li>비치희망자료신청</li>
-		<li>개인정보처리위탁</li>
 	</ul>
 </div>
 <!-- //location -->
@@ -71,7 +70,7 @@
 					<input type="hidden" value="10" name="pagecount">
 					<input type="hidden" value="1" name="grpnum">
 					<select autofocus name="searchType">
-						<option	value=""<c:out value="${searchType == null? 'selected':''}"/>>검색대상</option>
+						<option	value="nodate"<c:out value="${searchType == null? 'selected':''}"/>>검색대상</option>
 						<option value="title"<c:out value="${searchType eq 'title'?'selected':'' }"/>>책이름</option>
 						<option value="content"<c:out value="${searchType eq 'content'?'selected':'' }"/>>내용</option>
 						<option value="write"<c:out value="${searchType eq 'write'?'selected':'' }"/>>작성자</option>
@@ -155,7 +154,7 @@
 				<%@include file="/WEB-INF/view/user/include/apppaging.jspf" %>
 			</div>
 			<div class="insertbtn">	
-				<button class="btn_1"><a href="/wishbk02/WriteForm?m1=03&m2=05">글쓰기</a></button>
+				<div class="btn_1"><a href="/wishbk02/WriteForm?m1=03&m2=05">글쓰기</a></div>
 			</div>
 		</div>
 	</div>

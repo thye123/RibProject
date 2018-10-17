@@ -66,7 +66,7 @@
 					<input type="hidden" value="10" name="pagecount">
 					<input type="hidden" value="1" name="grpnum">
 					<select autofocus name="searchType">
-						<option	value=""<c:out value="${searchType == null? 'selected':''}"/>>검색대상</option>
+						<option	value="nodate"<c:out value="${searchType == null? 'selected':''}"/>>검색대상</option>
 						<option value="title"<c:out value="${searchType eq 'title'?'selected':'' }"/>>제목</option>
 						<option value="content"<c:out value="${searchType eq 'content'?'selected':'' }"/>>내용</option>
 						<option value="write"<c:out value="${searchType eq 'write'?'selected':'' }"/>>작성자</option>
@@ -121,9 +121,16 @@
 			<div class=paging>
 				<%@include file="/WEB-INF/view/user/include/bankpaging2.jspf" %>
 			</div>
-			<div class="insertbtn">	
-				<button class="btn_1"><a href="/finref05/WriteForm?m1=02&m2=02&m3=05">글쓰기</a></button>
-			</div>
+			<c:choose>
+				<c:when test="${sessionScope.mem_id == 'ADMIN' }">
+						<div class="insertbtn">	
+							<div class="btn_1"><a href="/finref05/WriteForm?m1=02&m2=02&m3=05">글쓰기</a></div>
+						</div>
+				</c:when>
+				<c:otherwise>
+			
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 

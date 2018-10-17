@@ -54,8 +54,8 @@
 				<div class="top">
 					<div class="n_writer">
 						<div class="n_left">작성자</div>
-						<div class="n_right"><input type="text" size="40" value="관리자">
-						<input type="hidden" value="ADMIN" name="ad_writer">
+						<div class="n_right"><input type="text" size="40" value="${sessionScope.mem_name}">
+						<input type="hidden" value="${sessionScope.mem_id}" name="ad_writer">
 					</div>
 				</div>
 				<div class="n_title">

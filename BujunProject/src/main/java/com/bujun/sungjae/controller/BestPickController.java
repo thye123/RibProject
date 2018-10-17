@@ -1,34 +1,21 @@
 package com.bujun.sungjae.controller;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URLConnection;
-import java.nio.charset.Charset;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bujun.notice.service.NoticeService;
-import com.bujun.notice.service.impl.CheckFileName;
+import com.bujun.notice.vo.Encodings;
 import com.bujun.notice.vo.NoticeVo;
 import com.bujun.notice.vo.PagingVo;
 import com.bujun.notice.vo.SearchVo;
@@ -50,6 +37,8 @@ public class BestPickController {
 			ad_code = "CAT0032";
 			map.put("ad_code", ad_code);
 		}
+		Encodings enc= new Encodings();
+		String keyword = enc.encoding((String) map.get("keyword"));
 		List<NoticeVo> noticeList = noticeService.getList(map) ;
 		PagingVo pageVo = (PagingVo) map.get("pagingVo");
 		SearchVo searchVo = (SearchVo) map.get("searchVo");
@@ -60,6 +49,7 @@ public class BestPickController {
 		
 		mv.addObject("menu", map);
 		mv.addObject("ad_code",ad_code);
+		mv.addObject("Encoding", keyword);
 		mv.addObject("noticeList", noticeList);
 		mv.addObject("pageVo", pageVo);
 		mv.addObject("nowpage", nowpage);
@@ -85,19 +75,29 @@ public class BestPickController {
 		return mv;
 	}
 	@RequestMapping("/bujunbk/WriteForm")
-	public ModelAndView WriteForm(@RequestParam HashMap<String, Object> map) {
-		String ad_code="";
-		String m1 = String.valueOf(map.get("m1"));
-		String m2 = String.valueOf(map.get("m2"));
-		String m3 = String.valueOf(map.get("m3"));
-		if(m1.equals("05") && m2.equals("01")&&m3.equals("02") ) {
-			ad_code = "CAT0032";
-			map.put("ad_code", ad_code);
+	public ModelAndView WriteForm(@RequestParam HashMap<String, Object> map, HttpSession session,
+			PagingVo vo) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String login_name = authentication.getName();
+		if(login_name.equals("ADMIN")) {
+			map.put("brt_memid", session.getAttribute("mem_id"));
+					String ad_code="";
+					String m1 = String.valueOf(map.get("m1"));
+					String m2 = String.valueOf(map.get("m2"));
+					String m3 = String.valueOf(map.get("m3"));
+					if(m1.equals("05") && m2.equals("01")&&m3.equals("02") ) {
+						ad_code = "CAT0032";
+						map.put("ad_code", ad_code);
+					}
+					ModelAndView mv = new ModelAndView();
+					mv.addObject("ad_code", ad_code);
+					mv.setViewName("user/sub/sub05/bestbook/bkwrite");
+					return mv;
+		} else {
+			ModelAndView mv1 = new ModelAndView();
+			mv1.setViewName("user/sub/sub08/login");
+			return mv1;
 		}
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("ad_code", ad_code);
-		mv.setViewName("user/sub/sub05/bestbook/bkwrite");
-		return mv;
 	}
 	
 	@RequestMapping("/bujunbk/Write")

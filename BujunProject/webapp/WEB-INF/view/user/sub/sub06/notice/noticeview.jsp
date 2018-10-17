@@ -50,7 +50,7 @@
 	<div class="auto_box mg_b40">
 		<div class="tb_boardss">
 			<div class="tb_title">${content.ad_title}</div>
-			<div class="tb_infor"><Strong>작성자</Strong><span>${content.ad_writer}</span><Strong>작성일</Strong> <span>${content.ad_regdate}</span> <Strong>조회수</Strong> <span>${content.ad_count}</span></div>
+			<div class="tb_infor"><Strong>작성자</Strong><span>${writer}</span><Strong>작성일</Strong> <span>${content.ad_regdate}</span> <Strong>조회수</Strong> <span>${content.ad_count}</span></div>
 			<div class="tb_files">
 				<c:choose>
 					<c:when test="${content.file_filename==null}">
@@ -65,16 +65,26 @@
 				         
 			</div>
 			<div class="tb_content">${content.ad_content}</div>
-		</div>			
-		<div class="btnst">
-			<div class="btns_1">
-				<a href="/notice/UpdateForm?ad_idx=${content.ad_idx}&ad_code=${ad_code}&m1=06&m2=01">수정</a>
-			</div>
-			<div class="btns_2">
-				<a href="/notice?m1=06&m2=01&nowpage=1&pagecount=10&grpnum=1">목록</a>
-				
-			</div>
 		</div>
+		<c:choose>
+			<c:when test="${sessionScope.mem_id == 'ADMIN'}">
+				<div class="btnst">
+					<div class="btns_1">
+						<a href="/notice/UpdateForm?ad_idx=${content.ad_idx}&ad_code=${ad_code}&m1=06&m2=01">수정</a>
+					</div>
+					<div class="btns_2">
+						<a href="/notice?m1=06&m2=01&nowpage=1&pagecount=10&grpnum=1">목록</a>
+					</div>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="btnst">
+					<div class="btns_2">
+						<a href="/notice?m1=06&m2=01&nowpage=1&pagecount=10&grpnum=1">목록</a>
+					</div>
+				</div>
+			</c:otherwise>
+		</c:choose>
 		
 	</div>
 	
