@@ -361,12 +361,16 @@
 /* 로그인 */
 .con_login form {padding: 0 200px;}
 .con_login .log_tit {text-align:center; line-height:73px; font-size:32px; background:url(../images/sub/log_bg1.png) no-repeat center top;}
+.con_login .log_tit2 {text-align:center; line-height:73px; font-size:32px; background:url(../images/sub/log_bg2.png) no-repeat center top;}
+
 .con_login .log_sub {color:#888; text-align:center; line-height:20px;}
 .con_login ul.text_form {margin:20px 0 10px 0; text-align:center; font-size:0;}
 .con_login ul.text_form li { display:inline-block;}
 .con_login ul.text_form li:nth-child(1) {margin-right:10px;}
 .con_login input[type='text'], .con_login input[type='password']  {width:240px; box-sizing:border-box; display: block; border: solid 1px #ccd0d7; padding: 5px 10px; color: #575d64; line-height: 1.5em; font-size:15px;}
-.con_login a.log_btn {color:#fff; display:inline-block; padding:7px 0; width:100%; background: url(../images/icon/login_btn_icon.png) #3f8af9 no-repeat; background-size: 14px 18px; background-position: 89px 13px;}
+.con_login a.log_btn {color:#fff; display:inline-block; padding:7px 0; width:100%; background:#3f8af9;}
+.con_login input[type='submit'].log_btn {cursor:pointer; border:0; color:#fff; display:inline-block; padding:7px 0; width:100%; background:#79bd8f; }
+
 .con_login {padding:24px 20px 50px 20px; border-top:solid 2px #2e3235; border-bottom: solid 1px #ccd0d7;}
 .con_login .log_chk li{font-size:13px; line-height:20px; display:inline-block; position:relative;}
 .con_login .log_chk li input {vertical-align:initial;}

@@ -23,8 +23,8 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/user/js/menu.js"></script>    
     
     <!-- 팝업존 -->
-	<script type="text/javascript" src="http://www.dongnaesf.kr/jquery.cycle.all.js" charset="utf-8"></script> 
-	<script type="text/javascript" src="http://www.dongnaesf.kr/bannerget.js" charset="utf-8"></script> 
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/user/js/jquery.cycle.all.js" charset="utf-8"></script> 
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/user/js/bannerget.js" charset="utf-8"></script> 
 
 <%-- 	<!-- 레프트 메뉴 -->
 	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>

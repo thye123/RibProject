@@ -13,10 +13,10 @@
 
 <!-- 레프트메뉴 -->
 <%@ include file="../../include/left_menu04.jsp"%>
+
 <style>
 .board_readWrap > b {
     display: inline-block;
-    margin-top: 19px;
     margin-bottom: 19px;
 }
 .ingpro{
@@ -46,8 +46,17 @@
 
 		<!-- 금니 피셜 평생 교육 신청 내용끝  -->
 
-				<div class="board_readWrap">
-				<b>${liap_apname}님이 신청한 내역은 다음과같습니다.</b>
+			<div class="board_readWrap">
+			<b>${liap_apname}님이 신청한 내역은 다음과같습니다.</b>
+				
+			<div class="scroll_info">
+				<span class="arr_l"></span>
+				<span class="scroll_icon"></span>
+				<p class="pinfo">좌우로 스크롤 하시면 전체 내용을 확인하실 수 있습니다.</p>
+				<span class="arr_r"></span>
+			</div>
+			
+			<div class="auto_box mg_b40">					
 				<table class="board_read">
 					<colgroup>
 						<col style="width: 20%;">
@@ -90,9 +99,21 @@
 					</tbody>
 				</table>
 			</div>
+		</div>
 
 	<!-- //content 끝 -->
 </div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
+</div>
+
 
 <!-- footer -->
 <%@ include file="../../include/footer.jsp"%>

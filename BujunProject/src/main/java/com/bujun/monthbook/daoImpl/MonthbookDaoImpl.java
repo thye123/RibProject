@@ -62,5 +62,13 @@ public class MonthbookDaoImpl implements MonthbookDao {
 		sqlSession.delete("MonthBook.MonthBookDelete", map);
 	}
 
+	@Override
+	public List<MonthbookVo> getMainBookList(HashMap<String, Object> map) {
+		sqlSession.selectList("MonthBook.MonthMainBookList", map);
+		List<MonthbookVo> list = (List<MonthbookVo>) map.get("result");
+		
+		return list;
+	}
+
 	
 }

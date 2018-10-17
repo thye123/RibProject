@@ -109,39 +109,39 @@
 							<ul>
 								<li>
 									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										11								
+										test1_공지사항								
 									</a>
-									<span class="main_date">2018.03.20</span>
+									<span class="main_date">2018.10.01</span>
 								</li>
 								<li>
 									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										제8회 &#40;재&#41;동래장학회 장학생 선발자 명단									
+										test2_공지사항							
 									</a>
-									<span class="main_date">2018.03.20</span>
+									<span class="main_date">2018.10.01</span>
 								</li>
 								<li>
 									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										제8회 &#40;재&#41;동래장학회 장학생 선발자 명단									
+										test3_공지사항							
 									</a>
-									<span class="main_date">2018.03.20</span>
+									<span class="main_date">2018.10.01</span>
 								</li>
 								<li>
 									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										제8회 &#40;재&#41;동래장학회 장학생 선발자 명단									
+										test4_공지사항							
 									</a>
-									<span class="main_date">2018.03.20</span>
+									<span class="main_date">2018.10.01</span>
 								</li>
 								<li>
 									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										제8회 &#40;재&#41;동래장학회 장학생 선발자 명단									
+										test5_공지사항						
 									</a>
-									<span class="main_date">2018.03.20</span>
+									<span class="main_date">2018.10.01</span>
 								</li>
 								<li>
 									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										제8회 &#40;재&#41;동래장학회 장학생 선발자 명단									
+										test6_공지사항						
 									</a>
-									<span class="main_date">2018.03.20</span>
+									<span class="main_date">2018.10.01</span>
 								</li>																								
 							</ul>
 							<a href="/index.php?pagecode=P000000026" class="more" title="공지사항 목록 더보기로 이동합니다."><img src="${pageContext.request.contextPath}/resources/user/images/main/m_more.png" alt="공지사항 더보기" /></a>
@@ -229,9 +229,9 @@
 		<div class="book_con01">
 			<div class="tit">올해의BOOK</div>
 			<div class="ybook">
-				<a href="#">
+				<a href="/obook02?m1=05&m2=07&m3=02">
 					<div class="book_img"><img src="${pageContext.request.contextPath}/resources/user/images/main/book01.jpg" /></div>
-					<div class="book_title">dddsssssssssssssssssssssssssssssssssssssssd</div>
+					<div class="book_title">아몬드</div>
 				</a>
 			</div>
 		</div>
@@ -240,26 +240,18 @@
 			<div class="con02_mob">
 				<div class="tit">이달의 책</div>
 				<ul class="book_list">
-					<li>
-						<a href="#">
-							<div class="book_img"><img src="${pageContext.request.contextPath}/resources/user/images/main/book02.jpg" /></div>
-							<div class="book_title">dddd</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="book_img"><img src="${pageContext.request.contextPath}/resources/user/images/main/book03.jpg" /></div>
-							<div class="book_title">dddd</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="book_img"><img src="${pageContext.request.contextPath}/resources/user/images/main/book04.jpg" /></div>
-							<div class="book_title">dddd</div>
-						</a>
-					</li>
+				
+					<c:forEach var="book" items="${bookList}">
+						<li>
+							<a href="/monthbk_read?rec_idx=${book.rec_idx}&rec_code=${book.rec_code}&m1=05&m2=01&m3=01&page=1">
+								<div class="book_img"><img src="/img/${book.file_filename}" /></div>
+								<div class="book_title">${book.rec_bname}</div>
+							</a>
+						</li>						
+					</c:forEach>
+					
 				</ul>
-				<div class="more"><a href="#">more +</a></div>
+				<div class="more"><a href="/monthbk?rec_code=CAT0031&m1=05&m2=01&m3=01&page=1&perPageNum=12">more +</a></div>
 			</div>
 		</div>
 		
@@ -345,7 +337,7 @@
 				</ul>
 			</div>
 			
-			<div class="more"><a href="#">more +</a></div>
+			<!-- <div class="more"><a href="#">more +</a></div> -->
 		</div>
 		
 	</div>
@@ -383,7 +375,7 @@
 	<div id="foot_banner"><!-- (s)banner -->
 		<div class="dv_wrap">
 			<div class="banner_title">배너모음</div>
-				<script type="text/javascript" language="javascript" src="http://www.dongnaesf.kr/common/js/jquery.carouFredSel-6.2.1-packed.js"></script>
+				<script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/resources/user/js/jquery.carouFredSel-6.2.1-packed.js"></script>
 				<script type="text/javascript">
 					$(document).ready(function(){
 					function adPlay(){
