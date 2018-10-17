@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.bujun.openinfo.service.OpenInfoService;
+import com.bujun.openinfo.vo.Encoding;
 import com.bujun.openinfo.vo.OpenInfoVo;
 
 @Controller
@@ -184,6 +185,9 @@ public class OpenInfoController {
 			}
 		}
 		
+		Encoding ed = new Encoding();
+		String keyWord = ed.encoding(String.valueOf(map.get("keyword")));
+		
 		List<OpenInfoVo> list = openInfoService.search(map);
 		//System.out.println("map search: " + map);
 		ModelAndView mv = new ModelAndView();
@@ -196,7 +200,7 @@ public class OpenInfoController {
 		mv.addObject("page_num", map.get("page_num"));
 		mv.addObject("tot_cnt", map.get("tot_cnt"));
 		mv.addObject("keyfield", map.get("keyfield"));
-		mv.addObject("keyword", map.get("keyword"));
+		mv.addObject("keyword", keyWord);
 		mv.setViewName("user/sub/sub07/OpenInfo");
 		return mv;
 	}
