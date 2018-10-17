@@ -164,5 +164,10 @@ typeHandler=com.bujun.club.service.TypeHandler.ListMapTypeHandler}
 typeHandler=com.bujun.club.service.TypeHandler.ListMapTypeHandler})}
 
 </insert>
-
+<select id="RimemNum" resultType="com.bujun.member.vo.MemberVo">
+select rimem_num from member_tbl where mem_id = #{clb_writer}
+</select>
+<select id="Clbpass" resultType="com.bujun.club.vo.ClubVo">
+select clb_pass from  clubaord_tbl where clb_idx= #{clb_idx}
+</select>
 </mapper>

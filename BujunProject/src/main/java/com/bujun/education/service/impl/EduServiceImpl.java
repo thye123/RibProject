@@ -51,4 +51,10 @@ public class EduServiceImpl implements EduService{
 		return vo;
 	}
 	
+	public List<EduVo> EduingData (HashMap<String, Object> map){
+		List<EduVo> eding = eduDao.EduingData(map);
+		return eding;
+	}
+	
+	
 }

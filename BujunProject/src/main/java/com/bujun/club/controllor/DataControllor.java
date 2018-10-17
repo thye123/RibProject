@@ -19,41 +19,41 @@ public class DataControllor {
 	@Autowired
 	private BuginService buginservice;
 
-	// ¿©±ä ajax °Ë»öÇØ¼­ ¸®½ºÆ® º¸¿©ÁÙ¶§ (ÀÛ¾÷À» 2 ºÐ·ù·Î ³ª´³À½ )
+	// ï¿½ï¿½ï¿½ï¿½ ajax ï¿½Ë»ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½ (ï¿½Û¾ï¿½ï¿½ï¿½ 2 ï¿½Ð·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ )
 	@RequestMapping(value = "/CluBoard/view/", method = RequestMethod.GET, headers = "Accept=application/json")
 	public List<SearchVo> getClublist(@RequestParam HashMap<String, Object> map) {
 		System.out.println("page: " + map.get("page"));
-		
+		System.out.println("mapajax " + map);
 		List<SearchVo> club = buginservice.AjaxkeyList(map);
 		System.out.println("ajaxList" + map);
 		System.out.println("ajaxclub" + club);
 		return club;
 	}
 
-	// ÆäÀÌÂ¡ °ü·Ã
+	// ï¿½ï¿½ï¿½ï¿½Â¡ ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value = "/CluBoard/paging/", method = RequestMethod.GET, headers = "Accept=application/json")
 	public ClubVo getpaging(@RequestParam HashMap<String, Object> map) {
 		
-		//±âÃÊ ¼ÂÆÃ 
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 		ClubVo vod = new ClubVo();
 		PagingData pg = new PagingData();
-		//°Ë»ö Á¶È¸¼ö °ª Á¶È¸ 
+		//ï¿½Ë»ï¿½ ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È¸ 
 		SearchVo  vo = buginservice.pagingajax(map);
 		System.out.println("vo." + vo.toString());
 		String reCnt = String.valueOf(map.get("count"));
 		System.out.println("map cent" +reCnt);
-		//Á¶È¸°ªÀÌ ¾øÀ» °æ¿ì 0 À¸·Î ¼ÂÆÃÇØ¼­ Ã³¸® 
+		//ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ 0 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ Ã³ï¿½ï¿½ 
 		if(reCnt.equals("null")) {
 			vod.setCount(0);
 			map.put("count", vod.getCount());
 			vod = pg.pagdata(map);
-			System.out.println("°ªÀÌ ¾øÀ»¶§ vod" + vod.toString());
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ vod" + vod.toString());
 		}else {
 			vod = pg.pagdata(map);
-			System.out.println("°ªÀÌ ÀÖÀ»¶§ vod" + vod.toString());
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ vod" + vod.toString());
 			
 		}
-		//Á¶È¸°ªÀÌ ÀÖÀ»°æ¿ì´Â ±×³É map ¹Þ¾Æ¼­ ½ÇÇà 
+		//ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×³ï¿½ map ï¿½Þ¾Æ¼ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 		return vod;
 	}
 

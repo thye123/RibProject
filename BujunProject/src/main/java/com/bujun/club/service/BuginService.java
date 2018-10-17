@@ -12,10 +12,11 @@ import com.bujun.club.service.imple.Filedownload;
 import com.bujun.club.vo.ClubMember;
 import com.bujun.club.vo.ClubVo;
 import com.bujun.club.vo.SearchVo;
+import com.bujun.member.vo.MemberVo;
 
 public interface BuginService {
 
-	//Å¬¸¯½Ã -- > °¢ µ¿¾Æ¸® º° °Ô½ÃÆÇÀ¸·Î °¡´Â list ÀÔ´Ï´Ù. 
+	//Å¬ï¿½ï¿½ï¿½ï¿½ -- > ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¸ï¿½ ï¿½ï¿½ ï¿½Ô½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ list ï¿½Ô´Ï´ï¿½. 
 	public List<ClubVo> getClub(HashMap<String, Object> map);
 
 	public List<ClubMember>  getView();
@@ -32,16 +33,21 @@ public interface BuginService {
 
 	public void uptproc(MultipartFile file, HashMap<String, Object> map, HttpServletRequest req);
 
-	//ÆÄÀÏ
+	//ï¿½ï¿½ï¿½ï¿½
 	public void insertdata(MultipartFile file, HashMap<String, Object> map, HttpServletRequest req);
 	
-	//°Ë»ö ajax
+	//ï¿½Ë»ï¿½ ajax
 	public List<SearchVo> AjaxkeyList(HashMap<String, Object> map);
 	
-	//ÆäÀÌÂ¡ °ü·Ã ajax
+	//ï¿½ï¿½ï¿½ï¿½Â¡ ï¿½ï¿½ï¿½ï¿½ ajax
 	public SearchVo pagingajax(HashMap<String, Object> map);
 
 	public ClubMember getName(String clu_code);
+	//íšŒì›ë²ˆí˜¸ ë“¤ê³  ì˜¤ë ¤ê³ 
+	public MemberVo getRimemNum(String clb_writer);
+	
+	//PASS ë“¤ê³  ì˜¤ê¸° 
+	public ClubVo getClbPass(int idx);
 
 	//public Filedownload filedown(HashMap<String, Object> map, HttpServletResponse res);
 

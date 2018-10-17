@@ -20,5 +20,7 @@ public interface EduService {
 	public EduVo getData(HashMap<String, Object> map);
 
 	public List<EduVo> getcheckData(HashMap<String, Object> map);
+	//신청중인 수강신청 정보 보여줄떄
+	public List<EduVo> EduingData (HashMap<String, Object> map);
 
 }

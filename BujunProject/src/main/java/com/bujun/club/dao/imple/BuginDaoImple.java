@@ -17,6 +17,7 @@ import com.bujun.club.service.imple.PagingData;
 import com.bujun.club.vo.ClubMember;
 import com.bujun.club.vo.ClubVo;
 import com.bujun.club.vo.SearchVo;
+import com.bujun.member.vo.MemberVo;
 
 @Repository("bugindao")
 public class BuginDaoImple implements BuginDao {
@@ -84,7 +85,7 @@ public class BuginDaoImple implements BuginDao {
 		sqlsession.update("Bugin.Uptdata",map);
 	}
 
-	@Override //°Ë»ö °ü·Ã ajax ¸®½ºÆ® º¸¿©ÁÖ´Â ºÎºÐ 
+	@Override //ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ï¿½ ajax ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Îºï¿½ 
 	public List<SearchVo> AjaxkeyList(HashMap<String, Object> map) {
 		//System.out.println("DaoImpl "+ map);
 		
@@ -95,23 +96,23 @@ public class BuginDaoImple implements BuginDao {
 			map.put("page", "1");
 		}
 		
-		//System.out.println("mapÀÇ Ÿž "+ map);
+		//System.out.println("mapï¿½ï¿½ ï¿½ï¿½ "+ map);
 		
 		List<SearchVo> clist  
 		= (List<SearchVo>) map.get("result");
 		
-		//System.out.println("Daoimple¿¡¼­ Àû¿ëµÇ´Â¤¡ ¤¿¤´ " + clist.toString());
+		//System.out.println("Daoimpleï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç´Â¤ï¿½ ï¿½ï¿½ï¿½ï¿½ " + clist.toString());
 		return clist;
 	}
 
 	
-	@Override //ÆÄÀÏ °ü·Ã ºÎºÐ 
+	@Override //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½ 
 	public void insertdata(MultipartFile file, HashMap<String, Object> map
 			, HttpServletRequest req) {
 		sqlsession.insert("Bugin.Indata",map);
 	}
 
-	//°Ë»ö ÇØ¼­ ÆäÀÌÂ¡ »Ñ·ÁÁÖ´Â°Çµ¥
+	//ï¿½Ë»ï¿½ ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½Â¡ ï¿½Ñ·ï¿½ï¿½Ö´Â°Çµï¿½
 	@Override
 	public SearchVo pagingajax(HashMap<String, Object> map) {
 
@@ -127,6 +128,18 @@ public class BuginDaoImple implements BuginDao {
 		ClubMember member = sqlsession.selectOne("Bugin.memberName",clu_code);
 		//System.out.println(member.toString());
 		return member;
+	}
+
+	@Override
+	public MemberVo getRimemNum(String clb_writer) {
+		MemberVo member =sqlsession.selectOne("Bugin.RimemNum",clb_writer);
+		return member;
+	}
+
+	@Override
+	public ClubVo getClbPass(int idx) {
+		ClubVo vo = sqlsession.selectOne("Bugin.Clbpass",idx);
+		return vo;
 	}
 
 }

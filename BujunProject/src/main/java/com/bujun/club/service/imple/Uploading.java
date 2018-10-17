@@ -13,18 +13,20 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 public class Uploading {
 
 	public void addFile(MultipartFile file, HashMap<String, Object> map, HttpServletRequest req) {
+		
+		System.out.println("File " + map);
 		String filePath = "c:\\aaa\\";
-
-		// ¾÷·ÎµåµÈ ÆÄÀÏÀÇ Ã³¸®(Æú´õÀÇ ÀúÀå)
+		
+		// ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 		MultipartHttpServletRequest multipartServletRequest = (MultipartHttpServletRequest) req;
 
 		Iterator<String> iterator = multipartServletRequest.getFileNames();
 		MultipartFile multipartFile = null;
 
 		// List<String> filenames = new ArrayList<>();
-		String filenames = null; // ¹Þ¾Æ¿Â ÆÄÀÏ Á¦¸ñ
-		String fileName = null; // ½Ç ÆÄÀÏ Á¦¸ñ
-		String file_size = null; // ÆÄÀÏ Å©±â
+		String filenames = null; // ï¿½Þ¾Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		String fileName = null; // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		String file_size = null; // ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½
 
 		int i = 0;
 		while (iterator.hasNext()) {
@@ -36,42 +38,41 @@ public class Uploading {
 				String file_boardcode = (String) map.get("clb_clucode");
 				map.put("filenames", filenames);
 				map.put("file_boardcode", file_boardcode);
-				// ÀúÀå
+				// ï¿½ï¿½ï¿½ï¿½
 				File fileNew = new File(filePath + fileName);
-				// ÆÄÀÏ »çÀÌÁî ¸¦ ±¸ÇÏ±â À§ÇØ ÆÄÀÏ Á¦¸ñ¸íÀ» µé°í¿É´Ï´Ù.
+				// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½É´Ï´ï¿½.
 				File sizeFile = new File(fileName);
-				// ÆÄÀÏ »çÀÌÁî Å©±â¸¦ ±¸ÇÕ´Ï´Ù.
+				// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å©ï¿½â¸¦ ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 				long fsize = sizeFile.length();
 				file_size = Long.toString(fsize);
 
-				// È®ÀåÀÚ¸í ³Ö±â
+				// È®ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½Ö±ï¿½
 				String fileOrg = fileNew.getName();
 				int Idx = fileOrg.lastIndexOf(".");
 				String fileext = fileOrg.substring(Idx);
-				
+
 				map.put("fileext", fileext);
 				map.put("file_size", file_size);
 				map.put("file_filerealname", filenames);
-				
+
 				i += 1;
-				
+
 				try {
-					multipartFile.transferTo(fileNew); // ½ÇÁ¦ÆÄÀÏ¸íÀ¸·Î ÀúÀå
+					multipartFile.transferTo(fileNew); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 				} catch (IOException e) {
-					System.out.println("¿À·ù:" + e.getMessage());
+					System.out.println("ï¿½ï¿½ï¿½ï¿½:" + e.getMessage());
 					e.printStackTrace();
 				}
-				
+
 				if (map.get("file_filename") != null) {
 					String file_filename = filenames;
-					/*map.put("file_filename", file_filename);*/
+					map.put("file_filename", file_filename);
 				}
-				
+
 			}
 		}
 
-		
 	}
 
 }

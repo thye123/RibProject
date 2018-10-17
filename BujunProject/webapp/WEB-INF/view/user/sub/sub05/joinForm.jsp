@@ -104,7 +104,7 @@ margin-top: 5px;
 	<div class="auto_minjim">
 	
 	<form action="/joinClub/Proc" method="POST">
-		
+		<input type="hidden" name="cluapp_code" value="${cluapp_code}"/>
 		<table class="mintable">
 			<colgroup>
 				<col style="width: 20%;">
@@ -116,19 +116,18 @@ margin-top: 5px;
 			
 				<tr>
 					<th class="c">신청자</th>
-					<td><input type="text" name="cluapp_appmemid" /></td>
+					<td><input type="text" name="cluapp_appmemid" value="${sessionScope.mem_id}" readonly="readonly"/></td>
 				</tr>
 
 				<tr>
 					<th class="c">도서번호</th>
-					<td colspan="2"><input type="text" name="cluapp_rimemnum" /></td>
+					<td colspan="2"><input type="text" name="cluapp_rimemnum" value="${sessionScope.rimem_num}" readonly="readonly"/></td>
 				</tr>
 				
 				 <tr>
 					<th class="c">이름</th>
 					<td colspan="2"><input type="text" name="cluapp_appname" /></td>
 				</tr>
-
 				
 				<tr>
 					<th class="c">연락처</th>

@@ -230,6 +230,23 @@ public class LifeLongController {
 		return mv;
 	}
 	
-	
-	
+	@RequestMapping("/pgappl")
+	public ModelAndView eduingData(@RequestParam
+			HashMap<String, Object> map, Model model) {
+		//System.out.println("map 처리 " + map);
+		String m1 = String.valueOf(map.get("m1"));		
+		String m2 = String.valueOf(map.get("m2"));		
+		String m3 = String.valueOf(map.get("m3"));
+		
+		ModelAndView mv = new ModelAndView();
+		List<EduVo> EdingData = eduService.EduingData(map);
+		System.out.println("돌아오는 결과 값 " +EdingData.toString());
+		mv.addObject("m1",m1);
+		mv.addObject("m2",m2);
+		mv.addObject("m3",m3);
+		mv.addObject("EdingData",EdingData);
+		mv.setViewName("user/sub/sub04/edingdata");
+		return mv;
+	}
+
 }

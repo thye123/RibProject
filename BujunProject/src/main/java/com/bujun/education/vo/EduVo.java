@@ -224,8 +224,20 @@ public class EduVo {
 	}
 	@Override
 	public String toString() {
-		return "EduVo [liap_apname=" + liap_apname + "]";
+		return "EduVo [listu_idx=" + listu_idx + ", listu_code=" + listu_code + ", listu_catcode=" + listu_catcode
+				+ ", listu_name=" + listu_name + ", listu_target=" + listu_target + ", listu_location=" + listu_location
+				+ ", listu_studate=" + listu_studate + ", listu_content=" + listu_content + ", listu_person="
+				+ listu_person + ", listu_regdate=" + listu_regdate + ", listu_end=" + listu_end + ", listu_teacher="
+				+ listu_teacher + ", listu_gubun=" + listu_gubun + ", listu_recruit=" + listu_recruit + ", liap_apname="
+				+ liap_apname + ", liap_regdate=" + liap_regdate + ", file_idx=" + file_idx + ", file_board_idx="
+				+ file_board_idx + ", file_board_code=" + file_board_code + ", file_name=" + file_name + ", file_size="
+				+ file_size + ", file_real_name=" + file_real_name + ", file_ext=" + file_ext + ", file_regdate="
+				+ file_regdate + ", page=" + page + ", pagecount=" + pagecount + ", pagegrp=" + pagegrp + ", endpage="
+				+ endpage + ", statrpage=" + statrpage + "]";
 	}
+	
+	
+	
 	
 	
 }

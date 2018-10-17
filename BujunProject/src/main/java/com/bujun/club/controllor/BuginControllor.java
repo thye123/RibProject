@@ -28,6 +28,7 @@ import com.bujun.club.service.imple.Uploading;
 import com.bujun.club.vo.ClubMember;
 import com.bujun.club.vo.ClubVo;
 import com.bujun.club.vo.SearchVo;
+import com.bujun.member.vo.MemberVo;
 
 @Controller
 public class BuginControllor {
@@ -75,7 +76,7 @@ public class BuginControllor {
 		System.out.println("clb_clucode" + clu_code);
 		ClubMember clu = buginservice.getName(clu_code); 
 		List<ClubVo> clubList = buginservice.getClub(map);
-		
+		System.out.println("pass 값 조회 " + clubList.toString());
 		PagingData pg = new PagingData();
 		ClubVo pageMaker = pg.pagdata(map);
 		
@@ -99,12 +100,8 @@ public class BuginControllor {
 		
 		ClubVo club = buginservice.getOnedata(map);
 		
-		
-		System.out.println("club.toString" +club.toString());
-		
 		String clb_clucode = (String) map.get("clb_clucode");
 		ClubMember memberName = buginservice.getName(clb_clucode);
-		//System.out.println("가져온 이름 값  " + m.toString());
 		String clb_idx = (String) map.get("clb_idx");
 
 		mv.addObject("club", club);
@@ -116,6 +113,40 @@ public class BuginControllor {
 	}
 
 
+	@RequestMapping("/club01/CluBoard/CheckPass")
+	public ModelAndView checkPass(@RequestParam HashMap<String, Object> map) {
+		
+		ModelAndView mv = new ModelAndView();
+		System.out.println("map : " + map);
+		
+		int idx=  Integer.parseInt(String.valueOf(map.get("clb_idx")));
+		ClubVo vo = buginservice.getClbPass(idx);
+		mv.addObject("clb_pass",vo.getClb_pass());
+		mv.addObject("clb_idx",map.get("clb_idx"));
+		mv.setViewName("user/sub/sub05/checkPass");
+		return mv;
+	}
+	
+	@RequestMapping("/club01/CluBoard/Checking")
+	public String checkingProc(@RequestParam HashMap<String, Object> map) {
+		
+		System.out.println("하나데이터 map" + map);
+
+
+		String match = (String)map.get("clb_pass");
+		System.out.println("match" + match);
+		String almathc = String.valueOf(map.get("clb_pass"));
+		System.out.println("almathc :" + almathc);
+		if(match.equals(almathc)) {
+		
+			return "redirect:/club01/CluBoard/OneView?clb_idx="+map.get("clb_idx")+"&clb_clucode=CUS0001";
+		}else {
+			return "redirect:/club01/CluBoard";
+		
+		}
+
+	}
+	
 	/// CluBoard/WriteForm form �������� ���ϴ� .
 	@RequestMapping("/club01/CluBoard/WriteForm")
 	public ModelAndView WriteForm(@RequestParam HashMap<String, Object> map) {
@@ -134,25 +165,24 @@ public class BuginControllor {
 		ModelAndView mv = new ModelAndView();
 
 		String clb_clucode = (String) map.get("clb_clucode");
-
-		String file_filename = file.getOriginalFilename();
+		MemberVo vo = new MemberVo();
+	
+	
+		//member 번호 들고 오려고 
 		
-		map.put("file_filename", file_filename);
+		String filePath = "D:\\upload\\";
 		
-		String filePath = "c:\\aaa\\";
-
+		String file_filename = null;
+		file_filename = file.getOriginalFilename();
+		
 		File target = new File(filePath+file_filename);
-		System.out.println("filetarget" + target.toString());
-		try {
-			FileCopyUtils.copy(file.getBytes(), target);
-			Uploading upload= new Uploading();
-			upload.addFile(file, map, req);
-			buginservice.insertdata(file, map, req);
-			mv.setViewName("redirect:/club01/CluBoard?clb_clucode="+clb_clucode+"&page=1&pagecount=10&pagegrp=1");
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
+		map.put("file_filename", file_filename);
+		map.put("target", target);
+		
+		buginservice.insertdata(file, map, req);
+		Uploading upload= new Uploading();
+		upload.addFile(file, map, req);
+		mv.setViewName("redirect:/club01/CluBoard?clb_clucode="+clb_clucode+"&page=1&pagecount=10&pagegrp=1");
 		return mv;
 	}
 

@@ -10,10 +10,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.bujun.club.vo.ClubMember;
 import com.bujun.club.vo.ClubVo;
 import com.bujun.club.vo.SearchVo;
+import com.bujun.member.vo.MemberVo;
 
 public interface BuginDao {
 
-	//Å¬¸¯½Ã -- > °¢ µ¿¾Æ¸® º° °Ô½ÃÆÇÀ¸·Î °¡´Â list ÀÔ´Ï´Ù. 
+	//Å¬ï¿½ï¿½ï¿½ï¿½ -- > ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¸ï¿½ ï¿½ï¿½ ï¿½Ô½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ list ï¿½Ô´Ï´ï¿½. 
 	public List<ClubVo> getClub(HashMap<String, Object> map);
 
 	public List<ClubMember> getView();
@@ -35,9 +36,14 @@ public interface BuginDao {
 	//ajaxKeyList 
 	public List<SearchVo> AjaxkeyList(HashMap<String, Object> map);
 	
-	//ÆäÀÌÂ¡ ajax
+	//ï¿½ï¿½ï¿½ï¿½Â¡ ajax
 	public SearchVo pagingajax(HashMap<String, Object> map);
 
 	public ClubMember getName(String clu_code);
+	
+	//íšŒì›ë²ˆí˜¸ ë“¤ê³  ì˜¤ëŠ”ê²ƒ 
+	public MemberVo getRimemNum(String clb_writer);
+
+	public ClubVo getClbPass(int idx);
 
 }

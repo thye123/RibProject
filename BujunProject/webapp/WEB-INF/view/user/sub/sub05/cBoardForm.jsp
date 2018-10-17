@@ -168,12 +168,12 @@ function aaa(check){
 				<tbody>
 					<tr>
 						<th class="c">글쓴이</th>
-						<td colspan="2"><input type="text" name="clb_writer" /></td>
+						<td colspan="2"><input type="text" name="clb_writer" value="${sessionScope.mem_id}" readonly="readonly"/></td>
 					</tr>
 
 					<tr>
 						<th class="c">도서번호</th>
-						<td colspan="2"><input type="text" name="clb_rimemnum" /></td>
+						<td colspan="2"><input type="text" name="clb_rimemnum" value="${sessionScope.rimem_num}"/></td>
 					</tr>
 
 					<tr>

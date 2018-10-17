@@ -18,4 +18,6 @@ public interface EduDao {
 	public EduVo getData(HashMap<String, Object> map);
 	//로그인 하면 수강신청 확인 
 	public List<EduVo> getcheckData(HashMap<String, Object> map);
+	//신청 중인 것만 보여줄때 
+	public List<EduVo> EduingData (HashMap<String, Object> map);
 }
