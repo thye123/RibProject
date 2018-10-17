@@ -16,16 +16,20 @@
 <script>
 	onload = function() {
 		var subTitle = document.getElementsByClassName("subTitle");
-		var m1 = ${m1};
-		var m2 = ${m2};
-		var m3 = ${m3};
-		
+		var m1 = "${m1}";
+		var m2 = "${m2}";
+		var m3 = "${m3}";
 		var code = "${ad_code}";
-		if (code == "CAT0016" || (m1 == 07 && m2 == 01 && m3 == 03)) {
+		
+		alert("썅");
+		
+		if (code == "CAT0016" || (m1 == "07" && m2 == "01" && m3 == "03")) {
+			alert("시부럴");
 			subTitle[0].removeChild(subTitle[0].childNodes[0]);
 			var coment = document.createTextNode("정보목록");
 			subTitle[0].appendChild(coment);
-		} else {
+		}else{
+			alert("니미");
 			subTitle[0].removeChild(subTitle[0].childNodes[0]);
 			var coment = document.createTextNode("사전공표대상공개");
 			subTitle[0].appendChild(coment);
@@ -112,7 +116,7 @@
 					<c:forEach var="sList" items="${searchList}">
 						<tr>
 							<td>${sList.idx}</td>
-							<td style="text-align: left;"><a href="/info03/dCon?keyword=${keyword}&keyfield=${keyfield}&ad_code=${ad_code}&ad_idx=${sList.idx}">${sList.ad_title}</a></td>
+							<td style="text-align: left;"><a href="/info03/dCon?m1=${m1}&m2=${m2}&m3=${m3}&keyword=${keyword}&keyfield=${keyfield}&ad_code=${ad_code}&ad_idx=${sList.idx}">${sList.ad_title}</a></td>
 							<td>${sList.ad_memname}</td>
 							<td>${sList.ad_regdate}</td>
 							<td class="bnon">${sList.ad_count}</td>
@@ -123,7 +127,7 @@
 					<c:forEach var="cList" items="${contentList}">
 						<tr>
 							<td>${cList.idx}</td>
-							<td style="text-align: left;"><a href="/info03/dCon?ad_code=${ad_code}&ad_idx=${cList.idx}">${cList.ad_title}</a></td>
+							<td style="text-align: left;"><a href="/info03/dCon?m1=${m1}&m2=${m2}&m3=${m3}&ad_code=${ad_code}&ad_idx=${cList.idx}">${cList.ad_title}</a></td>
 							<td>${cList.ad_memname}</td>
 							<td>${cList.ad_regdate}</td>
 							<td class="bnon">${cList.ad_count}</td>
@@ -142,11 +146,11 @@
 					newContent.addEventListener("click", function() {
 						switch (ad_code) {
 						case "CAT0016":
-							location.href = "/info03/CForm?ad_code=" + ad_code;
+							location.href = "/info03/CForm?m1=07&m2=01&m3=03";
 							break;
 
 						case "CAT0017":
-							location.href = "/info03/CForm?ad_code=" + ad_code;
+							location.href = "/info03/CForm?m1=07&m2=01&m3=05";
 							break;
 						}
 					});
