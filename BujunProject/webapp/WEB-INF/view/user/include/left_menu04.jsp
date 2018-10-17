@@ -106,10 +106,10 @@
 									
 									<c:choose>
 										<c:when test="${menu.m1 eq 04 && menu.m2 eq 01 && menu.m3 eq 02}">
-											<li class="on"><a href="/opprogram01?m1=04&m2=01&m3=02">운영프로그램</a></li>
+											<li class="on"><a href="/opprogram01?m1=04&m2=01&m3=02&page=1&pagecount=10&pagegrp=1">운영프로그램</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/opprogram01?m1=04&m2=01&m3=02">운영프로그램</a></li>
+											<li><a href="/opprogram01?m1=04&m2=01&m3=02&page=1&pagecount=10&pagegrp=1">운영프로그램</a></li>
 										</c:otherwise>
 									</c:choose>	
 									

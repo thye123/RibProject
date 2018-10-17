@@ -22,25 +22,32 @@
 		var obj = document.getElementsByName('clb_open');
 		var pdata = document.getElementsByClassName('pdata');
 		//alert(pdata[0].getAttribute('class'));
-
+var UpdateForm  = document.getElementById('UpdateForm')
 		pdata[0].style.display = 'none';
 		for (var i = 0; i < obj.length; i++) {
 			obj[i].onclick = function() {
-				if (obj[1].checked == true) {
-					obj[0].checked = false;
-					var str = "<td><input type=text/><td>";
-					//alert(str);
-					pdata[0].style.display = 'block';
-					//putData[0].innerHTML(str);
-				}
-
 				if (obj[0].checked == true) {
 					obj[1].checked = false;
 					pdata[0].style.display = 'none';
 
 				}
 
+				if (obj[1].checked == true) {
+					obj[0].checked = false;
+					pdata[0].style.display = 'block';
+				}
+
+
 			}
+		}
+		
+		UpdateForm.onsubmit= function(){
+			if(obj[1].checked == true && pdata[0].value==''){
+				alert('비밀번호는 꼭 입력해주세요');
+				pdata[0].focus();
+				return false;
+			}
+			
 		}
 
 	}
@@ -72,9 +79,9 @@
 		<li><img
 			src="${pageContext.request.contextPath}/resources/user/images/sub/loca_home.jpg"
 			alt="" /></li>
-		<li>도서관이용</li>
-		<li>자료실소개</li>
-		<li>종합자료실</li>
+		<li>독서 동아리</li>
+		<li>독서 게시판</li>
+		<li>${memberName}</li>
 	</ul>
 </div>
 <!-- //location -->
@@ -84,7 +91,7 @@
 
 
 	<!-- title -->
-	<div class="sub_tit">시작</div>
+	<div class="sub_tit">수정페이지</div>
 
 	<!-- content 시작 -->
 
@@ -103,7 +110,7 @@
 		<!-- 게시판테이블(read) -->
 		<!-- class : mob_none -> 모바일일때 display:none  -->
 		<!--<h2 class="tbul1 mg_b20">게시판테이블(Update)</h2> -->
-		<form action="/club01/CluBoard/UptProc" method="POST"
+		<form action="/club01/CluBoard/UptProc" method="POST" id="UpdateForm"
 			enctype="multipart/form-data">
 
 			<input type="hidden" name="clb_idx" value="${vo.clb_idx}"> <input
@@ -147,7 +154,7 @@
 					<tr>
 						<th class="c">비밀번호여부</th>
 						<td class="putData">
-							<input type="text" class="pdata"/>
+							<input type="text" name="clb_pass" class="pdata"/>
 						</td>
 					</tr>
 

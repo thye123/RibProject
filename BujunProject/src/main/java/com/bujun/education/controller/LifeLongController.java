@@ -219,10 +219,8 @@ public class LifeLongController {
 		String m3 = String.valueOf(map.get("m3"));
 		
 		ModelAndView mv = new ModelAndView();
-		
 		List<EduVo> vo = eduService.getcheckData(map);
-		
-		//System.out.println("돌아오는 결과 값 " +vo);
+		System.out.println("돌아오는 결과 값 " +vo.toString());
 		mv.addObject("liap_apname",map.get("liap_apname"));
 		mv.addObject("m1",m1);
 		mv.addObject("m2",m2);

@@ -15,13 +15,10 @@
 <script>
  window.onload=function(){
 		var btn_con = document.getElementById('aaaa');
-		var popupX = ((window.screen.width / 2) - (200 / 2));
-		var popupY= ((window.screen.height /2) - (300 / 2));
-
 		btn_con.onclick = function(e) {
 		 e.preventDefault();
 		 window.open('/club01/joinClub?cluapp_code=CUS0001', 
-			'joinClub', 'status=no, height=450, width=400, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+			'joinClub', 'status=no, height=450, width=400');
 		}
  }
  

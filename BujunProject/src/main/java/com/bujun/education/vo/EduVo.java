@@ -224,7 +224,8 @@ public class EduVo {
 	}
 	@Override
 	public String toString() {
-		return "EduVo [page=" + page + ", pagecount=" + pagecount + ", pagegrp=" + pagegrp + ", endpage=" + endpage
-				+ ", statrpage=" + statrpage + "]";
+		return "EduVo [liap_apname=" + liap_apname + "]";
 	}
+	
+	
 }

@@ -49,7 +49,7 @@ a.btn_board {
 
 
 	<!-- title -->
-	<div class="sub_tit"><h2 class="tbul1 mg_b20">찬우물</h2></div>
+	<div class="sub_tit">${memberName}</div>
 
 	<!-- content 시작 -->
 

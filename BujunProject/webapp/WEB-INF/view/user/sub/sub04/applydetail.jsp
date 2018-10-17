@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -167,7 +166,7 @@ CAT_NAME,  일반 프로그램 / 초딩 유아 -->
 <%@ include file="../../include/sub_visual.jsp"%>
 
 <!-- 레프트메뉴 -->
-<%@ include file="../../include/left_menu01.jsp"%>
+<%@ include file="../../include/left_menu04.jsp"%>
 <style>
 /*부전도서관 글쓰기 긁어옴 (게시판 하단 글쓰기 버튼)*/
 .btn_set {
@@ -291,7 +290,7 @@ CAT_NAME,  일반 프로그램 / 초딩 유아 -->
 		</table>
 		<!-- //게시판테이블(리스트) -->
 		<!-- 버튼 들어간다 (수강 신청  / 목록으로 ) -->
-		<div class="btn_set r">
+		<div class="btn_set r mg_t10">
 			<a href="/opprogram01/apply?m1=${m1}&m2=${m2}&m3=${m3}&listu_idx=${edu.listu_idx}&listu_code=${edu.listu_code}
 			&listu_catcode=${edu.listu_catcode}" class="btn btn_board">수강신청</a> <a 
 			href="/opprogram01?m1=${m1}&m2=${m2}&m3=${m3}"
@@ -306,5 +305,5 @@ CAT_NAME,  일반 프로그램 / 초딩 유아 -->
 </div>
 
 <!-- footer -->
->>>>>>> branch 'master' of https://github.com/thye123/RibProject.git
+
 <%@ include file="../../include/footer.jsp"%>
