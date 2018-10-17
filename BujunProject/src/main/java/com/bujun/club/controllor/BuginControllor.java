@@ -43,7 +43,7 @@ public class BuginControllor {
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
 		String m3 = String.valueOf(map.get("m3"));
-		
+	
 		String link ="";
 		
 		if(m1.equals("05")&&m2.equals("03")&&m3.equals("01")) {
@@ -83,7 +83,7 @@ public class BuginControllor {
 		mv.addObject("pageMaker", pageMaker);
 		mv.addObject("clubList", clubList);
 		mv.addObject("clu_code", clu_code);
-	
+		System.out.println("clu_code"+ clu_code);
 		mv.setViewName("user/sub/sub05/clublist");
 
 		return mv;
@@ -132,16 +132,13 @@ public class BuginControllor {
 	public ModelAndView clubwrite(@RequestParam HashMap<String, Object> map, MultipartFile file,
 			HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		//System.out.println("������� map " + map);
-		
+
 		String clb_clucode = (String) map.get("clb_clucode");
-		
-		//System.out.println("clb_clucode" + clb_clucode);
-		
-		// ���� ����
+
 		String file_filename = file.getOriginalFilename();
+		
 		map.put("file_filename", file_filename);
-		//System.out.println("map : " + map);
+		
 		String filePath = "c:\\aaa\\";
 
 		File target = new File(filePath+file_filename);
@@ -159,18 +156,16 @@ public class BuginControllor {
 		return mv;
 	}
 
-	// �ϳ��� ������ ���� ������� ���ư���
+	//�ϳ��� ������ ���� ������� ���ư���
 	@RequestMapping("/club01/CluBoard/Goboard")
 	public ModelAndView Goboard(@RequestParam HashMap<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
 		String clb_clucode = (String) map.get("clb_clucode");
-		//������ �׷�� pagegrp �� �޾Ƶ��� 
 		mv.setViewName("redirect:/club01/CluBoard?clb_clucode=" + clb_clucode+"&page=1&pagecount=10&pagegrp=1");
 		return mv;
 	}
 
 	// ���� �κ��Դϴ�
-
 	@RequestMapping("/club01/CluBoard/Delboard")
 	public ModelAndView dataDel(@RequestParam HashMap<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
@@ -188,7 +183,9 @@ public class BuginControllor {
 		//System.out.println("���� map " + map);
 		String clb_clucode = (String) map.get("clb_clucode");
 		ClubVo vo = buginservice.getOnedata(map);
+		ClubMember member = buginservice.getName(clb_clucode);
 		mv.addObject("vo", vo);
+		mv.addObject("memberName",member.getClu_name());
 		mv.addObject("clb_clucode", clb_clucode);
 		mv.addObject("clb_idx", map.get("clb_idx"));
 		mv.setViewName("user/sub/sub05/uptForm");
