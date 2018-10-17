@@ -76,7 +76,7 @@
 	<input type="hidden" name="chk" value="1" />
 
 	<div class="top_sch">
-		<input type="text" name="kwd" id="search_text" title="검색어 입력" value="${kwd}" placeholder="검색어를 입력하세요">		
+		<input type="text" name="kwd" id="search_text" title="검색어 입력" value="${key}" placeholder="검색어를 입력하세요">		
 		<input type="button" onclick="search()" class="searchBtn" value="검색">
 		
 		<input type="hidden" name="page" value="1" />

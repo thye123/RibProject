@@ -105,12 +105,12 @@
 				<c:choose>
 					<c:when test="${menu.m1 eq 03 && menu.m2 eq 05}">
 						<li class="default open">
-							<a href="/wishbk?m1=03&m2=05"><div class="link">비치희망자료신청<i class="fa fa-chevron-down"></i></div></a>
+							<a href="/wishbk?m1=03&m2=05&nowpage=1&pagecount=10&grpnum=1"><div class="link">비치희망자료신청<i class="fa fa-chevron-down"></i></div></a>
 						</li>
 					</c:when>
 					<c:otherwise>
 						<li>
-							<a href="/wishbk?m1=03&m2=05"><div class="link">비치희망자료신청<i class="fa fa-chevron-down"></i></div></a>
+							<a href="/wishbk?m1=03&m2=05&nowpage=1&pagecount=10&grpnum=1"><div class="link">비치희망자료신청<i class="fa fa-chevron-down"></i></div></a>
 						</li>					
 					</c:otherwise>
 				</c:choose>						
@@ -119,12 +119,12 @@
 				<c:choose>
 					<c:when test="${menu.m1 eq 03 && menu.m2 eq 06}">
 						<li class="default open">
-							<a href="/wishres?m1=03&m2=06"><div class="link">비치희망자료결과<i class="fa fa-chevron-down"></i></div></a>
+							<a href="/wishres?m1=03&m2=06&nowpage=1&pagecount=10&grpnum=1"><div class="link">비치희망자료결과<i class="fa fa-chevron-down"></i></div></a>
 						</li>
 					</c:when>
 					<c:otherwise>
 						<li>
-							<a href="/wishres?m1=03&m2=06"><div class="link">비치희망자료결과<i class="fa fa-chevron-down"></i></div></a>
+							<a href="/wishres?m1=03&m2=06&nowpage=1&pagecount=10&grpnum=1"><div class="link">비치희망자료결과<i class="fa fa-chevron-down"></i></div></a>
 						</li>					
 					</c:otherwise>
 				</c:choose>						

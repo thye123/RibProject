@@ -107,6 +107,12 @@
    </delete>  
    
    
+   <select id="MonthMainBookList" statementType="CALLABLE" parameterType="com.bujun.monthbook.vo.MonthbookVo">
+	  {CALL  BJL_PKG_RECOMENDBOOK.recomend_main_list(   
+        #{result,  mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=MonthBookMap }
+      )}     
+   </select>
+   
    
                       
 </mapper>

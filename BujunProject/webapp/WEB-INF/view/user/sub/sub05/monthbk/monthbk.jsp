@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 
 <!-- header -->
@@ -156,23 +157,16 @@
 		</div>
 	</div>
 	<!-- //페이징 -->	
-	
-	
-	<div class="r mg_t20 btns">
-		<a class="btns_black" href="/monthbk_write?rec_code=CAT0031&m1=05&m2=01&m3=01">글쓰기</a>
-	</div>
-	
+		
+		
+	<sec:authorize access="hasRole('ROLE_ADMIN')">
+		<div class="r mg_t20 btns">
+			<a class="btns_black" href="/monthbk_write?rec_code=CAT0031&m1=05&m2=01&m3=01">글쓰기</a>
+		</div>
+	</sec:authorize>
 	
 
 
-
-	
-	
-	
-	
-	
-	
-	
 
 <!-- //content 끝 -->
 </div>

@@ -10,7 +10,7 @@
 .visual .search_title {padding:25px 0 13px 30px; font-size:20px; color:#fff;}
 .visual .search_form {padding:0 30px; position:relative;}
 .visual .search_form input {border:0; box-sizing:border-box; padding-left:10px; width:100%; height:47px; border-radius:5px; }
-.visual .m_search {right:42px; top:14px; background:none; cursor:pointer; position:absolute;}
+.visual .m_search {padding:10px 10px 10px 20px; right:31px; top:3px; background:none; cursor:pointer; position:absolute;}
 .visual .visual_title {padding:104px 0 47px 0;}
 
 /* bujun_news */
@@ -172,6 +172,8 @@ span.text {word-break: keep-all; display: block; overflow: hidden; width:100%; h
 /******************** pad *****************/
 @media all and (max-width:1000px) {
 	.visual {display:none;}
+	
+	.book_con .book_title {margin-top:10px;}
 	
 	/* 소식 */
 	.bujun_news_wrap {overflow: visible;}

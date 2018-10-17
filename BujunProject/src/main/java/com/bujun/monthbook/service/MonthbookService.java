@@ -15,6 +15,7 @@ public interface MonthbookService {
 	void getBoardFileDelete(HashMap<String, Object> map);
 	void getUpdate(HashMap<String, Object> map);
 	void getBoardDelete(HashMap<String, Object> map);
+	List<MonthbookVo> getMainBookList(HashMap<String, Object> map);
 
 
 }

@@ -62,10 +62,10 @@
 									
 									<c:choose>
 										<c:when test="${menu.m1 eq 05 && menu.m2 eq 01 && menu.m3 eq 02}">
-											<li class="on"><a href="/bujunbk?m1=05&m2=01&m3=02">부전추천도서</a></li>
+											<li class="on"><a href="/bujunbk?m1=05&m2=01&m3=02&nowpage=1&pagecount=10&grpnum=1">부전추천도서</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/bujunbk?m1=05&m2=01&m3=02">부전추천도서</a></li>
+											<li><a href="/bujunbk?m1=05&m2=01&m3=02&nowpage=1&pagecount=10&grpnum=1">부전추천도서</a></li>
 										</c:otherwise>
 									</c:choose>	
 									
@@ -107,10 +107,10 @@
 									
 									<c:choose>
 										<c:when test="${menu.m1 eq 05 && menu.m2 eq 01 && menu.m3 eq 02}">
-											<li class="on"><a href="/bujunbk?m1=05&m2=01&m3=02">부전추천도서</a></li>
+											<li class="on"><a href="/bujunbk?m1=05&m2=01&m3=02&nowpage=1&pagecount=10&grpnum=1">부전추천도서</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/bujunbk?m1=05&m2=01&m3=02">부전추천도서</a></li>
+											<li><a href="/bujunbk?m1=05&m2=01&m3=02&nowpage=1&pagecount=10&grpnum=1">부전추천도서</a></li>
 										</c:otherwise>
 									</c:choose>	
 									

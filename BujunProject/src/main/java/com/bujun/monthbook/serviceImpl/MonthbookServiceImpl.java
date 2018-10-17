@@ -54,6 +54,12 @@ public class MonthbookServiceImpl implements MonthbookService {
 	public void getBoardDelete(HashMap<String, Object> map) {
 		monthbookDao.getBoardDelete(map);
 	}
+
+	@Override
+	public List<MonthbookVo> getMainBookList(HashMap<String, Object> map) {
+		List<MonthbookVo> list = monthbookDao.getMainBookList(map);
+		return list;
+	}
 	
 	
 }

@@ -23,8 +23,8 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/user/js/menu.js"></script>    
     
     <!-- 팝업존 -->
-	<script type="text/javascript" src="http://www.dongnaesf.kr/jquery.cycle.all.js" charset="utf-8"></script> 
-	<script type="text/javascript" src="http://www.dongnaesf.kr/bannerget.js" charset="utf-8"></script> 
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/user/js/jquery.cycle.all.js" charset="utf-8"></script> 
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/user/js/bannerget.js" charset="utf-8"></script> 
 
 <%-- 	<!-- 레프트 메뉴 -->
 	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
@@ -59,7 +59,7 @@
 	            windowSt = windowObj.scrollTop();
 	            console.log(windowSt);
 	
-	            if (windowSt > 206) {
+	            if (windowSt > 240) {
 	                header.addClass('on');
 	            } else {
 	                header.removeClass('on');
@@ -133,8 +133,8 @@
                             <li><a href="http://search.siminlib.go.kr/search/search.jsp?logo=4&mcode=110" target="_blank">타도서관 자료찾기</a></li>
                             <!-- <li><a href="/nbook?m1=03&m2=03">새로들어온책</a></li> -->
                             <li><a href="/mbinfo?m1=03&m2=04&page=1&perPageNum=10">나의도서대출정보</a></li>
-                            <li><a href="/wishbk?m1=03&m2=05">비치희망자료신청</a></li>
-                            <li><a href="/wishres?m1=03&m2=06">비치희망자료결과</a></li>
+                            <li><a href="/wishbk?m1=03&m2=05&nowpage=1&pagecount=10&grpnum=1">비치희망자료신청</a></li>
+                            <li><a href="/wishres?m1=03&m2=06&nowpage=1&pagecount=10&grpnum=1">비치희망자료결과</a></li>
                             <li><a href="/datalist?m1=03&m2=07">연속간행물목록</a></li>
                             <li><a href="/origserv01?m1=03&m2=08&m3=01">원문서비스</a></li>
                             <li><a href="/searchgove?m1=03&m2=09">관보검색</a></li>
@@ -163,7 +163,7 @@
                     <li>
                         <a href="#">열린마당</a>
                         <ul class="sub">
-                            <li><a href="/notice?m1=06&m2=01">공지사항</a></li>
+                            <li><a href="/notice?m1=06&m2=01&nowpage=1&pagecount=10&grpnum=1">공지사항</a></li>
                             <li><a href="/qna?m1=06&m2=02">자주하는질문</a></li>
                             <li><a href="/freebrd?bd_catcode=CAT0007&m1=06&m2=03&page=1&perPageNum=10">자유게시판</a></li>
                             <li><a href="/volunteer?m1=06&m2=04">자원봉사신청</a></li>
@@ -276,8 +276,8 @@
 								<li class="depth2"><a href="http://search.siminlib.go.kr/search/search.jsp?logo=4&mcode=110" target="_blank" class="off">타도서관 자료찾기</a></li>
 								<!-- <li class="depth2"><a href="/nbook?m1=03&m2=03" class="off">새로들어온책</a></li> -->
 								<li class="depth2"><a href="/mbinfo?m1=03&m2=04&page=1&perPageNum=10" class="off">나의도서대출정보</a></li>
-								<li class="depth2"><a href="/wishbk?m1=03&m2=05" class="off">비치희망자료신청</a></li>
-								<li class="depth2"><a href="/wishres?m1=03&m2=06" class="off">비치희망자료결과</a></li>
+								<li class="depth2"><a href="/wishbk?m1=03&m2=05&nowpage=1&pagecount=10&grpnum=1" class="off">비치희망자료신청</a></li>
+								<li class="depth2"><a href="/wishres?m1=03&m2=06&nowpage=1&pagecount=10&grpnum=1" class="off">비치희망자료결과</a></li>
 								<li class="depth2"><a href="/datalist?m1=03&m2=07" class="off">연속간행물목록</a></li>
 								<li class="depth2"><a href="/origserv01?m1=03&m2=08&m3=01" class="off">원문서비스</a>
 									<ul>
@@ -310,7 +310,7 @@
 								<li class="depth2"><a href="/monthbk?m1=05&m2=01&m3=01" class="off">추천도서</a>
 									<ul>
 										<li class="depth3"><a href="/monthbk?rec_code=CAT0031&m1=05&m2=01&m3=01&page=1&perPageNum=12" class="off">이달의 책</a></li> 
-										<li class="depth3"><a href="/bujunbk?m1=05&m2=01&m3=02" class="off">부전추천도서</a></li> 
+										<li class="depth3"><a href="/bujunbk?m1=05&m2=01&m3=02&nowpage=1&pagecount=10&grpnum=1" class="off">부전추천도서</a></li> 
 										<li class="depth3"><a href="http://www.nl.go.kr/ask/recommend/recommend_nl/list1.jsp" target="_blank" class="off">기타추천도서</a></li> 
 										<li class="depth3"><a href="http://www.nl.go.kr/ask/readSite/list.jsp" target="_blank" class="off">독서관련사이트</a></li> 
 									</ul>									
@@ -349,7 +349,7 @@
 						
 						<li class="depth1"><a href="/notice?m1=06&m2=01" class="off">열린마당</a>
 							<ul>
-								<li class="depth2"><a href="/notice?m1=06&m2=01" class="off">공지사항</a></li>
+								<li class="depth2"><a href="/notice?m1=06&m2=01&nowpage=1&pagecount=10&grpnum=1" class="off">공지사항</a></li>
 								<li class="depth2"><a href="/qna?m1=06&m2=02" class="off">자주하는질문</a></li>
 								<li class="depth2"><a href="/freebrd?bd_catcode=CAT0007&m1=06&m2=03&page=1&perPageNum=10" class="off">자유게시판</a></li>
 								<li class="depth2"><a href="/volunteer?m1=06&m2=04" class="off">자원봉사신청</a></li>

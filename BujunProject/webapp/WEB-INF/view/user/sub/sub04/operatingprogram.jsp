@@ -23,113 +23,7 @@
 	}
 </script>
 
-<style>
-.prolist{ 
-	display: block;
-    height: 200px;
-    border: 1px solid black;
-}
 
-.ulPro > li{
-	float: left;  
-	width: 48.3%;
-	margin: 20px 0 0 1.666666666%;
-}
-.ulPro{
-    margin: -20px 0 0 -1.666666666%;
-}
-.pointName{
-    display: block;
-    margin: 0 0 15px;
-    height: 50px;
-    color: #000;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.5;
-
-}
-
-.bottom{
-    display: block;
-      
-}
-
-.bottom > span{
-    display: block;
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
-
-.top{
-	display:block;
-    margin: 0 0 15px;
-    height: 43px;
-}
-
-a.prolist:hover {
-    background-color: #2f868a;
-    border-color: #2f868a;
-    color: black;
-}
-
-.tab_mev {
-   overflow : hidden;
-    margin: 30px 0 40px;
-    text-align: center;
-}
-
-.tab_mev p {
-    float: left;
-    color: #767676;
-    font-size: 16px;
-}
-
-#min_depth01{
-	width: 100%;
-    margin: 0 auto;
-    position: relative;
-    margin-bottom: 50px;
-    overflow: hidden;
-}
-
-
-#min_depth01 ul li.blgo {
-    width: 50%;
-    display: inline-block;
-    float: left;
-    background: #ff4f4e;
-    border-top: 1px solid #ff4f4e;
-    border-left: 1px solid #ff4f4e;
-    border-bottom: 1px solid #ff4f4e;
-}
-
-#min_depth01.w50 ul li {
-    display: inline-block;
-    width: 49%;
-    height: 48px;
-}
-
-.toblgo {
-    border: 1px solid #e9e9e9;
-}
-
-.blgo > a {
-	width: 100%;
-	text-align:  center;
-	color: #fff;
-
-	display: block;
-	line-height: 42px;
-}
-
-.toblgo > a{
-	width: 100%;
-	text-align:  center;
-	
-	display: block;
-	line-height: 42px;
-}
-</style>
 <!-- location -->
 <div class="loca">
 	<ul>
@@ -150,71 +44,50 @@ a.prolist:hover {
 	<!-- title -->
 	<div class="sub_tit">운영프로그램</div>
 
-	<div id="min_depth01" class="w50">
+	<div id="tab_depth01" class="w50">
 		<ul>
-		
-			<c:choose>
-				<c:when test="${m3 eq '02'}">
-				<li class="blgo"><a href="/opprogram01?m1=04&m2=01&m3=02&page=${ed.page}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}"> 일반프로그램</a></li>
-					<li class="toblgo">
-						<a href="/opprogram01?m1=04&m2=01&m3=03&page=${ed.page}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}"> 초등(유아)프로그램</a>
-					</li>
-				
-				</c:when>
-				
-				<c:when test="${m3 eq '03'}">
-					<li class="toblgo"><a href="/opprogram01?m1=04&m2=01&m3=02&page=${ed.page}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}"> 일반프로그램</a></li>
-					<li class="blgo" style="float: right;">
-					<a href="/opprogram01?m1=04&m2=01&m3=03&page=${ed.page}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}"> 초등(유아)프로그램</a></li>
-				</c:when>
-				
-			</c:choose>	
-		
+		<c:choose>
+			<c:when test="${m3 eq '02'}">
+				<li class="active"><a href="/opprogram01?m1=04&m2=01&m3=02&page=${ed.page}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}"> 일반프로그램</a></li>
+				<li><a href="/opprogram01?m1=04&m2=01&m3=03&page=${ed.page}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}"> 초등(유아)프로그램</a></li>
+			</c:when>
+			
+			<c:when test="${m3 eq '03'}">
+				<li><a href="/opprogram01?m1=04&m2=01&m3=02&page=${ed.page}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}"> 일반프로그램</a></li>
+				<li class="active"><a href="/opprogram01?m1=04&m2=01&m3=03&page=${ed.page}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}"> 초등(유아)프로그램</a></li>			
+			</c:when>
+		</c:choose>
 		</ul>
-	
 	</div>
+	
+	
 	
 	<!-- content 시작 -->
 	<div class="prolistarea">
 		
-		<div class="tab_mev">
-			<p>총 ${cnt} 개의  프로그램이 있습니다</p>
-		</div>
-	
-		<div class="ProWrap">
-		
-		
-		<ul class="ulPro">
+		<p class="mg_b5">총 <span class="red">${cnt}</span> 개의  프로그램이 있습니다</p>
+
+ 	<div class="studyArea">
+ 		<ul class="studyProgram">
 			<c:forEach var="proList" items="${pro_list}">
 				<li>
-					<a class="prolist" href="/opprogram01/dCon?m1=${m1}&m2=${m2}&m3=${m3}&listu_catcode=${proList.listu_code}&page=${ed.page}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}">
-					
-						<span class="top">
-							<b>모집중</b>
-							<strong class="pointName">${proList.listu_name}</strong>
-						</span>
-						
-						<span class="bottom">
-							<span>
-								<b>모집기간</b>
-								${proList.listu_recruit}<br/>
-							</span>
-							<span>
-								<b>교육대상</b>
-								${proList.listu_target}<br/>
-							</span>
-							<span>
-								<b>교육장소</b>
-								${proList.listu_location}<br/>
-							</span>
-						
-						</span>
-					
+					<a class="link" href="/opprogram01/dCon?m1=${m1}&m2=${m2}&m3=${m3}&listu_catcode=${proList.listu_code}&page=${ed.page}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}">
+						<ul>
+							<li class="title">${proList.listu_name}</li>
+							<li class="n03"><span>교육대상</span> : ${proList.listu_target}</li>
+							<li class="n02"><span>모집기간</span> : ${proList.listu_name}</li>
+							<li class="n04"><span>교육장소</span> : ${proList.listu_location}</li>
+						</ul>
 					</a>
+					
+					<div class="studyNotice">
+						모집중		
+					</div>
+				</li>
 			</c:forEach>
 		</ul>
-	
-		</div>
+	</div>		
+				
 
 	<div class="r mg_t20 btns">
 		<input type="button" class="btns_black" id="newEdu" value="새글쓰기" style="border:0;"/>
@@ -222,8 +95,8 @@ a.prolist:hover {
 	
 		<div class="board-list-paging">
 		<div class="pagelist">
-			<span class="firstpage1"><span>처음 페이지</span></span>
-			
+			<a href="/opprogram01?m1=04&m2=01&m3=02&page=1&pagecount=10&pagegrp=1"><span class="firstpage1"><span>처음 페이지</span></span></a>
+					
 			<span class="prevblock1 hidden"><span>1 페이지</span></span>
 			<span class="beforepage1 "><span>이전페이지없음</span></span> <!-- 이전페이지 없을때 -->
 			

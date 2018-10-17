@@ -66,7 +66,7 @@
 	<div class="r mg_t20 btns">
 	
 		<sec:authorize access="hasRole('ROLE_ADMIN')">
-			<a class="btns_black" href="/freebrd_write?bd_catcode=CAT0007&m1=06&m2=03&bd_grp=${boardRead.bd_grp}&bd_step=0">관리자답변</a>
+			<a class="btns_black" href="/freebrd_write?bd_catcode=CAT0007&m1=06&m2=03&bd_grp=${boardRead.bd_grp}&bd_step=0&bd_idx=${bd_idx}&reply=1">관리자답변</a>
 		</sec:authorize>
 		
 		<a class="btns_blue" href="/freebrd_update?bd_catcode=${bd_catcode}&m1=06&m2=03&page=${page}&perPageNum=${perPageNum}&flag=2&bd_pass_chk=${bd_pass_chk}&bd_idx=${bd_idx}">수정</a>

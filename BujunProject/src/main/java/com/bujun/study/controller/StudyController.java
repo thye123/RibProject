@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,12 +45,31 @@ public class StudyController {
 	//스터디 등록 시작
 	@RequestMapping("/study/addStudyForm")
 	public ModelAndView addStudyForm(@RequestParam HashMap<String, Object> map, Model model, HttpSession session) {
-		model.addAttribute("menu", map);		
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("m1", map.get("m1"));
-		mv.addObject("m2", map.get("m2"));
-		mv.setViewName("user/sub/sub06/studyInsert");
-		return mv;
+		
+      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+      String login_name = authentication.getName();
+      
+      ModelAndView mv = new ModelAndView();
+
+      if(!login_name.equals("anonymousUser")) {
+    	model.addAttribute("menu", map);		
+  		mv.addObject("m1", map.get("m1"));
+  		mv.addObject("m2", map.get("m2"));
+  		mv.setViewName("user/sub/sub06/studyInsert");
+  		
+  		return mv;
+  		
+      } else {
+    	  
+		mv.setViewName("redirect:/bjLogin");
+  		
+  		return mv;    	  
+      }
+	      
+
+		
+		
+		
 	}
 	
 	@RequestMapping("/study/addStudy")
@@ -185,19 +206,33 @@ public class StudyController {
 	//스터디 가입 신청 현황 시작(개인)
 	@RequestMapping("/study/appList")
 	public ModelAndView myApplyList(@RequestParam HashMap<String, Object> map, Model model) {
-		model.addAttribute("menu", map);
-		List<StudyAppVo> list = studyService.appList(map);
-		ModelAndView mv = new ModelAndView();
-		String m1 = String.valueOf(map.get("m1"));
-		String m2 = String.valueOf(map.get("m2"));
-		mv.addObject("m1", m1);
-		mv.addObject("m2", m2);
-		mv.addObject("AppList", list);
-		mv.addObject("paging", map.get("pagingVo"));
-		mv.addObject("page_num", map.get("page_num"));
-		mv.addObject("tot_cnt", map.get("tot_cnt"));
-		mv.setViewName("user/sub/sub06/studyApplyList");
-		return mv;
+	
+		
+      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+      String login_name = authentication.getName();
+      ModelAndView mv = new ModelAndView();
+      
+
+      if(!login_name.equals("anonymousUser")) {
+    	  
+  		model.addAttribute("menu", map);
+  		List<StudyAppVo> list = studyService.appList(map);
+  		String m1 = String.valueOf(map.get("m1"));
+  		String m2 = String.valueOf(map.get("m2"));
+  		mv.addObject("m1", m1);
+  		mv.addObject("m2", m2);
+  		mv.addObject("AppList", list);
+  		mv.addObject("paging", map.get("pagingVo"));
+  		mv.addObject("page_num", map.get("page_num"));
+  		mv.addObject("tot_cnt", map.get("tot_cnt"));      
+  		mv.setViewName("user/sub/sub06/studyApplyList");
+  		return mv;
+      
+      } else {
+		mv.setViewName("redirect:/bjLogin");
+  		return mv;    	  
+      }
+	      
 	}
 	//스터디 가입 신청 현황 끝(개인)
 	
