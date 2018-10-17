@@ -274,7 +274,7 @@
 .booksch .top_sch {background:#636b72; padding:20px;}
 .booksch select {margin-right:3px;padding:5px; height:35px;border:1px solid #d8d8d8;font-size:14px;vertical-align:middle;  box-sizing:border-box; }
 .booksch input[type=text] {padding:7px; width:91.8%; height:35px; border:none;background:#fff;font-size:14px;vertical-align:middle; color:#333; box-sizing:border-box; }
-.booksch .searchBtn {cursor:pointer; display:inline-block;padding:0px 12px; line-height:35px; background:#fff; font-weight:400; color:#333; vertical-align:middle; box-sizing:border-box; border:1px solid #676767;  transition: all 0.3s ease-out;}
+.booksch .searchBtn {-webkit-appearance:none; -moz-appearance:none; appearance:none; cursor:pointer; display:inline-block;padding:0px 12px; line-height:35px; background:#fff; font-weight:400; color:#333; vertical-align:middle; box-sizing:border-box; border:1px solid #676767;  transition: all 0.3s ease-out;}
 .booksch .searchBtn:hover{background:#ff4f4e; font-weight:400; color:#fff; border:1px solid #ce3231;}
 .booksch .sch_con{padding:20px;}
 

@@ -135,9 +135,9 @@ h1 {position:absolute; left:0; top:25px;}
 	#menu .mob_search {box-sizing:border-box; background:#2d82b8; height:70px;}
 	#menu .mob_search p.txt {padding-top:25px; color:#fff; text-align:center;} 
 	#menu .mob_search .mob_search_frm {text-align:center;}
-	#menu .mob_search .mob_search_frm input[type='text'] {position: absolute; left:31px; top:24px; color:#fff; border:0; border-bottom:1px solid #fff !important; background:#2d82b8; width:143px; font-size:13px; padding:2px 5px 2px 5px;}	
+	#menu .mob_search .mob_search_frm input[type='text'] {border-radius:0; position: absolute; left:31px; top:24px; color:#fff; border:0; border-bottom:1px solid #fff !important; background:#2d82b8; width:143px; font-size:13px; padding:2px 28px 2px 5px;}	
 	#menu .mob_search .mob_search_frm button {position:absolute; right:37px; top:21px;  cursor:pointer; background:none; border:0;}
-	#menu .mob_search .mob_search_frm button img {width:19px; padding-bottom:3px; border-bottom:1px solid #fff;}
+	#menu .mob_search .mob_search_frm button img {width:19px; padding-bottom:3px;}
 
 	/* footer */
 	.footer .footer_wrap {width:auto; padding:0 20px;}
