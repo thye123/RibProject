@@ -68,7 +68,7 @@
 		<div class="board_page">
 			<span class="p02">Total</span>
 			<span class="p01"> : ${tot_cnt}</span>
-			(<span class="p01">${page_num}</span>/${endnum}페이지)
+			(<span class="p01">${page_num}</span>/${tot_btcnt}페이지)
 		</div> 
 		<form action="/study/search?m1=${m1}&m2=${m2}&page_num=1&page_grp=1" name="search" method="post" id="searchForm">
 			<div class="board_sch">
@@ -160,12 +160,12 @@
 			<c:choose>
 				<c:when test="${keyword != null && keyfield != null}">
 					<c:if test="${startnum > 10}">
-						<a class="prevblock" href="/study/search?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&page_num=${page_num}&page_grp=${page_grp-1}"><span>이전</span></a>
+						<a class="prevblock" href="/study/search?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&page_num=${page_num-10}&page_grp=${page_grp-1}"><span>이전</span></a>
 					</c:if>
 				</c:when>
 				<c:otherwise>
 					<c:if test="${startnum > 10}">
-						<a class="prevblock" href="/study?m1=${m1}&m2=${m2}&page_num=${page_num}&page_grp=${page_grp-1}"><span>이전</span></a>
+						<a class="prevblock" href="/study?m1=${m1}&m2=${m2}&page_num=${page_num-10}&page_grp=${page_grp-1}"><span>이전</span></a>
 					</c:if>
 				</c:otherwise>
 			</c:choose>		
@@ -190,12 +190,12 @@
 			<c:choose>
 				<c:when test="${keyword != null && keyfield != null}">
 					<c:if test="${startnum <= (tot_btcnt-10) && startnum > 0}">
-						<a class="nextblock" href="/study/search?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&page_num=${page_num}&page_grp=${page_grp+1}"><span>다음</span></a>
+						<a class="nextblock" href="/study/search?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&page_num=${page_num+10}&page_grp=${page_grp+1}"><span>다음</span></a>
 					</c:if>
 				</c:when>
 				<c:otherwise>
 					<c:if test="${startnum <= (tot_btcnt-10) && startnum > 0}">
-						<a class="nextblock" href="/study?m1=${m1}&m2=${m2}&page_num=${page_num}&page_grp=${page_grp+1}"><span>다음</span></a>
+						<a class="nextblock" href="/study?m1=${m1}&m2=${m2}&page_num=${page_num+10}&page_grp=${page_grp+1}"><span>다음</span></a>
 					</c:if>
 				</c:otherwise>
 			</c:choose>

@@ -215,7 +215,7 @@
 			</li>
 			<li>
 				<div>
-					<a href="http://hajebook.com" target="_blank">
+					<a href="http://poetrytherapy.or.kr/" target="_blank">
 						<dl>
 							<dt>한국시치료연구소</dt>
 							<dd>

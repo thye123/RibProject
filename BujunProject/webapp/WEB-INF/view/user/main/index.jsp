@@ -173,36 +173,26 @@
 									<span class="main_date">2018.03.20</span>
 								</li>
 							</ul>
-							<a href="/index.php?pagecode=P000000028" class="more" title="보도자료 목록 더보기로 이동합니다."><img src="${pageContext.request.contextPath}/resources/user/images/main/m_more.png" alt="보도자료 더보기" /></a>						
+							<a href="#" class="more" title="평생학습 목록 더보기로 이동합니다."><img src="${pageContext.request.contextPath}/resources/user/images/main/m_more.png" alt="평생학습 더보기" /></a>						
 						</div>
 						<!-- //2 -->
 					
 					
 						<!-- 3 -->
-						<h3 class="nt_03"><a href="#" >스터디 커뮤니티</a></h3>
+						<h3 class="nt_03" id="stuList"><a href="#" >스터디 커뮤니티</a></h3>
 						<div class="ncons" >
 
 							<ul>
-								<li>
-									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										33							
-									</a>
-									<span class="main_date">2018.03.20</span>
-								</li>
-								<li>
-									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										제8회 &#40;재&#41;동래장학회 장학생 선발자 명단									
-									</a>
-									<span class="main_date">2018.03.20</span>
-								</li>
-								<li>
-									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										제8회 &#40;재&#41;동래장학회 장학생 선발자 명단									
-									</a>
-									<span class="main_date">2018.03.20</span>
-								</li>
+								<c:forEach var="stulist" items="${stuList}">
+									<li>
+										<a href="/study/dCon?m1=06&m2=07&stu_code=${stulist.stu_code}&stu_idx=${stulist.stu_idx}">
+											${stulist.stu_title}							
+										</a>
+										<span class="main_date">${stulist.stu_regdate}</span>
+									</li>
+								</c:forEach>
 							</ul>
-							<a href="/index.php?pagecode=P000000028" class="more" title="보도자료 목록 더보기로 이동합니다."><img src="${pageContext.request.contextPath}/resources/user/images/main/m_more.png" alt="보도자료 더보기" /></a>						
+							<a href="/study?m1=06&m2=07&page_num=1&page_grp=1" class="more" title="스터디 목록 더보기로 이동합니다."><img src="${pageContext.request.contextPath}/resources/user/images/main/m_more.png" alt="스터디 더보기" /></a>						
 						</div>
 						<!-- //3 -->						
 					

@@ -96,4 +96,13 @@
 	)}
 	</insert>	
 	
+	<select id="mainSelect"
+			statementType="CALLABLE"
+			parameterType="hashmap"
+			resultType="com.bujun.study.vo.StudyVo"
+	>
+	{CALL PKG_STUDY.PROC_MAIN_SELECT(
+	#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=selStudy}
+	)}
+	</select>
 </mapper>
