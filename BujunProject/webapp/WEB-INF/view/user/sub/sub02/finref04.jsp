@@ -77,12 +77,14 @@
 	<!-- table -->
 	
 		<table class="tb_board">
+			<colgroup><col style="width:10%;" /><col/><col style="width:15%;"/><col style="width:15%;" /><col style="width:10%;" /></colgroup>
 			<thead>
 				<tr>
-					<th scope="col" width="50">번  호</th>
-					<th scope="col" width="400">제  목</th>
-					<th scope="col" width="70">작성일</th>
-					<th scope="col" class="bnon"width="50">조회수</th>
+					<th scope="col" >번  호</th>
+					<th scope="col" >제  목</th>
+					<th scope="col" >작성자</th>
+					<th scope="col"  class="n01">작성일</th>
+					<th scope="col" class="mob_none" >조회수</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -95,8 +97,9 @@
 							<tr>
 								<td>${bankboard.ad_idx}</td>
 								<td class="l"><a href="/finref04/view?m1=02&m2=02&m3=05&ad_idx=${bankboard.ad_idx}&ad_code=${ad_code}">${bankboard.ad_title}</a></td>
-								<td>${bankboard.ad_regdate}</td>
-								<td class="bnon">${bankboard.ad_count}</td>
+								<td>${bankboard.ad_writer}</td>
+								<td class="n01">${bankboard.ad_regdate}</td>
+								<td class="mob_none">${bankboard.ad_count}</td>
 							</tr>
 						</c:forEach>
 					</c:otherwise>

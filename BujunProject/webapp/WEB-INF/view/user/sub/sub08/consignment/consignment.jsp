@@ -62,21 +62,14 @@
 	<!-- content 시작 -->
 	
 	<!-- table -->
-	<div class="scroll_info">
-		<span class="arr_l"></span>
-		<span class="scroll_icon"></span>
-		<p class="pinfo">좌우로 스크롤 하시면 전체 내용을 확인하실 수 있습니다.</p>
-		<span class="arr_r"></span>
-	</div>
-	
-	<div class="auto_box mg_b40">			
 		<table class="tb_board">
+		<colgroup><col style="width:5%;" /><col style="width:25%;"/><col style="width:7%;" /><col style="width:7%;" /></colgroup>
 			<thead>
 				<tr>
-					<th scope="col" width="50">번  호</th>
-					<th scope="col" width="400">제  목</th>
-					<th scope="col" width="100">작성자</th>
-					<th scope="col" width="70">작성일</th>
+					<th scope="col" >번  호</th>
+					<th scope="col" >제  목</th>
+					<th scope="col" >작성자</th>
+					<th scope="col" >작성일</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -114,7 +107,6 @@
 			</c:choose>
 		</div>
 		
-	</div>
 	<!-- //table -->
 	
 <!-- //content 끝 -->

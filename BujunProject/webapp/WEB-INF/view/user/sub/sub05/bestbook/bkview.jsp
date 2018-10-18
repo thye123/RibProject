@@ -40,14 +40,6 @@
 	
 	
 	<!-- table -->
-	<div class="scroll_info">
-		<span class="arr_l"></span>
-		<span class="scroll_icon"></span>
-		<p class="pinfo">좌우로 스크롤 하시면 전체 내용을 확인하실 수 있습니다.</p>
-		<span class="arr_r"></span>
-	</div>
-	
-	<div class="auto_box mg_b40">
 		<div class="tb_boardss">
 			<div class="tb_title">${content.ad_title}</div>
 			<div class="tb_infor"><Strong>작성자</Strong><span>${writer}</span><Strong>작성일</Strong> <span>${content.ad_regdate}</span> <Strong>조회수</Strong> <span>${content.ad_count}</span></div>
@@ -85,7 +77,6 @@
 				</div>
 			</c:otherwise>
 		</c:choose>
-	</div>
 	
 	<!-- //table -->
 	

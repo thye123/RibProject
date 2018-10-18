@@ -38,14 +38,6 @@
 	
 	
 	<!-- table -->
-	<div class="scroll_info">
-		<span class="arr_l"></span>
-		<span class="scroll_icon"></span>
-		<p class="pinfo">좌우로 스크롤 하시면 전체 내용을 확인하실 수 있습니다.</p>
-		<span class="arr_r"></span>
-	</div>
-	
-	<div class="auto_box mg_b40">		
 		<form action="/wishres/Write" method="POST" enctype="multipart/form-data">
 		<input type="hidden" value="CAT0033" name="ad_code">	
 			<div class="tb_boardss">
@@ -75,7 +67,6 @@
 				<a href="/wishres?m1=03&m2=06&nowpage=1&pagecount=10&grpnum=1" class="btn_01">취소</a>
 			</div>
 		</form>	
-	</div>
 	<!-- //table -->
 	
 <!-- //content 끝 -->

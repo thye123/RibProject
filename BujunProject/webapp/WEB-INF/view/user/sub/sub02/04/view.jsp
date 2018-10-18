@@ -40,7 +40,6 @@
 	
 	
 	<!-- table -->
-	<div class="auto_box mg_b40">
 		<div class="tb_boardss">
 			<div class="tb_title">${content.ad_title}</div>
 			<div class="tb_infor"><Strong>작성자</Strong><span>${writer}</span><Strong>작성일</Strong> <span>${content.ad_regdate}</span> <Strong>조회수</Strong> <span>${content.ad_count}</span></div>
@@ -83,7 +82,6 @@
 	<!-- //table -->
 	
 <!-- //content 끝 -->
-</div>
 
 </div>
 	

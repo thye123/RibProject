@@ -13,16 +13,16 @@
 <!-- 레프트메뉴 -->
 <%@ include file="../../../include/left_menu03.jsp" %>   
 <script>
-	function rabtn() {
+	function rabtn() { 
 		var div = document.createElement('div');
-		div.setAttribute('class','a_right')
+		div.setAttribute('class','a_right');
 		var txt = document.createElement('input');
 		txt.setAttribute('type','text');
 		txt.setAttribute('name','sc_cancel');
 		div.appendChild(txt);
 		
 		var divs = document.createElement('div');
-		divs.setAttribute('class','a_left')
+		divs.setAttribute('class','a_left');
 		var spans = document.createElement('span');
 		var text = document.createTextNode('취소사유');
 		spans.appendChild(text);
@@ -30,14 +30,25 @@
 		
 		var row = document.createElement('div');
 		row.setAttribute('class','canselreason');
-		row.setAttribute('style','height: 41px;')
-		row.setAttribute('style','box-sizing: border-box;')
-		row.setAttribute('style','border-bottom: 1px solid #ddd;')
+		row.setAttribute('id', 'cancel');
+		row.setAttribute('style','height: 41px;');
+		row.setAttribute('style','box-sizing: border-box;');
+		row.setAttribute('style','border-bottom: 1px solid #ddd;');
 		
 		row.appendChild(divs);
 		row.appendChild(div);
 		var board = document.getElementById('board');
-		board.appendChild(row);
+		
+		var scroll = document.getElementById('scroll');
+		
+		if(scroll.value == '4'){
+			board.appendChild(row);			
+		}else{
+			if(scroll.value =='3'||scroll.value=='2') {
+				var del_div = document.getElementById('cancel');
+				del_div.remove();
+			}
+		}
 	}
 </script>
 
@@ -83,7 +94,7 @@
 	</div>
 	
 	<ul class="mg_b10">
-		<li class="sbul"> *표가 있는 항목은 필수 항목이므로 반드시 입력하여 주십시오.</li>
+		<li class="sbul"> 표가 있는 항목은 필수 항목이므로 반드시 입력하여 주십시오.</li>
 		<li class="sbul">여러명이 사용하는 PC의 경우에는 개인정보 보호를 위하여 <span class="red" style="color:red;">사용 후에는 반드시 로그아웃</span> 하여 주십시오.</li>
 	</ul>
 	
@@ -94,7 +105,7 @@
 		<div class="applyboard" id="board">
 			<div class="a_name">
 				<div class="a_left">
-					<span><span class="star">＊</span>신청자</span>
+					<span><span class="star"></span>신청자</span>
 				</div>
 				
 				<div class="a_right">
@@ -105,7 +116,7 @@
 			<div class="apply3">
 				<div class="a_tel">
 					<div class="a_left title">
-						<span><span class="star">＊</span>전화번호</span>
+						<span><span class="star"></span>전화번호</span>
 					</div>
 					<div class="a_right cont">
 						<span>${update.sc_phone}</span>
@@ -114,19 +125,22 @@
 				
 				<div class="a_email">
 					<div class="a_left title">
-						<span><span class="star">＊</span>처리상태</span>
+						<span><span class="star"></span>처리상태</span>
 					</div>
 					<div class="a_right cont">
-						<input type="radio"  value="2" name="sc_during"/><span>처리중</span>
-						<input type="radio" value="3" name="sc_during"/><span>배치완료</span>
-						<input type="radio" value="4" name="sc_during" id="cansel" onclick="rabtn()"/><span>취소</span>
+						<select id="scroll" onchange="rabtn()">
+						<option value="2" name="sc_during">처리중</option>
+						<option value="3" name="sc_during">배치완료</option>
+						<option value="4" name="sc_during" id="cansel">취소</option>
+						<!-- <input type="radio" value="4" name="sc_during" id="cansel" onclick="rabtn()"/><span>취소</span> -->
+						</select>
 					</div>
 				</div>
 			</div>
 			
 			<div class="a_booktitle">
 				<div class="a_left">
-					<span><span class="star">＊</span>희망도서명</span>
+					<span><span class="star"></span>희망도서명</span>
 				</div>
 				<div class="a_right">
 					<span>${update.sc_bookname}</span>
@@ -135,7 +149,7 @@
 			
 			<div class="a_bookwriter">
 				<div class="a_left">
-					<span><span class="star">＊</span>저작자</span>
+					<span><span class="star"></span>저작자</span>
 				</div>
 				<div class="a_right">
 					<span>${update.sc_author}</span>
@@ -145,7 +159,7 @@
 			<div class="apply7">
 				<div class="a_publisher">
 					<div class="a_left title">
-						<span><span class="star">＊</span>출판사</span>
+						<span><span class="star"></span>출판사</span>
 					</div>
 					<div class="a_right cont">
 						<span>${update.sc_publisher}</span>
@@ -154,7 +168,7 @@
 				
 				<div class="a_publication">
 					<div class="a_left title">
-						<span><span class="star">＊</span>출판연도</span>
+						<span><span class="star"></span>출판연도</span>
 					</div>
 					<div class="a_right cont">
 						<span>${update.sc_publishdate}</span>
@@ -164,7 +178,7 @@
 			
 			<div class="bestcont">
 				<div class="a_left titles">
-					<span>추천의견<br/>(최대100자)</span>
+					<span>추천의견</span>
 				</div>
 				<div class="a_right conts">
 					<span>${update.sc_content}</span>

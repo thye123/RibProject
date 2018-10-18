@@ -88,14 +88,14 @@
 	
 	<!-- table -->
 		<table class="tb_board">
+		<colgroup><col style="width:5%;" /><col style="width:7%;"/><col style="width:17%;" /><col style="width:10%;" /><col style="width:8%;" /></colgroup>
 			<thead>
 				<tr>
-					<th scope="col" width="50">번  호</th>
-					<th scope="col" width="100">신청인</th>
-					<th scope="col" width="300">신청도서</th>
-					<th scope="col" width="100">저자</th>
-					<th scope="col" width="50">신청일</th>
-					<th scope="col" width="50"  class="bnon">진행상태</th>
+					<th scope="col" class="mob_none" >번  호</th>
+					<th scope="col" >신청인</th>
+					<th scope="col" >신청도서</th>
+					<th scope="col" >신청일</th>
+					<th scope="col" class="bnon">진행상태</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -106,10 +106,9 @@
 					<c:otherwise>
 						<c:forEach var="app" items="${appList}">
 							<tr>
-								<td>${app.sc_idx}</td>
+								<td class="mob_none">${app.sc_idx}</td>
 								<td>${app.sc_memid}</td>
 								<td class="l"><a href="/wishbk/view?m1=03&m2=05&sc_idx=${app.sc_idx}">${app.sc_bookname}</a></td>
-								<td>${app.sc_author}</td>
 								<td>${app.sc_regdate}</td>
 								<c:choose>
 									<c:when test="${app.sc_during eq 1}">

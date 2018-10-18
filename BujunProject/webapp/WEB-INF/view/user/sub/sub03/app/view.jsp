@@ -66,14 +66,6 @@
 	
 	
 	<!-- table -->
-	<div class="scroll_info">
-		<span class="arr_l"></span>
-		<span class="scroll_icon"></span>
-		<p class="pinfo">좌우로 스크롤 하시면 전체 내용을 확인하실 수 있습니다.</p>
-		<span class="arr_r"></span>
-	</div>
-	
-	<div class="auto_box mg_b40">
 		<div class="tb_book">
 			<div class="memname"> 
 				<div class="v_left">
@@ -86,7 +78,7 @@
 			
 			<div class="bookname">
 				<div class="v_left">
-					<Strong>희망도서명</Strong>
+					<Strong>희망도서</Strong>
 				</div>
 				<div class="v_right">
 					<span>${app.sc_bookname}</span>
@@ -192,7 +184,6 @@
 		</c:otherwise>
 		</c:choose>
 		
-	</div>
 	
 	<!-- //table -->
 	
