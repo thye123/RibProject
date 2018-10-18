@@ -374,7 +374,8 @@
 .con_login {padding:24px 20px 50px 20px; border-top:solid 2px #2e3235; border-bottom: solid 1px #ccd0d7;}
 .con_login .log_chk li{font-size:13px; line-height:20px; display:inline-block; position:relative;}
 .con_login .log_chk li input {vertical-align:initial;}
-.con_login .log_chk li:nth-child(1) {margin-right:13px;}
+.con_login .log_chk li {margin-right:13px;}
+.con_login .log_chk li:last-child {margin-right:13px;}
 .con_login .log_chk li:after {right:-9px; top:6px; background:#ccc; width:1px; height:10px; display:block; position:absolute; content:"";}
 .con_login .log_chk li:last-child:after {display:none;}
 .con_login .log_chk li a {color:#666;}

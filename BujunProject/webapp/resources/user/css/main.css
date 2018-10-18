@@ -163,6 +163,8 @@ span.text {word-break: keep-all; display: block; overflow: hidden; width:100%; h
 .banner_control a:last-child{margin-right:0 !important;}
 
 
+/* 팝업 */
+#mainPopupzone1 {width:100%;}
 
 
 

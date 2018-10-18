@@ -196,8 +196,19 @@
 			<!-- (s) 탑 메뉴 -->
 
 			<div id="menu">
-				 <a class="menu-icon" href="#">메뉴</a>
-				 <a class="m_search" href="/bjLogin">로그인</a>
+				<a class="menu-icon" href="#">메뉴</a>
+				 
+				 
+				<c:choose>
+					<c:when test="${sessionScope.mem_name eq null}">
+						<a class="m_search" href="/bjLogin">로그인</a>
+					</c:when>
+					<c:otherwise>
+						<a class="m_logout" href="/logout">로그아웃</a>
+					</c:otherwise>
+				</c:choose>				
+				
+				
 				
 				<div class="black"></div>
 				<div class="white"></div>
