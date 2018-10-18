@@ -219,7 +219,7 @@
 		
 		
 		<div class="book_con03">
-			<div class="tit">2018 / 09 부전도서관 일정</div>
+			<div class="tit">2018 / 10 부전도서관 일정</div>
 			
 			<table class="schedule">
 				<thead>
@@ -236,52 +236,52 @@
 		
 				<tbody>
 					<tr>
-						<td class="sun"><div></div></td>
-						<td><div></div></td>
-						<td><div></div></td>
-						<td><div></div></td>
-						<td><div></div></td>
-						<td><div></div></td>
-						<td class="sat"><div>1</div></td>
+						<td class="sun pd_t5"><div></div></td>
+						<td class="pd_t5"><div>1</div></td>
+						<td class="pd_t5"><div>2</div></td>
+						<td class="pd_t5"><div class="holiday">3</div></td>
+						<td class="pd_t5"><div>4</div></td>
+						<td class="pd_t5"><div>5</div></td>
+						<td class="sat pd_t5"><div>6</div></td>
 					</tr>
 					<tr>
-						<td class="sun"><div class="event">2</div></td>
-						<td><div class="holiday">3</div></td>
-						<td><div>4</div></td>
-						<td><div>5</div></td>
-						<td><div>6</div></td>
-						<td><div>7</div></td>
-						<td class="sat"><div>8</div></td>
-					</tr>
-					<tr>
-						<td class="sun"><div class="event">9</div></td>
+						<td class="sun"><div>7</div><!-- <div class="event">7</div> --></td>
+						<td><div>8</div></td>
+						<td><div class="holiday">9</div></td>
 						<td><div>10</div></td>
 						<td><div>11</div></td>
 						<td><div>12</div></td>
-						<td><div class="holiday">13</div></td>
-						<td><div>14</div></td>
-						<td class="sat"><div>15</div></td>
+						<td class="sat"><div>13</div></td>
 					</tr>
 					<tr>
-						<td class="sun"><div>16</div></td>
+						<td class="sun"><div>14</div></td>
+						<td><div class="holiday">15</div></td>
+						<td><div>16</div></td>
 						<td><div>17</div></td>
 						<td><div>18</div></td>
 						<td><div>19</div></td>
-						<td><div class="holiday">20</div></td>
-						<td><div>21</div></td>
-						<td class="sat"><div>22</div></td>
+						<td class="sat"><div>20</div></td>
 					</tr>
 					<tr>
-						<td class="sun"><div>23</div></td>
-						<td><div class="holiday">24</div></td>
+						<td class="sun"><div>21</div></td>
+						<td><div class="holiday">22</div></td>
+						<td><div>23</div></td>
+						<td><div>24</div></td>
 						<td><div>25</div></td>
 						<td><div>26</div></td>
-						<td><div class="event">27</div></td>
-						<td><div>28</div></td>
+						<td class="sat"><div>27</div></td>
+					</tr>
+					<tr>
+						<td class="sun"><div>28</div></td>
+						<td><div>29</div></td>
+						<td><div>30</div></td>
+						<td><div>31</div></td>
+						<td><div></div></td>
+						<td><div></div></td>
 						<td class="sat"><div>29</div></td>
 					</tr>
 					<tr>
-						<td class="sun"><div class="event">30</div></td>
+						<td class="sun"><div></div></td>
 						<td><div></div></td>
 						<td><div></div></td>
 						<td><div></div></td>

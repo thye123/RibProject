@@ -368,7 +368,15 @@
 						
 						<li class="depth1"><a href="/info01?m1=07&m2=01&m3=01" class="off">정보공개</a>
 							<ul>
-								<li class="depth2"><a href="/info01?m1=07&m2=01&m3=01" class="off">정보공개안내</a></li>
+								<li class="depth2"><a href="/info01?m1=07&m2=01&m3=01" class="off">정보공개안내</a>
+									<ul>
+										<li class="depth3"><a href="/info01?m1=07&m2=01&m3=01" class="off">정보공개제도안내</a></li> 
+										<li class="depth3"><a href="/info02?m1=07&m2=01&m3=02" class="off">사전공표대상및비공개대상목록</a></li> 
+										<li class="depth3"><a href="/info03?m1=07&m2=01&m3=03&page_num=1&page_grp=1" class="off">정보목록</a></li> 
+										<li class="depth3"><a href="https://www.open.go.kr/" title="새창으로 열림" target="_blank" class="off">정보공개청구</a></li> 
+										<li class="depth3"><a href="/info03?m1=07&m2=01&m3=05&page_num=1&page_grp=1" class="off">사전공표대상공개</a></li> 
+									</ul>									
+								</li>
 								<li class="depth2"><a href="/opdata?m1=07&m2=02" class="off">공공데이터개방</a></li>
 							</ul>						
 						</li>							
