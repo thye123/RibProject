@@ -379,7 +379,28 @@
 								</li>
 								<li class="depth2"><a href="/opdata?m1=07&m2=02" class="off">공공데이터개방</a></li>
 							</ul>						
+						</li>	
+						
+						
+						<li class="depth1"><a href="/personalinfo?m1=08&m2=01&m3=01" class="off">기타</a>
+							<ul>
+								<li class="depth2"><a href="/personalinfo?m1=08&m2=01&m3=01" class="off">자료이용 안내</a>
+									<ul>
+										<li class="depth3"><a href="/personalinfo?m1=08&m2=01&m3=01" class="off">개인정보처리방침</a></li> 
+										<li class="depth3"><a href="/personalinfo02?m1=08&m2=01&m3=02&nowpage=1&pagecount=10&grpnum=1" class="off">개인정보처리위탁</a></li> 
+									</ul>									
+								</li>
+								<li class="depth2"><a href="/sitemap?m1=08&m2=02" class="off">사이트맵</a></li>
+								<li class="depth2"><a href="/videoinfo?m1=08&m2=03" class="off">영상정보처리기기</a></li>
+								<li class="depth2"><a href="/location?m1=08&m2=04" class="off">찾아오는길</a></li>
+							</ul>						
 						</li>							
+						
+						
+						
+						
+						
+												
 						
 						
 					</ul>
