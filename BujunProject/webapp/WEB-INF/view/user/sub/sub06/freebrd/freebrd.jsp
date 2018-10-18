@@ -88,14 +88,6 @@
 	</form>
 
 
-	<div class="scroll_info">
-		<span class="arr_l"></span>
-		<span class="scroll_icon"></span>
-		<p class="pinfo">좌우로 스크롤 하시면 전체 내용을 확인하실 수 있습니다.</p>
-		<span class="arr_r"></span>
-	</div>	
-	
-	<div class="auto_box mg_b40">			
 		<table class="tb_board">
 			<colgroup><col style="width:10%;" /><col/><col style="width:15%;"/><col style="width:10%;" /><col style="width:15%;" /><col style="width:8%;" /></colgroup>
 			<thead>
@@ -103,8 +95,8 @@
 					<th scope="col">번호</th>
 					<th scope="col">제목</th>
 					<th scope="col">글쓴이</th>
-					<th scope="col">공개</th>
-					<th scope="col">작성일자</th>
+					<th scope="col"  class="n01">공개</th>
+					<th scope="col" class="mob_none">작성일자</th>
 					<th scope="col" class="bnon mob_none">조회수</th>
 				</tr>
 			</thead>
@@ -135,7 +127,7 @@
 								
 								<td>${brd.bd_writer}</td>
 								
-								<td>
+								<td class="n01">
 									<c:choose>
 										<c:when test="${brd.bd_open eq 1}">
 											공개
@@ -146,8 +138,8 @@
 									</c:choose> 
 								</td>
 								
-								<td>${brd.bd_regdate}</td>
-								<td class="bnon ">${brd.bd_count}</td>
+								<td class="mob_none">${brd.bd_regdate}</td>
+								<td class="bnon mob_none">${brd.bd_count}</td>
 							</tr>
 						</c:forEach>					
 					</c:otherwise>
@@ -155,7 +147,6 @@
 					
 			</tbody>
 		</table>
-	</div>	
 
 
 	<!-- 페이징 -->

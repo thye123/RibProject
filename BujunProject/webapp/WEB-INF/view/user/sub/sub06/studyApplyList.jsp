@@ -64,9 +64,18 @@
 	<!-- content 시작 -->
 	<div class="boardSearch">
 		<div class="board_page">
-			<span class="p02">Total</span>
-			<span class="p01"> : ${tot_cnt}</span>
-			(<span class="p01">${page_num}</span>/${tot_btcnt}페이지)
+			<c:choose>
+				<c:when test="${tot_btcnt == 0}">
+					<span class="p02">Total</span>
+					<span class="p01"> : ${tot_cnt}</span>
+					(<span class="p01">0</span>/${tot_btcnt}페이지)
+				</c:when>
+				<c:otherwise>
+					<span class="p02">Total</span>
+					<span class="p01"> : ${tot_cnt}</span>
+					(<span class="p01">${page_num}</span>/${tot_btcnt}페이지)				
+				</c:otherwise>
+			</c:choose>
 		</div> 
 		<c:choose>
 			<c:when test="${stuap_code != null}">
@@ -195,7 +204,32 @@
 			</c:otherwise>
 		</c:choose>
 	</table>
-	
+	<c:choose>
+			<c:when test="${stuap_code != null}">
+				<div class="r mg_t20 btns">
+					<input type="button" class="btns_black" id="detail" value="뒤로가기" style="border:0;">
+				</div>
+				<script>
+					var detail = document.getElementById("detail");
+					
+					detail.addEventListener("click", function(){
+						location.href = "/study/dCon?m1=${m1}&m2=${m2}&stu_code=${stuap_code}&stu_idx=${stu_idx}";
+					});
+				</script>
+			</c:when>
+			<c:otherwise>
+				<div class="r mg_t20 btns">
+					<input type="button" class="btns_black" id="detail" value="뒤로가기" style="border:0;">
+				</div>
+				<script>
+					var detail = document.getElementById("detail");
+					
+					detail.addEventListener("click", function(){
+						location.href = "/study?m1=06&m2=07&page_num=1&page_grp=1";
+					});
+				</script>
+			</c:otherwise>
+	</c:choose>
 
 	<!-- //table -->
 

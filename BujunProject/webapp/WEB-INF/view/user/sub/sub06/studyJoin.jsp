@@ -42,34 +42,35 @@
 	
 	<!-- content 시작 -->
 
-	<div class="auto_box mg_b40">
-		<table class="board_read" cellspacing="1" cellpadding="1">
+		<table class="board_read">
 			<tr>
-				<th style="text-align:center;">스터디명</th>
-				<th style="text-align:center;">진행장소</th>
-				<th style="text-align:center;">진행일정</th>
-				<th style="text-align:center;">모집인원</th>
+				<th>스터디명</th>
+				<th>진행장소</th>
+				<th>진행일정</th>
+				<th>모집인원</th>
 			</tr>
 			<tr>
-				<td style="text-align:center;">${studyDetail.stu_title}</td>
-				<td style="text-align:center;">${studyDetail.stu_location}</td>
-				<td style="text-align:center;">${studyDetail.stu_date}</td>
-				<td style="text-align:center;">${studyDetail.stu_person}</td>
+				<td class="c">${studyDetail.stu_title}</td>
+				<td class="c">${studyDetail.stu_location}</td>
+				<td class="c">${studyDetail.stu_date}</td>
+				<td class="c">${studyDetail.stu_person}</td>
 			</tr>
 		</table>
 	
-		<div class="studydangerarea">
+		<div class="studydangerarea mg_t10">
 			<strong class="studydanger">※ 스터디 신청 유의사항</strong>
 		</div>
 		
-		<div class="studyJoinIntro">
-			<ul>
-				<li><b>· 스터디 모집은 도서관을 이용하시는 회원분들의 효율적인 도서관 이용을 위한 공간입니다.</b></li>
-				<li><b>· 스터디 관련 내용은 도서관이 아닌 스터디 등록 회원에게 문의 바랍니다.</b></li>
-				<li><b>· 스터디 진행 시 발생하는 문제는 도서관과 연관 없습니다.</b></li>
-				<li><b>· 각종 범죄 발생 시 신속한 신고 및 도서관 측에 문의바랍니다.</b></li>
+		<div class="studyJoinIntro mg_b10">
+			<ul class="bul_type1">
+				<li>스터디 모집은 도서관을 이용하시는 회원분들의 효율적인 도서관 이용을 위한 공간입니다.</li>
+				<li>스터디 관련 내용은 도서관이 아닌 스터디 등록 회원에게 문의 바랍니다.</li>
+				<li>스터디 진행 시 발생하는 문제는 도서관과 연관 없습니다.</li>
+				<li>각종 범죄 발생 시 신속한 신고 및 도서관 측에 문의바랍니다.</li>
 			</ul>
 		</div>
+		
+		
 		<form action="/study/join?m1=${m1}&m2=${m2}&stu_code=${stu_code}&stu_idx=${stu_idx}" method="post" enctype="multipart/form-data">
 			<table class="board_read" cellspacing="1" cellpadding="1">
 				<colgroup><col style="width:20%;"><col style="width:55%;"><col></colgroup>
@@ -105,7 +106,6 @@
 				<input type="button" class="btns_black" id="cancel" value="취소" style="border:0;"/>
 			</div>
 		</form>
-	</div>
 <!-- //content 끝 -->
 </div>
 

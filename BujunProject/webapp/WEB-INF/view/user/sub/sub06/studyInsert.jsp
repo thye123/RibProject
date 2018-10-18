@@ -42,7 +42,6 @@
 	
 	<!-- content 시작 -->
 
-	<div class="auto_box mg_b40">
 		<form action="/study/addStudy?m1=${m1}&m2=${m2}" method="post" enctype="multipart/form-data">
 			<table class="board_read" cellspacing="1" cellpadding="1">
 				<tr>
@@ -101,7 +100,6 @@
 				<input type="button" class="btns_black" id="cancel" value="취소" style="border:0;"/>
 			</div>
 		</form>
-	</div>
 <!-- //content 끝 -->
 </div>
 

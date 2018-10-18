@@ -51,7 +51,7 @@
 						<span class="icow i_icon4"></span>
 					</span>
 					<ul>
-						<li class="ltx"><a href="http://www.moi.go.kr/frt/sub/a05/gwanboMain/screen.do" target="_blank" title="새창열림">전자관보 바로가기</a></li>
+						<li class="ltx"><a href="http://gwanbo.mois.go.kr/main.do" target="_blank" title="새창열림">전자관보 바로가기</a></li>
 					</ul>
 				</div>
 			</div>

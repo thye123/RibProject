@@ -50,7 +50,7 @@
 			<tbody>
 				<tr>
 					<th class="c">제목</th>
-					<td><input type="text" name="bd_title" value="${boardRead.bd_title}" /></td>
+					<td><input class="frd_tt" type="text" name="bd_title" value="${boardRead.bd_title}" /></td>
 				</tr>		
 				<tr>
 					<th class="c">내용</th>
