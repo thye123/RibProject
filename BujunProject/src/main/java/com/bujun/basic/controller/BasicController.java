@@ -17,6 +17,8 @@ import com.bujun.member.service.LoginService;
 import com.bujun.member.vo.MemberVo;
 import com.bujun.monthbook.service.MonthbookService;
 import com.bujun.monthbook.vo.MonthbookVo;
+import com.bujun.study.service.StudyService;
+import com.bujun.study.vo.StudyVo;
 
 @Controller
 public class BasicController {
@@ -26,8 +28,10 @@ public class BasicController {
 	private LoginService loginService; 
 	
 	@Autowired
-	private  MonthbookService monthBookService; 
+	private MonthbookService monthBookService; 
 	
+	@Autowired
+	private StudyService stuService;
 	
 	@RequestMapping("/")
 	public String Main(HttpSession session, Model model) {
@@ -44,6 +48,9 @@ public class BasicController {
 		List<MonthbookVo> monthBookList = monthBookService.getMainBookList(map);
 		model.addAttribute("bookList", monthBookList);
 		
+		//스터디
+		List<StudyVo> stuList = stuService.mainList(map);
+		model.addAttribute("stuList", stuList);
 		
 		if(!login_name.equals("anonymousUser")) {
 			

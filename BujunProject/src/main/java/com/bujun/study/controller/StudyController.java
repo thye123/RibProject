@@ -56,20 +56,11 @@ public class StudyController {
   		mv.addObject("m1", map.get("m1"));
   		mv.addObject("m2", map.get("m2"));
   		mv.setViewName("user/sub/sub06/studyInsert");
-  		
   		return mv;
-  		
       } else {
-    	  
 		mv.setViewName("redirect:/bjLogin");
-  		
   		return mv;    	  
       }
-	      
-
-		
-		
-		
 	}
 	
 	@RequestMapping("/study/addStudy")
@@ -93,6 +84,7 @@ public class StudyController {
 		model.addAttribute("menu", map);
 		String m1 = String.valueOf(map.get("m1"));
 		String m2 = String.valueOf(map.get("m2"));
+		
 		StudyVo vo = studyService.getDetail(map);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("detail", vo);
@@ -275,6 +267,7 @@ public class StudyController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("m1", m1);
 		mv.addObject("m2", m2);
+		mv.addObject("stu_idx", map.get("stu_idx"));
 		mv.addObject("stuap_code", map.get("stu_code"));
 		mv.addObject("AppList", list);
 		mv.addObject("paging", map.get("pagingVo"));

@@ -31,7 +31,7 @@
 	
 
 	<!-- title -->
-	<div class="sub_tit">특성화(금융정보)자료실</div>
+	<div class="sub_tit">부산시공공도서관특성화</div>
 	
 	
 	<!-- content 시작 -->

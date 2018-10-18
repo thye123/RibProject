@@ -34,4 +34,6 @@ public interface StudyDao {
 
 	public void studyEnd(HashMap<String, Object> map);
 
+	public List<StudyVo> mainList(HashMap<String, Object> map);
+
 }
