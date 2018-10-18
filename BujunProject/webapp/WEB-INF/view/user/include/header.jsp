@@ -196,8 +196,19 @@
 			<!-- (s) 탑 메뉴 -->
 
 			<div id="menu">
-				 <a class="menu-icon" href="#">메뉴</a>
-				 <a class="m_search" href="/bjLogin">로그인</a>
+				<a class="menu-icon" href="#">메뉴</a>
+				 
+				 
+				<c:choose>
+					<c:when test="${sessionScope.mem_name eq null}">
+						<a class="m_search" href="/bjLogin">로그인</a>
+					</c:when>
+					<c:otherwise>
+						<a class="m_logout" href="/logout">로그아웃</a>
+					</c:otherwise>
+				</c:choose>				
+				
+				
 				
 				<div class="black"></div>
 				<div class="white"></div>
@@ -296,7 +307,7 @@
 								<li class="depth2"><a href="/bjsearch?m1=03&m2=01" class="off">평생학습</a>
 									<ul>
 										<li class="depth3"><a href="/opguide?m1=04&m2=01&m3=01" class="off">운영안내</a></li> 
-										<li class="depth3"><a href="/opprogram01?m1=04&m2=01&m3=02 " class="off">운영프로그램</a></li> 
+										<li class="depth3"><a href="/opprogram01?m1=04&m2=01&m3=02&page=1&pagecount=10&pagegrp=1" class="off">운영프로그램</a></li> 
 										<li class="depth3"><a href="/pgappl?m1=04&m2=01&m3=03" class="off">프로그램신청</a></li> 
 										<li class="depth3"><a href="/pgcheck?m1=04&m2=01&m3=04" class="off">프로그램신청확인</a></li> 
 									</ul>									
@@ -368,10 +379,39 @@
 						
 						<li class="depth1"><a href="/info01?m1=07&m2=01&m3=01" class="off">정보공개</a>
 							<ul>
-								<li class="depth2"><a href="/info01?m1=07&m2=01&m3=01" class="off">정보공개안내</a></li>
+								<li class="depth2"><a href="/info01?m1=07&m2=01&m3=01" class="off">정보공개안내</a>
+									<ul>
+										<li class="depth3"><a href="/info01?m1=07&m2=01&m3=01" class="off">정보공개제도안내</a></li> 
+										<li class="depth3"><a href="/info02?m1=07&m2=01&m3=02" class="off">사전공표대상및비공개대상목록</a></li> 
+										<li class="depth3"><a href="/info03?m1=07&m2=01&m3=03&page_num=1&page_grp=1" class="off">정보목록</a></li> 
+										<li class="depth3"><a href="https://www.open.go.kr/" title="새창으로 열림" target="_blank" class="off">정보공개청구</a></li> 
+										<li class="depth3"><a href="/info03?m1=07&m2=01&m3=05&page_num=1&page_grp=1" class="off">사전공표대상공개</a></li> 
+									</ul>									
+								</li>
 								<li class="depth2"><a href="/opdata?m1=07&m2=02" class="off">공공데이터개방</a></li>
 							</ul>						
+						</li>	
+						
+						
+						<li class="depth1"><a href="/personalinfo?m1=08&m2=01&m3=01" class="off">기타</a>
+							<ul>
+								<li class="depth2"><a href="/personalinfo?m1=08&m2=01&m3=01" class="off">자료이용 안내</a>
+									<ul>
+										<li class="depth3"><a href="/personalinfo?m1=08&m2=01&m3=01" class="off">개인정보처리방침</a></li> 
+										<li class="depth3"><a href="/personalinfo02?m1=08&m2=01&m3=02&nowpage=1&pagecount=10&grpnum=1" class="off">개인정보처리위탁</a></li> 
+									</ul>									
+								</li>
+								<li class="depth2"><a href="/sitemap?m1=08&m2=02" class="off">사이트맵</a></li>
+								<li class="depth2"><a href="/videoinfo?m1=08&m2=03" class="off">영상정보처리기기</a></li>
+								<li class="depth2"><a href="/location?m1=08&m2=04" class="off">찾아오는길</a></li>
+							</ul>						
 						</li>							
+						
+						
+						
+						
+						
+												
 						
 						
 					</ul>

@@ -51,13 +51,6 @@ a.btn_board {
    <!-- content 시작 -->
 
    <!-- table -->
-   <div class="scroll_info">
-      <span class="arr_l"></span> <span class="scroll_icon"></span>
-      <p class="pinfo">좌우로 스크롤 하시면 전체 내용을 확인하실 수 있습니다.</p>
-      <span class="arr_r"></span>
-   </div>
-
-   <div class="auto_box mg_b40">
 
       <table class="board_read">
          <colgroup>
@@ -144,7 +137,6 @@ CAT_NAME,  일반 프로그램 / 초딩 유아 -->
       </div>
 
       <!-- //content 끝 -->
-   </div>
 </div>
 </div>
 </div>

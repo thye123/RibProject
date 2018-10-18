@@ -66,10 +66,12 @@
 		<colgroup><col style="width:5%;" /><col style="width:20%;"/><col style="width:10%;" /><col style="width:7%;" /></colgroup>
 			<thead>
 				<tr>
+
 					<th scope="col" >번  호</th>
 					<th scope="col" >제  목</th>
-					<th scope="col" >작성자</th>
-					<th scope="col" >작성일</th>
+					<th scope="col"  class="n01">작성자</th>
+					<th scope="col" class="mob_none" >작성일</th>
+
 				</tr>
 			</thead>
 			<tbody>
@@ -82,8 +84,8 @@
 							<tr>
 								<td>${bk.ad_idx}</td>
 								<td><a href="/bujunbk/view?m1=05&m2=01&m3=02&ad_idx=${bk.ad_idx}&ad_code=${ad_code}">${bk.ad_title}</a></td>
-								<td>${bk.ad_writer}</td>
-								<td>${bk.ad_regdate}</td>
+								<td class="n01">${bk.ad_writer}</td>
+								<td class="mob_none bnon">${bk.ad_regdate}</td>
 							</tr>
 						</c:forEach>
 					</c:otherwise>
@@ -105,7 +107,6 @@
 				</c:otherwise>
 			</c:choose>
 		</div>
-	</div>
 	<!-- //table -->
 	
 <!-- //content 끝 -->

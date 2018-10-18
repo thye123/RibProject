@@ -51,20 +51,20 @@ input[type="text"] {
 	<form action="/opprogram01/adpro?m1=${m1}&m2=${m2}&m3=${m3}&page=${page}&pagecount=${pagecount}&pagegrp=${pagegrp}" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="listu_end" value="1"/>
 		
-		<table class="tb_board">
+		<table class="board_read">
 			<tbody>
 				<tr>
-					<td>강좌명</td>
+					<th>강좌명</th>
 					<td colspan="3" style="text-align:left;">
 						<input type="text" name="listu_name"/>
 					</td>
 				</tr>
 				<tr>
-					<td>강사명</td>
+					<th>강사명</th>
 					<td style="text-align:left;">
 						<input type="text" name="listu_teacher"/>
 					</td>
-					<td>프로그램 구분</td>
+					<th>프로그램 구분</th>
 					<td style="text-align:left;">
 						
 						<select name="listu_gubun">
@@ -76,43 +76,43 @@ input[type="text"] {
 					</td>
 				</tr>
 				<tr>
-					<td>강의실</td>
+					<th>강의실</th>
 					<td style="text-align:left;">
 						<input type="text" name="listu_location"/>
 					</td>
-					<td>강의대상</td>
+					<th>강의대상</th>
 					<td style="text-align:left;">
 						<input type="text" name="listu_target"/>
 					</td>
 				</tr>
 				<tr>
-					<td>모집인원</td>
+					<th>모집인원</th>
 					<td colspan="3" style="text-align:left;">
 						<input type="text" name="listu_person"/>
 					</td>
 				</tr>
 				<tr>
-					<td>모집기간</td>
+					<th>모집기간</th>
 					<td colspan="3" style="text-align:left;">
 						<input type="text" name="listu_recruit"/>
 					</td>
 				</tr>
 				<tr>
-					<td>강의일시</td>
+					<th>강의일시</th>
 					<td colspan="3" style="text-align:left;">
 						<input type="text" name="listu_studate"/>
 					</td>
 				</tr>
 							
 				<tr>
-					<td>내용</td>
+					<th>내용</th>
 					<td colspan="3" style="text-align:left;">
 						<textarea name="listu_content" rows="20" style="resize: none; warp:virtual; width:100%;"></textarea>
 					</td>
 				</tr>
 		
 				<tr>
-					<td>첨부파일</td>
+					<th>첨부파일</th>
 					<td colspan="3" style="text-align:left;">
 						<input type="file" name="file"/>
 					</td>

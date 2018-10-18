@@ -47,7 +47,7 @@
 		
 	<!-- content 시작 -->
 	
-	
+
 		<form action="/finref04/Update" method="POST" enctype="multipart/form-data">
 			<input type="hidden" value="CAT0011" name="ad_code">	
 			<input type="hidden" name="ad_idx" value="${ad_idx}">
@@ -91,7 +91,6 @@
 				<a href="/finref04/view?m1=02&m2=02&m3=05&ad_idx=${board.ad_idx}&ad_code=${ad_code}" class="btn_01">취소</a>
 			</div>
 		</form>	
-	
 	<!-- //table -->
 	
 <!-- //content 끝 -->
