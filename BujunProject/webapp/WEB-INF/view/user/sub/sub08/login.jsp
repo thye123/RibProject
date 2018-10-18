@@ -71,6 +71,7 @@
 			<ul class="log_chk">
 				<li><label><input type="checkbox" name="remember-me" /><span> 로그인 상태 유지</span></label></li>
 				<li><a href="/idfind">아이디/비밀번호 찾기</a></li>
+				<li><a href="/join">회원가입</a></li>
 			</ul>
 
 			

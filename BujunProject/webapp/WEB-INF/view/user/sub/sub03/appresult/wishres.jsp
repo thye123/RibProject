@@ -61,12 +61,13 @@
 	
 	<!-- table -->
 		<table class="tb_board">
+		<colgroup><col style="width:5%;" /><col style="width:17%;"/><col style="width:8%;" /><col style="width:8%;" /></colgroup>
 			<thead>
 				<tr>
-					<th scope="col" width="50">번  호</th>
-					<th scope="col" width="400">제  목</th>
-					<th scope="col" width="100">작성자</th>
-					<th scope="col" width="70" class="bnon">작성일</th>
+					<th scope="col" >번  호</th>
+					<th scope="col" >제  목</th>
+					<th scope="col" >작성자</th>
+					<th scope="col" class="bnon">작성일</th>
 				</tr>
 			</thead>
 			<tbody>

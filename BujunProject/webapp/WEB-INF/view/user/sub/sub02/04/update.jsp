@@ -47,8 +47,7 @@
 		
 	<!-- content 시작 -->
 	
-	
-	<!-- table -->
+
 		<form action="/finref04/Update" method="POST" enctype="multipart/form-data">
 			<input type="hidden" value="CAT0011" name="ad_code">	
 			<input type="hidden" name="ad_idx" value="${ad_idx}">

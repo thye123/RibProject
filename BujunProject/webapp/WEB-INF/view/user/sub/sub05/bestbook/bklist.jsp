@@ -63,12 +63,15 @@
 	
 	<!-- table -->
 		<table class="tb_board">
+		<colgroup><col style="width:5%;" /><col style="width:20%;"/><col style="width:10%;" /><col style="width:7%;" /></colgroup>
 			<thead>
 				<tr>
-					<th scope="col" width="50">번  호</th>
-					<th scope="col" width="400">제  목</th>
-					<th scope="col" width="100" class="n01">작성자</th>
-					<th scope="col" width="70" class="mob_none">작성일</th>
+
+					<th scope="col" >번  호</th>
+					<th scope="col" >제  목</th>
+					<th scope="col"  class="n01">작성자</th>
+					<th scope="col" class="mob_none" >작성일</th>
+
 				</tr>
 			</thead>
 			<tbody>
@@ -90,7 +93,6 @@
 			</tbody>
 		</table>
 			<!-- 페이징 영역-->
-		<div>
 			<div class=paging>
 				<%@include file="/WEB-INF/view/user/include/bkpaging.jspf" %>
 			</div>

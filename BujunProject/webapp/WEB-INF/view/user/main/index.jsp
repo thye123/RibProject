@@ -80,11 +80,11 @@
 						<div id="main_popup_zone" class="pop_img"> 
 						 
 						<span id="mainPopupzone1" class="news_pause">
-							<img id="img_popzone_1" src="${pageContext.request.contextPath}/resources/user/images/main/pop01.jpg" alt="동래장학회 나눔을 실천하는 사람이 존경받는 아름다운 도시, 바로 동래입니다. Dongnaegu Scholarship Foundation has been evaluated as the best university to innovate undergraduate educational systems’ by unifying two local natioral universities successfully for the first time within Korea." />
+							<img id="img_popzone_1" src="${pageContext.request.contextPath}/resources/user/images/main/pop01.jpg"  />
 						</span> 
 	
 						<span id="mainPopupzone2" class="news_pause">
-							<img id="img_popzone_2" src="/common/images/main/pop/pop03.jpg" alt="동래장학회 사진2" />
+							<img id="img_popzone_2" src="${pageContext.request.contextPath}/resources/user/images/main/pop03.jpg" alt="동래장학회 사진2" />
 						</span>
 	
 						</div> 
