@@ -197,13 +197,13 @@
 	
 	<ul class="bul_type1 mg_b40">
 		<li>처리방법 : 개인영상정보의 목적 외 이용, 제3자 제공, 파기, 열람 등 요구에 관한 사항을 기록·관리하고, 보관기간 만료 시 복원이 불가능한 방법으로 영구 삭제(출력물의 경우 파쇄 또는 소각)합니다.</li>
-		<li>기록관리 : 개인영상정보 관리대장을 활용한다. <br /><a href="${pageContext.request.contextPath}/resources/user/file/moviepaper2.hwp"  class="btn_con btn_down">서식2</a> </li>
+		<li>기록관리 : 개인영상정보 관리대장을 활용한다. <br /><a href="${pageContext.request.contextPath}/resources/user/file/moviepaper2.pdf"  class="btn_con btn_down">서식2</a> </li>
 	</ul>
 	
 	<h2 class="tbul1">5. 개인영상정보의 확인방법 및 장소에 관한 사항</h2>	
 	<ul class="bul_type1 mg_b40">
 		<li>확인방법 : 개인정보보호법 제17조, 제18조에 의거하여 서식1 개인영상정보 존재확인·열람 청구서(전자문서를 포함한다)로 요청한 후 내부적인 심의결과 토대로 확인 처리합니다.
-			<br /><a href="${pageContext.request.contextPath}/resources/user/file/moviepaper1.hwp"  class="btn_con btn_down">서식1</a></li>
+			<br /><a href="${pageContext.request.contextPath}/resources/user/file/moviepaper1.pdf"  class="btn_con btn_down">서식1</a></li>
 		<li>확인장소 : 4. 영상정보의 보관장소</li>
 	</ul>	
 	
@@ -219,8 +219,8 @@
 	
 	
 	<div class="c">
-		<a href="${pageContext.request.contextPath}/resources/user/file/moviepaper1.hwp"  class="btn_con btn_down">서식1</a>
-		<a href="${pageContext.request.contextPath}/resources/user/file/moviepaper2.hwp"  class="btn_con btn_down">서식2</a>
+		<a href="${pageContext.request.contextPath}/resources/user/file/moviepaper1.pdf"  class="btn_con btn_down">서식1</a>
+		<a href="${pageContext.request.contextPath}/resources/user/file/moviepaper2.pdf"  class="btn_con btn_down">서식2</a>
 	</div>
 	
 		
