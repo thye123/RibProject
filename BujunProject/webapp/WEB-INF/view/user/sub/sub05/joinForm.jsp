@@ -87,13 +87,14 @@ input[type=submit].btn_board {
 
 
 <script type="text/javascript">
-	onload = function(){
+	window.onload = function(){
 		var cluapp_appname =document.getElementsByClassName('cluapp_appname')
 		var cluapp_appphone =document.getElementsByClassName('cluapp_appphone')
 		var join = document.getElementById('join');
 
 		$('#join').submit(function(){
-			alert('bb');
+			
+			//alert('bb');
 			if (cluapp_appname[0].value == '') {
 				alert('이름을 입력 해주세요')
 				cluapp_appname[0].focus();
@@ -105,7 +106,12 @@ input[type=submit].btn_board {
 				cluapp_appphone[0].focus();
 				return false;
 			}
-		});	
+		}
+		
+		//window.close();
+		
+		);
+		
 	}
 </script>
 
@@ -128,6 +134,7 @@ input[type=submit].btn_board {
 
 			<form action="/joinClub/Proc" method="POST" id="join">
 				<input type="hidden" name="cluapp_code" value="${cluapp_code}" />
+				
 				<table class="mintable">
 					<colgroup>
 						<col style="width: 20%;">

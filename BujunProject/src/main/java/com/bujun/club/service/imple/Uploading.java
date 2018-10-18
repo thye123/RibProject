@@ -14,8 +14,8 @@ public class Uploading {
 
 	public void addFile(MultipartFile file, HashMap<String, Object> map, HttpServletRequest req) {
 		
-		System.out.println("File " + map);
-		String filePath = "c:\\aaa\\";
+		//System.out.println("File " + map);
+		String filePath = "d:\\upload\\";
 		
 		// ���ε�� ������ ó��(������ ����)
 		MultipartHttpServletRequest multipartServletRequest = (MultipartHttpServletRequest) req;
@@ -61,7 +61,7 @@ public class Uploading {
 					multipartFile.transferTo(fileNew); // �������ϸ����� ����
 
 				} catch (IOException e) {
-					System.out.println("����:" + e.getMessage());
+					//System.out.println("����:" + e.getMessage());
 					e.printStackTrace();
 				}
 
