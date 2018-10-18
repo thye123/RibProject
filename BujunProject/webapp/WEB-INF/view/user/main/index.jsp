@@ -107,43 +107,15 @@
 						<h3 class="nt_01"><a href="#" class="on">공지사항</a></h3>
 						<div class="ncons"  style="display:block;">
 							<ul>
-								<li>
-									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										test1_공지사항								
-									</a>
-									<span class="main_date">2018.10.01</span>
-								</li>
-								<li>
-									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										test2_공지사항							
-									</a>
-									<span class="main_date">2018.10.01</span>
-								</li>
-								<li>
-									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										test3_공지사항							
-									</a>
-									<span class="main_date">2018.10.01</span>
-								</li>
-								<li>
-									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										test4_공지사항							
-									</a>
-									<span class="main_date">2018.10.01</span>
-								</li>
-								<li>
-									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										test5_공지사항						
-									</a>
-									<span class="main_date">2018.10.01</span>
-								</li>
-								<li>
-									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										test6_공지사항						
-									</a>
-									<span class="main_date">2018.10.01</span>
-								</li>																								
-							</ul>
+								<c:forEach var ="noList" items="${noList}">
+									<li>
+										<a href="/notice/view?m1=06&m2=01&ad_code=${noList.ad_code}&ad_idx=${noList.ad_idx}">
+											${noList.ad_title}								
+										</a>
+										<span class="main_date">${noList.ad_regdate}</span>
+									</li>
+								</c:forEach>
+								</ul>
 							<a href="/index.php?pagecode=P000000026" class="more" title="공지사항 목록 더보기로 이동합니다."><img src="${pageContext.request.contextPath}/resources/user/images/main/m_more.png" alt="공지사항 더보기" /></a>
 						</div>
 						<!-- //1 -->
