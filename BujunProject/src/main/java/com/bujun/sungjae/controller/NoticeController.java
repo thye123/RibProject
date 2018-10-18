@@ -59,7 +59,7 @@ public class NoticeController {
 		int grpnum  = Integer.parseInt(String.valueOf(map.get("grpnum")));
 		int pagecount = Integer.parseInt(String.valueOf(map.get("pagecount")));
 		mv.addObject("menu", map);
-		mv.addObject("Encoding", keyword);
+		mv.addObject("keyWord", keyword);
 		mv.addObject("ad_code",ad_code);
 		mv.addObject("noticeList", noticeList);
 		mv.addObject("pageVo", pageVo);

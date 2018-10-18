@@ -48,7 +48,7 @@ public class CsmController {
 		
 		mv.addObject("menu", map);
 		mv.addObject("ad_code",ad_code);
-		mv.addObject("Encoding", keyword);
+		mv.addObject("keyWord", keyword);
 		mv.addObject("noticeList", noticeList);
 		mv.addObject("pageVo", pageVo);
 		mv.addObject("nowpage", nowpage);
