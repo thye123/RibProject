@@ -59,7 +59,7 @@
 	            windowSt = windowObj.scrollTop();
 	            console.log(windowSt);
 	
-	            if (windowSt > 240) {
+	            if (windowSt > 380) {
 	                header.addClass('on');
 	            } else {
 	                header.removeClass('on');
