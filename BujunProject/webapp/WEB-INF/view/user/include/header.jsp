@@ -281,7 +281,7 @@
 								<li class="depth2"><a href="/datalist?m1=03&m2=07" class="off">연속간행물목록</a></li>
 								<li class="depth2"><a href="/origserv01?m1=03&m2=08&m3=01" class="off">원문서비스</a>
 									<ul>
-										<li class="depth3"><a href="/origserv01?m1=03&m2=08&m3=01" class="off">국회도서관 원문유</a></li> 
+										<li class="depth3"><a href="/origserv01?m1=03&m2=08&m3=01" class="off">국회도서관 원문DB</a></li> 
 										<li class="depth3"><a href="/origserv02?m1=03&m2=08&m3=02" class="off">국립중앙도서관 원문DB</a></li> 
 										<li class="depth3"><a href="/origserv03?m1=03&m2=08&m3=03" class="off">국가전자도서관 원문검색</a></li> 
 										<li class="depth3"><a href="/origserv04?m1=03&m2=08&m3=04" class="off">학회지 원문검색</a></li> 
