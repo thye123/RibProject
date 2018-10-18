@@ -296,7 +296,7 @@
 								<li class="depth2"><a href="/bjsearch?m1=03&m2=01" class="off">평생학습</a>
 									<ul>
 										<li class="depth3"><a href="/opguide?m1=04&m2=01&m3=01" class="off">운영안내</a></li> 
-										<li class="depth3"><a href="/opprogram01?m1=04&m2=01&m3=02 " class="off">운영프로그램</a></li> 
+										<li class="depth3"><a href="/opprogram01?m1=04&m2=01&m3=02&page=1&pagecount=10&pagegrp=1" class="off">운영프로그램</a></li> 
 										<li class="depth3"><a href="/pgappl?m1=04&m2=01&m3=03" class="off">프로그램신청</a></li> 
 										<li class="depth3"><a href="/pgcheck?m1=04&m2=01&m3=04" class="off">프로그램신청확인</a></li> 
 									</ul>									
