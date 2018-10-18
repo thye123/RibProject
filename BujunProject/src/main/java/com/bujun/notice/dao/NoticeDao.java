@@ -24,5 +24,7 @@ public interface NoticeDao {
 
 	void delFile(HashMap<String, Object> map);
 
+	List<NoticeVo> mainList(HashMap<String, Object> map, String ad_code);
+
 
 }

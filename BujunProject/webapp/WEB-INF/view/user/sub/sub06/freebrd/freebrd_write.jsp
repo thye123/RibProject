@@ -144,10 +144,26 @@
 		
 		<table class="board_read">
 			<tbody>
-				<tr>
-					<th class="c">글쓴이</th>
-					<td><input type="text" name="bd_writer" id="bd_writer" /></td>
-				</tr>
+			
+				<c:choose>
+					<c:when test="${bd_grp eq 0}">					
+						<tr>
+							<th class="c">글쓴이</th>
+							<td><input type="text" name="bd_writer" id="bd_writer" /></td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+					
+						<tr>
+							<th class="c">글쓴이</th>
+							<td>
+								<input type="text" value="관리자" />
+								<input type="hidden" name="bd_writer" id="bd_writer" value="관리자" />
+							</td>
+						</tr>
+						
+					</c:otherwise>
+				</c:choose>
 				
 				<c:choose>
 					<c:when test="${bd_grp eq 0}">					
@@ -160,11 +176,38 @@
 						<input type="hidden" id="bd_email" value="0" />
 					</c:otherwise>
 				</c:choose>
+
+
+				<c:choose>
+					<c:when test="${bd_grp eq 0}">					
+						<tr>
+							<th class="c">카테고리</th>
+							<td><label><input type="checkbox" name="bd_open" id="open" /> 비공개</label> </td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<th class="c">카테고리</th>
+							<td>
+								<c:choose>
+									<c:when test="${boardRead.bd_open eq 1}">
+										<label><input type="checkbox" name="bd_open" id="open" /> 비공개</label> 
+									</c:when>
+									<c:otherwise>
+										<label><input type="checkbox" name="bd_open" id="open" checked="checked" /> 비공개</label> 
+									</c:otherwise>
+								</c:choose>						
+							
+							</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
 				
-				<tr>
-					<th class="c">카테고리</th>
-					<td><label><input type="checkbox" name="bd_open" id="open" /> 비공개</label> </td>
-				</tr>
+								
+
+				
+				
+				
 
 				<c:choose>
 					<c:when test="${bd_grp eq 0}">	
@@ -174,7 +217,7 @@
 						</tr>	
 					</c:when>
 					<c:otherwise>
-						<input type="hidden" id="bd_rimemnum" value="0" />
+						<input type="hidden" id="bd_rimemnum" value="0000000001" />
 					</c:otherwise>
 				</c:choose>
 				

@@ -110,13 +110,15 @@ public class SearchController {
 					+"&startDate=" + map.get("startDate") + "&endDate="+ map.get("endDate") +"&pageSize=12&pageNum="+ map.get("pageNum");
 
 
-			model.addAttribute("kwd", map.get("kwd"));
+			String kwd = cri.encoding((String) map.get("kwd"));
+			model.addAttribute("kwd", kwd);
+			model.addAttribute("key", map.get("kwd"));
+			
 			model.addAttribute("sort_select1", map.get("sort_select1"));
 			model.addAttribute("sort_select3", map.get("sort_select3"));
 			model.addAttribute("sort_select5", map.get("sort_select5"));
 			model.addAttribute("startDate", map.get("startDate"));
 			model.addAttribute("endDate", map.get("endDate"));
-			
 			
 			BjlSearchVo vo = null;
 			List<BjlSearchVo> list = new ArrayList<>();
@@ -191,6 +193,7 @@ public class SearchController {
 			pageMaker.setCri(cri);
 			pageMaker.setTotalCount(total);
 			
+					
 			
 			model.addAttribute("total", total);
 			model.addAttribute("pageMaker", pageMaker);

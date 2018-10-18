@@ -54,13 +54,6 @@ a.btn_board {
 	<!-- content 시작 -->
 
 	<!-- table -->
-	<div class="scroll_info">
-		<span class="arr_l"></span> <span class="scroll_icon"></span>
-		<p class="pinfo">좌우로 스크롤 하시면 전체 내용을 확인하실 수 있습니다.</p>
-		<span class="arr_r"></span>
-	</div>
-
-	<div class="auto_box mg_b40">
 		
 
  	<!-- 게시판테이블(read) -->	
@@ -68,7 +61,7 @@ a.btn_board {
  	
  <!-- 	<h2 class="tbul1 mg_b20">게시판테이블(read)</h2>	 -->
  		 	 	 		
-	<table class="board_read">
+	<table class="board_read mg_b10">
 		<colgroup><col style="width:20%;"><col style="width:55%;"></colgroup>		
 		<tbody>
 			<tr>
@@ -94,7 +87,6 @@ a.btn_board {
 			
 		</tbody>
 	</table>
-	</div>
 	<!-- //table -->
 	
 	<div class="btn_set r">

@@ -136,7 +136,6 @@ CAT_NAME,  일반 프로그램 / 초딩 유아 -->
       </div>
 
       <!-- //content 끝 -->
-   </div>
 </div>
 </div>
 </div>

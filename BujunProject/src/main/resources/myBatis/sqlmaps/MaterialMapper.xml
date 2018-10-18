@@ -11,10 +11,11 @@
 		    <result property="ad_code" column="AD_CODE" javaType="String" />
 			<result property="ad_writer" column="AD_WRITER" javaType="String" />
 			<result property="ad_rimemnum" column="AD_RIMEMNUM" javaType="String" />
-			<result property="ad_title" column="AD_TITLE" javaType="String" />
+			<result property="ad_title"   column="AD_TITLE" javaType="String" />
 			<result property="ad_content" column="AD_CONTENT" javaType="String" />
 			<result property="ad_regdate" column="AD_REGDATE" javaType="String" />
-			<result property="ad_count" column="AD_COUNT" javaType="int" />
+			<result property="ad_count"   column="AD_COUNT" javaType="int" />
+			<result property="mem_name"   column ="MEM_NAME" javaType="String"/>
 		</resultMap>
 		
 		<resultMap id="FileResultMap" type="com.bujun.notice.vo.FileVo">

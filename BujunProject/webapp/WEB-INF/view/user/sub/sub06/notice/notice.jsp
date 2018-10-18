@@ -44,7 +44,7 @@
 					<input type="hidden" value="10" name="pagecount">
 					<input type="hidden" value="1" name="grpnum">
 					<select autofocus name="searchType" id="keyfield">
-						<option	value=""<c:out value="${searchType == null? 'selected':''}"/>>검색대상</option>
+						<option	value="nodate"<c:out value="${searchType == null? 'selected':''}"/>>검색대상</option>
 						<option value="title"<c:out value="${searchType eq 'title'?'selected':'' }"/>>제목</option>
 						<option value="content"<c:out value="${searchType eq 'content'?'selected':'' }"/>>내용</option>
 						<option value="write"<c:out value="${searchType eq 'write'?'selected':'' }"/>>작성자</option>
@@ -60,22 +60,14 @@
 	<!-- content 시작 -->
 	
 	<!-- table -->
-	<div class="scroll_info">
-		<span class="arr_l"></span>
-		<span class="scroll_icon"></span>
-		<p class="pinfo">좌우로 스크롤 하시면 전체 내용을 확인하실 수 있습니다.</p>
-		<span class="arr_r"></span>
-	</div>
-	
-	<div class="auto_box mg_b40">			
 		<table class="tb_board">
 			<thead>
 				<tr>
 					<th scope="col" width="50">번  호</th>
 					<th scope="col" width="400">제  목</th>
-					<th scope="col" width="100">작성자</th>
-					<th scope="col" width="70">작성일</th>
-					<th scope="col" class="bnon"width="50">조회수</th>
+					<th scope="col" width="100" class="n01">작성자</th>
+					<th scope="col" width="70" class="mob_none">작성일</th>
+					<th scope="col" class="bnon mob_none" width="50">조회수</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -87,10 +79,10 @@
 						<c:forEach var="notice" items="${noticeList}">
 							<tr>
 								<td>${notice.ad_idx}</td>
-								<td><a href="/notice/view?ad_idx=${notice.ad_idx}&ad_code=${ad_code}&m1=06&m2=01">${notice.ad_title}</a></td>
-								<td>${notice.ad_writer}</td>
-								<td>${notice.ad_regdate}</td>
-								<td class="bnon">${notice.ad_count}</td>
+								<td class="l"><a href="/notice/view?ad_idx=${notice.ad_idx}&ad_code=${ad_code}&m1=06&m2=01">${notice.ad_title}</a></td>
+								<td class="n01">${notice.ad_writer}</td>
+								<td class="mob_none">${notice.ad_regdate}</td>
+								<td class="bnon mob_none">${notice.ad_count}</td>
 							</tr>
 						</c:forEach>
 					</c:otherwise>
@@ -102,11 +94,17 @@
 			<div class=paging>
 				<%@include file="/WEB-INF/view/user/include/noticepaging.jspf" %>
 			</div>
-			<div class="insertbtn">	
-				<button class="btn_1"><a href="/notice/WriteForm?m1=06&m2=01">글쓰기</a></button>
-			</div>
+			<c:choose>
+				<c:when test="${sessionScope.mem_id == 'ADMIN'}">
+					<div class="insertbtn mg_t10">	
+						<div class="btn_1"><a href="/notice/WriteForm?m1=06&m2=01" >글쓰기</a></div>
+					</div>
+				</c:when>
+				<c:otherwise>
+				
+				</c:otherwise>
+			</c:choose>
 		</div>
-	</div>
 	<!-- //table -->
 	
 <!-- //content 끝 -->

@@ -4,11 +4,15 @@ import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.bujun.openinfo.vo.Encoding;
 import com.bujun.study.service.StudyService;
 import com.bujun.study.vo.StudyAppVo;
 import com.bujun.study.vo.StudyVo;
@@ -41,12 +45,22 @@ public class StudyController {
 	//스터디 등록 시작
 	@RequestMapping("/study/addStudyForm")
 	public ModelAndView addStudyForm(@RequestParam HashMap<String, Object> map, Model model, HttpSession session) {
-		model.addAttribute("menu", map);		
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("m1", map.get("m1"));
-		mv.addObject("m2", map.get("m2"));
-		mv.setViewName("user/sub/sub06/studyInsert");
-		return mv;
+		
+      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+      String login_name = authentication.getName();
+      
+      ModelAndView mv = new ModelAndView();
+
+      if(!login_name.equals("anonymousUser")) {
+    	model.addAttribute("menu", map);		
+  		mv.addObject("m1", map.get("m1"));
+  		mv.addObject("m2", map.get("m2"));
+  		mv.setViewName("user/sub/sub06/studyInsert");
+  		return mv;
+      } else {
+		mv.setViewName("redirect:/bjLogin");
+  		return mv;    	  
+      }
 	}
 	
 	@RequestMapping("/study/addStudy")
@@ -70,6 +84,7 @@ public class StudyController {
 		model.addAttribute("menu", map);
 		String m1 = String.valueOf(map.get("m1"));
 		String m2 = String.valueOf(map.get("m2"));
+		
 		StudyVo vo = studyService.getDetail(map);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("detail", vo);
@@ -129,6 +144,10 @@ public class StudyController {
 		ModelAndView mv = new ModelAndView();
 		String m1 = String.valueOf(map.get("m1"));
 		String m2 = String.valueOf(map.get("m2"));
+		
+		Encoding ed = new Encoding();
+		String keyWord = ed.encoding(String.valueOf(map.get("keyword")));
+		
 		mv.addObject("m1", m1);
 		mv.addObject("m2", m2);
 		mv.addObject("sList", list);
@@ -136,7 +155,7 @@ public class StudyController {
 		mv.addObject("page_num", map.get("page_num"));
 		mv.addObject("tot_cnt", map.get("tot_cnt"));
 		mv.addObject("keyfield", map.get("keyfield"));
-		mv.addObject("keyword", map.get("keyword"));
+		mv.addObject("keyword", keyWord);
 		mv.setViewName("user/sub/sub06/study");
 		return mv;
 	}
@@ -179,19 +198,33 @@ public class StudyController {
 	//스터디 가입 신청 현황 시작(개인)
 	@RequestMapping("/study/appList")
 	public ModelAndView myApplyList(@RequestParam HashMap<String, Object> map, Model model) {
-		model.addAttribute("menu", map);
-		List<StudyAppVo> list = studyService.appList(map);
-		ModelAndView mv = new ModelAndView();
-		String m1 = String.valueOf(map.get("m1"));
-		String m2 = String.valueOf(map.get("m2"));
-		mv.addObject("m1", m1);
-		mv.addObject("m2", m2);
-		mv.addObject("AppList", list);
-		mv.addObject("paging", map.get("pagingVo"));
-		mv.addObject("page_num", map.get("page_num"));
-		mv.addObject("tot_cnt", map.get("tot_cnt"));
-		mv.setViewName("user/sub/sub06/studyApplyList");
-		return mv;
+	
+		
+      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+      String login_name = authentication.getName();
+      ModelAndView mv = new ModelAndView();
+      
+
+      if(!login_name.equals("anonymousUser")) {
+    	  
+  		model.addAttribute("menu", map);
+  		List<StudyAppVo> list = studyService.appList(map);
+  		String m1 = String.valueOf(map.get("m1"));
+  		String m2 = String.valueOf(map.get("m2"));
+  		mv.addObject("m1", m1);
+  		mv.addObject("m2", m2);
+  		mv.addObject("AppList", list);
+  		mv.addObject("paging", map.get("pagingVo"));
+  		mv.addObject("page_num", map.get("page_num"));
+  		mv.addObject("tot_cnt", map.get("tot_cnt"));      
+  		mv.setViewName("user/sub/sub06/studyApplyList");
+  		return mv;
+      
+      } else {
+		mv.setViewName("redirect:/bjLogin");
+  		return mv;    	  
+      }
+	      
 	}
 	//스터디 가입 신청 현황 끝(개인)
 	
@@ -206,6 +239,10 @@ public class StudyController {
 		ModelAndView mv = new ModelAndView();
 		String m1 = String.valueOf(map.get("m1"));
 		String m2 = String.valueOf(map.get("m2"));
+		
+		Encoding ed = new Encoding();
+		String keyWord = ed.encoding(String.valueOf(map.get("keyword")));
+		
 		mv.addObject("m1", m1);
 		mv.addObject("m2", m2);
 		mv.addObject("AppList", list);
@@ -213,7 +250,7 @@ public class StudyController {
 		mv.addObject("page_num", map.get("page_num"));
 		mv.addObject("tot_cnt", map.get("tot_cnt"));
 		mv.addObject("keyfield", map.get("keyfield"));
-		mv.addObject("keyword", map.get("keyword"));
+		mv.addObject("keyword", keyWord);
 		mv.setViewName("user/sub/sub06/studyApplyList");
 		return mv;
 	}
@@ -230,6 +267,7 @@ public class StudyController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("m1", m1);
 		mv.addObject("m2", m2);
+		mv.addObject("stu_idx", map.get("stu_idx"));
 		mv.addObject("stuap_code", map.get("stu_code"));
 		mv.addObject("AppList", list);
 		mv.addObject("paging", map.get("pagingVo"));
@@ -248,6 +286,7 @@ public class StudyController {
 		List<StudyAppVo> list = studyService.stuApplySearch(map);
 		String m1 = String.valueOf(map.get("m1"));
 		String m2 = String.valueOf(map.get("m2"));
+		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("m1", m1);
 		mv.addObject("m2", m2);

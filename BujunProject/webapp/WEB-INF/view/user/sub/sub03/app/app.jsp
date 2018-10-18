@@ -122,83 +122,78 @@
 	<form action="/wishbk02/Write" method="POST" id="memGrgForm" onsubmit="return inputCheck()">
 		<input type="hidden" name="sc_rimemnum" value="${sessionScope.rimem_num}"/>
 		<input type="hidden" name="sc_during" value="1"/>
-		<div class="applyboard">
-			<div class="a_name">
-				<div class="a_left">
+		<div class="applyboards">
+			<div class="as_name">
+				<div class="as_left">
 					<span><span class="star">＊</span>신청자</span>
 				</div>
 				
-				<div class="a_right">
+				<div class="as_right">
 					<input type="text" name="sc_memid" id="memid">
 				</div>
 			</div>
 			
-			<div class="apply3">
-				<div class="a_tel">
-					<div class="a_left title">
-						<span><span class="star">＊</span>전화번호</span>
-					</div>
-					<div class="a_right cont">
-						<input type="text" name="sc_phone" id="memtel"/>
-					</div>
+			<div class="as_tel">
+				<div class="as_left">
+					<span><span class="star">＊</span>전화번호</span>
 				</div>
+				<div class="as_right">
+					<input type="text" name="sc_phone" id="memtel"/>
+				</div>
+			</div>
 				
-				<div class="a_email">
-					<div class="a_left title">
-						<span><span class="star">＊</span>E-Mail</span>
-					</div>
-					<div class="a_right cont">
-						<input type="text" name="sc_email1" size="10" id="email1"/>
-						<span>@</span>
-						<input type="text" name="sc_email2" size="10" id="email2"/>
-					</div>
+			<div class="as_email">
+				<div class="as_left">
+					<span><span class="star">＊</span>E-Mail</span>
+				</div>
+				<div class="asc_right">
+					<input type="text" name="sc_email1" size="10" id="email1"/>
+					<span>@</span>
+					<input type="text" name="sc_email2" size="10" id="email2"/>
 				</div>
 			</div>
 			
-			<div class="a_booktitle">
-				<div class="a_left">
+			<div class="as_booktitle">
+				<div class="as_left">
 					<span><span class="star">＊</span>희망도서명</span>
 				</div>
-				<div class="a_right">
+				<div class="as_right">
 					<input type="text" name="sc_bookname" id="bookname"/>
 				</div>
 			</div>
 			
-			<div class="a_bookwriter">
-				<div class="a_left">
+			<div class="as_bookwriter">
+				<div class="as_left">
 					<span><span class="star">＊</span>저작자</span>
 				</div>
-				<div class="a_right">
+				<div class="as_right">
 					<input type="text" name="sc_author" id="bookwirter"/>
 				</div>
 			</div>
 			
-			<div class="apply7">
-				<div class="a_publisher">
-					<div class="a_left title">
-						<span><span class="star">＊</span>출판사</span>
-					</div>
-					<div class="a_right cont">
-						<input type="text" name="sc_publisher" id="bookgroup"/>
-					</div>
+			<div class="as_publisher">
+				<div class="as_left">
+					<span><span class="star">＊</span>출판사</span>
 				</div>
-				
-				<div class="a_publication">
-					<div class="a_left title">
-						<span><span class="star">＊</span>출판연도</span>
-					</div>
-					<div class="a_right cont">
-						<input type="text" name="sc_publishdate" id="bookyear"/>
-					</div>
+				<div class="as_right">
+					<input type="text" name="sc_publisher" id="bookgroup"/>
 				</div>
 			</div>
 			
-			<div class="bestcont">
-				<div class="a_left titles">
-					<span>추천의견<br/>(최대100자)</span>
+			<div class="as_publication">
+				<div class="as_left title">
+					<span><span class="star">＊</span>출판연도</span>
 				</div>
-				<div class="a_right conts">
-					<textarea cols="65" rows="4" name="sc_content" class="wps_90" style="border:1px solid #ccc;"></textarea>
+				<div class="as_right cont">
+					<input type="text" name="sc_publishdate" id="bookyear"/>
+				</div>
+			</div>
+			<div class="bestcont">
+				<div class="as_left titles">
+					<span>추천의견</span>
+				</div>
+				<div class="as_right conts">
+					<textarea placeholder="최대 100자" cols="65" rows="4" name="sc_content" class="wps_90" style="border:1px solid #ccc;"></textarea>
 				</div>
 			</div>
 		</div>

@@ -31,7 +31,7 @@
 	
 
 	<!-- title -->
-	<div class="sub_tit">특성화(금융정보)자료실</div>
+	<div class="sub_tit">금융관련사이트</div>
 	
 	
 	<!-- content 시작 -->

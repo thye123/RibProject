@@ -37,24 +37,15 @@
 		
 	<!-- content 시작 -->
 	
-	
 	<!-- table -->
-	<div class="scroll_info">
-		<span class="arr_l"></span>
-		<span class="scroll_icon"></span>
-		<p class="pinfo">좌우로 스크롤 하시면 전체 내용을 확인하실 수 있습니다.</p>
-		<span class="arr_r"></span>
-	</div>
-	
-	<div class="auto_box mg_b40">		
 		<form action="/finref05/Write" method="POST" enctype="multipart/form-data">
 		<input type="hidden" value="CAT0012" name="ad_code">	
 			<div class="tb_boardss">
 				<div class="top">
 					<div class="n_writer">
 						<div class="n_left">작성자</div>
-						<div class="n_right"><input type="text" value="관리자">
-						<input type="hidden" value="ADMIN" name="ad_writer">
+						<div class="n_right"><input type="text" value="${sessionScope.mem_name}">
+						<input type="hidden" value="${sessionScope.mem_id}" name="ad_writer">
 					</div>
 				</div>
 				<div class="n_title">
@@ -76,7 +67,6 @@
 				<a href="/finref05?m1=02&m2=02&m3=05&nowpage=1&pagecount=10&grpnum=1" class="btn_01">취소</a>
 			</div>
 		</form>	
-	</div>
 	<!-- //table -->
 	
 <!-- //content 끝 -->

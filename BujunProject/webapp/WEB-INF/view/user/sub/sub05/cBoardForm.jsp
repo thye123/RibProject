@@ -210,14 +210,19 @@ function aaa(check){
 			</table>
 			
 			<div class="btn_set r">
-				<input class="btn btn_board" type="submit" value="제출" /> 
-				<input class="btn btn_board" type="reset" value="초기화" />
+				<input class="btn btn_board" style="border:0;" type="submit" value="제출" /> 
+				<input class="btn btn_board" style="border:0;" type="reset" value="초기화" />
 	 		</div>
 		</form>
-	</div>
 	<!-- //table -->
 </div>
 <!-- //content 끝 -->
+		</div>
+		
+		
+	</div>
+</div>
+</div>
 
 <!-- footer -->
 <%@ include file="../../include/footer.jsp"%>

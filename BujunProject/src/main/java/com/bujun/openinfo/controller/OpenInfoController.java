@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.bujun.openinfo.service.OpenInfoService;
+import com.bujun.openinfo.vo.Encoding;
 import com.bujun.openinfo.vo.OpenInfoVo;
 
 @Controller
@@ -76,24 +77,25 @@ public class OpenInfoController {
 	public ModelAndView insertForm(@RequestParam HashMap<String, Object> map, Model model) {
 		model.addAttribute("menu", map);
 		ModelAndView mv = new ModelAndView();
-		String ad_code = String.valueOf(map.get("ad_code"));
+		String ad_code = "";
+		String m1 = String.valueOf(map.get("m1"));		
+		String m2 = String.valueOf(map.get("m2"));		
+		String m3 = String.valueOf(map.get("m3"));
 		
-		String m1 = "";		
-		String m2 = "";		
-		String m3 = "";
-		//ad_code 변환
-		if(ad_code.equals("CAT0016")) {
-			m1 = "07";
-			m2 = "01";
-			m3 = "03";
+		//code 변환
+		if(m1.equals("07")&&m2.equals("01")&&m3.equals("03")) {
+			ad_code = "CAT0016";
+			//System.out.println("ad_code: " + ad_code);
+			map.put("ad_code", ad_code);
 		}else {
-			if(ad_code.equals("CAT0017")) {
-				m1 = "07";
-				m2 = "01";
-				m3 = "05";
+			if(m1.equals("07")&&m2.equals("01")&&m3.equals("05")) {
+				ad_code="CAT0017";
+				//System.out.println("ad_code: " + ad_code);
+				map.put("ad_code", ad_code);
 			}
 		}
-		mv.addObject("ad_code", ad_code);
+		
+		mv.addObject("ad_code", map.get("ad_code"));
 		mv.addObject("m1", m1);
 		mv.addObject("m2", m2);
 		mv.addObject("m3", m3);
@@ -104,24 +106,25 @@ public class OpenInfoController {
 	@RequestMapping("/info03/iCon")
 	public String insertContent(@RequestParam HashMap<String, Object> map, Model model, HttpServletRequest req) {
 		model.addAttribute("menu", map);
-		int ad_idx = openInfoService.insertContent(map);
-		String ad_code = String.valueOf(map.get("ad_code"));
+		String ad_code = "";
+		String m1 = String.valueOf(map.get("m1"));		
+		String m2 = String.valueOf(map.get("m2"));		
+		String m3 = String.valueOf(map.get("m3"));
 		
-		String m1 = "";		
-		String m2 = "";		
-		String m3 = "";
 		//ad_code 변환
-		if(ad_code.equals("CAT0016")) {
-			m1 = "07";
-			m2 = "01";
-			m3 = "03";
+		if(m1.equals("07")&&m2.equals("01")&&m3.equals("03")) {
+			ad_code = "CAT0016";
+			//System.out.println("ad_code: " + ad_code);
+			map.put("ad_code", ad_code);
 		}else {
-			if(ad_code.equals("CAT0017")) {
-				m1 = "07";
-				m2 = "01";
-				m3 = "05";
+			if(m1.equals("07")&&m2.equals("01")&&m3.equals("05")) {
+				ad_code="CAT0017";
+				//System.out.println("ad_code: " + ad_code);
+				map.put("ad_code", ad_code);
 			}
 		}
+		
+		int ad_idx = openInfoService.insertContent(map);
 		
 		map.put("ad_idx", ad_idx);
 				
@@ -184,8 +187,11 @@ public class OpenInfoController {
 			}
 		}
 		
+		Encoding ed = new Encoding();
+		String keyWord = ed.encoding(String.valueOf(map.get("keyword")));
+		
 		List<OpenInfoVo> list = openInfoService.search(map);
-		//System.out.println("map search: " + map);
+		System.out.println("map search: " + list);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("m1", map.get("m1"));
 		mv.addObject("m2", map.get("m2"));
@@ -196,7 +202,7 @@ public class OpenInfoController {
 		mv.addObject("page_num", map.get("page_num"));
 		mv.addObject("tot_cnt", map.get("tot_cnt"));
 		mv.addObject("keyfield", map.get("keyfield"));
-		mv.addObject("keyword", map.get("keyword"));
+		mv.addObject("keyword", keyWord);
 		mv.setViewName("user/sub/sub07/OpenInfo");
 		return mv;
 	}

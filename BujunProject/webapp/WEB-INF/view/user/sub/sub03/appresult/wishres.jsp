@@ -43,7 +43,7 @@
 					<input type="hidden" value="10" name="pagecount">
 					<input type="hidden" value="1" name="grpnum">
 					<select autofocus name="searchType">
-						<option	value=""<c:out value="${searchType == null? 'selected':''}"/>>검색대상</option>
+						<option	value="nodate"<c:out value="${searchType == null? 'selected':''}"/>>검색대상</option>
 						<option value="title"<c:out value="${searchType eq 'title'?'selected':'' }"/>>제목</option>
 						<option value="content"<c:out value="${searchType eq 'content'?'selected':'' }"/>>내용</option>
 						<option value="write"<c:out value="${searchType eq 'write'?'selected':'' }"/>>작성자</option>
@@ -60,21 +60,14 @@
 	<!-- content 시작 -->
 	
 	<!-- table -->
-	<div class="scroll_info">
-		<span class="arr_l"></span>
-		<span class="scroll_icon"></span>
-		<p class="pinfo">좌우로 스크롤 하시면 전체 내용을 확인하실 수 있습니다.</p>
-		<span class="arr_r"></span>
-	</div>
-	
-	<div class="auto_box mg_b40">			
 		<table class="tb_board">
+		<colgroup><col style="width:5%;" /><col style="width:17%;"/><col style="width:8%;" /><col style="width:8%;" /></colgroup>
 			<thead>
 				<tr>
-					<th scope="col" width="50">번  호</th>
-					<th scope="col" width="400">제  목</th>
-					<th scope="col" width="100">작성자</th>
-					<th scope="col" width="70">작성일</th>
+					<th scope="col" >번  호</th>
+					<th scope="col" >제  목</th>
+					<th scope="col" >작성자</th>
+					<th scope="col" class="bnon">작성일</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -86,9 +79,9 @@
 						<c:forEach var="result" items="${resultList}">
 							<tr>
 								<td>${result.ad_idx}</td>
-								<td><a href="/wishres/view?m1=03&m2=06&ad_idx=${result.ad_idx}&ad_code=${ad_code}">${result.ad_title}</a></td>
+								<td class="l"><a href="/wishres/view?m1=03&m2=06&ad_idx=${result.ad_idx}&ad_code=${ad_code}">${result.ad_title}</a></td>
 								<td>${result.ad_writer}</td>
-								<td>${result.ad_regdate}</td>
+								<td class="bnon">${result.ad_regdate}</td>
 							</tr>
 						</c:forEach>
 					</c:otherwise>
@@ -101,10 +94,16 @@
 				<%@include file="/WEB-INF/view/user/include/resultpaging.jspf" %>
 			</div>
 			<div class="insertbtn">	
-				<button class="btn_1"><a href="/wishres/WriteForm?m1=03&m2=06">글쓰기</a></button>
+				<c:choose>
+					<c:when test="${sessionScope.mem_id == 'ADMIN'}">
+						<div class="btn_1"><a href="/wishres/WriteForm?m1=03&m2=06">글쓰기</a></div>
+					</c:when>
+					<c:otherwise>
+					
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
-	</div>
 	<!-- //table -->
 	
 <!-- //content 끝 -->

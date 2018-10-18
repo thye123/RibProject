@@ -221,11 +221,13 @@ public class RFBoardController2 {
 		System.out.println("file size : " + file.getSize());
 		
 		
-		String filename = uploadFile(file.getOriginalFilename(), file.getBytes());
-		map.put("filename", filename);
-		map.put("file_size", file.getSize());
-		map.put("file_filerealname", file.getOriginalFilename());
-		map.put("file_ext", ".");
+		if(file != null && file.getSize() != 0) {
+			String filename = uploadFile(file.getOriginalFilename(), file.getBytes());
+			map.put("filename", filename);
+			map.put("file_size", file.getSize());
+			map.put("file_filerealname", file.getOriginalFilename());
+			map.put("file_ext", ".");
+		}
 		
 		
 		boardService.setWrite(map);

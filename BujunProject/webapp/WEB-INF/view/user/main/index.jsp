@@ -80,11 +80,11 @@
 						<div id="main_popup_zone" class="pop_img"> 
 						 
 						<span id="mainPopupzone1" class="news_pause">
-							<img id="img_popzone_1" src="${pageContext.request.contextPath}/resources/user/images/main/pop01.jpg" alt="동래장학회 나눔을 실천하는 사람이 존경받는 아름다운 도시, 바로 동래입니다. Dongnaegu Scholarship Foundation has been evaluated as the best university to innovate undergraduate educational systems’ by unifying two local natioral universities successfully for the first time within Korea." />
+							<img id="img_popzone_1" src="${pageContext.request.contextPath}/resources/user/images/main/pop01.jpg"  />
 						</span> 
 	
 						<span id="mainPopupzone2" class="news_pause">
-							<img id="img_popzone_2" src="/common/images/main/pop/pop03.jpg" alt="동래장학회 사진2" />
+							<img id="img_popzone_2" src="${pageContext.request.contextPath}/resources/user/images/main/pop03.jpg" alt="동래장학회 사진2" />
 						</span>
 	
 						</div> 
@@ -107,43 +107,15 @@
 						<h3 class="nt_01"><a href="#" class="on">공지사항</a></h3>
 						<div class="ncons"  style="display:block;">
 							<ul>
-								<li>
-									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										test1_공지사항								
-									</a>
-									<span class="main_date">2018.10.01</span>
-								</li>
-								<li>
-									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										test2_공지사항							
-									</a>
-									<span class="main_date">2018.10.01</span>
-								</li>
-								<li>
-									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										test3_공지사항							
-									</a>
-									<span class="main_date">2018.10.01</span>
-								</li>
-								<li>
-									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										test4_공지사항							
-									</a>
-									<span class="main_date">2018.10.01</span>
-								</li>
-								<li>
-									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										test5_공지사항						
-									</a>
-									<span class="main_date">2018.10.01</span>
-								</li>
-								<li>
-									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										test6_공지사항						
-									</a>
-									<span class="main_date">2018.10.01</span>
-								</li>																								
-							</ul>
+								<c:forEach var ="noList" items="${noList}">
+									<li>
+										<a href="/notice/view?m1=06&m2=01&ad_code=${noList.ad_code}&ad_idx=${noList.ad_idx}">
+											${noList.ad_title}								
+										</a>
+										<span class="main_date">${noList.ad_regdate}</span>
+									</li>
+								</c:forEach>
+								</ul>
 							<a href="/index.php?pagecode=P000000026" class="more" title="공지사항 목록 더보기로 이동합니다."><img src="${pageContext.request.contextPath}/resources/user/images/main/m_more.png" alt="공지사항 더보기" /></a>
 						</div>
 						<!-- //1 -->
@@ -173,36 +145,26 @@
 									<span class="main_date">2018.03.20</span>
 								</li>
 							</ul>
-							<a href="/index.php?pagecode=P000000028" class="more" title="보도자료 목록 더보기로 이동합니다."><img src="${pageContext.request.contextPath}/resources/user/images/main/m_more.png" alt="보도자료 더보기" /></a>						
+							<a href="#" class="more" title="평생학습 목록 더보기로 이동합니다."><img src="${pageContext.request.contextPath}/resources/user/images/main/m_more.png" alt="평생학습 더보기" /></a>						
 						</div>
 						<!-- //2 -->
 					
 					
 						<!-- 3 -->
-						<h3 class="nt_03"><a href="#" >스터디 커뮤니티</a></h3>
+						<h3 class="nt_03" id="stuList"><a href="#" >스터디 커뮤니티</a></h3>
 						<div class="ncons" >
 
 							<ul>
-								<li>
-									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										33							
-									</a>
-									<span class="main_date">2018.03.20</span>
-								</li>
-								<li>
-									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										제8회 &#40;재&#41;동래장학회 장학생 선발자 명단									
-									</a>
-									<span class="main_date">2018.03.20</span>
-								</li>
-								<li>
-									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										제8회 &#40;재&#41;동래장학회 장학생 선발자 명단									
-									</a>
-									<span class="main_date">2018.03.20</span>
-								</li>
+								<c:forEach var="stulist" items="${stuList}">
+									<li>
+										<a href="/study/dCon?m1=06&m2=07&stu_code=${stulist.stu_code}&stu_idx=${stulist.stu_idx}">
+											${stulist.stu_title}							
+										</a>
+										<span class="main_date">${stulist.stu_regdate}</span>
+									</li>
+								</c:forEach>
 							</ul>
-							<a href="/index.php?pagecode=P000000028" class="more" title="보도자료 목록 더보기로 이동합니다."><img src="${pageContext.request.contextPath}/resources/user/images/main/m_more.png" alt="보도자료 더보기" /></a>						
+							<a href="/study?m1=06&m2=07&page_num=1&page_grp=1" class="more" title="스터디 목록 더보기로 이동합니다."><img src="${pageContext.request.contextPath}/resources/user/images/main/m_more.png" alt="스터디 더보기" /></a>						
 						</div>
 						<!-- //3 -->						
 					
@@ -257,7 +219,7 @@
 		
 		
 		<div class="book_con03">
-			<div class="tit">2018 / 09 부전도서관 일정</div>
+			<div class="tit">2018 / 10 부전도서관 일정</div>
 			
 			<table class="schedule">
 				<thead>
@@ -274,52 +236,52 @@
 		
 				<tbody>
 					<tr>
-						<td class="sun"><div></div></td>
-						<td><div></div></td>
-						<td><div></div></td>
-						<td><div></div></td>
-						<td><div></div></td>
-						<td><div></div></td>
-						<td class="sat"><div>1</div></td>
+						<td class="sun pd_t5"><div></div></td>
+						<td class="pd_t5"><div>1</div></td>
+						<td class="pd_t5"><div>2</div></td>
+						<td class="pd_t5"><div class="holiday">3</div></td>
+						<td class="pd_t5"><div>4</div></td>
+						<td class="pd_t5"><div>5</div></td>
+						<td class="sat pd_t5"><div>6</div></td>
 					</tr>
 					<tr>
-						<td class="sun"><div class="event">2</div></td>
-						<td><div class="holiday">3</div></td>
-						<td><div>4</div></td>
-						<td><div>5</div></td>
-						<td><div>6</div></td>
-						<td><div>7</div></td>
-						<td class="sat"><div>8</div></td>
-					</tr>
-					<tr>
-						<td class="sun"><div class="event">9</div></td>
+						<td class="sun"><div>7</div><!-- <div class="event">7</div> --></td>
+						<td><div>8</div></td>
+						<td><div class="holiday">9</div></td>
 						<td><div>10</div></td>
 						<td><div>11</div></td>
 						<td><div>12</div></td>
-						<td><div class="holiday">13</div></td>
-						<td><div>14</div></td>
-						<td class="sat"><div>15</div></td>
+						<td class="sat"><div>13</div></td>
 					</tr>
 					<tr>
-						<td class="sun"><div>16</div></td>
+						<td class="sun"><div>14</div></td>
+						<td><div class="holiday">15</div></td>
+						<td><div>16</div></td>
 						<td><div>17</div></td>
 						<td><div>18</div></td>
 						<td><div>19</div></td>
-						<td><div class="holiday">20</div></td>
-						<td><div>21</div></td>
-						<td class="sat"><div>22</div></td>
+						<td class="sat"><div>20</div></td>
 					</tr>
 					<tr>
-						<td class="sun"><div>23</div></td>
-						<td><div class="holiday">24</div></td>
+						<td class="sun"><div>21</div></td>
+						<td><div class="holiday">22</div></td>
+						<td><div>23</div></td>
+						<td><div>24</div></td>
 						<td><div>25</div></td>
 						<td><div>26</div></td>
-						<td><div class="event">27</div></td>
-						<td><div>28</div></td>
+						<td class="sat"><div>27</div></td>
+					</tr>
+					<tr>
+						<td class="sun"><div>28</div></td>
+						<td><div>29</div></td>
+						<td><div>30</div></td>
+						<td><div>31</div></td>
+						<td><div></div></td>
+						<td><div></div></td>
 						<td class="sat"><div>29</div></td>
 					</tr>
 					<tr>
-						<td class="sun"><div class="event">30</div></td>
+						<td class="sun"><div></div></td>
 						<td><div></div></td>
 						<td><div></div></td>
 						<td><div></div></td>
@@ -352,7 +314,7 @@
 		
 		<div class="tit">QUICK <span>SERVICE</span></div>
 		<ul class="quick_menu">
-			<li><a href="#"><span class="txt">비치희망자료</span></a></li>
+			<li><a href="/wishbk?m1=03&m2=05&nowpage=1&pagecount=10&grpnum=1"><span class="txt">비치희망자료</span></a></li>
 			<li><a href="/mbinfo?m1=03&m2=04&page=1&perPageNum=10"><span class="txt">나의 대출정보</span></a></li>
 			<li><a href="/volunteer?m1=06&m2=04"><span class="txt">자원봉사신청</span></a></li>
 			<li><a href="http://contents.siminlib.go.kr/FxLibrary/" title="새창으로 열림" target="_blank"><span class="txt">전자책e-book</span></a></li>

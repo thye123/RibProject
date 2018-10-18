@@ -84,13 +84,6 @@ a.btn_board {
 	</div>
 
 	<!-- table -->
-	<div class="scroll_info">
-		<span class="arr_l"></span> <span class="scroll_icon"></span>
-		<p class="pinfo">좌우로 스크롤 하시면 전체 내용을 확인하실 수 있습니다.</p>
-		<span class="arr_r"></span>
-	</div>
-
-	<div class="auto_box mg_b40">
 		<table class="tb_board">
 			<thead>
 				<tr>
@@ -127,7 +120,6 @@ a.btn_board {
 				</c:forEach>
 			</tbody>
 		</table>
-	</div>
 	<!-- //table -->
 
 	<!-- 페이징 -->
@@ -136,7 +128,7 @@ a.btn_board {
 	<div class="board-list-paging">
 		<div class="pagelist">
 			<!-- 이전 10개 -->
-		
+
 				<!-- 이전 10개  -->		
 				<c:if test="${pageMaker.start > 10}">
 					<a class="prevblock"

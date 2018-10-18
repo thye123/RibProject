@@ -15,6 +15,8 @@
 			<result property="ad_content" column="AD_CONTENT" javaType="String" />
 			<result property="ad_regdate" column="AD_REGDATE" javaType="String" />
 			<result property="ad_count" column="AD_COUNT" javaType="int" />
+			<result property="mem_name" column="mem_name" javaType="String" />
+			
 		</resultMap>
 		
 		<resultMap id="FilesMap" type="com.bujun.notice.vo.FileVo">

@@ -20,7 +20,6 @@
 		<li><img src="${pageContext.request.contextPath}/resources/user/images/sub/loca_home.jpg" alt="" /></li>
 		<li>자료찾기</li>
 		<li>비치희망자료신청</li>
-		<li>개인정보처리위탁</li>
 	</ul>
 </div>
 <!-- //location -->
@@ -71,7 +70,7 @@
 					<input type="hidden" value="10" name="pagecount">
 					<input type="hidden" value="1" name="grpnum">
 					<select autofocus name="searchType">
-						<option	value=""<c:out value="${searchType == null? 'selected':''}"/>>검색대상</option>
+						<option	value="nodate"<c:out value="${searchType == null? 'selected':''}"/>>검색대상</option>
 						<option value="title"<c:out value="${searchType eq 'title'?'selected':'' }"/>>책이름</option>
 						<option value="content"<c:out value="${searchType eq 'content'?'selected':'' }"/>>내용</option>
 						<option value="write"<c:out value="${searchType eq 'write'?'selected':'' }"/>>작성자</option>
@@ -88,23 +87,15 @@
 	<!-- content 시작 -->
 	
 	<!-- table -->
-	<div class="scroll_info">
-		<span class="arr_l"></span>
-		<span class="scroll_icon"></span>
-		<p class="pinfo">좌우로 스크롤 하시면 전체 내용을 확인하실 수 있습니다.</p>
-		<span class="arr_r"></span>
-	</div>
-	
-	<div class="auto_box mg_b40">			
 		<table class="tb_board">
+		<colgroup><col style="width:5%;" /><col style="width:7%;"/><col style="width:17%;" /><col style="width:10%;" /><col style="width:8%;" /></colgroup>
 			<thead>
 				<tr>
-					<th scope="col" width="50">번  호</th>
-					<th scope="col" width="100">신청인</th>
-					<th scope="col" width="300">신청도서</th>
-					<th scope="col" width="100">저자</th>
-					<th scope="col" width="50">신청일</th>
-					<th scope="col" width="50">진행상태</th>
+					<th scope="col" class="mob_none" >번  호</th>
+					<th scope="col" >신청인</th>
+					<th scope="col" >신청도서</th>
+					<th scope="col" >신청일</th>
+					<th scope="col" class="bnon">진행상태</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -115,28 +106,27 @@
 					<c:otherwise>
 						<c:forEach var="app" items="${appList}">
 							<tr>
-								<td>${app.sc_idx}</td>
+								<td class="mob_none">${app.sc_idx}</td>
 								<td>${app.sc_memid}</td>
-								<td><a href="/wishbk/view?m1=03&m2=05&sc_idx=${app.sc_idx}">${app.sc_bookname}</a></td>
-								<td>${app.sc_author}</td>
+								<td class="l"><a href="/wishbk/view?m1=03&m2=05&sc_idx=${app.sc_idx}">${app.sc_bookname}</a></td>
 								<td>${app.sc_regdate}</td>
 								<c:choose>
 									<c:when test="${app.sc_during eq 1}">
-										<td>신청중</td>									
+										<td class="bnon">신청중</td>									
 									</c:when>
 									
 									<c:otherwise>
 										<c:choose>
 											<c:when test="${app.sc_during eq 2}">
-												<td>처리중</td>									
+												<td class="bnon">처리중</td>									
 											</c:when>
 											<c:otherwise>
 												<c:choose>
 													<c:when test="${app.sc_during eq 3}">
-														<td>배치완료</td>									
+														<td class="bnon">배치완료</td>									
 													</c:when>
 													<c:otherwise>
-														<td>취소</td>
+														<td class="bnon">취소</td>
 													</c:otherwise>
 												</c:choose>
 											</c:otherwise>
@@ -155,10 +145,9 @@
 				<%@include file="/WEB-INF/view/user/include/apppaging.jspf" %>
 			</div>
 			<div class="insertbtn">	
-				<button class="btn_1"><a href="/wishbk02/WriteForm?m1=03&m2=05">글쓰기</a></button>
+				<div class="btn_1"><a href="/wishbk02/WriteForm?m1=03&m2=05">글쓰기</a></div>
 			</div>
 		</div>
-	</div>
 	<!-- //table -->
 	
 <!-- //content 끝 -->

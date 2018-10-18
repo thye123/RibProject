@@ -39,7 +39,14 @@
 				#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=NoticeListMap}
 			)}
 		</select>
+		<select id ="NoticeMainList" statementType="CALLABLE" parameterType="hashmap"
+		resultType="com.bujun.notice.vo.NoticeVo">
+		{CALL PKG_NOTICE.PROC_MAIN_LIST(
+		#{ad_code, mode=IN, jdbcType=VARCHAR},
+		#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=NoticeListMap}
+		)}
 		
+		</select>
 		<select id="NoticeView" statementType="CALLABLE" parameterType="hashmap"
 			resultType="com.bujun.notice.vo.NoticeVo">
 			{CALL PKG_NOTICE.PROC_NOTICE_VIEW(

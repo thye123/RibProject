@@ -17,6 +17,10 @@ import com.bujun.member.service.LoginService;
 import com.bujun.member.vo.MemberVo;
 import com.bujun.monthbook.service.MonthbookService;
 import com.bujun.monthbook.vo.MonthbookVo;
+import com.bujun.notice.service.NoticeService;
+import com.bujun.notice.vo.NoticeVo;
+import com.bujun.study.service.StudyService;
+import com.bujun.study.vo.StudyVo;
 
 @Controller
 public class BasicController {
@@ -26,8 +30,13 @@ public class BasicController {
 	private LoginService loginService; 
 	
 	@Autowired
-	private  MonthbookService monthBookService; 
+	private MonthbookService monthBookService; 
 	
+	@Autowired
+	private StudyService stuService;
+	
+	@Autowired
+	private NoticeService noticeService;
 	
 	@RequestMapping("/")
 	public String Main(HttpSession session, Model model) {
@@ -44,7 +53,14 @@ public class BasicController {
 		List<MonthbookVo> monthBookList = monthBookService.getMainBookList(map);
 		model.addAttribute("bookList", monthBookList);
 		
+		//스터디
+		List<StudyVo> stuList = stuService.mainList(map);
+		model.addAttribute("stuList", stuList);
 		
+		//공지사항
+		String ad_code = "CAT0009";
+		List <NoticeVo> noList = noticeService.mainList(map, ad_code);
+		model.addAttribute("noList", noList);
 		if(!login_name.equals("anonymousUser")) {
 			
 			map.put("mem_id", login_name);

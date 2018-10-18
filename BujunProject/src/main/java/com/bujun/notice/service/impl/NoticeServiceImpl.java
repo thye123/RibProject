@@ -174,6 +174,12 @@ public class NoticeServiceImpl implements NoticeService {
 		
 	}
 
+	@Override
+	public List<NoticeVo> mainList(HashMap<String, Object> map, String ad_code) {
+		List<NoticeVo> noList = noticeDao.mainList(map, ad_code);
+		return noList;
+	}
+
 
 
 	

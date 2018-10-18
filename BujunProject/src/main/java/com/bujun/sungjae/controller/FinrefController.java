@@ -4,14 +4,18 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bujun.bank.service.BankService;
+import com.bujun.notice.vo.Encodings;
 import com.bujun.notice.vo.NoticeVo;
 import com.bujun.notice.vo.PagingVo;
 import com.bujun.notice.vo.SearchVo;
@@ -38,6 +42,8 @@ public class FinrefController {
 	public ModelAndView list(@RequestParam HashMap<String, Object> map) {
 		String ad_code="CAT0011";
 		map.put("ad_code", ad_code);
+		Encodings enc= new Encodings();
+		String keyword = enc.encoding((String) map.get("keyword"));
 		List<NoticeVo> bankList = bankService.getList(map) ;
 		PagingVo pageVo = (PagingVo) map.get("pagingVo");
 		SearchVo searchVo = (SearchVo) map.get("searchVo");
@@ -45,9 +51,10 @@ public class FinrefController {
 		int nowpage = Integer.parseInt(String.valueOf(map.get("nowpage")));
 		int grpnum  = Integer.parseInt(String.valueOf(map.get("grpnum")));
 		int pagecount = Integer.parseInt(String.valueOf(map.get("pagecount")));
-
+		
 		mv.addObject("menu", map);
 		mv.addObject("ad_code",ad_code);
+		mv.addObject("keyWord", keyword);
 		mv.addObject("bankBoardList", bankList);
 		mv.addObject("pageVo", pageVo);
 		mv.addObject("nowpage", nowpage);
@@ -72,14 +79,25 @@ public class FinrefController {
 		return mv;
 	}
 	@RequestMapping("/finref04/WriteForm")
-	public ModelAndView WriteForm(@RequestParam HashMap<String, Object> map) {
-		String ad_code="CAT0011";
-		map.put("ad_code", ad_code);
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("menu", map);
-		mv.addObject("ad_code", ad_code);
-		mv.setViewName("user/sub/sub02/04/write");
-		return mv;
+	public ModelAndView WriteForm(@RequestParam HashMap<String, Object> map, HttpSession session,
+			PagingVo vo) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String login_name = authentication.getName();
+		if(login_name.equals("ADMIN")) {
+			String ad_code="CAT0011";
+			map.put("brt_memid", session.getAttribute("mem_id"));
+			map.put("ad_code", ad_code);
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("menu", map);
+			mv.addObject("memid", map.get("mem_id"));
+			mv.addObject("ad_code", ad_code);
+			mv.setViewName("user/sub/sub02/04/write");
+			return mv;
+		} else {
+			ModelAndView mv1 = new ModelAndView();
+			mv1.setViewName("user/sub/sub08/login");
+			return mv1;
+		}
 	}
 	
 	@RequestMapping("/finref04/Write")
@@ -165,14 +183,25 @@ public class FinrefController {
 			return mv;
 		}
 		@RequestMapping("/finref05/WriteForm")
-		public ModelAndView WriteForm2(@RequestParam HashMap<String, Object> map) {
-			String ad_code="CAT0012";
-			map.put("ad_code", ad_code);
-			ModelAndView mv = new ModelAndView();
-			mv.addObject("menu", map);
-			mv.addObject("ad_code", ad_code);
-			mv.setViewName("user/sub/sub02/05/write");
-			return mv;
+		public ModelAndView WriteForm2(@RequestParam HashMap<String, Object> map, HttpSession session,
+				PagingVo vo) {
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			String login_name = authentication.getName();
+			if(login_name.equals("ADMIN")) {
+				map.put("brt_memid", session.getAttribute("mem_id"));
+				String ad_code="CAT0012";
+				map.put("ad_code", ad_code);
+				ModelAndView mv = new ModelAndView();
+				mv.addObject("menu", map);
+				mv.addObject("ad_code", ad_code);
+				mv.setViewName("user/sub/sub02/05/write");
+				return mv;
+			} else {
+				ModelAndView mv1 = new ModelAndView();
+				mv1.setViewName("user/sub/sub08/login");
+				return mv1;
+			}
+			
 		}
 		
 		@RequestMapping("/finref05/Write")
@@ -254,14 +283,24 @@ public class FinrefController {
 			return mv;
 		}
 		@RequestMapping("/finref06/WriteForm")
-		public ModelAndView WriteForm3(@RequestParam HashMap<String, Object> map) {
-			String ad_code="CAT0013";
-			map.put("ad_code", ad_code);
-			ModelAndView mv = new ModelAndView();
-			mv.addObject("menu", map);
-			mv.addObject("ad_code", ad_code);
-			mv.setViewName("user/sub/sub02/06/write");
+		public ModelAndView WriteForm3(@RequestParam HashMap<String, Object> map, HttpSession session,
+				PagingVo vo) {
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			String login_name = authentication.getName();
+			if(login_name.equals("ADMIN")) {
+					map.put("brt_memid", session.getAttribute("mem_id"));
+					String ad_code="CAT0013";
+					map.put("ad_code", ad_code);
+					ModelAndView mv = new ModelAndView();
+					mv.addObject("menu", map);
+					mv.addObject("ad_code", ad_code);
+					mv.setViewName("user/sub/sub02/06/write");
 			return mv;
+			} else {
+				ModelAndView mv1 = new ModelAndView();
+				mv1.setViewName("user/sub/sub08/login");
+				return mv1;
+			}
 		}
 			
 		@RequestMapping("/finref06/Write")
@@ -341,14 +380,24 @@ public class FinrefController {
 			return mv;
 		}
 		@RequestMapping("/finref07/WriteForm")
-		public ModelAndView WriteForm4(@RequestParam HashMap<String, Object> map) {
-			String ad_code="CAT0014";
-			map.put("ad_code", ad_code);
-			ModelAndView mv = new ModelAndView();
-			mv.addObject("menu", map);
-			mv.addObject("ad_code", ad_code);
-			mv.setViewName("user/sub/sub02/07/write");
+		public ModelAndView WriteForm4(@RequestParam HashMap<String, Object> map, HttpSession session,
+				PagingVo vo) {
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			String login_name = authentication.getName();
+			if(login_name.equals("ADMIN")) {
+				map.put("brt_memid", session.getAttribute("mem_id"));
+				String ad_code="CAT0014";
+				map.put("ad_code", ad_code);
+				ModelAndView mv = new ModelAndView();
+				mv.addObject("menu", map);
+				mv.addObject("ad_code", ad_code);
+				mv.setViewName("user/sub/sub02/07/write");
 			return mv;
+			} else {
+				ModelAndView mv1 = new ModelAndView();
+				mv1.setViewName("user/sub/sub08/login");
+				return mv1;
+			}
 		}
 			
 		@RequestMapping("/finref07/Write")

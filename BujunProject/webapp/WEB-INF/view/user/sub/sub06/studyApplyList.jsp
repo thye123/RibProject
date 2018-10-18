@@ -27,7 +27,7 @@
 			subTitle[0].appendChild(stu_li_coment);
 			sub_tit[0].appendChild(stu_coment);
 		} else {			
-			alert("s");
+			//alert("s");
 			subTitle[0].removeChild(subTitle[0].childNodes[0]);
 			sub_tit[0].removeChild(sub_tit[0].childNodes[0]);
 			var my_coment = document.createTextNode("나의 스터디 신청현황");
@@ -64,9 +64,18 @@
 	<!-- content 시작 -->
 	<div class="boardSearch">
 		<div class="board_page">
-			<span class="p02">Total</span>
-			<span class="p01"> : ${tot_cnt}</span>
-			(<span class="p01">${page_num}</span>/${endnum}페이지)
+			<c:choose>
+				<c:when test="${tot_btcnt == 0}">
+					<span class="p02">Total</span>
+					<span class="p01"> : ${tot_cnt}</span>
+					(<span class="p01">0</span>/${tot_btcnt}페이지)
+				</c:when>
+				<c:otherwise>
+					<span class="p02">Total</span>
+					<span class="p01"> : ${tot_cnt}</span>
+					(<span class="p01">${page_num}</span>/${tot_btcnt}페이지)				
+				</c:otherwise>
+			</c:choose>
 		</div> 
 		<c:choose>
 			<c:when test="${stuap_code != null}">
@@ -99,11 +108,6 @@
 	</div>
 
 	<!-- table -->
-	<div class="scroll_info">
-		<span class="arr_l"></span> <span class="scroll_icon"></span>
-		<p class="pinfo">좌우로 스크롤 하시면 전체 내용을 확인하실 수 있습니다.</p>
-		<span class="arr_r"></span>
-	</div>
 
 
 	<table class="tb_board">
@@ -195,7 +199,32 @@
 			</c:otherwise>
 		</c:choose>
 	</table>
-	
+	<c:choose>
+			<c:when test="${stuap_code != null}">
+				<div class="r mg_t20 btns">
+					<input type="button" class="btns_black" id="detail" value="뒤로가기" style="border:0;">
+				</div>
+				<script>
+					var detail = document.getElementById("detail");
+					
+					detail.addEventListener("click", function(){
+						location.href = "/study/dCon?m1=${m1}&m2=${m2}&stu_code=${stuap_code}&stu_idx=${stu_idx}";
+					});
+				</script>
+			</c:when>
+			<c:otherwise>
+				<div class="r mg_t20 btns">
+					<input type="button" class="btns_black" id="detail" value="뒤로가기" style="border:0;">
+				</div>
+				<script>
+					var detail = document.getElementById("detail");
+					
+					detail.addEventListener("click", function(){
+						location.href = "/study?m1=06&m2=07&page_num=1&page_grp=1";
+					});
+				</script>
+			</c:otherwise>
+	</c:choose>
 
 	<!-- //table -->
 
@@ -211,12 +240,12 @@
 					<c:choose>
 						<c:when test="${keyfield != null}">
 							<c:if test="${startnum > 10}">
-								<a class="prevblock" href="/study/stusearch?keyfield=${keyfield}&m1=${m1}&m2=${m2}&page_num=${page_num}&page_grp=${page_grp-1}&stuap_code=${stuap_code}"><span>이전</span></a>
+								<a class="prevblock" href="/study/stusearch?keyfield=${keyfield}&m1=${m1}&m2=${m2}&page_num=${page_num-10}&page_grp=${page_grp-1}&stuap_code=${stuap_code}"><span>이전</span></a>
 							</c:if>
 						</c:when>
 						<c:otherwise>
 							<c:if test="${startnum > 10}">
-								<a class="prevblock" href="/study/prcondition?m1=${m1}&m2=${m2}&page_num=${page_num}&page_grp=${page_grp-1}&stu_code=${stuap_code}"><span>이전</span></a>
+								<a class="prevblock" href="/study/prcondition?m1=${m1}&m2=${m2}&page_num=${page_num-10}&page_grp=${page_grp-1}&stu_code=${stuap_code}"><span>이전</span></a>
 							</c:if>
 						</c:otherwise>
 					</c:choose>		
@@ -241,12 +270,12 @@
 					<c:choose>
 						<c:when test="${keyfield != null}">
 							<c:if test="${startnum <= (tot_btcnt-10) && startnum > 0}">
-								<a class="nextblock" href="/study/stusearch?keyfield=${keyfield}&m1=${m1}&m2=${m2}&page_num=${page_num}&page_grp=${page_grp+1}&stuap_code=${stuap_code}"><span>다음</span></a>
+								<a class="nextblock" href="/study/stusearch?keyfield=${keyfield}&m1=${m1}&m2=${m2}&page_num=${page_num+10}&page_grp=${page_grp+1}&stuap_code=${stuap_code}"><span>다음</span></a>
 							</c:if>
 						</c:when>
 						<c:otherwise>
 							<c:if test="${startnum <= (tot_btcnt-10) && startnum > 0}">
-								<a class="nextblock" href="/study/prcondition?m1=${m1}&m2=${m2}&page_num=${page_num}&page_grp=${page_grp+1}&stu_code=${stuap_code}"><span>다음</span></a>
+								<a class="nextblock" href="/study/prcondition?m1=${m1}&m2=${m2}&page_num=${page_num+10}&page_grp=${page_grp+1}&stu_code=${stuap_code}"><span>다음</span></a>
 							</c:if>
 						</c:otherwise>
 					</c:choose>
@@ -256,12 +285,12 @@
 					<c:choose>
 						<c:when test="${keyword != null && keyfield != null}">
 							<c:if test="${startnum > 10}">
-								<a class="prevblock" href="/study/appSearch?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&page_num=${page_num}&page_grp=${page_grp-1}&mem=${sessionScope.rimem_num}"><span>이전</span></a>
+								<a class="prevblock" href="/study/appSearch?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&page_num=${page_num-10}&page_grp=${page_grp-1}&mem=${sessionScope.rimem_num}"><span>이전</span></a>
 							</c:if>
 						</c:when>
 						<c:otherwise>
 							<c:if test="${startnum > 10}">
-								<a class="prevblock" href="/study/appList?m1=${m1}&m2=${m2}&page_num=${page_num}&page_grp=${page_grp-1}&mem=${sessionScope.rimem_num}"><span>이전</span></a>
+								<a class="prevblock" href="/study/appList?m1=${m1}&m2=${m2}&page_num=${page_num-10}&page_grp=${page_grp-1}&mem=${sessionScope.rimem_num}"><span>이전</span></a>
 							</c:if>
 						</c:otherwise>
 					</c:choose>		
@@ -286,12 +315,12 @@
 					<c:choose>
 						<c:when test="${keyword != null && keyfield != null}">
 							<c:if test="${startnum <= (tot_btcnt-10) && startnum > 0}">
-								<a class="nextblock" href="/study/appSearch?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&page_num=${page_num}&page_grp=${page_grp+1}&mem=${sessionScope.rimem_num}"><span>다음</span></a>
+								<a class="nextblock" href="/study/appSearch?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&page_num=${page_num+10}&page_grp=${page_grp+1}&mem=${sessionScope.rimem_num}"><span>다음</span></a>
 							</c:if>
 						</c:when>
 						<c:otherwise>
 							<c:if test="${startnum <= (tot_btcnt-10) && startnum > 0}">
-								<a class="nextblock" href="/study/appList?m1=${m1}&m2=${m2}&page_num=${page_num}&page_grp=${page_grp+1}&mem=${sessionScope.rimem_num}"><span>다음</span></a>
+								<a class="nextblock" href="/study/appList?m1=${m1}&m2=${m2}&page_num=${page_num+10}&page_grp=${page_grp+1}&mem=${sessionScope.rimem_num}"><span>다음</span></a>
 							</c:if>
 						</c:otherwise>
 					</c:choose>

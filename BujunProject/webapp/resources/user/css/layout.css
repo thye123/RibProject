@@ -13,7 +13,7 @@ body {line-height: 1; position: relative; left: 0; -webkit-transition: left .3s;
 /* lnb_menu */
 .lnb_menu {width:100%; background:#454545; height:28px;}
 .lnb_menu .lnb_wrap {width:1200px; margin:0 auto; position:relative;}
-.lnb_menu .lnb_wrap ul.lnb_con {font-family:'Nanum Gothic', 'Noto Sans KR'; font-size:12px; position:absolute; right:0; padding-top:8px;}
+.lnb_menu .lnb_wrap ul.lnb_con {font-family: "Nanum Gothic", sans-serif, dotum, Helvetica; font-size:12px; position:absolute; right:0; padding-top:8px;}
 .lnb_menu .lnb_wrap ul.lnb_con li {position:relative; float:left; margin-left:15px;}
 .lnb_menu .lnb_wrap ul.lnb_con li:after {display:block; content:""; position:absolute; right:0; top:2px; background:#fff; margin-right:-7px; width:1px; height:9px;}
 .lnb_menu .lnb_wrap ul.lnb_con li:last-child:after {display:none;}
@@ -27,7 +27,7 @@ h1 {position:absolute; left:0; top:25px;}
 .header .gnb_wrap {width:1200px; height: 100%; margin: 0 auto; z-index: 100;position: relative;}
 .gnb {position: absolute; right:0; top:37px;}
 .gnb:after {content: ""; display: block; clear: both;}
-.gnb li {font-family:'Nanum Gothic', 'Noto Sans KR'; font-size:18px; color:#333;}
+.gnb li {font-family: "Nanum Gothic", sans-serif, dotum, Helvetica; font-size:18px; color:#333;}
 
 .gnb > li {float: left;}
 .gnb > li:nth-child(1) {width:144px}
@@ -75,6 +75,15 @@ h1 {position:absolute; left:0; top:25px;}
 
 /******************** pad *****************/
 @media all and (max-width:1000px) {
+	
+	/* 모바일 버튼 */
+	input, textarea, button {-webkit-appearance:none; -moz-appearance:none; appearance:none;}
+	input, textarea, button, select {-webkit-border-radius:0; -moz-border-radius:0; -o-border-radius:0; border-radius:0;}
+	input[type='text'], input[type='password'], input[type='submit'] {-webkit-appearance:none}
+
+	.board_read tbody td input[type='checkbox'] {height:18px; padding:0; width:18px;}
+
+
 
 	/* 메뉴 */
 	.header {height:68px;}
@@ -101,6 +110,8 @@ h1 {position:absolute; left:0; top:25px;}
 	#menu .menu-icon.open {left:258px; top:16px; width:26px; height:25px; background:url(../images/common/mob_btnmenu_close.png) no-repeat 0 0; z-index: 99999999;}
 	#menu a.menu-icon {position:absolute; top:27px; left:14px; z-index:9999; background:url(../images/common/mob_menu_con.png) no-repeat 0 0; width:23px; height:18px; text-indent:-9999px;} 
 	#menu .m_search {background:url(../images/common/mob_login_con.png) no-repeat 0 0; width:22px; height:24px;  position:absolute; top:23px; right:14px; z-index:9999; text-indent:-9999px;}
+	#menu .m_logout {background:url(../images/common/mob_logout.jpg) no-repeat 0 0; width:26px; height:26px;  position:absolute; top:23px; right:14px; z-index:9999; text-indent:-9999px;}
+	
 	
 	#menu .Mob_navigation {display:block; height:100%; position:absolute;  top:0;  left:-250px;  transition:all .3s; width:240px;  background:#fff; z-index:99999;}
 	#menu .Mob_navigation.open {height:100%;}
@@ -117,7 +128,7 @@ h1 {position:absolute; left:0; top:25px;}
 	#menu .Mob_navigation p.mobmenutit { height:70px; color:#fff; background:url(/common/images/cmm/submenu_bg.png) no-repeat 0 0; text-align:center; font-size:30px; font-weight:600; border-bottom:3px solid #031767; padding-top:40px;}
 	#menu .Mob_navigation ul.side-menu { border-top:1px solid #ccc; z-index:-1;  -webkit-transition: right .3s;  transition: right .3s; }
 	#menu .Mob_navigation ul.side-menu li.depth1 {border-bottom:1px solid #ccc;}
-	#menu .Mob_navigation ul.side-menu li.depth1 > a{font-size:13px; color:#333; display:block; text-align:left; line-height:50px; padding:0px 15px;}
+	#menu .Mob_navigation ul.side-menu li.depth1 > a{font-size:14px; color:#333; display:block; text-align:left; line-height:50px; padding:0px 15px;}
 	#menu .Mob_navigation ul.side-menu li.depth1 > a.off{}
 	#menu .Mob_navigation ul.side-menu li.depth1 > a.on {color:#333; font-weight:500;}
 	#menu .Mob_navigation ul.side-menu li.depth1 > ul {background:#384c62; }
@@ -135,9 +146,9 @@ h1 {position:absolute; left:0; top:25px;}
 	#menu .mob_search {box-sizing:border-box; background:#2d82b8; height:70px;}
 	#menu .mob_search p.txt {padding-top:25px; color:#fff; text-align:center;} 
 	#menu .mob_search .mob_search_frm {text-align:center;}
-	#menu .mob_search .mob_search_frm input[type='text'] {position: absolute; left:31px; top:24px; color:#fff; border:0; border-bottom:1px solid #fff !important; background:#2d82b8; width:143px; font-size:13px; padding:2px 5px 2px 5px;}	
+	#menu .mob_search .mob_search_frm input[type='text'] {border-radius:0; position: absolute; left:31px; top:24px; color:#fff; border:0; border-bottom:1px solid #fff !important; background:#2d82b8; width:143px; font-size:13px; padding:2px 28px 2px 5px;}	
 	#menu .mob_search .mob_search_frm button {position:absolute; right:37px; top:21px;  cursor:pointer; background:none; border:0;}
-	#menu .mob_search .mob_search_frm button img {width:19px; padding-bottom:3px; border-bottom:1px solid #fff;}
+	#menu .mob_search .mob_search_frm button img {width:19px; padding-bottom:3px;}
 
 	/* footer */
 	.footer .footer_wrap {width:auto; padding:0 20px;}

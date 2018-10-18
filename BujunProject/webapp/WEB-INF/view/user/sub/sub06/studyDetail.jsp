@@ -43,7 +43,7 @@
 			</tr>
 			<tr>
 				<th class="c">작성자</th>
-				<td>
+				<td colspan="2">
 					${detail.mem_name}
 					<input type="hidden" name="stu_writer" value="${detail.stu_writer}"/>
 					<input type="hidden" name="stu_rimemnum" value="${detail.stu_rimemnum}"/>
@@ -104,7 +104,7 @@
 						
 						var appliCondition = document.getElementById("appliCondition");
 						appliCondition.addEventListener("click", function(){
-							location.href = "/study/prcondition?m1=${m1}&m2=${m2}&stu_code=${detail.stu_code}&page_num=1&page_grp=1";
+							location.href = "/study/prcondition?m1=${m1}&m2=${m2}&stu_code=${detail.stu_code}&stu_idx=${detail.stu_idx}&page_num=1&page_grp=1";
 						});
 					}
 				</script>

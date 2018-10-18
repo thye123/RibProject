@@ -123,5 +123,11 @@ public class StudyServiceImpl implements StudyService {
 	public void studyEnd(HashMap<String, Object> map) {
 		studyDao.studyEnd(map);
 	}
+
+	@Override
+	public List<StudyVo> mainList(HashMap<String, Object> map) {
+		List<StudyVo> list = studyDao.mainList(map);
+		return list;
+	}
 	
 }

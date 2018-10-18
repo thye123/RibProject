@@ -145,12 +145,21 @@ public class RFBoardController {
 		System.out.println("fileorg : " + file.getOriginalFilename());
 		System.out.println("file size : " + file.getSize());
 		
+
+		if(file != null && file.getSize() != 0) {
+			String filename = uploadFile(file.getOriginalFilename(), file.getBytes());
+			map.put("filename", filename);
+			map.put("file_size", file.getSize());
+			map.put("file_filerealname", file.getOriginalFilename());
+			map.put("file_ext", ".");
+		}
 		
-		String filename = uploadFile(file.getOriginalFilename(), file.getBytes());
+		
+/*		String filename = uploadFile(file.getOriginalFilename(), file.getBytes());
 		map.put("filename", filename);
 		map.put("file_size", file.getSize());
 		map.put("file_filerealname", file.getOriginalFilename());
-		map.put("file_ext", ".");
+		map.put("file_ext", ".");*/
 		
 		
 		boardService.setWrite(map);
@@ -258,7 +267,8 @@ public class RFBoardController {
 		
 		String mimeType = URLConnection.guessContentTypeFromName(file.getName());
 		
-		mimeType = "application/octet-stream";
+		/*mimeType = "application/octet-stream";*/
+		mimeType = "application/unknown";
 		
 		System.out.println("mimeType: " + mimeType);
 		response.setContentType(mimeType);
