@@ -48,13 +48,6 @@
 		</ul>
 	</div>
 	
-	<div class="scroll_info">
-		<span class="arr_l"></span>
-		<span class="scroll_icon"></span>
-		<p class="pinfo">좌우로 스크롤 하시면 전체 내용을 확인하실 수 있습니다.</p>
-		<span class="arr_r"></span>
-	</div>
-	
 	<div class="tab_depth01" >
 		<form action="/finref06" method="GET">
 			<div class="boardSearch">
@@ -81,14 +74,7 @@
 	<!-- content 시작 -->
 	
 	<!-- table -->
-	<div class="scroll_info">
-		<span class="arr_l"></span>
-		<span class="scroll_icon"></span>
-		<p class="pinfo">좌우로 스크롤 하시면 전체 내용을 확인하실 수 있습니다.</p>
-		<span class="arr_r"></span>
-	</div>
 	
-	<div class="auto_box mg_b40">			
 		<table class="tb_board">
 			<thead>
 				<tr>
@@ -107,7 +93,7 @@
 						<c:forEach var="bankboard" items="${bankBoardList}">
 							<tr>
 								<td>${bankboard.ad_idx}</td>
-								<td><a href="/finref06/view?m1=02&m2=02&m3=05&ad_idx=${bankboard.ad_idx}&ad_code=${ad_code}">${bankboard.ad_title}</a></td>
+								<td class="l"><a href="/finref06/view?m1=02&m2=02&m3=05&ad_idx=${bankboard.ad_idx}&ad_code=${ad_code}">${bankboard.ad_title}</a></td>
 								<td>${bankboard.ad_regdate}</td>
 								<td class="bnon">${bankboard.ad_count}</td>
 							</tr>
@@ -132,7 +118,6 @@
 				</c:otherwise>
 			</c:choose>
 		</div>
-	</div>
 
 <!-- //content 끝 -->
 </div>
