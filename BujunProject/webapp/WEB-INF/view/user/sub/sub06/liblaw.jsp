@@ -83,7 +83,7 @@
 			  <tr>
 				  <th>부산광역시립도서관 운영 규칙</th>
 				  <td>
-					  <a class="new_btn" href="http://www.law.go.kr/ordinInfoP.do?urlMode=ordinScJoRltInfoR&viewCls=ordinInfoP&ordinSeq=625144&chrClsCd=010202&vSct=%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%EB%A6%BD%EB%8F%84%EC%84%9C%EA%B4%80%20%EC%9A%B4%EC%98%81%EA%B7%9C%EC%B9%99&conDatGubunCd=0&gubun=KLAW" target="_blank" title="새창열림">바로가기</a>
+					  <a class="new_btn" href="http://www.law.go.kr/ordinInfoP.do?urlMode=ordinScJoRltInfoR&viewCls=ordinInfoP&ordinSeq=625144&chrClsCd=010202&vSct=%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%EB%A6%BD%EB%8F%84%EC%84%9C%EA%B4%80%20%EC%9A%B4%EC%98%81%EA%B7%9C%EC%B9%99&conDatGubunCd=0&gubun=KLAW" target="_blank" title="새창열림">홈페이지</a>
 				  </td>
 				  <th>부산광역시립부전도서관 이용규정</th>
 				  <td class="bnon">
