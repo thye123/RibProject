@@ -65,5 +65,13 @@ public class NoticeDaoImpl implements NoticeDao {
 		sqlSession.delete("Notice.deleteFile", map);
 	}
 
+	@Override
+	public List<NoticeVo> mainList(HashMap<String, Object> map, String ad_code) {
+		map.put("ad_code",ad_code);
+		sqlSession.selectList("Notice.NoticeMainList", map);
+		List<NoticeVo> noList = (List<NoticeVo>) map.get("result");
+		return noList;
+	}
+
 
 }
