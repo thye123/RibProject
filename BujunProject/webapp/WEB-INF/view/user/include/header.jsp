@@ -324,9 +324,9 @@
 								<li class="depth2"><a href="/club01?m1=05&m2=03&m3=01" class="off">독서동아리</a>
 									<ul>
 										<li class="depth3"><a href="/club01?m1=05&m2=03&m3=01" class="off">찬우물</a></li> 
-										<li class="depth3"><a href="/club02?m1=05&m2=03&m3=02" class="off">책넝쿨</a></li> 
-										<li class="depth3"><a href="/club03?m1=05&m2=03&m3=03" class="off">이목</a></li> 
-										<li class="depth3"><a href="/club04?m1=05&m2=03&m3=04" class="off">책마중</a></li> 
+										<li class="depth3"><a href="/club01?m1=05&m2=03&m3=02" class="off">책넝쿨</a></li> 
+										<li class="depth3"><a href="/club01?m1=05&m2=03&m3=03" class="off">이목</a></li> 
+										<li class="depth3"><a href="/club01?m1=05&m2=03&m3=04" class="off">책마중</a></li> 
 									</ul>									
 								</li>									
 								<li class="depth2"><a href="/bookclass?m1=05&m2=04" class="off">독서교실</a></li>
