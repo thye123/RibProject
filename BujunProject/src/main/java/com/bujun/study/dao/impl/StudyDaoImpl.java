@@ -96,5 +96,12 @@ public class StudyDaoImpl implements StudyDao {
 	public void studyEnd(HashMap<String, Object> map) {
 		sqlSession.update("StudyApp.stuEnd", map);
 	}
+
+	@Override
+	public List<StudyVo> mainList(HashMap<String, Object> map) {
+		sqlSession.selectList("Study.mainSelect", map);
+		List<StudyVo> list = (List<StudyVo>) map.get("result");
+		return list;
+	}
 	
 }

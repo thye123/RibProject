@@ -93,6 +93,7 @@ public class StudyController {
 		model.addAttribute("menu", map);
 		String m1 = String.valueOf(map.get("m1"));
 		String m2 = String.valueOf(map.get("m2"));
+		
 		StudyVo vo = studyService.getDetail(map);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("detail", vo);
