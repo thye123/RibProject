@@ -104,7 +104,7 @@
 						
 						var appliCondition = document.getElementById("appliCondition");
 						appliCondition.addEventListener("click", function(){
-							location.href = "/study/prcondition?m1=${m1}&m2=${m2}&stu_code=${detail.stu_code}&page_num=1&page_grp=1";
+							location.href = "/study/prcondition?m1=${m1}&m2=${m2}&stu_code=${detail.stu_code}&stu_idx=${detail.stu_idx}&page_num=1&page_grp=1";
 						});
 					}
 				</script>
