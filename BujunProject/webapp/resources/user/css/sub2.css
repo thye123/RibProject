@@ -118,9 +118,9 @@
 	.boardBtn02 {display:inline-block;width:70px;padding:12px 5px 10px; text-align:center;background:#394c67; color:#fff; font-weight:400; transition: all 0.3s ease-out;}
 }
 
-.btn_down, .btn_down:hover {
+/*  .btn_down, .btn_down:hover {
     background-image: url(../images/sub/down.png);
-}
+} */ 
 .btn_con {
     display: inline-block;
     margin-bottom: 5px;

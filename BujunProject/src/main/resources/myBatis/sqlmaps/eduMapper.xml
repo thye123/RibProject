@@ -104,7 +104,8 @@
  
  <select id="eduing" statementType="CALLABLE" parameterType="hashmap"
  resultType="com.bujun.education.vo.EduVo">
-  {CALL PKG_EDUCATION.PROC_EDUING_LIST(#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=selEdu})}
+  {CALL PKG_EDUCATION.PROC_EDUING_LIST(#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=selEdu}
+  ,#{cnt, mode=OUT,jdbcType=NUMERIC})}
  </select>
  
  </mapper>

@@ -181,9 +181,9 @@ a.btn_boards {
       <li><img
          src="${pageContext.request.contextPath}/resources/user/images/sub/loca_home.jpg"
          alt="" /></li>
-      <li>독서문화</li>
-      <li>독서동아리</li>
-      <li>찬우물</li>
+      <li>평생교육</li>
+      <li>평생학습</li>
+      <li>운영프로그램</li>
    </ul>
 </div>
 <!-- //location -->
@@ -271,10 +271,10 @@ a.btn_boards {
                <tbody>
                   <tr>
                      <th class="c">아이디</th>
-                     <td><input type="text" name="liap_appliyer"
-                        class="liap_apname" placeholder="이름입력" /></td>
-                     <td colspan="2"><b>도서번호</b> <input type="text"
-                        name="liap_aprimemnum" class="liap_appliyer" /></td>
+                     <td><input type="text" name="liap_appliyer" value="${sessionScope.mem_id}"
+                        class="liap_apname" readonly="readonly" /></td>
+                     <td colspan="2"><b>도서번호</b> <input type="text" value="${sessionScope.rimem_num}"
+                        name="liap_aprimemnum" class="liap_appliyer"  readonly="readonly"/></td>
                   </tr>
                   <tr>
                      <th class="c">이름</th>
@@ -316,6 +316,7 @@ a.btn_boards {
                   </tr>
                   
                   <tr>
+					 <th class="c">학년</th>
                      <td colspan="3">
                         <select name="liap_grade" class="grade">
                            <option value="">전체선택</option>

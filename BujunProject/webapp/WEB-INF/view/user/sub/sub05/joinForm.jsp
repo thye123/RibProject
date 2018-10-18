@@ -1,155 +1,181 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <title>동아리 신청서 양식</title>
+
 <style type="text/css">
+.index {
+	line-height: 0px;
+	display: inline-block;
+	width: 94%;
+}
 
-.wrap{
+.join_header {
+	/* float: left; */
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.auto_minjim {
+	width: 100%;
 	margin: 0 auto;
-}
-
-li{
-	list-style: none;
-	float: left;
-}
-
-.join_header{ 
-    float: left;
-	margin-top: 30px;
-	margin-bottom: 30px;
+	height: 245px;
 }
 
 .mintable {
-    height:228px;
-    display: block;
-    width: 100%;
-}
-
-
-.auto_minjim {
-    width: 100 0%;
-    margin: 0 auto;
-    height: 245px;
-}
-
-/* 
-.blue {
- 
-    padding: 8px 25px;
-    cursor: pointer;
-}
-
-.btn_board:hover, .btn_board.active {
-    
-    cursor: pointer;
-}
-
-input.btn_board {
-    height: 37px;
-    cursor: pointer;
-}
-
-
-
-li{
-	list-style: none;
-	float: left;
-}
-.index{
+	height: 153px;
+	display: block;
 	width: 100%;
-	height: 33px;
+	margin: 0 auto;
+	text-align: center;
 }
 
-.auto_minjim {
-    width: 50%;
-    margin: 0 auto;
-    height: 245px;
-}
-
-
-td{
-margin-top: 5px;
-    margin-bottom: 5px;
-    display: block;
+input[type="text"] {
+	height: 20px;
+	width: 100%;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 .btn_set.a {
-	margin-bottom: 10px;
+	margin-bottom: 15px;
+	text-align: center;
+	margin-top: 15px;
+}
+
+li {
+	list-style: none;
+}
+
+.btn_set {
+	padding: 10px 0;
+	overflow: hidden;
+}
+
+.btn_set.r {
 	margin-top: 10px;
- }
- */
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+input[type=submit].btn_board {
+	cursor: pointer;
+	margin: 0 auto;
+	text-decoration: none;
+	background: #696969;
+	color: #fff;
+	padding: 8px 25px;
+}
+
+.btn_board {
+	cursor: pointer;
+	margin: 0 auto;
+	text-decoration: none;
+	background: #696969;
+	color: #fff;
+	padding: 8px 25px;
+}
 </style>
+
+
+<script type="text/javascript">
+	onload = function(){
+		var cluapp_appname =document.getElementsByClassName('cluapp_appname')
+		var cluapp_appphone =document.getElementsByClassName('cluapp_appphone')
+		var join = document.getElementById('join');
+
+		$('#join').submit(function(){
+			alert('bb');
+			if (cluapp_appname[0].value == '') {
+				alert('이름을 입력 해주세요')
+				cluapp_appname[0].focus();
+				return false;
+			}
+
+			if (cluapp_appphone[0].value == '') {
+				alert('전화번호 입력 해주세요')
+				cluapp_appphone[0].focus();
+				return false;
+			}
+		});	
+	}
+</script>
+
 </head>
 <body>
-<div class="wrap">
+	<div class="wrap">
 
-	<div class="index">
-		<ul>
-			<li><img src="${pageContext.request.contextPath}/resources/user/images/sub/loca_home.jpg" alt="" /></li>
-			<li>가입신청서</li>
-		</ul>
-	</div>
-	
+		<div class="index">
+			<ul>
+				<li><img src="/resources/user/images/common/logo.png" alt="" /></li>
+			</ul>
+		</div>
+
 		<div class="join_header">
-			<b>동아리 신청서 입니다.!</b>
+			<h3 class="tbul2 mg_b10">가입 신청서</h3>
 		</div>
-	
 
-	<div class="auto_minjim">
-	
-	<form action="/joinClub/Proc" method="POST">
-		<input type="hidden" name="cluapp_code" value="${cluapp_code}"/>
-		<table class="mintable">
-			<colgroup>
-				<col style="width: 20%;">
-				<col style="width: 55%;">
-				<col>
-			</colgroup>
-			
-			<tbody>
-			
-				<tr>
-					<th class="c">신청자</th>
-					<td><input type="text" name="cluapp_appmemid" value="${sessionScope.mem_id}" readonly="readonly"/></td>
-				</tr>
 
-				<tr>
-					<th class="c">도서번호</th>
-					<td colspan="2"><input type="text" name="cluapp_rimemnum" value="${sessionScope.rimem_num}" readonly="readonly"/></td>
-				</tr>
-				
-				 <tr>
-					<th class="c">이름</th>
-					<td colspan="2"><input type="text" name="cluapp_appname" /></td>
-				</tr>
-				
-				<tr>
-					<th class="c">연락처</th>
-					<td colspan="2"><input type="text" name="cluapp_appphone" /></td>
-				</tr>
-			</tbody>
-			
-		</table>
-	
-	
-	  	<div class="btn_set a">
-				<input type="submit" value="제출"  class="blue"/> 
-				<input type="reset" value="닫기" class="btn_board" />
-		</div>
+		<div class="auto_minjim">
+
+			<form action="/joinClub/Proc" method="POST" id="join">
+				<input type="hidden" name="cluapp_code" value="${cluapp_code}" />
+				<table class="mintable">
+					<colgroup>
+						<col style="width: 20%;">
+						<col style="width: 55%;">
+						<col>
+					</colgroup>
+
+					<tbody>
+
+						<tr>
+							<th class="c">신청자</th>
+							<td><input type="text" name="cluapp_appmemid"
+								value="${sessionScope.mem_id}" readonly="readonly" /></td>
+						</tr>
+
+						<tr>
+							<th class="c">도서번호</th>
+							<td colspan="2"><input type="text" name="cluapp_rimemnum"
+								value="${sessionScope.rimem_num}" readonly="readonly" /></td>
+						</tr>
+
+						<tr>
+							<th class="c">이름</th>
+							<td colspan="2"><input type="text" class="cluapp_appname" name="cluapp_appname" /></td>
+						</tr>
+
+						<tr>
+							<th class="c">연락처</th>
+							<td colspan="2"><input type="text"  class="cluapp_appphone" name="cluapp_appphone" /></td>
+						</tr>
+					</tbody>
+
+				</table>
+
+
+				<div class="btn_set r">
+					<input type="submit" value="제출" class="btn btn_board" /> <input
+						type="reset" value="닫기" class="btn_board" />
+				</div>
+
 			</form>
-	
+
 		</div>
 
-</div>
+	</div>
 
-</div>
-		
+	</div>
+
 
 </body>
 </html>

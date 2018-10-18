@@ -3,27 +3,8 @@
  */
 
 window.onload = function() {
-	var sel = document.getElementById('sel');
-	var serForm = document.getElementById('serForm');
-	var keyword = document.getElementById('keyword');
-	//alert(keyword.value);
-	serForm.onsubmit = function(e) {
-		e.preventDefault();
-
-		if (sel.value == '') {
-			alert('검색 조건을 입력해주세요');
-			sel.focus();
-			return false;
-		}
-		if (keyword.value == '') {
-			alert('검색 값을 입력해주세요')
-			keyword.focus();
-			return false;
-		}
-	}
 
 	/*버튼 색상 변경 page 임의 1 지정 초기값 해놓음 나중에 변경해라 돼지민짐*/
-
 	function changeBlock() {
 		var pageBtn = document.getElementsByClassName('pageBtn');
 		for (var i = 0; i < pageBtn.length; i++) {
@@ -60,11 +41,12 @@ function display_table() {
 }
 
 function pagemaker(keyword, clb_clucode, keyfield, pagecount) {
-
+	alert("pageMakrer:"+keyword);
+	
 	var page = 1
 	var pagegrp = 1
 	var clb_clucode = "CUS0001"
-	alert(clb_clucode);
+	//alert(clb_clucode);
 	$.ajax({
 				url : '/CluBoard/paging/',
 				data : {
@@ -176,13 +158,24 @@ $(".pageBtn").click(function(event) {
 	$(function() {
 		$("#serForm").on('submit', function(e) {
 			var keyword = $("#keyword").val();
-			
+			alert("a"  + keyword)
 			var clb_clucode = "CUS0001";
 			var keyfield = $("select[name=keyfield]").val();
 			var page = "1";
 			var pagecount = "10";
 			var pagegrp = "1";
 			e.preventDefault();
+			if (keyfield == '') {
+				alert('검색 조건을 입력해주세요');
+				sel.focus();
+				return false;
+			}
+			if (keyword == '') {
+				alert('검색 값을 입력해주세요')
+				keyword.focus();
+				return false;
+			}
+
 			$.ajax({
 				url : '/CluBoard/view/',
 				data : {

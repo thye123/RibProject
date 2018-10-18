@@ -2,7 +2,7 @@ package com.bujun.club.vo;
 
 public class ClubVo {
 		
-	//¸®½ºÆ®¸¦ °¡Á® ¿À±â À§ÇÑ VO 
+	//ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ VO 
 	
 		private int clb_idx;
 		private String clb_clucode;	
@@ -17,9 +17,9 @@ public class ClubVo {
 		private int clb_count;
 		private String keyfield;
 		private String keyword;
-		private String file_filename;
+		private String file_filename;	
 		
-		//ÆäÀÌÂ¡ °ü·Ã ½ÃÀÛ 
+		//ï¿½ï¿½ï¿½ï¿½Â¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 		private int  count;
 		private int start;
 		private int end;
@@ -29,7 +29,7 @@ public class ClubVo {
 		private int page;
 		private int pagecount;
 		private int tempEnd;
-		//Å×½ºÅ¸ÇÒ ÀÓÀÇÀÇ º¯¼ö 
+		//ï¿½×½ï¿½Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 		private int tmep; 
 		
 		public int getTmep() {
@@ -235,60 +235,55 @@ public class ClubVo {
 		
 		//method
 		public ClubVo calcPage(int page, int pagecount, int count
-				,int pagegrp) { // pageº¯¼ö´Â ÇöÀç ÆäÀÌÁö¹øÈ£ 
+				,int pagegrp) { // pageï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ 
 			ClubVo vo = new ClubVo();
-			//³¡¹øÈ£ 
 			
 			int tempEnd = (int)(Math.ceil(page / 10.0) * 10); 
-			//³¡¹øÈ£ ±¸ÇÏ±â·¡ 
+			//ï¿½ï¿½ï¿½ï¿½È£ ï¿½ï¿½ï¿½Ï±â·¡ 
 			
 			int end  = (pagegrp * pagecount);
 			vo.setEnd(end);
-			//½ÃÀÛÆäÀÌÁö 
+			
 			int startemp = ( (pagegrp-1) * pagecount) +1;
 			vo.setStart(startemp);
-			//³¡ ¹øÈ£ ±¸ÇÏ±â ÀÔ´Ï´Ù 
 			
-			int temps = count % 10;
-			
-			if(temps==0) {
-				int temp = (count/10);
-				
+			int cntMake = 0;
+			if(count % 10 == 0) {
+				cntMake = (count/10);
 				vo.setEnd(end);
-				System.out.println("temps1" + temp);
-				vo.setTmep(temp);
+				System.out.println("temps1" + cntMake);
+				vo.setTmep(cntMake);
 			}else {
 				
-				int temp =  (count/10)+1;
+				cntMake =  (count/10)+1;
+				System.out.println("temps2" + cntMake);
 				
-				if(temp<end) {
-					vo.setEnd(temp);
-					System.out.println("temps2" + temp);
-					vo.setTmep(temp);
+				if(cntMake<end) {
+					vo.setEnd(cntMake);
+					System.out.println("temps2" + cntMake);
+					vo.setTmep(cntMake);
 				}
+				
+				vo.setTmep(cntMake);
 			}
 			
-			
-			/*this.prev = this.start != 1;*/
+
 			if(page!=1) {
-/*				//
-				ÇöÀç ÀÖ´Â ÆäÀÌÁö°¡ 1ÀÌ ¾Æ´Ï¸é 
-				½ÃÀÛÀÌ 1 ÀÌ ¾Æ´Ï¸é ÀÌÀüÀ¸·Î µ¹¸±¼ö ÀÖµµ·Ï */
+
 				this.prev= true;
 				vo.setPrev(true);
 			}else {
 				if(page==1) {
-					//1ÀÌ¸é ÀÌÀü¹öÆ°ÀÌ È°¼ºÈ­ ¸øµÇ°Ô 
 					this.prev=false;
 					vo.setPrev(false);
 				}
 			}
+			
 			this.next = this.end * 10 < this.count; 
 			
 			vo.setTempEnd(tempEnd);
 			vo.setPage(page);
 			vo.setNext(next);
-			vo.setTmep(temps);
 			vo.setCount(count);
 			vo.setPagecount(pagecount);
 			vo.setPagegrp(pagegrp);

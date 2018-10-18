@@ -51,13 +51,6 @@ a.btn_board {
    <!-- content 시작 -->
 
    <!-- table -->
-   <div class="scroll_info">
-      <span class="arr_l"></span> <span class="scroll_icon"></span>
-      <p class="pinfo">좌우로 스크롤 하시면 전체 내용을 확인하실 수 있습니다.</p>
-      <span class="arr_r"></span>
-   </div>
-
-   <div class="auto_box mg_b40">
 
       <table class="board_read">
          <colgroup>
@@ -137,9 +130,8 @@ CAT_NAME,  일반 프로그램 / 초딩 유아 -->
       <!-- //게시판테이블(리스트) -->
       <!-- 버튼 들어간다 (수강 신청  / 목록으로 ) -->
       <div class="btn_set r mg_t10">
-         <a href="/opprogram01/apply?m1=${m1}&m2=${m2}&m3=${m3}&listu_idx=${edu.listu_idx}&listu_code=${edu.listu_code}
-         &listu_catcode=${edu.listu_catcode}" class="btn btn_board">수강신청</a> <a 
-         href="/opprogram01?m1=${m1}&m2=${m2}&m3=${m3}"
+         <a href="/opprogram01/apply?m1=${m1}&m2=${m2}&m3=${m3}&listu_idx=${edu.listu_idx}&listu_code=${edu.listu_code}&listu_catcode=${edu.listu_catcode}" class="btn btn_board">수강신청</a> <a 
+         href="/opprogram01?m1=${m1}&m2=${m2}&m3=${m3}&page=1&pagecount=10&pagegrp=1"
          class="btn btn_board">목록으로</a>
       </div>
 

@@ -41,9 +41,11 @@
 <div class="loca">
    <ul>
       <li><img src="${pageContext.request.contextPath}/resources/user/images/sub/loca_home.jpg" alt="" /></li>
-      <li>도서관이용</li>
-      <li>자료실소개</li>
-      <li>종합자료실</li>
+      <li>평생 교육</li>
+      <li>평생 학습</li>
+      <li>프로그램 신청확인</li>
+      
+      
    </ul>
 </div>
 <!-- //location -->

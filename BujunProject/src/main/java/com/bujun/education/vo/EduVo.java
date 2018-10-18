@@ -35,66 +35,25 @@ public class EduVo {
 	private String	file_regdate;
 	
 	
+	private int  cnt;
+	private int start;
+	private int end;
+	private boolean prev;
+	private boolean next;
+	private int pagegrp;
 	private int page;
 	private int pagecount;
-	private int pagegrp;
-	private int endpage;
-	private int statrpage;
+	private int tempEnd;
+	private int tmep;
 	
-
-	public int getStatrpage() {
-		return statrpage;
-	}
-	public void setStatrpage(int statrpage) {
-		this.statrpage = statrpage;
-	}
-	public int getEndpage() {
-		return endpage;
-	}
-	public void setEndpage(int endpage) {
-		this.endpage = endpage;
-	}
-	public int getPage() {
-		return page;
-	}
-	public void setPage(int page) {
-		this.page = page;
-	}
-	public int getPagecount() {
-		return pagecount;
-	}
-	public void setPagecount(int pagecount) {
-		this.pagecount = pagecount;
-	}
-	public int getPagegrp() {
-		return pagegrp;
-	}
-	public void setPagegrp(int pagegrp) {
-		this.pagegrp = pagegrp;
-	}
-	public String getLiap_apname() {
-		return liap_apname;
-	}
-	public void setLiap_apname(String liap_apname) {
-		this.liap_apname = liap_apname;
-	}
-	public String getLiap_regdate() {
-		return liap_regdate;
-	}
-	public void setLiap_regdate(String liap_regdate) {
-		this.liap_regdate = liap_regdate;
-	}
+	
+	
+	
 	public int getListu_idx() {
 		return listu_idx;
 	}
 	public void setListu_idx(int listu_idx) {
 		this.listu_idx = listu_idx;
-	}
-	public String getListu_content() {
-		return listu_content;
-	}
-	public void setListu_content(String listu_content) {
-		this.listu_content = listu_content;
 	}
 	public String getListu_code() {
 		return listu_code;
@@ -132,10 +91,10 @@ public class EduVo {
 	public void setListu_studate(String listu_studate) {
 		this.listu_studate = listu_studate;
 	}
-	public String getSistu_content() {
+	public String getListu_content() {
 		return listu_content;
 	}
-	public void setSistu_content(String listu_content) {
+	public void setListu_content(String listu_content) {
 		this.listu_content = listu_content;
 	}
 	public int getListu_person() {
@@ -167,6 +126,24 @@ public class EduVo {
 	}
 	public void setListu_gubun(String listu_gubun) {
 		this.listu_gubun = listu_gubun;
+	}
+	public String getListu_recruit() {
+		return listu_recruit;
+	}
+	public void setListu_recruit(String listu_recruit) {
+		this.listu_recruit = listu_recruit;
+	}
+	public String getLiap_apname() {
+		return liap_apname;
+	}
+	public void setLiap_apname(String liap_apname) {
+		this.liap_apname = liap_apname;
+	}
+	public String getLiap_regdate() {
+		return liap_regdate;
+	}
+	public void setLiap_regdate(String liap_regdate) {
+		this.liap_regdate = liap_regdate;
 	}
 	public int getFile_idx() {
 		return file_idx;
@@ -216,11 +193,68 @@ public class EduVo {
 	public void setFile_regdate(String file_regdate) {
 		this.file_regdate = file_regdate;
 	}
-	public String getListu_recruit() {
-		return listu_recruit;
+	
+	
+	
+	public int getCnt() {
+		return cnt;
 	}
-	public void setListu_recruit(String listu_recruit) {
-		this.listu_recruit = listu_recruit;
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+	public int getStart() {
+		return start;
+	}
+	public void setStart(int start) {
+		this.start = start;
+	}
+	public int getEnd() {
+		return end;
+	}
+	public void setEnd(int end) {
+		this.end = end;
+	}
+	public boolean isPrev() {
+		return prev;
+	}
+	public void setPrev(boolean prev) {
+		this.prev = prev;
+	}
+	public boolean isNext() {
+		return next;
+	}
+	public void setNext(boolean next) {
+		this.next = next;
+	}
+	public int getPagegrp() {
+		return pagegrp;
+	}
+	public void setPagegrp(int pagegrp) {
+		this.pagegrp = pagegrp;
+	}
+	public int getPage() {
+		return page;
+	}
+	public void setPage(int page) {
+		this.page = page;
+	}
+	public int getPagecount() {
+		return pagecount;
+	}
+	public void setPagecount(int pagecount) {
+		this.pagecount = pagecount;
+	}
+	public int getTempEnd() {
+		return tempEnd;
+	}
+	public void setTempEnd(int tempEnd) {
+		this.tempEnd = tempEnd;
+	}
+	public int getTmep() {
+		return tmep;
+	}
+	public void setTmep(int tmep) {
+		this.tmep = tmep;
 	}
 	@Override
 	public String toString() {
@@ -232,10 +266,13 @@ public class EduVo {
 				+ liap_apname + ", liap_regdate=" + liap_regdate + ", file_idx=" + file_idx + ", file_board_idx="
 				+ file_board_idx + ", file_board_code=" + file_board_code + ", file_name=" + file_name + ", file_size="
 				+ file_size + ", file_real_name=" + file_real_name + ", file_ext=" + file_ext + ", file_regdate="
-				+ file_regdate + ", page=" + page + ", pagecount=" + pagecount + ", pagegrp=" + pagegrp + ", endpage="
-				+ endpage + ", statrpage=" + statrpage + "]";
+				+ file_regdate + ", cnt=" + cnt + ", start=" + start + ", end=" + end + ", prev=" + prev + ", next="
+				+ next + ", pagegrp=" + pagegrp + ", page=" + page + ", pagecount=" + pagecount + ", tempEnd=" + tempEnd
+				+ ", tmep=" + tmep + "]";
 	}
 	
+	
+
 	
 	
 	

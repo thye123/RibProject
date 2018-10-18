@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Reservation">
+
+	<resultMap type="com.bujun.reservation.vo.SeatNumVo"
+		id="resmap">
+		<result property="res_seatcode" column="RES_SEATCODE"
+			javaType="String" />
+		<result property="seat_num" column="SEAT_NUM" javaType="int" />
+	</resultMap>
+
+	<resultMap type="com.bujun.reservation.vo.ReservationVo"
+		id="reserva">
+		<result property="res_memid" column="RES_MEMID"
+			javaType="String" />
+		<result property="res_seatcode" column="RES_SEATCODE"
+			javaType="String" />
+	</resultMap>
+
+
+	<insert id="upapply" statementType="CALLABLE"
+		parameterType="hashmap">
+		{CALL BJL_PKG_RESERVATION.PROC_APPLY_RES(
+		#{area_code, mode=IN, jdbcType=VARCHAR}
+		,#{res_memid, mode=IN ,jdbcType=VARCHAR}
+		,#{res_rimem_num,mode=IN, jdbcType=VARCHAR}
+		,#{res_seatcode,mode=IN, jdbcType=VARCHAR}
+		,#{res_date,mode=IN ,jdbcType=VARCHAR}
+		,#{res_sttime,mode=IN ,jdbcType=VARCHAR}
+		,#{res_edtime,mode=IN ,jdbcType=VARCHAR})}
+	</insert>
+
+	<select id="seatCode" statementType="CALLABLE"
+		resultType="com.bujun.reservation.vo.ReservationVo"
+		parameterType="hashmap">
+		{CALL BJL_PKG_RESERVATION.PROC_SEAT_NUM(#{param, mode=OUT, jdbcType=CURSOR,
+		javaType=RESULTSET, resultMap=resmap})}
+	</select>
+
+	<delete id="delseat" statementType="CALLABLE"
+		parameterType="hashmap">
+		{CALL BJL_PKG_RESERVATION.PROC_DEL_SEAT(
+		#{res_memid, mode=IN, jdbcType=VARCHAR}
+		,#{res_seatcode,mode=IN ,jdbcType=VARCHAR})}
+	</delete>
+
+	<select id="ajaxDel" statementType="CALLABLE"
+		resultType="com.bujun.reservation.vo.ReservationVo">
+		{CALL BJL_PKG_RESERVATION.PROC_TEST_DUAL(#{cur, mode=OUT,
+		jdbcType=CURSOR,javaType=RESULTSET , resultMap=reserva})}
+	</select>
+
+</mapper>

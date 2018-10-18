@@ -71,7 +71,7 @@
  		<ul class="studyProgram">
 			<c:forEach var="EdingData" items="${EdingData}">
 				<li>
-					<a class="link" href="/opprogram01/dCon?m1=${m1}&m2=${m2}&m3=${m3}&listu_catcode=${proList.listu_code}&page=${ed.page}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}">
+					<a class="link" href="/opprogram01/dCon?m1=${m1}&m2=${m2}&m3=${m3}&listu_catcode=${EdingData.listu_code}&page=${pageMaker.page}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp}">
 						<ul>
 							<li class="title">${EdingData.listu_name}</li>
 							<li class="n03"><span>교육대상</span> : ${EdingData.listu_target}</li>
@@ -92,39 +92,34 @@
 	<div class="r mg_t20 btns">
 		<input type="button" class="btns_black" id="newEdu" value="새글쓰기" style="border:0;"/>
 	</div>
-	
+	<!-- 페이지 -->
 		<div class="board-list-paging">
 		<div class="pagelist">
-			<a href="/opprogram01?m1=04&m2=01&m3=02&page=1&pagecount=10&pagegrp=1"><span class="firstpage1"><span>처음 페이지</span></span></a>
-					
-			<span class="prevblock1 hidden"><span>1 페이지</span></span>
-			<span class="beforepage1 "><span>이전페이지없음</span></span> <!-- 이전페이지 없을때 -->
-			
 		
-		 	<c:set var="startpage" value="${ed.statrpage}"></c:set>
-		 	<c:set var="endpage" value="${ed.endpage}"></c:set>
-		
-			<c:forEach var="i"  begin="${startpage}" end="${endpage}">
-				<a class="pageBtn" 
-				href="/opprogram01?m1=${m1}&m2=${m2}&m3=${m3}&page=${i}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}">
-				<span>${i}</span></a>
-			</c:forEach>
-		
-			<a class="afterpage hidden" href="#"><span>앞페이지</span></a>
-			<c:choose>
-		 
-	    <c:when test="${ed.page >= ed.endpage}">
-	      <a class="nextblock" href="#"></a>	
-	    </c:when>
+				<!-- 이전 10개  -->		
+				<c:if test="${pageMaker.start > 10}">
+					<a class="prevblock" href="/opprogram01?m1=${m1}&m2=${m2}&m3=${m3}&page=${pageMaker.page-1}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp-1}"><span>이전</span></a>
+				</c:if>
 
-	    <c:otherwise>
-	    	<a class="nextblock" href="/opprogram01?m1=${m1}&m2=${m2}&m3=${m3}&page=${ed.page+1}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}"><span>6 페이지</span></a>
-	    </c:otherwise>
-	</c:choose>
-	
-			<a class="lastpage" href="#"><span>21 페이지</span></a>
+			<!-- 페이징 -->
+			
+				<c:forEach var="Paging" begin="${pageMaker.start}"
+					end="${pageMaker.end}" step="1">
+					<a class="default"
+						href="/opprogram01?m1=${m1}&m2=${m2}&m3=${m3}&page=${Paging}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp}"><span>${Paging}</span></a>
+				</c:forEach>
+
+				
+
+			<!-- 다음 10개 -->
+				<c:if
+					test="${pageMaker.start <= (pageMaker.tmep-10) && pageMaker.start > 0}">
+					<a class="nextblock"
+						href="/opprogram01?m1=${m1}&m2=${m2}&m3=${m3}&page=${pageMaker.page+1}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp+1}"><span>다음</span></a>
+				</c:if>
 		</div>
-	</div>
+	</div> 
+	<!-- 페이징 -->
 	
 	<!-- //content 끝 -->
 </div>

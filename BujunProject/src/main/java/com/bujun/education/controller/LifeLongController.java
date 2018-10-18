@@ -34,6 +34,9 @@ public class LifeLongController {
 		String m3 = String.valueOf(map.get("m3"));
 		//PagingData data = new PagingData();
 		Pgdata data= new Pgdata();
+		
+		
+		
 		//게시판 코드 확인
 		if(m1.equals("04")&&m2.equals("01")&&m3.equals("02")) {
 			listu_catcode = "CAT0023";
@@ -48,13 +51,18 @@ public class LifeLongController {
 		
 		List<EduVo> list = eduService.edulist(map);
 		map.put("cnt", map.get("cnt"));
-		EduVo  ed  = data.getPaging(map);
+		System.out.println("cnt: " + map.get("cnt"));
+		EduVo  pageMaker  = data.getPaging(map);
+		
+		System.out.println("cnt 값 :" + pageMaker.getCnt());
+		System.out.println("ed: cnt " + pageMaker.toString());
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("m1",m1);
 		mv.addObject("m2",m2);
 		mv.addObject("m3",m3);
-		mv.addObject("ed",ed);
+		mv.addObject("pageMaker",pageMaker);
+		
 		mv.addObject("cnt",map.get("cnt"));
 		mv.addObject("pro_list", list);
 		mv.setViewName("user/sub/sub04/operatingprogram");
@@ -239,12 +247,18 @@ public class LifeLongController {
 		String m3 = String.valueOf(map.get("m3"));
 		
 		ModelAndView mv = new ModelAndView();
+		
 		List<EduVo> EdingData = eduService.EduingData(map);
-		System.out.println("돌아오는 결과 값 " +EdingData.toString());
+		System.out.println("map:" + map);
+		Pgdata data= new Pgdata();
+		EduVo  pageMaker  = data.getPaging(map);
+		
+		mv.addObject("pageMaker",pageMaker);
 		mv.addObject("m1",m1);
 		mv.addObject("m2",m2);
 		mv.addObject("m3",m3);
 		mv.addObject("EdingData",EdingData);
+		
 		mv.setViewName("user/sub/sub04/edingdata");
 		return mv;
 	}

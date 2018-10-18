@@ -11,45 +11,64 @@ public class Pgdata {
 	public EduVo getPaging(HashMap<String, Object> map) {
 		
 		EduVo vo = new EduVo();
-		List<EduVo> vos = new ArrayList<>();
 		
 		int page      = Integer.parseInt(String.valueOf(map.get("page")));
 		int pagecount = Integer.parseInt(String.valueOf(map.get("pagecount")));
 		int pagegrp   = Integer.parseInt(String.valueOf(map.get("pagegrp")));
 		
+		int cnt   =Integer.parseInt(String.valueOf(map.get("cnt")));
 		
-		int count   =Integer.parseInt(String.valueOf(map.get("cnt")));
-		/*		
-				(int) map.get("cnt");*/
-		System.out.println("map count " +count);
-		
-		int startpage= ( (pagegrp-1) * pagecount) +1;
+		int tempEnd = (int)(Math.ceil(page / 10.0) * 10); 
+		//����ȣ ���ϱⷡ 
 		
 		int end  = (pagegrp * pagecount);
+		vo.setEnd(end);
 		
+		int startemp = ( (pagegrp-1) * pagecount) +1;
+		vo.setStart(startemp);
 		
-		int temps = count % 10;
-		
-		if(temps==0) {
-			int temp = (count/10);
-			vo.setEndpage(end);
-			System.out.println("temps1" + temp);
-		
+		int cntMake = 0;
+		if(cnt % 10 == 0) {
+			cntMake = (cnt/10);
+			vo.setEnd(end);
+			System.out.println("temps1" + cntMake);
+			vo.setTmep(cntMake);
 		}else {
 			
-			int temp =  (count/10)+1;
-			if(temp < end) {
-				vo.setEndpage(temp);
-			}else {
-				vo.setEndpage(end);
+			cntMake =  (cnt/10)+1;
+			System.out.println("temps2" + cntMake);
+			
+			if(cntMake<end) {
+				vo.setEnd(cntMake);
+				System.out.println("temps2" + cntMake);
+				vo.setTmep(cntMake);
+			}
+			
+			vo.setTmep(cntMake);
+		}
+		
+
+		if(page!=1) {
+			
+			//vo.isNext(true);
+			vo.setPrev(true);
+		}else {
+			if(page==1) {
+				//this.prev=false;
+				vo.setPrev(false);
 			}
 		}
 		
+	//	this.next = this.end * 10 < this.count; 
+		
+		vo.setTempEnd(tempEnd);
 		vo.setPage(page);
+	//	vo.setNext(next);
+		vo.setCnt(cntMake);
 		vo.setPagecount(pagecount);
 		vo.setPagegrp(pagegrp);
-		vo.setStatrpage(startpage);
-		return vo;
+		return vo; 
+
 		
 	}
 

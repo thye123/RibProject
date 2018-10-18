@@ -78,10 +78,14 @@ public class BuginControllor {
 		List<ClubVo> clubList = buginservice.getClub(map);
 		System.out.println("pass 값 조회 " + clubList.toString());
 		PagingData pg = new PagingData();
+	
 		ClubVo pageMaker = pg.pagdata(map);
+		System.out.println(pageMaker.toString());
+		
 		
 		mv.addObject("clu_name", clu.getClu_name());
 		mv.addObject("pageMaker", pageMaker);
+		
 		mv.addObject("clubList", clubList);
 		mv.addObject("clu_code", clu_code);
 		System.out.println("clu_code"+ clu_code);
