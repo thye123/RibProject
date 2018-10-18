@@ -87,14 +87,6 @@
 	<!-- content 시작 -->
 	
 	<!-- table -->
-	<div class="scroll_info">
-		<span class="arr_l"></span>
-		<span class="scroll_icon"></span>
-		<p class="pinfo">좌우로 스크롤 하시면 전체 내용을 확인하실 수 있습니다.</p>
-		<span class="arr_r"></span>
-	</div>
-	
-	<div class="auto_box mg_b40">			
 		<table class="tb_board">
 			<thead>
 				<tr>
@@ -103,7 +95,7 @@
 					<th scope="col" width="300">신청도서</th>
 					<th scope="col" width="100">저자</th>
 					<th scope="col" width="50">신청일</th>
-					<th scope="col" width="50">진행상태</th>
+					<th scope="col" width="50"  class="bnon">진행상태</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -116,26 +108,26 @@
 							<tr>
 								<td>${app.sc_idx}</td>
 								<td>${app.sc_memid}</td>
-								<td><a href="/wishbk/view?m1=03&m2=05&sc_idx=${app.sc_idx}">${app.sc_bookname}</a></td>
+								<td class="l"><a href="/wishbk/view?m1=03&m2=05&sc_idx=${app.sc_idx}">${app.sc_bookname}</a></td>
 								<td>${app.sc_author}</td>
 								<td>${app.sc_regdate}</td>
 								<c:choose>
 									<c:when test="${app.sc_during eq 1}">
-										<td>신청중</td>									
+										<td class="bnon">신청중</td>									
 									</c:when>
 									
 									<c:otherwise>
 										<c:choose>
 											<c:when test="${app.sc_during eq 2}">
-												<td>처리중</td>									
+												<td class="bnon">처리중</td>									
 											</c:when>
 											<c:otherwise>
 												<c:choose>
 													<c:when test="${app.sc_during eq 3}">
-														<td>배치완료</td>									
+														<td class="bnon">배치완료</td>									
 													</c:when>
 													<c:otherwise>
-														<td>취소</td>
+														<td class="bnon">취소</td>
 													</c:otherwise>
 												</c:choose>
 											</c:otherwise>
@@ -157,7 +149,6 @@
 				<div class="btn_1"><a href="/wishbk02/WriteForm?m1=03&m2=05">글쓰기</a></div>
 			</div>
 		</div>
-	</div>
 	<!-- //table -->
 	
 <!-- //content 끝 -->
