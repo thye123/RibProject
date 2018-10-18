@@ -427,11 +427,11 @@ a.btn_board {
 	
 	<c:choose>
 	    <c:when test="${pageMaker.prev == true}">
-			<a class="firstpage1" href="/club01/CluBoard?clb_clucode=${clu_code}&page=${pageMaker.page-1}&pagecount=10&pagegrp=1"><</a>
+			<a href="/club01/CluBoard?clb_clucode=${clu_code}&page=${pageMaker.page-1}&pagecount=10&pagegrp=1"><span class="firstpage1"><span>처음 페이지</span></span></a>
 	    </c:when>
 	
 	    <c:otherwise>
-	    	<a class="firstpage1" href="#"><</a>
+	    	<a href="#"><span class="firstpage1"><span>처음 페이지</span></span></a>
 	    </c:otherwise>
 
 	 </c:choose> 
