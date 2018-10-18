@@ -500,7 +500,7 @@
 }
 
 
-
+.frd_tt {width:80%;}
 
 
 
@@ -545,6 +545,10 @@
 	.sub_content_wrap .sub_con .con_mob_pad {padding:0 10px;}
 
 	.board_read .mob_none {display:none;}
+	.tb_board .mob_none {display:none;}
+	.tb_board colgroup {display:none;}
+	.tb_board .n01 {border-right:0;}
+	.frd_tt {width:100%;}
 	
 	/* 로그인 */
 	.con_login form {padding: 0 100px;}
