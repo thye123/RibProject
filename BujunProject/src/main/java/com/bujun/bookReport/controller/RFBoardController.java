@@ -267,7 +267,8 @@ public class RFBoardController {
 		
 		String mimeType = URLConnection.guessContentTypeFromName(file.getName());
 		
-		mimeType = "application/octet-stream";
+		/*mimeType = "application/octet-stream";*/
+		mimeType = "application/unknown";
 		
 		System.out.println("mimeType: " + mimeType);
 		response.setContentType(mimeType);
