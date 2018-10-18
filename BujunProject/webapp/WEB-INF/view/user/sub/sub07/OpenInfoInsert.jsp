@@ -52,7 +52,7 @@
 	<div class="sub_tit">정보공개</div>	
 	
 	<!-- content 시작 -->
-		<form action="/info03/iCon?ad_code=${ad_code}&page_num=1" method="post" enctype="multipart/form-data">
+		<form action="/info03/iCon?m1=${m1}&m2=${m2}&m3=${m3}&page_num=1" method="post" enctype="multipart/form-data">
 			<table class="board_read" cellspacing="1" cellpadding="1">
 				<tr>
 					<th class="c">글쓴이</th>

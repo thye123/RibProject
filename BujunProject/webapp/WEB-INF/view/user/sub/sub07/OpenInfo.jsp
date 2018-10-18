@@ -21,15 +21,11 @@
 		var m3 = "${m3}";
 		var code = "${ad_code}";
 		
-		alert("썅");
-		
 		if (code == "CAT0016" || (m1 == "07" && m2 == "01" && m3 == "03")) {
-			alert("시부럴");
 			subTitle[0].removeChild(subTitle[0].childNodes[0]);
 			var coment = document.createTextNode("정보목록");
 			subTitle[0].appendChild(coment);
 		}else{
-			alert("니미");
 			subTitle[0].removeChild(subTitle[0].childNodes[0]);
 			var coment = document.createTextNode("사전공표대상공개");
 			subTitle[0].appendChild(coment);
@@ -44,6 +40,12 @@
 		case "CAT0017":
 			searchForm.setAttribute("action", "/info03/search?m1=07&m2=01&m3=05&page_num=1&page_grp=1");			
 			break;
+		}
+		
+		var keyField = document.getElementById("keyfield");
+		var keyfield_val = "${keyfield}";
+		if(keyField.value == keyfield_val){
+			
 		}
 	}
 </script>
@@ -75,7 +77,7 @@
 		<div class="board_page">
 			<span class="p02">Total</span>
 			<span class="p01"> : ${tot_cnt}</span>
-			(<span class="p01">${page_num}</span>/${endnum}페이지)
+			(<span class="p01">${page_num}</span>/${tot_btcnt}페이지)
 		</div> 
 		<form name="search" method="post" id="searchForm">
 			<div class="board_sch">
@@ -177,12 +179,12 @@
 			<c:choose>
 				<c:when test="${keyword != null && keyfield != null}">
 					<c:if test="${startnum > 10}">
-						<a class="prevblock" href="/info03/search?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&m3=${m3}&page_num=${page_num}&page_grp=${page_grp-1}"><span>이전</span></a>
+						<a class="prevblock" href="/info03/search?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&m3=${m3}&page_num=${page_num-10}&page_grp=${page_grp-1}"><span>이전</span></a>
 					</c:if>
 				</c:when>
 				<c:otherwise>
 					<c:if test="${startnum > 10}">
-						<a class="prevblock" href="/info03?m1=${m1}&m2=${m2}&m3=${m3}&page_num=${page_num}&page_grp=${page_grp-1}"><span>이전</span></a>
+						<a class="prevblock" href="/info03?m1=${m1}&m2=${m2}&m3=${m3}&page_num=${page_num-10}&page_grp=${page_grp-1}"><span>이전</span></a>
 					</c:if>
 				</c:otherwise>
 			</c:choose>		
@@ -207,12 +209,12 @@
 			<c:choose>
 				<c:when test="${keyword != null && keyfield != null}">
 					<c:if test="${startnum <= (tot_btcnt-10) && startnum > 0}">
-						<a class="nextblock" href="/info03/search?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&m3=${m3}&page_num=${page_num}&page_grp=${page_grp+1}"><span>이전</span></a>
+						<a class="nextblock" href="/info03/search?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&m3=${m3}&page_num=${page_num+10}&page_grp=${page_grp+1}"><span>다음</span></a>
 					</c:if>
 				</c:when>
 				<c:otherwise>
 					<c:if test="${startnum <= (tot_btcnt-10) && startnum > 0}">
-						<a class="nextblock" href="/info03?m1=${m1}&m2=${m2}&m3=${m3}&page_num=${page_num}&page_grp=${page_grp+1}"><span>이전</span></a>
+						<a class="nextblock" href="/info03?m1=${m1}&m2=${m2}&m3=${m3}&page_num=${page_num+10}&page_grp=${page_grp+1}"><span>다음</span></a>
 					</c:if>
 				</c:otherwise>
 			</c:choose>

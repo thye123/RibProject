@@ -106,9 +106,7 @@ public class OpenInfoController {
 	@RequestMapping("/info03/iCon")
 	public String insertContent(@RequestParam HashMap<String, Object> map, Model model, HttpServletRequest req) {
 		model.addAttribute("menu", map);
-		int ad_idx = openInfoService.insertContent(map);
-		String ad_code = String.valueOf(map.get("ad_code"));
-		
+		String ad_code = "";
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
 		String m3 = String.valueOf(map.get("m3"));
@@ -125,6 +123,8 @@ public class OpenInfoController {
 				map.put("ad_code", ad_code);
 			}
 		}
+		
+		int ad_idx = openInfoService.insertContent(map);
 		
 		map.put("ad_idx", ad_idx);
 				

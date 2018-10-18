@@ -66,7 +66,7 @@
 		<div class="board_page">
 			<span class="p02">Total</span>
 			<span class="p01"> : ${tot_cnt}</span>
-			(<span class="p01">${page_num}</span>/${endnum}페이지)
+			(<span class="p01">${page_num}</span>/${tot_btcnt}페이지)
 		</div> 
 		<c:choose>
 			<c:when test="${stuap_code != null}">
@@ -211,12 +211,12 @@
 					<c:choose>
 						<c:when test="${keyfield != null}">
 							<c:if test="${startnum > 10}">
-								<a class="prevblock" href="/study/stusearch?keyfield=${keyfield}&m1=${m1}&m2=${m2}&page_num=${page_num}&page_grp=${page_grp-1}&stuap_code=${stuap_code}"><span>이전</span></a>
+								<a class="prevblock" href="/study/stusearch?keyfield=${keyfield}&m1=${m1}&m2=${m2}&page_num=${page_num-10}&page_grp=${page_grp-1}&stuap_code=${stuap_code}"><span>이전</span></a>
 							</c:if>
 						</c:when>
 						<c:otherwise>
 							<c:if test="${startnum > 10}">
-								<a class="prevblock" href="/study/prcondition?m1=${m1}&m2=${m2}&page_num=${page_num}&page_grp=${page_grp-1}&stu_code=${stuap_code}"><span>이전</span></a>
+								<a class="prevblock" href="/study/prcondition?m1=${m1}&m2=${m2}&page_num=${page_num-10}&page_grp=${page_grp-1}&stu_code=${stuap_code}"><span>이전</span></a>
 							</c:if>
 						</c:otherwise>
 					</c:choose>		
@@ -241,12 +241,12 @@
 					<c:choose>
 						<c:when test="${keyfield != null}">
 							<c:if test="${startnum <= (tot_btcnt-10) && startnum > 0}">
-								<a class="nextblock" href="/study/stusearch?keyfield=${keyfield}&m1=${m1}&m2=${m2}&page_num=${page_num}&page_grp=${page_grp+1}&stuap_code=${stuap_code}"><span>다음</span></a>
+								<a class="nextblock" href="/study/stusearch?keyfield=${keyfield}&m1=${m1}&m2=${m2}&page_num=${page_num+10}&page_grp=${page_grp+1}&stuap_code=${stuap_code}"><span>다음</span></a>
 							</c:if>
 						</c:when>
 						<c:otherwise>
 							<c:if test="${startnum <= (tot_btcnt-10) && startnum > 0}">
-								<a class="nextblock" href="/study/prcondition?m1=${m1}&m2=${m2}&page_num=${page_num}&page_grp=${page_grp+1}&stu_code=${stuap_code}"><span>다음</span></a>
+								<a class="nextblock" href="/study/prcondition?m1=${m1}&m2=${m2}&page_num=${page_num+10}&page_grp=${page_grp+1}&stu_code=${stuap_code}"><span>다음</span></a>
 							</c:if>
 						</c:otherwise>
 					</c:choose>
@@ -256,12 +256,12 @@
 					<c:choose>
 						<c:when test="${keyword != null && keyfield != null}">
 							<c:if test="${startnum > 10}">
-								<a class="prevblock" href="/study/appSearch?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&page_num=${page_num}&page_grp=${page_grp-1}&mem=${sessionScope.rimem_num}"><span>이전</span></a>
+								<a class="prevblock" href="/study/appSearch?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&page_num=${page_num-10}&page_grp=${page_grp-1}&mem=${sessionScope.rimem_num}"><span>이전</span></a>
 							</c:if>
 						</c:when>
 						<c:otherwise>
 							<c:if test="${startnum > 10}">
-								<a class="prevblock" href="/study/appList?m1=${m1}&m2=${m2}&page_num=${page_num}&page_grp=${page_grp-1}&mem=${sessionScope.rimem_num}"><span>이전</span></a>
+								<a class="prevblock" href="/study/appList?m1=${m1}&m2=${m2}&page_num=${page_num-10}&page_grp=${page_grp-1}&mem=${sessionScope.rimem_num}"><span>이전</span></a>
 							</c:if>
 						</c:otherwise>
 					</c:choose>		
@@ -286,12 +286,12 @@
 					<c:choose>
 						<c:when test="${keyword != null && keyfield != null}">
 							<c:if test="${startnum <= (tot_btcnt-10) && startnum > 0}">
-								<a class="nextblock" href="/study/appSearch?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&page_num=${page_num}&page_grp=${page_grp+1}&mem=${sessionScope.rimem_num}"><span>다음</span></a>
+								<a class="nextblock" href="/study/appSearch?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&page_num=${page_num+10}&page_grp=${page_grp+1}&mem=${sessionScope.rimem_num}"><span>다음</span></a>
 							</c:if>
 						</c:when>
 						<c:otherwise>
 							<c:if test="${startnum <= (tot_btcnt-10) && startnum > 0}">
-								<a class="nextblock" href="/study/appList?m1=${m1}&m2=${m2}&page_num=${page_num}&page_grp=${page_grp+1}&mem=${sessionScope.rimem_num}"><span>다음</span></a>
+								<a class="nextblock" href="/study/appList?m1=${m1}&m2=${m2}&page_num=${page_num+10}&page_grp=${page_grp+1}&mem=${sessionScope.rimem_num}"><span>다음</span></a>
 							</c:if>
 						</c:otherwise>
 					</c:choose>
