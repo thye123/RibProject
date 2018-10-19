@@ -123,12 +123,10 @@ public class SearchController {
 			BjlSearchVo vo = null;
 			List<BjlSearchVo> list = new ArrayList<>();
 			
-			
 			//// xml 파싱
 			DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
 			Document doc = dBuilder.parse(url);
-			
 			
 			//root tag
 			doc.getDocumentElement().normalize();
