@@ -334,7 +334,7 @@
 	.boxlist li select, input[type=text]{height:30px;}
 	.boxlist li input[type=text]{text-indent:10px;}
 	.boxlist #lec_div_lvl_s1, #lec_div_lvl_s2{width:48%;}
-	.boxlist{padding-left:0px !important; background:none !important;}
+	.boxlist {padding:10px !important; background:none !important;}
 	.boxlist li .cons .w5s{float:left; width:35%; padding-left:15px; box-sizing:border-box;}
 	.boxlist li .cons span.aaaa{left:35%;}
 }
