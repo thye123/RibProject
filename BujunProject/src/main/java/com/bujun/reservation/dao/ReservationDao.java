@@ -13,4 +13,6 @@ public interface ReservationDao {
 
 	public List<ReservationVo> getClassID(HashMap<String, Object> map);
 
+	public void upReserve(HashMap<String, Object> map);
+
 }

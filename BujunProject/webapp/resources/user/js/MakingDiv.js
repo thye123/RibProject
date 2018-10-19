@@ -60,7 +60,7 @@ function makingDiv(){
 		mak.setAttribute('class', 'mak')
 		mak.setAttribute('style', 'border:1px solid black');
 		mak.setAttribute('name', arr[i]);
-		res02[0].append(mak);
+		res02[0].appendChild(mak);
 	} 
 	
 }
@@ -179,13 +179,13 @@ function makingBtag(){
 			var bmak = document.createElement('b');
 			bmak.setAttribute('class', 'SEAT' );
 			var text = document.createTextNode('SEAT0' + arr[i]);
-			bmak.append(text);
-			mak[i].append(bmak);
+			bmak.appendChild(text);
+			mak[i].appendChild(bmak);
 			var inputs = document.createElement('input');
 			inputs.setAttribute('type', 'hidden');
 			inputs.setAttribute('name', 'AREA_CODE');
 			inputs.setAttribute('value', 'CAT0020');
-			mak[i].append(inputs);
+			mak[i].appendChild(inputs);
 		}
 	}
 	

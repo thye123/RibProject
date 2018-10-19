@@ -34,4 +34,9 @@ public class ReservationDaoImple implements ReservationDao {
 		List<ReservationVo> list = (List<ReservationVo>) map.get("param");
 		return list;
 	}
+
+	@Override
+	public void upReserve(HashMap<String, Object> map) {
+		sqlsession.update("Reservation.upReserve", map);
+	}
 }
