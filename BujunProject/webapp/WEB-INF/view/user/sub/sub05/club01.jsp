@@ -17,7 +17,7 @@
 		var btn_con = document.getElementById('minClub');
 		btn_con.onclick = function(e) {
 		 e.preventDefault();
-		 window.open('/club01/joinClub?cluapp_code=CUS0001', 
+		 window.open('/club01/joinClub?m1=05&m2=03&m3=01', 
 			'joinClub', 'status=no, height=450, width=400');
 		}
  }

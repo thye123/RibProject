@@ -99,15 +99,15 @@
 	<!-- 게시판테이블(read) -->
 	<!-- class : mob_none -> 모바일일때 display:none  -->
 	<!--<h2 class="tbul1 mg_b20">게시판테이블(Update)</h2> -->
-	<form action="/club01/CluBoard/UptProc" method="POST" id="UpdateForm"
+	<form action="/club01/CluBoard/UptProc?m1=${m1}&m2=${m2}&m3=${m3}" method="POST" id="UpdateForm"
 		enctype="multipart/form-data">
 
-		<input type="hidden" name="clb_idx" value="${vo.clb_idx}"> <input
-			type="hidden" name="clb_clucode" value="${clb_clucode}"> <input
-			type="hidden" name="page" value="1" /> <input type="hidden"
-			name="pagecount" value="10" /> <input type="hidden" name="pagegrp"
-			value="1" /> <input type="hidden" name=file_boardcode
-			value="${clb_clucode}">
+		<input type="hidden" name="clb_idx" value="${vo.clb_idx}"> 
+		<input type="hidden" name="clb_clucode" value="${clb_clucode}"> 
+		<input type="hidden" name="page" value="1" /> 
+		<input type="hidden" name="pagecount" value="10" /> 
+		<input type="hidden" name="pagegrp" value="1" /> 
+		<input type="hidden" name="file_boardcode" value="${clb_clucode}">
 
 		<table class="board_read">
 			<colgroup>
