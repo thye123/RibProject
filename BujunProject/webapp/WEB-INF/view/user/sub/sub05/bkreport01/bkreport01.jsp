@@ -72,7 +72,7 @@
 		<li>각계 각층의 추천 권장 도서</li>
 		<li>공공도서관 추천 <이달의 책> 선정도서 , 감명 깊게 읽은 책 등 (※ 별도의 지정도서 없음)</li>
 	</ul>		
-	<div class="mg_b40 btn_blue"><a href="#" target="_blank">추천도서 바로가기</a></div>
+	<div class="mg_b40 btn_blue"><a href="/monthbk?rec_code=CAT0031&m1=05&m2=01&m3=01&page=1&perPageNum=12" class="con_bblue" target="_blank">추천도서 바로가기</a></div>
 	
 	
 
