@@ -74,11 +74,11 @@ public class BuginServiceImple implements BuginService {
 	public void uptproc(MultipartFile file, HashMap<String, Object> map,HttpServletRequest req) {
 		Uploading upload = new Uploading();
 		if (map.get("file_filename") != null) {
-			System.out.println("map1" + map);
+			//System.out.println("map1" + map);
 			upload.addFile(file, map, req);
 			bugindao.uptproc(file, map, req);
 		} else {
-			System.out.println("map2" + map);
+			//System.out.println("map2" + map);
 			bugindao.uptproc(file, map, req);
 		}
 		
@@ -95,7 +95,7 @@ public class BuginServiceImple implements BuginService {
 
 		System.out.println("insert" + map);
 		
-		String filePath = "D:\\upload\\";
+		String filePath = "d:\\upload\\";
 		
 		String file_filename = null;
 		file_filename = file.getOriginalFilename();
@@ -143,7 +143,7 @@ public class BuginServiceImple implements BuginService {
 					multipartFile.transferTo(fileNew); // �������ϸ����� ����
 
 				} catch (IOException e) {
-					System.out.println("����:" + e.getMessage());
+					//System.out.println("����:" + e.getMessage());
 					e.printStackTrace();
 				}
 			}

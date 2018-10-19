@@ -24,9 +24,11 @@
 			alert("3시간 계산 " + dataview);
 			last_time[0].setAttribute('value', dataview);
 			alert('20시 이후로는 예약이 불가능합니다.');
+		}
+		
 		
 		window.addEventListener('beforeunload', function(e) {
-			alert('bb');
+			//alert('bb');
 			opener.window.selectedObj.setAttribute('style',
 					'background-color: white;');
 			opener.window.selectedObj.setAttribute('style',
@@ -35,8 +37,8 @@
 		});
 
 		$('#seargo').submit = function(e) {
-			alert('asd');
 			e.preventDefault();
+			alert('asd');
 			e.stopPropagation();
 			
 	 		if (dataview > '20') {
@@ -54,12 +56,14 @@
 		cancle[0].onclick = function() {
 			opener.window.selectedObj.setAttribute('style',
 					'background-color: white;');
+		/* 	opener.window.selectedObj.setAttribute('style',
+					'border-right: 1px solid black;');
 			opener.window.selectedObj.setAttribute('style',
-					'border: 1px solid black;');
+			'border-bottom: 1px solid black;'); */
 			window.close();
 		}
 		}
-	}
+
 </script>
 
 </head>
@@ -155,8 +159,8 @@ tr:nth-child(even) {
 				</table>
 
 				<div class="btn">
-					<input type="submit" value="확인" onsubmit="return false()" /> <input
-						type="button" value="닫기" class="cancle" />
+					<input type="submit" value="확인" /> 
+					<input type="button" value="닫기" class="cancle" />
 				</div>
 
 			</div>

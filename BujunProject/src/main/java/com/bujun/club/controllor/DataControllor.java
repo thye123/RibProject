@@ -24,8 +24,11 @@ public class DataControllor {
 	public List<SearchVo> getClublist(@RequestParam HashMap<String, Object> map) {
 		System.out.println("page: " + map.get("page"));
 		System.out.println("mapajax " + map);
+		
 		List<SearchVo> club = buginservice.AjaxkeyList(map);
+		
 		System.out.println("ajaxList" + map);
+		
 		System.out.println("ajaxclub" + club);
 		return club;
 	}
@@ -47,10 +50,10 @@ public class DataControllor {
 			vod.setCount(0);
 			map.put("count", vod.getCount());
 			vod = pg.pagdata(map);
-			System.out.println("���� ������ vod" + vod.toString());
+			//System.out.println("���� ������ vod" + vod.toString());
 		}else {
 			vod = pg.pagdata(map);
-			System.out.println("���� ������ vod" + vod.toString());
+			//System.out.println("���� ������ vod" + vod.toString());
 			
 		}
 		//��ȸ���� �������� �׳� map �޾Ƽ� ���� 

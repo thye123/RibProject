@@ -18,8 +18,7 @@ public class ReservationController {
 	
 	@Autowired
 	private ReservationService  reservationservice;
-	
-	
+
 	@RequestMapping("/reserve")
 	public ModelAndView reserInfor(@RequestParam HashMap<String, Object> map, Model model)
 	{
@@ -32,7 +31,6 @@ public class ReservationController {
 			re_code = "CAT0020"; 
 			map.put("re_code", re_code);
 			List<ReservationVo> rv = reservationservice.getClassID(map);
-			System.out.println("값" + rv.toString());
 			mv.addObject("rv",rv);
 			mv.addObject("m1",m1);
 			mv.addObject("m2",m2);
@@ -43,7 +41,7 @@ public class ReservationController {
 			re_code = "CAT0021";
 			map.put("re_code", re_code);
 			List<ReservationVo> rv = reservationservice.getClassID(map);
-			System.out.println("값" + rv.toString());
+			//System.out.println("값" + rv.toString());
 			mv.addObject("rv",rv);
 			mv.addObject("m1",m1);
 			mv.addObject("m2",m2);
@@ -60,7 +58,7 @@ public class ReservationController {
 	public ModelAndView resDetail(@RequestParam HashMap<String , Object> map)
 	{
 		ModelAndView mv = new ModelAndView();
-		System.out.println("상세보기 map" + map);
+		//System.out.println("상세보기 map" + map);
 		mv.addObject("seat_code",map.get("seat_code"));
 		mv.addObject("firstdate",map.get("firstdate"));
 		mv.addObject("sedate",map.get("sedate"));
@@ -74,7 +72,21 @@ public class ReservationController {
 	
 	public String msg(@RequestParam HashMap<String , Object> map)
 	{
-		System.out.println("tempInsert"  + map);
+		//System.out.println("tempInsert"  + map);
+		int seatcode=Integer.parseInt(String.valueOf(map.get("res_seatcode")));
+		String seat = "SEAT0";
+		String seats= "SEAT00";
+		
+		if(seatcode > 0 && seatcode <= 9) {
+			String res_seatcode = seats.concat((String)map.get("res_seatcode"));
+			map.put("res_seatcode", res_seatcode);
+		}
+		
+		if(seatcode > 9) {
+			String res_seatcode = seat.concat((String)map.get("res_seatcode"));
+			map.put("res_seatcode", res_seatcode);
+		}
+		
 		reservationservice.getInsert(map);
 		return "user/sub/sub02/msg";
 	}
@@ -85,7 +97,6 @@ public class ReservationController {
 	{
 		ModelAndView mv= new ModelAndView();
 		reservationservice.DelAjax(map);
-		//System.out.println("삭제하고 조회한 결과 값 " + list.toString());
 		mv.setViewName("redirect: /reserve");
 		return mv;
 		
@@ -98,3 +109,4 @@ public class ReservationController {
 	}
 	
 }
+

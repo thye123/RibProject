@@ -96,7 +96,7 @@ public class BuginDaoImple implements BuginDao {
 			map.put("page", "1");
 		}
 		
-		//System.out.println("map�� �� "+ map);
+		System.out.println("mapDaoimple"+ map);
 		
 		List<SearchVo> clist  
 		= (List<SearchVo>) map.get("result");
@@ -118,7 +118,7 @@ public class BuginDaoImple implements BuginDao {
 
 		sqlsession.selectOne("Bugin.paging",map);
 		SearchVo vo = new SearchVo();
-		//System.out.println("DaoImpl" + map.get("count"));
+		System.out.println("DaoImpl" + map.get("count"));
 		return vo;
 	}
 

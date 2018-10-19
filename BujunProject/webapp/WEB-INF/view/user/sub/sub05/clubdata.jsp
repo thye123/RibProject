@@ -90,9 +90,9 @@ a.btn_board {
 	<!-- //table -->
 	
 	<div class="btn_set r">
-		<a class="btn btn_board" href="/club01/CluBoard/Uptboard?clb_idx=${clb_idx}&clb_clucode=${clb_clucode}&page=1&pagecount=10">수정</a>
-		<a class="btn btn_board" href="/club01/CluBoard/Delboard?clb_idx=${clb_idx}&clb_clucode=${clb_clucode}&page=1&pagecount=10">삭제</a>
-		<a class="btn btn_board" href="/club01/CluBoard/Goboard?clb_clucode=${clb_clucode}&page=1&pagecount=10&pagegrp=1">목록으로</a>
+		<a class="btn btn_board" href="/club01/CluBoard/Uptboard?clb_idx=${clb_idx}&clb_clucode=${clb_clucode}&page=1&pagecount=10&m1=${m1}&m2=${m2}&m3=${m3}">수정</a>
+		<a class="btn btn_board" href="/club01/CluBoard/Delboard?clb_idx=${clb_idx}&clb_clucode=${clb_clucode}&page=1&pagecount=10&m1=${m1}&m2=${m2}&m3=${m3}">삭제</a>
+		<a class="btn btn_board" href="/club01/CluBoard/Goboard?clb_clucode=${clb_clucode}&page=1&pagecount=10&pagegrp=1&m1=${m1}&m2=${m2}&m3=${m3}">목록으로</a>
 	</div>
 
 </div>

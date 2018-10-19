@@ -76,6 +76,7 @@
 
 
 	<!-- title -->
+<div class="con_mob_pad">
 	<div class="sub_tit">비치희망자료신청</div>
 	
 	
@@ -203,7 +204,7 @@
 		</div>
 	</form>
 	
-	
+</div>	
 <!-- //content 끝 -->
 </div>
 

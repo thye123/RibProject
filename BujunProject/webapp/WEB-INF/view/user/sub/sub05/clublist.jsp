@@ -62,10 +62,16 @@ a.btn_board {
 		<div class="board_sch">
 
 			<form id="serForm">
-				<input type="hidden" name="clb_clucode" value="CUS0001" /> <input
+				<input type="hidden" name="clb_clucode" value="${clu_code}" /> <input
 					type="hidden" name="page" value="${pageMaker.page}" /> <input
 					type="hidden" name="pagecount" value="${pageMaker.pagecount}" /> <input
-					type="hidden" name="pagegrp" value="${pageMaker.pagegrp}" /> <select
+					type="hidden" name="pagegrp" value="${pageMaker.pagegrp}" /> 
+					
+					<input type="hidden" name="m1" id="m1" value="${m1}"/>
+					<input type="hidden" name="m2" id="m2" value="${m2}"/>
+					<input type="hidden" name="m3" id="m3" value="${m3}"/>
+
+					<select
 					id="category" title="분류">
 					<option value="">전체선택</option>
 				</select> <select name="keyfield" id="sel" title="검색어">
@@ -76,9 +82,9 @@ a.btn_board {
 
 				<%-- value="${keyword}" --%>
 				<input type="text" name="keyword" id="keyword" value="${keyword}"
-					title="검색어 입력" placeholder="검색어를 입력하세요" /> <input type="text"
-					title="검색어 입력체크" style="display: none;" /> <input type="submit"
-					value="검색" class="searchBtn">
+					title="검색어 입력" placeholder="검색어를 입력하세요" /> 
+				<input type="text" title="검색어 입력체크" style="display: none;" /> 
+				<input type="submit" value="검색" class="searchBtn">
 			</form>
 		</div>
 	</div>
@@ -104,12 +110,12 @@ a.btn_board {
 
 							<c:when test="${empty club.clb_pass}">
 								<td><a
-									href="/club01/CluBoard/OneView?clb_idx=${club.clb_idx}&clb_clucode=${clu_code}&page=1&pagecount=10&pagegrp=1">${club.clb_title}</a></td>
+									href="/club01/CluBoard/OneView?clb_idx=${club.clb_idx}&clb_clucode=${clu_code}&page=1&pagecount=10&pagegrp=1&m1=${m1}&m2=${m2}&m3=${m3}">${club.clb_title}</a></td>
 							</c:when>
 
 							<c:when test="${not empty club.clb_pass}">
-								<td><a
-									href="/club01/CluBoard/CheckPass?clb_idx=${club.clb_idx}&clb_clucode=${clu_code}&page=1&pagecount=10&pagegrp=1">비밀게시
+								<td><a class=""
+									href="/club01/CluBoard/CheckPass?clb_idx=${club.clb_idx}&clb_clucode=${clu_code}&page=1&pagecount=10&pagegrp=1&m1=${m1}&m2=${m2}&m3=${m3}">비밀게시
 										글입니다.</a></td>
 							</c:when>
 						</c:choose>
@@ -132,7 +138,7 @@ a.btn_board {
 				<!-- 이전 10개  -->		
 				<c:if test="${pageMaker.start > 10}">
 					<a class="prevblock"
-						href="/club01/CluBoard?clb_clucode=${clu_code}&page=${pageMaker.page-1}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp-1}"><span>이전</span></a>
+						href="/club01/CluBoard?clb_clucode=${clu_code}&page=${pageMaker.page-1}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp-1}&m1=${m1}&m2=${m2}&m3=${m3}"><span>이전</span></a>
 				</c:if>
 
 			<!-- 페이징 -->
@@ -140,7 +146,7 @@ a.btn_board {
 				<c:forEach var="Paging" begin="${pageMaker.start}"
 					end="${pageMaker.end}" step="1">
 					<a class="default"
-						href="/club01/CluBoard?clb_clucode=${clu_code}&page=${Paging}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp}"><span>${Paging}</span></a>
+						href="/club01/CluBoard?clb_clucode=${clu_code}&page=${Paging}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp}&m1=${m1}&m2=${m2}&m3=${m3}"><span>${Paging}</span></a>
 				</c:forEach>
 
 				
@@ -149,65 +155,16 @@ a.btn_board {
 				<c:if
 					test="${pageMaker.start <= (pageMaker.tmep-10) && pageMaker.start > 0}">
 					<a class="nextblock"
-						href="/club01/CluBoard?clb_clucode=${clu_code}&page=${pageMaker.page+1}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp+1}"><span>다음</span></a>
+						href="/club01/CluBoard?clb_clucode=${clu_code}&page=${pageMaker.page+1}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp+1}&m1=${m1}&m2=${m2}&m3=${m3}"><span>다음</span></a>
 				</c:if>
 		</div>
 	</div>
 	<!-- 페이징 -->
-	<!-- 이전페이지 활성화 되도록  -->
-<%-- 
-	<c:choose>
-		<!-- 10개 이하일때 -->
-		<c:when test="${pageMaker.page < 10}">
-			<span class="prevblock"></span>
-		</c:when>
-		<!-- 10개 넘어갈때 -->
-		<c:otherwise>
-			<a class="prevblock"
-				href="/club01/CluBoard?clb_clucode=${clu_code}&page=${pageMaker.page-1}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp-1}"></a>
-		</c:otherwise>
-	</c:choose>
-
-	<!-- 이건뭘까>? :<span class="prevblock1 hidden"><span>1 페이지</span></span>-->
-	<!-- 페이지 번호 찍어주는거 <strong><span>1</span></strong> -->
-
-	<c:forEach begin="${pageMaker.start}" end="${pageMaker.end}" var="idx">
-		<a class="pageBtn"
-			href='/club01/CluBoard?clb_clucode=${clu_code}&page=${idx}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp}'
-			onclick="changeBlock();"><span>${idx}</span></a>
-	</c:forEach>
-	<a class="afterpage hidden" href="#"><span>앞페이지</span></a>
-	<!-- 다음 페이지로 넘길때  -->
-	<c:choose>
-		<c:when test="${pageMaker.page eq pageMaker.end}">
-			<a class="nextblock"
-				href='/club01/CluBoard?clb_clucode=${clu_code}&page=${pageMaker.page+1}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp+1}'></a>
-		</c:when>
-		<c:otherwise>
-			<a class="nextblock"
-				href="/club01/CluBoard?clb_clucode=${clu_code}&page=${pageMaker.page+1}&pagecount=10&pagegrp=${pageMaker.pagegrp}"><span>6
-					페이지</span></a>
-		</c:otherwise>
-	</c:choose>
-
-	<c:choose>
-		<c:when test="${pageMaker.end >= pageMaker.tempEnd}">
-			<a class="lastpage"
-				href="/club01/CluBoard?clb_clucode=${clu_code}&page=${pageMaker.end+1}&pagecount=10&pagegrp=${pageMaker.pagegrp+1}"><span>21
-					페이지</span></a>
-		</c:when>
-		<c:otherwise>
-			<a class="lastpage" href="#"></a>
-		</c:otherwise>
-	</c:choose>
-
-</div>
-</div> --%>
 <!-- //페이징 -->
 
 <!-- 글쓰기 버튼 -->
 <div class="btn_set r">
-	<a href="/club01/CluBoard/WriteForm?clb_clucode=${clu_code}"
+	<a href="/club01/CluBoard/WriteForm?clb_clucode=${clu_code}&m1=${m1}&m2=${m2}&m3=${m3}"
 		class="btn btn_board">글쓰기</a>
 </div>
 
