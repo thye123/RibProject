@@ -102,5 +102,11 @@ public class ReservationController {
 		
 	}
 
+	@RequestMapping("/reserve/update")
+	public String updateReserve(@RequestParam HashMap<String, Object> map) {
+		reservationservice.upReserve(map);
+		return "redirect:/reserve?m1=02&m2=04";
+	}
 	
 }
+
