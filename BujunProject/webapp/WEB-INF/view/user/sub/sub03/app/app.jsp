@@ -14,7 +14,6 @@
 <%@ include file="../../../include/left_menu03.jsp" %>   
 <script>
 	function inputCheck() {
-		var memid = document.getElementById('memid');
 		var phone = document.getElementById('memtel');
 		var email1 = document.getElementById('email1');
 		var email2 = document.getElementById('email2');
@@ -23,10 +22,7 @@
 		var group = document.getElementById('bookgroup');
 		var year = document.getElementById('bookyear');
 		
-		if(memid.value =='') {
-			alert("작성자 입력하랑께요");
-			return false;
-		}
+		
 		if(phone.value =='') {
 			alert("전화번호 입력하시라요");
 			return false;
@@ -129,7 +125,8 @@
 				</div>
 				
 				<div class="as_right">
-					<input type="text" name="sc_memid" id="memid">
+					<input type="text"  name="sc_memname" id="memid" value="${sessionScope.mem_name}" readonly>
+					<input type="hidden" name="sc_memid" value="${sessionScope.mem_id }"/>
 				</div>
 			</div>
 			

@@ -59,7 +59,7 @@
 	            windowSt = windowObj.scrollTop();
 	            console.log(windowSt);
 	
-	            if (windowSt > 430) {
+	            if (windowSt > 710) {
 	                header.addClass('on');
 	            } else {
 	                header.removeClass('on');
@@ -112,8 +112,8 @@
                         <a href="/history?m1=01&m2=01">도서관 소개</a>
                         <ul class="sub">
                             <li><a href="/history?m1=01&m2=01">연혁/인사말</a></li>
-                            <li class="n2line"><a href="/org?m1=01&m2=02">조직도/<br />담당업무안내</a></li>
-                            <li class="n2line"><a href="/bjldata?m1=01&m2=03">시설현황/<br />소장자료현황</a></li>
+                            <li><a href="/org?m1=01&m2=02">조직도/담당업무</a></li>
+                            <li><a href="/bjldata?m1=01&m2=03">시설현황/소장자료</a></li>                        
                         </ul>
                     </li>
                     <li>
@@ -122,12 +122,12 @@
                             <li><a href="/house?m1=02&m2=01">이용시간</a></li>
                             <li><a href="/synref?m1=02&m2=02&m3=01">자료실 소개</a></li>
                             <li><a href="/lending?m1=02&m2=03&m3=01">자료이용 안내</a></li>
-                            <li class="n2line"><a href="/reserve?m1=02&m2=04">열람실 및 <br />컴퓨터실 <br />자리 예약</a></li>
+                            <li><a href="/reserve?m1=02&m2=04">열람실예약</a></li>
                             <li><a href="/facility?m1=02&m2=05">편의시설</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#">자료찾기</a>
+                        <a href="/bjsearch?m1=03&m2=01">자료찾기</a>
                         <ul class="sub">
                             <li><a href="/bjsearch?m1=03&m2=01">자료찾기</a></li>
                             <li><a href="http://search.siminlib.go.kr/search/search.jsp?logo=4&mcode=110" target="_blank">타도서관 자료찾기</a></li>
@@ -141,14 +141,14 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#">평생교육</a>
+                        <a href="/opguide?m1=04&m2=01&m3=01">평생교육</a>
                         <ul class="sub">
                             <li><a href="/opguide?m1=04&m2=01&m3=01">평생학습</a></li>
-                            <li class="n2line"><a href="/support?m1=04&m2=02">지식정보<br />취약계층 지원</a></li>
+                            <li><a href="/support?m1=04&m2=02">지식정보지원</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#">독서문화</a>
+                        <a href="/monthbk?rec_code=CAT0031&m1=05&m2=01&m3=01&page=1&perPageNum=12">독서문화</a>
                         <ul class="sub">
                             <li><a href="/monthbk?rec_code=CAT0031&m1=05&m2=01&m3=01&page=1&perPageNum=12">추천도서</a></li>
                             <li><a href="/bkcare?m1=05&m2=02&m3=01">독서치료</a></li>
@@ -157,11 +157,11 @@
                             <li><a href="/libweek?m1=05&m2=05">도서관주간</a></li>
                             <li><a href="/moreading?m1=05&m2=06">독서의달</a></li>
                             <li><a href="/obook01?m1=05&m2=07&m3=01">원북원부산</a></li>
-                            <li class="n2line"><a href="/bkreport01?bd_catcode=CAT0005&m1=05&m2=08&m3=01&page=1&perPageNum=10">부산시민<br />독후감공모</a></li>
+                            <li><a href="/bkreport01?bd_catcode=CAT0005&m1=05&m2=08&m3=01&page=1&perPageNum=10">독후감공모</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#">열린마당</a>
+                        <a href="/notice?m1=06&m2=01&nowpage=1&pagecount=10&grpnum=1">열린마당</a>
                         <ul class="sub">
                             <li><a href="/notice?m1=06&m2=01&nowpage=1&pagecount=10&grpnum=1">공지사항</a></li>
                             <li><a href="/qna?m1=06&m2=02">자주하는질문</a></li>
@@ -174,7 +174,7 @@
                         </ul>
                     </li>    
                     <li>
-                        <a href="#">정보공개</a>
+                        <a href="/info01?m1=07&m2=01&m3=01">정보공개</a>
                         <ul class="sub">
                             <li><a href="/info01?m1=07&m2=01&m3=01">정보공개안내</a></li>
                             <li><a href="/opdata?m1=07&m2=02">공공데이터개방</a></li>
@@ -254,8 +254,8 @@
 						<li class="depth1"><a href="/history?m1=01&m2=01">도서관 소개</a>
 							<ul>
 								<li class="depth2"><a href="/history?m1=01&m2=01" class="off">연혁/인사말</a></li> 
-								<li class="depth2"><a href="/org?m1=01&m2=02" class="off">조직도/담당업무안내</a></li> 
-								<li class="depth2"><a href="/bjldata?m1=01&m2=03" class="off">시설현황/소장자료현황</a></li>
+								<li class="depth2"><a href="/org?m1=01&m2=02" class="off">조직도 / 담당업무</a></li> 
+								<li class="depth2"><a href="/bjldata?m1=01&m2=03" class="off">시설현황 / 소장자료</a></li>
 							</ul>
 						</li>
 																	
@@ -276,7 +276,7 @@
 										<li class="depth3"><a href="/inview?m1=02&m2=03&m3=02" class="off">관내열람</a></li> 
 									</ul>								
 								</li>
-								<li class="depth2"><a href="/reserve?m1=02&m2=04" class="off">열람실 및 컴퓨터실 자리 예약</a></li>
+								<li class="depth2"><a href="/reserve?m1=02&m2=04" class="off">열람실 예약</a></li>
 								<li class="depth2"><a href="/facility?m1=02&m2=05" class="off">편의시설</a></li>
 							</ul>
 						</li>
@@ -312,7 +312,7 @@
 										<li class="depth3"><a href="/pgcheck?m1=04&m2=01&m3=04" class="off">프로그램신청확인</a></li> 
 									</ul>									
 								</li>
-								<li class="depth2"><a href="/support?m1=04&m2=02" class="off">지식정보취약계층 지원</a></li>
+								<li class="depth2"><a href="/support?m1=04&m2=02" class="off">지식정보 지원</a></li>
 							</ul>						
 						</li>	
 
@@ -349,7 +349,7 @@
 										<li class="depth3"><a href="/obook02?m1=05&m2=07&m3=02" class="off">올해의BOOK</a></li> 
 									</ul>									
 								</li>										
-								<li class="depth2"><a href="/bkreport01?bd_catcode=CAT0005&m1=05&m2=08&m3=01&page=1&perPageNum=10" class="off">부산시민독후감공모</a>
+								<li class="depth2"><a href="/bkreport01?bd_catcode=CAT0005&m1=05&m2=08&m3=01&page=1&perPageNum=10" class="off">독후감 공모</a>
 									<ul>
 										<li class="depth3"><a href="/bkreport01?bd_catcode=CAT0005&m1=05&m2=08&m3=01&page=1&perPageNum=10" class="off">범시민 독후감</a></li> 
 										<li class="depth3"><a href="/bkreport02?bd_catcode=CAT0006&m1=05&m2=08&m3=02&page=1&perPageNum=10">원북원부산 독후감</a></li> 
