@@ -34,4 +34,9 @@ public class ReservationServiceImple implements ReservationService {
 		return res;
 	}
 
+	@Override
+	public void upReserve(HashMap<String, Object> map) {
+		reservationdao.upReserve(map);
+	}
+
 }

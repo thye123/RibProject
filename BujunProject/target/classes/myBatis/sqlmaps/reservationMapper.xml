@@ -47,8 +47,18 @@
 
 	<select id="ajaxDel" statementType="CALLABLE"
 		resultType="com.bujun.reservation.vo.ReservationVo">
-		{CALL BJL_PKG_RESERVATION.PROC_TEST_DUAL(#{cur, mode=OUT,
-		jdbcType=CURSOR,javaType=RESULTSET , resultMap=reserva})}
+		{CALL BJL_PKG_RESERVATION.PROC_TEST_DUAL(
+		#{cur, mode=OUT,jdbcType=CURSOR,javaType=RESULTSET , resultMap=reserva}
+		)}
 	</select>
+
+	<update id="upReserve">
+	{CALL BJL_PKG_RESERVATION.PROC_UP_RESERVE(
+	#{res_code, mode=IN, jdbcType=VARCHAR},
+	#{res_memid, mode=IN, jdbcType=VARCHAR},
+	#{res_areacode, mode=IN, jdbcType=VARCHAR},
+	#{res_seatcode, mode=IN, jdbcType=VARCHAR}
+	)}
+	</update>
 
 </mapper>

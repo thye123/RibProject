@@ -127,11 +127,12 @@ public class StudyController {
 	//삭제 시작
 	@RequestMapping("/study/delete")
 	public String delete(@RequestParam HashMap<String, Object> map, Model model) {
+		System.out.println("map: " + map);
 		model.addAttribute("menu", map);
 		studyService.delete(map);
 		String m1 = String.valueOf(map.get("m1"));
 		String m2 = String.valueOf(map.get("m2"));
-		return "redirect:/study/dCon?m1="+m1+"&m2="+m2+"&stu_code="+map.get("stu_code")+"&stu_idx="+map.get("stu_idx");
+		return "redirect:/study?m1="+m1+"&m2="+m2+"&page_num=1&page_grp=1";
 	}
 	//삭제 끝
 

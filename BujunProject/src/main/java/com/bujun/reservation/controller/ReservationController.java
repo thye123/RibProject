@@ -91,5 +91,9 @@ public class ReservationController {
 		
 	}
 
+	@RequestMapping("/reserve/update")
+	public void updateReserve(@RequestParam HashMap<String, Object> map) {
+		reservationservice.upReserve(map);
+	}
 	
 }
