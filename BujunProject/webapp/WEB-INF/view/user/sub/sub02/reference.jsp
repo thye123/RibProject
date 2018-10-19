@@ -16,150 +16,12 @@
 
 <!-- 민짐 말도 안되는 css 시작 -->
 <style>
-.
+
 * {
 	box-sizing: border-box;
 }
 
-.resWrap {
-	width: 100%;
-	margin: 0 auto;
-}
 
-.res01 {
-    border-top: 1px solid black;
-    display: inline-block;
-    width: 48%;
-    height: 438px;
-    box-sizing: border-box;
-    border-left: 1px solid black;
-}
-
-.res02 {
-	width: 52%;
-	float: right;
-	height: 370px;
-}
-
-.mak {
-	width: 12%;
-	height: 69px;
-	float: left;
-}
-
-.res03 {
-    display: block;
-    width: 49%;
-    height: 83px;
-    float: left;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
-}
-
-.res04 {
-    float: right;
-    width: 49%;
-    height: 85px;
-    border-top: 1px solid black;
-    border-left: 1px solid;
-}
-.res05 {
-    border-top: 1px solid black;
-    margin-bottom: 14px;
-    float: left;
-    width: 100%;
-    height: 100px;
-    border-left: 1px solid black;
-}
-
-.dvd {
-    border-right: 1px solid black;
-    width: 20%;
-    height: 100px;
-    float: left;
-    box-sizing: border-box;
-    border-bottom: 1px solid black;
-}
-
-.note {
-    border-right: 1px solid black;
-    width: 20%;
-    height: 100px;
-    float: left;
-    box-sizing: border-box;
-    border-bottom: 1px solid black;
-}
-.bof {
-    width: 100%;
-    height: 84px;
-    box-sizing: border-box;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
-}
-
-.scanner {
-    border-right: 1px solid black;
-    height: 84px;
-    box-sizing: border-box;
-    border-bottom: 1px solid;
-}
-.res06 {
-    border-top: 1px solid black;
-    margin-bottom: 14px;
-    float: left;
-    width: 100%;
-    height: 100px;
-    border-left: 1px solid black;
-}
-.restwoWrap {
-	margin-bottom: 14px;
-	height: 100px;
-}
-
-.status {
-	height: 30px;
-	width: 48%;
-}
-
-.green {
-	width: 15%;
-	height: 16px;
-	background: green;
-	display: inline-block;
-}
-
-.ornage {
-	width: 13%;
-	height: 16px;
-	background: orange;
-	display: inline-block;
-}
-
-.inter {
-    border-right: 1px solid black;
-    width: 25%;
-    height: 73px;
-    float: left;
-    box-sizing: border-box;
-    border-bottom: 1px solid black;
-}
-
-.reference {
-	height: 510px;
-	width: 50%;
-	float: right;
-}
-
-.statusP {
-	display: inline-block;
-	width: 40%;
-}
-
-.statusUl>li {
-	width: 30%;
-	height: 30px;
-	float: left;
-}
 </style>
 <!--  말도 안되는 css 끝  -->
 <script src="/resources/user/js/Reference.js"></script>
@@ -373,32 +235,41 @@ window.onload = function() {
 
 		<div class="status">
 			<ul class="statusUl">
-				<li><p class="statusP">예약중</p>
-					<div class="green"></div></li>
-				<li><p class="statusP">예약완료</p>
-					<div class="ornage"></div></li>
+				<li>예약중 <span class="green"></span></li>
+				<li>예약완료 <span class="ornage"></span></li>
 			</ul>
 		</div>
 
+		<h3 class="tbul2">인터넷</h3>
 		<div class="res01"></div>
 
 		<div class="reference">
 
-				<!-- <p>DVD</p> -->
+			<h3 class="tbul2">DVD</h3>
+			
 			<div class="res05">
 			</div>
 
-<!-- 				<p>노트북</p> -->
+			<h3 class="tbul2">노트북</h3>
 			<div class="res06">
 			</div>
 <!-- <div class="restwoWrap"> -->
-					<!-- <p>장애우</p> -->
-				<div class="res03">
+
+
+
+			<div class="res_b">
+				<div class="lf">
+					<h3 class="tbul2">장애우</h3>
+					<div class="res03"></div>
 				</div>
 
-					<!-- <p>스캐너</p> -->
-				<div class="res04">
+				<div class="lr">
+					<h3 class="tbul2">스캐너</h3>
+					<div class="res04"></div>
 				</div>
+			</div>
+
+
 		<!-- 	</div> -->
 		</div>
 
