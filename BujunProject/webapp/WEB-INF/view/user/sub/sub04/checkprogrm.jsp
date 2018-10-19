@@ -69,23 +69,19 @@
       <div class="log_tit2">로그인</div> 
        <div class="log_sub">이름과 비밀번호를 입력하신 후 Login 버튼을 눌러주세요.</div>
    
+     
       <form action="/pgcheck/proc" method="POST" class="logapply">
          <ul class="text_form">
             <li><input type="text" name="liap_apname" placeholder="이름을 입력하세요"/></li>
             <li><input type="password" name="liap_pass" placeholder="비밀번호를 입력하세요" /></li>
          </ul>
-                  
          <p class="c mg_b5"><input type="submit" value="로그인" class="log_btn" />
-         
-         
       </form>
+      
+      
    </div>
-   
-
-
  
- 
-</div>
+ </div>
 <!-- //content 끝 -->
 
       </div>

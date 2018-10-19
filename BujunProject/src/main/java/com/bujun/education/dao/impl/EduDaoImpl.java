@@ -46,6 +46,7 @@ public class EduDaoImpl implements EduDao{
 	public EduVo getData(HashMap<String, Object> map) {
 		sqlSession.selectOne("Education.getData", map);
 		List<EduVo> em = (List<EduVo>) map.get("result");
+		System.out.println("DaoImple : " + em.toString());
 		EduVo vo = em.get(0);
 		return vo;
 	}

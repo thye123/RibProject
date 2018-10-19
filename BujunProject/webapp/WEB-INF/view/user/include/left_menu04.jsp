@@ -60,7 +60,7 @@
 									</c:choose>
 									
 									<c:choose>
-										<c:when test="${menu.m1 eq 04 && menu.m2 eq 01 && menu.m3 eq 02}">
+										<c:when test="${(menu.m1 eq 04 && menu.m2 eq 01 && menu.m3 eq 02) || (menu.m1 eq 04 && menu.m2 eq 01 && menu.m3 eq 03)}">
 											<li class="on"><a href="/opprogram01?m1=04&m2=01&m3=02&page=1&pagecount=10&pagegrp=1">운영프로그램</a></li>
 										</c:when>
 										<c:otherwise>
@@ -69,20 +69,20 @@
 									</c:choose>	
 									
 									<c:choose>
-										<c:when test="${menu.m1 eq 04 && menu.m2 eq 01 && menu.m3 eq 03}">
-											<li class="on"><a href="/pgappl?m1=04&m2=01&m3=03&page=1&pagecount=10&pagegrp=1">프로그램신청</a></li>
+										<c:when test="${menu.m1 eq 04 && menu.m2 eq 01 && menu.m3 eq 04}">
+											<li class="on"><a href="/pgappl?m1=04&m2=01&m3=04&page=1&pagecount=10&pagegrp=1">프로그램신청</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/pgappl?m1=04&m2=01&m3=03&page=1&pagecount=10&pagegrp=1">프로그램신청</a></li>
+											<li><a href="/pgappl?m1=04&m2=01&m3=04&page=1&pagecount=10&pagegrp=1">프로그램신청</a></li>
 										</c:otherwise>
 									</c:choose>	
 									
 									<c:choose>
-										<c:when test="${menu.m1 eq 04 && menu.m2 eq 01 && menu.m3 eq 04}">
-											<li class="on"><a href="/pgcheck?m1=04&m2=01&m3=04&page=1&pagecount=10&pagegrp=1">프로그램신청확인</a></li>
+										<c:when test="${menu.m1 eq 04 && menu.m2 eq 01 && menu.m3 eq 05}">
+											<li class="on"><a href="/pgcheck?m1=04&m2=01&m3=05&page=1&pagecount=10&pagegrp=1">프로그램신청확인</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/pgcheck?m1=04&m2=01&m3=04&page=1&pagecount=10&pagegrp=1">프로그램신청확인</a></li>
+											<li><a href="/pgcheck?m1=04&m2=01&m3=05&page=1&pagecount=10&pagegrp=1">프로그램신청확인</a></li>
 										</c:otherwise>
 									</c:choose>																					
 								</ul>
@@ -105,7 +105,7 @@
 									</c:choose>
 									
 									<c:choose>
-										<c:when test="${menu.m1 eq 04 && menu.m2 eq 01 && menu.m3 eq 02}">
+										<c:when test="${(menu.m1 eq 04 && menu.m2 eq 01 && menu.m3 eq 02) || (menu.m1 eq 04 && menu.m2 eq 01 && menu.m3 eq 03)}">
 											<li class="on"><a href="/opprogram01?m1=04&m2=01&m3=02&page=1&pagecount=10&pagegrp=1">운영프로그램</a></li>
 										</c:when>
 										<c:otherwise>
@@ -114,20 +114,20 @@
 									</c:choose>	
 									
 									<c:choose>
-										<c:when test="${menu.m1 eq 04 && menu.m2 eq 01 && menu.m3 eq 03}">
-											<li class="on"><a href="/pgappl?m1=04&m2=01&m3=03&page=1&pagecount=10&pagegrp=1">프로그램신청</a></li>
+										<c:when test="${menu.m1 eq 04 && menu.m2 eq 01 && menu.m3 eq 04}">
+											<li class="on"><a href="/pgappl?m1=04&m2=01&m3=04&page=1&pagecount=10&pagegrp=1">프로그램신청</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/pgappl?m1=04&m2=01&m3=03&page=1&pagecount=10&pagegrp=1">프로그램신청</a></li>
+											<li><a href="/pgappl?m1=04&m2=01&m3=04&page=1&pagecount=10&pagegrp=1">프로그램신청</a></li>
 										</c:otherwise>
 									</c:choose>	
 									
 									<c:choose>
-										<c:when test="${menu.m1 eq 04 && menu.m2 eq 01 && menu.m3 eq 04}">
-											<li class="on"><a href="/pgcheck?m1=04&m2=01&m3=04&page=1&pagecount=10&pagegrp=1">프로그램신청확인</a></li>
+										<c:when test="${menu.m1 eq 04 && menu.m2 eq 01 && menu.m3 eq 05}">
+											<li class="on"><a href="/pgcheck?m1=04&m2=01&m3=05&page=1&pagecount=10&pagegrp=1">프로그램신청확인</a></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="/pgcheck?m1=04&m2=01&m3=04&page=1&pagecount=10&pagegrp=1">프로그램신청확인</a></li>
+											<li><a href="/pgcheck?m1=04&m2=01&m3=05&page=1&pagecount=10&pagegrp=1">프로그램신청확인</a></li>
 										</c:otherwise>
 									</c:choose>																					
 								</ul>
