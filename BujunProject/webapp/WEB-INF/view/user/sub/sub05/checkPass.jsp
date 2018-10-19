@@ -10,12 +10,13 @@
 
 		var count = 0;
 		var aal = ${clb_pass};
+		alert("m1: " +  "${m1}");
 		var PassMsg = "";
 		var pass = prompt('패스워드를 입력하세요', PassMsg);
 
 		while (count <= 2) {
 			if (pass == aal) {
-				location.href = "/club01/CluBoard/Checking?clb_pass=" + PassMsg+"&clb_idx=" + ${clb_idx};
+				location.href = "/club01/CluBoard/Checking?clb_pass=" + PassMsg+"&clb_idx="+${clb_idx}+"&m1=${m1}&m2=${m2}&m3=${m3}";
 				break;
 			} else
 				count += 1;
@@ -24,8 +25,7 @@
 		}
 
 		if (count == 3) {
-			alert('이젠 포기하시죠');
-			location.href = "/club01/CluBoard?clb_clucode=${clb_clucode}&page=1&pagecount=10&pagegrp=1";
+			location.href = "/club01/CluBoard/Checking?clb_pass=" + PassMsg+"&clb_idx="+${clb_idx}+"&m1=${m1}&m2=${m2}&m3=${m3}";
 		}
 
 	}

@@ -32,7 +32,7 @@
 			alt="" /></li>
 		<li>평생교육</li>
 		<li>평생학습</li>
-		<li>운영프로그램</li>
+		<li>프로그램신청</li>
 	</ul>
 </div>
 <!-- //location -->
@@ -42,7 +42,7 @@
 
 
 	<!-- title -->
-	<div class="sub_tit">운영프로그램</div>
+	<div class="sub_tit">프로그램신청</div>
 
 	<div id="tab_depth01" class="w50">
 		<ul>
@@ -65,7 +65,7 @@
 	<!-- content 시작 -->
 	<div class="prolistarea">
 		
-		<p class="mg_b5">총 <span class="red">${cnt}</span> 개의  프로그램이 있습니다</p>
+		<p class="mg_b5">총 <span class="red">${pageMaker.cnt}</span> 개의  프로그램이 있습니다</p>
 
  	<div class="studyArea">
  		<ul class="studyProgram">

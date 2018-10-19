@@ -55,6 +55,7 @@ function popOpen(bof){
 			var d = new Date();
 		
 			bof.setAttribute('style', 'background-color: green;');
+			
 			var input_arcode = bof.childNodes[1].value; 
 			
 			var firstdate = d.getFullYear() + '/' + (d.getMonth() + 1)
@@ -72,6 +73,3 @@ function popOpen(bof){
 			window.open('/reserve/detail?seat_code='+dataVal+'&firstdate='+firstdate+'&sedate='+sedate +'&area_code='+input_arcode, 'joinClub', 'status=no, height=450, width=400, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY); 
 
 }
-
-
-

@@ -79,7 +79,11 @@ function aaa(check){
 	 	var file 			= document.getElementsByName('file');
 	 	var clb_content 	= document.getElementsByName('clb_content');
 		var clb_open		= document.getElementsByName('clb_open');
-		 
+		var btns = document.getElementById('btns');
+		btns.onclick= function(){
+			location.href="/club01/CluBoard?clb_clucode=${clb_clucode}&page=1&pagecount=10&pagegrp=1&m1=${m1}&m2=${m2}&m3=${m3}";
+		}
+		
 	 	processing.onsubmit = function(){
 			
 			if(clb_writer[0].value==''){
@@ -211,7 +215,7 @@ function aaa(check){
 			
 			<div class="btn_set r">
 				<input class="btn btn_board" style="border:0;" type="submit" value="제출" /> 
-				<input class="btn btn_board" style="border:0;" type="reset" value="초기화" />
+				<input class="btn btn_board" style="border:0;" type="button" id="btns" value="목록" />
 	 		</div>
 		</form>
 	<!-- //table -->

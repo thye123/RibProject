@@ -112,7 +112,7 @@ window.onload = function() {
 		
 		for (var i = 0; i < bof.length; i++) {
 			bof[i].onclick = function(){
-			popOpen(this);
+				popOpen(this);
 		}
 	}
 	

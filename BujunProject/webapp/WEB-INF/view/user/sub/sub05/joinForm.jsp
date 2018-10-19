@@ -87,13 +87,19 @@ input[type=submit].btn_board {
 
 
 <script type="text/javascript">
-	window.onload = function(){
-		var cluapp_appname =document.getElementsByClassName('cluapp_appname')
-		var cluapp_appphone =document.getElementsByClassName('cluapp_appphone')
+	window.onload = function() {
+		var cluapp_appname = document.getElementsByClassName('cluapp_appname')
+		var cluapp_appphone = document
+				.getElementsByClassName('cluapp_appphone')
 		var join = document.getElementById('join');
+		var btns = document.getElementById('btns');
 
-		$('#join').submit(function(){
-			
+		btns.onclick = function() {
+			window.close();
+		}
+
+		$('#join').submit(function() {
+
 			//alert('bb');
 			if (cluapp_appname[0].value == '') {
 				alert('이름을 입력 해주세요')
@@ -107,11 +113,11 @@ input[type=submit].btn_board {
 				return false;
 			}
 		}
-		
+
 		//window.close();
-		
+
 		);
-		
+
 	}
 </script>
 
@@ -134,7 +140,7 @@ input[type=submit].btn_board {
 
 			<form action="/joinClub/Proc" method="POST" id="join">
 				<input type="hidden" name="cluapp_code" value="${cluapp_code}" />
-				
+
 				<table class="mintable">
 					<colgroup>
 						<col style="width: 20%;">
@@ -158,12 +164,14 @@ input[type=submit].btn_board {
 
 						<tr>
 							<th class="c">이름</th>
-							<td colspan="2"><input type="text" class="cluapp_appname" name="cluapp_appname" /></td>
+							<td colspan="2"><input type="text" class="cluapp_appname"
+								name="cluapp_appname" /></td>
 						</tr>
 
 						<tr>
 							<th class="c">연락처</th>
-							<td colspan="2"><input type="text"  class="cluapp_appphone" name="cluapp_appphone" /></td>
+							<td colspan="2"><input type="text" class="cluapp_appphone"
+								name="cluapp_appphone" /></td>
 						</tr>
 					</tbody>
 
@@ -172,7 +180,7 @@ input[type=submit].btn_board {
 
 				<div class="btn_set r">
 					<input type="submit" value="제출" class="btn btn_board" /> <input
-						type="reset" value="닫기" class="btn_board" />
+						type="button" value="닫기" class="btn_board" id="btns" />
 				</div>
 
 			</form>

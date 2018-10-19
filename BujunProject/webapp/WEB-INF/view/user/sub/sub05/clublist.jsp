@@ -62,10 +62,16 @@ a.btn_board {
 		<div class="board_sch">
 
 			<form id="serForm">
-				<input type="hidden" name="clb_clucode" value="CUS0001" /> <input
+				<input type="hidden" name="clb_clucode" value="${clu_code}" /> <input
 					type="hidden" name="page" value="${pageMaker.page}" /> <input
 					type="hidden" name="pagecount" value="${pageMaker.pagecount}" /> <input
-					type="hidden" name="pagegrp" value="${pageMaker.pagegrp}" /> <select
+					type="hidden" name="pagegrp" value="${pageMaker.pagegrp}" /> 
+					
+					<input type="hidden" name="m1" id="m1" value="${m1}"/>
+					<input type="hidden" name="m2" id="m2" value="${m2}"/>
+					<input type="hidden" name="m3" id="m3" value="${m3}"/>
+
+					<select
 					id="category" title="분류">
 					<option value="">전체선택</option>
 				</select> <select name="keyfield" id="sel" title="검색어">
@@ -76,9 +82,9 @@ a.btn_board {
 
 				<%-- value="${keyword}" --%>
 				<input type="text" name="keyword" id="keyword" value="${keyword}"
-					title="검색어 입력" placeholder="검색어를 입력하세요" /> <input type="text"
-					title="검색어 입력체크" style="display: none;" /> <input type="submit"
-					value="검색" class="searchBtn">
+					title="검색어 입력" placeholder="검색어를 입력하세요" /> 
+				<input type="text" title="검색어 입력체크" style="display: none;" /> 
+				<input type="submit" value="검색" class="searchBtn">
 			</form>
 		</div>
 	</div>

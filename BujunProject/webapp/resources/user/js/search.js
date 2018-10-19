@@ -2,24 +2,6 @@
  * 
  */
 
-window.onload = function() {
-
-	/*버튼 색상 변경 page 임의 1 지정 초기값 해놓음 나중에 변경해라 돼지민짐*/
-	function changeBlock() {
-		var pageBtn = document.getElementsByClassName('pageBtn');
-		for (var i = 0; i < pageBtn.length; i++) {
-			pageBtn[i].onclick = function(e) {
-				e.preventDefault();
-				var textObj = this.textContent;
-				pageBtn[textObj - 1].setAttribute("style",
-						"background-color: red;");
-				//location.href="/club01/CluBoard?clb_clucode=${clu_code}&page=1&pagecount=${pageMaker.pagecount}&pagegrp=1";
-			}
-		}
-	} /*체크 함수 변경*/
-
-}
-
 //페이징 만드는 함수 
 function display_table() {
 	alert('값이 없네요 ')
@@ -40,13 +22,14 @@ function display_table() {
 	$("board-list-paging").empty();
 }
 
-function pagemaker(keyword, clb_clucode, keyfield, pagecount) {
-	alert("pageMakrer:"+keyword);
-	
+function pagemaker(keyword, clb_clucode, keyfield, pagecount,m1,m2,m3) {
 	var page = 1
 	var pagegrp = 1
-	var clb_clucode = "CUS0001"
-	//alert(clb_clucode);
+	var clb_clucode =  $('input[name=clb_clucode]').val();
+	alert("m1 : " + m1);
+	alert("m2 : " + m2);
+	alert("m2 : " + m3);
+
 	$.ajax({
 				url : '/CluBoard/paging/',
 				data : {
@@ -55,7 +38,10 @@ function pagemaker(keyword, clb_clucode, keyfield, pagecount) {
 					clb_clucode : clb_clucode,
 					page : page,
 					pagecount : "10",
-					pagegrp : pagegrp
+					pagegrp : pagegrp,
+					m1:m1,
+					m2:m2,
+					m3:m3
 				},
 				type : 'GET',
 				dataType : 'json',
@@ -64,7 +50,8 @@ function pagemaker(keyword, clb_clucode, keyfield, pagecount) {
 					console.log("들어오는 데이터 값 " + data)
 					var pagingTag = "";
 					var count = data.count
-					if (data.count == 0) {
+					
+					if (data.count == 1) {
 						display_table();
 
 					} else {
@@ -78,7 +65,7 @@ function pagemaker(keyword, clb_clucode, keyfield, pagecount) {
 
 						pagingTag += "<div class=pagelist>";
 						for (var i = start; i <= end; i++) {
-							pagingTag += "<a class=pageBtn href=''><span>" + i
+							pagingTag += "<a class=pageBtn href='/club01/CluBoard?clb_clucode=${clu_code}&page=1&pagecount=10&pagegrp=1&m1=${m1}&m2=${m2}&m3=${m3}'><span>" + i
 									+ "</span></a>";
 						}
 						pagingTag += "</div>";
@@ -93,6 +80,8 @@ $(".pageBtn").click(function(event) {
 									//일단 이벤트 막아라 
 	event.preventDefault();
 	var godata = $(this).text();
+	var clb_clucode =  $('input[name=clb_clucode]').val();
+	
 	alert("a tag 넘어왔다 ")
 	//$(".board-list-paging").empty();
 		$.ajax({
@@ -158,12 +147,24 @@ $(".pageBtn").click(function(event) {
 	$(function() {
 		$("#serForm").on('submit', function(e) {
 			var keyword = $("#keyword").val();
-			alert("a"  + keyword)
-			var clb_clucode = "CUS0001";
+			
+			var clb_clucode =  $('input[name=clb_clucode]').val();
+			
+			var m1 =  $('#m1').val();
+			var m2 =  $('#m2').val();
+			var m3 =  $('#m3').val();
+			
+			alert("m1 : " + m1);
+			alert("m2 : " + m2);
+			alert("m3 : " + m3);
+
+			
 			var keyfield = $("select[name=keyfield]").val();
 			var page = "1";
 			var pagecount = "10";
 			var pagegrp = "1";
+			
+			
 			e.preventDefault();
 			if (keyfield == '') {
 				alert('검색 조건을 입력해주세요');
@@ -184,7 +185,10 @@ $(".pageBtn").click(function(event) {
 					clb_clucode : clb_clucode,
 					page : page,
 					pagecount : pagecount,
-					pagegrp : pagegrp
+					pagegrp : pagegrp,
+					m1		:m1,
+					m2		:m2,
+					m3		:m3
 				},
 				type : 'GET',
 				dataType : 'json',
@@ -213,7 +217,7 @@ $(".pageBtn").click(function(event) {
 				tag += "</tbody>";
 				tag += "</table>";
 				$(".tb_board").html(tag);
-				pagemaker(keyword, clb_clucode,keyfield, pagecount, pagegrp);},
+				pagemaker(keyword, clb_clucode,keyfield, pagecount, pagegrp,m1,m2,m3);},
 				error : function(xhr) {
 				console.log("Error" + xhr);
 				}
