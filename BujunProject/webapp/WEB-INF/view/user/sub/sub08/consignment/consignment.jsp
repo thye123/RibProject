@@ -69,7 +69,7 @@
 					<th scope="col" >번  호</th>
 					<th scope="col" >제  목</th>
 					<th scope="col" >작성자</th>
-					<th scope="col" >작성일</th>
+					<th scope="col" class="bnon">작성일</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -81,9 +81,9 @@
 						<c:forEach var="csm" items="${noticeList}">
 							<tr>
 								<td>${csm.ad_idx}</td>
-								<td><a href="/personalinfo02/view?m1=08&m2=01&m3=02&ad_idx=${csm.ad_idx}&ad_code=${ad_code}">${csm.ad_title}</a></td>
+								<td class="l"><a href="/personalinfo02/view?m1=08&m2=01&m3=02&ad_idx=${csm.ad_idx}&ad_code=${ad_code}">${csm.ad_title}</a></td>
 								<td>${csm.ad_writer}</td>
-								<td>${csm.ad_regdate}</td>
+								<td class="bnon">${csm.ad_regdate}</td>
 							</tr>
 						</c:forEach>
 					</c:otherwise>
