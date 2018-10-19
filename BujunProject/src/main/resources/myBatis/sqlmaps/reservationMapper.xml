@@ -48,7 +48,7 @@
 	<select id="ajaxDel" statementType="CALLABLE"
 		resultType="com.bujun.reservation.vo.ReservationVo">
 		{CALL BJL_PKG_RESERVATION.PROC_TEST_DUAL(
-		#{cur, mode=OUT,jdbcType=CURSOR,javaType=RESULTSET , resultMap=reserva}
+		#{del_msg, mode=OUT, jdbcType=NUMERIC}
 		)}
 	</select>
 
