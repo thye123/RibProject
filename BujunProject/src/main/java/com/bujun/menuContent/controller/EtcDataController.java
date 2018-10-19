@@ -48,4 +48,12 @@ public class EtcDataController {
 		return "user/sub/sub08/join";
 	}	
 	
+	
+	@RequestMapping("/sitemap") 
+	public String Sitemap(@RequestParam HashMap<String, Object> map, Model model) {
+		
+		model.addAttribute("menu", map);
+		return "user/sub/sub08/sitemap";
+	}		
+	
 }

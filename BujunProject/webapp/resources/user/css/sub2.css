@@ -71,6 +71,97 @@
 .basicBtn:hover {background:#ff4f4e url(/kor/images/common/basic_btn_icon.png) no-repeat 90% 50%;}
 
 
+/* sitemap */
+.sitemap {
+	}
+.sitemapArea {
+	clear: both;
+	border: 1px solid #dedede;
+	background: #fff;
+	margin-bottom: 15px;
+	}
+.sitemapLeft {
+	float: left;
+	width: 27%;
+	}
+.sitemapLeft h4.sitemap_title {
+	font-size: 18px !important;
+	color: #2f78d3 !important;
+	margin: 20px !important;
+	padding: 0 0 0 25px !important;
+	}
+.sitemapRight {
+	float: left;
+	width: 72%;
+	border-left: 1px solid #dedede;
+	min-height:58px;
+	}
+.sitemapRight > ul {
+	padding: 10px;
+	}
+.sitemapRight  > ul > li > div > ul > li {
+	float:left;
+	width: 33%;
+	margin-bottom:5px;
+	}
+.sitemapRight > ul > li > div{
+	margin-top:5px;
+	background-color: #EFEFEF;
+	border-top: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+	padding:5px;
+	}
+.sitemapRight > ul > li > div > ul > li > a{
+	padding: 0 15px 0 9px;
+	background: url(../images/common/bul_depth03.png) no-repeat 0 6px !important;
+	display:inline-block;
+	line-height:16px;
+	letter-spacing:-1px;
+	}
+.sitemapRight  > ul > li > a{
+	display:inline-block;
+	clear:both;
+	background: url(../images/common/bul_h6.png) no-repeat left 10px !important;
+	letter-spacing:-1px;
+	padding: 5px 0 0 15px;
+	font-weight: bold;
+	margin-top:10px;
+	}
+.sitemapRight  > ul > li:first-child > a{
+	margin-top:0px;
+	}
+.sitemapRight > ul > li > div > ul > li:nth-child(3n+1){
+	clear:left;
+}
+.sitemap .st_box { float:left; width:32.6%; margin: 0 1% 40px 0; box-sizing: border-box; }
+.sitemap .st_box:nth-child(3n) {margin-right:0;}
+.sitemap .st_box a { display: block; }
+.sitemap .st_list > li { border-top: 1px solid #dcdcdc; }
+.sitemap .st_list > li > a { height: 40px; padding-left: 20px; background: #f0f0f0;  line-height: 40px; }
+.sitemap .st_list > li > a:hover {color:#333; text-decoration:underline;}
+.sitemap .st_box p.title {/*  height: 50px; */ background: #106ab0; color: #fff; font-size: 1.230em; font-weight: 600; text-align: center; line-height: 52px; }
+.sitemap .st_list { border: 1px solid #dcdcdc; border-top: 0; }
+.sitemap .st_list ul a { padding-left:30px;  }
+.sitemap .st_list ul a:hover {color:#333; text-decoration:underline;}
+.sitemap .st_list > li > ul {padding:10px 0;}
+.sitemap .st_list > li > ul > li {line-height:25px; background:url("../images/sub/sbul.jpg") no-repeat 20px center;}
+.sitemap .box_position {margin-top:-551px;}
+
+@media only screen and (max-width:760px) {
+	.sitemap .st_box {width:49.5%;}
+	.sitemap .box_position {margin-top:0;} 
+	.sitemap .st_box:nth-child(2n) {margin-right:0 !important;}
+	.sitemap .st_box:nth-child(3n) {margin-right:1%;}
+}
+
+@media only screen and (max-width:500px) {
+	.sitemap .st_box {width:100%; margin: 0 1% 20px 0;}
+	.sitemap .st_box:nth-child(3n) {margin-right:0%;}
+}
+
+
+
+
 /*비치희망자료결과, 수정  */
 .v_left{background-color: #f9f9f9; width: 16.44%; height: 41px; border-right:1px solid #ddd;	border-bottom:1px solid #ddd; box-sizing: border-box; float: left; text-align: center; line-height: 41px;}
 .tb_book {border-top: 2px solid #333; height:246px; box-sizing: border-box; margin-bottom: 10px;}

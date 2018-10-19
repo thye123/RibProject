@@ -64,7 +64,7 @@
 		<li>학생 : 학교명,학년,반,성명,본인 휴대폰 반드시 기재</li>
 		<li>일반 : 자택주소, 휴대폰 반드시 기재</li>
 	</ul>	
-	<div class="mg_b40"><a href="${pageContext.request.contextPath}/resources/user/file/smin.hwp" target="_blank" class="btn_con btn_down" title="새창으로열림">응모서식 다운로드</a></div>
+	<div class="mg_b40"><a href="${pageContext.request.contextPath}/resources/user/file/smin.pdf" target="_blank" class="btn_con btn_down" title="새창으로열림">응모서식 다운로드</a></div>
 	
 	
 	<h2 class="tbul1">독후감공모 대상자료</h2>
