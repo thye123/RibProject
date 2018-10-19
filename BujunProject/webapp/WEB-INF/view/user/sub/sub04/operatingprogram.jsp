@@ -48,13 +48,13 @@
 		<ul>
 		<c:choose>
 			<c:when test="${m3 eq '02'}">
-				<li class="active"><a href="/opprogram01?m1=04&m2=01&m3=02&page=${pageMaker.page}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp}"> 일반프로그램</a></li>
-				<li><a href="/opprogram01?m1=04&m2=01&m3=03&page=${pageMaker.page}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp}"> 초등(유아)프로그램</a></li>
+				<li class="active"><a href="/opprogram01?m1=04&m2=01&m3=02&page=${pageMaker.page}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp}&listu_catcode=CAT0023"> 일반프로그램</a></li>
+				<li><a href="/opprogram01?m1=04&m2=01&m3=03&page=${pageMaker.page}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp}&listu_catcode=CAT0024"> 초등(유아)프로그램</a></li>
 			</c:when>
 			
 			<c:when test="${m3 eq '03'}">
-				<li><a href="/opprogram01?m1=04&m2=01&m3=02&page=${pageMaker.page}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp}"> 일반프로그램</a></li>
-				<li class="active"><a href="/opprogram01?m1=04&m2=01&m3=03&page=${pageMaker.page}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp}"> 초등(유아)프로그램</a></li>			
+				<li><a href="/opprogram01?m1=04&m2=01&m3=02&page=${pageMaker.page}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp}&listu_catcode=CAT0023"> 일반프로그램</a></li>
+				<li class="active"><a href="/opprogram01?m1=04&m2=01&m3=03&page=${pageMaker.page}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp}&listu_catcode=CAT0024"> 초등(유아)프로그램</a></li>			
 			</c:when>
 		</c:choose>
 		</ul>
@@ -71,7 +71,7 @@
  		<ul class="studyProgram">
 			<c:forEach var="proList" items="${pro_list}">
 				<li>
-					<a class="link" href="/opprogram01/dCon?m1=${m1}&m2=${m2}&m3=${m3}&listu_catcode=${proList.listu_code}&page=${ed.page}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}">
+					<a class="link" href="/opprogram01/dCon?m1=${m1}&m2=${m2}&m3=${m3}&listu_code=${proList.listu_code}&page=1&pagecount=10&pagegrp=1">
 						<ul>
 							<li class="title">${proList.listu_name}</li>
 							<li class="n03"><span>교육대상</span> : ${proList.listu_target}</li>

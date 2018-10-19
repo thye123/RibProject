@@ -7,6 +7,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,9 +36,7 @@ public class LifeLongController {
 		String m3 = String.valueOf(map.get("m3"));
 		//PagingData data = new PagingData();
 		Pgdata data= new Pgdata();
-		
-		
-		
+
 		//게시판 코드 확인
 		if(m1.equals("04")&&m2.equals("01")&&m3.equals("02")) {
 			listu_catcode = "CAT0023";
@@ -80,8 +80,10 @@ public class LifeLongController {
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
 		String m3 = String.valueOf(map.get("m3"));
-	
+		
 		EduVo edu = eduService.getdetail(map);
+		
+		System.out.println("edu : "  + edu.toString());
 		
 		mv.addObject("m1",m1);
 		mv.addObject("m2",m2);
@@ -111,9 +113,14 @@ public class LifeLongController {
 		//프로그램명 시간 / 요일 장소
 		
 		EduVo vo = eduService.getData(map);
+		//System.out.println("세부 정보 넘어가는 page: " + vo.toString());
 		
 		mv.addObject("liap_code",map.get("listu_code"));
+		
+		System.out.println("listu_catcode :" +map.get("listu_catcode") );
+		
 		mv.addObject("listu_catcode",map.get("listu_catcode"));
+		
 		mv.addObject("page",map.get("page"));
 		mv.addObject("pagegrp",map.get("pagegrp"));
 		mv.addObject("pagecount",map.get("pagecount"));
@@ -144,13 +151,14 @@ public class LifeLongController {
 		map.remove("stel3");
 		//휴대폰 잘라서 붙여넣은 객체를 담는다 
 		map.put("liap_apphone", liap_apphone);
-		//System.out.println("map2 " + map);
+		
+		System.out.println("map2 " + map);
 		eduService.getInApply(map);
 		//System.out.println("여기서 map " + map);
 		mv.addObject("m1",m1);
 		mv.addObject("m2",m2);
 		mv.addObject("m3",m3);
-		mv.setViewName("redirect:/opprogram01?m1="+m1+"&m2="+m2+"&m3="+m3+"&page="+map.get("page")+"&pagecount="+map.get("pagecount")+"&pagegrp="+map.get("pagegrp"));
+		mv.setViewName("redirect:/opprogram01?m1="+m1+"&m2="+m2+"&m3="+m3+"&page=1&pagecount=10&pagegrp=1");
 		return mv;
 	}
 	
@@ -201,39 +209,58 @@ public class LifeLongController {
 	}
 	
 	@RequestMapping("/pgcheck")
-	public ModelAndView checkprog(@RequestParam
+	public String checkprog(@RequestParam
 			HashMap<String, Object> map, Model model) {
-
+		
+		model.addAttribute("menu", map);
+		
+		System.out.println("수강신청 내역 보여주는 map " + map);
+		
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
 		String m3 = String.valueOf(map.get("m3"));
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	      String login_name = authentication.getName();
+
+	      if(!login_name.equals("anonymousUser")) {
+	    	  map.put("liap_apname", login_name);
+	    	  
+	    	  System.out.println("id 체크 후 맵 " + map);
+	    	  
+	    	  return "redirect:/pgcheck/proc?m1="+m1+"&m2="+m2+"&m3="+m3+"&liap_apname="+login_name;
+	      }else {
+	    	  //mv.setViewName("user/sub/sub08/login");
+	    	  return "redirect:/bjLogin";
+	      }
+
 		
-		ModelAndView mv = new ModelAndView();
+	/*	mv.setViewName("user/sub/sub08/login");*/
 		
-		mv.addObject("m1",m1);
-		mv.addObject("m2",m2);
-		mv.addObject("m3",m3);
 		
-		mv.setViewName("user/sub/sub04/checkprogrm");
-		return mv;
 	}
 	
 	@RequestMapping("/pgcheck/proc")
-	public ModelAndView checkproc(@RequestParam
-			HashMap<String, Object> map, Model model) {
-		//System.out.println("map 처리 " + map);
+	public ModelAndView checkproc(@RequestParam HashMap<String, Object> map, Model model) {
+		model.addAttribute("menu", map);
+		System.out.println("map 처리 " + map);
+		
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
 		String m3 = String.valueOf(map.get("m3"));
 		
 		ModelAndView mv = new ModelAndView();
+		
+		System.out.println("id체크 맵 " + map);
 		List<EduVo> vo = eduService.getcheckData(map);
+		System.out.println("vo: "  + vo.toString());
 		//System.out.println("돌아오는 결과 값 " +vo.toString());
 		mv.addObject("liap_apname",map.get("liap_apname"));
+		mv.addObject("vo",vo);
 		mv.addObject("m1",m1);
 		mv.addObject("m2",m2);
 		mv.addObject("m3",m3);
-		mv.addObject("vo",vo);
+		
 		mv.setViewName("user/sub/sub04/checkview");
 		return mv;
 	}
@@ -241,6 +268,7 @@ public class LifeLongController {
 	@RequestMapping("/pgappl")
 	public ModelAndView eduingData(@RequestParam
 			HashMap<String, Object> map, Model model) {
+		model.addAttribute("menu", map);
 		//System.out.println("map 처리 " + map);
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		

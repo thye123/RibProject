@@ -75,6 +75,14 @@ a.btn_boards {
    color: #fff;
    height: 23px;
 }
+
+.gener{
+	background-color: #636b72;
+}
+
+.element{
+background-color: #636b72;
+}
 </style>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
@@ -90,9 +98,7 @@ a.btn_boards {
       var liap_aprimemnum =document.getElementsByClassName('liap_aprimemnum');
       var grade         =document.getElementsByClassName('grade');
       var val = grade[0].options[grade[0].selectedIndex].value;
-      alert(val);
-      alert(Ok[0].value);
-      
+
       if(Ok[0].checked ==false){
          alert('개인정보 수집에 동의해주세요');
          return false;
@@ -195,9 +201,20 @@ a.btn_boards {
 
    <div class="tab_depth01">
       <ul class="temp03">
-         <li><a href="#">일반프로그램</a></li>
-
-         <li><a href="#">초등(유아)프로그램</a></li>
+		<c:choose>
+		    
+		    <c:when test="${listu_catcode eq 'CAT0023'}">
+		        <li class="gener"><a href="/pgappl?m1=04&m2=01&m3=02&page=1&pagecount=10&pagegrp=1">일반프로그램</a></li>
+		        <li><a href="/pgappl?m1=04&m2=01&m3=03&page=1&pagecount=10&pagegrp=1">초등(유아)프로그램</a></li>
+		    </c:when>
+		 
+		    <c:when test="${listu_catcode eq 'CAT0024'}">
+		        <li class="element"><a href="/pgappl?m1=04&m2=01&m3=02&page=1&pagecount=10&pagegrp=1">초등(유아)프로그램</a></li>
+		         <li><a href="/pgappl?m1=04&m2=01&m3=03&page=1&pagecount=10&pagegrp=1">초등(유아)프로그램</a></li>
+		    </c:when>
+		    
+		    
+		</c:choose> 
       </ul>
    </div>
 
@@ -229,9 +246,9 @@ a.btn_boards {
 
                <td><input type="checkbox" name="check" value="1"
                   checked="checked"></td>
-               <td><h2>금니피셜에 대한 이야기</h2></td>
-               <td>2018.10.10 18:00~20:00</td>
-               <td class="bnon">금니하우스</td>
+               <td><h2>${vo.listu_name}</h2></td>
+               <td>${vo.listu_studate}</td>
+               <td class="bnon">${vo.listu_location}</td>
             </tr>
          </tbody>
       </table>
@@ -259,8 +276,8 @@ a.btn_boards {
       </div>
       <form action="/opprogram01/approc?m1=${m1}&m2=${m2}&m3=${m3}"
          method="POST" name="educheck" onsubmit='return mysubmit()'>
-         <input type="hidden" name="liap_code" value="${liap_code}" /> <input
-            type="hidden" name="listu_catcode" value="${listu_catcode}" />
+         <input type="hidden" name="liap_code" value="${liap_code}" /> 
+         <input type="hidden" name="listu_catcode" value="${listu_catcode}" />
 
          <div class="board_readWrap">
             <table class="board_read">
@@ -273,7 +290,7 @@ a.btn_boards {
                      <th class="c">아이디</th>
                      <td><input type="text" name="liap_appliyer" value="${sessionScope.mem_id}"
                         class="liap_apname" readonly="readonly" /></td>
-                     <td colspan="2"><b>도서번호</b> <input type="text" value="${sessionScope.rimem_num}"
+                     <td colspan="2"><b>도서번호</b> <input type="hidden" value="${sessionScope.rimem_num}"
                         name="liap_aprimemnum" class="liap_appliyer"  readonly="readonly"/></td>
                   </tr>
                   <tr>
@@ -310,11 +327,7 @@ a.btn_boards {
                         name="liap_detailad" placeholder="지번주소"> <span
                         id="guide" style="color: #999"></span></td>
                   </tr>
-                  <tr>
-                     <th class="c">비밀번호</th>
-                     <td colspan="2"><input type="password" name="liap_pass" /></td>
-                  </tr>
-                  
+
                   <tr>
 					 <th class="c">학년</th>
                      <td colspan="3">
