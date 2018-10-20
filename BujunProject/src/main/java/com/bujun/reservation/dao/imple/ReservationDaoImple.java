@@ -53,4 +53,9 @@ public class ReservationDaoImple implements ReservationDao {
 		sqlsession.delete("Reservation.delseat",map);
 		
 	}
+
+	@Override
+	public void outSeat(HashMap<String, Object> map) {
+		sqlsession.delete("Reservation.outSeat", map);
+	}
 }

@@ -79,8 +79,9 @@ h1 {position:absolute; left:0; top:25px;}
 	/* 모바일 버튼 */
 	input, textarea, button {}
 	input, textarea, button, select {-webkit-border-radius:0; -moz-border-radius:0; -o-border-radius:0; border-radius:0;}
-	input[type='text'], input[type='password'], input[type='submit'] {-webkit-appearance:none; -moz-appearance:none; appearance:none;}
+	input[type='text'], input[type='button'], input[type='password'], input[type='submit'] {-webkit-appearance:none; -moz-appearance:none; appearance:none;}
 	textarea {-webkit-appearance:none; -moz-appearance:none; appearance:none;}
+
 
 	/* .board_read tbody td input[type='checkbox'] {height:18px; padding:0; width:18px;} */
 
