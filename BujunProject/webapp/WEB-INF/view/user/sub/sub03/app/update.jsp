@@ -128,10 +128,10 @@
 						<span><span class="star"></span>처리상태</span>
 					</div>
 					<div class="a_right cont">
-						<select id="scroll" onchange="rabtn()">
-						<option value="2" name="sc_during">처리중</option>
-						<option value="3" name="sc_during">배치완료</option>
-						<option value="4" name="sc_during" id="cansel">취소</option>
+						<select id="scroll" onchange="rabtn()" name="sc_during">
+						<option value="2" >처리중</option>
+						<option value="3" >배치완료</option>
+						<option value="4" id="cansel">취소</option>
 						<!-- <input type="radio" value="4" name="sc_during" id="cansel" onclick="rabtn()"/><span>취소</span> -->
 						</select>
 					</div>

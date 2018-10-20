@@ -278,7 +278,7 @@
 						<td><div>31</div></td>
 						<td><div></div></td>
 						<td><div></div></td>
-						<td class="sat"><div>29</div></td>
+						<td class="sat"><div></div></td>
 					</tr>
 					<tr>
 						<td class="sun"><div></div></td>
@@ -318,11 +318,11 @@
 			<li><a href="/mbinfo?m1=03&m2=04&page=1&perPageNum=10"><span class="txt">나의 대출정보</span></a></li>
 			<li><a href="/volunteer?m1=06&m2=04"><span class="txt">자원봉사신청</span></a></li>
 			<li><a href="http://contents.siminlib.go.kr/FxLibrary/" title="새창으로 열림" target="_blank"><span class="txt">전자책e-book</span></a></li>
-			<li><a href="#"><span class="txt">자리 예약</span></a></li>
+			<li><a href="/reserve?m1=02&m2=04"><span class="txt">자리 예약</span></a></li>
 			<li><a href="/monthbk?rec_code=CAT0031&m1=05&m2=01&m3=01&page=1&perPageNum=12"><span class="txt">추천도서</span></a></li>
 			<li><a href="http://search.siminlib.go.kr/search/search.jsp?logo=4&mcode=110" target="_blank" title="새창으로 열림"><span class="txt">공공도서관 통합검색</span></a></li>
 			<li><a href="/finref01?m1=02&m2=02&m3=05"><span class="txt">특성화 금융정보자료실</span></a></li>
-			<li><a href="#"><span class="txt">프로그램신청</span></a></li>
+			<li><a href="/pgappl?m1=04&m2=01&m3=04&page=1&pagecount=10&pagegrp=1"><span class="txt">프로그램신청</span></a></li>
 			<li><a href="/facility?m1=02&m2=05"><span class="txt">편의시설</span></a></li>
 			
 		</ul>

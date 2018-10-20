@@ -16,57 +16,7 @@
 
 <!-- 민짐 말도 안되는 css 시작 -->
 <style>
-.resWrap {
-	width: 100%;
-	margin: 0 auto;
-}
 
-.res02 {
-    border-top: 1px solid black;
-    width: 100%;
-    height: 345px;
-    border-left: 1px solid black;
-}
-
-.mak {
- 
-    border-right: 1px solid black;
-    width: 12.5%;
-    height: 69px;
-    float: left;
-    box-sizing: border-box;
-    border-bottom: 1px solid black;
-}
-
-.green {
-	width: 15%;
-	height: 16px;
-	background: green;
-	display: inline-block;
-}
-
-.ornage {
-	width: 13%;
-	height: 16px;
-	background: orange;
-	display: inline-block;
-}
-
-.status {
-	height: 30px;
-	width: 48%;
-}
-
-.statusP {
-	display: inline-block;
-	width: 40%;
-}
-
-.statusUl>li {
-	width: 30%;
-	height: 30px;
-	float: left;
-}
 </style>
 
 <!--  말도 안되는 css 끝  -->
@@ -277,10 +227,8 @@ window.onload = function() {
 	<div class="resWrap">
 		<div class="status">
 			<ul class="statusUl">
-				<li><p class="statusP">예약중</p>
-					<div class="green"></div></li>
-				<li><p class="statusP">예약완료</p>
-					<div class="ornage"></div></li>
+				<li>예약중 <span class="green"></span></li>
+				<li>예약완료 <span class="ornage"></span></li>
 			</ul>
 		</div>
 
