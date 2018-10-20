@@ -29,6 +29,7 @@ import com.bujun.club.vo.ClubMember;
 import com.bujun.club.vo.ClubVo;
 import com.bujun.club.vo.SearchVo;
 import com.bujun.member.vo.MemberVo;
+import com.bujun.study.vo.StudyAppVo;
 
 @Controller
 public class BuginControllor {
@@ -393,5 +394,47 @@ public class BuginControllor {
 		String clu_code = String.valueOf(map.get("cluap_code"));
 		return "redirect:/club01/joinList?m1=" + m1 + "&m2=" + m2 + "&m3=" + m3 + "&page_num=1&page_grp=1";
 	}
+	
+	@RequestMapping("/club/cluapsearch")
+	public ModelAndView stuApplySearch(@RequestParam HashMap<String, Object> map, Model model) {
+		model.addAttribute("menu", map);
+		String m1 = String.valueOf(map.get("m1"));
+		String m2 = String.valueOf(map.get("m2"));
+		String m3 = String.valueOf(map.get("m3"));
+		String clu_code="";
+		if(m1.equals("05")&&m2.equals("03")&&m3.equals("01")) {
+			clu_code = "CUS0001";
+			map.put("clu_code", clu_code);
+		}else {
+			if(m1.equals("05")&&m2.equals("03")&&m3.equals("02")) {
+				clu_code = "CUS0002";
+				map.put("clu_code", clu_code);
+			}else {
+				if(m1.equals("05")&&m2.equals("03")&&m3.equals("03")) {
+					clu_code = "CUS0003";
+					map.put("clu_code", clu_code);
+				}else {
+					if(m1.equals("05")&&m2.equals("03")&&m3.equals("04")) {
+						clu_code = "CUS0004";
+						map.put("clu_code", clu_code);
+					}
+				}
+			}
+		}
+		List<ClubVo> list = buginservice.searchAPList(map);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("m1", m1);
+		mv.addObject("m2", m2);
+		mv.addObject("m3", m3);
+		mv.addObject("cluAppList", list);
+		mv.addObject("clu_code", clu_code);
+		mv.addObject("paging", map.get("pagingVo"));
+		mv.addObject("page_num", map.get("page_num"));
+		mv.addObject("tot_cnt", map.get("tot_cnt"));
+		mv.addObject("keyfield", map.get("keyfield"));
+		mv.setViewName("user/sub/sub05/clubApplyList");
+		return mv;
+	}
+	
 	
 }

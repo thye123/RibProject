@@ -50,4 +50,6 @@ public interface BuginDao {
 
 	public void upApplyAccept(HashMap<String, Object> map);
 
+	public List<ClubVo> searchAPList(HashMap<String, Object> map);
+
 }

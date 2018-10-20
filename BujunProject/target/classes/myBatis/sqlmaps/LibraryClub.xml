@@ -203,4 +203,19 @@ select clb_pass from  clubaord_tbl where clb_idx= #{clb_idx}
 		#{cluap_idx, mode=IN, jdbcType=NUMERIC}
 		)}
 	</update>
+
+	<select id="cluapSearch"
+			statementType="CALLABLE" 
+			resultType="com.bujun.club.vo.ClubMember" 
+			parameterType="hashmap"
+	>
+		{CALL BJL_PKG_CLUB.PROC_APPLY_SEARCH(
+		#{clu_code, mode=IN, jdbcType=VARCHAR},
+		#{keyfield, mode=IN, jdbcType=VARCHAR},
+		#{page_num, mode=IN, jdbcType=NUMERIC},
+		#{tot_cnt, mode=OUT, jdbcType=NUMERIC},
+		#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=appList}
+		)}
+	</select>
+	
 </mapper>

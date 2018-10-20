@@ -206,5 +206,17 @@ public class BuginServiceImple implements BuginService {
 		bugindao.upApplyAccept(map);
 	}
 
+	@Override
+	public List<ClubVo> searchAPList(HashMap<String, Object> map) {
+		List<ClubVo> list = bugindao.searchAPList(map);
+		int page_num 	= Integer.parseInt(String.valueOf(map.get("page_num")));
+		int tot_cnt		= Integer.parseInt(String.valueOf(map.get("tot_cnt")));
+		int page_grp    = Integer.parseInt(String.valueOf(map.get("page_grp")));
+		Paging pg = new Paging(page_num, tot_cnt, page_grp);
+		PagingVo pv = pg.paging();
+		map.put("pagingVo", pv);
+		return list;
+	}
+
 
 }
