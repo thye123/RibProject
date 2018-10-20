@@ -2,10 +2,12 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/user/css/sub.css" />
+<title>부전도서관 자리예약</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -31,8 +33,8 @@
 			//alert('bb');
 			opener.window.selectedObj.setAttribute('style',
 					'background-color: white;');
-			opener.window.selectedObj.setAttribute('style',
-					'border: 1px solid black;');
+/* 			opener.window.selectedObj.setAttribute('style',
+					'border: 1px solid black;'); */
 			window.close();
 		});
 
@@ -68,10 +70,10 @@
 
 </head>
 
-<style>
+<!-- <style>
 table {
 	border-collapse: collapse;
-	width: 100%;
+	width:100%;
 }
 
 th, td {
@@ -98,7 +100,7 @@ tr:nth-child(even) {
 	margin: 0 auto;
 	text-align: center;
 }
-</style>
+</style> -->
 <body>
 
 
@@ -112,7 +114,7 @@ tr:nth-child(even) {
 		<form action="/reserve/insert" id="seargo" method="GET">
 			<div class="awcontent">
 				<input type="hidden" name="area_code" value="${area_code}" />
-				<table class="t1">
+				<table class="board_read2">
 					<caption>예약 상세 정보입니다.</caption>
 
 					<tbody>

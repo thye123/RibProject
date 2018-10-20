@@ -38,7 +38,8 @@ public class BuginControllor {
 	/*각 동아리 메뉴 값 */
 	@RequestMapping("/club01")
 	public String clubidx(@RequestParam HashMap<String, Object> map, Model model) {
-
+		//���� ���������� ���� ���Ƹ� Ŭ�� ������ �������� �Ѱ��ִ� ��Ʈ�ѷ� 
+		//System.out.println("map" + map);
 		model.addAttribute("menu", map);
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
@@ -72,15 +73,18 @@ public class BuginControllor {
 	public ModelAndView clublist(@RequestParam HashMap<String, Object> map ,Model model) {
 		ModelAndView mv = new ModelAndView();
 		model.addAttribute("menu", map);
+		System.out.println("listMap :"  + map);
 
 		String clu_code  = (String)map.get("clb_clucode");
-
+		//System.out.println("clb_clucode" + clu_code);
 		ClubMember clu = buginservice.getName(clu_code); 
 		List<ClubVo> clubList = buginservice.getClub(map);
-
+		//System.out.println("pass 값 조회 " + clubList.toString());
 		PagingData pg = new PagingData();
 	
 		ClubVo pageMaker = pg.pagdata(map);
+		//System.out.println(pageMaker.toString());
+		
 		
 		mv.addObject("clu_name", clu.getClu_name());
 		mv.addObject("pageMaker", pageMaker);
@@ -92,17 +96,19 @@ public class BuginControllor {
 		mv.addObject("m2", map.get("m2"));
 		mv.addObject("m3", map.get("m3"));
 		
+		//System.out.println("clu_code"+ clu_code);
 		mv.setViewName("user/sub/sub05/clublist");
 
 		return mv;
 	}
 
-	//하나의 데이터로 넘어갈때 
+	// ���� ���� 
 	@RequestMapping("/club01/CluBoard/OneView")
 	public ModelAndView OneView(@RequestParam HashMap<String, Object> map ,Model model) {
+		
+		//System.out.println("하나데이터 map" + map);
 
 		ModelAndView mv = new ModelAndView();
-		
 		model.addAttribute("menu", map);
 		
 		mv.addObject("m1", map.get("m1"));
@@ -128,7 +134,8 @@ public class BuginControllor {
 	public ModelAndView checkPass(@RequestParam HashMap<String, Object> map , Model model) {
 		
 		ModelAndView mv = new ModelAndView();
-
+		//System.out.println("map : " + map);
+		
 		int idx=  Integer.parseInt(String.valueOf(map.get("clb_idx")));
 		ClubVo vo = buginservice.getClbPass(idx);
 		model.addAttribute("menu", map);
@@ -144,35 +151,34 @@ public class BuginControllor {
 		return mv;
 	}
 	
-	/*비밀 게시글일때 --> 확인 해주는 컨트롤러 */
 	@RequestMapping("/club01/CluBoard/Checking")
 	public String checkingProc(@RequestParam HashMap<String, Object> map) {
 		
-		//System.out.println("하나데이터 map" + map);
+		System.out.println("하나데이터 map" + map);
 
 		String match = (String)map.get("clb_pass");
-
+		//System.out.println("match" + match);
 		String almathc = String.valueOf(map.get("clb_pass"));
-
+		//System.out.println("almathc :" + almathc);
 		if(match.equals(almathc)) {
-			return "redirect:/club01/CluBoard/OneView?clb_idx="+map.get("clb_idx")+"&clb_clucode=CUS0001&m1="+map.get("m1")+"&m2="+map.get("m2")+"&m3="+map.get("m3");
+		
+			return "redirect:/club01/CluBoard/OneView?clb_idx="+map.get("clb_idx")+"&clb_clucode=CUS0001";
 		}else {
-			return "redirect:/club01/CluBoard?m1="+map.get("m1")+"&m2="+map.get("m2")+"m3="+map.get("m3");
+			return "redirect:/club01/CluBoard";
 		
 		}
 
 	}
 	
-	///writeform
-
+	/// CluBoard/WriteForm form �������� ���ϴ� .
 	@RequestMapping("/club01/CluBoard/WriteForm")
-	public ModelAndView WriteForm(@RequestParam HashMap<String, Object> map) {
+	public ModelAndView WriteForm(@RequestParam HashMap<String, Object> map, Model model) {
+		model.addAttribute("menu", map);
 		ModelAndView mv = new ModelAndView();
-	
-		//System.out.println("writeMap" + map);
+		System.out.println("writeMap" + map);
 		String clb_clucode = (String) map.get("clb_clucode");
 		mv.addObject("clb_clucode", clb_clucode);
-
+		
 		mv.addObject("m1", map.get("m1"));
 		mv.addObject("m2", map.get("m2"));
 		mv.addObject("m3", map.get("m3"));
@@ -186,9 +192,14 @@ public class BuginControllor {
 	@RequestMapping("/CluBoard/processing")
 
 	public ModelAndView clubwrite(@RequestParam HashMap<String, Object> map, MultipartFile file,
-			HttpServletRequest req) {
+			HttpServletRequest req, Model model) {
+		model.addAttribute("menu", map);
 		ModelAndView mv = new ModelAndView();
 
+		String m1 = String.valueOf(map.get("m1"));
+		String m2 = String.valueOf(map.get("m2"));
+		String m3 = String.valueOf(map.get("m3"));
+		
 		String clb_clucode = (String) map.get("clb_clucode");
 		MemberVo vo = new MemberVo();
 	
@@ -207,34 +218,32 @@ public class BuginControllor {
 		buginservice.insertdata(file, map, req);
 		Uploading upload= new Uploading();
 		upload.addFile(file, map, req);
-		mv.setViewName("redirect:/club01/CluBoard?clb_clucode="+clb_clucode+"&page=1&pagecount=10&pagegrp=1");
+		mv.setViewName("redirect:/club01/CluBoard?clb_clucode="+clb_clucode+"&page=1&pagecount=10&pagegrp=1&m1=" + m1 + "&m2=" + m2 + "&m3=" + m3);
 		return mv;
 	}
 
 	//�ϳ��� ������ ���� ������� ���ư���
 	@RequestMapping("/club01/CluBoard/Goboard")
-	public ModelAndView Goboard(@RequestParam HashMap<String, Object> map ,Model model) {
+	public ModelAndView Goboard(@RequestParam HashMap<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
-		model.addAttribute("menu", map);
-		
-		mv.addObject("m1", map.get("m1"));
-		mv.addObject("m2", map.get("m2"));
-		mv.addObject("m3", map.get("m3"));
-		
+		String m1 = String.valueOf(map.get("m1"));
+		String m2 = String.valueOf(map.get("m2"));
+		String m3 = String.valueOf(map.get("m3"));
 		String clb_clucode = (String) map.get("clb_clucode");
-		/*redirect:/*/		
-		mv.setViewName("redirect:/club01/CluBoard?clb_clucode=" + clb_clucode+"&page=1&pagecount=10&pagegrp=1&m1="+map.get("m1")+"&m2="+map.get("m2")+"&m3="+map.get("m3"));
+		mv.setViewName("redirect:/club01/CluBoard?clb_clucode=" + clb_clucode+"&page=1&pagecount=10&pagegrp=1&m1="+ m1 + "&m2="+ m2 + "&m3=" + m3);
 		return mv;
 	}
 
 	// ���� �κ��Դϴ�
 	@RequestMapping("/club01/CluBoard/Delboard")
-	public ModelAndView dataDel(@RequestParam HashMap<String, Object> map) {
-		ModelAndView mv = new ModelAndView();
+	public String dataDel(@RequestParam HashMap<String, Object> map) {
+		String m1 = String.valueOf(map.get("m1"));
+		String m2 = String.valueOf(map.get("m2"));
+		String m3 = String.valueOf(map.get("m3"));
 		buginservice.dataDel(map);
 		String clb_clucode = (String) map.get("clb_clucode");
-		mv.setViewName("redirect:/club01/CluBoard?clb_clucode=" + clb_clucode + "&page=1&pagecount=10&pagegrp=1");
-		return mv;
+		
+		return "redirect:/club01/CluBoard?clb_clucode=" + clb_clucode + "&page=1&pagecount=10&pagegrp=1&m1=" + m1 + "&m2=" + m2 + "&m3=" + m3 ;
 	}
 
 	// ���� :
@@ -244,7 +253,7 @@ public class BuginControllor {
 		ModelAndView mv = new ModelAndView();
 		
 		String clb_clucode = (String) map.get("clb_clucode");
-		//System.out.println("mapssssss:" + map);
+		System.out.println("mapssssss:" + map);
 		ClubVo vo = buginservice.getOnedata(map);
 		ClubMember member = buginservice.getName(clb_clucode);
 		
@@ -264,11 +273,16 @@ public class BuginControllor {
 	//update  �ٵǰ� ó�� �Ǵ� �κ� 
 	@RequestMapping("/club01/CluBoard/UptProc")
 	public String UptProc(@RequestParam HashMap<String, Object> map
-			 ,MultipartFile file, HttpServletRequest req) {
-	
+			 ,MultipartFile file, HttpServletRequest req, Model model) {
+		
+		model.addAttribute("menu", map);
 		//System.out.println("������Ʈ ���� ó��1 " + map);
 		String clb_clucode = (String) map.get("clb_clucode");
 		String file_filename = file.getOriginalFilename();
+		
+		String m1 = String.valueOf(map.get("m1"));
+		String m2 = String.valueOf(map.get("m2"));
+		String m3 = String.valueOf(map.get("m3"));
 		
 		if(file_filename!=null) {
 			map.put("file_filename", file_filename);
@@ -279,14 +293,39 @@ public class BuginControllor {
 			buginservice.uptproc(file, map, req);
 		}
 		
-		return "redirect:/club01/CluBoard?clb_clucode=" + clb_clucode + "&page=1&pagecount=10&pagegrp=1";
+		return "redirect:/club01/CluBoard?clb_clucode=" + clb_clucode + "&page=1&pagecount=10&pagegrp=1&m1=" + m1 + "&m2=" + m2 + "&m3=" + m3;
 	}
 
 	
 	// ���Ƹ����� ���� �Խ���
 	@RequestMapping("/club01/joinClub")
-	public ModelAndView joinClub(@RequestParam String cluapp_code) {
+	public ModelAndView joinClub(@RequestParam HashMap<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
+		String cluapp_code = "";
+		String m1 = String.valueOf(map.get("m1"));
+		String m2 = String.valueOf(map.get("m2"));
+		String m3 = String.valueOf(map.get("m3"));
+		
+		//게시판 코드 찾기
+		if(m1.equals("05")&&m2.equals("03")&&m3.equals("01")) {
+			cluapp_code = "CUS0001";
+		}else {
+			if(m1.equals("05")&&m2.equals("03")&&m3.equals("02")) {
+				cluapp_code = "CUS0002";
+			}else {
+				if(m1.equals("05")&&m2.equals("03")&&m3.equals("03")) {
+					cluapp_code = "CUS0003";
+				}else {
+					if(m1.equals("05")&&m2.equals("03")&&m3.equals("04")) {
+						cluapp_code = "CUS0004";
+					}
+				}
+			}
+		}
+		
+		mv.addObject("m1", m1);
+		mv.addObject("m2", m2);
+		mv.addObject("m3", m3);
 		mv.addObject("cluapp_code", cluapp_code);
 		mv.setViewName("user/sub/sub05/joinForm");
 		return mv;
@@ -301,4 +340,58 @@ public class BuginControllor {
 		return mv;
 	}
 
+	@RequestMapping("/club01/joinList")
+	public ModelAndView joinList(@RequestParam HashMap<String, Object> map, Model model) {
+		model.addAttribute("menu", map);
+		ModelAndView mv = new ModelAndView();
+		String clu_code = "";
+		String m1 = String.valueOf(map.get("m1"));
+		String m2 = String.valueOf(map.get("m2"));
+		String m3 = String.valueOf(map.get("m3"));
+		//게시판 코드 찾기
+		if(m1.equals("05")&&m2.equals("03")&&m3.equals("01")) {
+			clu_code = "CUS0001";
+			map.put("clu_code", clu_code);
+		}else {
+			if(m1.equals("05")&&m2.equals("03")&&m3.equals("02")) {
+				clu_code = "CUS0002";
+				map.put("clu_code", clu_code);
+			}else {
+				if(m1.equals("05")&&m2.equals("03")&&m3.equals("03")) {
+					clu_code = "CUS0003";
+					map.put("clu_code", clu_code);
+				}else {
+					if(m1.equals("05")&&m2.equals("03")&&m3.equals("04")) {
+						clu_code = "CUS0004";
+						map.put("clu_code", clu_code);
+					}
+				}
+			}
+		}
+		
+		List<ClubVo> list = buginservice.getApplyList(map);
+		
+		mv.addObject("m1", m1);
+		mv.addObject("m2", m2);
+		mv.addObject("m3", m3);
+		mv.addObject("clu_code", clu_code);
+		mv.addObject("cluAppList", list);
+		mv.addObject("page_num", map.get("page_num"));
+		mv.addObject("paging", map.get("pagingVo"));
+		mv.addObject("tot_cnt", map.get("tot_cnt"));
+		mv.setViewName("user/sub/sub05/clubApplyList");
+		return mv;
+	}
+	
+	@RequestMapping("/club/accept")
+	public String acceptClub(@RequestParam HashMap<String, Object> map, Model model) {
+		model.addAttribute("menu", map);
+		buginservice.upApplyAccept(map);
+		String m1 = String.valueOf(map.get("m1"));
+		String m2 = String.valueOf(map.get("m2"));
+		String m3 = String.valueOf(map.get("m3"));
+		String clu_code = String.valueOf(map.get("cluap_code"));
+		return "redirect:/club01/joinList?m1=" + m1 + "&m2=" + m2 + "&m3=" + m3 + "&page_num=1&page_grp=1";
+	}
+	
 }

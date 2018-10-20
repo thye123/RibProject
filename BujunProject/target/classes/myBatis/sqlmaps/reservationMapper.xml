@@ -34,8 +34,9 @@
 	<select id="seatCode" statementType="CALLABLE"
 		resultType="com.bujun.reservation.vo.ReservationVo"
 		parameterType="hashmap">
-		{CALL BJL_PKG_RESERVATION.PROC_SEAT_NUM(#{param, mode=OUT, jdbcType=CURSOR,
-		javaType=RESULTSET, resultMap=resmap})}
+		{CALL BJL_PKG_RESERVATION.PROC_SEAT_NUM(
+		#{param, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=resmap}
+		)}
 	</select>
 
 	<delete id="delseat" statementType="CALLABLE"

@@ -292,6 +292,7 @@ window.onload = function() {
 				<li>예약완료 <span class="ornage"></span></li>
 			</ul>
 		</div>
+
 		<c:if test="${sessionScope.mem_id ne null}">
 			<a class="btn btn-default" href="#" data-featherlight="#fl1">Default</a>		
 			</c:if>
@@ -308,6 +309,7 @@ window.onload = function() {
 			<h3 class="tbul2">노트북</h3>
 			<div class="res06">
 			</div>
+
 			<!-- <div class="restwoWrap"> -->
 
 

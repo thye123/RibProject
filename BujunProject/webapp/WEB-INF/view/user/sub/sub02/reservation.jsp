@@ -17,6 +17,7 @@
 <!-- 민짐 말도 안되는 css 시작 -->
 <style>
 
+<<<<<<< HEAD
 			@media all {
 				.lightbox { display: none; }
 				.fl-page h1,
@@ -70,6 +71,8 @@
 
 
 
+=======
+>>>>>>> branch 'master' of https://github.com/thye123/RibProject.git
 </style>
 
 <!--  말도 안되는 css 끝  -->

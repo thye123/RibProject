@@ -21,6 +21,8 @@ import com.bujun.club.vo.ClubMember;
 import com.bujun.club.vo.ClubVo;
 import com.bujun.club.vo.SearchVo;
 import com.bujun.member.vo.MemberVo;
+import com.bujun.study.service.impl.Paging;
+import com.bujun.study.vo.PagingVo;
 
 @Service("buginservice")
 public class BuginServiceImple implements BuginService {
@@ -185,6 +187,23 @@ public class BuginServiceImple implements BuginService {
 	public ClubVo getClbPass(int idx) {
 		ClubVo vo= bugindao.getClbPass(idx);
 		return vo;
+	}
+
+	@Override
+	public List<ClubVo> getApplyList(HashMap<String, Object> map) {
+		List<ClubVo> list = bugindao.getApplyList(map);
+		int page_num 	= Integer.parseInt(String.valueOf(map.get("page_num")));
+		int tot_cnt		= Integer.parseInt(String.valueOf(map.get("tot_cnt")));
+		int page_grp    = Integer.parseInt(String.valueOf(map.get("page_grp")));
+		Paging pg = new Paging(page_num, tot_cnt, page_grp);
+		PagingVo pv = pg.paging();
+		map.put("pagingVo", pv);
+		return list;
+	}
+
+	@Override
+	public void upApplyAccept(HashMap<String, Object> map) {
+		bugindao.upApplyAccept(map);
 	}
 
 

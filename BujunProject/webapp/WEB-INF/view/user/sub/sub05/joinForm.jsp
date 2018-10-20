@@ -138,7 +138,7 @@ input[type=submit].btn_board {
 
 		<div class="auto_minjim">
 
-			<form action="/joinClub/Proc" method="POST" id="join">
+			<form action="/joinClub/Proc?m1=${m1}&m2=${m2}&m3=${m3}" method="POST" id="join">
 				<input type="hidden" name="cluapp_code" value="${cluapp_code}" />
 
 				<table class="mintable">
@@ -179,8 +179,8 @@ input[type=submit].btn_board {
 
 
 				<div class="btn_set r">
-					<input type="submit" value="제출" class="btn btn_board" /> <input
-						type="button" value="닫기" class="btn_board" id="btns" />
+					<input type="submit" value="제출" class="btn btn_board" /> 
+					<input type="button" value="닫기" class="btn_board" id="btns" />
 				</div>
 
 			</form>
