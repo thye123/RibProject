@@ -23,4 +23,6 @@ public interface EduService {
 	//신청중인 수강신청 정보 보여줄떄
 	public List<EduVo> EduingData (HashMap<String, Object> map);
 
+	public List<EduVo> mainList(HashMap<String, Object> map);
+
 }

@@ -123,7 +123,7 @@ public class ReservationController {
 	{
 		ModelAndView mv= new ModelAndView();
 		reservationservice.DelAjax(map);
-		mv.setViewName("redirect: /reserve");
+		mv.setViewName("redirect:/reserve");
 		return mv;
 		
 	}
@@ -144,5 +144,11 @@ public class ReservationController {
 
 	}
 	
+	
+	@RequestMapping("/reserve/out")
+	public String out(@RequestParam HashMap<String, Object> map) {
+		reservationservice.outSeat(map);
+		return "redirect:/reserve?m1=02&m2=04";
+	}
 }
 

@@ -13,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bujun.education.service.EduService;
+import com.bujun.education.vo.EduVo;
 import com.bujun.member.service.LoginService;
 import com.bujun.member.vo.MemberVo;
 import com.bujun.monthbook.service.MonthbookService;
@@ -38,6 +40,9 @@ public class BasicController {
 	@Autowired
 	private NoticeService noticeService;
 	
+	@Autowired
+	private EduService eduService;
+	
 	@RequestMapping("/")
 	public String Main(HttpSession session, Model model) {
 		
@@ -61,6 +66,11 @@ public class BasicController {
 		String ad_code = "CAT0009";
 		List <NoticeVo> noList = noticeService.mainList(map, ad_code);
 		model.addAttribute("noList", noList);
+		
+		//평생학습
+		List<EduVo> eduList = eduService.mainList(map);
+		model.addAttribute("eduList", eduList);
+		
 		if(!login_name.equals("anonymousUser")) {
 			
 			map.put("mem_id", login_name);

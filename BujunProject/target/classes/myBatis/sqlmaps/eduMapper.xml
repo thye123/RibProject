@@ -107,4 +107,14 @@
   ,#{cnt, mode=OUT,jdbcType=NUMERIC})}
  </select>
  
+ <select id="mainList"
+ 		 statementType="CALLABLE" 
+ 		 parameterType="hashmap"
+ 		 resultType="com.bujun.education.vo.EduVo"
+ >
+ 	{CALL PKG_EDUCATION.PROC_MAIN_LIST(
+ 	#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=selEdu}
+ 	)}
+ </select>
+ 
  </mapper>
