@@ -216,9 +216,9 @@
 	.boardBtn02 {display:inline-block;width:70px;padding:12px 5px 10px; text-align:center;background:#394c67; color:#fff; font-weight:400; transition: all 0.3s ease-out;}
 }
 
-/*  .btn_down, .btn_down:hover {
+  .btn_down, .btn_down:hover {
     background-image: url(../images/sub/down.png);
-} */ 
+} 
 .btn_con {
     display: inline-block;
     margin-bottom: 5px;
@@ -232,6 +232,21 @@
     color: #313131;
     white-space: nowrap;
 }
+
+.btn_con1 {
+    display: inline-block;
+    margin-bottom: 5px;
+    background-color: #fff;
+    background-position: 90% center;
+    background-repeat: no-repeat;
+    padding: 10px 10px 10px 10px;
+    font-size: 12px;
+    color: #000;
+    border: 1px solid #393939;
+    color: #313131;
+    white-space: nowrap;
+}
+
 
 .btns .btns_black {color:#fff; padding: 8px 25px; background: #696969; cursor:pointer;}
 .btns .btns_black:hover {background:#4d4d4d;}

@@ -278,7 +278,7 @@
 						<td><div>31</div></td>
 						<td><div></div></td>
 						<td><div></div></td>
-						<td class="sat"><div>29</div></td>
+						<td class="sat"><div></div></td>
 					</tr>
 					<tr>
 						<td class="sun"><div></div></td>
