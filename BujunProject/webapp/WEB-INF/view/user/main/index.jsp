@@ -116,7 +116,7 @@
 									</li>
 								</c:forEach>
 								</ul>
-							<a href="/index.php?pagecode=P000000026" class="more" title="공지사항 목록 더보기로 이동합니다."><img src="${pageContext.request.contextPath}/resources/user/images/main/m_more.png" alt="공지사항 더보기" /></a>
+							<a href="/notice?m1=06&m2=01&nowpage=1&pagecount=10&grpnum=1" class="more" title="공지사항 목록 더보기로 이동합니다."><img src="${pageContext.request.contextPath}/resources/user/images/main/m_more.png" alt="공지사항 더보기" /></a>
 						</div>
 						<!-- //1 -->
 
