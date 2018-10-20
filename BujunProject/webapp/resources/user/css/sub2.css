@@ -448,7 +448,7 @@
     color: #313131;
     white-space: nowrap;
 }
-
+.tab_depth01 .temp03 .gener>a {color:#fff;}
 
 .btns .btns_black {color:#fff; padding: 8px 25px; background: #696969; cursor:pointer;}
 .btns .btns_black:hover {background:#4d4d4d;}
