@@ -12,6 +12,55 @@
 
 <!-- 레프트메뉴 -->
 <%@ include file="../../include/left_menu05.jsp"%>
+<script>
+	onload = function() {
+		var subTitle = document.getElementsByClassName("subTitle");
+		var sub_tit  = document.getElementsByClassName("sub_tit");
+		var m1 = "${m1}";
+		var m3 = "${m2}";
+		var m2 = "${m3}";
+		
+		if (m1 == "05" && m2 == "03" && m3 == "01") {
+			alert("1");
+			subTitle[0].removeChild(subTitle[0].childNodes[0]);
+			sub_tit[0].removeChild(sub_tit[0].childNodes[0]);
+			var coment = document.createTextNode("찬우물 가입 신청 현황");
+			var ticoment = document.createTextNode("찬우물 가입 신청 현황");
+			sub_tit[0].appendChild(ticoment);
+			subTitle[0].appendChild(coment);
+		} else {			
+			if(m1 == "05" && m2 == "03" && m3 == "02"){
+				alert("2");
+				subTitle[0].removeChild(subTitle[0].childNodes[0]);
+				sub_tit[0].removeChild(sub_tit[0].childNodes[0]);
+				var coment = document.createTextNode("책넝쿨 가입 신청 현황");
+				var ticoment = document.createTextNode("책넝쿨 가입 신청 현황");
+				sub_tit[0].appendChild(ticoment);
+				subTitle[0].appendChild(coment);	
+			}else{
+				if(m1 == "05" && m2 == "03" && m3 == "03"){
+					alert("3");
+					subTitle[0].removeChild(subTitle[0].childNodes[0]);
+					sub_tit[0].removeChild(sub_tit[0].childNodes[0]);
+					var coment = document.createTextNode("이목 가입 신청 현황");
+					var ticoment = document.createTextNode("이목 가입 신청 현황");
+					sub_tit[0].appendChild(ticoment);
+					subTitle[0].appendChild(coment);
+				}else{
+					if(m1 == "05" && m2 == "03" && m3 == "04"){
+						alert("4");
+						subTitle[0].removeChild(subTitle[0].childNodes[0]);
+						sub_tit[0].removeChild(sub_tit[0].childNodes[0]);
+						var coment = document.createTextNode("책마중 가입 신청 현황");
+						var ticoment = document.createTextNode("책마중 가입 신청 현황");
+						sub_tit[0].appendChild(ticoment);
+						subTitle[0].appendChild(coment);
+					}
+				}
+			}	
+		}
+	}
+</script>
 <!-- location -->
 <div class="loca">
 	<ul>
@@ -51,14 +100,13 @@
 				</c:otherwise>
 			</c:choose>
 		</div> 
-		<form action="/study/myapplysearch?m1=${m1}&m2=${m2}&m3=${m3}&page_num=1&page_grp=1&mem=${sessionScope.rimem_num}" name="search" method="post" id="searchForm">
+		<form action="/club/cluapsearch?m1=${m1}&m2=${m2}&m3=${m3}&page_num=1&page_grp=1&clu_code=${clu_code}" name="search" method="post" id="searchForm">
 			<div class="board_sch">
 				<select name="keyfield" id="keyfield" title="검색어">
 					<option value="">승인여부</option>
 					<option value="2">승인</option>
 					<option value="1">미승인</option>
 				</select> 
-				<input type="text" name="keyword" id="keyword" title="검색어 입력" value="" placeholder="검색어를 입력하세요" /> 
 				<a href="#" class="searchBtn" onclick="document.search.submit(); return false;">검색</a>
 			</div>
 		</form>
@@ -127,7 +175,7 @@
 		}
 	</script>
 	<div class="r mg_t20 btns">
-		<input type="button" class="btns_black" id="detail" value="뒤로가기" style="border:0;">
+		<input type="button" class="btns_black" id="detail" value="뒤로가기" style="border:0;"/>
 	</div>
 	<!-- //table -->
 
@@ -141,12 +189,12 @@
 			<c:choose>
 				<c:when test="${keyword != null && keyfield != null}">
 					<c:if test="${startnum > 10}">
-						<a class="prevblock" href="/study/appSearch?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&page_num=${page_num-10}&page_grp=${page_grp-1}&mem=${sessionScope.rimem_num}"><span>이전</span></a>
+						<a class="prevblock" href="/club/cluapsearch?keyfield=${keyfield}&m1=${m1}&m2=${m2}&page_num=${page_num-10}&page_grp=${page_grp-1}&clu_code=${clu_code}"><span>이전</span></a>
 					</c:if>
 				</c:when>
 				<c:otherwise>
 					<c:if test="${startnum > 10}">
-						<a class="prevblock" href="/study/appList?m1=${m1}&m2=${m2}&m3=${m3}&page_num=${page_num-10}&page_grp=${page_grp-1}&mem=${sessionScope.rimem_num}"><span>이전</span></a>
+						<a class="prevblock" href="/club01/joinList?m1=${m1}&m2=${m2}&m3=${m3}&page_num=${page_num-10}&page_grp=${page_grp-1}&clu_code=${clu_code}"><span>이전</span></a>
 					</c:if>
 				</c:otherwise>
 			</c:choose>		
@@ -156,13 +204,13 @@
 				<c:when test="${keyword != null && keyfield != null}">
 					<c:forEach var="Paging" begin="${startnum}" end="${endnum}" step="1">
 						<a class="default"
-							href="/study/appSearch?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&m3=${m3}&page_num=${Paging}&page_grp=${page_grp}&mem=${sessionScope.rimem_num}"><span>${Paging}</span></a>
+							href="/club/cluapsearch?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&m3=${m3}&page_num=${Paging}&page_grp=${page_grp}&clu_code=${clu_code}"><span>${Paging}</span></a>
 					</c:forEach>		
 				</c:when>
 				<c:otherwise>
 					<c:forEach var="Paging" begin="${startnum}" end="${endnum}" step="1">
 						<a class="default"
-							href="/study/appList?m1=${m1}&m2=${m2}&m3=${m3}&page_num=${Paging}&page_grp=${page_grp}&mem=${sessionScope.rimem_num}"><span>${Paging}</span></a>
+							href="/club01/joinList?m1=${m1}&m2=${m2}&m3=${m3}&page_num=${Paging}&page_grp=${page_grp}&clu_code=${clu_code}"><span>${Paging}</span></a>
 					</c:forEach>		
 				</c:otherwise>
 			</c:choose>
@@ -171,12 +219,12 @@
 			<c:choose>
 				<c:when test="${keyword != null && keyfield != null}">
 					<c:if test="${startnum <= (tot_btcnt-10) && startnum > 0}">
-						<a class="nextblock" href="/study/appSearch?keyword=${keyword}&keyfield=${keyfield}&m1=${m1}&m2=${m2}&m3=${m3}&page_num=${page_num+10}&page_grp=${page_grp+1}&mem=${sessionScope.rimem_num}"><span>다음</span></a>
+						<a class="nextblock" href="/club/cluapsearch?keyfield=${keyfield}&m1=${m1}&m2=${m2}&m3=${m3}&page_num=${page_num+10}&page_grp=${page_grp+1}&clu_code=${clu_code}"><span>다음</span></a>
 					</c:if>
 				</c:when>
 				<c:otherwise>
 					<c:if test="${startnum <= (tot_btcnt-10) && startnum > 0}">
-						<a class="nextblock" href="/study/appList?m1=${m1}&m2=${m2}&m3=${m3}&page_num=${page_num+10}&page_grp=${page_grp+1}&mem=${sessionScope.rimem_num}"><span>다음</span></a>
+						<a class="nextblock" href="/club01/joinList?m1=${m1}&m2=${m2}&m3=${m3}&page_num=${page_num+10}&page_grp=${page_grp+1}&clu_code=${clu_code}"><span>다음</span></a>
 					</c:if>
 				</c:otherwise>
 			</c:choose>

@@ -53,6 +53,8 @@ public interface BuginService {
 
 	public void upApplyAccept(HashMap<String, Object> map);
 
+	public List<ClubVo> searchAPList(HashMap<String, Object> map);
+
 	//public Filedownload filedown(HashMap<String, Object> map, HttpServletResponse res);
 
 }
