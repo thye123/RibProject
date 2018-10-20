@@ -142,4 +142,24 @@ public class BuginDaoImple implements BuginDao {
 		return vo;
 	}
 
+	@Override
+	public List<ClubVo> getApplyList(HashMap<String, Object> map) {
+		sqlsession.selectList("Bugin.clubApplyList", map);
+		List<ClubVo> list = (List<ClubVo>) map.get("result");
+		return list;
+	}
+
+	@Override
+	public void upApplyAccept(HashMap<String, Object> map) {
+		sqlsession.update("Bugin.clubApplyUpdate", map);
+	}
+
+	@Override
+	public List<ClubVo> searchAPList(HashMap<String, Object> map) {
+		sqlsession.selectList("Bugin.cluapSearch", map);
+		List<ClubVo> list = (List<ClubVo>) map.get("result");
+		System.out.println("list:" + list);
+		return list;
+	}
+
 }

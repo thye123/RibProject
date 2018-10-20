@@ -20,4 +20,6 @@ public interface EduDao {
 	public List<EduVo> getcheckData(HashMap<String, Object> map);
 	//신청 중인 것만 보여줄때 
 	public List<EduVo> EduingData (HashMap<String, Object> map);
+
+	public List<EduVo> mainList(HashMap<String, Object> map);
 }

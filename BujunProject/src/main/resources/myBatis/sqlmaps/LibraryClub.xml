@@ -170,4 +170,52 @@ select rimem_num from member_tbl where mem_id = #{clb_writer}
 <select id="Clbpass" resultType="com.bujun.club.vo.ClubVo">
 select clb_pass from  clubaord_tbl where clb_idx= #{clb_idx}
 </select>
+
+<!-- 추가 금니 -->
+
+	<resultMap id="appList" type="com.bujun.club.vo.ClubApplyVo">
+		<result property="cluapp_idx" 		column="CLUAPP_IDX" 		javaType="int"/>
+		<result property="cluapp_code" 		column="CLUAPP_CODE" 		javaType="String"/>
+		<result property="cluapp_appmemid" 	column="CLUAPP_APPMEMID" 	javaType="String"/>
+		<result property="cluapp_rimemnum" 	column="CLUAPP_RIMEMNUM" 	javaType="String"/>
+		<result property="cluapp_appname" 	column="CLUAPP_APPNAME" 	javaType="String"/>
+		<result property="cluapp_appphone" 	column="CLUAPP_APPPHONE" 	javaType="String"/>
+		<result property="cluapp_appdate" 	column="CLUAPP_APPDATE" 	javaType="String"/>
+		<result property="cluapp_appduring" column="CLUAPP_APPDURING" 	javaType="int"/>
+	</resultMap>
+
+	<select id="clubApplyList"
+			statementType="CALLABLE" 
+			resultType="com.bujun.club.vo.ClubMember" 
+			parameterType="hashmap"
+	>
+		{CALL BJL_PKG_CLUB.PROC_SELECT_APP_LIST(
+		#{clu_code, mode=IN, jdbcType=VARCHAR},
+		#{page_num, mode=IN, jdbcType=NUMERIC},
+		#{tot_cnt, mode=OUT, jdbcType=NUMERIC},
+		#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=appList}
+		)}
+	</select>
+	
+	<update id="clubApplyUpdate">
+		{CALL BJL_PKG_CLUB.PROC_APPLY_ACCEPT(
+		#{cluap_code, mode=IN, jdbcType=VARCHAR},
+		#{cluap_idx, mode=IN, jdbcType=NUMERIC}
+		)}
+	</update>
+
+	<select id="cluapSearch"
+			statementType="CALLABLE" 
+			resultType="com.bujun.club.vo.ClubMember" 
+			parameterType="hashmap"
+	>
+		{CALL BJL_PKG_CLUB.PROC_APPLY_SEARCH(
+		#{clu_code, mode=IN, jdbcType=VARCHAR},
+		#{keyfield, mode=IN, jdbcType=VARCHAR},
+		#{page_num, mode=IN, jdbcType=NUMERIC},
+		#{tot_cnt, mode=OUT, jdbcType=NUMERIC},
+		#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=appList}
+		)}
+	</select>
+	
 </mapper>

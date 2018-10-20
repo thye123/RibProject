@@ -14,5 +14,11 @@ public interface ReservationService {
 	public List<ReservationVo> getClassID(HashMap<String, Object> map);
 
 	public void upReserve(HashMap<String, Object> map);
+	
+	public List<ReservationVo> cancle(HashMap<String, Object> map);
+	
+	/*Cancle*/
+	public void deleteSet(HashMap<String, Object> map);
 
+	public void outSeat(HashMap<String, Object> map);
 }

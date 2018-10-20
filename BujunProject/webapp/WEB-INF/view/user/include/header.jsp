@@ -49,8 +49,8 @@
 	
 	        });
 	
-	       /*  /* 스티키헤더 */
-	        var header = $('.header');
+	         /* 스티키헤더 */
+	       /* var header = $('.header');
 	        var headerOt = $('.header').offset().top;
 	        var windowObj = $(window);
 	        var windowSt = 0;

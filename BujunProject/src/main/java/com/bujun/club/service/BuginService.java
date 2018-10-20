@@ -49,6 +49,12 @@ public interface BuginService {
 	//PASS 들고 오기 
 	public ClubVo getClbPass(int idx);
 
+	public List<ClubVo> getApplyList(HashMap<String, Object> map);
+
+	public void upApplyAccept(HashMap<String, Object> map);
+
+	public List<ClubVo> searchAPList(HashMap<String, Object> map);
+
 	//public Filedownload filedown(HashMap<String, Object> map, HttpServletResponse res);
 
 }

@@ -34,8 +34,9 @@
 	<select id="seatCode" statementType="CALLABLE"
 		resultType="com.bujun.reservation.vo.ReservationVo"
 		parameterType="hashmap">
-		{CALL BJL_PKG_RESERVATION.PROC_SEAT_NUM(#{param, mode=OUT, jdbcType=CURSOR,
-		javaType=RESULTSET, resultMap=resmap})}
+		{CALL BJL_PKG_RESERVATION.PROC_SEAT_NUM(
+		#{param, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=resmap}
+		)}
 	</select>
 
 	<delete id="delseat" statementType="CALLABLE"
@@ -60,5 +61,22 @@
 	#{res_seatcode, mode=IN, jdbcType=VARCHAR}
 	)}
 	</update>
+
+	<select id="canReserve" statementType="CALLABLE" resultType="com.bujun.reservation.vo.ReservationVo" parameterType="hashmap">
+	{CALL BJL_PKG_RESERVATION.PROC_CANCLE_DATA(
+	#{res_memid, mode=IN, jdbcType=VARCHAR},
+	#{re_code,   mode=IN, jdbcType=VARCHAR},
+	#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=reserva}
+	)}
+	</select>
+	
+	<delete id="outSeat">
+	{CALL BJL_PKG_RESERVATION.PROC_OUT_RESERVE(
+	#{res_code, mode=IN, jdbcType=VARCHAR},
+	#{res_memid, mode=IN, jdbcType=VARCHAR},
+	#{res_areacode, mode=IN, jdbcType=VARCHAR},
+	#{res_seatcode, mode=IN, jdbcType=VARCHAR}
+	)}
+	</delete>
 
 </mapper>

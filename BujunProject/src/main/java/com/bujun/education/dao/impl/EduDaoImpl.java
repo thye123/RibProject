@@ -70,5 +70,12 @@ public class EduDaoImpl implements EduDao{
 		return vo;
 	}
 
+	@Override
+	public List<EduVo> mainList(HashMap<String, Object> map) {
+		sqlSession.selectList("Education.mainList", map);
+		List<EduVo> list = (List<EduVo>) map.get("result");
+		return list;
+	}
+
 
 }
