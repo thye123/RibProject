@@ -118,6 +118,14 @@
 			</c:choose>
 		</tbody>	
 	</table>
+	<script>
+		onload = function(){
+			var detail = document.getElementById("detail");
+			detail.addEventListener("click", function(){
+				location.href = "/club01?m1=${m1}&m2=${m2}&m3=${m3}&page_num=1&page_grp=1";
+			});
+		}
+	</script>
 	<div class="r mg_t20 btns">
 		<input type="button" class="btns_black" id="detail" value="뒤로가기" style="border:0;">
 	</div>
