@@ -332,7 +332,7 @@ window.onload = function() {
 	</div>
 	
 		</div>
-
+<!-- ㄱㅡㅁㄴㅣㅍㅣㅅㅕㄹ  -->
 
 
 		<script src="${pageContext.request.contextPath}/resources/user/js/jquery-1.7.0.min.js"></script>
