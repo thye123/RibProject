@@ -134,7 +134,7 @@
 .sub_con .tbul1:after {display:block; content:""; background:#2ca838; width:9px; height:3px; position:absolute; top:0; left:0;}
 .sub_con .bul_type1 li{line-height:23px; position:relative; padding-left:10px; margin-bottom:5px;}
 .sub_con .bul_type1 li:after {display:block; position:absolute; content:""; width:3px; height:3px; background:#888; border-radius:50%; top:9px; left:0;}
-.sub_con .tbul2 {line-height: 23px; margin-bottom:5px; background:url(../images/sub/tbul2.jpg)no-repeat 0 center; color:#2ca838; font-size:16px; padding-left:14px;}
+.sub_con .tbul2 {clear:both; line-height: 23px; margin-bottom:5px; background:url(../images/sub/tbul2.jpg)no-repeat 0 center; color:#2ca838; font-size:16px; padding-left:14px;}
 
 
 /* tab 메뉴 */
@@ -191,6 +191,27 @@
 .board_read tbody td textarea{ font-family:'Noto Sans KR' !important; border:1px solid #d4d4d4; padding:2px 3px; }
 .board_read tbody td select {height:25px; border:1px solid #d4d4d4;  }
 .board_read tbody td select option {padding:3px 5px; }
+
+
+
+.board_read2 {border-top:2px solid #333; width:100%; border-collapse:collapse;  line-height:1.5em;}
+.board_read2 thead th {background:#fafafa; padding:10px 5px 8px;  border:none;  border-bottom:1px solid #e5e5e5;}
+.board_read2 thead th.title {  text-align:center;}
+.board_read2 td {padding:12px 5px 10px; border:0; border-bottom:1px solid #e5e5e5;color:#555;text-align:center; font-size:13px; text-align:left;}
+.board_read2 thead td.rc {font-size:12px;}
+.board_read2 thead td.rc span {background:url(board_line.gif) no-repeat 2px 6px; padding-left:8px; display:inline-block;}
+.board_read2 thead td.rc span:nth-child(1) {background:none; margin:0; padding:0;}
+.board_read2 thead td.rc span strong{ margin-right:5px; color:#000; }
+.board_read2 thead td.attach_list {font-size:12px;}
+.board_read2 thead td.attach_list img {margin-top:2px;}
+.board_read2 tbody th {padding:12px 5px 10px; border:0; border-bottom:1px solid #e5e5e5; color:#555;text-align:center; font-size:13px; text-align:left; background:#fbfbfb;}
+.board_read2 th span.txtc_inreq {color:#ff6600;}
+.board_read2 tbody td input{ border:1px solid #d4d4d4; padding:0 3px; height:23px; }
+.board_read2 tbody td textarea{ font-family:'Noto Sans KR' !important; border:1px solid #d4d4d4; padding:2px 3px; }
+.board_read2 tbody td select {height:25px; border:1px solid #d4d4d4;  }
+.board_read2 tbody td select option {padding:3px 5px; }
+
+
 
 
 /* 페이징 스타일 =============== */
@@ -313,7 +334,7 @@
 	.boxlist li select, input[type=text]{height:30px;}
 	.boxlist li input[type=text]{text-indent:10px;}
 	.boxlist #lec_div_lvl_s1, #lec_div_lvl_s2{width:48%;}
-	.boxlist{padding-left:0px !important; background:none !important;}
+	.boxlist {padding:10px !important; background:none !important;}
 	.boxlist li .cons .w5s{float:left; width:35%; padding-left:15px; box-sizing:border-box;}
 	.boxlist li .cons span.aaaa{left:35%;}
 }
@@ -535,7 +556,8 @@
 	
 	/* 로그인&비밀번호 찾기 */
 	.login_box, .pw_box {width:49.5%; box-sizing:border-box;}
-    
+	
+	
 }
 
 
