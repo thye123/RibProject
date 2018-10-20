@@ -17,6 +17,62 @@
 <!-- 민짐 말도 안되는 css 시작 -->
 <style>
 
+<<<<<<< HEAD
+			@media all {
+				.lightbox { display: none; }
+				.fl-page h1,
+				.fl-page h3,
+				.fl-page h4 {
+					font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+					font-weight: 100;
+					letter-spacing: 1px;
+				}
+				.fl-page h1 { font-size: 110px; margin-bottom: 0.5em; }
+				.fl-page h1 i { font-style: normal; color: #ddd; }
+				.fl-page h1 span { font-size: 30px; color: #333;}
+				.fl-page h3 { text-align: right; }
+				.fl-page h3 { font-size: 15px; }
+				.fl-page h4 { font-size: 2em; }
+				.fl-page .jumbotron { margin-top: 2em; }
+				.fl-page .doc { margin: 2em 0;}
+				.fl-page .btn-download { float: right; }
+				.fl-page .btn-default { vertical-align: bottom; }
+
+				.fl-page .btn-lg span { font-size: 0.7em; }
+				.fl-page .footer { margin-top: 3em; color: #aaa; font-size: 0.9em;}
+				.fl-page .footer a { color: #999; text-decoration: none; margin-right: 0.75em;}
+				.fl-page .github { margin: 2em 0; }
+				.fl-page .github a { vertical-align: top; }
+				.fl-page .marketing a { color: #999; }
+
+				/* override default feather style... */
+				.fixwidth {
+					background: rgba(256,256,256, 0.8);
+				}
+				.fixwidth .featherlight-content {
+					width: 500px;
+					padding: 25px;
+					color: #fff;
+					background: #111;
+				}
+				.fixwidth .featherlight-close {
+					color: #fff;
+					background: #333;
+				}
+
+			}
+			@media(max-width: 768px){
+				.fl-page h1 span { display: block; }
+				.fl-page .btn-download { float: none; margin-bottom: 1em; }
+			}
+			
+			html.with-featherlight{overflow:hidden}.featherlight{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:2147483647;text-align:center;white-space:nowrap;cursor:pointer;background:#333;background:rgba(0,0,0,0)}.featherlight:last-of-type{background:rgba(0,0,0,.8)}.featherlight:before{content:'';display:inline-block;height:100%;vertical-align:middle}.featherlight .featherlight-content{position:relative;text-align:left;vertical-align:middle;display:inline-block;overflow:auto;padding:25px 25px 0;border-bottom:25px solid transparent;margin-left:5%;margin-right:5%;max-height:95%;background:#fff;cursor:auto;white-space:normal}.featherlight .featherlight-inner{display:block}.featherlight link.featherlight-inner,.featherlight script.featherlight-inner,.featherlight style.featherlight-inner{display:none}.featherlight .featherlight-close-icon{position:absolute;z-index:9999;top:0;right:0;line-height:25px;width:25px;cursor:pointer;text-align:center;font-family:Arial,sans-serif;background:#fff;background:rgba(255,255,255,.3);color:#000;border:0;padding:0}.featherlight .featherlight-close-icon::-moz-focus-inner{border:0;padding:0}.featherlight .featherlight-image{width:100%}.featherlight-iframe .featherlight-content{border-bottom:0;padding:0;-webkit-overflow-scrolling:touch}.featherlight iframe{border:0}.featherlight *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}@media only screen and (max-width:1024px){.featherlight .featherlight-content{margin-left:0;margin-right:0;max-height:98%;padding:10px 10px 0;border-bottom:10px solid transparent}}@media print{html.with-featherlight>*>:not(.featherlight){display:none}}
+
+
+
+
+=======
+>>>>>>> branch 'master' of https://github.com/thye123/RibProject.git
 </style>
 
 <!--  말도 안되는 css 끝  -->
@@ -183,6 +239,9 @@ window.onload = function() {
 		//pagereload();//삭제 하면 안됨 일정 시간마다 새로 고침해서 정보 보여줘야함
 	 }, 300000);  ////300000 :30분 reload 시간 변경 완료 
 	 
+	 
+	 /**/
+
 
 	}
 </script>
@@ -231,6 +290,9 @@ window.onload = function() {
 				<li>예약완료 <span class="ornage"></span></li>
 			</ul>
 		</div>
+				<c:if test="${sessionScope.mem_id ne null}">
+			<a class="btn btn-default" href="#" data-featherlight="#fl1">Default</a>		
+			</c:if>
 
 
 		<div class="res02"></div>
@@ -238,6 +300,53 @@ window.onload = function() {
 	</div>
 	<!-- 민짐 예약 끝 -->
 	<!-- //content 끝 -->
+
+		<div class="lightbox" id="fl1">
+			<form action="/reserve/cancle" id="seargo" method="GET">
+		<input type="hidden" name="res_rimem_num" value="${sessionScope.rimem_num}"/>
+			<div class="awcontent">
+				<table class="t1">
+					<caption>취소 페이지 입니다.</caption>
+					<tbody>
+						<tr>
+							<th>아이디</th>
+							<td><input type="text" name="res_memid" value="${sessionScope.mem_id}" readonly="readonly"/></td>
+						</tr>
+
+						<tr>
+							<th>좌석번호</th>
+							<td>
+						<c:forEach var="list" items="${list}">
+							<input type="radio" name="res_seatcode" value="${list.res_seatcode}"/>
+							<input type="text" name="res_seatcode" value="${list.res_seatcode}"/>
+						</c:forEach>
+						
+						
+							</td>
+						</tr>
+				
+					</tbody>
+				</table>
+
+				<div class="btn">
+					<input type="submit" value="확인" /> 
+				<!-- 	<input type="button" value="닫기" class="cancle" /> -->
+				</div>
+
+			</div>
+		</form>
+	</div>
+	
+		</div>
+
+
+
+		<script src="${pageContext.request.contextPath}/resources/user/js/jquery-1.7.0.min.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/user/js/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+	
+	
+	
 </div>
 
 

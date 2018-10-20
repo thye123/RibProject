@@ -62,4 +62,12 @@
 	)}
 	</update>
 
+	<select id="canReserve" statementType="CALLABLE" resultType="com.bujun.reservation.vo.ReservationVo" parameterType="hashmap">
+	{CALL BJL_PKG_RESERVATION.PROC_CANCLE_DATA(
+	#{res_memid, mode=IN, jdbcType=VARCHAR},
+	#{re_code,   mode=IN, jdbcType=VARCHAR},
+	#{result, mode=OUT, jdbcType=CURSOR,javaType=RESULTSET, resultMap=reserva}
+	)}
+	</select>
+
 </mapper>

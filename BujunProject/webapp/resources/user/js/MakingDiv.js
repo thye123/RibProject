@@ -40,6 +40,7 @@ function makingBtag(){
 			inputs.setAttribute('type', 'hidden');
 			inputs.setAttribute('name', 'AREA_CODE');
 			inputs.setAttribute('value', 'CAT0020');
+	
 			mak[i].append(inputs);
 		}
 	}
