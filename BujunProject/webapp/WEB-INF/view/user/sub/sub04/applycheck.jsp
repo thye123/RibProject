@@ -278,7 +278,8 @@ background-color: #636b72;
          method="POST" name="educheck" onsubmit='return mysubmit()'>
          <input type="hidden" name="liap_code" value="${liap_code}" /> 
          <input type="hidden" name="listu_catcode" value="${listu_catcode}" />
-
+         <input type="hidden" value="${sessionScope.rimem_num}"  name="liap_aprimemnum" class="liap_appliyer"  readonly="readonly"/>
+  
          <div class="board_readWrap">
             <table class="board_read">
                <colgroup>
@@ -290,8 +291,6 @@ background-color: #636b72;
                      <th class="c">아이디</th>
                      <td><input type="text" name="liap_appliyer" value="${sessionScope.mem_id}"
                         class="liap_apname" readonly="readonly" /></td>
-                     <td colspan="2"><b>도서번호</b> <input type="hidden" value="${sessionScope.rimem_num}"
-                        name="liap_aprimemnum" class="liap_appliyer"  readonly="readonly"/></td>
                   </tr>
                   <tr>
                      <th class="c">이름</th>

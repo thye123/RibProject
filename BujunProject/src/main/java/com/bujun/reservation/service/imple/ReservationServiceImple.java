@@ -39,4 +39,16 @@ public class ReservationServiceImple implements ReservationService {
 		reservationdao.upReserve(map);
 	}
 
+	@Override
+	public List<ReservationVo> cancle(HashMap<String, Object> map) {
+		List<ReservationVo> list = reservationdao.cancle(map);
+		return list;
+	}
+
+	@Override
+	public void deleteSet(HashMap<String, Object> map) {
+		reservationdao.deleteSet(map);
+		
+	}
+
 }

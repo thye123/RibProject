@@ -15,4 +15,8 @@ public interface ReservationDao {
 
 	public void upReserve(HashMap<String, Object> map);
 
+	public List<ReservationVo> cancle(HashMap<String, Object> map);
+
+	public void deleteSet(HashMap<String, Object> map);
+
 }

@@ -3,6 +3,7 @@ package com.bujun.reservation.vo;
 public class SeatNumVo {
 
 	private int seat_num;
+
 	private String area_code;
 
 	

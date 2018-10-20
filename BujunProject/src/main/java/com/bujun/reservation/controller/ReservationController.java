@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,32 +24,56 @@ public class ReservationController {
 	@RequestMapping("/reserve")
 	public ModelAndView reserInfor(@RequestParam HashMap<String, Object> map, Model model)
 	{
-		ModelAndView mv = new ModelAndView();
-		String re_code = "";
+		/*로그인 조건 */
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
 		String m3 = String.valueOf(map.get("m3"));		
-		if(m1.equals("02")&&m2.equals("04")) {
-			re_code = "CAT0020"; 
-			map.put("re_code", re_code);
-			List<ReservationVo> rv = reservationservice.getClassID(map);
-			mv.addObject("rv",rv);
-			mv.addObject("m1",m1);
-			mv.addObject("m2",m2);
-			mv.setViewName("user/sub/sub02/reservation");
-		}
+		String re_code = "";
 		
-		if(m1.equals("02")&&m2.equals("04")&&m3.equals("02")) {
-			re_code = "CAT0021";
-			map.put("re_code", re_code);
-			List<ReservationVo> rv = reservationservice.getClassID(map);
-			//System.out.println("값" + rv.toString());
-			mv.addObject("rv",rv);
-			mv.addObject("m1",m1);
-			mv.addObject("m2",m2);
-			mv.addObject("m3",m3);
-			mv.setViewName("user/sub/sub02/reference");
-		}
+		ModelAndView mv = new ModelAndView();
+			
+		   Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		      String login_name = authentication.getName();
+		    
+		     
+		      if(!login_name.equals("anonymousUser")) {
+		    		
+		    		if(m1.equals("02")&&m2.equals("04")) {
+		    			re_code = "CAT0020"; 
+		    			map.put("re_code", re_code);
+		    			map.put("res_memid", login_name);
+		    			List<ReservationVo> rv = reservationservice.getClassID(map);
+		    			List<ReservationVo> list = reservationservice.cancle(map);
+		    			mv.addObject("list",list);
+		    			mv.addObject("rv",rv);
+		    			mv.addObject("m1",m1);
+		    			mv.addObject("m2",m2);
+		    			mv.setViewName("user/sub/sub02/reservation");
+		    		}
+		    		
+		    		if(m1.equals("02")&&m2.equals("04")&&m3.equals("02")) {
+		    			re_code = "CAT0021"; //ㅂㅜㅁㅗㅋㅗ
+		    			map.put("re_code", re_code);
+		    			map.put("res_memid", login_name);
+		    			List<ReservationVo> rv = reservationservice.getClassID(map);
+		    			
+		    			//System.out.println("값" + rv.toString());
+		    			List<ReservationVo> list = reservationservice.cancle(map);
+		    			mv.addObject("list",list);
+		    			mv.addObject("rv",rv);
+		    			mv.addObject("m1",m1);
+		    			mv.addObject("m2",m2);
+		    			mv.addObject("m3",m3);
+		    			mv.setViewName("user/sub/sub02/reference");
+		    		}
+		    		
+		    		
+		      }
+		      
+
+		/*로그인 조건 끝 */
+		
+
 
 		return mv;
 	}
@@ -106,6 +132,16 @@ public class ReservationController {
 	public String updateReserve(@RequestParam HashMap<String, Object> map) {
 		reservationservice.upReserve(map);
 		return "redirect:/reserve?m1=02&m2=04";
+	}
+	
+	
+	@RequestMapping("/reserve/cancle")
+	public String cancel(@RequestParam HashMap<String, Object> map) {
+		//ModelAndView mv= new ModelAndView();
+		System.out.println("취소 정보 map" + map);
+		reservationservice.deleteSet(map);
+		return "redirect:/reserve?m1=02&m2=04";
+
 	}
 	
 }

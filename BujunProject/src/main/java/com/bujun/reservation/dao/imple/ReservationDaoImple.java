@@ -39,4 +39,18 @@ public class ReservationDaoImple implements ReservationDao {
 	public void upReserve(HashMap<String, Object> map) {
 		sqlsession.update("Reservation.upReserve", map);
 	}
+	
+	
+	@Override
+	public List<ReservationVo> cancle(HashMap<String, Object>map){
+		sqlsession.selectList("Reservation.canReserve",map);
+		List<ReservationVo>list= (List<ReservationVo>) map.get("result");
+		return list;
+	}
+
+	@Override
+	public void deleteSet(HashMap<String, Object> map) {
+		sqlsession.delete("Reservation.delseat",map);
+		
+	}
 }

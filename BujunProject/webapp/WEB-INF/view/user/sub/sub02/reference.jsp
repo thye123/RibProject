@@ -16,150 +16,65 @@
 
 <!-- 민짐 말도 안되는 css 시작 -->
 <style>
-.
+
 * {
 	box-sizing: border-box;
 }
 
-.resWrap {
-	width: 100%;
-	margin: 0 auto;
-}
 
-.res01 {
-    border-top: 1px solid black;
-    display: inline-block;
-    width: 48%;
-    height: 438px;
-    box-sizing: border-box;
-    border-left: 1px solid black;
-}
 
-.res02 {
-	width: 52%;
-	float: right;
-	height: 370px;
-}
 
-.mak {
-	width: 12%;
-	height: 69px;
-	float: left;
-}
 
-.res03 {
-    display: block;
-    width: 49%;
-    height: 83px;
-    float: left;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
-}
+			@media all {
+				.lightbox { display: none; }
+				.fl-page h1,
+				.fl-page h3,
+				.fl-page h4 {
+					font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+					font-weight: 100;
+					letter-spacing: 1px;
+				}
+				.fl-page h1 { font-size: 110px; margin-bottom: 0.5em; }
+				.fl-page h1 i { font-style: normal; color: #ddd; }
+				.fl-page h1 span { font-size: 30px; color: #333;}
+				.fl-page h3 { text-align: right; }
+				.fl-page h3 { font-size: 15px; }
+				.fl-page h4 { font-size: 2em; }
+				.fl-page .jumbotron { margin-top: 2em; }
+				.fl-page .doc { margin: 2em 0;}
+				.fl-page .btn-download { float: right; }
+				.fl-page .btn-default { vertical-align: bottom; }
 
-.res04 {
-    float: right;
-    width: 49%;
-    height: 85px;
-    border-top: 1px solid black;
-    border-left: 1px solid;
-}
-.res05 {
-    border-top: 1px solid black;
-    margin-bottom: 14px;
-    float: left;
-    width: 100%;
-    height: 100px;
-    border-left: 1px solid black;
-}
+				.fl-page .btn-lg span { font-size: 0.7em; }
+				.fl-page .footer { margin-top: 3em; color: #aaa; font-size: 0.9em;}
+				.fl-page .footer a { color: #999; text-decoration: none; margin-right: 0.75em;}
+				.fl-page .github { margin: 2em 0; }
+				.fl-page .github a { vertical-align: top; }
+				.fl-page .marketing a { color: #999; }
 
-.dvd {
-    border-right: 1px solid black;
-    width: 20%;
-    height: 100px;
-    float: left;
-    box-sizing: border-box;
-    border-bottom: 1px solid black;
-}
+				/* override default feather style... */
+				.fixwidth {
+					background: rgba(256,256,256, 0.8);
+				}
+				.fixwidth .featherlight-content {
+					width: 500px;
+					padding: 25px;
+					color: #fff;
+					background: #111;
+				}
+				.fixwidth .featherlight-close {
+					color: #fff;
+					background: #333;
+				}
 
-.note {
-    border-right: 1px solid black;
-    width: 20%;
-    height: 100px;
-    float: left;
-    box-sizing: border-box;
-    border-bottom: 1px solid black;
-}
-.bof {
-    width: 100%;
-    height: 84px;
-    box-sizing: border-box;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
-}
+			}
+			@media(max-width: 768px){
+				.fl-page h1 span { display: block; }
+				.fl-page .btn-download { float: none; margin-bottom: 1em; }
+			}
+			
+			html.with-featherlight{overflow:hidden}.featherlight{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:2147483647;text-align:center;white-space:nowrap;cursor:pointer;background:#333;background:rgba(0,0,0,0)}.featherlight:last-of-type{background:rgba(0,0,0,.8)}.featherlight:before{content:'';display:inline-block;height:100%;vertical-align:middle}.featherlight .featherlight-content{position:relative;text-align:left;vertical-align:middle;display:inline-block;overflow:auto;padding:25px 25px 0;border-bottom:25px solid transparent;margin-left:5%;margin-right:5%;max-height:95%;background:#fff;cursor:auto;white-space:normal}.featherlight .featherlight-inner{display:block}.featherlight link.featherlight-inner,.featherlight script.featherlight-inner,.featherlight style.featherlight-inner{display:none}.featherlight .featherlight-close-icon{position:absolute;z-index:9999;top:0;right:0;line-height:25px;width:25px;cursor:pointer;text-align:center;font-family:Arial,sans-serif;background:#fff;background:rgba(255,255,255,.3);color:#000;border:0;padding:0}.featherlight .featherlight-close-icon::-moz-focus-inner{border:0;padding:0}.featherlight .featherlight-image{width:100%}.featherlight-iframe .featherlight-content{border-bottom:0;padding:0;-webkit-overflow-scrolling:touch}.featherlight iframe{border:0}.featherlight *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}@media only screen and (max-width:1024px){.featherlight .featherlight-content{margin-left:0;margin-right:0;max-height:98%;padding:10px 10px 0;border-bottom:10px solid transparent}}@media print{html.with-featherlight>*>:not(.featherlight){display:none}}
 
-.scanner {
-    border-right: 1px solid black;
-    height: 84px;
-    box-sizing: border-box;
-    border-bottom: 1px solid;
-}
-.res06 {
-    border-top: 1px solid black;
-    margin-bottom: 14px;
-    float: left;
-    width: 100%;
-    height: 100px;
-    border-left: 1px solid black;
-}
-.restwoWrap {
-	margin-bottom: 14px;
-	height: 100px;
-}
-
-.status {
-	height: 30px;
-	width: 48%;
-}
-
-.green {
-	width: 15%;
-	height: 16px;
-	background: green;
-	display: inline-block;
-}
-
-.ornage {
-	width: 13%;
-	height: 16px;
-	background: orange;
-	display: inline-block;
-}
-
-.inter {
-    border-right: 1px solid black;
-    width: 25%;
-    height: 73px;
-    float: left;
-    box-sizing: border-box;
-    border-bottom: 1px solid black;
-}
-
-.reference {
-	height: 510px;
-	width: 50%;
-	float: right;
-}
-
-.statusP {
-	display: inline-block;
-	width: 40%;
-}
-
-.statusUl>li {
-	width: 30%;
-	height: 30px;
-	float: left;
-}
 </style>
 <!--  말도 안되는 css 끝  -->
 <script src="/resources/user/js/Reference.js"></script>
@@ -373,45 +288,97 @@ window.onload = function() {
 
 		<div class="status">
 			<ul class="statusUl">
-				<li><p class="statusP">예약중</p>
-					<div class="green"></div></li>
-				<li><p class="statusP">예약완료</p>
-					<div class="ornage"></div></li>
+				<li>예약중 <span class="green"></span></li>
+				<li>예약완료 <span class="ornage"></span></li>
 			</ul>
 		</div>
-
+		<c:if test="${sessionScope.mem_id ne null}">
+			<a class="btn btn-default" href="#" data-featherlight="#fl1">Default</a>		
+			</c:if>
+		<h3 class="tbul2">인터넷</h3>
 		<div class="res01"></div>
 
 		<div class="reference">
 
-				<!-- <p>DVD</p> -->
+			<h3 class="tbul2">DVD</h3>
+			
 			<div class="res05">
 			</div>
 
-<!-- 				<p>노트북</p> -->
+			<h3 class="tbul2">노트북</h3>
 			<div class="res06">
 			</div>
-<!-- <div class="restwoWrap"> -->
-					<!-- <p>장애우</p> -->
-				<div class="res03">
+			<!-- <div class="restwoWrap"> -->
+
+
+
+			<div class="res_b">
+				<div class="lf">
+					<h3 class="tbul2">장애우</h3>
+					<div class="res03"></div>
 				</div>
 
-					<!-- <p>스캐너</p> -->
-				<div class="res04">
+				<div class="lr">
+					<h3 class="tbul2">스캐너</h3>
+					<div class="res04"></div>
 				</div>
+			</div>
+
+
 		<!-- 	</div> -->
 		</div>
 
+		<script src="${pageContext.request.contextPath}/resources/user/js/jquery-1.7.0.min.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/user/js/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+	
 
 
 
 		<!-- 	</div> -->
-
 
 	</div>
 	<!-- 민짐 예약 끝 -->
 	<!-- //content 끝 -->
 </div>
+
+
+	
+		<div class="lightbox" id="fl1">
+			<form action="/reserve/cancle" id="seargo" method="GET">
+		<input type="hidden" name="res_rimem_num" value="${sessionScope.rimem_num}"/>
+			<div class="awcontent">
+				<table class="t1">
+					<caption>취소 페이지 입니다.</caption>
+					<tbody>
+						<tr>
+							<th>아이디</th>
+							<td><input type="text" name="res_memid" value="${sessionScope.mem_id}" readonly="readonly"/></td>
+						</tr>
+
+						<tr>
+							<th>좌석번호</th>
+							<td>
+						<c:forEach var="list" items="${list}">
+							<input type="checkbox" name="res_seatcode" value="${list.res_seatcode}"/>
+							<input type="text" name="res_seatcode" value="${list.res_seatcode}"/>
+							</c:forEach>
+							</td>
+						</tr>
+				
+					</tbody>
+				</table>
+
+				<div class="btn">
+					<input type="submit" value="확인" /> 
+				<!-- 	<input type="button" value="닫기" class="cancle" /> -->
+				</div>
+
+			</div>
+		</form>
+	</div>
+
+
 
 </div>
 
