@@ -48,13 +48,13 @@
 		<ul>
 		<c:choose>
 			<c:when test="${m3 eq '02'}">
-				<li class="active"><a href="/opprogram01?m1=04&m2=01&m3=02&page=1&pagecount=10&pagegrp=1"> 일반프로그램</a></li>
-				<li><a href="/opprogram01?m1=04&m2=01&m3=03&&page=1&pagecount=10&pagegrp=1"> 초등(유아)프로그램</a></li>
+				<li class="active"><a href="/pgappl?m1=04&m2=01&m3=02&page=1&pagecount=10&pagegrp=1"> 일반프로그램</a></li>
+				<li><a href="/pgappl?m1=04&m2=01&m3=03&page=1&pagecount=10&pagegrp=1"> 초등(유아)프로그램</a></li>
 			</c:when>
 			
 			<c:when test="${m3 eq '03'}">
-				<li><a href="/opprogram01?m1=04&m2=01&m3=02&&page=1&pagecount=10&pagegrp=1"> 일반프로그램</a></li>
-				<li class="active"><a href="/opprogram01?m1=04&m2=01&m3=03&&page=1&pagecount=10&pagegrp=1"> 초등(유아)프로그램</a></li>			
+				<li><a href="/pgappl?m1=04&m2=01&m3=02&page=1&pagecount=10&pagegrp=1"> 일반프로그램</a></li>
+				<li class="active"><a href="/pgappl?m1=04&m2=01&m3=03&page=1&pagecount=10&pagegrp=1"> 초등(유아)프로그램</a></li>			
 			</c:when>
 		</c:choose>
 		</ul>
@@ -71,7 +71,7 @@
  		<ul class="studyProgram">
 			<c:forEach var="EdingData" items="${EdingData}">
 				<li>
-					<a class="link" href="/opprogram01/dCon?m1=${m1}&m2=${m2}&m3=${m3}&listu_catcode=${EdingData.listu_code}&page=${pageMaker.page}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp}">
+					<a class="link" href="/opprogram01/dCon?m1=${m1}&m2=${m2}&m3=${m3}&listu_code=${EdingData.listu_code}&page=${pageMaker.page}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp}">
 						<ul>
 							<li class="title">${EdingData.listu_name}</li>
 							<li class="n03"><span>교육대상</span> : ${EdingData.listu_target}</li>

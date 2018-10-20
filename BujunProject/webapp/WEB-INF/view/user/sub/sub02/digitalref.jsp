@@ -217,7 +217,7 @@
 				<th>무선인터넷</th>
 				<td>&nbsp;</td>
 		 		<td class="bnon">무선인터넷구역 : 도서관 뜰 등나무 휴게실, 문화교실<br />
-					<a href="/facility?m1=02&m2=05" class="con_bblue mg_t5" target="_blank">이용 상세보기</a>
+					<a href="/facility03?m1=02&m2=05" class="con_bblue mg_t5" target="_blank">이용 상세보기</a>
 				</td>
 			  </tr>
 			</tbody>

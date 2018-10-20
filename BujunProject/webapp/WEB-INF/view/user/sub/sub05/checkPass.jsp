@@ -10,8 +10,9 @@
 
 		var count = 0;
 		var aal = ${clb_pass};
-		alert("m1: " +  "${m1}");
+
 		var PassMsg = "";
+		
 		var pass = prompt('패스워드를 입력하세요', PassMsg);
 
 		while (count <= 2) {
