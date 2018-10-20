@@ -13,7 +13,22 @@
 <!-- 레프트메뉴 -->
 <%@ include file="../../../include/left_menu08.jsp" %>   
 
-
+<script>
+function inputCheck() {
+	var title = document.getElementById('title');
+	var content = document.getElementById('content');
+	
+	if(title.value =='') {
+		alert("제목을 입력하세요");
+		return false;
+	}
+	if(content.value =='') {
+		alert("내용을 입력하세요");
+		return false;
+	}
+	return true;
+}
+</script>
 			
 <!-- location -->
 <div class="loca">
@@ -39,25 +54,25 @@
 	
 	
 	<!-- table -->
-		<form action="/personalinfo02/Write" method="POST" enctype="multipart/form-data">
+		<form action="/personalinfo02/Write" method="POST" enctype="multipart/form-data" onsubmit="return inputCheck()">
 		<input type="hidden" value="CAT0018" name="ad_code">	
 			<div class="tb_boardss">
 				<div class="top">
 					<div class="n_writer">
 						<div class="n_left">작성자</div>
-						<div class="n_right"><input type="text" value="${sessionScope.mem_name}">
+						<div class="n_right"><input type="text" value="${sessionScope.mem_name}" readonly>
 						<input type="hidden" value="${sessionScope.mem_id}" name="ad_writer">
 						</div>
 					</div>
 					<div class="n_title">
 						<div class="n_left">제 목</div>
-						<div class="n_right"><input type="text" name="ad_title"></div>
+						<div class="n_right"><input type="text" name="ad_title" id="title"></div>
 					</div>
 				</div>
 				<div class="n_cont">
 					<div class="n_left">내 용</div>
 					<div class="n_right">
-						<textarea style="resize:none; warp:virtual" name="ad_content"></textarea>
+						<textarea style="resize:none; warp:virtual" name="ad_content" id="content"></textarea>
 					</div>
 				</div>
 				<button>글쓰기</button>

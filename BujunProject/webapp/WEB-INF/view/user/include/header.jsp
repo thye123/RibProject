@@ -49,7 +49,7 @@
 	
 	        });
 	
-	        /* 스티키헤더 */
+	       /*  /* 스티키헤더 */
 	        var header = $('.header');
 	        var headerOt = $('.header').offset().top;
 	        var windowObj = $(window);
@@ -67,7 +67,7 @@
 	        });
 	        windowObj.scroll();
 	
-	    });  
+	    });   */
     </script>	
 		 
 
