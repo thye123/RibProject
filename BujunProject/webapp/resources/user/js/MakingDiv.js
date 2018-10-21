@@ -4,7 +4,6 @@
 
 function makingDiv(){
 
-	//var res02 = document.getElementsByClassName('res02');
 	var res02 = document.getElementById('res02');
 	
 	var arr = [36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55
@@ -12,10 +11,10 @@ function makingDiv(){
 		];
  	for (var i = 0; i < arr.length; i++) {
 		var mak = document.createElement('a');
-		mak.setAttribute('onclick', "javascript:sendData(" + arr[i] + ")");
-		mak.setAttribute('class', 'mak')
+		mak.setAttribute('href', "#");
+		mak.setAttribute('onclick', "javascript:wrapWindowByMask("+arr[i]+")");
+		mak.setAttribute('class', 'mak');
 		mak.setAttribute('name', arr[i]);
-		mak.setAttribute('data-featherlight', '#fl2')
 		res02.appendChild(mak);
 	} 
 	

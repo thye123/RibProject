@@ -13,72 +13,40 @@
 
 <!-- 레프트메뉴 -->
 <%@ include file="../../include/left_menu02.jsp"%>
-
-<%-- <script src="${pageContext.request.contextPath}/resources/user/js/jquery-1.7.0.min.js"></script> --%>
-<script src="${pageContext.request.contextPath}/resources/user/js/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
 <!-- 민짐 말도 안되는 css 시작 -->
 <style>
 
-			@media all {
-				.lightbox { display: none; }
-				.fl-page h1,
-				.fl-page h3,
-				.fl-page h4 {
-					font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-					font-weight: 100;
-					letter-spacing: 1px;
-				}
-				.fl-page h1 { font-size: 110px; margin-bottom: 0.5em; }
-				.fl-page h1 i { font-style: normal; color: #ddd; }
-				.fl-page h1 span { font-size: 30px; color: #333;}
-				.fl-page h3 { text-align: right; }
-				.fl-page h3 { font-size: 15px; }
-				.fl-page h4 { font-size: 2em; }
-				.fl-page .jumbotron { margin-top: 2em; }
-				.fl-page .doc { margin: 2em 0;}
-				.fl-page .btn-download { float: right; }
-				.fl-page .btn-default { vertical-align: bottom; }
+/* 마스크 뛰우기 */
+#mask {  
+    position:absolute;  
+    z-index:9000;  
+    background-color:#000;  
+    display:none;  
+    left:0;
+    top:0;
+} 
+/* 팝업으로 뜨는 윈도우 css  */ 
+.window{
+ display: none;
+    position: absolute;
+    left: 80%;
+    top: 287px;
+    margin-left: -500px;
+    width: 500px;
+    height: 500px;
+    background-color: #FFF;
+    z-index: 10000; 
+ }
 
-				.fl-page .btn-lg span { font-size: 0.7em; }
-				.fl-page .footer { margin-top: 3em; color: #aaa; font-size: 0.9em;}
-				.fl-page .footer a { color: #999; text-decoration: none; margin-right: 0.75em;}
-				.fl-page .github { margin: 2em 0; }
-				.fl-page .github a { vertical-align: top; }
-				.fl-page .marketing a { color: #999; }
 
-				/* override default feather style... */
-				.fixwidth {
-					background: rgba(256,256,256, 0.8);
-				}
-				.fixwidth .featherlight-content {
-					width: 500px;
-					padding: 25px;
-					color: #fff;
-					background: #111;
-				}
-				.fixwidth .featherlight-close {
-					color: #fff;
-					background: #333;
-				}
-
-			}
-			@media(max-width: 768px){
-				.fl-page h1 span { display: block; }
-				.fl-page .btn-download { float: none; margin-bottom: 1em; }
-			}
-			
-			html.with-featherlight{overflow:hidden}.featherlight{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:2147483647;text-align:center;white-space:nowrap;cursor:pointer;background:#333;background:rgba(0,0,0,0)}.featherlight:last-of-type{background:rgba(0,0,0,.8)}.featherlight:before{content:'';display:inline-block;height:100%;vertical-align:middle}.featherlight .featherlight-content{position:relative;text-align:left;vertical-align:middle;display:inline-block;overflow:auto;padding:25px 25px 0;border-bottom:25px solid transparent;margin-left:5%;margin-right:5%;max-height:95%;background:#fff;cursor:auto;white-space:normal}.featherlight .featherlight-inner{display:block}.featherlight link.featherlight-inner,.featherlight script.featherlight-inner,.featherlight style.featherlight-inner{display:none}.featherlight .featherlight-close-icon{position:absolute;z-index:9999;top:0;right:0;line-height:25px;width:25px;cursor:pointer;text-align:center;font-family:Arial,sans-serif;background:#fff;background:rgba(255,255,255,.3);color:#000;border:0;padding:0}.featherlight .featherlight-close-icon::-moz-focus-inner{border:0;padding:0}.featherlight .featherlight-image{width:100%}.featherlight-iframe .featherlight-content{border-bottom:0;padding:0;-webkit-overflow-scrolling:touch}.featherlight iframe{border:0}.featherlight *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}@media only screen and (max-width:1024px){.featherlight .featherlight-content{margin-left:0;margin-right:0;max-height:98%;padding:10px 10px 0;border-bottom:10px solid transparent}}@media print{html.with-featherlight>*>:not(.featherlight){display:none}}
 
 </style>
 
-
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
- -->
-
 <!--  말도 안되는 css 끝  -->
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="/resources/user/js/MakingDiv.js"></script>
 <script> 
-/*깜놀(ㄲㅏㅁㄴㅗㄹㅇㅡㄴ ㅇㅏㅈㅜ ㅈㅣㄹㅗㄹㅇㅣㄷㅏ) 자바스크립트 시작 */
+/* /*깜놀(ㄲㅏㅁㄴㅗㄹㅇㅡㄴ ㅇㅏㅈㅜ ㅈㅣㄹㅗㄹㅇㅣㄷㅏ) 자바스크립트 시작 */
 
 	/* var selectedObj = null; */
 	onload = function() {
@@ -107,22 +75,13 @@
 		}
 		
 		
-		/* for (var i = 0; i < mak.length; i++) {
-			mak[i].onclick = function(){
-				//var mak = popOpen(this);
-				//var seat = mak[0];
-				//var regdate = mak[1];
-				//var startime = mak[2];
-				//var areacode = mak[3];
-				var res_seatcode = document.getElementsByName("res_seatcode");
-				res_seatcode[0].value = seat;
-				var res_date = document.getElementsByName("res_date");
-				res_date[0].value = regdate;
-				
-			
-				//res_sttime[0].value = startime;
+		 for (var i = 0; i < mak.length; i++) {
+			mak[i].onclick = function(e){
+			/* 	 e.preventDefault(); */
+				wrapWindowByMask();
+				/* alert("자리값 :" + this) */
 			}
-		} */
+		} 
 		
 		
 		for (var i = 0; i < dvd.length; i++) {
@@ -192,19 +151,6 @@
 			}
 		} 
 	}	
-		
-	
-   /*  function click(obj)
-	{
-
-		var selectedValue = obj.value;
-		alert(selectedValue);
-		document.getElementById("res_edtime2").value = selectedValue;
-		document.getElementById("show").innerHTML = selectedValue;
-		alert(document.getElementById("res_edtime2").value);
-			
-	}   */
-
 	
 	/*예약된 좌석 체킹 해주는 함수 만들꺼임 */
 	function checkingDiv(arr,div_seat){
@@ -267,36 +213,68 @@
 	settionAjax(); // //10초 뒤 좌석이 삭제 되고 새로 고침이 되어야 함 
 	//pagereload();//삭제 하면 안됨 일정 시간마다 새로 고침해서 정보 보여줘야함
  }, 300000);  ////300000 :30분 reload 시간 변경 완료 
- 
- 
- /**/
 
 
-
-
-
- function sendData(seat)
-{
-	document.getElementById("res_seatcode").value = seat;
-	alert(seat);
-	var d =  new Date();
-	var firstdate = d.getFullYear() + '/' + (d.getMonth() + 1)
-	+ '/' + d.getDate();
-	//alert(firstdate);
-	document.getElementById("res_date").value = firstdate;
-	var endTime = document.getElementById("endTime");
-	var res_sttime = document.getElementById("res_sttime");
-	
-	res_sttime.addEventListener("click", function(){
-		alert(res_sttime);
-		var res_sttime_val = res_sttime.value;
-		alert(res_sttime_val);
-	});
-
-	//document.getElementById("res_sttime").value = 2;
-}
 </script>
 <!-- /*깜놀할 자바스크립트 끝 */ -->
+
+<script type="text/javascript"> 
+//<![CDATA[
+    function wrapWindowByMask(){
+ 		//alert('seat :' + obj );
+        //화면의 높이와 너비를 구한다.
+        var maskHeight = $(document).height();  
+        var maskWidth = $(window).width();  
+ 
+        //마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
+        $("#mask").css({"width":maskWidth,"height":maskHeight});  
+ 
+        //애니메이션 효과 - 일단 0초동안 까맣게 됐다가 60% 불투명도로 간다.
+ 
+        $("#mask").fadeIn(0);      
+        $("#mask").fadeTo("slow",0.8);    
+
+        
+			var d =  new Date();
+			var firstdate = d.getFullYear() + '/' + (d.getMonth() + 1)
+			+ '/' + d.getDate();
+			
+			document.getElementById("res_date").value = firstdate;
+        
+        /*aaaa*/
+        //윈도우 같은 거 띄운다.
+        $(".window").show();
+ 
+    }
+ 
+    $(document).ready(function(){
+        //검은 막 띄우기
+        $(".mak").click(function(e){
+            e.preventDefault();
+           //alert('2:' + $(".mak").attr('name'));
+            wrapWindowByMask($(".mak").attr('name'));
+        });
+ 
+        //닫기 버튼을 눌렀을 때
+        $(".window .close").click(function (e) {  
+            //링크 기본동작은 작동하지 않도록 한다.
+            e.preventDefault();  
+            $("#mask, .window").hide();  
+        });       
+ 
+        //검은 막을 눌렀을 때
+        $("#mask").click(function () {  
+         
+ 
+        });      
+ 
+    });
+
+    function val(obj){
+    	$('#seatVal').val(Number(obj.value)+Number(3));
+    	alert($('#seatVal').val());	
+    }
+</script>
 
 
 
@@ -393,17 +371,77 @@
 	
 
 		</div>
-		<script src="${pageContext.request.contextPath}/resources/user/js/jquery-1.7.0.min.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/user/js/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
 
 </div>
-<!-- ㄱㅡㅁㄴㅣㅍㅣㅅㅕㄹ  -->
 
+  <div id ="wrap"> 
+        <div id = "container">  
+            <div id="mask">
+            <div class="window">
+<!-- <p style="width:1000px;height:500px;text-align:center;vertical-align:middle;"></p> -->
+<form style="width:500px;height:500px;text-align:center;vertical-align:middle;" action="/reserve/insert" id="seargo" method="GET">
+				<input type="hidden" name="area_code" value="${area_code}" />
+				<table class="board_read2" >
+					<caption>예약 상세 정보입니다.</caption>
 
->>>>>>> branch 'master' of https://github.com/thye123/RibProject.git
+					<tbody>
+						<tr>
+							<th>아이디</th>
+							<td><input type="text" name="res_memid" value="${sessionScope.mem_id}" readonly="readonly"/></td>
+						</tr>
 
-	<!-- ㄱㅡㅁㄴㅣㅍㅣㅅㅕㄹ ㅍㅏㅂㅇㅓㅂ ㅇㅕㄹㄹㅣㅁ -->
- <div class="lightbox" id="fl2">
+						<tr>
+							<th>회원번호</th>
+							<td><input type="text" name="res_rimem_num" value="${sessionScope.rimem_num}" readonly="readonly"/></td>
+						</tr>
+
+						<tr>
+							<th>좌석번호</th>
+							<td><input type="text" name="res_seatcode" id="res_seatcode"
+								value="${seat_code}" readonly /></td>
+						</tr>
+						<tr>
+							<th>일자</th>
+							<td><input type="text" name="res_date" id="res_date" value="${firstdate}" readonly="readonly" /></td>
+						</tr>
+
+						<tr>
+							<th>예약 시작 시간</th>
+							<td>
+								<select name="res_sttime" id="res_sttime" onchange="val(this)">
+									<option value="">선택</option>
+									<c:forEach var="i" begin="1" end="20">
+										<option value="${i}">${i}시</option>
+									</c:forEach>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th>예약 마감 시간</th>
+							<td id="endTime">
+								<span id="show">
+									<input type="text" id="seatVal" readonly="readonly" >
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+							<th></th>
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="btn">
+					<input type="submit" value="확인" /> 
+					<input type="button" value="닫기" class="cancle" />
+				</div>
+
+		</form>
+
+ </div>
+ </div>
+ 
+<%--  <div class="lightbox" id="fl2">
 		<form action="/reserve/insert" id="seargo" method="GET">
 			<div class="awcontent">
 				<input type="hidden" name="area_code" value="${area_code}" />
@@ -433,20 +471,21 @@
 
 						<tr>
 							<th>예약 시작 시간</th>
-							<td><select name="res_sttime" id="res_sttime" onchange="click(this)">
+							<td>
+								<select name="res_sttime" id="res_sttime" onchange="val(this)">
 									<option value="">선택</option>
 									<c:forEach var="i" begin="1" end="20">
 										<option value="${i}">${i}시</option>
 									</c:forEach>
-							</select></td>
+								</select>
+							</td>
 						</tr>
-
 						<tr>
 							<th>예약 마감 시간</th>
 							<td id="endTime">
-							<!-- <span >
-							<input type="text" name="res_edtime" class="last_time" id="res_edtime2" readonly="readonly"/>
-							</span>	 -->
+								<span id="show">
+									<input type="text" id="seatVal" readonly="readonly" value="1">
+								</span>
 							</td>
 						</tr>
 						<tr>
@@ -455,7 +494,14 @@
 						</tr>
 					</tbody>
 				</table>
-
+		<!-- 		<script>
+					function val(obj) {
+						var selectedValue = obj.value;
+						alert('s' + selectedValue);
+						var seatVal = document.getElementById('seatVal');
+						seatVal.setAttribute('value', selectedValue);
+					} 
+				</script> -->
 				<div class="btn">
 					<input type="submit" value="확인" /> 
 					<input type="button" value="닫기" class="cancle" />
@@ -463,7 +509,7 @@
 
 			</div>
 		</form>
-	</div>
+	</div> --%>
 
 	<!-- ㄱㅡㅁㄴㅣㅍㅣㅅㅕㄹ ㅠㅍㅏㅂㅇㅕㅂㅇㅕㄹㄹㅣ -->
 </div>
