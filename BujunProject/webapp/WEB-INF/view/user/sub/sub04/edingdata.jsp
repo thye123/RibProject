@@ -43,23 +43,23 @@
 
 	<!-- title -->
 	<div class="sub_tit">프로그램신청</div>
-
+<%-- 
 	<div id="tab_depth01" class="w50">
 		<ul>
 		<c:choose>
-			<c:when test="${m3 eq '02'}">
-				<li class="active"><a href="/pgappl?m1=04&m2=01&m3=02&page=1&pagecount=10&pagegrp=1"> 일반프로그램</a></li>
-				<li><a href="/pgappl?m1=04&m2=01&m3=03&page=1&pagecount=10&pagegrp=1"> 초등(유아)프로그램</a></li>
+			<c:when test="${m3 eq '04'}">
+				<li class="active"><a href="/pgappl?m1=04&m2=01&m3=04&page=1&pagecount=10&pagegrp=1"> 일반프로그램</a></li>
+				<li><a href="/pgappl?m1=04&m2=01&m3=05&page=1&pagecount=10&pagegrp=1"> 초등(유아)프로그램</a></li>
 			</c:when>
 			
-			<c:when test="${m3 eq '03'}">
-				<li><a href="/pgappl?m1=04&m2=01&m3=02&page=1&pagecount=10&pagegrp=1"> 일반프로그램</a></li>
-				<li class="active"><a href="/pgappl?m1=04&m2=01&m3=03&page=1&pagecount=10&pagegrp=1"> 초등(유아)프로그램</a></li>			
-			</c:when>
+		 	<c:when test="${m3 eq '05'}">
+				<li><a href="/pgappl?m1=04&m2=01&m3=04&page=1&pagecount=10&pagegrp=1"> 일반프로그램</a></li>
+				<li class="active"><a href="/pgappl?m1=04&m2=01&m3=05&page=1&pagecount=10&pagegrp=1"> 초등(유아)프로그램</a></li>			
+			</c:when> 
 		</c:choose>
 		</ul>
 	</div>
-	
+	 --%>
 	
 	
 	<!-- content 시작 -->

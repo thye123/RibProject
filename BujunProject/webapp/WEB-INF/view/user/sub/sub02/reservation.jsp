@@ -71,11 +71,17 @@
 
 </style>
 
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+ -->
+
 <!--  말도 안되는 css 끝  -->
 <script src="/resources/user/js/MakingDiv.js"></script>
-<script> /*깜놀할 자바스크립트 시작 */
-var selectedObj = null;
-window.onload = function() {
+<script> 
+/*깜놀(ㄲㅏㅁㄴㅗㄹㅇㅡㄴ ㅇㅏㅈㅜ ㅈㅣㄹㅗㄹㅇㅣㄷㅏ) 자바스크립트 시작 */
+
+	/* var selectedObj = null; */
+	onload = function() {
 		//Div b tag input type tag 기초 셋팅 
 		makingDiv();
 		makingBtag();	
@@ -88,7 +94,7 @@ window.onload = function() {
 		var inter =  document.getElementsByClassName('inter');
 		
 		/*팝업 열라고 */
-		for (var i = 0; i < note.length; i++) {
+ 		for (var i = 0; i < note.length; i++) {
 			note[i].onclick = function(){
 				popOpen(this);
 			}
@@ -100,11 +106,24 @@ window.onload = function() {
 			}
 		}
 		
-		for (var i = 0; i < mak.length; i++) {
-				mak[i].onclick = function(){
-				popOpen(this);
+		
+		/* for (var i = 0; i < mak.length; i++) {
+			mak[i].onclick = function(){
+				//var mak = popOpen(this);
+				//var seat = mak[0];
+				//var regdate = mak[1];
+				//var startime = mak[2];
+				//var areacode = mak[3];
+				var res_seatcode = document.getElementsByName("res_seatcode");
+				res_seatcode[0].value = seat;
+				var res_date = document.getElementsByName("res_date");
+				res_date[0].value = regdate;
+				
+			
+				//res_sttime[0].value = startime;
 			}
-		}
+		} */
+		
 		
 		for (var i = 0; i < dvd.length; i++) {
 			dvd[i].onclick = function(){
@@ -172,76 +191,114 @@ window.onload = function() {
 			
 			}
 		} 
+	}	
 		
-		/*예약된 좌석 체킹 해주는 함수 만들꺼임 */
-		function checkingDiv(arr,div_seat){
-			/*크기가 다른곳은 여기*/
-			console.log("class" + div_seat.length)
-			
-			console.log("길이"+div_seat.length);
-			
-			for (var i = 0; i < div_seat.length; i++) {
-				div_num[i] = div_seat[i].getAttribute('name');
-				console.log("num:" +div_num[i])
-				console.log("class:"+div_seat[i].getAttribute('class'));
-			}
-			
-			console.log(arr);
-				for (var j = 0; j < div_seat.length; j++) {
-			for (var k = 0; k < arr.length; k++) {
-					if(arr[k] == div_num[j]){
-						//alert('왔냐?' + div_num[j]);
-						console.log('div_seat' + div_seat[j].length);
-						div_seat[j].setAttribute('style','background-color: orange;');
-						div_seat[j].onclick = function(e){
-							alert('예약된 좌석입니다');
-							e.preventDefault();
-						}
-					}
-			}//arr
-		
-				}//div_num
-		}
-		
-
-		/*예약 된 좌석 ajax 호출후 화면에 표시 해주기  ==>  각 데이터 량 만큼 num을 들고온다 */
-
-		function settionAjax(){
-			
-			$.ajax({
-					url : '/reserve/settingAjax',
-					type : 'GET',
-					dataType : 'text', 
-					success : function(data) {
-						
-					},
-					error : function(xhr) {
-						console.log("에러발생" + xhr.status);
-		
-					}
-				});
-	 	
-	 }
-	 
-	 function pagestart() {
-			window.setTimeout("pagereload()", 30000);
-		}
-		function pagereload() {
-			location.reload();
-		}
 	
-	 setInterval(function(){ 
-		settionAjax(); // //10초 뒤 좌석이 삭제 되고 새로 고침이 되어야 함 
-		//pagereload();//삭제 하면 안됨 일정 시간마다 새로 고침해서 정보 보여줘야함
-	 }, 300000);  ////300000 :30분 reload 시간 변경 완료 
-	 
-	 
-	 /**/
+   /*  function click(obj)
+	{
 
+		var selectedValue = obj.value;
+		alert(selectedValue);
+		document.getElementById("res_edtime2").value = selectedValue;
+		document.getElementById("show").innerHTML = selectedValue;
+		alert(document.getElementById("res_edtime2").value);
+			
+	}   */
 
+	
+	/*예약된 좌석 체킹 해주는 함수 만들꺼임 */
+	function checkingDiv(arr,div_seat){
+		/*크기가 다른곳은 여기*/
+		console.log("class" + div_seat.length)
+		
+		console.log("길이"+div_seat.length);
+		
+		for (var i = 0; i < div_seat.length; i++) {
+			div_num[i] = div_seat[i].getAttribute('name');
+			console.log("num:" +div_num[i])
+			console.log("class:"+div_seat[i].getAttribute('class'));
+		}
+		
+		console.log(arr);
+			for (var j = 0; j < div_seat.length; j++) {
+		for (var k = 0; k < arr.length; k++) {
+				if(arr[k] == div_num[j]){
+					//alert('왔냐?' + div_num[j]);
+					console.log('div_seat' + div_seat[j].length);
+					div_seat[j].setAttribute('style','background-color: orange;');
+					div_seat[j].onclick = function(e){
+						alert('예약된 좌석입니다');
+						e.preventDefault();
+					}
+				}
+		}//arr
+	
+			}//div_num
 	}
+	
+
+	/*예약 된 좌석 ajax 호출후 화면에 표시 해주기  ==>  각 데이터 량 만큼 num을 들고온다 */
+
+	function settionAjax(){
+		
+		$.ajax({
+				url : '/reserve/settingAjax',
+				type : 'GET',
+				dataType : 'text', 
+				success : function(data) {
+					
+				},
+				error : function(xhr) {
+					console.log("에러발생" + xhr.status);
+	
+				}
+			});
+ 	
+ }
+ 
+ function pagestart() {
+		window.setTimeout("pagereload()", 30000);
+	}
+	function pagereload() {
+		location.reload();
+	}
+
+ setInterval(function(){ 
+	settionAjax(); // //10초 뒤 좌석이 삭제 되고 새로 고침이 되어야 함 
+	//pagereload();//삭제 하면 안됨 일정 시간마다 새로 고침해서 정보 보여줘야함
+ }, 300000);  ////300000 :30분 reload 시간 변경 완료 
+ 
+ 
+ /**/
+
+
+
+
+
+ function sendData(seat)
+{
+	document.getElementById("res_seatcode").value = seat;
+	alert(seat);
+	var d =  new Date();
+	var firstdate = d.getFullYear() + '/' + (d.getMonth() + 1)
+	+ '/' + d.getDate();
+	//alert(firstdate);
+	document.getElementById("res_date").value = firstdate;
+	var endTime = document.getElementById("endTime");
+	var res_sttime = document.getElementById("res_sttime");
+	
+	res_sttime.addEventListener("click", function(){
+		alert(res_sttime);
+		var res_sttime_val = res_sttime.value;
+		alert(res_sttime_val);
+	});
+
+	//document.getElementById("res_sttime").value = 2;
+}
 </script>
 <!-- /*깜놀할 자바스크립트 끝 */ -->
+
+
 
 <!-- location -->
 <div class="loca">
@@ -292,7 +349,7 @@ window.onload = function() {
 			</c:if>
 
 
-		<div class="res02"></div>
+		<div class="res02" id="res02"></div>
 
 	</div>
 	<!-- 민짐 예약 끝 -->
@@ -334,21 +391,82 @@ window.onload = function() {
 		</form>
 	</div>
 	
+
+		</div>
+		<script src="${pageContext.request.contextPath}/resources/user/js/jquery-1.7.0.min.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/user/js/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
 </div>
 <!-- ㄱㅡㅁㄴㅣㅍㅣㅅㅕㄹ  -->
 
 
+>>>>>>> branch 'master' of https://github.com/thye123/RibProject.git
 
-	
-	
-	
+	<!-- ㄱㅡㅁㄴㅣㅍㅣㅅㅕㄹ ㅍㅏㅂㅇㅓㅂ ㅇㅕㄹㄹㅣㅁ -->
+ <div class="lightbox" id="fl2">
+		<form action="/reserve/insert" id="seargo" method="GET">
+			<div class="awcontent">
+				<input type="hidden" name="area_code" value="${area_code}" />
+				<table class="board_read2" >
+					<caption>예약 상세 정보입니다.</caption>
+
+					<tbody>
+						<tr>
+							<th>아이디</th>
+							<td><input type="text" name="res_memid" value="${sessionScope.mem_id}" readonly="readonly"/></td>
+						</tr>
+
+						<tr>
+							<th>회원번호</th>
+							<td><input type="text" name="res_rimem_num" value="${sessionScope.rimem_num}" readonly="readonly"/></td>
+						</tr>
+
+						<tr>
+							<th>좌석번호</th>
+							<td><input type="text" name="res_seatcode" id="res_seatcode"
+								value="${seat_code}" readonly /></td>
+						</tr>
+						<tr>
+							<th>일자</th>
+							<td><input type="text" name="res_date" id="res_date" value="${firstdate}" readonly="readonly" /></td>
+						</tr>
+
+						<tr>
+							<th>예약 시작 시간</th>
+							<td><select name="res_sttime" id="res_sttime" onchange="click(this)">
+									<option value="">선택</option>
+									<c:forEach var="i" begin="1" end="20">
+										<option value="${i}">${i}시</option>
+									</c:forEach>
+							</select></td>
+						</tr>
+
+						<tr>
+							<th>예약 마감 시간</th>
+							<td id="endTime">
+							<!-- <span >
+							<input type="text" name="res_edtime" class="last_time" id="res_edtime2" readonly="readonly"/>
+							</span>	 -->
+							</td>
+						</tr>
+						<tr>
+							<td>
+							<th></th>
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="btn">
+					<input type="submit" value="확인" /> 
+					<input type="button" value="닫기" class="cancle" />
+				</div>
+
+			</div>
+		</form>
+	</div>
+
+	<!-- ㄱㅡㅁㄴㅣㅍㅣㅅㅕㄹ ㅠㅍㅏㅂㅇㅕㅂㅇㅕㄹㄹㅣ -->
 </div>
-
-
-
-
-
-
 
 
 </div>
