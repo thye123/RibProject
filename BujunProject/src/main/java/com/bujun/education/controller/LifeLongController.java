@@ -51,7 +51,7 @@ public class LifeLongController {
 		
 		List<EduVo> list = eduService.edulist(map);
 		map.put("cnt", map.get("cnt"));
-		//System.out.println("cnt: " + map.get("cnt"));
+	
 		EduVo  pageMaker  = data.getPaging(map);
 		
 		//System.out.println("cnt 값 :" + pageMaker.getCnt());
@@ -103,6 +103,7 @@ public class LifeLongController {
 		ModelAndView mv = new ModelAndView();
 		//System.out.println("map");
 		//listu_idx=1, listu_code=LISTU0001
+		model.addAttribute("menu", map);
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
 		String m3 = String.valueOf(map.get("m3"));

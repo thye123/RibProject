@@ -18,7 +18,6 @@ public class ReservationDaoImple implements ReservationDao {
 
 	@Override
 	public void getInsert(HashMap<String, Object> map) {
-		// TODO Auto-generated method stub
 		sqlsession.insert("Reservation.upapply",map);
 	}
 
