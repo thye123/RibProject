@@ -28,6 +28,7 @@ public class ReservationController {
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
 		String m3 = String.valueOf(map.get("m3"));		
+		
 		String re_code = "";
 		
 		ModelAndView mv = new ModelAndView();
@@ -98,6 +99,9 @@ public class ReservationController {
 	
 	public String msg(@RequestParam HashMap<String , Object> map)
 	{
+		System.out.println("map:" + map);
+		String m1 = String.valueOf(map.get("m1"));
+		String m2 = String.valueOf(map.get("m2"));
 		//System.out.println("tempInsert"  + map);
 		int seatcode=Integer.parseInt(String.valueOf(map.get("res_seatcode")));
 		String seat = "SEAT0";
@@ -114,7 +118,8 @@ public class ReservationController {
 		}
 		
 		reservationservice.getInsert(map);
-		return "user/sub/sub02/msg";
+		return "redirect:/reserve?m1="+m1+"&m2="+m2;
+		//user/sub/sub02/msg
 	}
 
 	@RequestMapping("/reserve/settingAjax")

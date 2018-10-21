@@ -46,10 +46,8 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="/resources/user/js/MakingDiv.js"></script>
 <script> 
-/* /*깜놀(ㄲㅏㅁㄴㅗㄹㅇㅡㄴ ㅇㅏㅈㅜ ㅈㅣㄹㅗㄹㅇㅣㄷㅏ) 자바스크립트 시작 */
-
 	/* var selectedObj = null; */
-	onload = function() {
+	window.onload = function() {
 		//Div b tag input type tag 기초 셋팅 
 		makingDiv();
 		makingBtag();	
@@ -64,41 +62,42 @@
 		/*팝업 열라고 */
  		for (var i = 0; i < note.length; i++) {
 			note[i].onclick = function(){
-				popOpen(this);
+				//popOpen(this);
 			}
 		}
 		
 		for (var i = 0; i < inter.length; i++) {
 			inter[i].onclick = function(){
-				popOpen(this);
+				//popOpen(this);
 			}
 		}
 		
 		
 		 for (var i = 0; i < mak.length; i++) {
 			mak[i].onclick = function(e){
-			/* 	 e.preventDefault(); */
-				wrapWindowByMask();
-				/* alert("자리값 :" + this) */
+			
+			var obj = this.getAttribute('name');
+			alert(obj);
+			wrapWindowByMask(obj,mak);
 			}
 		} 
 		
 		
 		for (var i = 0; i < dvd.length; i++) {
 			dvd[i].onclick = function(){
-			popOpen(this);
+			//popOpen(this);
 		}
 	}
 		
 		for (var i = 0; i < bof.length; i++) {
 			bof[i].onclick = function(){
-				popOpen(this);
+				//popOpen(this);
 		}
 	}
 	
 		for (var i = 0; i < scanner.length; i++) {
 			scanner[i].onclick = function(){
-			popOpen(this);
+			//popOpen(this);
 		}
 	}
 
@@ -220,9 +219,15 @@
 
 <script type="text/javascript"> 
 //<![CDATA[
-    function wrapWindowByMask(){
- 		//alert('seat :' + obj );
+    function wrapWindowByMask(obj,mak){
+ 		alert('seat :' + obj );
+ 		alert("mak:"+mak);
         //화면의 높이와 너비를 구한다.
+		var mak = document.getElementsByClassName('mak');
+        
+        var input_arcode = mak[0].childNodes[1].value; 
+        alert("input_arcode :"+input_arcode);
+        $("#area_code").val(input_arcode);
         var maskHeight = $(document).height();  
         var maskWidth = $(window).width();  
  
@@ -233,7 +238,7 @@
  
         $("#mask").fadeIn(0);      
         $("#mask").fadeTo("slow",0.8);    
-
+        $("#res_seatcode").val(obj);
         
 			var d =  new Date();
 			var firstdate = d.getFullYear() + '/' + (d.getMonth() + 1)
@@ -271,8 +276,8 @@
     });
 
     function val(obj){
-    	$('#seatVal').val(Number(obj.value)+Number(3));
-    	alert($('#seatVal').val());	
+    	$('#res_edtime').val(Number(obj.value)+Number(3));
+    	alert($('#res_edtime').val());	
     }
 </script>
 
@@ -379,11 +384,13 @@
             <div id="mask">
             <div class="window">
 <!-- <p style="width:1000px;height:500px;text-align:center;vertical-align:middle;"></p> -->
-<form style="width:500px;height:500px;text-align:center;vertical-align:middle;" action="/reserve/insert" id="seargo" method="GET">
-				<input type="hidden" name="area_code" value="${area_code}" />
+			<form style="width:500px;height:500px;text-align:center;vertical-align:middle;" action="/reserve/insert" id="seargo" method="GET">
+				<input type="hidden" name="area_code" id="area_code" value="" />
+				<input type="hidden" name="m1" value="${m1}"/>
+				<input type="hidden" name="m2" value="${m2}"/>
+				<%-- <input type="hidden" name="m3" value="${m3}"/> --%>
 				<table class="board_read2" >
 					<caption>예약 상세 정보입니다.</caption>
-
 					<tbody>
 						<tr>
 							<th>아이디</th>
@@ -420,7 +427,7 @@
 							<th>예약 마감 시간</th>
 							<td id="endTime">
 								<span id="show">
-									<input type="text" id="seatVal" readonly="readonly" >
+									<input type="text" id="res_edtime" name="res_edtime" readonly="readonly" >
 								</span>
 							</td>
 						</tr>

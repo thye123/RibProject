@@ -11,8 +11,8 @@ function makingDiv(){
 		];
  	for (var i = 0; i < arr.length; i++) {
 		var mak = document.createElement('a');
-		mak.setAttribute('href', "#");
-		mak.setAttribute('onclick', "javascript:wrapWindowByMask("+arr[i]+")");
+		mak.setAttribute('href', "javascript:wrapWindowByMask("+arr[i]+")");
+		//mak.setAttribute('onclick', "javascript:wrapWindowByMask("+arr[i]+")");
 		mak.setAttribute('class', 'mak');
 		mak.setAttribute('name', arr[i]);
 		res02.appendChild(mak);
@@ -54,7 +54,7 @@ function makingBtag(){
 }
 
 /* popup 열리는 함수 */
-function popOpen(bof){
+/*function popOpen(bof){
 
 		var d = new Date();
 	
@@ -84,7 +84,7 @@ function popOpen(bof){
 
 		return arr;
 }
-
+*/
 
 
 
