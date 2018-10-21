@@ -351,8 +351,8 @@
 						</tr>
 
 						<tr>
-							<th>좌석번호</th>
-							<td>
+							<th class="ta_1">좌석번호</th>
+							<td class="ta_1">
 						<c:forEach var="list" items="${list}">
 							<input type="radio" name="res_seatcode" value="${list.res_seatcode}"/>
 							<input type="text" name="res_seatcode" value="${list.res_seatcode}"/>
@@ -379,6 +379,7 @@
 
 </div>
 
+<!-- <<<<<<< HEAD -->
   <div id ="wrap"> 
         <div id = "container">  
             <div id="mask">
@@ -449,6 +450,10 @@
  </div>
  
 <%--  <div class="lightbox" id="fl2">
+=======
+	<!-- ㄱㅡㅁㄴㅣㅍㅣㅅㅕㄹ ㅍㅏㅂㅇㅓㅂ ㅇㅕㄹㄹㅣㅁ -->
+ <div class="lightbox" id="fl2">
+>>>>>>> branch 'master' of https://github.com/thye123/RibProject.git
 		<form action="/reserve/insert" id="seargo" method="GET">
 			<div class="awcontent">
 				<input type="hidden" name="area_code" value="${area_code}" />
