@@ -399,9 +399,6 @@
 </div>
 <!-- ㄱㅡㅁㄴㅣㅍㅣㅅㅕㄹ  -->
 
-
->>>>>>> branch 'master' of https://github.com/thye123/RibProject.git
-
 	<!-- ㄱㅡㅁㄴㅣㅍㅣㅅㅕㄹ ㅍㅏㅂㅇㅓㅂ ㅇㅕㄹㄹㅣㅁ -->
  <div class="lightbox" id="fl2">
 		<form action="/reserve/insert" id="seargo" method="GET">
