@@ -311,8 +311,8 @@ window.onload = function() {
 						</tr>
 
 						<tr>
-							<th>좌석번호</th>
-							<td>
+							<th class="ta_1">좌석번호</th>
+							<td class="ta_1">
 						<c:forEach var="list" items="${list}">
 							<input type="radio" name="res_seatcode" value="${list.res_seatcode}"/>
 							<input type="text" name="res_seatcode" value="${list.res_seatcode}"/>
