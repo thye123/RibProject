@@ -14,6 +14,8 @@
 <!-- 레프트메뉴 -->
 <%@ include file="../../include/left_menu02.jsp"%>
 
+<%-- <script src="${pageContext.request.contextPath}/resources/user/js/jquery-1.7.0.min.js"></script> --%>
+<script src="${pageContext.request.contextPath}/resources/user/js/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
 <!-- 민짐 말도 안되는 css 시작 -->
 <style>
 
@@ -333,6 +335,7 @@
 				스캐너 이용 등 다양한 정보를 이용할 수 있으며 좌석예약제로 운영하고 있습니다.</p>
 		</div>
 	</div>
+
 	<!-- 민짐 예약 시작  -->
 	<div class="resWrap">
 		<div class="status">
@@ -388,9 +391,16 @@
 		</form>
 	</div>
 	
+
 		</div>
 		<script src="${pageContext.request.contextPath}/resources/user/js/jquery-1.7.0.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/user/js/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+</div>
+<!-- ㄱㅡㅁㄴㅣㅍㅣㅅㅕㄹ  -->
+
+
+>>>>>>> branch 'master' of https://github.com/thye123/RibProject.git
 
 	<!-- ㄱㅡㅁㄴㅣㅍㅣㅅㅕㄹ ㅍㅏㅂㅇㅓㅂ ㅇㅕㄹㄹㅣㅁ -->
  <div class="lightbox" id="fl2">

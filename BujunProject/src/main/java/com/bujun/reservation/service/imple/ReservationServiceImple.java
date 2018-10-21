@@ -51,4 +51,9 @@ public class ReservationServiceImple implements ReservationService {
 		
 	}
 
+	@Override
+	public void outSeat(HashMap<String, Object> map) {
+		reservationdao.outSeat(map);
+	}
+
 }

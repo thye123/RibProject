@@ -24,7 +24,6 @@ public class ReservationController {
 	@RequestMapping("/reserve")
 	public ModelAndView reserInfor(@RequestParam HashMap<String, Object> map, Model model)
 	{
-		model.addAttribute("menu", map);
 		/*로그인 조건 */
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
@@ -49,14 +48,6 @@ public class ReservationController {
 		    			mv.addObject("rv",rv);
 		    			mv.addObject("m1",m1);
 		    			mv.addObject("m2",m2);
-		    			/*ㅊㅜㄱㅏ */
-		    			mv.addObject("seat_code",map.get("seat_code"));
-		    			mv.addObject("firstdate",map.get("firstdate"));
-		    			mv.addObject("sedate",map.get("sedate"));
-		    			mv.addObject("area_code",map.get("area_code"));
-		    			
-		    			
-		    			/*ㄱㅡㅁㄴㅣㅍㅣㅅㅕㄹ */
 		    			mv.setViewName("user/sub/sub02/reservation");
 		    		}
 		    		
@@ -73,15 +64,6 @@ public class ReservationController {
 		    			mv.addObject("m1",m1);
 		    			mv.addObject("m2",m2);
 		    			mv.addObject("m3",m3);
-		    			
-		    			/*ㅇㅇㄹㅇㄹㅇㄹㅇㄹ*/
-		    			mv.addObject("seat_code",map.get("seat_code"));
-		    			mv.addObject("firstdate",map.get("firstdate"));
-		    			mv.addObject("sedate",map.get("sedate"));
-		    			mv.addObject("area_code",map.get("area_code"));
-		    			
-		    			
-		    			/*ㅇㄴㄹㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇㄹ*/
 		    			mv.setViewName("user/sub/sub02/reference");
 		    		}
 		    		
@@ -141,7 +123,7 @@ public class ReservationController {
 	{
 		ModelAndView mv= new ModelAndView();
 		reservationservice.DelAjax(map);
-		mv.setViewName("redirect: /reserve");
+		mv.setViewName("redirect:/reserve");
 		return mv;
 		
 	}
@@ -162,5 +144,11 @@ public class ReservationController {
 
 	}
 	
+	
+	@RequestMapping("/reserve/out")
+	public String out(@RequestParam HashMap<String, Object> map) {
+		reservationservice.outSeat(map);
+		return "redirect:/reserve?m1=02&m2=04";
+	}
 }
 

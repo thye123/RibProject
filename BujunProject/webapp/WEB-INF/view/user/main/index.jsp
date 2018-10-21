@@ -116,7 +116,7 @@
 									</li>
 								</c:forEach>
 								</ul>
-							<a href="/index.php?pagecode=P000000026" class="more" title="공지사항 목록 더보기로 이동합니다."><img src="${pageContext.request.contextPath}/resources/user/images/main/m_more.png" alt="공지사항 더보기" /></a>
+							<a href="/notice?m1=06&m2=01&nowpage=1&pagecount=10&grpnum=1" class="more" title="공지사항 목록 더보기로 이동합니다."><img src="${pageContext.request.contextPath}/resources/user/images/main/m_more.png" alt="공지사항 더보기" /></a>
 						</div>
 						<!-- //1 -->
 
@@ -126,26 +126,16 @@
 						<div class="ncons" >
 
 							<ul>
-								<li>
-									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										22
-									</a>
-									<span class="main_date">2018.03.20</span>
-								</li>
-								<li>
-									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										제8회 &#40;재&#41;동래장학회 장학생 선발자 명단
-									</a>
-									<span class="main_date">2018.03.20</span>
-								</li>
-								<li>
-									<a href="?action=BD0000M&amp;pagecode=P000000026&amp;command=View&amp;idx=395">
-										제8회 &#40;재&#41;동래장학회 장학생 선발자 명단
-									</a>
-									<span class="main_date">2018.03.20</span>
-								</li>
+								<c:forEach var="edulist" items="${eduList}">
+									<li>
+										<a href="/opprogram01/dCon?m1=04&m2=01&m3=01&listu_code=${edulist.listu_code}&listu_idx=${edulist.listu_idx}">
+											${edulist.listu_name}							
+										</a>
+										<span class="main_date">${edulist.listu_regdate}</span>
+									</li>
+								</c:forEach>
 							</ul>
-							<a href="#" class="more" title="평생학습 목록 더보기로 이동합니다."><img src="${pageContext.request.contextPath}/resources/user/images/main/m_more.png" alt="평생학습 더보기" /></a>						
+							<a href="/opprogram01?m1=04&m2=01&m3=02&page=1&pagecount=10&pagegrp=1" class="more" title="평생학습 목록 더보기로 이동합니다."><img src="${pageContext.request.contextPath}/resources/user/images/main/m_more.png" alt="평생학습 더보기" /></a>						
 						</div>
 						<!-- //2 -->
 					

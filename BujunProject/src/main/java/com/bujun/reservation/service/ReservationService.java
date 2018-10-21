@@ -19,4 +19,6 @@ public interface ReservationService {
 	
 	/*Cancle*/
 	public void deleteSet(HashMap<String, Object> map);
+
+	public void outSeat(HashMap<String, Object> map);
 }
