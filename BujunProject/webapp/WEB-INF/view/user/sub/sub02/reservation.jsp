@@ -77,7 +77,7 @@
 			mak[i].onclick = function(e){
 			
 			var obj = this.getAttribute('name');
-			alert(obj);
+			//alert(obj);
 			wrapWindowByMask(obj,mak);
 			}
 		} 
@@ -220,13 +220,13 @@
 <script type="text/javascript"> 
 //<![CDATA[
     function wrapWindowByMask(obj,mak){
- 		alert('seat :' + obj );
- 		alert("mak:"+mak);
+ 		//alert('seat :' + obj );
+ 		//alert("mak:"+mak);
         //화면의 높이와 너비를 구한다.
 		var mak = document.getElementsByClassName('mak');
         
         var input_arcode = mak[0].childNodes[1].value; 
-        alert("input_arcode :"+input_arcode);
+        //alert("input_arcode :"+input_arcode);
         $("#area_code").val(input_arcode);
         var maskHeight = $(document).height();  
         var maskWidth = $(window).width();  
@@ -277,7 +277,7 @@
 
     function val(obj){
     	$('#res_edtime').val(Number(obj.value)+Number(3));
-    	alert($('#res_edtime').val());	
+    	//alert($('#res_edtime').val());	
     }
 </script>
 

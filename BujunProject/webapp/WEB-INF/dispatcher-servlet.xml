@@ -11,7 +11,7 @@
 	<mvc:annotation-driven/>
 	
 	<mvc:resources mapping="/resources/**" location="/resources/" />
-	<mvc:resources mapping="/img/**" location="D:\\upload" />
+	<mvc:resources mapping="/img/**" location="C:\\upload" />
 	
   
    <!-- 파일 다운로드 하려고 붙였음 민짐 -->
@@ -35,7 +35,7 @@
 	</bean>  	
 	
 	<bean id="uploadPath" class="java.lang.String">
-		<constructor-arg value="D:\\upload" />
+		<constructor-arg value="C:\\upload" />
 	</bean>
         
 </beans>
