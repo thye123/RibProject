@@ -263,9 +263,14 @@ width: 100%;
 
 		setInterval(function() {
 			settionAjax(); // //10초 뒤 좌석이 삭제 되고 새로 고침이 되어야 함 
-			//pagereload(); //삭제 하면 안됨 일정 시간마다 새로 고침해서 정보 보여줘야함
+			pagereload(); //삭제 하면 안됨 일정 시간마다 새로 고침해서 정보 보여줘야함
 		}, 300000); //300000 :30분 reload 시간 변경 완료 
-
+	}
+	
+	function refresh() {
+		var d = new Date();
+		var selHour= d.getHours();
+		location.href="/reserve/outsetted?m1=${m1}&m2=${m2}&m3=${m3}&res_difH="+ selHour;
 	}
 </script>
 <!-- /*깜놀할 자바스크립트 끝 */ -->
@@ -303,6 +308,7 @@ width: 100%;
 		/*aaaa*/
 		//윈도우 같은 거 띄운다.
 		$(".window").show();
+		time();
 
 	}
 
@@ -422,6 +428,7 @@ width: 100%;
 				<li>예약중 <span class="green"></span></li>
 				<li>예약완료 <span class="ornage"></span></li>
 			</ul>
+			<a href="javascript:refresh()">새로고침</a>
 		</div>
 
 		<c:if test="${sessionScope.mem_id ne null}">
@@ -469,6 +476,24 @@ width: 100%;
 		<div id="container">
 			<div id="mask">
 				<div class="window">
+				<script>
+					function time(){
+						var date = new Date();
+						var stime = date.getHours();
+						var res_sttime = document.getElementById("res_sttime");
+						$('#res_sttime').children( 'option:not(:first)' ).remove();
+						for (var i = stime; i <= 20; i++) {
+							var opt = document.createElement("option");
+							opt.setAttribute("value", i);
+							var content = document.createTextNode(i+"시");
+							opt.appendChild(content);
+							res_sttime.appendChild(opt);
+						}
+					}
+				</script>
+					
+					
+					
 					<form
 						style="width: 500px; height: 500px; text-align: center; vertical-align: middle;"
 						action="/reserve/insert" id="seargo" method="GET">
@@ -504,13 +529,11 @@ width: 100%;
 
 								<tr>
 									<th>예약 시작 시간</th>
-									<td><select name="res_sttime" id="res_sttime"
-										onchange="val(this)">
+									<td>
+										<select name="res_sttime" id="res_sttime" onchange="val(this)">
 											<option value="">선택</option>
-											<c:forEach var="i" begin="1" end="20">
-												<option value="${i}">${i}시</option>
-											</c:forEach>
-									</select></td>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<th>예약 마감 시간</th>

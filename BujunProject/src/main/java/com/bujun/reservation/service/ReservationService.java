@@ -27,4 +27,7 @@ public interface ReservationService {
 	
 	//1번인 사람 좌석번호를 들고 온다 
 	public  ReservationVo getOnePerson(HashMap<String, Object> map);
+	
+	/*삭제를 해본다*/
+	public void getDeleteSeat(HashMap<String, Object> map);
 }

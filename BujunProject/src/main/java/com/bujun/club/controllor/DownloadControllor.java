@@ -16,21 +16,21 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class DownloadControllor implements ApplicationContextAware {
-	// ÆÄÀÏ ´Ù¿î·Îµå ºÎºÐ
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¿ï¿½Îµï¿½ ï¿½Îºï¿½
 	private WebApplicationContext context = null;
 
 	@RequestMapping("/download")
 	public ModelAndView callDownload(@RequestParam HashMap<String, Object> map, HttpServletResponse res) {
 		ModelAndView mv = new ModelAndView();
-		// ´Ù¿î¸£µµ µð·ºÅä¸®
-		String store = "c:\\aaa\\";
-		// map ¿¡¼­ ¹ÞÀº ÆÄÀÏ ÀÌ¸§
+		// ï¿½Ù¿î¸£ï¿½ï¿½ ï¿½ï¿½ï¿½ä¸®
+		String store = "d:\\upload\\";
+		// map ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
 		String rename = String.valueOf(map.get("filename"));
-		// ÀüÃ¼ °æ·Î¸¦ Á¤ÇØ¹ö¸²
+		// ï¿½ï¿½Ã¼ ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½
 		String fileFullPath = store + rename;
-		// ÆÄÀÏ Å¬·¡½º °´Ã¼¸¦ »ý¼ºÇÏ°í
+		// ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½
 		File file = new File(fileFullPath);
-		// bean ¿¡ ÀÖ´Â id °ªÀ» Ã£¾Æ¼­ ±×ÂÊÀ¸·Î ÇÔ
+		// bean ï¿½ï¿½ ï¿½Ö´ï¿½ id ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½Æ¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 		return new ModelAndView("download", "downloadFile", file);
 
 	}

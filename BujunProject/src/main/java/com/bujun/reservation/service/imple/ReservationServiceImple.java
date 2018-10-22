@@ -67,4 +67,9 @@ public class ReservationServiceImple implements ReservationService {
 		return vo;
 	}
 
+	@Override
+	public void getDeleteSeat(HashMap<String, Object> map) {
+		reservationdao.DeleteSet(map);
+	}
+
 }
