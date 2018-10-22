@@ -7,8 +7,8 @@
 <script>
 	window.onload= function(){
 		alert('신청이 완료되었습니다');
-		opener.parent.location.reload();
-		window.close();
+		//opener.location.reload();
+		window.self.close();
 	}
 </script>
 <title>Insert title here</title>

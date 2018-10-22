@@ -11,11 +11,13 @@
 	</resultMap>
 
 	<resultMap type="com.bujun.reservation.vo.ReservationVo"
-		id="reserva">
+		id="reserva"> 
 		<result property="res_memid" column="RES_MEMID"
 			javaType="String" />
 		<result property="res_seatcode" column="RES_SEATCODE"
 			javaType="String" />
+		<result property="res_edtime" column="RES_EDTIME"
+			javaType="String" />	
 	</resultMap>
 
 
@@ -78,5 +80,20 @@
 	#{res_seatcode, mode=IN, jdbcType=VARCHAR}
 	)}
 	</delete>
+
+	<select id="timeout" statementType="CALLABLE" resultType="com.bujun.reservation.vo.ReservationVo" parameterType="hashmap">
+	{CALL BJL_PKG_RESERVATION.PROC_OUT_DEPATURE(
+	#{edt_time, mode=IN, jdbcType=VARCHAR},
+	#{res_memid, mode=IN, jdbcType=VARCHAR},
+	#{res_seatcode, mode=IN, jdbcType=VARCHAR},
+	#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=reserva}
+	)}
+	</select>
+	<select id="oneperson"  statementType="CALLABLE" resultType="com.bujun.reservation.vo.ReservationVo" parameterType="hashmap">
+	{CALL BJL_PKG_RESERVATION.PROC_OUT_SEATCODE(
+	#{res_memid, mode=IN, jdbcType=VARCHAR},
+	#{set, mode=OUT, jdbcType=VARCHAR}
+	)}
+	</select>
 
 </mapper>
