@@ -65,7 +65,7 @@
 	<!-- content 시작 -->
 	<div class="prolistarea">
 		
-		<p class="mg_b5">총 <span class="red">${pageMaker.cnt}</span> 개의  프로그램이 있습니다</p>
+		<p class="mg_b5">총 <span class="red">${cnt}</span> 개의  프로그램이 있습니다</p>
 
  	<div class="studyArea">
  		<ul class="studyProgram">
@@ -92,6 +92,7 @@
 	<div class="r mg_t20 btns">
 		<input type="button" class="btns_black" id="newEdu" value="새글쓰기" style="border:0;"/>
 	</div>
+	
 	<!-- 페이지 -->
 		<div class="board-list-paging">
 		<div class="pagelist">
@@ -102,6 +103,8 @@
 				</c:if>
 
 			<!-- 페이징 -->
+			
+			
 			
 				<c:forEach var="Paging" begin="${pageMaker.start}"
 					end="${pageMaker.end}" step="1">

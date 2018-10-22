@@ -21,28 +21,6 @@
 }
 
 
-
-/*취소 눌러질때 */
-#cnacle {
-	position: absolute;
-	z-index: 9000;
-	background-color: #000;
-	display: none;
-	left: 0;
-	top: 0;
-}
-/* 팝업으로 뜨는 윈도우 css  */
-.openCancle {
-	display: none;
-	position: absolute;
-	left: 80%;
-	top: 287px;
-	margin-left: -500px;
-	width: 500px;
-	height: 500px;
-	background-color: #FFF;
-	z-index: 10000;
-}
 a.bof {
     display: inline-block;
 }

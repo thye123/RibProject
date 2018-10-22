@@ -51,7 +51,7 @@ public class OpenInfoServiceImpl implements OpenInfoService {
 	public void addFile(HttpServletRequest req, HashMap<String, Object> map) {
 		CheckFile fileCheck = new CheckFile();
 		
-		String filePath = "C:\\upload\\";
+		String filePath = "d:\\upload\\";
 		MultipartHttpServletRequest multi = (MultipartHttpServletRequest) req;
 		
 		Iterator<String> iterator = multi.getFileNames();
@@ -136,7 +136,7 @@ public class OpenInfoServiceImpl implements OpenInfoService {
 	public void upFile(HttpServletRequest req, HashMap<String, Object> map) {
 		CheckFile fileCheck = new CheckFile();
 		
-		String filePath = "C:\\upload\\";
+		String filePath = "d:\\upload\\";
 		MultipartHttpServletRequest multi = (MultipartHttpServletRequest) req;
 		
 		Iterator<String> iterator = multi.getFileNames();

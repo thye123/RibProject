@@ -150,7 +150,6 @@ a.btn_board {
 				</c:forEach>
 
 				
-
 			<!-- 다음 10개 -->
 				<c:if
 					test="${pageMaker.start <= (pageMaker.tmep-10) && pageMaker.start > 0}">
