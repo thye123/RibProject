@@ -25,5 +25,8 @@ public interface ReservationDao {
 
 	public ReservationVo getOnePerson(HashMap<String, Object> map);
 	
+	/*삭제*/
+	public void DeleteSet(HashMap<String, Object> map);
+	
 
 }

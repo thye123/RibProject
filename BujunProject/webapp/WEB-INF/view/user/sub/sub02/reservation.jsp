@@ -69,11 +69,11 @@
 <script>
 	var selectedObj = null;
 	window.onload = function() {
-		//Div b tag input type tag 기초 셋팅 
+
 		makingDiv();
 		makingBtag();
 		//팝업을 열기 위한 클래스를 찾는다 
-
+		
 		var mak = document.getElementsByClassName('mak');
 
 		/*팝업 열라고 */
@@ -86,9 +86,7 @@
 				this.setAttribute('style', 'background-color: green;');
 				wrapWindowByMask(obj, mak);
 				$(".cancle").click(function(e) {
-					//alert('aa'+mak.getAttribute('name'));
 					e.preventDefault();
-					//opener.document.getElementsByClassName("mak")[2].value="Y";
 					di.setAttribute('style', 'background-color: white;');
 					$("#mask, .window").hide();
 				});
@@ -146,7 +144,7 @@
 							alert('예약된 좌석입니다');
 							e.preventDefault();
 						}
-					}
+					};
 				}//arr
 			}//div_num
 		}
@@ -174,24 +172,30 @@
 	}
 /*삭제 RESERVATION*/
 
+	
 
 	function settedCancle() {
-	
-	var selMemid= "${sessionScope.mem_id}";
-	var sett = new Array();
-	//alert("1:" +sett)
+		var d = new Date();
+		var selHour= d.getHours();
+		location.href="/reserve/outsetted?m1=${m1}&m2=${m2}&res_difH="+ selHour;
+	}
 
-		
-/* 	var delSeat = "${vo.res_seatcode}";
-	alert(delSeat); */
+
+
+
+function delseatting(){
+	/*아이디 */ 
+
+	var selMemid= "${sessionScope.mem_id}";
+	alert("4"+ selMemid);
 	var d = new Date();
-	var selHour= d.getHours();
-	//alert(selHour);
+	var selHour= d.getHours();/*시스템상 현재 시간 */
+	alert("3"+selHour);
+
 	$.ajax({
-		url : '/reserve/outsetted',
+		url : '/reserve/delnum',
 		data : {
-			res_memid    : selMemid,
-			res_edtime   : selHour
+			res_memid    : selMemid
 		},
 		type : 'GET',
 		dataType : 'json',
@@ -204,16 +208,9 @@
 
 			}
 		});
-
-	}
-
-
-
-
-/*삭제 REServation*/
 	
-	
-	
+}
+
 	function pagestart() {
 		window.setTimeout("pagereload()", 30000);
 	}
@@ -222,13 +219,10 @@
 	}
 
 	setInterval(function() {
-		//settionAjax(); // //10초 뒤 좌석이 삭제 되고 새로 고침이 되어야 함 
-		//pagereload();//삭제 하면 안됨 일정 시간마다 새로 고침해서 정보 보여줘야함
-	}, 10000); ////300000 :30분 reload 시간 변경 완료
+		settionAjax(); // //10초 뒤 좌석이 삭제 되고 새로 고침이 되어야 함 
+		pagereload();//삭제 하면 안됨 일정 시간마다 새로 고침해서 정보 보여줘야함
+	}, 300000); ////300000 :30분 reload 시간 변경 완료
 	
-	function remote(){
-		//settedCancle();
-	}
 </script>
 <!-- /*깜놀할 자바스크립트 끝 */ -->
 
@@ -264,10 +258,9 @@
 
 		document.getElementById("res_date").value = firstdate;
 
-		/*aaaa*/
 		//윈도우 같은 거 띄운다.
 		$(".window").show();
-
+		time();
 	}
 
 	$(document).ready(function() {
@@ -340,6 +333,7 @@
 
 	});
 </script>
+
 <!-- location -->
 <div class="loca">
 	<ul>
@@ -383,7 +377,7 @@
 				<li>예약중 <span class="green"></span></li>
 				<li>예약완료 <span class="ornage"></span></li>
 			</ul>
-			<a href="javascript:remote()" >새로고침</a>
+			<a href="javascript:settedCancle()" >새로고침</a>
 		</div>
 		<c:if test="${sessionScope.mem_id ne null}">
 			<a class="btn btn-default" id="cancleGo"
@@ -458,6 +452,21 @@
 		<div id="container">
 			<div id="mask">
 				<div class="window">
+				<script>
+					function time(){
+						var date = new Date();
+						var stime = date.getHours();
+						var res_sttime = document.getElementById("res_sttime");
+						$('#res_sttime').children( 'option:not(:first)' ).remove();
+						for (var i = stime; i <= 20; i++) {
+							var opt = document.createElement("option");
+							opt.setAttribute("value", i);
+							var content = document.createTextNode(i+"시");
+							opt.appendChild(content);
+							res_sttime.appendChild(opt);
+						}
+					}
+				</script>
 
 					<form
 						style="width: 500px; height: 500px; text-align: center; vertical-align: middle;"
@@ -494,20 +503,19 @@
 
 								<tr>
 									<th>예약 시작 시간</th>
-									<td><select name="res_sttime" id="res_sttime"
-										onchange="val(this)">
+									<td>
+										<select name="res_sttime" id="res_sttime" onchange="val(this)">
 											<option value="">선택</option>
-											<c:forEach var="i" begin="1" end="20">
-												<option value="${i}">${i}시</option>
-											</c:forEach>
-									</select></td>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<th>예약 마감 시간</th>
-									<td id="endTime"><span id="show"> <input
-											type="text" id="res_edtime" name="res_edtime"
-											readonly="readonly">
-									</span></td>
+									<td id="endTime">
+										<span id="show">
+											<input type="text" id="res_edtime" name="res_edtime" readonly="readonly">
+										</span>
+									</td>
 								</tr>
 								<tr>
 									<td>
@@ -518,8 +526,6 @@
 
 						<div class="btn">
 							<input type="submit" value="확인" />
-							<!-- 	<p style="text-align:center; background:#ffffff; padding:20px;"><a href="#" class="close">닫기X</a></p> -->
-
 							<input type="button" value="닫기" class="cancle" />
 						</div>
 
@@ -527,12 +533,9 @@
 
 				</div>
 			</div>
-
 		</div>
-
-
 	</div>
-
+</div>
 
 </div>
 </div>
