@@ -21,4 +21,10 @@ public interface ReservationService {
 	public void deleteSet(HashMap<String, Object> map);
 
 	public void outSeat(HashMap<String, Object> map);
+	
+	/*TimeOut*/
+	public void outTime(HashMap<String, Object> map);
+	
+	//1번인 사람 좌석번호를 들고 온다 
+	public  ReservationVo getOnePerson(HashMap<String, Object> map);
 }

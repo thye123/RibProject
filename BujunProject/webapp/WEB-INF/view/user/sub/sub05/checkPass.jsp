@@ -15,6 +15,7 @@
 		
 		var pass = prompt('패스워드를 입력하세요', PassMsg);
 
+		
 		while (count <= 2) {
 			if (pass == aal) {
 				location.href = "/club01/CluBoard/Checking?clb_pass=" + PassMsg+"&clb_idx="+${clb_idx}+"&m1=${m1}&m2=${m2}&m3=${m3}";
@@ -26,7 +27,7 @@
 		}
 
 		if (count == 3) {
-			location.href = "/club01/CluBoard/Checking?clb_pass=" + PassMsg+"&clb_idx="+${clb_idx}+"&m1=${m1}&m2=${m2}&m3=${m3}";
+			location.href = "/club01/CluBoard?m1=${m1}&m2=${m2}&m3=${m3}&page=1&pagecount=10&pagegrp=1";
 		}
 
 	}
