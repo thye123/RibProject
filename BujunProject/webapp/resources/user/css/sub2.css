@@ -257,14 +257,90 @@
 
 
 
+#seargo {
+    width:500px;height:500px;text-align:center;vertical-align:middle; padding:20px; box-sizing:border-box;
+}
+
+/* 팝업으로 뜨는 윈도우 css  */
+.openCancle {
+   display: none;
+   position: absolute;
+   left: 80%;
+   top: 287px;
+   margin-left: -500px;
+   width: 500px;
+   height: 500px;
+   background-color: #FFF;
+   z-index: 9999;
+}
+
+#cnacle {
+   position: absolute;
+   z-index: 9999;
+   background-color: #000;
+   display: none;
+   left: 0;
+   top: 0;
+}
+
+#mask {  
+    position:absolute;  
+    z-index:9999;  
+    background-color:#000;  
+    display: none;
+    left:0;
+    top:0;
+} 
+/* 팝업으로 뜨는 윈도우 css  */ 
+.window{
+ 	display: none;
+    position: absolute;
+    left: 50%;
+    top: 287px;
+    margin-left: -209px;
+    width: 500px;
+    height: 500px;
+    background-color: #FFF;
+    z-index: 10000; 
+ }
+
+
+@media only screen and (max-width:800px) {
+    .window{
+        left:0;
+        top: 287px;
+        margin-left: 0;
+        width: 100%;
+     }
+     
+     #seargo {
+        width:auto; height:500px; text-align:center; vertical-align:middle;    
+    }
+    
+    .openCancle {
+		left:0;
+        margin-left: 0;
+        width: 100%;	
+	}
+} 
+
+
+.res_btn_2 {position:relative;}
+.res_btn_2 ul {position:absolute; right:0; top:-38px;}
+.res_btn_2 ul li {float:left;}
+.res_btn_2 ul li:nth-child(1) a {margin-right:5px; display:inline-block; color:#fff; padding: 8px 25px; background:#2452a7; cursor:pointer;}
+.res_btn_2 ul li:nth-child(1) a:hover {background:#1b4187;}
+.res_btn_2 ul li:nth-child(2) a {display:inline-block; color:#fff; padding: 8px 25px; background: #696969; cursor:pointer;}
+.res_btn_2 ul li:nth-child(2) a:hover {background:#4d4d4d;}
 
 
 
-
-
-
-
-
+@media only screen and (max-width:400px) {
+	.res02 {margin-top:40px;}
+	.res_btn_2 ul { top:0; left:0;}
+	.mob_bul {margin-top:40px;}
+}
+	
 
 
 
