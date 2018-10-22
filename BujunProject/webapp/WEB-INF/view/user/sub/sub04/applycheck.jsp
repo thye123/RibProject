@@ -93,37 +93,72 @@ background-color: #636b72;
    function mysubmit(){
 
       var Ok             =document.getElementsByClassName('Ok');
-      var liap_apname    =document.getElementsByClassName('liap_apname');
-      var liap_appliyer    =document.getElementsByClassName('liap_appliyer');
-      var liap_aprimemnum =document.getElementsByClassName('liap_aprimemnum');
+      var liap_apname    =document.getElementById('liap_apname');
       var grade         =document.getElementsByClassName('grade');
       var val = grade[0].options[grade[0].selectedIndex].value;
-
+    var stel = document.getElementById('stel');
+	var stel2 = document.getElementById('stel2');
+	var stel3 = document.getElementById('stel3');
+	
+    var sample4_postcode     = document.getElementById('sample4_postcode');
+    var sample4_roadAddress  = document.getElementById('sample4_roadAddress');
+    var sample4_jibunAddress = document.getElementById('sample4_jibunAddress');
+    
       if(Ok[0].checked ==false){
          alert('개인정보 수집에 동의해주세요');
          return false;
       }
-      if(liap_apname[0].value==''){
+      
+      if(liap_apname.value==''){
          alert('이름을 적어주세요');
-         liap_apname[0].focus();
-         return false;
-      }
-      if(liap_appliyer[0].value==''){
-         alert('아이디입력을 해주세요');
-         liap_appliyer[0].focus();
-         return false;
-      }
-      if(liap_aprimemnum[0].value==''){
-         alert('도서번호 입력을 해주세요');
-         liap_aprimemnum[0].focus();
+         liap_apname.focus();
          return false;
       }
       
+
       if(val==''){
          alert('학년선택을 해주세요');
          grade[0].focus();
          return false;
       }
+      
+      
+      
+      if(stel.value==''){
+          alert('전화번호입력 해주세요');
+          stel.focus();
+          return false;
+       }
+      if(stel2.value==''){
+          alert('전화번호입력 해주세요');
+          stel2.focus();
+          return false;
+       }
+      if(stel3.value==''){
+          alert('전화번호입력 해주세요');
+          stel3.focus();
+          return false;
+       }
+      if(sample4_postcode.value==''){
+          alert('주소입력해주세요');
+          sample4_postcode.focus();
+          return false;
+       }
+      if(sample4_roadAddress.value==''){
+          alert('주소입력해주세요');
+          sample4_roadAddress.focus();
+          return false;
+       }
+      if(sample4_jibunAddress.value==''){
+          alert('주소입력해주세요');
+          sample4_jibunAddress.focus();
+          return false;
+       }
+      
+      
+      document.educheck.submit();
+      
+      
    }
    
     function sample4_execDaumPostcode() {
@@ -199,24 +234,6 @@ background-color: #636b72;
 
    <div class="sub_tit">${clu_name}</div>
 
-   <div class="tab_depth01">
-      <ul class="temp03">
-		<c:choose>
-		    
-		    <c:when test="${listu_catcode eq 'CAT0023'}">
-		        <li class="gener"><a href="/pgappl?m1=04&m2=01&m3=02&page=1&pagecount=10&pagegrp=1">일반프로그램</a></li>
-		        <li><a href="/pgappl?m1=04&m2=01&m3=03&page=1&pagecount=10&pagegrp=1">초등(유아)프로그램</a></li>
-		    </c:when>
-		 
-		    <c:when test="${listu_catcode eq 'CAT0024'}">
-		        <li class="element"><a href="/pgappl?m1=04&m2=01&m3=02&page=1&pagecount=10&pagegrp=1">초등(유아)프로그램</a></li>
-		         <li><a href="/pgappl?m1=04&m2=01&m3=03&page=1&pagecount=10&pagegrp=1">초등(유아)프로그램</a></li>
-		    </c:when>
-		    
-		    
-		</c:choose> 
-      </ul>
-   </div>
 
    <!-- content 시작 -->
 
@@ -275,7 +292,7 @@ background-color: #636b72;
          수집에 동의합니다. (단,14세 미만은 보호자 동의)
       </div>
       <form action="/opprogram01/approc?m1=${m1}&m2=${m2}&m3=${m3}"
-         method="POST" name="educheck" onsubmit='return mysubmit()'>
+         method="POST" name="educheck" >
          <input type="hidden" name="liap_code" value="${liap_code}" /> 
          <input type="hidden" name="listu_catcode" value="${listu_catcode}" />
          <input type="hidden" value="${sessionScope.rimem_num}"  name="liap_aprimemnum" class="liap_appliyer"  readonly="readonly"/>
@@ -290,23 +307,23 @@ background-color: #636b72;
                   <tr>
                      <th class="c">아이디</th>
                      <td><input type="text" name="liap_appliyer" value="${sessionScope.mem_id}"
-                        class="liap_apname" readonly="readonly" /></td>
+                        class="liap_appliyer" readonly="readonly" /></td>
                   </tr>
                   <tr>
                      <th class="c">이름</th>
-                     <td colspan="2"><input type="text" name="liap_apname" class="liap_appliyer" /></td>
+                     <td colspan="2"><input type="text" name="liap_apname" id="liap_apname" /></td>
                   </tr>
                   
                      <tr>
                      <th class="c">휴대전화</th>
-                     <td colspan="2"><select name="stel">
-                           <option>전체선택</option>
+                     <td colspan="2"><select name="stel" id="stel">
+                           <option value="">전체선택</option>
                            <option>010</option>
                            <option>011</option>
                            <option>016</option>
                            <option>017</option>
-                     </select> <input type="text" name="stel2" class="stel2" /> <input
-                        type="text" name="stel3" class="stel3" /></td>
+                     </select> <input type="text" name="stel2" class="stel2" id="stel2"/> <input
+                        type="text" name="stel3" class="stel3" id="stel3"/></td>
                   </tr>
                   <tr>
                      <th class="c">주소</th>
@@ -317,11 +334,11 @@ background-color: #636b72;
                         
                      <input
                         type="button" onclick="sample4_execDaumPostcode()"
-                        value="우편번호 찾기" class="mg_b5 inpbtn01"><br> 
+                        value="우편번호 찾기" class="mg_b5 inpbtn01" ><br> 
                         
                      <input type="text"
                         id="sample4_roadAddress" name="liap_adress" placeholder="도로명주소">
-                        
+                
                      <input type="text" id="sample4_jibunAddress"
                         name="liap_detailad" placeholder="지번주소"> <span
                         id="guide" style="color: #999"></span></td>
@@ -347,7 +364,7 @@ background-color: #636b72;
             </table>
 
             <div class="btns c mg_t10">
-               <input type="submit" class="btns_black" style="border:0;" value="프로그램신청">
+               <input type="button" class="btns_black" style="border:0;" value="프로그램신청" onclick="mysubmit();">
                <!-- <a class="btn_boards" href="asdasd">프로그램신청</a> -->
             </div>
 

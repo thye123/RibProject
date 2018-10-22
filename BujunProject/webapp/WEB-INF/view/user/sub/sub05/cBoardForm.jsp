@@ -51,19 +51,74 @@ input[type="text"]{
 <script>
 //비공개선택을 하면 
 
-function aaa(check){
+function aaa(check_Obj){
  	var clb_open		= document.getElementsByName('clb_open');
  	var clb_pass 		= document.getElementsByName('clb_pass');
-
+ 	var pass_Obj  = document.getElementById('pass');
+ 	/*
  	if((clb_open[1].checked)==true){
-		alert('비공개를 선택했습니다.')
-		clb_open[0].checked=false;
+		//alert('비공개를 선택했습니다.')
+		  pass.style.display = 'block';
+		//clb_open[0].checked=false;
 		if(clb_pass[0].value==''){
-			alert('입력해주세요 비밀번호');
+			//alert('입력해주세요 비밀번호');
 			clb_pass[0].focus();
 			return false;
 		}
 	}
+ 	
+ 	if((clb_open[0].checked)==true){
+ 		pass.style.display = 'none';
+ 	}
+ 	
+ 	*/
+ 	
+ 	var clb_opens = document.getElementsByName('clb_open');
+ 	
+ 	var checekdNumber = findChecked(clb_opens, check_Obj);
+ 	
+ 	for(var i = 0; i<clb_opens.length ;i++)
+ 		{
+ 			if(i == checekdNumber)
+ 				{
+ 					clb_opens[i].checked = true;
+ 				}
+ 			else
+ 				{
+ 					clb_opens[i].checked = false;
+ 				}
+ 			
+ 			var objChecekd = document.getElementById("clb_open_value");
+ 			if(checekdNumber == 0)
+ 				{
+ 					pass_Obj.style.display="none";
+ 					objChecekd.value = 1;
+ 				}
+ 			else
+ 				{
+	 				pass_Obj.style.display="table-row";
+	 				objChecekd.value = 2;
+ 				}
+ 		}
+ 	
+ 		
+ 	
+ 	
+}
+
+function findChecked(objs, check_Obj)
+{
+	for(var i=0;i<objs.length;i++)
+		{
+			var result = 1;
+			if(objs[i] == check_Obj)
+				{
+				
+					result = i;
+				}
+			return result;
+		}
+		
 }
 </script>
 
@@ -176,17 +231,18 @@ function aaa(check){
 					<tr>
 						<th class="c">공개여부</th>
 						<td colspan="2">
-						<label>공개</<label> 
+						<label>공개
 						<input type="checkbox" name="clb_open" value="1" checked="checked"
-						onclick="aaa(this)"> 
-						<label>비공개</<label>
-						<input type="checkbox" name="clb_open" value="2" onclick="aaa(this)"></td>
-						
+						onclick="aaa(this)"/></<label> 
+						<label>비공개
+						<input type="checkbox" name="clb_open" value="2" onclick="aaa(this)"/></<label></td>
+						<input type="hidden" name="clb_open_value" id="clb_open_value"/>
 					</tr>
-
-					<tr>
+				
+					<tr id="pass" style="display:none">
 						<th class="c">비밀번호</th>
-						<td colspan="2"><input type="text" name="clb_pass" /></td>
+						<td colspan="2">
+						<input type="text" name="clb_pass" id="clb_pass"/></td>
 					</tr>
 					
 					<tr>

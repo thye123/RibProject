@@ -18,7 +18,6 @@ public class ReservationServiceImple implements ReservationService {
 	
 	@Override
 	public void getInsert(HashMap<String, Object> map) {
-		// TODO Auto-generated method stub
 		reservationdao.getInsert(map);
 	}
 
@@ -54,6 +53,18 @@ public class ReservationServiceImple implements ReservationService {
 	@Override
 	public void outSeat(HashMap<String, Object> map) {
 		reservationdao.outSeat(map);
+	}
+
+	@Override
+	public void outTime(HashMap<String, Object> map) {
+		reservationdao.timeOut(map);
+		
+	}
+
+	@Override
+	public ReservationVo getOnePerson(HashMap<String, Object> map) {
+		ReservationVo vo = reservationdao.getOnePerson(map);
+		return vo;
 	}
 
 }

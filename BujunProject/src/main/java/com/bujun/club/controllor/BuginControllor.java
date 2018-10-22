@@ -74,9 +74,40 @@ public class BuginControllor {
 	public ModelAndView clublist(@RequestParam HashMap<String, Object> map ,Model model) {
 		ModelAndView mv = new ModelAndView();
 		model.addAttribute("menu", map);
-		System.out.println("listMap :"  + map);
-
-		String clu_code  = (String)map.get("clb_clucode");
+		String m1 = String.valueOf(map.get("m1"));
+		String m2 = String.valueOf(map.get("m2"));
+		String m3 = String.valueOf(map.get("m3"));
+		String clb_clucode = "";
+		String clu_code="";
+		
+		if(m1.equals("05")&&m2.equals("03")&&m3.equals("01")) {	
+			clb_clucode = "CUS0001";
+			map.put("clb_clucode", clb_clucode);
+			clu_code = "CUS0001";
+			map.put("clu_code", clu_code);
+		}else {
+			if(m1.equals("05")&&m2.equals("03")&&m3.equals("02")) {
+				clb_clucode = "CUS0002";
+				map.put("clb_clucode", clb_clucode);
+				clu_code = "CUS0002";
+				map.put("clu_code", clu_code);
+			}else {
+				if(m1.equals("05")&&m2.equals("03")&&m3.equals("03")) {
+					clb_clucode = "CUS0003";
+					map.put("clb_clucode", clb_clucode);
+					clu_code = "CUS0003";
+					map.put("clu_code", clu_code);
+				}else {
+					if(m1.equals("05")&&m2.equals("03")&&m3.equals("04")) {
+						clb_clucode = "CUS0004";
+						map.put("clb_clucode", clb_clucode);
+						clu_code = "CUS0004";
+						map.put("clu_code", clu_code);
+					}
+				}
+			}
+		}
+		
 		//System.out.println("clb_clucode" + clu_code);
 		ClubMember clu = buginservice.getName(clu_code); 
 		List<ClubVo> clubList = buginservice.getClub(map);
