@@ -4,7 +4,7 @@
 
 //페이징 만드는 함수 
 function display_table() {
-	alert('값이 없네요 ')
+	//alert('값이 없네요 ')
 	var tag = "";
 	tag += "<table><colgroup><col style='width:10%;'><col style='width:15%;'>";
 	tag += "<col style='width:30%;'><col style='width:25%;'>";
@@ -26,9 +26,9 @@ function pagemaker(keyword, clb_clucode, keyfield, pagecount,m1,m2,m3) {
 	var page = 1
 	var pagegrp = 1
 	var clb_clucode =  $('input[name=clb_clucode]').val();
-	alert("m1 : " + m1);
-	alert("m2 : " + m2);
-	alert("m2 : " + m3);
+	//alert("m1 : " + m1);
+	//alert("m2 : " + m2);
+	//alert("m2 : " + m3);
 
 	$.ajax({
 				url : '/CluBoard/paging/',
@@ -55,7 +55,7 @@ function pagemaker(keyword, clb_clucode, keyfield, pagecount,m1,m2,m3) {
 						display_table();
 
 					} else {
-						alert('값이 있네요')
+						//alert('값이 있네요')
 
 						var idx = '';
 						var start = data.start;
@@ -82,7 +82,7 @@ $(".pageBtn").click(function(event) {
 	var godata = $(this).text();
 	var clb_clucode =  $('input[name=clb_clucode]').val();
 	
-	alert("a tag 넘어왔다 ")
+	//alert("a tag 넘어왔다 ")
 	//$(".board-list-paging").empty();
 		$.ajax({
 		url : '/CluBoard/view/',
@@ -154,9 +154,9 @@ $(".pageBtn").click(function(event) {
 			var m2 =  $('#m2').val();
 			var m3 =  $('#m3').val();
 			
-			alert("m1 : " + m1);
-			alert("m2 : " + m2);
-			alert("m3 : " + m3);
+			//alert("m1 : " + m1);
+			//alert("m2 : " + m2);
+			//alert("m3 : " + m3);
 
 			
 			var keyfield = $("select[name=keyfield]").val();

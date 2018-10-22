@@ -57,4 +57,26 @@ public class ReservationDaoImple implements ReservationDao {
 	public void outSeat(HashMap<String, Object> map) {
 		sqlsession.delete("Reservation.outSeat", map);
 	}
+
+	@Override
+	public void timeOut(HashMap<String, Object> map) {
+		sqlsession.selectList("Reservation.timeout",map);
+		List<ReservationVo> list= (List<ReservationVo>) map.get("result");
+		//System.out.println("list" +list.toString());
+		
+	}
+
+	@Override
+	public ReservationVo getOnePerson(HashMap<String, Object> map) {
+		
+		ReservationVo vo =sqlsession.selectOne("Reservation.oneperson",map);
+		
+		return vo;
+	}
+
+	@Override
+	public void DeleteSet(HashMap<String, Object> map) {
+		System.out.println("map:" + map);
+		sqlsession.delete("Reservation.timeout",map);
+	}
 }

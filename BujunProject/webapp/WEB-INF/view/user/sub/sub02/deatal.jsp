@@ -55,6 +55,7 @@
 		
 		//pop-up 창 닫을때 
 		var cancle = document.getElementsByClassName('cancle');
+		
 		cancle[0].onclick = function() {
 			opener.window.selectedObj.setAttribute('style',
 					'background-color: white;');

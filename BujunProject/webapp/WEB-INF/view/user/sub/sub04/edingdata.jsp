@@ -18,7 +18,7 @@
 	onload = function(){
 		var newEdu = document.getElementById("newEdu");
 		newEdu.addEventListener("click", function(){
-			location.href="/opprogram01/adprof?m1=${m1}&m2=${m2}&m3=${m3}&page=${ed.page}&pagecount=${ed.pagecount}&pagegrp=${ed.pagegrp}";
+			location.href="/opprogram01/adprof?m1=${m1}&m2=${m2}&m3=${m3}&page=1&pagecount=10&pagegrp=1";
 		});
 	}
 </script>

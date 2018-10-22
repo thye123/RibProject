@@ -55,4 +55,21 @@ public class ReservationServiceImple implements ReservationService {
 		reservationdao.outSeat(map);
 	}
 
+	@Override
+	public void outTime(HashMap<String, Object> map) {
+		reservationdao.timeOut(map);
+		
+	}
+
+	@Override
+	public ReservationVo getOnePerson(HashMap<String, Object> map) {
+		ReservationVo vo = reservationdao.getOnePerson(map);
+		return vo;
+	}
+
+	@Override
+	public void getDeleteSeat(HashMap<String, Object> map) {
+		reservationdao.DeleteSet(map);
+	}
+
 }

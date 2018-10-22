@@ -59,7 +59,7 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public void addFile(HttpServletRequest req, HashMap<String, Object> map) {
 		CheckFileName checkFile = new CheckFileName();
-		String filePath = "d:\\upload\\";
+		String filePath = "C:\\upload\\";
 		
 		MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest)req;
 		Iterator<String> iterator = multiRequest.getFileNames();
@@ -118,7 +118,7 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public void upFile(HttpServletRequest req, HashMap<String, Object> map) {
 		CheckFileName checkFile = new CheckFileName();
-		String filePath = "d:\\upload\\";
+		String filePath = "C:\\upload\\";
 		
 		MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest)req;
 		Iterator<String> iterator = multiRequest.getFileNames();

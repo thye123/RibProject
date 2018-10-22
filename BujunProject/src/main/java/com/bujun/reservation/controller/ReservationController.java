@@ -23,7 +23,7 @@ public class ReservationController {
 
 	@RequestMapping("/reserve")
 	public ModelAndView reserInfor(@RequestParam HashMap<String, Object> map, Model model)
-	{
+	{model.addAttribute("menu", map);
 		/*로그인 조건 */
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
@@ -45,6 +45,7 @@ public class ReservationController {
 		    			map.put("res_memid", login_name);
 		    			List<ReservationVo> rv = reservationservice.getClassID(map);
 		    			List<ReservationVo> list = reservationservice.cancle(map);
+		    			
 		    			mv.addObject("list",list);
 		    			mv.addObject("rv",rv);
 		    			mv.addObject("m1",m1);
@@ -69,6 +70,8 @@ public class ReservationController {
 		    		}
 		    		
 		    		
+		      }else {
+		    	  mv.setViewName("user/sub/sub08/login");
 		      }
 		      
 
@@ -82,8 +85,8 @@ public class ReservationController {
 
 	@RequestMapping("/reserve/detail")
 	
-	public ModelAndView resDetail(@RequestParam HashMap<String , Object> map)
-	{
+	public ModelAndView resDetail(@RequestParam HashMap<String , Object> map ,Model model)
+	{model.addAttribute("menu", map);
 		ModelAndView mv = new ModelAndView();
 		//System.out.println("상세보기 map" + map);
 		mv.addObject("seat_code",map.get("seat_code"));
@@ -97,11 +100,12 @@ public class ReservationController {
 
 	@RequestMapping("/reserve/insert")
 	
-	public String msg(@RequestParam HashMap<String , Object> map)
-	{
-		System.out.println("map:" + map);
+	public String msg(@RequestParam HashMap<String , Object> map , Model model)
+	{model.addAttribute("menu", map);
+		//System.out.println("map:" + map);
 		String m1 = String.valueOf(map.get("m1"));
 		String m2 = String.valueOf(map.get("m2"));
+		String m3 = String.valueOf(map.get("m3"));
 		//System.out.println("tempInsert"  + map);
 		int seatcode=Integer.parseInt(String.valueOf(map.get("res_seatcode")));
 		String seat = "SEAT0";
@@ -118,14 +122,14 @@ public class ReservationController {
 		}
 		
 		reservationservice.getInsert(map);
-		return "redirect:/reserve?m1="+m1+"&m2="+m2;
-		//user/sub/sub02/msg
+		return "redirect:/reserve?m1="+m1+"&m2="+m2+"&m3="+m3;
+				
 	}
 
 	@RequestMapping("/reserve/settingAjax")
 	
-	public ModelAndView DelAjax(@RequestParam HashMap<String, Object>map)
-	{
+	public ModelAndView DelAjax(@RequestParam HashMap<String, Object>map ,Model model)
+	{model.addAttribute("menu", map);
 		ModelAndView mv= new ModelAndView();
 		reservationservice.DelAjax(map);
 		mv.setViewName("redirect:/reserve");
@@ -134,26 +138,62 @@ public class ReservationController {
 	}
 
 	@RequestMapping("/reserve/update")
-	public String updateReserve(@RequestParam HashMap<String, Object> map) {
+	public String updateReserve(@RequestParam HashMap<String, Object> map ,Model model) {
+		model.addAttribute("menu", map);
+		String m1 = String.valueOf(map.get("m1"));
+		String m2 = String.valueOf(map.get("m2"));
+		String m3 = String.valueOf(map.get("m3"));
+		
 		reservationservice.upReserve(map);
-		return "redirect:/reserve?m1=02&m2=04";
+		return "redirect:/reserve?m1="+m1+"&m2="+m2+"&m3="+m3;
 	}
 	
 	
 	@RequestMapping("/reserve/cancle")
-	public String cancel(@RequestParam HashMap<String, Object> map) {
+	public String cancel(@RequestParam HashMap<String, Object> map ,Model model) {
+		model.addAttribute("menu", map);
 		//ModelAndView mv= new ModelAndView();
 		System.out.println("취소 정보 map" + map);
+		String m1 = String.valueOf(map.get("m1"));
+		String m2 = String.valueOf(map.get("m2"));
+		String m3 = String.valueOf(map.get("m3"));
 		reservationservice.deleteSet(map);
-		return "redirect:/reserve?m1=02&m2=04";
+		return "redirect:/reserve?m1="+m1+"&m2="+m2+"&m3="+m3;
 
 	}
 	
 	
 	@RequestMapping("/reserve/out")
-	public String out(@RequestParam HashMap<String, Object> map) {
+	public String out(@RequestParam HashMap<String, Object> map ,Model model) {
+		model.addAttribute("menu", map);
+		String m1 = String.valueOf(map.get("m1"));
+		String m2 = String.valueOf(map.get("m2"));
+		String m3 = String.valueOf(map.get("m3"));
 		reservationservice.outSeat(map);
-		return "redirect:/reserve?m1=02&m2=04";
+		return "redirect:/reserve?m1="+m1+"&m2="+m2+"&m3="+m3;
 	}
+	
+	
+	
+	@RequestMapping("/reserve/outsetted")
+	public String timeOut(@RequestParam HashMap<String, Object> map ,Model model) {
+		model.addAttribute("menu", map);
+		ModelAndView mv = new ModelAndView();
+		String m1 = String.valueOf(map.get("m1"));
+		String m2 = String.valueOf(map.get("m2"));
+		String m3 = String.valueOf(map.get("m3"));
+		String location = "";
+		if(m1.equals("02")&&m2.equals("04")) {
+			reservationservice.getDeleteSeat(map);
+			location = "redirect:/reserve?m1="+ m1 + "&m2=" + m2;
+		}
+		
+		if(m1.equals("02")&&m2.equals("04")&&m3.equals("02")) {
+			reservationservice.getDeleteSeat(map);
+			location = "redirect:/reserve?m1="+ m1 + "&m2=" + m2 + "&m3=" + m3;
+		}
+		return location;
+	}
+	
 }
 

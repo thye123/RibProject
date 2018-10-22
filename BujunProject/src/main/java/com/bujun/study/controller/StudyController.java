@@ -24,7 +24,7 @@ public class StudyController {
 	StudyService studyService;
 	//${sessionScope.mem_name}
 	
-	//스터디 목록 시작
+	//�뒪�꽣�뵒 紐⑸줉 �떆�옉
 	@RequestMapping("/study")
 	public ModelAndView goStudy(@RequestParam HashMap<String, Object> map, Model model, HttpSession session) {
 		model.addAttribute("menu", map);
@@ -39,10 +39,10 @@ public class StudyController {
 		mv.setViewName("user/sub/sub06/study");
 		return mv;
 	}
-	//스터디 목록 끝
+	//�뒪�꽣�뵒 紐⑸줉 �걹
 	
 	
-	//스터디 등록 시작
+	//�뒪�꽣�뵒 �벑濡� �떆�옉
 	@RequestMapping("/study/addStudyForm")
 	public ModelAndView addStudyForm(@RequestParam HashMap<String, Object> map, Model model, HttpSession session) {
 		
@@ -75,10 +75,10 @@ public class StudyController {
 		mv.setViewName("redirect:/study?m1=" + m1 + "&m2=" + m2 + "&page_num=1&page_grp=1");;
 		return mv;
 	}
-	//스터디 등록 끝
+	//�뒪�꽣�뵒 �벑濡� �걹
 	
 	
-	//상세정보 시작
+	//�긽�꽭�젙蹂� �떆�옉
 	@RequestMapping("/study/dCon")
 	public ModelAndView stuDetail(@RequestParam HashMap<String, Object> map, Model model) {
 		model.addAttribute("menu", map);
@@ -93,10 +93,10 @@ public class StudyController {
 		mv.setViewName("user/sub/sub06/studyDetail");		
 		return mv;
 	}
-	//상세정보 끝
+	//�긽�꽭�젙蹂� �걹
 	
 	
-	//수정 시작
+	//�닔�젙 �떆�옉
 	@RequestMapping("/study/updateForm")
 	public ModelAndView updateFrom(@RequestParam HashMap<String, Object> map, Model model) {
 		model.addAttribute("menu", map);
@@ -121,10 +121,10 @@ public class StudyController {
 		studyService.update(map);
 		return "redirect:/study/dCon?m1="+m1+"&m2="+m2+"&stu_code="+map.get("stu_code")+"&stu_idx="+map.get("stu_idx");
 	}
-	//수정 끝
+	//�닔�젙 �걹
 	
 	
-	//삭제 시작
+	//�궘�젣 �떆�옉
 	@RequestMapping("/study/delete")
 	public String delete(@RequestParam HashMap<String, Object> map, Model model) {
 		System.out.println("map: " + map);
@@ -134,10 +134,10 @@ public class StudyController {
 		String m2 = String.valueOf(map.get("m2"));
 		return "redirect:/study?m1="+m1+"&m2="+m2+"&page_num=1&page_grp=1";
 	}
-	//삭제 끝
+	//�궘�젣 �걹
 
 	
-	//스터디 검색 시작
+	//�뒪�꽣�뵒 寃��깋 �떆�옉
 	@RequestMapping("/study/search")
 	public ModelAndView search(@RequestParam HashMap<String, Object> map, Model model) {
 		model.addAttribute("menu", map);
@@ -160,10 +160,10 @@ public class StudyController {
 		mv.setViewName("user/sub/sub06/study");
 		return mv;
 	}
-	//스터디 검색 끝
+	//�뒪�꽣�뵒 寃��깋 �걹
 	
 	
-	//스터디 가입 신청 시작
+	//�뒪�꽣�뵒 媛��엯 �떊泥� �떆�옉
 	@RequestMapping("/study/joinForm")
 	public ModelAndView studyJoinForm(@RequestParam HashMap<String, Object> map, Model model) {
 		model.addAttribute("menu", map);
@@ -193,10 +193,10 @@ public class StudyController {
 		studyService.studyAppliy(map);
 		return "redirect:/study?m1=" + m1 + "&m2=" + m2 + "&page_num=1&page_grp=1";
 	}
-	//스터디 가입 신청 끝
+	//�뒪�꽣�뵒 媛��엯 �떊泥� �걹
 	
 	
-	//스터디 가입 신청 현황 시작(개인)
+	//�뒪�꽣�뵒 媛��엯 �떊泥� �쁽�솴 �떆�옉(媛쒖씤)
 	@RequestMapping("/study/appList")
 	public ModelAndView myApplyList(@RequestParam HashMap<String, Object> map, Model model) {
 	
@@ -227,10 +227,10 @@ public class StudyController {
       }
 	      
 	}
-	//스터디 가입 신청 현황 끝(개인)
+	//�뒪�꽣�뵒 媛��엯 �떊泥� �쁽�솴 �걹(媛쒖씤)
 	
 	
-	//스터디 가입 신청 현황 검색 시작(개인)
+	//�뒪�꽣�뵒 媛��엯 �떊泥� �쁽�솴 寃��깋 �떆�옉(媛쒖씤)
 	@RequestMapping("/study/myapplysearch")
 	public ModelAndView myApplySearch(@RequestParam HashMap<String, Object> map, Model model) {
 		model.addAttribute("menu", map);
@@ -255,10 +255,10 @@ public class StudyController {
 		mv.setViewName("user/sub/sub06/studyApplyList");
 		return mv;
 	}
-	//스터디 가입 신청 현황 검색 끝(개인)
+	//�뒪�꽣�뵒 媛��엯 �떊泥� �쁽�솴 寃��깋 �걹(媛쒖씤)
 	
 	
-	//스터디 가입 신청 현황 시작(스터디별 -> 글올린 사람만 볼 수 있음)
+	//�뒪�꽣�뵒 媛��엯 �떊泥� �쁽�솴 �떆�옉(�뒪�꽣�뵒蹂� -> 湲��삱由� �궗�엺留� 蹂� �닔 �엳�쓬)
 	@RequestMapping("/study/prcondition")
 	public ModelAndView stuApplyList(@RequestParam HashMap<String, Object> map, Model model) {
 		model.addAttribute("menu", map);
@@ -277,10 +277,10 @@ public class StudyController {
 		mv.setViewName("user/sub/sub06/studyApplyList");
 		return mv;
 	}
-	//스터디 가입 신청 현황 끝(스터디별 -> 글올린 사람만 볼 수 있음)
+	//�뒪�꽣�뵒 媛��엯 �떊泥� �쁽�솴 �걹(�뒪�꽣�뵒蹂� -> 湲��삱由� �궗�엺留� 蹂� �닔 �엳�쓬)
 	
 	
-	//스터디 가입 신청 현황 검색 시작(스터디 별 -> 글올린 사람만 볼 수 있음)
+	//�뒪�꽣�뵒 媛��엯 �떊泥� �쁽�솴 寃��깋 �떆�옉(�뒪�꽣�뵒 蹂� -> 湲��삱由� �궗�엺留� 蹂� �닔 �엳�쓬)
 	@RequestMapping("/study/stusearch")
 	public ModelAndView stuApplySearch(@RequestParam HashMap<String, Object> map, Model model) {
 		model.addAttribute("menu", map);
@@ -300,19 +300,19 @@ public class StudyController {
 		mv.setViewName("user/sub/sub06/studyApplyList");
 		return mv;
 	}
-	//스터디 가입 신청 현황 검색 끝(스터디 별 -> 글올린 사람만 볼 수 있음)
+	//�뒪�꽣�뵒 媛��엯 �떊泥� �쁽�솴 寃��깋 �걹(�뒪�꽣�뵒 蹂� -> 湲��삱由� �궗�엺留� 蹂� �닔 �엳�쓬)
 	
 	
-	//스터디 승인
+	//�뒪�꽣�뵒 �듅�씤
 	@RequestMapping("/study/accept")
 	public String acceptStudy(@RequestParam HashMap<String, Object> map) {
-		//승인
+		//�듅�씤
 		studyService.updateApply(map);
 		
-		//모집인원 다차면 모집 완료
+		//紐⑥쭛�씤�썝 �떎李⑤㈃ 紐⑥쭛 �셿猷�
 		studyService.studyEnd(map);
 		String m1 = String.valueOf(map.get("m1"));
 		String m2 = String.valueOf(map.get("m2"));
-		return "redirect:/study/prcondition?m1="+m1+"&m2="+m2+"&page_num=1&page_grp=1&stu_code="+map.get("stuap_code");
+		return "redirect:/study/prcondition?m1="+m1+"&m2="+m2+"&page_num=1&page_grp=1&stu_code="+map.get("stuap_code")+"&stu_idx="+map.get("stu_idx");
 	}
 }

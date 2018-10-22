@@ -21,4 +21,12 @@ public interface ReservationDao {
 
 	public void outSeat(HashMap<String, Object> map);
 
+	public void timeOut(HashMap<String, Object> map);
+
+	public ReservationVo getOnePerson(HashMap<String, Object> map);
+	
+	/*삭제*/
+	public void DeleteSet(HashMap<String, Object> map);
+	
+
 }

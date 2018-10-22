@@ -54,7 +54,7 @@ public class BankServiceImpl implements BankService {
 	@Override
 	public void addFile(HttpServletRequest req, HashMap<String, Object> map) {
 		CheckFileName checkFile = new CheckFileName();
-		String filePath = "d:\\upload\\";
+		String filePath = "c:\\upload\\";
 		
 		MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest)req;
 		Iterator<String> iterator = multiRequest.getFileNames();
@@ -115,7 +115,7 @@ public class BankServiceImpl implements BankService {
 	@Override
 	public void upFile(HttpServletRequest req, HashMap<String, Object> map) {
 		CheckFileName checkFile = new CheckFileName();
-		String filePath = "d:\\upload\\";
+		String filePath = "c:\\upload\\";
 		
 		MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest)req;
 		Iterator<String> iterator = multiRequest.getFileNames();
