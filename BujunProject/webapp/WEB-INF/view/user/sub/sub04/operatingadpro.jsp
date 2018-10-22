@@ -66,7 +66,7 @@
 		          return false;
 		       }
 		      if(listu_target.value==''){
-		          alert('모집 대상 입력 ');
+		          alert('강의 대상 입력 ');
 		          listu_target.focus();
 		          return false;
 		       }

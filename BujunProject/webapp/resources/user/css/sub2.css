@@ -251,7 +251,45 @@
 	.reference {margin-top:10px; float:none; height:auto; width:100%;}
 }
 
+#seargo {
+   width:500px;height:500px;text-align:center;vertical-align:middle; padding:20px; box-sizing:border-box;
+}
 
+
+#mask {  
+    position:absolute;  
+    z-index:9999;  
+    background-color:#000;  
+    display:none;  
+    left:0;
+    top:0;
+} 
+/* 팝업으로 뜨는 윈도우 css  */ 
+.window{
+ display: none;
+    position: absolute;
+    left: 80%;
+    top: 287px;
+    margin-left: -500px;
+    width: 500px;
+    height: 500px;
+    background-color: #FFF;
+    z-index: 10000; 
+ }
+
+
+@media only screen and (max-width:800px) {
+   .window{
+       left:0;
+       top: 287px;
+       margin-left: 0;
+       width: 100%;
+    }
+    
+    #seargo {
+      width:auto; height:500px; text-align:center; vertical-align:middle;   
+   }
+}
 
 
 

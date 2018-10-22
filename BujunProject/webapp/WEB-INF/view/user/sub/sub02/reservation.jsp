@@ -144,7 +144,7 @@
 							alert('예약된 좌석입니다');
 							e.preventDefault();
 						}
-					};
+					}
 				}//arr
 			}//div_num
 		}
@@ -173,7 +173,6 @@
 /*삭제 RESERVATION*/
 
 	
-
 	function settedCancle() {
 		var d = new Date();
 		var selHour= d.getHours();
@@ -182,15 +181,14 @@
 
 
 
-
 function delseatting(){
 	/*아이디 */ 
 
 	var selMemid= "${sessionScope.mem_id}";
-	alert("4"+ selMemid);
+	//alert("4"+ selMemid);
 	var d = new Date();
 	var selHour= d.getHours();/*시스템상 현재 시간 */
-	alert("3"+selHour);
+	//alert("3"+selHour);
 
 	$.ajax({
 		url : '/reserve/delnum',
@@ -284,11 +282,20 @@ function delseatting(){
 
 		});
 
-	});
+	})
 
 	function val(obj) {
-		$('#res_edtime').val(Number(obj.value) + Number(3));
-		//alert($('#res_edtime').val());	
+		var cnt = Number(obj.value) + Number(3);
+		alert(cnt);
+		var objVal = $('#res_edtime').val(Number(obj.value) + Number(3));
+		alert($('#res_edtime').val());	
+		if(cnt <= 20){
+			alert('aaa');
+		}else{
+			alert('bbbb');
+			$('#res_edtime').val(20);
+		}	
+	
 	}
 </script>
 <script>
@@ -323,7 +330,12 @@ function delseatting(){
 			//링크 기본동작은 작동하지 않도록 한다.
 			e.preventDefault();
 			$("#cnacle, .openCancle").hide();
+		});
 
+		$(".cancle").click(function(e) {
+			//링크 기본동작은 작동하지 않도록 한다.
+			e.preventDefault();
+			$("#cnacle, .openCancle").hide();
 		});
 
 		//검은 막을 눌렀을 때
@@ -540,7 +552,7 @@ function delseatting(){
 </div>
 </div>
 </div>
-</div>
+
 
 <!-- footer -->
 

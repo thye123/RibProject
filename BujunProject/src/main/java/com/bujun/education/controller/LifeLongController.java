@@ -1,6 +1,6 @@
 package com.bujun.education.controller;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.bujun.club.service.imple.PagingData;
 import com.bujun.education.service.EduService;
 import com.bujun.education.service.impl.Pgdata;
 import com.bujun.education.vo.EduVo;
@@ -114,7 +113,6 @@ public class LifeLongController {
 		//프로그램명 시간 / 요일 장소
 		
 		EduVo vo = eduService.getData(map);
-		//System.out.println("세부 정보 넘어가는 page: " + vo.toString());
 		
 		mv.addObject("liap_code",map.get("listu_code"));
 		
@@ -227,7 +225,7 @@ public class LifeLongController {
 	      if(!login_name.equals("anonymousUser")) {
 	    	  map.put("liap_apname", login_name);
 	    	  
-	    	  System.out.println("id 체크 후 맵 " + map);
+	    	  //System.out.println("id 체크 후 맵 " + map);
 	    	  
 	    	  return "redirect:/pgcheck/proc?m1="+m1+"&m2="+m2+"&m3="+m3+"&liap_apname="+login_name;
 	      }else {
@@ -270,7 +268,7 @@ public class LifeLongController {
 	public ModelAndView eduingData(@RequestParam
 			HashMap<String, Object> map, Model model) {
 		model.addAttribute("menu", map);
-		//System.out.println("map 처리 " + map);
+
 		String m1 = String.valueOf(map.get("m1"));		
 		String m2 = String.valueOf(map.get("m2"));		
 		String m3 = String.valueOf(map.get("m3"));
@@ -278,10 +276,18 @@ public class LifeLongController {
 		ModelAndView mv = new ModelAndView();
 		
 		List<EduVo> EdingData = eduService.EduingData(map);
-		//System.out.println("map:" + map);
+		System.out.println("map:" + map);
+
+		
 		Pgdata data= new Pgdata();
+		
+		System.out.println("map1111:" + map);
 		EduVo  pageMaker  = data.getPaging(map);
 		
+		
+		System.out.println("pageMaker" +pageMaker.toString());
+		
+		mv.addObject("cnt",map.get("cnt"));
 		mv.addObject("pageMaker",pageMaker);
 		mv.addObject("m1",m1);
 		mv.addObject("m2",m2);
