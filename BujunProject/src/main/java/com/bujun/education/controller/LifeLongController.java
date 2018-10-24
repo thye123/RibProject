@@ -157,7 +157,7 @@ public class LifeLongController {
 		mv.addObject("m1",m1);
 		mv.addObject("m2",m2);
 		mv.addObject("m3",m3);
-		mv.setViewName("redirect:/opprogram01?m1="+m1+"&m2="+m2+"&m3="+m3+"&page=1&pagecount=10&pagegrp=1");
+		mv.setViewName("redirect:/pgappl?m1="+m1+"&m2="+m2+"&m3="+m3+"&page=1&pagecount=10&pagegrp=1");
 		return mv;
 	}
 	

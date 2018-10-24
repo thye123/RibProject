@@ -353,7 +353,8 @@
 }
 
 
-.bj_search_wrap > li {padding:20px; margin-bottom: 5px; position: relative; float: left; width: 32.66%; border: 1px solid #ccc; box-sizing: border-box; margin-right: 1%;}
+.bj_search_wrap > li {font-family: "Nanum Gothic", sans-serif, dotum, Helvetica; padding:20px; margin-bottom: 5px; position: relative; float: left; width: 32.66%; border: 1px solid #ccc; box-sizing: border-box; margin-right: 1%;}
+.bj_search_wrap > li .bj_search ul li:nth-child(1), .bj_search_wrap > li .bj_search ul li:nth-child(5) {font-weight: 800;}
 .bj_search_wrap > li:hover {border:1px solid #4c4c4c;}
 .bj_search_wrap > li:nth-child(3n) {margin-right:0;}
 .bj_search_wrap:after {display:block; content:""; claer:both;}
