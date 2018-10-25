@@ -145,7 +145,7 @@ public class ReservationController {
 		String m3 = String.valueOf(map.get("m3"));
 		
 		reservationservice.upReserve(map);
-		return "redirect:/reserve?m1="+m1+"&m2="+m2+"&m3="+m3;
+		return "redirect:/reserve?m1=02&m2=04";
 	}
 	
 	
@@ -153,10 +153,11 @@ public class ReservationController {
 	public String cancel(@RequestParam HashMap<String, Object> map ,Model model) {
 		model.addAttribute("menu", map);
 		//ModelAndView mv= new ModelAndView();
-		System.out.println("취소 정보 map" + map);
+		
 		String m1 = String.valueOf(map.get("m1"));
 		String m2 = String.valueOf(map.get("m2"));
 		String m3 = String.valueOf(map.get("m3"));
+		System.out.println("취소 정보 map" + map);
 		reservationservice.deleteSet(map);
 		return "redirect:/reserve?m1="+m1+"&m2="+m2+"&m3="+m3;
 
@@ -166,11 +167,8 @@ public class ReservationController {
 	@RequestMapping("/reserve/out")
 	public String out(@RequestParam HashMap<String, Object> map ,Model model) {
 		model.addAttribute("menu", map);
-		String m1 = String.valueOf(map.get("m1"));
-		String m2 = String.valueOf(map.get("m2"));
-		String m3 = String.valueOf(map.get("m3"));
 		reservationservice.outSeat(map);
-		return "redirect:/reserve?m1="+m1+"&m2="+m2+"&m3="+m3;
+		return "redirect:/reserve?m1=02&m2=04";
 	}
 	
 	

@@ -20,8 +20,10 @@ public class NoticeDaoImpl implements NoticeDao {
 	
 	@Override
 	public List<NoticeVo> getList(HashMap<String, Object> map) {
+		System.out.println("map:" + map);
 		sqlSession.selectList("Notice.NoticeList", map);
 		List<NoticeVo> noticeList = (List<NoticeVo>) map.get("result");		
+		System.out.println("listL: " + noticeList);
 		return noticeList;
 	}
 

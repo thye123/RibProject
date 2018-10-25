@@ -245,7 +245,7 @@ public class RFBoardController {
 		
 		
 		String INTERNAL_FILE = sfile;
-		String EXTERNAL_FILE_PATH = "C:\\upload\\" + sfile;
+		String EXTERNAL_FILE_PATH = "d:\\upload\\" + sfile;
 		
 		File file = null;
 		if(type.equalsIgnoreCase("internal")) {
@@ -267,8 +267,8 @@ public class RFBoardController {
 		
 		String mimeType = URLConnection.guessContentTypeFromName(file.getName());
 		
-		mimeType = "application/octet-stream";
-		/*mimeType = "application/unknown";*/
+		/*mimeType = "application/octet-stream";*/
+		mimeType = "application/unknown";
 		
 		System.out.println("mimeType: " + mimeType);
 		response.setContentType(mimeType);

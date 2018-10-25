@@ -14,16 +14,6 @@
 <!-- 레프트메뉴 -->
 <%@ include file="../../include/left_menu04.jsp"%>
 
-<script>
-	onload = function(){
-		var newEdu = document.getElementById("newEdu");
-		newEdu.addEventListener("click", function(){
-			location.href="/opprogram01/adprof?m1=${m1}&m2=${m2}&m3=${m3}&page=1&pagecount=10&pagegrp=1";
-		});
-	}
-</script>
-
-
 <!-- location -->
 <div class="loca">
 	<ul>
@@ -65,7 +55,7 @@
 	<!-- content 시작 -->
 	<div class="prolistarea">
 		
-		<p class="mg_b5">총 <span class="red">${pageMaker.cnt}</span> 개의  프로그램이 있습니다</p>
+		<p class="mg_b5">총 <span class="red">${cnt}</span> 개의  프로그램이 있습니다</p>
 
  	<div class="studyArea">
  		<ul class="studyProgram">
@@ -88,10 +78,23 @@
 		</ul>
 	</div>		
 				
-
-	<div class="r mg_t20 btns">
-		<input type="button" class="btns_black" id="newEdu" value="새글쓰기" style="border:0;"/>
-	</div>
+	<c:choose>
+		<c:when test="">
+			<script>
+				onload = function(){
+					var newEdu = document.getElementById("newEdu");
+					newEdu.addEventListener("click", function(){
+						location.href="/opprogram01/adprof?m1=${m1}&m2=${m2}&m3=${m3}&page=1&pagecount=10&pagegrp=1";
+					});
+				}
+			</script>
+			<div class="r mg_t20 btns">
+				<input type="button" class="btns_black" id="newEdu" value="새글쓰기" style="border:0;"/>
+			</div>
+		</c:when>
+		<c:otherwise></c:otherwise>
+	</c:choose>
+	
 	<!-- 페이지 -->
 		<div class="board-list-paging">
 		<div class="pagelist">
@@ -102,6 +105,8 @@
 				</c:if>
 
 			<!-- 페이징 -->
+			
+			
 			
 				<c:forEach var="Paging" begin="${pageMaker.start}"
 					end="${pageMaker.end}" step="1">

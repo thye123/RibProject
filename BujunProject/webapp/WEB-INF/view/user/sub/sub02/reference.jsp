@@ -20,48 +20,7 @@
 	box-sizing: border-box;
 }
 
-#mask {
-	position: absolute;
-	z-index: 9000;
-	background-color: #000;
-	display: none;
-	left: 0;
-	top: 0;
-}
-/* 팝업으로 뜨는 윈도우 css  */
-.window {
-	display: none;
-	position: absolute;
-	left: 80%;
-	top: 287px;
-	margin-left: -500px;
-	width: 500px;
-	height: 500px;
-	background-color: #FFF;
-	z-index: 10000;
-}
 
-/*취소 눌러질때 */
-#cnacle {
-	position: absolute;
-	z-index: 9000;
-	background-color: #000;
-	display: none;
-	left: 0;
-	top: 0;
-}
-/* 팝업으로 뜨는 윈도우 css  */
-.openCancle {
-	display: none;
-	position: absolute;
-	left: 80%;
-	top: 287px;
-	margin-left: -500px;
-	width: 500px;
-	height: 500px;
-	background-color: #FFF;
-	z-index: 10000;
-}
 a.bof {
     display: inline-block;
 }
@@ -296,7 +255,7 @@ width: 100%;
 		//애니메이션 효과 - 일단 0초동안 까맣게 됐다가 60% 불투명도로 간다.
 
 		$("#mask").fadeIn(0);
-		$("#mask").fadeTo("slow", 0.8);
+		$("#mask").fadeTo("slow", 1);
 		$("#res_seatcode").val(obj);
 		//alert($("#res_seatcode").val(obj))
 		var d = new Date();
@@ -335,10 +294,19 @@ width: 100%;
 
 	});
 
-	function val(obj) {
-		$('#res_edtime').val(Number(obj.value) + Number(3));
-
-	}
+	  function val(obj) {
+	      var cnt = Number(obj.value) + Number(3);
+	      //alert(cnt);
+	      //alert($('#res_edtime').val());   
+	      if(cnt <= 20){
+	         //alert('aaa');
+	    	  $('#res_edtime').val(Number(obj.value) + Number(3));
+	      }else{
+	        // alert('bbbb');
+	         $('#res_edtime').val(20);
+	      }   
+	   
+	   }
 </script>
 <script>
 	function cancleMaskWrap() {
@@ -355,7 +323,7 @@ width: 100%;
 		//애니메이션 효과 - 일단 0초동안 까맣게 됐다가 60% 불투명도로 간다.
 
 		$("#cnacle").fadeIn(0);
-		$("#cnacle").fadeTo("slow", 0.8);
+		$("#cnacle").fadeTo("slow", 1);
 		$(".openCancle").show();
 	}
 
@@ -377,9 +345,15 @@ width: 100%;
 
 		//검은 막을 눌렀을 때
 		$("#cnacle").click(function() {
-
+			
 		});
-
+		
+      $(".cancle").click(function(e) {
+          //링크 기본동작은 작동하지 않도록 한다.
+          e.preventDefault();
+          $("#cnacle, .openCancle").hide();
+       });
+		
 	});
 </script>
 
@@ -428,16 +402,30 @@ width: 100%;
 				<li>예약중 <span class="green"></span></li>
 				<li>예약완료 <span class="ornage"></span></li>
 			</ul>
-			<a href="javascript:refresh()">새로고침</a>
+			
 		</div>
+		
+		
+	<div class="res_btn_2">
+	      <ul>
+	      	<li>
+				<c:if test="${sessionScope.mem_id ne null}">
+					<a class="btn btn-default" id="cancleGo"
+						href="javascript:cancleMaskWrap()">취소</a>
+		
+				</c:if>
+	      	</li>
+	      	<li><a href="javascript:refresh()">새로고침</a></li>
+	      </ul>
+      </div>
+      
+      
+      
+      
 
-		<c:if test="${sessionScope.mem_id ne null}">
-			<a class="btn btn-default" id="cancleGo"
-				href="javascript:cancleMaskWrap()">취소</a>
 
-		</c:if>
 
-		<h3 class="tbul2">인터넷</h3>
+		<h3 class="tbul2 mob_bul" >인터넷</h3>
 		<div class="res01"></div>
 
 		<div class="reference">
@@ -495,7 +483,7 @@ width: 100%;
 					
 					
 					<form
-						style="width: 500px; height: 500px; text-align: center; vertical-align: middle;"
+						style="height: 500px; text-align: center; vertical-align: middle;"
 						action="/reserve/insert" id="seargo" method="GET">
 						<input type="hidden" name="area_code" id="area_code" value="" />
 						<input type="hidden" name="m1" value="${m1}" /> 
@@ -542,18 +530,14 @@ width: 100%;
 											readonly="readonly">
 									</span></td>
 								</tr>
-								<tr>
-									<td>
-									<th></th>
-								</tr>
 							</tbody>
 						</table>
 
-						<div class="btn">
-							<input type="submit" value="확인" />
+						<div class="btns mg_t10">
+							<input type="submit" value="확인" class="btns_blue" style="border:0;" />
 							<!-- 	<p style="text-align:center; background:#ffffff; padding:20px;"><a href="#" class="close">닫기X</a></p> -->
 
-							<input type="button" value="닫기" class="cancle" />
+							<input type="button" value="닫기" class="cancle btns_black" style="border:0;" />
 						</div>
 
 					</form>
@@ -574,10 +558,12 @@ width: 100%;
 				<div class="openCancle">
 
 					<form action="/reserve/cancle" id="seargo" method="GET">
-						<input type="hidden" name="res_rimem_num"
-							value="${sessionScope.rimem_num}" />
+						<input type="hidden" name="res_rimem_num" value="${sessionScope.rimem_num}" />
+						<input type="hidden" name="m1" value="${m1}"/> 
+                  		<input type="hidden" name="m2" value="${m2}"/>
+                  		<input type="hidden" name="m3" value="${m3}"/> 
 						<div class="awcontent">
-							<table class="t1">
+							<table class="board_read2">
 								<caption>취소 페이지 입니다.</caption>
 								<tbody>
 									<tr>
@@ -599,11 +585,11 @@ width: 100%;
 								</tbody>
 							</table>
 
-							<div class="btn">
-								<input type="submit" value="확인" />
+							<div class="btns mg_t10">
+								<input type="submit" class="btns_blue" style="border:0;" value="확인" />
 								<!-- <p style="text-align:center; background:#ffffff; padding:20px;"><a href="#" class="close">닫기X</a></p> -->
 
-								<input type="button" value="닫기" class="cancle" />
+								<input type="button" value="닫기" style="border:0;" class="cancle btns_black" />
 							</div>
 
 						</div>

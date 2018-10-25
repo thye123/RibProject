@@ -14,16 +14,6 @@
 <!-- 레프트메뉴 -->
 <%@ include file="../../include/left_menu04.jsp"%>
 
-<script>
-	onload = function(){
-		var newEdu = document.getElementById("newEdu");
-		newEdu.addEventListener("click", function(){
-			location.href="/opprogram01/adprof?m1=${m1}&m2=${m2}&m3=${m3}&page=${pageMaker.page}&pagecount=${pageMaker.pagecount}&pagegrp=${pageMaker.pagegrp}";
-		});
-	}
-</script>
-
-
 <!-- location -->
 <div class="loca">
 	<ul>
@@ -89,9 +79,22 @@
 	</div>		
 				
 
-	<div class="r mg_t20 btns">
-		<input type="button" class="btns_black" id="newEdu" value="새글쓰기" style="border:0;"/>
-	</div>
+	<c:choose>
+		<c:when test="">
+			<script>
+				onload = function(){
+					var newEdu = document.getElementById("newEdu");
+					newEdu.addEventListener("click", function(){
+						location.href="/opprogram01/adprof?m1=${m1}&m2=${m2}&m3=${m3}&page=1&pagecount=10&pagegrp=1";
+					});
+				}
+			</script>
+			<div class="r mg_t20 btns">
+				<input type="button" class="btns_black" id="newEdu" value="새글쓰기" style="border:0;"/>
+			</div>
+		</c:when>
+		<c:otherwise></c:otherwise>
+	</c:choose>
 	
 	
 	<!-- 페이지 시작  -->

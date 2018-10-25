@@ -1,9 +1,6 @@
 package com.bujun.education.service.impl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-
 import com.bujun.education.vo.EduVo;
 
 public class Pgdata {
@@ -18,8 +15,12 @@ public class Pgdata {
 		
 		int cnt   =Integer.parseInt(String.valueOf(map.get("cnt")));
 		
+		System.out.println("cnt: " + cnt);
+		
 		int tempEnd = (int)(Math.ceil(page / 10.0) * 10); 
-		//����ȣ ���ϱⷡ 
+		System.out.println("tempEnd: " + tempEnd);
+
+		
 		
 		int end  = (pagegrp * pagecount);
 		vo.setEnd(end);
@@ -31,17 +32,16 @@ public class Pgdata {
 		if(cnt % 10 == 0) {
 			cntMake = (cnt/10);
 			vo.setEnd(end);
-			System.out.println("temps1" + cntMake);
-			vo.setTmep(cntMake);
+			//System.out.println("temps1" + cntMake);
+			vo.setEnd(cntMake);
 		}else {
 			
 			cntMake =  (cnt/10)+1;
-			System.out.println("temps2" + cntMake);
+			//System.out.println("temps2" + cntMake);
 			
 			if(cntMake<end) {
 				vo.setEnd(cntMake);
-				System.out.println("temps2" + cntMake);
-				vo.setTmep(cntMake);
+				//System.out.println("temps2" + cntMake);
 			}
 			
 			vo.setTmep(cntMake);
