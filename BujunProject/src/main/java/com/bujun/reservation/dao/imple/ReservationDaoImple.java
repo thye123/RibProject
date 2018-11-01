@@ -62,7 +62,7 @@ public class ReservationDaoImple implements ReservationDao {
 	public void timeOut(HashMap<String, Object> map) {
 		sqlsession.selectList("Reservation.timeout",map);
 		List<ReservationVo> list= (List<ReservationVo>) map.get("result");
-		System.out.println("list" +list.toString());
+		//System.out.println("list" +list.toString());
 		
 	}
 
@@ -70,9 +70,13 @@ public class ReservationDaoImple implements ReservationDao {
 	public ReservationVo getOnePerson(HashMap<String, Object> map) {
 		
 		ReservationVo vo =sqlsession.selectOne("Reservation.oneperson",map);
-		//List<ReservationVo> vos = (List<ReservationVo>) map.get("set");
-		//vo.setRes_seatcode((String)map.get("res_seatcode"));
-		System.out.println("1번인 사람 들고오기 "+map) ;
+		
 		return vo;
+	}
+
+	@Override
+	public void DeleteSet(HashMap<String, Object> map) {
+		System.out.println("map:" + map);
+		sqlsession.delete("Reservation.timeout",map);
 	}
 }

@@ -81,18 +81,17 @@
 	)}
 	</delete>
 
-	<select id="timeout" statementType="CALLABLE" resultType="com.bujun.reservation.vo.ReservationVo" parameterType="hashmap">
+	<delete id="timeout">
 	{CALL BJL_PKG_RESERVATION.PROC_OUT_DEPATURE(
-	#{edt_time, mode=IN, jdbcType=VARCHAR},
-	#{res_memid, mode=IN, jdbcType=VARCHAR},
-	#{res_seatcode, mode=IN, jdbcType=VARCHAR},
-	#{result, mode=OUT, jdbcType=CURSOR, javaType=RESULTSET, resultMap=reserva}
+	#{res_difH, mode=IN, jdbcType=VARCHAR}
 	)}
-	</select>
+	</delete>
+	
 	<select id="oneperson"  statementType="CALLABLE" resultType="com.bujun.reservation.vo.ReservationVo" parameterType="hashmap">
 	{CALL BJL_PKG_RESERVATION.PROC_OUT_SEATCODE(
 	#{res_memid, mode=IN, jdbcType=VARCHAR},
-	#{set, mode=OUT, jdbcType=VARCHAR}
+	#{set, mode=OUT, jdbcType=VARCHAR},
+	#{edtime, mode=OUT, jdbcType=VARCHAR}
 	)}
 	</select>
 

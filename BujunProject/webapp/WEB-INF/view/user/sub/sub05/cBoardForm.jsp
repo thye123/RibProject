@@ -210,7 +210,9 @@ function findChecked(objs, check_Obj)
 		<form action="/CluBoard/processing" method="post"
 			enctype="multipart/form-data" id="processing">
 			<input type="hidden" name="clb_clucode" value="${clb_clucode}">
-
+			<input type="hidden" name="m1" value="${m1}">
+			<input type="hidden" name="m2" value="${m2}">
+			<input type="hidden" name="m3" value="${m3}">
 			<table class="board_read">
 				<colgroup>
 					<col style="width: 20%;">
@@ -242,7 +244,7 @@ function findChecked(objs, check_Obj)
 					<tr id="pass" style="display:none">
 						<th class="c">비밀번호</th>
 						<td colspan="2">
-						<input type="text" name="clb_pass" id="clb_pass"/></td>
+						<input type="password" name="clb_pass" id="clb_pass"/></td>
 					</tr>
 					
 					<tr>

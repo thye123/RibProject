@@ -167,16 +167,28 @@ public class StudyController {
 	@RequestMapping("/study/joinForm")
 	public ModelAndView studyJoinForm(@RequestParam HashMap<String, Object> map, Model model) {
 		model.addAttribute("menu", map);
-		StudyVo vo = studyService.getDetail(map);
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String login_name = authentication.getName();
 		ModelAndView mv = new ModelAndView();
-		String m1 = String.valueOf(map.get("m1"));
-		String m2 = String.valueOf(map.get("m2"));
-		mv.addObject("m1", m1);
-		mv.addObject("m2", m2);
-		mv.addObject("studyDetail", vo);
-		mv.addObject("stu_code",map.get("stu_code"));
-		mv.addObject("stu_idx", map.get("stu_idx"));
-		mv.setViewName("user/sub/sub06/studyJoin");
+		
+		if(!login_name.equals("anonymousUser")) {		
+			StudyVo vo = studyService.getDetail(map);
+			String m1 = String.valueOf(map.get("m1"));
+			String m2 = String.valueOf(map.get("m2"));
+			mv.addObject("m1", m1);
+			mv.addObject("m2", m2);
+			mv.addObject("studyDetail", vo);
+			mv.addObject("stu_code",map.get("stu_code"));
+			mv.addObject("stu_idx", map.get("stu_idx"));
+			mv.setViewName("user/sub/sub06/studyJoin");
+			
+			System.out.println("로그인됨:::::::::::::::::::: "+ login_name);
+				
+		} else {
+			System.out.println("로그인안됨:::::::::::::::::::: "+ login_name);	
+			mv.setViewName("user/sub/sub08/login");
+		}
 		return mv;
 	}
 	
@@ -313,6 +325,6 @@ public class StudyController {
 		studyService.studyEnd(map);
 		String m1 = String.valueOf(map.get("m1"));
 		String m2 = String.valueOf(map.get("m2"));
-		return "redirect:/study/prcondition?m1="+m1+"&m2="+m2+"&page_num=1&page_grp=1&stu_code="+map.get("stuap_code");
+		return "redirect:/study/prcondition?m1="+m1+"&m2="+m2+"&page_num=1&page_grp=1&stu_code="+map.get("stuap_code")+"&stu_idx="+map.get("stu_idx");
 	}
 }

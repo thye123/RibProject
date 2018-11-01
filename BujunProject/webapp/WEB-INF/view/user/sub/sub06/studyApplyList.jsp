@@ -154,7 +154,7 @@
 											<td>승인완료</td>
 										</c:when>
 										<c:otherwise>
-											<td><a href="/study/accept?m1=${m1}&m2=${m2}&stuap_code=${stuap_code}&stuap_idx=${aList.stuap_idx}">승인</a></td>										
+											<td><a href="/study/accept?m1=${m1}&m2=${m2}&stuap_code=${stuap_code}&stuap_idx=${aList.stuap_idx}&stu_idx=${stu_idx}">승인</a></td>										
 										</c:otherwise>
 									</c:choose>
 								</tr>

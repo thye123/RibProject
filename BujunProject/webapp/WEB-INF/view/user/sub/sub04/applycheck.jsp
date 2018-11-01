@@ -83,6 +83,11 @@ a.btn_boards {
 .element{
 background-color: #636b72;
 }
+
+select.grade {
+    width: 53%;
+}
+
 </style>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>

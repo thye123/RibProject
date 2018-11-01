@@ -44,11 +44,7 @@ public class ReservationController {
 		    			map.put("re_code", re_code);
 		    			map.put("res_memid", login_name);
 		    			List<ReservationVo> rv = reservationservice.getClassID(map);
-		    			System.out.println("rv: "  + rv.toString());
 		    			List<ReservationVo> list = reservationservice.cancle(map);
-		//1번인 사람 좌석 정보를 들고 온다 
-		    			
-
 		    			
 		    			mv.addObject("list",list);
 		    			mv.addObject("rv",rv);
@@ -149,7 +145,7 @@ public class ReservationController {
 		String m3 = String.valueOf(map.get("m3"));
 		
 		reservationservice.upReserve(map);
-		return "redirect:/reserve?m1="+m1+"&m2="+m2+"&m3="+m3;
+		return "redirect:/reserve?m1=02&m2=04";
 	}
 	
 	
@@ -157,10 +153,11 @@ public class ReservationController {
 	public String cancel(@RequestParam HashMap<String, Object> map ,Model model) {
 		model.addAttribute("menu", map);
 		//ModelAndView mv= new ModelAndView();
-		System.out.println("취소 정보 map" + map);
+		
 		String m1 = String.valueOf(map.get("m1"));
 		String m2 = String.valueOf(map.get("m2"));
 		String m3 = String.valueOf(map.get("m3"));
+		System.out.println("취소 정보 map" + map);
 		reservationservice.deleteSet(map);
 		return "redirect:/reserve?m1="+m1+"&m2="+m2+"&m3="+m3;
 
@@ -170,11 +167,8 @@ public class ReservationController {
 	@RequestMapping("/reserve/out")
 	public String out(@RequestParam HashMap<String, Object> map ,Model model) {
 		model.addAttribute("menu", map);
-		String m1 = String.valueOf(map.get("m1"));
-		String m2 = String.valueOf(map.get("m2"));
-		String m3 = String.valueOf(map.get("m3"));
 		reservationservice.outSeat(map);
-		return "redirect:/reserve?m1="+m1+"&m2="+m2+"&m3="+m3;
+		return "redirect:/reserve?m1=02&m2=04";
 	}
 	
 	
@@ -186,14 +180,17 @@ public class ReservationController {
 		String m1 = String.valueOf(map.get("m1"));
 		String m2 = String.valueOf(map.get("m2"));
 		String m3 = String.valueOf(map.get("m3"));
-		System.out.println("map : "  + map);
+		String location = "";
+		if(m1.equals("02")&&m2.equals("04")) {
+			reservationservice.getDeleteSeat(map);
+			location = "redirect:/reserve?m1="+ m1 + "&m2=" + m2;
+		}
 		
-		ReservationVo vo = reservationservice.getOnePerson(map);
-		System.out.println("코드값 :" + vo.toString());
-		mv.addObject("vo",	vo.getRes_seatcode());
-		
-		/*reservationservice.outTime(map);*/
-		return "redirect:/reserve?m1=02&m2=04";
+		if(m1.equals("02")&&m2.equals("04")&&m3.equals("02")) {
+			reservationservice.getDeleteSeat(map);
+			location = "redirect:/reserve?m1="+ m1 + "&m2=" + m2 + "&m3=" + m3;
+		}
+		return location;
 	}
 	
 }

@@ -66,7 +66,7 @@
 		          return false;
 		       }
 		      if(listu_target.value==''){
-		          alert('모집 대상 입력 ');
+		          alert('강의 대상 입력 ');
 		          listu_target.focus();
 		          return false;
 		       }
@@ -181,14 +181,7 @@ input[type="text"] {
 						<textarea name="listu_content" rows="20" style="resize: none; warp:virtual; width:100%;" id="listu_content"></textarea>
 					</td>
 				</tr>
-		
-			<!-- 	<tr>
-					<th>첨부파일</th>
-					<td colspan="3" style="text-align:left;">
-						<input type="file" name="file"/>
-					</td>
-				</tr> -->
-				
+	
 			</tbody>
 		</table>
 		<div class="r mg_t20 btns">

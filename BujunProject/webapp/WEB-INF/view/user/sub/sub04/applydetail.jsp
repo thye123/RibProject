@@ -121,17 +121,13 @@ CAT_NAME,  일반 프로그램 / 초딩 유아 -->
                </c:choose>
 
             </tr>
-            <tr>
-               <th class="c">첨부파일</th>
-               <td colspan="2">20181005134529.pdf</td>
-            </tr>
-         </tbody>
+          </tbody>
       </table>
       <!-- //게시판테이블(리스트) -->
       <!-- 버튼 들어간다 (수강 신청  / 목록으로 ) -->
       <div class="btn_set r mg_t10">
          <a href="/opprogram01/apply?m1=${m1}&m2=${m2}&m3=${m3}&listu_idx=${edu.listu_idx}&listu_code=${edu.listu_code}&listu_catcode=${edu.listu_catcode}" class="btn btn_board">수강신청</a> <a 
-         href="/opprogram01?m1=${m1}&m2=${m2}&m3=${m3}&page=1&pagecount=10&pagegrp=1"
+         href="/pgappl?m1=${m1}&m2=${m2}&m3=${m3}&page=1&pagecount=10&pagegrp=1"
          class="btn btn_board">목록으로</a>
       </div>
 
